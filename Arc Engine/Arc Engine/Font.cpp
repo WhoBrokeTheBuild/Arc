@@ -29,3 +29,12 @@ string Font::toString( void ) const
 {
     return "Font";
 }
+
+Size Font::measureString( string text )
+{
+    int w, h;
+
+    TTF_SizeText(_pFont, text.c_str(), &w, &h);
+
+    return Size((float)w, (float)h);
+}

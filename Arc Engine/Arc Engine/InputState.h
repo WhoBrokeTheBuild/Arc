@@ -6,22 +6,24 @@
 #include "ArcCommon.h"
 #include "GameObject.h"
 
-struct InputState 
+struct InputState
     : public GameObject
 {
-    bool 
+    bool
         Pressed,
         Released,
         Down,
-        Hidden;
+        Tapped;
 
-    int 
-        HeldCount;
+    InputState( bool pressed = false, bool released = false, bool down = false, bool tapped = false )
+    {
+        Pressed  = pressed;
+        Released = released;
+        Down     = down;
+        Tapped   = tapped;
+    }
 
-    InputState( void );
-    InputState( bool pressed, bool released, bool down );
-
-    virtual string toString( void ) const;
+    virtual string toString( void ) const { return "Input State"; }
 };
 
 #endif

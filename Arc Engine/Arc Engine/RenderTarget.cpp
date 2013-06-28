@@ -10,7 +10,7 @@ RenderTarget::~RenderTarget( void )
     term();
 }
 
-void RenderTarget::init( GraphicsSystem *pGraphicsSystem )
+void RenderTarget::init( GraphicsSystem* pGraphicsSystem )
 {
     _pGraphicsSystem = pGraphicsSystem;
 }
@@ -50,17 +50,17 @@ void RenderTarget::drawShape( float x, float y, float radius, float shapeValue, 
     glPushMatrix();
     glTranslatef(x, y, 0.0f);
 
-    glTranslatef(origin.X, origin.Y, 0);
+    glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(toDeg(rotation) - 90.0f, 0.0f, 0, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0);
-
-    glBegin(GL_LINE_LOOP);
+    glTranslatef(-origin.X, -origin.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
+    glBegin(GL_LINE_LOOP);
+
     for (float i = 0; i < PI2; i += (float)(PI / shapeValue))
     {
-        glVertex3f(cosf(i) * radius, sinf(i) * radius, 0.0f);
+        glVertex2f(cosf(i) * radius, sinf(i) * radius);
     }
 
     glEnd();
@@ -73,17 +73,17 @@ void RenderTarget::fillShape( float x, float y, float radius, float shapeValue, 
     glPushMatrix();
     glTranslatef(x, y, 0.0f);
 
-    glTranslatef(origin.X, origin.Y, 0);
-    glRotatef(toDeg(rotation) - 90.0f, 0.0f, 0, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0);
-
-    glBegin(GL_POLYGON);
+    glTranslatef(origin.X, origin.Y, 0.0f);
+    glRotatef(toDeg(rotation) - 90.0f, 0.0f, 0.0f, 1.0f);
+    glTranslatef(-origin.X, -origin.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
+    glBegin(GL_POLYGON);
+
     for (float i = 0; i < PI2; i += (float)(PI / shapeValue))
     {
-        glVertex3f(cosf(i) * radius, sinf(i) * radius, 0.0f);
+        glVertex2f(cosf(i) * radius, sinf(i) * radius);
     }
 
     glEnd();
@@ -122,17 +122,17 @@ void RenderTarget::drawText( float x, float y, CachedText* pCachedText, Color co
 
     switch (align)
     {
-    case LEFT:
+    case ALIGN_LEFT:
 
         origin.X = 0;
 
         break;
-    case CENTER:
+    case ALIGN_CENTER:
 
         origin.X = pCachedText->texture()->size().halfWidth();
 
         break;
-    case RIGHT:
+    case ALIGN_RIGHT:
 
         origin.X = pCachedText->texture()->size().width();
 
@@ -145,22 +145,22 @@ void RenderTarget::drawText( float x, float y, CachedText* pCachedText, Color co
     draw(x, y, pCachedText->texture(), color, rotation, origin);
 }
 
-void RenderTarget::draw( Vector2 pos, Texture *pTexture, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::draw( Vector2 pos, Texture* pTexture, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
 {
     draw(pos.X, pos.Y, pTexture, color, rotation, origin);
 }
 
-void RenderTarget::draw( float x, float y, Texture *pTexture, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::draw( float x, float y, Texture* pTexture, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
 {
     draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->size()), color, rotation, origin);
 }
 
-void RenderTarget::draw( Vector2 pos, Texture *pTexture, Rect sourceRect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/, bool flip /*= false*/ )
+void RenderTarget::draw( Vector2 pos, Texture* pTexture, Rect sourceRect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/, bool flip /*= false*/ )
 {
     draw(pos.X, pos.Y, pTexture, sourceRect, color, rotation, origin, flip);
 }
 
-void RenderTarget::draw( float x, float y, Texture *pTexture, Rect sourceRect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/, bool flip /*= false*/ )
+void RenderTarget::draw( float x, float y, Texture* pTexture, Rect sourceRect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/, bool flip /*= false*/ )
 {
     glEnable(GL_TEXTURE_2D);
 
@@ -182,17 +182,17 @@ void RenderTarget::draw( float x, float y, Texture *pTexture, Rect sourceRect, C
 
     if (flip)
     {
-        glTexCoord2d(convSrcRect.right(),   convSrcRect.top());     glVertex2d(0.0,                 0.0);
-        glTexCoord2d(convSrcRect.left(),    convSrcRect.top());     glVertex2d(sourceRect.Width,    0.0);
-        glTexCoord2d(convSrcRect.left(),    convSrcRect.bottom());  glVertex2d(sourceRect.Width,    sourceRect.Height);
-        glTexCoord2d(convSrcRect.right(),   convSrcRect.bottom());  glVertex2d(0.0,                 sourceRect.Height);
+        glTexCoord2d(convSrcRect.right(),   convSrcRect.top());     glVertex2f(0.0f,                0.0f);
+        glTexCoord2d(convSrcRect.left(),    convSrcRect.top());     glVertex2f(sourceRect.Width,    0.0f);
+        glTexCoord2d(convSrcRect.left(),    convSrcRect.bottom());  glVertex2f(sourceRect.Width,    sourceRect.Height);
+        glTexCoord2d(convSrcRect.right(),   convSrcRect.bottom());  glVertex2f(0.0f,                sourceRect.Height);
     }
     else
     {
-        glTexCoord2d(convSrcRect.left(),    convSrcRect.top());     glVertex2d(0.0,                 0.0);
-        glTexCoord2d(convSrcRect.right(),   convSrcRect.top());     glVertex2d(sourceRect.Width,    0.0);
-        glTexCoord2d(convSrcRect.right(),   convSrcRect.bottom());  glVertex2d(sourceRect.Width,    sourceRect.Height);
-        glTexCoord2d(convSrcRect.left(),    convSrcRect.bottom());  glVertex2d(0.0,                 sourceRect.Height);
+        glTexCoord2d(convSrcRect.left(),    convSrcRect.top());     glVertex2f(0.0f,                0.0f);
+        glTexCoord2d(convSrcRect.right(),   convSrcRect.top());     glVertex2f(sourceRect.Width,    0.0f);
+        glTexCoord2d(convSrcRect.right(),   convSrcRect.bottom());  glVertex2f(sourceRect.Width,    sourceRect.Height);
+        glTexCoord2d(convSrcRect.left(),    convSrcRect.bottom());  glVertex2f(0.0f,                sourceRect.Height);
     }
 
     glEnd();
@@ -200,6 +200,30 @@ void RenderTarget::draw( float x, float y, Texture *pTexture, Rect sourceRect, C
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
+}
+
+void RenderTarget::drawLine( Vector2 start, Vector2 end, Color color /*= Color::WHITE*/, float thickness /*= 1.0f*/ )
+{
+    drawLine(start.X, start.Y, end.X, end.Y, color, thickness);
+}
+
+void RenderTarget::drawLine( float x1, float y1, float x2, float y2, Color color /*= Color::WHITE*/, float thickness /*= 1.0f*/ )
+{
+    glPushMatrix();
+    glTranslatef(0.0f, 0.0f, 0.0f);
+
+    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+
+    glLineWidth(thickness);
+
+    glBegin(GL_LINES); 
+
+    glVertex2f(x1, y1);
+    glVertex2f(x2, y2);
+
+    glEnd(); 
+
+    glPopMatrix();
 }
 
 void RenderTarget::drawRect( float x, float y, float width, float height, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
@@ -211,20 +235,20 @@ void RenderTarget::drawRect( float x, float y, float width, float height, Color 
 void RenderTarget::drawRect( Rect rect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
 {
     glPushMatrix();
-    glTranslatef(rect.X, rect.Y, 0);
+    glTranslatef(rect.X, rect.Y, 0.0f);
 
-    glTranslatef(origin.X, origin.Y, 0);
-    glRotatef(toDeg(rotation), 0.0f, 0, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0);
-
-    glBegin(GL_LINE_LOOP); 
+    glTranslatef(origin.X, origin.Y, 0.0f);
+    glRotatef(toDeg(rotation), 0.0f, 0.0f, 1.0f);
+    glTranslatef(-origin.X, -origin.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
-    glVertex3f(0.0f,       0.0f,        0.0f);
-    glVertex3f(rect.Width, 0.0f,        0.0f);
-    glVertex3f(rect.Width, rect.Height, 0.0f);
-    glVertex3f(0.0f,       rect.Height, 0.0f);
+    glBegin(GL_LINE_LOOP); 
+
+    glVertex2f(0.0f,       0.0f);
+    glVertex2f(rect.Width, 0.0f);
+    glVertex2f(rect.Width, rect.Height);
+    glVertex2f(0.0f,       rect.Height);
 
     glEnd(); 
 
@@ -240,20 +264,20 @@ void RenderTarget::fillRect( float x, float y, float width, float height, Color 
 void RenderTarget::fillRect( Rect rect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
 {
     glPushMatrix();
-    glTranslatef(rect.X, rect.Y, 0);
+    glTranslatef(rect.X, rect.Y, 0.0f);
 
-    glTranslatef(origin.X, origin.Y, 0);
-    glRotatef(toDeg(rotation), 0.0f, 0, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0);
-
-    glBegin(GL_QUADS);
+    glTranslatef(origin.X, origin.Y, 0.0f);
+    glRotatef(toDeg(rotation), 0.0f, 0.0f, 1.0f);
+    glTranslatef(-origin.X, -origin.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
-    glVertex3f(0.0f,       0.0f,        0.0f);
-    glVertex3f(rect.Width, 0.0f,        0.0f);
-    glVertex3f(rect.Width, rect.Height, 0.0f);
-    glVertex3f(0.0f,       rect.Height, 0.0f);
+    glBegin(GL_QUADS);
+
+    glVertex2f(0.0f,       0.0f);
+    glVertex2f(rect.Width, 0.0f);
+    glVertex2f(rect.Width, rect.Height);
+    glVertex2f(0.0f,       rect.Height);
 
     glEnd();
 

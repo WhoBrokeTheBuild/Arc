@@ -4,7 +4,7 @@
 #define __VECTOR_2_H__
 
 #include "GameObject.h"
-#include "functions.h"
+#include "Functions.h"
 
 class Vector2;
 
@@ -60,6 +60,15 @@ public:
     bool operator==( const Vector2 &rhs ) const;
     bool operator!=( const Vector2 &rhs ) const;
 
+};
+
+struct CompVector2
+    : public binary_function<Vector2, Vector2, bool>
+{
+    bool operator()(const Vector2& lhs, const Vector2& rhs) const
+    {
+        return lhs.X < rhs.X; // Simple Sorting
+    }
 };
 
 #endif

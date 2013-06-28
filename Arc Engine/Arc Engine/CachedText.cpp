@@ -43,16 +43,18 @@ void CachedText::graphicsReset( const Event& event )
 
 void CachedText::renderText( void )
 {
-    if (_pFont->SDLFont() == nullptr)
+    if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
     {
         ERR(toString(), "Invalid Font");
         return;
     }
 
-    if (_text.length() == 0)
-        return;
+    string text = _text;
 
-    SDL_Surface *surface = TTF_RenderUTF8_Blended(_pFont->SDLFont(), _text.c_str(), Color::WHITE.SDLColor());
+    if (text.length() == 0)
+        text = " ";
+
+    SDL_Surface* surface = TTF_RenderUTF8_Blended(_pFont->SDLFont(), text.c_str(), Color::WHITE.SDLColor());
 
     if (!surface)
     {
@@ -77,5 +79,16 @@ void CachedText::setText( string text )
 
 Size CachedText::size( void )
 {
+    if (_pTexture == nullptr)
+        return Size::ZERO;
+
     return _pTexture->size();
+}
+
+Size CachedText::measureString( string text )
+{
+    if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
+        return Size::ZERO;
+
+    return _pFont->measureString(text);
 }

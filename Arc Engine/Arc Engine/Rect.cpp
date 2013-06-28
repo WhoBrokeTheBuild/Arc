@@ -82,4 +82,46 @@ bool Rect::containsPoint( Vector2 point )
     return true;
 }
 
+const Rect Rect::operator+( const Rect &rhs ) const
+{
+    Rect result = *this;
+    result += rhs;
+    return result;
+}
+
+const Rect Rect::operator-( const Rect &rhs ) const
+{
+    Rect result = *this;
+    result -= rhs;
+    return result;
+}
+
+Rect & Rect::operator+=( const Rect &rhs )
+{
+    X      += rhs.X;
+    Y      += rhs.Y;
+    Width  += rhs.Width;
+    Height += rhs.Height;
+    return *this;
+}
+
+Rect & Rect::operator-=( const Rect &rhs )
+{
+    X      -= rhs.X;
+    Y      -= rhs.Y;
+    Width  -= rhs.Width;
+    Height -= rhs.Height;
+    return *this;
+}
+
+bool Rect::operator==( const Rect &rhs ) const
+{
+    return (X == rhs.X && Y == rhs.Y && Width == rhs.Width && Height == rhs.Height);
+}
+
+bool Rect::operator!=( const Rect &rhs ) const
+{
+    return !(*this == rhs);
+}
+
 

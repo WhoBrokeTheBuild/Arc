@@ -15,6 +15,10 @@
 #include <vector>
 #include <map>
 
+#include "Keyboard.h"
+#include "Mouse.h"
+#include <SDL.h>
+
 #define PI  3.14159
 #define PI2 6.28318
 
@@ -22,6 +26,11 @@
 #define TO_DEG (180.0 / PI)
 
 using namespace std;
+
+class Vector2;
+class Circle;
+class Rect;
+class Color;
 
 #ifdef DEBUG
 
@@ -87,15 +96,20 @@ inline time_t now( void ) { return time((time_t*)0); }
 vector<string> strSplit( string str, char sep, int limit = -1 );
 string strReplace   ( string str, const string& sub, const string& newStr );
 string strReplaceAll( string str, const string& sub, const string& newStr );
+string strSub ( string str, unsigned int begin, int maxLength = -1 );
 
 string basename(string fullPath);
 
 inline float toRad( float deg ) { return (float)( deg * TO_RAD ); }
 inline float toDeg( float rad ) { return (float)( rad * TO_DEG ); };
 
-int    toInt   ( const string& value );
-float  toFloat ( const string& value );
-double toDouble( const string& value );
+int     parseInt    ( const string& value );
+float   parseFloat  ( const string& value );
+double  parseDouble ( const string& value );
+Vector2 parseVector2( const string& value );
+Circle  parseCircle ( const string& value );
+Rect    parseRect   ( const string& value );
+Color   parseColor  ( const string& value );
 
 template <class Number>
 string numToString( const Number& value )
@@ -220,16 +234,31 @@ inline void vectorRemoveAll( vector<Value>& list, const Value& element )
     while (vectorRemove(list, element));
 }
 
-template <class Key, class Value>
-bool mapContainsKey( const map<Key, Value>& collection, Key key)
+template <class Key, class Value, typename Sort>
+bool mapContainsKey( const map<Key, Value, Sort>& collection, Key key)
 {
-    return ( collection.find(key) != collection.cend() );
+    bool contains = ( collection.find(key) != collection.cend() );
+
+    if (!contains)
+    {
+        map<Key, Value, Sort>::const_iterator it;
+        for (it = collection.cbegin(); it != collection.cend(); ++it)
+        {
+            if (it->first == key)
+            {
+                contains = true;
+                break;
+            }
+        }
+    }
+
+    return contains;
 }
 
-template <class Key, class Value>
-bool mapRemoveKey( map<Key, Value>& collection, Key key )
+template <class Key, class Value, typename Sort>
+bool mapRemoveKey( map<Key, Value, Sort>& collection, Key key )
 {
-    map<Key, Value>::iterator it;
+    map<Key, Value, Sort>::iterator it;
 
     it = collection.find(key);
     if (it != collection.end())
@@ -241,10 +270,10 @@ bool mapRemoveKey( map<Key, Value>& collection, Key key )
     return false;
 }
 
-template <class Key, class Value>
-bool mapContainsValue( const map<Key, Value>& collection, Value value )
+template <class Key, class Value, typename Sort>
+bool mapContainsValue( const map<Key, Value, Sort>& collection, Value value )
 {
-    map<Key, Value>::const_iterator it;
+    map<Key, Value, Sort>::const_iterator it;
 
     for (it = collection.cbegin(); it != collection.cend(); ++it)
     {
@@ -255,10 +284,10 @@ bool mapContainsValue( const map<Key, Value>& collection, Value value )
     return false;
 }
 
-template <class Key, class Value>
-Key mapFindKey( const map<Key, Value>& collection, Value value)
+template <class Key, class Value, typename Sort>
+Key mapFindKey( const map<Key, Value, Sort>& collection, Value value)
 {
-    map<Key, Value>::const_iterator it;
+    map<Key, Value, Sort>::const_iterator it;
 
     for (it = collection.cbegin(); it != collection.cend(); ++it)
     {
@@ -269,10 +298,10 @@ Key mapFindKey( const map<Key, Value>& collection, Value value)
     return Key();
 }
 
-template <class Key, class Value>
-bool mapRemoveValue( map<Key, Value>& collection, Value value)
+template <class Key, class Value, typename Sort>
+bool mapRemoveValue( map<Key, Value, Sort>& collection, Value value)
 {
-    map<Key, Value>::iterator it;
+    map<Key, Value, Sort>::iterator it;
 
     for (it = collection.begin(); it != collection.end(); ++it)
     {
@@ -285,5 +314,12 @@ bool mapRemoveValue( map<Key, Value>& collection, Value value)
 
     return false;
 }
+
+KeyboardKey SDLKeyToKey( SDLKey sdlKey );
+SDLKey      KeyToSDLKey( KeyboardKey key );
+char KeyToChar ( KeyboardKey key, bool shift = false );
+
+MouseButton SDLMouseToMouse( int sdlButton );
+int         MouseToSDLMouse( MouseButton button );
 
 #endif 

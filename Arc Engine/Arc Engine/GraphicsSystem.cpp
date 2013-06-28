@@ -12,15 +12,15 @@ GraphicsSystem::~GraphicsSystem( void )
     term();
 }
 
-void GraphicsSystem::init( void )
+void GraphicsSystem::init( Size windowSize, string windowTitle )
 {
     INF(toString(), "Initializing");
 
-    _windowSize = Size::ZERO;
-    _windowTitle = "";
-    _fullscreen = false;
-    _clearColor = Color::STORM;
-    _screenBPP = 32;
+    _windowSize  = windowSize;
+    _windowTitle = windowTitle;
+    _fullscreen  = false;
+    _clearColor  = Color::STORM;
+    _screenBPP   = 32;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
     {
@@ -43,8 +43,9 @@ void GraphicsSystem::init( void )
     SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES,      2);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,            1);
 
-    setWindowSize(Size(640, 480));
-    setWindowTitle("Arc");
+    setWindowTitle(_windowTitle);
+    resetVideoMode();
+    resetGL();
 
     _pRenderTarget = New RenderTarget();
     _pRenderTarget->init(this);
@@ -92,6 +93,29 @@ void GraphicsSystem::setWindowTitle( string title )
     _windowTitle = title;
 
     SDL_WM_SetCaption(_windowTitle.c_str(), nullptr);
+}
+
+void GraphicsSystem::setClearColor( Color clearColor )
+{
+    _clearColor = clearColor;
+}
+
+void GraphicsSystem::setWindowIcon( string filename )
+{
+    SDL_Surface *pSurface = IMG_Load(filename.c_str());
+
+    if (!pSurface)
+    {
+        stringstream ss;
+
+        ss << "Cannot Load Icon File: " << filename;
+
+        ERR(toString(), ss.str());
+    }
+
+    SDL_WM_SetIcon(pSurface, nullptr);
+
+    SDL_FreeSurface(pSurface);
 }
 
 void GraphicsSystem::resetGL( void )
@@ -143,14 +167,4 @@ void GraphicsSystem::resetVideoMode( void )
         ERR(toString(), "Failed to set SDL video mode");
         die();
     }
-}
-
-RenderTarget * GraphicsSystem::renderTarget( void )
-{
-    return _pRenderTarget;
-}
-
-Color GraphicsSystem::clearColor( void )
-{
-    return _clearColor;
 }

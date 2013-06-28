@@ -47,7 +47,7 @@ void AnimatedUnit::render( const Event& event )
     if (_pAnimation == nullptr)
         return;
 
-    Sprite *currentFrame = _pAnimation->frameAt(_frame);
+    Sprite* currentFrame = _pAnimation->frameAt(_frame);
 
     if (currentFrame == nullptr)
         return;
@@ -55,17 +55,18 @@ void AnimatedUnit::render( const Event& event )
     renderData->renderTarget()->draw(Pos - Origin, currentFrame->texture(), currentFrame->SourceRect, BlendColor, Rot, Origin);
 }
 
-void AnimatedUnit::setAnimation( Animation *pAnimation, bool useDefaults /*= true*/ )
+void AnimatedUnit::setAnimation( Animation* pAnimation, bool useDefaults /*= true*/ )
 {
     _pAnimation = pAnimation;
     _frame = 0;
     _animationTimeout = 0;
-    Size = Size::ZERO;
+    UnitSize = Size::ZERO;
 
     if (_pAnimation == nullptr)
     {
         Animating = false;
-        Looping = false;
+        Looping   = false;
+
         _animationComplete = false;
         return;
     }
@@ -73,10 +74,11 @@ void AnimatedUnit::setAnimation( Animation *pAnimation, bool useDefaults /*= tru
     if (useDefaults)
     {
         _animationTimeout = pAnimation->frameAt(_frame)->FrameTime;
-        Size = _pAnimation->frameSize(_frame);
 
+        UnitSize  = _pAnimation->frameSize(_frame);
         Animating = pAnimation->Animating;
-        Looping = pAnimation->Looping;
+        Looping   = pAnimation->Looping;
+
         _animationComplete = false;
     }
 }
@@ -97,7 +99,7 @@ void AnimatedUnit::updateAnimation( const FrameData* pFrameData )
         }
         _frame = (_frame + 1) % _pAnimation->length();
         _animationTimeout = _pAnimation->frameAt(_frame)->FrameTime;
-        Size = _pAnimation->frameSize(_frame);
+        UnitSize = _pAnimation->frameSize(_frame);
     }
 }
 

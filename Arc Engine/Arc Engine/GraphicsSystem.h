@@ -46,7 +46,7 @@ public:
     GraphicsSystem( void );
     virtual ~GraphicsSystem( void );
 
-    virtual void init( void );
+    virtual void init( Size windowSize, string windowTitle );
     virtual void term( void );
 
     virtual string toString( void ) const;
@@ -54,13 +54,15 @@ public:
     virtual void setFullscreen ( bool fullscreen );
     virtual void setWindowSize ( Size size );
     virtual void setWindowTitle( string title );
+    virtual void setClearColor ( Color clearColor );
+    virtual void setWindowIcon ( string filename );
 
-    virtual bool   fullscreen ( void ) { return _fullscreen; }
-    virtual Size   windowSize ( void ) { return _windowSize; }
+    virtual bool   fullscreen ( void ) { return _fullscreen;  }
+    virtual Size   windowSize ( void ) { return _windowSize;  }
     virtual string windowTitle( void ) { return _windowTitle; }
+    virtual Color  clearColor ( void ) { return _clearColor;  }
 
-    virtual RenderTarget *renderTarget( void );
-    virtual Color clearColor( void );
+    virtual RenderTarget *renderTarget( void ) { return _pRenderTarget; };
 };
 
 #endif

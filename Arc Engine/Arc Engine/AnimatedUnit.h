@@ -1,12 +1,12 @@
 #pragma once
 
-#ifndef __BASIC_UNIT_H__
-#define __BASIC_UNIT_H__
+#ifndef __ANIMATED_UNIT_H__
+#define __ANIMATED_UNIT_H__
 
 #include "ArcCommon.h"
 #include "Unit.h"
 
-#include "Game.h"
+#include "ArcApp.h"
 
 #include "Animation.h"
 #include "Color.h"
@@ -53,7 +53,7 @@ public:
 
     virtual Animation* animation( void ) { return _pAnimation; }
 
-    virtual void setAnimation( Animation *pAnimation, bool useDefaults = true);
+    virtual void setAnimation( Animation* pAnimation, bool useDefaults = true);
 
     virtual void animationComplete( const Event& event );
 

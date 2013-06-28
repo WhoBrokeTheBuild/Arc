@@ -13,9 +13,6 @@
 class CachedText :
     public GameObject
 {
-
-    friend class RenderTarget;
-
 private:
 
     Texture
@@ -26,8 +23,6 @@ private:
 
     Font
         *_pFont;
-
-    virtual Texture* texture( void ) { return _pTexture; }
 
 public:
 
@@ -43,8 +38,12 @@ public:
     virtual void renderText( void );
 
     virtual string text( void ) const { return _text; }
-    virtual void setText( string text );
+    virtual void   setText( string text );
+
     virtual Size size( void );
+    virtual Size measureString( string text );
+
+    virtual Texture* texture( void ) { return _pTexture; }
 };
 
 #endif

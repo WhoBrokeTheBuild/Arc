@@ -21,14 +21,14 @@ void Unit::init( Vector2 pos /*= Vector2::ZERO*/, Vector2 origin /*= Vector2::ZE
     BlendColor = blendColor;
     Depth = depth;
 
-    gpEventDispatcher->addEventListener(Game::EVENT_FRAME,  this, &Unit::update);
-    gpEventDispatcher->addEventListener(Game::EVENT_RENDER, this, &Unit::render);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME,  this, &Unit::update);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_RENDER, this, &Unit::render);
 }
 
 void Unit::term( void )
 {
-    gpEventDispatcher->removeEventListener(Game::EVENT_FRAME,  this, &Unit::update);
-    gpEventDispatcher->removeEventListener(Game::EVENT_RENDER, this, &Unit::render);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_FRAME,  this, &Unit::update);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_RENDER, this, &Unit::render);
 }
 
 void Unit::update( const Event& event )
@@ -43,5 +43,5 @@ void Unit::render( const Event& event )
 
 Rect Unit::bounds( void )
 {
-    return Rect(Pos, Size);
+    return Rect(Pos, UnitSize);
 }

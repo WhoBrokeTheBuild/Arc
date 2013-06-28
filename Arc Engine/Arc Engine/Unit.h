@@ -6,7 +6,7 @@
 #include "ArcCommon.h"
 #include "EventDispatcher.h"
 
-#include "Game.h"
+#include "ArcApp.h"
 
 class Unit :
     public EventDispatcher
@@ -18,7 +18,7 @@ public:
         Origin;
 
     Size
-        Size;
+        UnitSize;
 
     Color
         BlendColor;

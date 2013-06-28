@@ -40,6 +40,8 @@ public:
 
     virtual int size( void ) { return _size; }
 
+    virtual Size measureString( string text );
+
 };
 
 #endif

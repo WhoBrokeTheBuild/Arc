@@ -6,98 +6,40 @@
 #include "ArcCommon.h"
 #include "EventDispatcher.h"
 
-#include "Event.h"
-
-#include "InputChange.h"
+#include "Mouse.h"
+#include "Keyboard.h"
+#include "GamePad.h"
 #include "InputState.h"
-#include "InputPress.h"
-#include "GameInput.h"
-#include "PlayerIndex.h"
-#include "MouseButton.h"
 
-#include <SDL.h>
-
-#include <queue>
-
-#define INPUT_BUFFER_MAX 15
-
-typedef pair<GameInput, InputState> InputPair;
+#include "KeyboardSource.h"
+#include "MouseSource.h"
+#include "TextInputSource.h"
 
 class InputSystem :
     public EventDispatcher
 {
-private:
+protected:
 
-    map<PlayerIndex, map<GameInput, InputState>>
-        _inputStates;
+    KeyboardSource
+        *_pKeyboardSource;
 
-    queue<InputChange>
-        _inputChanges;
+    MouseSource
+        *_pMouseSource;
 
-    vector<GameInput>
-        _inputBufferIgnore,
-        _eightWayDir;
+    TextInputSource
+        *_pTextInputSource;
 
-    map<PlayerIndex, vector<InputPress>>
-        _inputBuffer;
-
-    map<PlayerIndex, map<SDLKey, GameInput>>
-        _alias;
-
-    map<PlayerIndex, map<SDLKey, bool>>
-        _keyStates;
-
-    map<GameInput, vector<GameInput>>
-        _simultanious,
-        _consecutive;
-
-    map<GameInput, GameInput>
-        _exclusive;
-
-    vector<SDL_Joystick*>
-        _joysticks;
-
-    map<MouseButton, InputState>
-        _mouseButtonStates;
-
-    unsigned int
-        _maxPlayers;
-
-    Uint8
-        *_sdlKeys;
-
-    Vector2
-        _mousePos,
-        _mouseDelta;
-
-    virtual void process( const FrameData* frameData );
-
-    virtual void addExclusive( const GameInput first, const GameInput second );
-
-    void press  ( const GameInput input, const PlayerIndex index );
-    void release( const GameInput input, const PlayerIndex index );
-
-    InputState * getInputState( GameInput input, const PlayerIndex index );
-    void addInputToBuffer( GameInput input, const PlayerIndex index );
+    virtual void handleSDLEvent( SDL_Event sdlEvent );
 
 public:
-
-    static const EventType 
-        EVENT_INPUT_PRESSED,
-        EVENT_INPUT_RELEASED,
-        EVENT_INPUT_HELD,
-        EVENT_MOUSE_MOVED,
-        EVENT_MOUSE_BUTTON_PRESSED,
-        EVENT_MOUSE_BUTTON_RELEASED,
-        EVENT_MOUSE_BUTTON_HELD;
 
     InputSystem( void );
     virtual ~InputSystem( void );
 
-    virtual void init ( void );
-    virtual void term ( void );
-
     virtual string toString( void ) const;
+
+    virtual void init( void );
+    virtual void term( void );
 
     virtual void update( const Event& event );
 };

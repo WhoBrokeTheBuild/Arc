@@ -21,7 +21,7 @@ public:
         Vel,
         Acc;
 
-    ActiveUnit( void );
+    ActiveUnit( void ) { }//TODO: Make all like this
     virtual ~ActiveUnit( void );
 
     virtual string toString( void ) const;
@@ -30,10 +30,6 @@ public:
     virtual void term( void );
 
     virtual void update( const Event& event );
-
-    virtual void inputPressed ( const Event& event );
-    virtual void inputReleased( const Event& event );
-    virtual void inputHeld    ( const Event& event );
 
 };
 

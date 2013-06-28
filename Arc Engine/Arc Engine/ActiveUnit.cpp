@@ -1,10 +1,6 @@
 #include "ActiveUnit.h"
 #include "InputSystem.h"
 
-ActiveUnit::ActiveUnit( void )
-{
-}
-
 ActiveUnit::~ActiveUnit( void )
 {
     term();
@@ -21,18 +17,10 @@ void ActiveUnit::init( Animation* pAnimation /*= nullptr*/, Vector2 pos /*= Vect
 
     Vel = vel;
     Acc = acc;
-
-    gpEventDispatcher->addEventListener(InputSystem::EVENT_INPUT_PRESSED,  this, &ActiveUnit::inputPressed);
-    gpEventDispatcher->addEventListener(InputSystem::EVENT_INPUT_RELEASED, this, &ActiveUnit::inputReleased);
-    gpEventDispatcher->addEventListener(InputSystem::EVENT_INPUT_HELD,     this, &ActiveUnit::inputHeld);
-
 }
 
 void ActiveUnit::term( void )
 {
-    gpEventDispatcher->removeEventListener(InputSystem::EVENT_INPUT_HELD,     this, &ActiveUnit::inputHeld);
-    gpEventDispatcher->removeEventListener(InputSystem::EVENT_INPUT_RELEASED, this, &ActiveUnit::inputReleased);
-    gpEventDispatcher->removeEventListener(InputSystem::EVENT_INPUT_PRESSED,  this, &ActiveUnit::inputPressed);
 }
 
 void ActiveUnit::update( const Event& event )
@@ -42,21 +30,6 @@ void ActiveUnit::update( const Event& event )
     const FrameData* frameData = event.dataAs<FrameData>();
 
     updateMovement(frameData);
-}
-
-void ActiveUnit::inputPressed( const Event& event )
-{
-    //const InputData* inputData = event.dataAs<InputData>();
-}
-
-void ActiveUnit::inputReleased( const Event& event )
-{
-    //const InputData* inputData = event.dataAs<InputData>();
-}
-
-void ActiveUnit::inputHeld( const Event& event )
-{
-    //const InputData* inputData = event.dataAs<InputData>();
 }
 
 void ActiveUnit::updateMovement( const FrameData* frameData )

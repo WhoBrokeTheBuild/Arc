@@ -17,9 +17,9 @@
 enum Align
 {
     INVALID_ALIGN = -1,
-    LEFT,
-    CENTER,
-    RIGHT,
+    ALIGN_LEFT,
+    ALIGN_CENTER,
+    ALIGN_RIGHT,
     NUM_ALIGN
 };
 
@@ -60,6 +60,9 @@ public:
                                                                              
     virtual void draw( Vector2 pos,      Texture *pTexture, Rect sourceRect,    Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO, bool flip = false);
     virtual void draw( float x, float y, Texture *pTexture, Rect sourceRect,    Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO, bool flip = false);
+
+    virtual void drawLine( Vector2 start, Vector2 end,                          Color color = Color::WHITE, float thickness = 1.0f);
+    virtual void drawLine( float x1, float y1, float x2, float y2,              Color color = Color::WHITE, float thickness = 1.0f);
                                                                              
     virtual void drawRect( float x, float y, float width, float height,         Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void drawRect( Rect rect,                                           Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );

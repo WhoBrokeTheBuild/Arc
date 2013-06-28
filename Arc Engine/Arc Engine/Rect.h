@@ -52,6 +52,24 @@ public:
     bool collides( Circle other );
     bool containsPoint( Vector2 point );
 
+    const Rect operator+( const Rect &rhs ) const;
+    const Rect operator-( const Rect &rhs ) const;
+
+    Rect &operator+=( const Rect &rhs );
+    Rect &operator-=( const Rect &rhs );
+
+    bool operator==( const Rect &rhs ) const;
+    bool operator!=( const Rect &rhs ) const;
+
+};
+
+struct CompRect 
+    : public binary_function<Rect, Rect, bool>
+{
+    bool operator()(const Rect& lhs, const Rect& rhs) const
+    {
+        return lhs.X < rhs.X; // Simple Sorting
+    }
 };
 
 #endif 

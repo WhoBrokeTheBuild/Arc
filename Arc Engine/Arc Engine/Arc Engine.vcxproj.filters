@@ -1,226 +1,261 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Audio">
-      <UniqueIdentifier>{522fe23d-e66a-40c2-800a-e1cf539a938b}</UniqueIdentifier>
+    <Filter Include="Project">
+      <UniqueIdentifier>{4285ddd2-0dbe-41b6-86ff-9a6e3041460d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{55748742-abca-499d-8bf2-1487eab318bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Events">
-      <UniqueIdentifier>{1c0c668f-19aa-499c-9f8f-b695f20d549a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics">
-      <UniqueIdentifier>{d2214987-b11d-4777-a5a1-9dd1cf0749a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{bb63cfb7-3001-4c17-8125-01e2fde06dd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Timing">
+    <Filter Include="Project\Timing">
       <UniqueIdentifier>{0ea70898-6225-400e-8e37-e11cb15fcca5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Tracking">
+    <Filter Include="Project\Tracking">
       <UniqueIdentifier>{a2678482-2e9e-4251-a4df-062ef209c816}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Units">
+    <Filter Include="Project\Units">
       <UniqueIdentifier>{41191c89-07bf-449c-943a-6e8a1e41cbf1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Util">
+    <Filter Include="Project\Util">
       <UniqueIdentifier>{ad7ea3b0-a4ae-45bf-b943-9e216a83d29b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Text">
-      <UniqueIdentifier>{aa0c0f51-59fb-443c-8107-4e933805a3c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Util\Geom">
+    <Filter Include="Project\Util\Geom">
       <UniqueIdentifier>{b375a54a-1a6d-4d11-b181-ed90ec4fedab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Graphics">
+      <UniqueIdentifier>{d2214987-b11d-4777-a5a1-9dd1cf0749a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Graphics\Text">
+      <UniqueIdentifier>{aa0c0f51-59fb-443c-8107-4e933805a3c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input">
+      <UniqueIdentifier>{bb63cfb7-3001-4c17-8125-01e2fde06dd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Events">
+      <UniqueIdentifier>{1c0c668f-19aa-499c-9f8f-b695f20d549a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Core">
+      <UniqueIdentifier>{55748742-abca-499d-8bf2-1487eab318bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Audio">
+      <UniqueIdentifier>{522fe23d-e66a-40c2-800a-e1cf539a938b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input\Inputs">
+      <UniqueIdentifier>{047f728b-1ff4-49f8-a7f2-f1f382c0da1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input\Sources">
+      <UniqueIdentifier>{ef690fe0-3c9d-4b9e-8a3e-afd91a62a719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input\Interfaces">
+      <UniqueIdentifier>{e6ac76da-ecdd-4afe-871a-7306e694babb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Event.cpp">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClCompile>
     <ClCompile Include="EventDispatcher.cpp">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsSystem.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Texture.cpp">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="CachedText.cpp">
-      <Filter>Graphics\Text</Filter>
+      <Filter>Project\Graphics\Text</Filter>
     </ClCompile>
     <ClCompile Include="Font.cpp">
-      <Filter>Graphics\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="InputChange.cpp">
-      <Filter>Input</Filter>
-    </ClCompile>
-    <ClCompile Include="InputState.cpp">
-      <Filter>Input</Filter>
-    </ClCompile>
-    <ClCompile Include="InputSystem.cpp">
-      <Filter>Input</Filter>
+      <Filter>Project\Graphics\Text</Filter>
     </ClCompile>
     <ClCompile Include="Console.cpp">
-      <Filter>Util</Filter>
+      <Filter>Project\Util</Filter>
     </ClCompile>
     <ClCompile Include="Functions.cpp">
-      <Filter>Util</Filter>
+      <Filter>Project\Util</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClCompile>
     <ClCompile Include="Circle.cpp">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClCompile>
     <ClCompile Include="Rect.cpp">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClCompile>
     <ClCompile Include="ActiveUnit.cpp">
-      <Filter>Units</Filter>
+      <Filter>Project\Units</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Tracking</Filter>
+      <Filter>Project\Tracking</Filter>
     </ClCompile>
     <ClCompile Include="MemoryTracker.cpp">
-      <Filter>Tracking</Filter>
+      <Filter>Project\Tracking</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
-      <Filter>Timing</Filter>
+      <Filter>Project\Timing</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
-      <Filter>Units</Filter>
+      <Filter>Project\Units</Filter>
     </ClCompile>
     <ClCompile Include="AnimatedUnit.cpp">
-      <Filter>Units</Filter>
+      <Filter>Project\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>Project\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcApp.cpp">
+      <Filter>Project\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardSource.cpp">
+      <Filter>Project\Input\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseSource.cpp">
+      <Filter>Project\Input\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TextInputSource.cpp">
+      <Filter>Project\Input\Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Manager.h">
-      <Filter>Core</Filter>
+      <Filter>Project\Core</Filter>
     </ClInclude>
     <ClInclude Include="Callbacks.h">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClInclude>
     <ClInclude Include="Delegate.h">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClInclude>
     <ClInclude Include="Event.h">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClInclude>
     <ClInclude Include="EventData.h">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClInclude>
     <ClInclude Include="EventDispatcher.h">
-      <Filter>Events</Filter>
+      <Filter>Project\Events</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Color.h">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsSystem.h">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="RenderTarget.h">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Graphics</Filter>
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="CachedText.h">
-      <Filter>Graphics\Text</Filter>
+      <Filter>Project\Graphics\Text</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
-      <Filter>Graphics\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="InputChange.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="InputPress.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="InputState.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="InputSystem.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="GameInput.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="GameInputType.h">
-      <Filter>Input</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerIndex.h">
-      <Filter>Input</Filter>
+      <Filter>Project\Graphics\Text</Filter>
     </ClInclude>
     <ClInclude Include="Console.h">
-      <Filter>Util</Filter>
+      <Filter>Project\Util</Filter>
     </ClInclude>
     <ClInclude Include="Functions.h">
-      <Filter>Util</Filter>
+      <Filter>Project\Util</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClInclude>
     <ClInclude Include="Circle.h">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClInclude>
     <ClInclude Include="Rect.h">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClInclude>
     <ClInclude Include="ActiveUnit.h">
-      <Filter>Units</Filter>
+      <Filter>Project\Units</Filter>
     </ClInclude>
     <ClInclude Include="Defines.h">
-      <Filter>Core</Filter>
+      <Filter>Project\Core</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Tracking</Filter>
+      <Filter>Project\Tracking</Filter>
     </ClInclude>
     <ClInclude Include="MemoryTracker.h">
-      <Filter>Tracking</Filter>
+      <Filter>Project\Tracking</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>Timing</Filter>
+      <Filter>Project\Timing</Filter>
     </ClInclude>
-    <ClInclude Include="ArcCommon.h" />
     <ClInclude Include="Geom.h">
-      <Filter>Util\Geom</Filter>
+      <Filter>Project\Util\Geom</Filter>
     </ClInclude>
     <ClInclude Include="Unit.h">
-      <Filter>Units</Filter>
+      <Filter>Project\Units</Filter>
     </ClInclude>
     <ClInclude Include="AnimatedUnit.h">
-      <Filter>Units</Filter>
+      <Filter>Project\Units</Filter>
     </ClInclude>
-    <ClInclude Include="MouseButton.h">
-      <Filter>Input</Filter>
+    <ClInclude Include="Direction.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="InputState.h">
+      <Filter>Project\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePad.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Project\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcCommon.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcApp.h">
+      <Filter>Project\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardSource.h">
+      <Filter>Project\Input\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseSource.h">
+      <Filter>Project\Input\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSourceType.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="InputType.h">
+      <Filter>Project\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="IKeyboardListener.h">
+      <Filter>Project\Input\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMouseListener.h">
+      <Filter>Project\Input\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="TextInputSource.h">
+      <Filter>Project\Input\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="ITextInputListener.h">
+      <Filter>Project\Input\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,9 +7,8 @@
 #include "GameObject.h"
 
 #include "RenderTarget.h"
-#include "GameInput.h"
-#include "PlayerIndex.h"
-#include "MouseButton.h"
+#include "Keyboard.h"
+#include "Mouse.h"
 
 class EventData
     : public GameObject
@@ -135,25 +134,20 @@ public:
 
 };
 
-class InputData
+class KeyData
     : public EventData
 {
-private:
-
 public:
 
-    GameInput 
-        Input;
+    KeyboardKey
+        Key;
 
-    PlayerIndex
-        Index;
+    KeyData( KeyboardKey key ) { Key = key; }
 
-    InputData( GameInput input, PlayerIndex index ) { Input = input; Index = index; }
+    virtual string toString( void ) const { return "Key Data"; }
 
-    virtual string toString( void ) const { return "Input Data"; }
+    virtual EventData* clone( void ) const { return New KeyData(Key); }
 
-    virtual EventData* clone( void ) const { return New InputData(Input, Index); }
-    
 };
 
 class MouseData
