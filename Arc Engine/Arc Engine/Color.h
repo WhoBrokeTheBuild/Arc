@@ -49,10 +49,10 @@ public:
 
     virtual string toString( void ) const;
 
-    float fracR( void ) const { return (float)(R * 255.0f); }
-    float fracG( void ) const { return (float)(G * 255.0f); }
-    float fracB( void ) const { return (float)(B * 255.0f); }
-    float fracA( void ) const { return (float)(A * 255.0f); }
+    float fracR( void ) const { return (float)(1.0f / R); }
+    float fracG( void ) const { return (float)(1.0f / G); }
+    float fracB( void ) const { return (float)(1.0f / B); }
+    float fracA( void ) const { return (float)(1.0f / A); }
 
     int byteR( void ) const { return R; }
     int byteG( void ) const { return G; }

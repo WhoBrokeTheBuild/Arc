@@ -3,12 +3,12 @@
 #include "RenderTarget.h"
 #include "CachedText.h"
 
-Color Color::BLACK             = Color(0,      0,   0);
+Color Color::BLACK             = Color(0,   0,   0);
 Color Color::WHITE             = Color(255, 255, 255);
-Color Color::RED             = Color(255, 0,   0);
+Color Color::RED               = Color(255, 0,   0);
 Color Color::GREEN             = Color(0,   255, 0);
-Color Color::BLUE             = Color(0,   0,   255);
-Color Color::CORNFLOWER_BLUE = Color(100, 149, 237);
+Color Color::BLUE              = Color(0,   0,   255);
+Color Color::CORNFLOWER_BLUE   = Color(100, 149, 237);
 Color Color::STORM             = Color(0,   170, 170);
 
 Color::Color( float r, float g, float b )
