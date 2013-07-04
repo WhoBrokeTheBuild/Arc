@@ -8,12 +8,13 @@
 
 #include "Event.h"
 #include "Delegate.h"
-#include <map>
-#include <vector>
+#include "Map.h"
+#include "ArrayList.h"
 
 typedef Delegate<void, const Event&> EventDelegate;
-typedef vector<EventDelegate*> EventListenerList;
-typedef map<EventType, EventListenerList> EventMap;
+
+typedef ArrayList<EventDelegate*> EventListenerList;
+typedef Map<EventType, EventListenerList> EventMap;
 
 class EventDispatcher
     : public GameObject
@@ -26,7 +27,7 @@ private:
     bool
         _changed;
 
-    static vector<EventDispatcher*>
+    static ArrayList<EventDispatcher*>
         _sDispatchers;
 
     void cleanMap( void );
@@ -87,22 +88,22 @@ template <typename ObjectType>
 void EventDispatcher::removeAllMethods( ObjectType* object )
 {
     bool needRepeat = true;
-    EventMap::iterator mapIter;
-    EventListenerList::iterator listIter;
+    EventMap::Iterator mapIt;
+    EventListenerList::Iterator listIt;
 
     while(needRepeat)
     {
         needRepeat = false;
-        for(mapIter = _eventMap.begin(); !needRepeat && mapIter != _eventMap.end(); ++mapIter)
+        for(mapIt = _eventMap.begin(); !needRepeat && mapIt != _eventMap.end(); ++mapIt)
         {
-            for(listIter = mapIter->second.begin(); !needRepeat && listIter != mapIter->second.end(); ++listIter)
+            for(listIt = mapIt->second.begin(); !needRepeat && listIt != mapIt->second.end(); ++listIt)
             {
-                if ( *listIter == nullptr )
+                if ( *listIt == nullptr )
                     continue;
 
-                if ( (*listIter)->isMethodOf(object) )
+                if ( (*listIt)->isMethodOf(object) )
                 {
-                    (*listIter) = nullptr;
+                    (*listIt) = nullptr;
                     needRepeat = true;
                     break;
                 }

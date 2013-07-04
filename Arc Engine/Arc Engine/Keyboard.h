@@ -4,6 +4,7 @@
 #define __KEYBOARD_KEY_H__
 
 #include <string>
+#include <SDL.h>
 
 using namespace std;
 

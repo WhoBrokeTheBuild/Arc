@@ -30,47 +30,44 @@ void TextInputSource::init( void )
     _shiftDown = false;
     _capsLockDown = false;
 
-    _validInputs = vector<KeyboardKey>();
+    _validInputs.add(KEY_BACKSPACE);
+    _validInputs.add(KEY_ENTER);
+    _validInputs.add(KEY_TAB);
 
-    _validInputs.push_back(KEY_BACKSPACE);
-    _validInputs.push_back(KEY_ENTER);
-    _validInputs.push_back(KEY_TAB);
+    _validInputs.add(KEY_LSHIFT);
+    _validInputs.add(KEY_RSHIFT);
+    _validInputs.add(KEY_CAPS_LOCK);
 
-    _validInputs.push_back(KEY_LSHIFT);
-    _validInputs.push_back(KEY_RSHIFT);
-    _validInputs.push_back(KEY_CAPS_LOCK);
-
-    _validInputs.push_back(KEY_SPACE);
-    _validInputs.push_back(KEY_GRAVE);
-    _validInputs.push_back(KEY_SEMICOLON);
-    _validInputs.push_back(KEY_QUOTE);
-    _validInputs.push_back(KEY_BRACKET_OPEN);
-    _validInputs.push_back(KEY_BRACKET_CLOSE);
-    _validInputs.push_back(KEY_COMMA);
-    _validInputs.push_back(KEY_PERIOD);
-    _validInputs.push_back(KEY_DASH);
-    _validInputs.push_back(KEY_EQUALS);
-    _validInputs.push_back(KEY_SLASH);
-    _validInputs.push_back(KEY_BACKSLASH);
+    _validInputs.add(KEY_SPACE);
+    _validInputs.add(KEY_GRAVE);
+    _validInputs.add(KEY_SEMICOLON);
+    _validInputs.add(KEY_QUOTE);
+    _validInputs.add(KEY_BRACKET_OPEN);
+    _validInputs.add(KEY_BRACKET_CLOSE);
+    _validInputs.add(KEY_COMMA);
+    _validInputs.add(KEY_PERIOD);
+    _validInputs.add(KEY_DASH);
+    _validInputs.add(KEY_EQUALS);
+    _validInputs.add(KEY_SLASH);
+    _validInputs.add(KEY_BACKSLASH);
 
     for (int i = 0; i < 10; ++i)
     {
-        _validInputs.push_back((KeyboardKey)(KEY_0     + i));
-        _validInputs.push_back((KeyboardKey)(KEY_PAD_0 + i));
+        _validInputs.add((KeyboardKey)(KEY_0 + i))->add((KeyboardKey)(KEY_PAD_0 + i));
     }
 
     for (int i = 0; i < 26; ++i)
     {
-        _validInputs.push_back((KeyboardKey)(KEY_A + i));
+        _validInputs.add((KeyboardKey)(KEY_A + i));
     }
 
-    _validInputs.push_back(KEY_UP);
-    _validInputs.push_back(KEY_DOWN);
-    _validInputs.push_back(KEY_LEFT);
-    _validInputs.push_back(KEY_RIGHT);
+    _validInputs.add(KEY_UP);
+    _validInputs.add(KEY_DOWN);
+    _validInputs.add(KEY_LEFT);
+    _validInputs.add(KEY_RIGHT);
 
-    _validInputs.push_back(KEY_HOME);
-    _validInputs.push_back(KEY_END);
+    _validInputs.add(KEY_HOME);
+    _validInputs.add(KEY_END);
 
     gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &TextInputSource::update);
 }
@@ -91,7 +88,7 @@ void TextInputSource::keyPressed( const Event& event )
 
     KeyboardKey key = data->Key;
 
-    if (vectorContains(_validInputs, key))
+    if (_validInputs.contains(key))
     {
         switch (key)
         {
@@ -192,7 +189,7 @@ void TextInputSource::keyReleased( const Event& event )
 {
     const KeyData *data = event.dataAs<KeyData>();
 
-    if (vectorContains(_validInputs, data->Key))
+    if (_validInputs.contains(data->Key))
     {
         switch (data->Key)
         {

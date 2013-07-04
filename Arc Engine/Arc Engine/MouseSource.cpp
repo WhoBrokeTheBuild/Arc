@@ -22,11 +22,9 @@ std::string MouseSource::toString( void ) const
 
 void MouseSource::init( void )
 {
-    _buttonStates = MouseButtonStateMap();
-
     for (unsigned int button = 0; button < NUM_MOUSE_BUTTONS; ++button)
     {
-        _buttonStates.insert(MouseButtonStatePair((MouseButton)button, InputState()));
+        _buttonStates.add((MouseButton)button, InputState());
     }
 
     gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &MouseSource::update);
@@ -61,10 +59,10 @@ void MouseSource::update( const Event& event )
     MouseButton button;
     InputState *pState;
 
-    MouseButtonStateMap::iterator it;
+    MouseStateMap::Iterator it;
     for (it = _buttonStates.begin(); it != _buttonStates.end(); ++it)
     {
-        button = it->first;
+        button =  it->first;
         pState = &it->second;
 
         down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) == TRUE);

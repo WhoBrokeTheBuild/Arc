@@ -14,10 +14,9 @@ std::string Animation::toString( void ) const
     return "Animation";
 }
 
-void Animation::init( vector<Sprite*> frames, bool animating /*= false */, bool looping /*= false */ )
+void Animation::init( ArrayList<Sprite*> frames, bool looping /*= false */ )
 {
     _frames = frames;
-    Animating = animating;
     Looping = looping;
 }
 
@@ -47,20 +46,23 @@ Sprite* Animation::frameAt( int frame )
 
 bool Animation::hasFrame( int frame )
 {
-    return inBounds(frame, 0, (int)_frames.size());
+    if (_frames.empty())
+        return false;
+
+    return between(frame, 0, (int)_frames.size());
 }
 
 void Animation::addFrame( Sprite* frame )
 {
-    _frames.push_back(frame);
+    _frames.add(frame);
 }
 
 bool Animation::removeFrame( Sprite* frame )
 {
-    return vectorRemove(_frames, frame);
+    return _frames.remove(frame);
 }
 
 bool Animation::removeFrame( int frame )
 {
-    return vectorRemoveAt(_frames, frame);
+    return _frames.removeAt(frame);;
 }

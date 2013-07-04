@@ -7,6 +7,7 @@
 #include "EventDispatcher.h"
 #include "IKeyboardListener.h"
 
+#include "ArrayList.h"
 #include <queue>
 
 class TextInputData
@@ -40,7 +41,7 @@ protected:
         _shiftDown,
         _capsLockDown;
 
-    vector<KeyboardKey>
+    ArrayList<KeyboardKey>
         _validInputs;
 
     queue<KeyboardKey>
@@ -69,9 +70,9 @@ public:
 
     virtual void update( const Event& event );
 
-    virtual void keyPressed( const Event& event );
+    virtual void keyPressed ( const Event& event );
     virtual void keyReleased( const Event& event );
-    virtual void keyHeld( const Event& event );
+    virtual void keyHeld    ( const Event& event );
 
 };
 

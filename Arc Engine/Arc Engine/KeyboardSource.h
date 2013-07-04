@@ -9,10 +9,9 @@
 #include "Keyboard.h"
 #include "InputState.h"
 
-#include <map>
+#include "Map.h"
 
-typedef map<KeyboardKey,  InputState> KeyStateMap;
-typedef pair<KeyboardKey, InputState> KeyStatePair;
+typedef Map<KeyboardKey, InputState> KeyStateMap;
 
 class KeyboardSource :
     public EventDispatcher

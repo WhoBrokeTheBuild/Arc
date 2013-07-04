@@ -43,7 +43,8 @@ public:
     T        *get(ItemKey pItemKey);
     int       size( void ) const;
 
-    vector<T*> getAll( void );
+    vector<T*>      getAllItems( void );
+    vector<ItemKey> getAllKeys( void );
 
     void clear( void ); 
 
@@ -182,7 +183,7 @@ int Manager<T>::size( void ) const
 }
 
 template <class T>
-vector<T*> Manager<T>::getAll( void )
+vector<T*> Manager<T>::getAllItems( void )
 {
     vector<T*> units;
 
@@ -190,6 +191,17 @@ vector<T*> Manager<T>::getAll( void )
         units.push_back(it->second);
 
     return units;
+}
+
+template <class T>
+vector<ItemKey> Manager<T>::getAllKeys( void )
+{
+    vector<ItemKey> keys;
+
+    for (map<ItemKey, T*>::iterator it = mObjects->begin(); it != mObjects->end(); ++it)
+        keys.push_back(it->first);
+
+    return keys;
 }
 
 template <class T>

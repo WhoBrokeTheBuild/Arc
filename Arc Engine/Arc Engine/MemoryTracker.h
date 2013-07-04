@@ -6,7 +6,7 @@
 #include "ArcCommon.h"
 #include "GameObject.h"
 
-#include <map>
+#include "Map.h"
 
 struct AllocationRecord
 {
@@ -39,7 +39,7 @@ private:
     static int
         _sAllocationIndex;
 
-    map<GameObject*, AllocationRecord>
+    Map<GameObject*, AllocationRecord>
         _allocations;
 
     MemoryTracker(const MemoryTracker&);
@@ -50,16 +50,15 @@ public:
     MemoryTracker( void );
     virtual ~MemoryTracker( void );
 
-    virtual string toString( void ) const;
+    virtual string toString( void ) const { return "Memory Tracker"; }
 
-    void addAllocation(GameObject *ptr, size_t size, int lineNumber, char *filename);
+    void addAllocation   (GameObject *ptr, size_t size, int lineNumber, char *filename);
     bool removeAllocation(GameObject *ptr);
 
     int  numAllocations( void );
 
     void printAllocations( void );
     void printAllocations( ostream& stream );
-    void killSurvivors( void );
 };
 
 extern MemoryTracker* gpMemoryTracker;

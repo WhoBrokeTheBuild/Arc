@@ -17,50 +17,28 @@ MemoryTracker::~MemoryTracker( void )
 
 #endif
 
-    killSurvivors();
-
-}
-
-std::string MemoryTracker::toString( void ) const
-{
-    return "Memory Tracker";
 }
 
 void MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber, char *filename )
 {
-    map<GameObject*, AllocationRecord>::iterator it = _allocations.find(ptr);
-    
-    if (it != _allocations.end())
+    if (_allocations.contains(ptr))
     {
         ERR(toString(), "Element already in map");
+        return;
     }
-    else
-    {
-        AllocationRecord rec(_sAllocationIndex, size, lineNumber, string(filename));
 
-        pair<GameObject*, AllocationRecord> newPair(ptr, rec);
-        _allocations.insert(newPair);
+    AllocationRecord rec(_sAllocationIndex, size, lineNumber, string(filename));
+    _allocations.add(ptr, rec);
 
-        ++_sAllocationIndex;
-    }
+    ++_sAllocationIndex;
 }
 
 bool MemoryTracker::removeAllocation( GameObject *ptr )
 {
-    if (_allocations.size() == 0)
+    if (_allocations.size() == 0 || !_allocations.contains(ptr))
         return false;
 
-    map<GameObject*, AllocationRecord>::iterator it = _allocations.find(ptr);
-
-    if (it == _allocations.end())
-    {
-        return false;
-    }
-    else
-    {
-        _allocations.erase(it);
-    }
-
+    _allocations.remove(ptr);
     return true;
 }
 
@@ -78,7 +56,7 @@ void MemoryTracker::printAllocations( ostream& stream )
 {
     stream << "Allocations: \n";
 
-    map<GameObject*, AllocationRecord>::iterator it;
+    Map<GameObject*, AllocationRecord>::Iterator it;
     for (it = _allocations.begin(); it != _allocations.end(); ++it)
     {
         stream << "#" << it->second.Num
@@ -88,16 +66,4 @@ void MemoryTracker::printAllocations( ostream& stream )
         stream << "\t In " << basename(it->second.Filename)
                << " On Line " << it->second.LineNum << "\n";
     }
-}
-
-void MemoryTracker::killSurvivors( void )
-{
-    vector<GameObject*> survivors;
-
-    map<GameObject*, AllocationRecord>::iterator it;
-    for (it = _allocations.begin(); it != _allocations.end(); ++it)
-        survivors.push_back(it->first);
-
-    for (unsigned int i = 0; i < survivors.size(); ++i)
-        delete survivors[i];
 }

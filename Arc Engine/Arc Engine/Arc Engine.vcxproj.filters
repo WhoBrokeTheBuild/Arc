@@ -46,6 +46,12 @@
     <Filter Include="Project\Input\Interfaces">
       <UniqueIdentifier>{e6ac76da-ecdd-4afe-871a-7306e694babb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Util\Collections">
+      <UniqueIdentifier>{00d66802-3b7a-41dc-bf2f-4a3e29fb334e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Util\Functions">
+      <UniqueIdentifier>{46a06fd9-2e72-4d21-b9fd-9704ef57bbdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp">
@@ -79,9 +85,6 @@
       <Filter>Project\Graphics\Text</Filter>
     </ClCompile>
     <ClCompile Include="Console.cpp">
-      <Filter>Project\Util</Filter>
-    </ClCompile>
-    <ClCompile Include="Functions.cpp">
       <Filter>Project\Util</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
@@ -125,6 +128,27 @@
     </ClCompile>
     <ClCompile Include="TextInputSource.cpp">
       <Filter>Project\Input\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="ParseFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="StringFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="RandFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="MathFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="InputFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,9 +195,6 @@
       <Filter>Project\Graphics\Text</Filter>
     </ClInclude>
     <ClInclude Include="Console.h">
-      <Filter>Project\Util</Filter>
-    </ClInclude>
-    <ClInclude Include="Functions.h">
       <Filter>Project\Util</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
@@ -256,6 +277,39 @@
     </ClInclude>
     <ClInclude Include="ITextInputListener.h">
       <Filter>Project\Input\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayList.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="ParseFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="StringFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="MathFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="RandFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="InputFunc.h">
+      <Filter>Project\Util\Functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

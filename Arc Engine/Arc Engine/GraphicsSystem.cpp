@@ -4,7 +4,6 @@ const EventType GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset";
 
 GraphicsSystem::GraphicsSystem( void )
 {
-    _clearColor = Color::STORM;
 }
 
 GraphicsSystem::~GraphicsSystem( void )

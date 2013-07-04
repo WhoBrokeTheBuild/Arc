@@ -22,11 +22,10 @@ std::string KeyboardSource::toString( void ) const
 void KeyboardSource::init( void )
 {
     _sdlKeys = nullptr;
-    _keyStates = KeyStateMap();
 
     for (unsigned int key = 0; key < NUM_KEYS; ++key)
     {
-        _keyStates.insert(KeyStatePair((KeyboardKey)key, InputState()));
+        _keyStates.add((KeyboardKey)key, InputState());
     }
 
     gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &KeyboardSource::update);
@@ -45,10 +44,10 @@ void KeyboardSource::update( const Event& event )
     KeyboardKey key;
     InputState *pState;
 
-    KeyStateMap::iterator it;
+    KeyStateMap::Iterator it;
     for (it = _keyStates.begin(); it != _keyStates.end(); ++it)
     {
-        key = it->first;
+        key    =  it->first;
         pState = &it->second;
 
         down = (_sdlKeys[KeyToSDLKey(key)] == TRUE);

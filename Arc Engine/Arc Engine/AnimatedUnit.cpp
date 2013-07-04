@@ -60,6 +60,7 @@ void AnimatedUnit::setAnimation( Animation* pAnimation, bool useDefaults /*= tru
     _pAnimation = pAnimation;
     _frame = 0;
     _animationTimeout = 0;
+    Animating = true;
     UnitSize = Size::ZERO;
 
     if (_pAnimation == nullptr)
@@ -76,7 +77,6 @@ void AnimatedUnit::setAnimation( Animation* pAnimation, bool useDefaults /*= tru
         _animationTimeout = pAnimation->frameAt(_frame)->FrameTime;
 
         UnitSize  = _pAnimation->frameSize(_frame);
-        Animating = pAnimation->Animating;
         Looping   = pAnimation->Looping;
 
         _animationComplete = false;

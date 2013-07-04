@@ -9,10 +9,9 @@
 #include "Mouse.h"
 #include "InputState.h"
 
-#include <map>
+#include "Map.h"
 
-typedef map<MouseButton,  InputState> MouseButtonStateMap;
-typedef pair<MouseButton, InputState> MouseButtonStatePair;
+typedef Map<MouseButton,  InputState> MouseStateMap;
 
 class MouseSource :
     public EventDispatcher
@@ -24,7 +23,7 @@ private:
 
 protected:
 
-    MouseButtonStateMap
+    MouseStateMap
         _buttonStates;
 
     Vector2

@@ -3,17 +3,17 @@
 
 EventDispatcher* gpEventDispatcher = nullptr;
 
-vector<EventDispatcher*> EventDispatcher::_sDispatchers = vector<EventDispatcher*>();
+ArrayList<EventDispatcher*> EventDispatcher::_sDispatchers = ArrayList<EventDispatcher*>();
 
 EventDispatcher::EventDispatcher( void )
 {
     _changed = false;
-    _sDispatchers.push_back(this);
+    _sDispatchers.add(this);
 }
 
 EventDispatcher::~EventDispatcher( void )
 {
-    vectorRemove(_sDispatchers, this);
+    _sDispatchers.remove(this);
     removeAllListeners();
 }
 
@@ -24,7 +24,7 @@ std::string EventDispatcher::toString( void ) const
 
 void EventDispatcher::addEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
-    if (!mapContainsKey(_eventMap, eventType))
+    if (!_eventMap.contains(eventType))
         _eventMap[eventType] = EventListenerList();
 
     int length = _eventMap[eventType].size();
@@ -37,12 +37,12 @@ void EventDispatcher::addEventListener( const EventType& eventType, const EventD
             return;
     }
 
-    _eventMap[eventType].push_back(New EventDelegate(functionDelegate));
+    _eventMap[eventType].add(New EventDelegate(functionDelegate));
 }
 
 void EventDispatcher::removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
-    if (!mapContainsKey(_eventMap, eventType))
+    if (!_eventMap.contains(eventType))
         return;
 
     int length = _eventMap[eventType].size();
@@ -73,8 +73,8 @@ void EventDispatcher::addEventListener( const EventType& eventType, void (*funct
 
 void EventDispatcher::removeAllListeners( void )
 {
-    EventMap::iterator          mapIt;
-    EventListenerList::iterator listIt;
+    EventMap::Iterator          mapIt;
+    EventListenerList::Iterator listIt;
 
     int length;
     for (mapIt = _eventMap.begin(); mapIt != _eventMap.end(); ++mapIt)
@@ -95,7 +95,7 @@ void EventDispatcher::removeAllListeners( void )
 
 void EventDispatcher::removeAllListeners( const EventType& eventType )
 {
-    if (!mapContainsKey(_eventMap, eventType))
+    if (!_eventMap.contains(eventType))
         return;
 
     int length = _eventMap[eventType].size();
@@ -108,7 +108,7 @@ void EventDispatcher::removeAllListeners( const EventType& eventType )
         }
     }
 
-    _eventMap.erase(eventType);
+    _eventMap.remove(eventType);
 
     _changed = true;
 }
@@ -117,7 +117,7 @@ void EventDispatcher::dispatchEvent( Event& event )
 {
     EventType type = event.type();
 
-    if ( !mapContainsKey(_eventMap, type) )
+    if (!_eventMap.contains(type))
         return;
 
     event.setTarget(this);
@@ -136,7 +136,7 @@ void EventDispatcher::cleanMap( void )
         return;
 
     bool needRepeat = true;
-    EventMap::iterator mapIt;
+    EventMap::Iterator mapIt;
     EventListenerList* list;
 
     while (needRepeat)
@@ -144,12 +144,12 @@ void EventDispatcher::cleanMap( void )
         needRepeat = false;
         for (mapIt = _eventMap.begin(); !needRepeat && mapIt != _eventMap.end(); ++mapIt)
         {
-            list = &(mapIt->second);
+            list = &mapIt->second;
             for (unsigned int i = 0; !needRepeat && i < list->size(); ++i)
             {
-                if ((*list)[i] == nullptr)
+                if (list->at(i) == nullptr)
                 {
-                    list->erase(list->begin() + i);
+                    list->removeAt(i);
                     needRepeat = true;
                     break;
                 }
