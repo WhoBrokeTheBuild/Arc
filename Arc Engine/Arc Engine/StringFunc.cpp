@@ -70,3 +70,29 @@ string basename( string fullPath )
 
     return parts[parts.size() - 1];
 }
+
+string boolToString( const bool& value )
+{
+    return (value ? "true" : "false");
+}
+
+string intToString( const int& value )
+{
+    stringstream ss;
+    ss << value;
+    return ss.str();
+}
+
+string floatToString( const float& value )
+{
+    stringstream ss;
+    ss << value;
+    return ss.str();
+}
+
+string doubleToString( const double& value )
+{
+    stringstream ss;
+    ss << value;
+    return ss.str();
+}

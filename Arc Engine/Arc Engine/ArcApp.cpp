@@ -24,7 +24,7 @@ std::string ArcApp::toString( void ) const
 
 void ArcApp::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
 {
-    INF(toString(), "Starting Init");
+    INFO(toString(), "Starting Init");
 
     gpEventDispatcher = New EventDispatcher();
 
@@ -39,12 +39,12 @@ void ArcApp::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= 
     gpEventDispatcher->addEventListener(ArcApp::EVENT_RENDER, this, &ArcApp::render);
     gpEventDispatcher->addEventListener(ArcApp::EVENT_EXIT,   this, &ArcApp::stop);
 
-    INF(toString(), "Finished Init");
+    INFO(toString(), "Finished Init");
 }
 
 void ArcApp::term( void )
 {
-    INF(toString(), "Terminating");
+    INFO(toString(), "Terminating");
 
     gpEventDispatcher->removeEventListener(ArcApp::EVENT_EXIT,   this, &ArcApp::stop);
     gpEventDispatcher->removeEventListener(ArcApp::EVENT_RENDER, this, &ArcApp::render);
@@ -60,7 +60,7 @@ void ArcApp::start( void )
 {
     _running = true;
 
-    double 
+    double
         fpsDelay = 1000.0 / _targetFPS,
         frameDelay = 0;
 

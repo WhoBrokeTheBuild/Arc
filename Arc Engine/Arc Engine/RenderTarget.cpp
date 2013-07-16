@@ -116,7 +116,7 @@ void RenderTarget::drawText( float x, float y, CachedText* pCachedText, Color co
 
     if (pCachedText->texture() == nullptr)
     {
-        ERR(toString(), "Invalid Cached Text");
+        ERROR(toString(), "Invalid Cached Text");
         return;
     }
 
@@ -216,12 +216,12 @@ void RenderTarget::drawLine( float x1, float y1, float x2, float y2, Color color
 
     glLineWidth(thickness);
 
-    glBegin(GL_LINES); 
+    glBegin(GL_LINES);
 
     glVertex2f(x1, y1);
     glVertex2f(x2, y2);
 
-    glEnd(); 
+    glEnd();
 
     glPopMatrix();
 }
@@ -243,14 +243,14 @@ void RenderTarget::drawRect( Rect rect, Color color /*= Color::WHITE*/, float ro
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
-    glBegin(GL_LINE_LOOP); 
+    glBegin(GL_LINE_LOOP);
 
     glVertex2f(0.0f,       0.0f);
     glVertex2f(rect.Width, 0.0f);
     glVertex2f(rect.Width, rect.Height);
     glVertex2f(0.0f,       rect.Height);
 
-    glEnd(); 
+    glEnd();
 
     glPopMatrix();
 }

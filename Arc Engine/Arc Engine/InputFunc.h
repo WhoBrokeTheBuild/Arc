@@ -5,7 +5,7 @@
 
 #include "Keyboard.h"
 #include "Mouse.h"
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 KeyboardKey SDLKeyToKey( SDLKey sdlKey );
 

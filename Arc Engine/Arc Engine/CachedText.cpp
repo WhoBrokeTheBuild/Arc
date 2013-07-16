@@ -45,7 +45,7 @@ void CachedText::renderText( void )
 {
     if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
     {
-        ERR(toString(), "Invalid Font");
+        ERROR(toString(), "Invalid Font");
         return;
     }
 
@@ -58,7 +58,7 @@ void CachedText::renderText( void )
 
     if (!surface)
     {
-        ERR(toString(), "Invalid Surface");
+        ERROR(toString(), "Invalid Surface");
         return;
     }
 
