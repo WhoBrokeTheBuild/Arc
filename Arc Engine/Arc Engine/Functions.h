@@ -7,7 +7,6 @@
 #include "Defines.h"
 
 #include <iostream>
-#include <conio.h>
 
 #include "TimeFunc.h"
 #include "MathFunc.h"
@@ -20,25 +19,22 @@ using namespace std;
 
 #ifdef DEBUG
 
-    #define ERR(SRC, MSG) \
+    #define ERROR(SRC, MSG) \
         cerr << "[" << SRC << "] Error: " << MSG << " (In " << basename(__FILE__) << " on line " << __LINE__ << ")" << endl;
 
-    #define INF(SRC, MSG) \
+    #define INFO(SRC, MSG) \
         cout << "[" << SRC << "] Info: " << MSG << " (In " << basename(__FILE__) << " on line " << __LINE__ << ")" << endl;
 
 #else
 
-    #define ERR(SRC, MSG)
-    #define INF(SRC, MSG)
+    #define ERROR(SRC, MSG)
+    #define INFO(SRC, MSG)
 
 #endif
 
 inline void noop ( void ) { }
 void die  ( int errorLevel = 0 );
-void pause( void );
-
-template <typename T>
-bool isType( const void* object ) { return ( const T* convert = dynamic_cast<const T*>(object) ); }
+void pause( string msg = "Press enter to continue" );
 
 template <typename Value>
 bool arrayContains(unsigned int size, const Value list[], const Value& element)
@@ -64,4 +60,4 @@ int arrayIndexOf(unsigned int size, const Value list[], const Value& element)
     return -1;
 }
 
-#endif 
+#endif

@@ -11,8 +11,8 @@
 #include "CachedText.h"
 #include "Texture.h"
 
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
 enum Align
 {
@@ -28,7 +28,7 @@ class GraphicsSystem;
 class RenderTarget :
     public GameObject
 {
-private: 
+private:
 
     GraphicsSystem
         *_pGraphicsSystem;
@@ -57,40 +57,40 @@ public:
 
     virtual void draw( Vector2 pos,      Texture *pTexture,                     Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO);
     virtual void draw( float x, float y, Texture *pTexture,                     Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO);
-                                                                             
+
     virtual void draw( Vector2 pos,      Texture *pTexture, Rect sourceRect,    Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO, bool flip = false);
     virtual void draw( float x, float y, Texture *pTexture, Rect sourceRect,    Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO, bool flip = false);
 
     virtual void drawLine( Vector2 start, Vector2 end,                          Color color = Color::WHITE, float thickness = 1.0f);
     virtual void drawLine( float x1, float y1, float x2, float y2,              Color color = Color::WHITE, float thickness = 1.0f);
-                                                                             
+
     virtual void drawRect( float x, float y, float width, float height,         Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void drawRect( Rect rect,                                           Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void fillRect( float x, float y, float width, float height,         Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillRect( Rect rect,                                           Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawCircle( float x, float y,   float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void drawCircle( Circle circle,                                     Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void fillCircle( float x, float y,   float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillCircle( Circle circle,                                     Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawTriangle( Vector2 pos,      float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillTriangle( Vector2 pos,      float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawTriangle( float x, float y, float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillTriangle( float x, float y, float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawPentagon( Vector2 pos,      float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillPentagon( Vector2 pos,      float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawPentagon( float x, float y, float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillPentagon( float x, float y, float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawHexagon ( Vector2 pos,         float radius,               Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillHexagon ( Vector2 pos,      float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
-                                                                             
+
     virtual void drawHexagon ( float x, float y, float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
     virtual void fillHexagon ( float x, float y, float radius,                  Color color = Color::WHITE, float rotation = 0.0f, Vector2 origin = Vector2::ZERO );
 

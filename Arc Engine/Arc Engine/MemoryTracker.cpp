@@ -12,7 +12,7 @@ MemoryTracker::~MemoryTracker( void )
 
 #ifdef DEBUG
 
-    INF(toString(), "Final Allocations");
+    INFO(toString(), "Final Allocations");
     printAllocations();
 
 #endif
@@ -23,7 +23,7 @@ void MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber,
 {
     if (_allocations.contains(ptr))
     {
-        ERR(toString(), "Element already in map");
+        ERROR(toString(), "Element already in map");
         return;
     }
 

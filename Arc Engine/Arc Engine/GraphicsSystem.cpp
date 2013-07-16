@@ -13,7 +13,7 @@ GraphicsSystem::~GraphicsSystem( void )
 
 void GraphicsSystem::init( Size windowSize, string windowTitle )
 {
-    INF(toString(), "Initializing");
+    INFO(toString(), "Initializing");
 
     _windowSize  = windowSize;
     _windowTitle = windowTitle;
@@ -23,7 +23,7 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
 
     if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
     {
-        ERR(toString(), "Failed to initialize SDL");
+        ERROR(toString(), "Failed to initialize SDL");
         die();
     }
 
@@ -51,11 +51,11 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
 
     if (TTF_Init() < 0)
     {
-        ERR(toString(), "Failed to initialize TTF Addon");
+        ERROR(toString(), "Failed to initialize TTF Addon");
         die();
     }
 
-    INF(toString(), "Complete");
+    INFO(toString(), "Complete");
 }
 
 void GraphicsSystem::term( void )
@@ -109,7 +109,7 @@ void GraphicsSystem::setWindowIcon( string filename )
 
         ss << "Cannot Load Icon File: " << filename;
 
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
     }
 
     SDL_WM_SetIcon(pSurface, nullptr);
@@ -141,7 +141,7 @@ void GraphicsSystem::resetGL( void )
         stringstream ss;
         ss << "Failed to initialize OpenGL (" << gluErrorString(error) << ")";
 
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
         die();
     }
 
@@ -163,7 +163,7 @@ void GraphicsSystem::resetVideoMode( void )
 
     if (SDL_SetVideoMode((int)_windowSize.X, (int)_windowSize.Y, _screenBPP, flags) == nullptr)
     {
-        ERR(toString(), "Failed to set SDL video mode");
+        ERROR(toString(), "Failed to set SDL video mode");
         die();
     }
 }

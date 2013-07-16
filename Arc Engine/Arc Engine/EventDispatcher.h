@@ -59,7 +59,7 @@ public:
     void removeAllListeners( void );
     void removeAllListeners( const EventType& eventType );
 
-    void dispatchEvent( Event& event );
+    void dispatchEvent( const Event& event );
 
     static void cleanEvents( void )
     {

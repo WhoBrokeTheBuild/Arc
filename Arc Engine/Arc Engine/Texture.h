@@ -6,9 +6,9 @@
 #include "ArcCommon.h"
 #include "GameObject.h"
 
-#include <SDL_opengl.h>
-#include <SDL_image.h>
-#include <SDL.h>
+#include <SDL/SDL_opengl.h>
+#include <SDL/SDL_image.h>
+#include <SDL/SDL.h>
 
 class RenderTarget;
 class CachedText;

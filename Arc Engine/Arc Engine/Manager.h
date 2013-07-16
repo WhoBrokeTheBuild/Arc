@@ -10,12 +10,12 @@
 
 template <class T>
 class Manager :
-    public GameObject 
+    public GameObject
 {
 
 protected:
 
-    map<ItemKey, T*> 
+    map<ItemKey, T*>
         *mObjects;
 
     static int
@@ -46,7 +46,7 @@ public:
     vector<T*>      getAllItems( void );
     vector<ItemKey> getAllKeys( void );
 
-    void clear( void ); 
+    void clear( void );
 
 };
 
@@ -69,7 +69,7 @@ ItemKey Manager<T>::getNextKey( void )
 {
     ItemKey newKey;
     stringstream ss;
-    do 
+    do
     {
         ss.str(string());
         ss.clear();
@@ -77,7 +77,7 @@ ItemKey Manager<T>::getNextKey( void )
         newKey = ss.str();
 
         ++mNextIndex;
-    } 
+    }
     while (contains(newKey));
 
     return newKey;
@@ -170,7 +170,7 @@ T *Manager<T>::get(ItemKey pKey)
     {
         stringstream ss;
         ss << "Tried to access a non existing item: " << pKey;
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
         die();
         return nullptr;
     }

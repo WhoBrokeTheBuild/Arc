@@ -50,7 +50,7 @@ void Texture::load( string filename )
     {
         stringstream ss;
         ss << "Error Loading Image: " << IMG_GetError();
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
     }
 
     load(surface);
@@ -77,7 +77,7 @@ void Texture::load( SDL_Surface* pSurface )
 
     GLenum mode = GL_RGB;
 
-    if (pSurface->format->BytesPerPixel == 4) 
+    if (pSurface->format->BytesPerPixel == 4)
     {
         mode = GL_RGBA;
     }

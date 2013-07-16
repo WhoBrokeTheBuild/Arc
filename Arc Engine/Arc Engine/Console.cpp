@@ -1,11 +1,10 @@
 
 #include "Console.h"
 
-void init_console( void )
-{
-
 #ifdef WINDOWS
 
+void init_console( void )
+{
     int hConHandle;
     long lStdHandle;
 
@@ -41,8 +40,7 @@ void init_console( void )
     *stderr = *fp;
     setvbuf( stderr, NULL, _IONBF, 0 );
 
-#endif
-
     ios::sync_with_stdio();
-
 }
+
+#endif

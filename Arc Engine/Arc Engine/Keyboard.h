@@ -4,7 +4,7 @@
 #define __KEYBOARD_KEY_H__
 
 #include <string>
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 using namespace std;
 
@@ -117,7 +117,7 @@ enum KeyboardKey
     NUM_KEYS
 };
 
-const string KEYBOARD_KEY_NAMES[NUM_KEYS] = 
+const string KEYBOARD_KEY_NAMES[NUM_KEYS] =
 {
     "Unknown",
     "Backspace",

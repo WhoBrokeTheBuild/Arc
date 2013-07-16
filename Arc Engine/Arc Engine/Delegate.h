@@ -14,7 +14,7 @@ class Delegate
 {
 private:
 
-    Callback<ReturnType, Param> 
+    Callback<ReturnType, Param>
         *_callback;
 
 public:

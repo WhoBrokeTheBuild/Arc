@@ -20,9 +20,9 @@
 
 #include "Timer.h"
 
-#include <SDL.h>
-#include <SDL_ttf.h>
-#include <SDL_opengl.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
+#include <SDL/SDL_opengl.h>
 
 class ArcApp :
     public EventDispatcher
@@ -32,19 +32,19 @@ protected:
     GraphicsSystem
         *_pGraphicsSystem;
 
-    InputSystem 
+    InputSystem
         *_pInputSystem;
 
     bool
         _running;
 
-    float 
+    float
         _targetFPS,
         _currentFPS;
 
 public:
 
-    static const EventType 
+    static const EventType
         EVENT_ENTER_FRAME,
         EVENT_FRAME,
         EVENT_EXIT_FRAME,

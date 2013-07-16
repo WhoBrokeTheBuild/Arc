@@ -113,20 +113,22 @@ void EventDispatcher::removeAllListeners( const EventType& eventType )
     _changed = true;
 }
 
-void EventDispatcher::dispatchEvent( Event& event )
+void EventDispatcher::dispatchEvent( const Event& event )
 {
     EventType type = event.type();
 
     if (!_eventMap.contains(type))
         return;
 
-    event.setTarget(this);
+    Event tmp = Event(event);
+
+    tmp.setTarget(this);
 
     unsigned int length = _eventMap[type].size();
     for(unsigned int i = 0; i < length; ++i)
     {
         if (_eventMap[type][i] != nullptr)
-            _eventMap[type][i]->invoke(event);
+            _eventMap[type][i]->invoke(tmp);
     }
 }
 

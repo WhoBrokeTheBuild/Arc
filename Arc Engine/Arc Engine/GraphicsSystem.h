@@ -9,9 +9,9 @@
 #include "RenderTarget.h"
 #include "Color.h"
 
-#include <SDL.h>
-#include <SDL_opengl.h>
-#include <SDL_ttf.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
+#include <SDL/SDL_ttf.h>
 
 class GraphicsSystem :
     public EventDispatcher
@@ -24,18 +24,18 @@ private:
     RenderTarget
         *_pRenderTarget;
 
-    int 
+    int
         _screenBPP;
 
     Size
         _windowSize;
 
-    string 
+    string
         _windowTitle;
 
     bool
         _fullscreen;
-    
+
     void resetGL( void );
     void resetVideoMode( void );
 
