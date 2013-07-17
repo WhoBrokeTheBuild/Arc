@@ -11,12 +11,10 @@
 class Sprite :
     public GameObject
 {
-private:
-    
-    Texture
-        *_pTexture;
-
 public:
+
+    Texture
+        *pTexture;
 
     Rect
         SourceRect;
@@ -29,10 +27,8 @@ public:
 
     virtual string toString( void ) const;
 
-    virtual void init( Texture *pTexture, Rect source, double frameTime );
+    virtual void init( Texture *texture, Rect source, double frameTime = 0 );
     virtual void term( void );
-
-    virtual Texture* texture( void ) { return _pTexture; }
 
 };
 

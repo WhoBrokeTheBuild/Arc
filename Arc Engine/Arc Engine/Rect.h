@@ -35,22 +35,22 @@ public:
     void setPos( Vector2 pos );
     void setSize( Size size );
 
-    float halfWidth ( void ) { return Width * 0.5f; }
-    float halfHeight( void ) { return Height * 0.5f; }
+    float halfWidth ( void ) const { return Width * 0.5f; }
+    float halfHeight( void ) const { return Height * 0.5f; }
 
-    Vector2 center( void ) { return Vector2( X + halfWidth(), Y + halfHeight() ); }
+    inline Vector2 center( void ) const { return Vector2( X + halfWidth(), Y + halfHeight() ); }
 
-    Vector2 pos ( void ) { return Vector2( X, Y ); }
-    Size    size( void ) { return Vector2( Width, Height ); }
+    inline Vector2 pos ( void ) const { return Vector2( X, Y ); }
+    inline Size    size( void ) const { return Vector2( Width, Height ); }
 
-    float top   ( void ) { return Y; }
-    float bottom( void ) { return Y + Height; }
-    float left  ( void ) { return X; }
-    float right ( void ) { return X + Width; }
+    inline float top   ( void ) const { return Y; }
+    inline float bottom( void ) const { return Y + Height; }
+    inline float left  ( void ) const { return X; }
+    inline float right ( void ) const { return X + Width; }
 
-    bool collides( Rect other );
-    bool collides( Circle other );
-    bool containsPoint( Vector2 point );
+    bool containsRect  ( Rect other ) const;
+    bool containsCircle( Circle other ) const;
+    bool containsPoint ( Vector2 point ) const;
 
     const Rect operator+( const Rect &rhs ) const;
     const Rect operator-( const Rect &rhs ) const;

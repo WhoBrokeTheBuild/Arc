@@ -69,12 +69,12 @@ void TextInputSource::init( void )
     _validInputs.add(KEY_HOME);
     _validInputs.add(KEY_END);
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &TextInputSource::update);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &TextInputSource::update);
 }
 
 void TextInputSource::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_FRAME, this, &TextInputSource::update);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &TextInputSource::update);
 }
 
 void TextInputSource::update( const Event& event )
@@ -169,8 +169,6 @@ void TextInputSource::keyPressed( const Event& event )
                     dir = Direction::DIR_EAST;
 
                     break;
-                default:
-                    break;
                 }
 
                 gpEventDispatcher->dispatchEvent(Event(EVENT_TEXT_INPUT_ARROWS, TextInputData(dir)));
@@ -214,5 +212,5 @@ void TextInputSource::keyReleased( const Event& event )
 
 void TextInputSource::keyHeld( const Event& event )
 {
-    //const KeyData *data = event.dataAs<KeyData>();
+    const KeyData *data = event.dataAs<KeyData>();
 }

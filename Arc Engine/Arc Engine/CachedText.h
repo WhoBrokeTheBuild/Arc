@@ -31,19 +31,19 @@ public:
 
     virtual string toString( void ) const;
 
-    virtual void init( string text, Font* pFont );
+    virtual void init( const string text, Font* pFont );
     virtual void term( void );
 
     virtual void graphicsReset( const Event& event );
     virtual void renderText( void );
 
-    virtual string text( void ) const { return _text; }
-    virtual void   setText( string text );
+    virtual string text ( void ) const { return _text; }
+    virtual void setText( string text );
 
-    virtual Size size( void );
+    virtual const Size size( void ) const;
     virtual Size measureString( string text );
 
-    virtual Texture* texture( void ) { return _pTexture; }
+    virtual Texture* texture( void ) const { return _pTexture; }
 };
 
 #endif

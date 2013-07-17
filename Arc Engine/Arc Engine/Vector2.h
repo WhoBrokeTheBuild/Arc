@@ -46,6 +46,8 @@ public:
     float halfWidth( void )  { return halfX(); }
     float halfHeight( void ) { return halfY(); }
 
+    Vector2 lerp( Vector2 other, float fraction );
+
     const Vector2 operator+( const Vector2 &rhs ) const;
     const Vector2 operator-( const Vector2 &rhs ) const;
     const Vector2 operator*( float value ) const;

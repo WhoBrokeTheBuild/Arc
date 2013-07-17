@@ -52,6 +52,18 @@
     <Filter Include="Project\Util\Functions">
       <UniqueIdentifier>{46a06fd9-2e72-4d21-b9fd-9704ef57bbdf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Units\Interfaces">
+      <UniqueIdentifier>{233d7f88-490d-455f-9e86-a8261585fa64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Core\Interfaces">
+      <UniqueIdentifier>{f26db4c4-d104-4a70-a074-5ca4e05f6025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units\Colliders">
+      <UniqueIdentifier>{04f85e26-e270-4acf-92a0-3d4e47bf0e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units\Organization">
+      <UniqueIdentifier>{075920b5-37a8-4bc7-bb66-a89f0230b901}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp">
@@ -96,9 +108,6 @@
     <ClCompile Include="Rect.cpp">
       <Filter>Project\Util\Geom</Filter>
     </ClCompile>
-    <ClCompile Include="ActiveUnit.cpp">
-      <Filter>Project\Units</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Project\Tracking</Filter>
     </ClCompile>
@@ -107,12 +116,6 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Project\Timing</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Project\Units</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimatedUnit.cpp">
-      <Filter>Project\Units</Filter>
     </ClCompile>
     <ClCompile Include="InputSystem.cpp">
       <Filter>Project\Input</Filter>
@@ -150,11 +153,23 @@
     <ClCompile Include="InputFunc.cpp">
       <Filter>Project\Util\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Project\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="RectCollider.cpp">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleCollider.cpp">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Project\Units\Organization</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Project\Units\Organization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Manager.h">
-      <Filter>Project\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Callbacks.h">
       <Filter>Project\Events</Filter>
     </ClInclude>
@@ -206,9 +221,6 @@
     <ClInclude Include="Rect.h">
       <Filter>Project\Util\Geom</Filter>
     </ClInclude>
-    <ClInclude Include="ActiveUnit.h">
-      <Filter>Project\Units</Filter>
-    </ClInclude>
     <ClInclude Include="Defines.h">
       <Filter>Project\Core</Filter>
     </ClInclude>
@@ -223,12 +235,6 @@
     </ClInclude>
     <ClInclude Include="Geom.h">
       <Filter>Project\Util\Geom</Filter>
-    </ClInclude>
-    <ClInclude Include="Unit.h">
-      <Filter>Project\Units</Filter>
-    </ClInclude>
-    <ClInclude Include="AnimatedUnit.h">
-      <Filter>Project\Units</Filter>
     </ClInclude>
     <ClInclude Include="Direction.h">
       <Filter>Project\Util\Geom</Filter>
@@ -310,6 +316,45 @@
     </ClInclude>
     <ClInclude Include="InputFunc.h">
       <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Project\Units\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawableImage.h">
+      <Filter>Project\Units\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IPhysicsObject.h">
+      <Filter>Project\Units\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ICollidable.h">
+      <Filter>Project\Units\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IFrameListener.h">
+      <Filter>Project\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Project\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="RectCollider.h">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleCollider.h">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="OriginLocation.h">
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Project\Units\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Project\Units\Organization</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

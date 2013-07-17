@@ -11,11 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ActiveUnit.cpp" />
     <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="AnimatedUnit.cpp" />
     <ClCompile Include="CachedText.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="Event.cpp" />
@@ -28,13 +27,16 @@
     <ClCompile Include="InputFunc.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="KeyboardSource.cpp" />
+    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="MathFunc.cpp" />
     <ClCompile Include="MemoryTracker.cpp" />
     <ClCompile Include="MouseSource.cpp" />
     <ClCompile Include="ParseFunc.cpp" />
     <ClCompile Include="RandFunc.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="RectCollider.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StringFunc.cpp" />
     <ClCompile Include="TextInputSource.cpp" />
@@ -45,13 +47,13 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ActiveUnit.h" />
     <ClInclude Include="Animation.h" />
-    <ClInclude Include="AnimatedUnit.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="CachedText.h" />
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="CircleCollider.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="ArcCommon.h" />
     <ClInclude Include="Console.h" />
@@ -68,8 +70,13 @@
     <ClInclude Include="GamePad.h" />
     <ClInclude Include="Geom.h" />
     <ClInclude Include="GraphicsSystem.h" />
+    <ClInclude Include="ICollidable.h" />
+    <ClInclude Include="IDrawable.h" />
+    <ClInclude Include="IDrawableImage.h" />
+    <ClInclude Include="IFrameListener.h" />
     <ClInclude Include="IKeyboardListener.h" />
     <ClInclude Include="IMouseListener.h" />
+    <ClInclude Include="IPhysicsObject.h" />
     <ClInclude Include="InputFunc.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="InputSystem.h" />
@@ -78,6 +85,7 @@
     <ClInclude Include="ITextInputListener.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="KeyboardSource.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
@@ -85,11 +93,14 @@
     <ClInclude Include="MemoryTracker.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="MouseSource.h" />
+    <ClInclude Include="OriginLocation.h" />
     <ClInclude Include="ParseFunc.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="RandFunc.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="RectCollider.h" />
     <ClInclude Include="RenderTarget.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StringFunc.h" />
     <ClInclude Include="TextInputSource.h" />

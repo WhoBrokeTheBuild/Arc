@@ -18,7 +18,7 @@ Timer::Timer( void )
     _endCount.tv_sec = 0;
     _endCount.tv_usec = 0;
 
-#endif
+#endif 
 
     _stopped = false;
     _startTimeMicro = 0;
@@ -108,7 +108,7 @@ void Timer::sleepUntilElapsed( double millis )
 
 #ifdef WINDOWS
 
-    LARGE_INTEGER
+    LARGE_INTEGER 
         currentTime,
         lastTime;
 
@@ -122,7 +122,7 @@ void Timer::sleepUntilElapsed( double millis )
         lastTime;
 
     gettimeofday(&currentTime, nullptr);
-    timeToSleep = millis - calcDiffMillis( _startCount, currentTime );
+    timeToSleep = millis - 
 
 #endif
 
@@ -146,15 +146,7 @@ void Timer::sleepUntilElapsed( double millis )
 
         if( timeToSleep > 10.0 )
         {
-#ifdef WINDOWS
-
             Sleep(10);
-
-#else
-
-            usleep(10 * MICRO);
-
-#endif
         }
     }
 }
@@ -172,7 +164,7 @@ double Timer::calcDiffMillis( LARGE_INTEGER from, LARGE_INTEGER to ) const
 
 double Timer::calcDiffMillis( timeval from, timeval to ) const
 {
-    double
+    double 
         start = (from.tv_sec * MICRO) + from.tv_usec,
         end   = (to.tv_sec * MICRO) + to.tv_usec;
 

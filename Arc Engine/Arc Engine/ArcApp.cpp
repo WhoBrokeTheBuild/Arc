@@ -1,8 +1,8 @@
 #include "ArcApp.h"
 
-const EventType ArcApp::EVENT_ENTER_FRAME  = "enterFrame";
-const EventType ArcApp::EVENT_FRAME        = "frame";
-const EventType ArcApp::EVENT_EXIT_FRAME   = "exitFrame";
+const EventType ArcApp::EVENT_UPDATE_START = "updateStart";
+const EventType ArcApp::EVENT_UPDATE       = "update";
+const EventType ArcApp::EVENT_UPDATE_END   = "updateEnd";
 const EventType ArcApp::EVENT_RENDER_START = "renderStart";
 const EventType ArcApp::EVENT_RENDER       = "render";
 const EventType ArcApp::EVENT_RENDER_END   = "renderEnd";
@@ -24,7 +24,7 @@ std::string ArcApp::toString( void ) const
 
 void ArcApp::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
 {
-    INFO(toString(), "Starting Init");
+    INF(toString(), "Starting Init");
 
     gpEventDispatcher = New EventDispatcher();
 
@@ -35,20 +35,20 @@ void ArcApp::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= 
     initInput();
     initAudio();
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME,  this, &ArcApp::update);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE,  this, &ArcApp::update);
     gpEventDispatcher->addEventListener(ArcApp::EVENT_RENDER, this, &ArcApp::render);
     gpEventDispatcher->addEventListener(ArcApp::EVENT_EXIT,   this, &ArcApp::stop);
 
-    INFO(toString(), "Finished Init");
+    INF(toString(), "Finished Init");
 }
 
 void ArcApp::term( void )
 {
-    INFO(toString(), "Terminating");
+    INF(toString(), "Terminating");
 
     gpEventDispatcher->removeEventListener(ArcApp::EVENT_EXIT,   this, &ArcApp::stop);
     gpEventDispatcher->removeEventListener(ArcApp::EVENT_RENDER, this, &ArcApp::render);
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_FRAME,  this, &ArcApp::update);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE,  this, &ArcApp::update);
 
     delete _pInputSystem;
     delete _pGraphicsSystem;
@@ -60,7 +60,7 @@ void ArcApp::start( void )
 {
     _running = true;
 
-    double
+    double 
         fpsDelay = 1000.0 / _targetFPS,
         frameDelay = 0;
 
@@ -94,9 +94,9 @@ void ArcApp::stop ( const Event& event )
 
 void ArcApp::updateFrame( const FrameData& frameData )
 {
-    gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_ENTER_FRAME, frameData));
-    gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_FRAME,       frameData));
-    gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_EXIT_FRAME,  frameData));
+    gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_UPDATE_START, frameData));
+    gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_UPDATE,       frameData));
+    gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_UPDATE_END,   frameData));
 }
 
 void ArcApp::renderFrame( const RenderData& renderData )

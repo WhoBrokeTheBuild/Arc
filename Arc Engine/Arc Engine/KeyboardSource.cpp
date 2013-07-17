@@ -28,12 +28,12 @@ void KeyboardSource::init( void )
         _keyStates.add((KeyboardKey)key, InputState());
     }
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &KeyboardSource::update);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
 void KeyboardSource::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_FRAME, this, &KeyboardSource::update);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
 void KeyboardSource::update( const Event& event )
@@ -50,7 +50,7 @@ void KeyboardSource::update( const Event& event )
         key    =  it->first;
         pState = &it->second;
 
-        down = (_sdlKeys[KeyToSDLKey(key)] == true);
+        down = (_sdlKeys[KeyToSDLKey(key)] == TRUE);
 
         pState->Pressed  = false;
         pState->Released = false;

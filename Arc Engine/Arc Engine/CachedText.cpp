@@ -19,7 +19,7 @@ std::string CachedText::toString( void ) const
     return "Text";
 }
 
-void CachedText::init( string text, Font* pFont )
+void CachedText::init( const string text, Font* pFont )
 {
     _pFont = pFont;
     _text = text;
@@ -45,7 +45,7 @@ void CachedText::renderText( void )
 {
     if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
     {
-        ERROR(toString(), "Invalid Font");
+        ERR(toString(), "Invalid Font");
         return;
     }
 
@@ -58,7 +58,7 @@ void CachedText::renderText( void )
 
     if (!surface)
     {
-        ERROR(toString(), "Invalid Surface");
+        ERR(toString(), "Invalid Surface");
         return;
     }
 
@@ -77,7 +77,7 @@ void CachedText::setText( string text )
     renderText();
 }
 
-Size CachedText::size( void )
+const Size CachedText::size( void ) const
 {
     if (_pTexture == nullptr)
         return Size::ZERO;

@@ -4,11 +4,13 @@
 #ifndef __CONSOLE_H__
 #define __CONSOLE_H__
 
-#ifdef WINDOWS
-
 #include "Defines.h"
 
+#ifdef WINDOWS
+
 #include <windows.h>
+
+#endif 
 
 #include <stdio.h>
 #include <fcntl.h>
@@ -18,14 +20,12 @@
 
 using namespace std;
 
+#ifdef WINDOWS
+
 static const WORD MAX_CONSOLE_LINES = 500;
 
-void init_console( void );
-
-#else
-
-void init_console( void ) { }
-
 #endif
+
+void init_console( void );
 
 #endif //__CONSOLE_H__

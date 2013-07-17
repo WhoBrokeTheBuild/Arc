@@ -15,28 +15,27 @@
 #else
 
 #include <sys/time.h>
-#include <unistd.h>
 
 #endif
 
 class Timer :
     public GameObject
 {
-private:
+private: 
 
     static double
         MICRO;
 
-    double
+    double 
         _startTimeMicro,
         _endTimeMicro;
 
-    bool
+    bool 
         _stopped;
 
 #ifdef WINDOWS
 
-    LARGE_INTEGER
+    LARGE_INTEGER 
         _freq,
         _startCount,
         _endCount;
@@ -45,7 +44,7 @@ private:
 
 #else
 
-    timeval
+    timeval 
         _startCount,
         _endCount;
 
@@ -71,4 +70,4 @@ public:
 
 };
 
-#endif
+#endif 

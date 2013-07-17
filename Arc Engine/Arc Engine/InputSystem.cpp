@@ -26,12 +26,12 @@ void InputSystem::init( void )
     _pTextInputSource = New TextInputSource();
     _pTextInputSource->init();
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &InputSystem::update);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &InputSystem::update);
 }
 
 void InputSystem::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_FRAME, this, &InputSystem::update);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &InputSystem::update);
 
     delete _pTextInputSource;
     delete _pMouseSource;

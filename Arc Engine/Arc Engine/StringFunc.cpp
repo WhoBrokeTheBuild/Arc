@@ -10,6 +10,10 @@ ArrayList<string> strSplit( string str, char sep, int limit /*= -1*/ )
     {
         if (str[i] == sep)
         {
+            if (limit != -1 && stringParts.size() >= (unsigned)limit - 1)
+            {
+                break;
+            }
             stringParts.add(str.substr(lastEnd, i - lastEnd));
             lastEnd = i + 1;
         }
@@ -69,30 +73,4 @@ string basename( string fullPath )
     ArrayList<string> parts = strSplit(fullPath, splitString);
 
     return parts[parts.size() - 1];
-}
-
-string boolToString( const bool& value )
-{
-    return (value ? "true" : "false");
-}
-
-string intToString( const int& value )
-{
-    stringstream ss;
-    ss << value;
-    return ss.str();
-}
-
-string floatToString( const float& value )
-{
-    stringstream ss;
-    ss << value;
-    return ss.str();
-}
-
-string doubleToString( const double& value )
-{
-    stringstream ss;
-    ss << value;
-    return ss.str();
 }

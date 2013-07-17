@@ -1,4 +1,5 @@
 #include "Vector2.h"
+#include "MathFunc.h"
 
 Vector2 Vector2::ZERO          = Vector2(0);
 Vector2 Vector2::ONE          = Vector2(1);
@@ -126,4 +127,10 @@ float Vector2::directionToRad( Vector2 other )
           dy = other.Y - Y;
 
     return atan2(dy, dx);
+}
+
+Vector2 Vector2::lerp( Vector2 other, float fraction )
+{
+    using ::lerp;
+    return Vector2(lerp(X, other.X, fraction), lerp(Y, other.Y, fraction));
 }

@@ -27,17 +27,17 @@ void MouseSource::init( void )
         _buttonStates.add((MouseButton)button, InputState());
     }
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_FRAME, this, &MouseSource::update);
+    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &MouseSource::update);
 }
 
 void MouseSource::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_FRAME, this, &MouseSource::update);
+    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &MouseSource::update);
 }
 
 void MouseSource::update( const Event& event )
 {
-    int
+    int 
         x, y,
         dX, dY;
 
@@ -65,7 +65,7 @@ void MouseSource::update( const Event& event )
         button =  it->first;
         pState = &it->second;
 
-        down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) == true);
+        down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) == TRUE);
 
         pState->Pressed  = false;
         pState->Released = false;

@@ -1,12 +1,7 @@
 #pragma once
 
-#ifndef __UNIT_H__
-#define __UNIT_H__
-
 #include "ArcCommon.h"
 #include "EventDispatcher.h"
-
-#include "ArcApp.h"
 
 class Unit :
     public EventDispatcher
@@ -14,31 +9,19 @@ class Unit :
 public:
 
     Vector2
-        Pos,
-        Origin;
-
-    Size
-        UnitSize;
-
-    Color
-        BlendColor;
+        Pos;
 
     float
-        Rot,
         Depth;
 
-    Unit(void);
-    virtual ~Unit(void);
+    Unit( void ) { }
+    virtual ~Unit( void ) { term(); }
 
-    virtual string toString( void ) const;
+    virtual void init( Vector2 pos, float depth = 0.0f ) { Pos = pos; Depth = depth; }
+    virtual void term( void ) { }
 
-    virtual void init( Vector2 pos = Vector2::ZERO, Vector2 origin = Vector2::ZERO, float rot = 0.0f, Color blendColor = Color::WHITE, float depth = 1.0f);
-    virtual void term( void );
+    virtual void update( const Event& event ) { }
+    virtual void render( const Event& event ) { }
 
-    virtual Rect bounds( void );
-
-    virtual void update( const Event& event );
-    virtual void render( const Event& event );
 };
 
-#endif

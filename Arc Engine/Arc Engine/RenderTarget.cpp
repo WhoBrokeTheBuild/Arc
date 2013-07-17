@@ -19,12 +19,7 @@ void RenderTarget::term( void )
 {
 }
 
-std::string RenderTarget::toString( void ) const
-{
-    return "Render Target";
-}
-
-void RenderTarget::beginDraw( void )
+void RenderTarget::beginDraw( void ) const
 {
     Color clearColor = _pGraphicsSystem->clearColor();
 
@@ -33,7 +28,7 @@ void RenderTarget::beginDraw( void )
     glLoadIdentity();
 }
 
-void RenderTarget::endDraw( void )
+void RenderTarget::endDraw( void ) const
 {
     SDL_GL_SwapBuffers();
 }
@@ -45,7 +40,7 @@ void RenderTarget::endDraw( void )
 // ShapeValue 5   - Draws Decagon
 // ShapeValue 6   - Draws Circle
 // ShapeValue 12  - Draws Better Circle
-void RenderTarget::drawShape( float x, float y, float radius, float shapeValue, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(x, y, 0.0f);
@@ -68,7 +63,7 @@ void RenderTarget::drawShape( float x, float y, float radius, float shapeValue, 
     glPopMatrix();
 }
 
-void RenderTarget::fillShape( float x, float y, float radius, float shapeValue, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(x, y, 0.0f);
@@ -91,76 +86,54 @@ void RenderTarget::fillShape( float x, float y, float radius, float shapeValue, 
     glPopMatrix();
 }
 
-void RenderTarget::drawText( Vector2 pos, string text, Font* pFont, Color color /*= Color::WHITE*/, Align align /*= Align::INVALID_ALIGN*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawText( const Vector2 pos, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    drawText(pos.X, pos.Y, text, pFont, color, align, rotation, origin);
+    drawText(pos.X, pos.Y, text, pFont, color, rotation, origin);
 }
 
-void RenderTarget::drawText( float x, float y, string text, Font* pFont, Color color /*= Color::WHITE*/, Align align /*= Align::INVALID_ALIGN*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawText( const float x, const float y, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     CachedText cachedText;
     cachedText.init(text, pFont);
 
-    drawText(x, y, &cachedText, color, align, rotation, origin);
+    drawText(x, y, &cachedText, color, rotation, origin);
 }
 
-void RenderTarget::drawText( Vector2 pos, CachedText* pCachedText, Color color /*= Color::WHITE*/, Align align /*= Align::INVALID_ALIGN*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawText( const Vector2 pos, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    drawText(pos.X, pos.Y, pCachedText, color, align, rotation, origin);
+    drawText(pos.X, pos.Y, pCachedText, color, rotation, origin);
 }
 
-void RenderTarget::drawText( float x, float y, CachedText* pCachedText, Color color /*= Color::WHITE*/, Align align /*= Align::INVALID_ALIGN*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawText( const float x, const float y, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     if (pCachedText->text().length() == 0)
         return;
 
     if (pCachedText->texture() == nullptr)
     {
-        ERROR(toString(), "Invalid Cached Text");
+        ERR(toString(), "Invalid Cached Text");
         return;
     }
-
-    switch (align)
-    {
-    case ALIGN_LEFT:
-
-        origin.X = 0;
-
-        break;
-    case ALIGN_CENTER:
-
-        origin.X = pCachedText->texture()->size().halfWidth();
-
-        break;
-    case ALIGN_RIGHT:
-
-        origin.X = pCachedText->texture()->size().width();
-
-        break;
-    }
-
-    if (align != INVALID_ALIGN)
-        x -= origin.X;
 
     draw(x, y, pCachedText->texture(), color, rotation, origin);
 }
 
-void RenderTarget::draw( Vector2 pos, Texture* pTexture, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     draw(pos.X, pos.Y, pTexture, color, rotation, origin);
 }
 
-void RenderTarget::draw( float x, float y, Texture* pTexture, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->size()), color, rotation, origin);
 }
 
-void RenderTarget::draw( Vector2 pos, Texture* pTexture, Rect sourceRect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/, bool flip /*= false*/ )
+void RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
 {
     draw(pos.X, pos.Y, pTexture, sourceRect, color, rotation, origin, flip);
 }
 
-void RenderTarget::draw( float x, float y, Texture* pTexture, Rect sourceRect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/, bool flip /*= false*/ )
+void RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
 {
     glEnable(GL_TEXTURE_2D);
 
@@ -173,9 +146,9 @@ void RenderTarget::draw( float x, float y, Texture* pTexture, Rect sourceRect, C
 
     glBindTexture(GL_TEXTURE_2D, pTexture->GLTexture());
 
-    glBegin(GL_QUADS);
-
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+
+    glBegin(GL_QUADS);
 
     Size texSize = pTexture->size();
     Rect convSrcRect = Rect(sourceRect.left() / texSize.width(), sourceRect.top() / texSize.height(), sourceRect.Width / texSize.width(), sourceRect.Height / texSize.height());
@@ -202,12 +175,12 @@ void RenderTarget::draw( float x, float y, Texture* pTexture, Rect sourceRect, C
     glDisable(GL_TEXTURE_2D);
 }
 
-void RenderTarget::drawLine( Vector2 start, Vector2 end, Color color /*= Color::WHITE*/, float thickness /*= 1.0f*/ )
+void RenderTarget::drawLine( const Vector2 start, const Vector2 end, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
 {
     drawLine(start.X, start.Y, end.X, end.Y, color, thickness);
 }
 
-void RenderTarget::drawLine( float x1, float y1, float x2, float y2, Color color /*= Color::WHITE*/, float thickness /*= 1.0f*/ )
+void RenderTarget::drawLine( const float x1, const float y1, const float x2, const float y2, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
 {
     glPushMatrix();
     glTranslatef(0.0f, 0.0f, 0.0f);
@@ -216,23 +189,23 @@ void RenderTarget::drawLine( float x1, float y1, float x2, float y2, Color color
 
     glLineWidth(thickness);
 
-    glBegin(GL_LINES);
+    glBegin(GL_LINES); 
 
     glVertex2f(x1, y1);
     glVertex2f(x2, y2);
 
-    glEnd();
+    glEnd(); 
 
     glPopMatrix();
 }
 
-void RenderTarget::drawRect( float x, float y, float width, float height, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawRect( const float x, const float y, const float width, const float height, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Rect rect = Rect(x, y, width, height);
     drawRect(rect, color, rotation, origin);
 }
 
-void RenderTarget::drawRect( Rect rect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(rect.X, rect.Y, 0.0f);
@@ -243,25 +216,25 @@ void RenderTarget::drawRect( Rect rect, Color color /*= Color::WHITE*/, float ro
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
-    glBegin(GL_LINE_LOOP);
+    glBegin(GL_LINE_LOOP); 
 
     glVertex2f(0.0f,       0.0f);
     glVertex2f(rect.Width, 0.0f);
     glVertex2f(rect.Width, rect.Height);
     glVertex2f(0.0f,       rect.Height);
 
-    glEnd();
+    glEnd(); 
 
     glPopMatrix();
 }
 
-void RenderTarget::fillRect( float x, float y, float width, float height, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillRect( const float x, const float y, const float width, const float height, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Rect rect = Rect(x, y, width, height);
     fillRect(rect, color, rotation, origin);
 }
 
-void RenderTarget::fillRect( Rect rect, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(rect.X, rect.Y, 0.0f);
@@ -284,84 +257,84 @@ void RenderTarget::fillRect( Rect rect, Color color /*= Color::WHITE*/, float ro
     glPopMatrix();
 }
 
-void RenderTarget::drawCircle( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Circle circle = Circle(x, y, radius);
     drawCircle(circle, color, rotation, origin);
 }
 
-void RenderTarget::drawCircle( Circle circle, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(circle.X, circle.Y, circle.Radius, 12, color, rotation, origin);
 }
 
-void RenderTarget::fillCircle( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Circle circle = Circle(x, y, radius);
     fillCircle(circle, color, rotation, origin);
 }
 
-void RenderTarget::fillCircle( Circle circle, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(circle.X, circle.Y, circle.Radius, 12, color, rotation, origin);
 }
 
-void RenderTarget::drawTriangle( Vector2 pos, float radius, Color color /*= Color::WHITE*/,  float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawTriangle(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::fillTriangle( Vector2 pos, float radius, Color color /*= Color::WHITE*/,  float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillTriangle(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::drawTriangle( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawTriangle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(x, y, radius, 1.5, color, rotation, origin);
 }
 
-void RenderTarget::fillTriangle( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillTriangle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(x, y, radius, 1.5, color, rotation, origin);
 }
 
-void RenderTarget::drawPentagon( Vector2 pos, float radius, Color color /*= Color::WHITE*/,  float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawPentagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawPentagon(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::fillPentagon( Vector2 pos, float radius, Color color /*= Color::WHITE*/,  float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillPentagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillPentagon(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::drawPentagon( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawPentagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(x, y, radius, 2.5, color, rotation, origin);
 }
 
-void RenderTarget::fillPentagon( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillPentagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(x, y, radius, 2.5, color, rotation, origin);
 }
 
-void RenderTarget::drawHexagon( Vector2 pos, float radius, Color color /*= Color::WHITE*/,  float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawHexagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(pos.X, pos.Y, radius, 3, color, rotation, origin);
 }
 
-void RenderTarget::fillHexagon( Vector2 pos, float radius, Color color /*= Color::WHITE*/,  float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillHexagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(pos.X, pos.Y, radius, 3, color, rotation, origin);
 }
 
-void RenderTarget::drawHexagon( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::drawHexagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(x, y, radius, 3, color, rotation, origin);
 }
 
-void RenderTarget::fillHexagon( float x, float y, float radius, Color color /*= Color::WHITE*/, float rotation /*= 0.0f */, Vector2 origin /*= Vector2::ZERO*/ )
+void RenderTarget::fillHexagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(x, y, radius, 3, color, rotation, origin);
 }

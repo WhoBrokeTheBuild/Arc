@@ -24,25 +24,25 @@ public:
         Y,
         Radius;
 
-    Circle( void );
+    Circle( void ) { X = Y = Radius = 0; }
     Circle( float x, float y, float radius );
     Circle( Vector2 pos, float radius );
-    virtual ~Circle( void );
+    virtual ~Circle( void ) { }
 
     virtual string toString( void ) const;
 
-    Vector2 pos ( void );
+    inline Vector2 pos ( void ) { return Vector2(X, Y); }
 
-    float diameter( void );
+    inline float diameter( void ) { return Radius * 2.0f; }
 
-    float top   ( void );
-    float bottom( void );
-    float left  ( void );
-    float right ( void );
+    inline float top   ( void ){ return Y - Radius; }
+    inline float bottom( void ){ return Y + Radius; }
+    inline float left  ( void ){ return X - Radius; }
+    inline float right ( void ){ return X + Radius; }
 
-    bool collides(Circle other);
-    bool collides(Rect other);
-    bool containsPoint(Vector2 point);
+    bool containsCircle(Circle other);
+    bool containsRect  (Rect other);
+    bool containsPoint (Vector2 point);
 
 };
 

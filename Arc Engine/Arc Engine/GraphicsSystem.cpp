@@ -13,7 +13,7 @@ GraphicsSystem::~GraphicsSystem( void )
 
 void GraphicsSystem::init( Size windowSize, string windowTitle )
 {
-    INFO(toString(), "Initializing");
+    INF(toString(), "Initializing");
 
     _windowSize  = windowSize;
     _windowTitle = windowTitle;
@@ -23,24 +23,24 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
 
     if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
     {
-        ERROR(toString(), "Failed to initialize SDL");
+        ERR(toString(), "Failed to initialize SDL");
         die();
     }
 
-    SDL_GL_SetAttribute(SDL_GL_RED_SIZE,                8);
-    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,              8);
-    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,               8);
-    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE,              8);
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,              16);
-    SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE,             32);
-    SDL_GL_SetAttribute(SDL_GL_ACCUM_RED_SIZE,          8);
-    SDL_GL_SetAttribute(SDL_GL_ACCUM_GREEN_SIZE,        8);
-    SDL_GL_SetAttribute(SDL_GL_ACCUM_BLUE_SIZE,         8);
-    SDL_GL_SetAttribute(SDL_GL_ACCUM_ALPHA_SIZE,        8);
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE,           8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,         8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,          8);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE,         8);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,         16);
+    SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE,        32);
+    SDL_GL_SetAttribute(SDL_GL_ACCUM_RED_SIZE,     8);
+    SDL_GL_SetAttribute(SDL_GL_ACCUM_GREEN_SIZE,   8);
+    SDL_GL_SetAttribute(SDL_GL_ACCUM_BLUE_SIZE,    8);
+    SDL_GL_SetAttribute(SDL_GL_ACCUM_ALPHA_SIZE,   8);
 
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS,      1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES,      2);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,            1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,       1);
 
     setWindowTitle(_windowTitle);
     resetVideoMode();
@@ -51,11 +51,11 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
 
     if (TTF_Init() < 0)
     {
-        ERROR(toString(), "Failed to initialize TTF Addon");
+        ERR(toString(), "Failed to initialize TTF Addon");
         die();
     }
 
-    INFO(toString(), "Complete");
+    INF(toString(), "Complete");
 }
 
 void GraphicsSystem::term( void )
@@ -109,7 +109,7 @@ void GraphicsSystem::setWindowIcon( string filename )
 
         ss << "Cannot Load Icon File: " << filename;
 
-        ERROR(toString(), ss.str());
+        ERR(toString(), ss.str());
     }
 
     SDL_WM_SetIcon(pSurface, nullptr);
@@ -141,7 +141,7 @@ void GraphicsSystem::resetGL( void )
         stringstream ss;
         ss << "Failed to initialize OpenGL (" << gluErrorString(error) << ")";
 
-        ERROR(toString(), ss.str());
+        ERR(toString(), ss.str());
         die();
     }
 
@@ -163,7 +163,7 @@ void GraphicsSystem::resetVideoMode( void )
 
     if (SDL_SetVideoMode((int)_windowSize.X, (int)_windowSize.Y, _screenBPP, flags) == nullptr)
     {
-        ERROR(toString(), "Failed to set SDL video mode");
+        ERR(toString(), "Failed to set SDL video mode");
         die();
     }
 }

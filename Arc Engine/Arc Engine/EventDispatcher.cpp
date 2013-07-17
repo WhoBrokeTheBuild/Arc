@@ -128,7 +128,7 @@ void EventDispatcher::dispatchEvent( const Event& event )
     for(unsigned int i = 0; i < length; ++i)
     {
         if (_eventMap[type][i] != nullptr)
-            _eventMap[type][i]->invoke(tmp);
+            _eventMap[type][i]->invoke(event);
     }
 }
 

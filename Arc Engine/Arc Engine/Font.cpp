@@ -15,7 +15,7 @@ Font::Font( string filename, int size )
         _pFont = nullptr;
         stringstream ss;
         ss << "Cannot load font: " << filename;
-        ERROR(toString(), ss.str());
+        ERR(toString(), ss.str());
     }
 }
 

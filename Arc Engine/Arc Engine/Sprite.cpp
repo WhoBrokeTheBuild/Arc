@@ -2,7 +2,7 @@
 
 Sprite::Sprite( void )
 {
-    _pTexture = nullptr;
+    pTexture = nullptr;
 }
 
 Sprite::~Sprite( void )
@@ -15,10 +15,10 @@ string Sprite::toString( void ) const
     return "Sprite";
 }
 
-void Sprite::init( Texture *pTexture, Rect source, double frameTime )
+void Sprite::init( Texture *texture, Rect source, double frameTime /*= 0 */ )
 {
     SourceRect = source;
-    _pTexture = pTexture;
+    pTexture = texture;
     FrameTime = frameTime;
 }
 

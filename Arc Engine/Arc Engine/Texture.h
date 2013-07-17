@@ -6,9 +6,9 @@
 #include "ArcCommon.h"
 #include "GameObject.h"
 
-#include <SDL/SDL_opengl.h>
-#include <SDL/SDL_image.h>
-#include <SDL/SDL.h>
+#include <SDL_opengl.h>
+#include <SDL_image.h>
+#include <SDL.h>
 
 class RenderTarget;
 class CachedText;
@@ -39,7 +39,7 @@ private:
 
     virtual void deleteTexture( void );
 
-    virtual GLuint GLTexture( void ) { return _texture; }
+    virtual GLuint GLTexture( void ) const { return _texture; }
 
 public:
 
@@ -53,7 +53,7 @@ public:
 
     virtual void graphicsReset( const Event& event );
 
-    virtual Size size( void ) { return _size; }
+    virtual const Size size( void ) const { return _size; }
 
 };
 

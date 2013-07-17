@@ -51,7 +51,7 @@ void Rect::setSize( Vector2 size )
     Height = size.Y;
 }
 
-bool Rect::collides( Rect other )
+bool Rect::containsRect( Rect other ) const
 {
     if ( left() > other.right()  ||
          top()  > other.bottom() ||
@@ -64,12 +64,12 @@ bool Rect::collides( Rect other )
     return true;
 }
 
-bool Rect::collides( Circle other )
+bool Rect::containsCircle( Circle other ) const
 {
-    return other.collides(*this);
+    return other.containsRect(*this);
 }
 
-bool Rect::containsPoint( Vector2 point )
+bool Rect::containsPoint( Vector2 point ) const
 {
     if( point.X < left()   ||
         point.X > right()  ||

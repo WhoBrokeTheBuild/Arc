@@ -4,10 +4,6 @@
 Circle Circle::ZERO = Circle(0, 0, 0);
 Circle Circle::ONE  = Circle(1, 1, 1);
 
-Circle::Circle( void )
-{
-}
-
 Circle::Circle( float x, float y, float radius )
 {
     X = x;
@@ -22,10 +18,6 @@ Circle::Circle( Vector2 pos, float radius )
     Radius = radius;
 }
 
-Circle::~Circle( void )
-{
-}
-
 std::string Circle::toString( void ) const
 {
     stringstream ss;
@@ -33,48 +25,18 @@ std::string Circle::toString( void ) const
     return ss.str();
 }
 
-Vector2 Circle::pos( void )
-{
-    return Vector2( X, Y );
-}
-
-float Circle::diameter( void )
-{
-    return Radius * 2.0f;
-}
-
-float Circle::top( void )
-{
-    return Y - Radius;
-}
-
-float Circle::bottom( void )
-{
-    return Y + Radius;
-}
-
-float Circle::left( void )
-{
-    return X - Radius;
-}
-
-float Circle::right( void )
-{
-    return X + Radius;
-}
-
-bool Circle::collides( Circle other )
+bool Circle::containsCircle( Circle other )
 {
     float dist = pos().distanceTo(other.pos());
 
     return (dist < Radius + other.Radius);
 }
 
-bool Circle::collides( Rect rect ) //TODO: Test this later when primitives are implemented
+bool Circle::containsRect( Rect rect ) //TODO: Test this later when primitives are implemented
 {
     Rect bounds = Rect(left(), top(), diameter(), diameter());
 
-    if (!rect.collides(bounds))
+    if (!rect.containsRect(bounds))
         return false;
 
     Vector2 rectCenter = rect.center();
