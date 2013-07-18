@@ -29,7 +29,7 @@ ArrayList<string> strSplit( string str, char sep, int limit /*= -1*/ )
 
 std::string strReplace( string str, const string& sub, const string& newStr )
 {
-    int pos = str.find(sub);
+    unsigned int pos = str.find(sub);
 
     if (pos == std::string::npos)
         return str;
@@ -39,7 +39,7 @@ std::string strReplace( string str, const string& sub, const string& newStr )
 
 std::string strReplaceAll( string str, const string& sub, const string& newStr )
 {
-    int pos = str.find(sub);
+    unsigned int pos = str.find(sub);
 
     while (pos != string::npos)
     {
@@ -73,4 +73,34 @@ string basename( string fullPath )
     ArrayList<string> parts = strSplit(fullPath, splitString);
 
     return parts[parts.size() - 1];
+}
+
+string shortToStr( const short& value )
+{
+    return numToStr(value);
+}
+
+string intToStr( const int& value )
+{
+    return numToStr(value);
+}
+
+string longToStr( const long& value )
+{
+    return numToStr(value);
+}
+
+string floatToStr( const float& value )
+{
+    return numToStr(value);
+}
+
+string doubleToStr( const double& value )
+{
+    return numToStr(value);
+}
+
+string boolToStr( const bool& value )
+{
+    return (value ? "true" : "false");
 }

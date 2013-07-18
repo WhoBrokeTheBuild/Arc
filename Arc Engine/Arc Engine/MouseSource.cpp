@@ -37,7 +37,7 @@ void MouseSource::term( void )
 
 void MouseSource::update( const Event& event )
 {
-    int 
+    int
         x, y,
         dX, dY;
 
@@ -65,7 +65,7 @@ void MouseSource::update( const Event& event )
         button =  it->first;
         pState = &it->second;
 
-        down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) == TRUE);
+        down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) == 1);
 
         pState->Pressed  = false;
         pState->Released = false;

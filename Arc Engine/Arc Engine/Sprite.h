@@ -19,15 +19,12 @@ public:
     Rect
         SourceRect;
 
-    double
-        FrameTime;
-
     Sprite( void );
     virtual ~Sprite( void );
 
     virtual string toString( void ) const;
 
-    virtual void init( Texture *texture, Rect source, double frameTime = 0 );
+    virtual void init( Texture *texture, Rect source );
     virtual void term( void );
 
 };

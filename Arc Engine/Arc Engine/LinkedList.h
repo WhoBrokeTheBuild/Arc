@@ -179,10 +179,10 @@ LinkedList<T>* LinkedList<T>::clear( void )
 template <class T>
 bool LinkedList<T>::contains( const T& item ) const
 {
-    if (empty()) 
+    if (empty())
         return false;
 
-    return (find(cbegin(), cend(), item) != cend())
+    return (find(cbegin(), cend(), item) != cend());
 }
 
 template <class T>

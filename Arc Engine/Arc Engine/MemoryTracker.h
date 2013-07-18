@@ -11,11 +11,11 @@
 struct AllocationRecord
 {
 
-    int 
+    int
         Num,
         LineNum;
 
-    size_t 
+    size_t
         Size;
 
     string
@@ -23,8 +23,8 @@ struct AllocationRecord
 
     AllocationRecord(int num, size_t size, int lineNum, string filename)
         : Num(num),
-          Size(size),
           LineNum(lineNum),
+          Size(size),
           Filename(filename)
     {
     };
@@ -52,7 +52,7 @@ public:
 
     virtual string toString( void ) const { return "Memory Tracker"; }
 
-    void addAllocation   (GameObject *ptr, size_t size, int lineNumber, char *filename);
+    void addAllocation   (GameObject *ptr, size_t size, int lineNumber, string filename);
     bool removeAllocation(GameObject *ptr);
 
     int  numAllocations( void );

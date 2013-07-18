@@ -24,23 +24,23 @@ void *GameObject::operator new[](size_t size)
     return malloc(size);
 }
 
-void *GameObject::operator new(size_t size, int lineNumber, char *filename)
+void *GameObject::operator new(size_t size, int lineNumber, const char *filename)
 {
     void* ptr = ::operator new(size);
     if (gpMemoryTracker)
-        gpMemoryTracker->addAllocation((GameObject*)ptr, size, lineNumber, filename);
+        gpMemoryTracker->addAllocation((GameObject*)ptr, size, lineNumber, string(filename));
     return ptr;
 }
 
-void *GameObject::operator new[](size_t size, int lineNumber, char *filename)
+void *GameObject::operator new[](size_t size, int lineNumber, const char *filename)
 {
     void* ptr = ::operator new(size);
     if (gpMemoryTracker)
-        gpMemoryTracker->addAllocation((GameObject*)ptr, size, lineNumber, filename);
+        gpMemoryTracker->addAllocation((GameObject*)ptr, size, lineNumber, string(filename));
     return ptr;
 }
 
-void GameObject::operator delete(void *ptr, int lineNumber, char *filename)
+void GameObject::operator delete(void *ptr, int lineNumber, const char *filename)
 {
     ::operator delete(ptr);
     if (gpMemoryTracker)
@@ -48,7 +48,7 @@ void GameObject::operator delete(void *ptr, int lineNumber, char *filename)
     free(ptr);
 }
 
-void GameObject::operator delete[](void *ptr, int lineNumber, char *filename)
+void GameObject::operator delete[](void *ptr, int lineNumber, const char *filename)
 {
     ::operator delete(ptr);
     if (gpMemoryTracker)

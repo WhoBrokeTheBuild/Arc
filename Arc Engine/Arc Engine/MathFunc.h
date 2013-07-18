@@ -63,7 +63,7 @@ Number hermite( Number x0, Number x1, Number x2, Number x3, Number mu, double te
     a2 =      mu3 -     mu2;
     a3 = -2 * mu3 + 3 * mu2;
 
-    return (a0 * x1 + a1 * m0 + a2 * m1 + a3 * y2);
+    return (a0 * x1 + a1 * m0 + a2 * m1 + a3 * x2);
 }
 
 #endif

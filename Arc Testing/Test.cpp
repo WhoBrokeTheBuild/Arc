@@ -3,7 +3,7 @@
 void Test::init( Animation *pAnimation )
 {
     Unit::init(Vector2::ZERO);
-    IDrawableImage::init(pAnimation);
+    IDrawableImage::init(pAnimation, true);
     IPhysicsObject::init();
     ICollidable::init(RectCollider(Vector2::ZERO, Vector2(255)));
 
@@ -21,7 +21,7 @@ void Test::update( const Event& event )
 {
     const FrameData* data = event.dataAs<FrameData>();
 
-    IPhysicsObject::update(Pos);
+    IPhysicsObject::update(Pos, data->deltaTime());
     IDrawableImage::update(data->elapsedMilliseconds());
 }
 
@@ -71,6 +71,8 @@ void Test::keyReleased( const Event& event )
             Vel.Y = 0;
 
         break;
+    default:
+        break;
     }
 }
 
@@ -103,6 +105,8 @@ void Test::keyHeld( const Event& event )
 
         Vel.Y = speed;
 
+        break;
+    default:
         break;
     }
 }

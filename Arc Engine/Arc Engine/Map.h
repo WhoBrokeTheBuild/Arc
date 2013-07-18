@@ -14,7 +14,7 @@ class LinkedList;
 template <class T>
 class ArrayList;
 
-template <class K, class T, typename Sort = less<K>>
+template <class K, class T, typename Sort = less<K> >
 class Map :
     public GameObject
 {
@@ -35,7 +35,7 @@ public:
     virtual ~Map( void );
 
     Map& operator= ( const Map& rhs ) { _map = rhs._map; return *this; }
-    T&   operator[]( const K& key )   { return at(key); } 
+    T&   operator[]( const K& key )   { return at(key); }
 
     virtual string toString( void ) const { return "Map"; }
 
@@ -65,7 +65,7 @@ public:
     bool containsKey  ( const K& key );
     bool containsValue( const T& value );
 
-    bool empty( void ) const { return _list.empty(); }
+    bool empty( void ) const { return _map.empty(); }
 
     K& indexOf( T& item );
 
@@ -190,7 +190,7 @@ K& Map<K, T, Sort>::indexOf( T& item )
 
     for (it = cbegin(); it != cend(); ++it)
     {
-        if (it->second == value)
+        if (it->second == item)
             return it->first;
     }
 

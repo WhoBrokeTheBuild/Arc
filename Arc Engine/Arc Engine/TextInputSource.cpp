@@ -169,6 +169,8 @@ void TextInputSource::keyPressed( const Event& event )
                     dir = Direction::DIR_EAST;
 
                     break;
+                default:
+                    break;
                 }
 
                 gpEventDispatcher->dispatchEvent(Event(EVENT_TEXT_INPUT_ARROWS, TextInputData(dir)));
@@ -212,5 +214,5 @@ void TextInputSource::keyReleased( const Event& event )
 
 void TextInputSource::keyHeld( const Event& event )
 {
-    const KeyData *data = event.dataAs<KeyData>();
+    //const KeyData *data = event.dataAs<KeyData>();
 }

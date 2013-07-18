@@ -4,6 +4,7 @@
 #define __STRING_FUNC_H__
 
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -19,11 +20,18 @@ bool              strContains  ( string str, string sub );
 string basename( string fullPath );
 
 template <class Number>
-string numToString( const Number& value )
+string numToStr( const Number& value )
 {
     stringstream ss;
     ss << value;
     return ss.str();
 }
+
+string shortToStr ( const short&  value );
+string intToStr   ( const int&    value );
+string longToStr  ( const long&   value );
+string floatToStr ( const float&  value );
+string doubleToStr( const double& value );
+string boolToStr  ( const bool&   value );
 
 #endif

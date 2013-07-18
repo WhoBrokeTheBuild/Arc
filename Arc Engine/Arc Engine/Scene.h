@@ -24,7 +24,7 @@ public:
         Enabled,
         Visible;
 
-    Scene(void) { }
+    Scene( void ) { }
     virtual ~Scene( void ) { term(); }
 
     virtual void init( void );

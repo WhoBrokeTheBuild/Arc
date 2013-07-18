@@ -81,8 +81,10 @@ protected:
             _origin = Vector2(size.width(), size.halfHeight());
 
             break;
+        default:
+            break;
         }
-        
+
     }
 
 public:
@@ -90,12 +92,13 @@ public:
     int
         Frame;
 
-    bool 
+    bool
         Looping;
 
-    virtual void init( Animation* pAnimation = nullptr, Color blendColor = Color::WHITE, float rot = 0.0f, float alpha = 0.0f )
+    virtual void init( Animation* pAnimation = nullptr, bool looping = false, Color blendColor = Color::WHITE, float rot = 0.0f, float alpha = 0.0f )
     {
         Frame = 0;
+        Looping = looping;
         setAnimation(pAnimation);
         IDrawable::init(blendColor, rot, alpha);
     }
@@ -106,7 +109,7 @@ public:
             return;
 
         _animationTimeout -= elapsedMillis;
-        if (_animationTimeout < 0)
+        if (_animationTimeout <= 0)
         {
             if (!Looping && Frame == _pAnimation->length() - 1)
             {
@@ -114,7 +117,7 @@ public:
                 return;
             }
             Frame = (Frame + 1) % _pAnimation->length();
-            _animationTimeout = _pAnimation->frameAt(Frame)->FrameTime;
+            _animationTimeout = _pAnimation->Speed;
             calcOriginLocation();
         }
     }
@@ -147,7 +150,7 @@ public:
 
         if (_pAnimation->hasFrame(Frame))
         {
-            _animationTimeout = _pAnimation->frameAt(Frame)->FrameTime;
+            _animationTimeout = _pAnimation->Speed;
         }
     }
 

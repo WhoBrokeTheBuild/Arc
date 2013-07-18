@@ -22,17 +22,17 @@ public:
 
     friend ostream& operator<<( ostream& os, const GameObject& go );
 
-    void* operator new(size_t size);
+    void* operator new  (size_t size);
     void* operator new[](size_t size);
 
-    void* operator new(size_t pSize, int pLineNumber, char *pFilename);
-    void* operator new[](size_t pSize, int pLineNumber, char *pFilename);
+    void* operator new  (size_t pSize, int pLineNumber, const char *pFilename);
+    void* operator new[](size_t pSize, int pLineNumber, const char *pFilename);
 
-    void operator delete(void *ptr);
+    void operator delete  (void *ptr);
     void operator delete[](void *ptr);
 
-    void operator delete(void *pPtr, int pLineNumber, char *pFilename);
-    void operator delete[](void *pPtr, int pLineNumber, char *pFilename);
+    void operator delete  (void *pPtr, int pLineNumber, const char *pFilename);
+    void operator delete[](void *pPtr, int pLineNumber, const char *pFilename);
 
 #ifdef DEBUG
 

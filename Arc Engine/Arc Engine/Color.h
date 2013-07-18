@@ -7,7 +7,7 @@
 #include "ArcCommon.h"
 #include "GameObject.h"
 
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 class Color
     : public GameObject
@@ -22,7 +22,7 @@ private:
 
 public:
 
-    int 
+    int
         R,
         G,
         B,

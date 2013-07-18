@@ -20,7 +20,7 @@ public:
         Acc = acc;
     }
 
-    virtual void update( Vector2& pos )
+    virtual void update( Vector2& pos, double delta )
     {
         pos += Vel;
         Vel += Acc;

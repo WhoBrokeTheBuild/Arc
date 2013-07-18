@@ -28,7 +28,7 @@ public:
     typedef typename vector<T>::iterator       Iterator;
     typedef typename vector<T>::const_iterator ConstIterator;
 
-    ArrayList ( void ) { } 
+    ArrayList ( void ) { }
     ArrayList ( const ArrayList& rhs) : _list(rhs._list) { }
     virtual ~ArrayList( void );
 
@@ -129,7 +129,7 @@ bool ArrayList<T>::removeAll( const T& item )
     bool found = false;
     for (it = begin(); it != end(); ++it)
     {
-        if (it->second == value)
+        if (it->second == item)
         {
             _list.erase(it);
             found = true;

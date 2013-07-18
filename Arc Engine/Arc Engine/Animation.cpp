@@ -1,23 +1,14 @@
 #include "Animation.h"
 
-Animation::Animation( void )
-{
-}
-
-Animation::~Animation( void )
-{
-    term();
-}
-
 std::string Animation::toString( void ) const
 {
     return "Animation";
 }
 
-void Animation::init( ArrayList<Sprite*> frames, bool looping /*= false */ )
+void Animation::init( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
 {
     _frames = frames;
-    Looping = looping;
+    Speed = speed;
 }
 
 void Animation::term( void )

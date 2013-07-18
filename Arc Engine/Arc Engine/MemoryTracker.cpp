@@ -19,7 +19,7 @@ MemoryTracker::~MemoryTracker( void )
 
 }
 
-void MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber, char *filename )
+void MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber, string filename )
 {
     if (_allocations.contains(ptr))
     {
@@ -27,7 +27,7 @@ void MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber,
         return;
     }
 
-    AllocationRecord rec(_sAllocationIndex, size, lineNumber, string(filename));
+    AllocationRecord rec(_sAllocationIndex, size, lineNumber, filename);
     _allocations.add(ptr, rec);
 
     ++_sAllocationIndex;

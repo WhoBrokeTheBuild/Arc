@@ -28,7 +28,7 @@ void ArcApp::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= 
 
     gpEventDispatcher = New EventDispatcher();
 
-    _targetFPS = 60.0f;
+    _targetFPS  = 60.0f;
     _currentFPS = 0;
 
     initGraphics(windowSize, windowTitle);
@@ -60,9 +60,9 @@ void ArcApp::start( void )
 {
     _running = true;
 
-    double 
+    double
         fpsDelay = 1000.0 / _targetFPS,
-        frameDelay = 0;
+        frameDelay = 1;
 
     FrameData frameData = FrameData();
     RenderData renderData = RenderData(_pGraphicsSystem->renderTarget());

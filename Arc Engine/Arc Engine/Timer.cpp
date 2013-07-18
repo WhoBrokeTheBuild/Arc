@@ -18,7 +18,7 @@ Timer::Timer( void )
     _endCount.tv_sec = 0;
     _endCount.tv_usec = 0;
 
-#endif 
+#endif
 
     _stopped = false;
     _startTimeMicro = 0;
@@ -108,12 +108,12 @@ void Timer::sleepUntilElapsed( double millis )
 
 #ifdef WINDOWS
 
-    LARGE_INTEGER 
+    LARGE_INTEGER
         currentTime,
         lastTime;
 
-    QueryPerformanceCounter( &currentTime );
-    timeToSleep = millis - calcDiffMillis( _startCount, currentTime );
+    QueryPerformanceCounter(&currentTime);
+    timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
 
 #else
 
@@ -122,31 +122,39 @@ void Timer::sleepUntilElapsed( double millis )
         lastTime;
 
     gettimeofday(&currentTime, nullptr);
-    timeToSleep = millis - 
+    timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
 
 #endif
 
-    while ( timeToSleep > 0.0 )
+    while (timeToSleep > 0.0)
     {
         double timeElapsed;
         lastTime = currentTime;
 
 #ifdef WINDOWS
 
-        QueryPerformanceCounter( &currentTime );
-        timeElapsed = calcDiffMillis( lastTime, currentTime );
+        QueryPerformanceCounter(&currentTime);
+        timeElapsed = calcDiffMillis(lastTime, currentTime);
 
 #else
 
-        gettimeofday(&_endCount, nullptr);
-        timeElapsed = calcDiffMillis( lastTime, currentTime );
+        gettimeofday(&currentTime, nullptr);
+        timeElapsed = calcDiffMillis(lastTime, currentTime);
 
 #endif
-        timeToSleep -= timeElapsed;
+        timeToSleep -= abs(timeElapsed);
 
         if( timeToSleep > 10.0 )
         {
+#ifdef WINDOWS
+
             Sleep(10);
+
+#else
+
+            usleep(10 * 1000);
+
+#endif
         }
     }
 }
@@ -164,11 +172,11 @@ double Timer::calcDiffMillis( LARGE_INTEGER from, LARGE_INTEGER to ) const
 
 double Timer::calcDiffMillis( timeval from, timeval to ) const
 {
-    double 
-        start = (from.tv_sec * MICRO) + from.tv_usec,
-        end   = (to.tv_sec * MICRO) + to.tv_usec;
+    double
+        start = (from.tv_sec / MICRO) + from.tv_usec,
+        end   = (to.tv_sec   / MICRO) + to.tv_usec;
 
-    return (start - end) / 1000.0;
+    return (end - start) / 1000.0;
 }
 
 #endif

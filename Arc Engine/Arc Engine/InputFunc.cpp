@@ -651,6 +651,8 @@ char KeyToChar( KeyboardKey key, bool shift /*= false */ )
                 ch = ')';
 
                 break;
+            default:
+                break;
             }
         }
         else

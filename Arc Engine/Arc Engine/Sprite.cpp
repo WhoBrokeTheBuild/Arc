@@ -15,11 +15,10 @@ string Sprite::toString( void ) const
     return "Sprite";
 }
 
-void Sprite::init( Texture *texture, Rect source, double frameTime /*= 0 */ )
+void Sprite::init( Texture *texture, Rect source )
 {
     SourceRect = source;
     pTexture = texture;
-    FrameTime = frameTime;
 }
 
 void Sprite::term( void )

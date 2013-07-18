@@ -26,12 +26,12 @@ void TestApp::init( void )
     for (unsigned int i = 0; i < 8; ++i)
     {
         sprites.add(New Sprite());
-        sprites.back()->init(tex, source, 100);
+        sprites.back()->init(tex, source);
         source.X += source.Width;
     }
 
     tex->init("assets/test.png");
-    anim->init(sprites);
+    anim->init(sprites, 100);
 
     pTest = New Test();
     pTest->init(anim);
@@ -39,27 +39,27 @@ void TestApp::init( void )
     pTest->Pos = Vector2::ZERO;
     pTest->Depth = 1.0f;
 
-    pTest2 = New Test();
-    pTest2->init(anim);
-    pTest2->BlendColor = Color::RED;
-    pTest2->Pos = Vector2(100, 0);
-    pTest2->Depth = 1.0f;
+    //pTest2 = New Test();
+    //pTest2->init(anim);
+    //pTest2->BlendColor = Color::RED;
+    //pTest2->Pos = Vector2(100, 0);
+    //pTest2->Depth = 1.0f;
 
-    pTest3 = New Test();
-    pTest3->init(anim);
-    pTest3->BlendColor = Color::GREEN;
-    pTest3->Pos = Vector2(0, 300);
-    pTest3->Depth = 1.0f;
+    //pTest3 = New Test();
+    //pTest3->init(anim);
+    //pTest3->BlendColor = Color::GREEN;
+    //pTest3->Pos = Vector2(0, 300);
+    //pTest3->Depth = 1.0f;
 
-    pTest4 = New Test();
-    pTest4->init(anim);
-    pTest4->BlendColor = Color::BLACK;
-    pTest4->Pos = Vector2(100, 300);
+    //pTest4 = New Test();
+    //pTest4->init(anim);
+    //pTest4->BlendColor = Color::BLACK;
+    //pTest4->Pos = Vector2(100, 300);
 
     scene->addUnit(pTest, 1);
-    scene->addUnit(pTest2, 1);
-    scene->addUnit(pTest3, 0);
-    scene->addUnit(pTest4, 0);
+    //scene->addUnit(pTest2, 1);
+    //scene->addUnit(pTest3, 0);
+    //scene->addUnit(pTest4, 0);
 }
 
 void TestApp::term( void )
@@ -79,6 +79,7 @@ void TestApp::term( void )
 
 void TestApp::update( const Event& event )
 {
+    //const FrameData* data = event.dataAs<FrameData>();
 }
 
 void TestApp::render( const Event& event )
@@ -100,6 +101,8 @@ void TestApp::keyPressed( const Event& event )
 
         scene->toggleLayerEnabled(0);
 
+        break;
+    default:
         break;
     }
 }

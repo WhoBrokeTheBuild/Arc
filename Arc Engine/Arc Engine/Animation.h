@@ -20,15 +20,15 @@ private:
 
 public:
 
-    bool
-        Looping;
+    double
+        Speed;
 
-    Animation( void );
-    virtual ~Animation( void );
+    Animation( void ) { }
+    virtual ~Animation( void ) { term(); }
 
     virtual string toString( void ) const;
 
-    virtual void init( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), bool looping = false );
+    virtual void init( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), double speed = -1.0 );
     virtual void term( void );
 
     virtual bool hasFrame   ( int frame );

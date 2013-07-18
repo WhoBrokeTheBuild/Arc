@@ -19,7 +19,6 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
     _windowTitle = windowTitle;
     _fullscreen  = false;
     _clearColor  = Color::STORM;
-    _screenBPP   = 32;
 
     if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
     {
@@ -31,15 +30,15 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,         8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,          8);
     SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE,         8);
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,         16);
+
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,         24);
     SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE,        32);
+
     SDL_GL_SetAttribute(SDL_GL_ACCUM_RED_SIZE,     8);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_GREEN_SIZE,   8);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_BLUE_SIZE,    8);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_ALPHA_SIZE,   8);
 
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,       1);
 
     setWindowTitle(_windowTitle);
@@ -150,11 +149,38 @@ void GraphicsSystem::resetGL( void )
 
 void GraphicsSystem::resetVideoMode( void )
 {
-    int flags = 0;
+    unsigned int flags = 0;
 
-    flags |= SDL_HWSURFACE;
-    flags |= SDL_GL_DOUBLEBUFFER;
+    const SDL_VideoInfo* info = SDL_GetVideoInfo();
+
+    if (!info)
+    {
+        stringstream ss;
+        ss << "Failed to query SDL video info (" << SDL_GetError() << ")";
+
+        ERR(toString(), ss.str());
+        die();
+    }
+
+    _screenBPP = info->vfmt->BitsPerPixel;
+
     flags |= SDL_OPENGL;
+    flags |= SDL_DOUBLEBUF;
+    flags |= SDL_HWPALETTE;
+
+    if (info->hw_available)
+    {
+        flags |= SDL_HWSURFACE;
+    }
+    else
+    {
+        flags |= SDL_SWSURFACE;
+    }
+
+    if (info->blit_hw)
+    {
+        flags |= SDL_HWACCEL;
+    }
 
     if (_fullscreen)
     {
@@ -163,7 +189,10 @@ void GraphicsSystem::resetVideoMode( void )
 
     if (SDL_SetVideoMode((int)_windowSize.X, (int)_windowSize.Y, _screenBPP, flags) == nullptr)
     {
-        ERR(toString(), "Failed to set SDL video mode");
+        stringstream ss;
+        ss << "Failed to set SDL video mode (" << SDL_GetError() << ")";
+
+        ERR(toString(), ss.str());
         die();
     }
 }

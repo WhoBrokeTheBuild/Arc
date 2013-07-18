@@ -7,7 +7,6 @@
 #include "Defines.h"
 
 #include <iostream>
-#include <conio.h>
 
 #include "TimeFunc.h"
 #include "MathFunc.h"
@@ -35,10 +34,7 @@ using namespace std;
 
 inline void noop ( void ) { }
 void die  ( int errorLevel = 0 );
-void pause( void );
-
-template <typename T>
-bool isType( const void* object ) { return ( const T* convert = dynamic_cast<const T*>(object) ); }
+void pause( const string msg = "Press enter to continue" );
 
 template <typename Value>
 bool arrayContains(unsigned int size, const Value list[], const Value& element)
@@ -64,4 +60,4 @@ int arrayIndexOf(unsigned int size, const Value list[], const Value& element)
     return -1;
 }
 
-#endif 
+#endif

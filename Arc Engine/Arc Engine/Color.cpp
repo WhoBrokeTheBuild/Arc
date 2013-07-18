@@ -76,6 +76,6 @@ void Color::setByte( int r, int g, int b, int a )
 
 SDL_Color Color::SDLColor( void )
 {
-    SDL_Color color = { R, G, B, A };
+    SDL_Color color = { (uint8_t)R, (uint8_t)G, (uint8_t)B, (uint8_t)A };
     return color;
 }

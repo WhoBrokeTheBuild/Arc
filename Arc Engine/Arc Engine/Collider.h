@@ -9,6 +9,8 @@ class Collider
 {
 public:
 
+    virtual ~Collider( void ) { }
+
     virtual bool check( Vector2 pos, Collider* pOther ) = 0;
 
 };

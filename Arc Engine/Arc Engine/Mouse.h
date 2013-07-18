@@ -4,11 +4,11 @@
 #define __MOUSE_H__
 
 #include <string>
-#include <SDL.h>
+#include <SDL/SDL.h>
 
 using namespace std;
 
-const int 
+const int
     MOUSE_WHEEL_DOWN = 4,
     MOUSE_WHEEL_UP   = 5;
 
@@ -23,7 +23,7 @@ enum MouseButton
     NUM_MOUSE_BUTTONS
 };
 
-const string MOUSE_BUTTON_NAMES[NUM_MOUSE_BUTTONS] = 
+const string MOUSE_BUTTON_NAMES[NUM_MOUSE_BUTTONS] =
 {
     "Left Button",
     "Middle Button",

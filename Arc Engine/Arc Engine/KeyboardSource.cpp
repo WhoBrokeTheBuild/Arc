@@ -50,7 +50,7 @@ void KeyboardSource::update( const Event& event )
         key    =  it->first;
         pState = &it->second;
 
-        down = (_sdlKeys[KeyToSDLKey(key)] == TRUE);
+        down = (_sdlKeys[KeyToSDLKey(key)] == 1);
 
         pState->Pressed  = false;
         pState->Released = false;

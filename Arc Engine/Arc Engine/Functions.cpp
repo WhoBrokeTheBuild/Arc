@@ -6,9 +6,10 @@ void die( int errorLevel /*= 0*/ )
     exit(errorLevel);
 }
 
-void pause( void )
+void pause( const string msg /*= "Press enter to continue"*/ )
 {
-    cout << "Press any key to continue";
-    _getch();
+    static string tmp;
+    cout << msg;
+    getline(cin, tmp);
     cout << endl;
 }

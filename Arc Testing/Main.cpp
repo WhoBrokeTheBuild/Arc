@@ -4,6 +4,8 @@
 #include <MemoryTracker.h>
 #include "TestApp.h"
 
+#ifdef WINDOWS
+
 #pragma comment(lib, "Arc Engine.lib")
 #pragma comment(lib, "SDL.lib")
 #pragma comment(lib, "SDLmain.lib")
@@ -13,9 +15,10 @@
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glu32.lib")
 
+#endif
+
 int main(int argc, char *argv[])
 {
-
 #ifdef DEBUG
 
     init_console();
@@ -51,5 +54,4 @@ int main(int argc, char *argv[])
 #endif
 
     return 0;
-
 }
