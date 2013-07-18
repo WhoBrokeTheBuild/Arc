@@ -134,3 +134,24 @@ Vector2 Vector2::lerp( Vector2 other, float fraction )
     using ::lerp;
     return Vector2(lerp(X, other.X, fraction), lerp(Y, other.Y, fraction));
 }
+
+Vector2 Vector2::normL( const Vector2 &other)
+{
+	float dx = other.X - X;
+	float dy = other.Y - Y;
+
+	return Vector2(-dy, dx);
+}
+
+Vector2 Vector2::normR( const Vector2 &other)
+{
+	float dx = other.X - X;
+	float dy = other.Y - Y;
+
+	return Vector2(dy, -dx);
+}
+
+float Vector2::dot( const Vector2 &rhs )
+{
+	return (X * rhs.X) + (Y * rhs.Y);
+}
