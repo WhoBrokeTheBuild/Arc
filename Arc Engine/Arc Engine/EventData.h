@@ -1,175 +1,178 @@
 #pragma once
 
-#ifndef __EVENT_DATA_H__
-#define __EVENT_DATA_H__
+#ifndef __ARC_EVENT_DATA_H__
+#define __ARC_EVENT_DATA_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "GameObject.h"
 
 #include "RenderTarget.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 
-class EventData
-    : public GameObject
+namespace Arc
 {
-public:
+    class EventData
+        : public GameObject
+    {
+    public:
 
-    virtual string toString( void ) const { return "Event Data"; };
+        virtual string toString( void ) const { return "Event Data"; };
 
-    virtual EventData* clone( void ) const { return New EventData(); };
+        virtual EventData* clone( void ) const { return New EventData(); };
 
-};
-
-class PointData
-    : public EventData
-{
-public:
-
-    float 
-        X,
-        Y;
-
-    PointData( float x, float y ) { X = x; Y = y; };
-    PointData( Vector2 point ) { X = point.X; Y = point.Y; };
-
-    Vector2 vector2( void ) { return Vector2(X, Y); };
-
-    virtual string toString( void ) const 
-    { 
-        stringstream ss;
-        ss << "Point Data [X: " << X << ", Y: " << Y << "]";
-        return ss.str();
     };
 
-    virtual EventData* clone( void ) const { return New PointData(X, Y); };
+    class PointData
+        : public EventData
+    {
+    public:
 
-};
+        float
+            X,
+            Y;
 
-class CountData
-    : public EventData
-{
-public:
+        PointData( float x, float y ) { X = x; Y = y; };
+        PointData( Vector2 point ) { X = point.X; Y = point.Y; };
 
-    int 
-        Count;
+        Vector2 vector2( void ) { return Vector2(X, Y); };
 
-    CountData( int count ) { Count = count; };
+        virtual string toString( void ) const
+        {
+            stringstream ss;
+            ss << "Point Data [X: " << X << ", Y: " << Y << "]";
+            return ss.str();
+        };
 
-    virtual string toString( void ) const 
-    { 
-        stringstream ss;
-        ss << "Count Data [Count: " << Count << "]";
-        return ss.str();
+        virtual EventData* clone( void ) const { return New PointData(X, Y); };
+
     };
 
-    virtual EventData* clone( void ) { return New CountData(Count); };
-
-};
-
-class FrameData :
-    public EventData
-{
-private:
-
-    double
-        _totalMilliseconds,
-        _elapsedMilliseconds,
-        _deltaTime;
-
-public:
-
-    FrameData( void )
+    class CountData
+        : public EventData
     {
-        _totalMilliseconds   = 0;
-        _elapsedMilliseconds = 0;
-        _deltaTime = 0;
-    }
+    public:
 
-    FrameData( double totalMillis, double elapsedMillis, double deltaTime )
+        int
+            Count;
+
+        CountData( int count ) { Count = count; };
+
+        virtual string toString( void ) const
+        {
+            stringstream ss;
+            ss << "Count Data [Count: " << Count << "]";
+            return ss.str();
+        };
+
+        virtual EventData* clone( void ) { return New CountData(Count); };
+
+    };
+
+    class FrameData :
+        public EventData
     {
-        _totalMilliseconds   = totalMillis;
-        _elapsedMilliseconds = elapsedMillis;
-        _deltaTime           = deltaTime;
-    }
+    private:
 
-    virtual string toString( void ) const { return "Frame Data"; }
+        double
+            _totalMilliseconds,
+            _elapsedMilliseconds,
+            _deltaTime;
 
-    virtual EventData* clone( void ) const { return New FrameData(_totalMilliseconds, _elapsedMilliseconds, _deltaTime); }
+    public:
 
-    inline void update(double elapsedMillis, double currFPS, double targetFPS)
+        FrameData( void )
+        {
+            _totalMilliseconds   = 0;
+            _elapsedMilliseconds = 0;
+            _deltaTime = 0;
+        }
+
+        FrameData( double totalMillis, double elapsedMillis, double deltaTime )
+        {
+            _totalMilliseconds   = totalMillis;
+            _elapsedMilliseconds = elapsedMillis;
+            _deltaTime           = deltaTime;
+        }
+
+        virtual string toString( void ) const { return "Frame Data"; }
+
+        virtual EventData* clone( void ) const { return New FrameData(_totalMilliseconds, _elapsedMilliseconds, _deltaTime); }
+
+        inline void update(double elapsedMillis, double currFPS, double targetFPS)
+        {
+            _elapsedMilliseconds = elapsedMillis;
+            _totalMilliseconds += elapsedMillis;
+            _deltaTime = targetFPS / currFPS;
+        }
+
+        double totalSeconds  ( void ) const { return _totalMilliseconds   / 1000.0; }
+        double elapsedSeconds( void ) const { return _elapsedMilliseconds / 1000.0; }
+
+        double totalMilliseconds  ( void ) const { return _totalMilliseconds; }
+        double elapsedMilliseconds( void ) const { return _elapsedMilliseconds; }
+
+        double deltaTime( void ) const { return _deltaTime; }
+
+    };
+
+    class RenderData
+        : public EventData
     {
-        _elapsedMilliseconds = elapsedMillis;
-        _totalMilliseconds += elapsedMillis;
-        _deltaTime = targetFPS / currFPS;
-    }
+    private:
 
-    double totalSeconds  ( void ) const { return _totalMilliseconds   / 1000.0; }
-    double elapsedSeconds( void ) const { return _elapsedMilliseconds / 1000.0; }
+        RenderTarget
+            *_pRenderTarget;
 
-    double totalMilliseconds  ( void ) const { return _totalMilliseconds; }
-    double elapsedMilliseconds( void ) const { return _elapsedMilliseconds; }
+    public:
 
-    double deltaTime( void ) const { return _deltaTime; }
+        RenderData( RenderTarget *pRenderTarget ) { _pRenderTarget = pRenderTarget; }
 
-};
+        virtual string toString( void ) const { return "Render Data"; }
 
-class RenderData
-    : public EventData
-{
-private:
+        virtual EventData* clone( void ) const { return New RenderData(_pRenderTarget); }
 
-    RenderTarget
-        *_pRenderTarget;
+        virtual RenderTarget* renderTarget( void ) const { return _pRenderTarget; }
 
-public:
+    };
 
-    RenderData( RenderTarget *pRenderTarget ) { _pRenderTarget = pRenderTarget; }
+    class KeyData
+        : public EventData
+    {
+    public:
 
-    virtual string toString( void ) const { return "Render Data"; }
+        KeyboardKey
+            Key;
 
-    virtual EventData* clone( void ) const { return New RenderData(_pRenderTarget); }
+        KeyData( KeyboardKey key ) { Key = key; }
 
-    virtual RenderTarget* renderTarget( void ) const { return _pRenderTarget; }
+        virtual string toString( void ) const { return "Key Data"; }
 
-};
+        virtual EventData* clone( void ) const { return New KeyData(Key); }
 
-class KeyData
-    : public EventData
-{
-public:
+    };
 
-    KeyboardKey
-        Key;
+    class MouseData
+        : public EventData
+    {
+    private:
 
-    KeyData( KeyboardKey key ) { Key = key; }
+    public:
 
-    virtual string toString( void ) const { return "Key Data"; }
+        Vector2
+            Pos,
+            Delta;
 
-    virtual EventData* clone( void ) const { return New KeyData(Key); }
+        MouseButton
+            Button;
 
-};
+        MouseData( Vector2 pos, Vector2 delta, MouseButton button = INVALID_MOUSE_BUTTON ) { Pos = pos; Delta = delta; Button = button; }
 
-class MouseData
-    : public EventData
-{
-private:
+        virtual string toString( void ) const { return "Mouse Data"; }
 
-public:
+        virtual EventData* clone( void ) const { return New MouseData(Pos, Delta, Button); }
 
-    Vector2 
-        Pos,
-        Delta;
-
-    MouseButton
-        Button;
-
-    MouseData( Vector2 pos, Vector2 delta, MouseButton button = INVALID_MOUSE_BUTTON ) { Pos = pos; Delta = delta; Button = button; }
-
-    virtual string toString( void ) const { return "Mouse Data"; }
-
-    virtual EventData* clone( void ) const { return New MouseData(Pos, Delta, Button); }
-
-};
+    };
+}
 
 #endif

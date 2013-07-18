@@ -1,26 +1,21 @@
 #include "Sprite.h"
 
-Sprite::Sprite( void )
+Arc::Sprite::Sprite( void )
 {
     pTexture = nullptr;
 }
 
-Sprite::~Sprite( void )
-{
-    term();
-}
-
-string Sprite::toString( void ) const
+Arc::string Sprite::toString( void ) const
 {
     return "Sprite";
 }
 
-void Sprite::init( Texture *texture, Rect source )
+void Arc::Sprite::init( Texture *texture, Rect source )
 {
     SourceRect = source;
     pTexture = texture;
 }
 
-void Sprite::term( void )
+void Arc::Sprite::term( void )
 {
 }

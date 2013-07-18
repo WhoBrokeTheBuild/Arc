@@ -1,17 +1,17 @@
 #include "EventDispatcher.h"
 #include "Event.h"
 
-EventDispatcher* gpEventDispatcher = nullptr;
+Arc::EventDispatcher* gpEventDispatcher = nullptr;
 
-ArrayList<EventDispatcher*> EventDispatcher::_sDispatchers = ArrayList<EventDispatcher*>();
+Arc::ArrayList<Arc::EventDispatcher*> Arc::EventDispatcher::_sDispatchers = Arc::ArrayList<Arc::EventDispatcher*>();
 
-EventDispatcher::EventDispatcher( void )
+Arc::EventDispatcher::EventDispatcher( void )
 {
     _changed = false;
     _sDispatchers.add(this);
 }
 
-EventDispatcher::~EventDispatcher( void )
+Arc::EventDispatcher::~EventDispatcher( void )
 {
     _sDispatchers.remove(this);
     removeAllListeners();
@@ -22,7 +22,7 @@ std::string EventDispatcher::toString( void ) const
     return "Event Dispatcher";
 }
 
-void EventDispatcher::addEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
+void Arc::EventDispatcher::addEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
     if (!_eventMap.contains(eventType))
         _eventMap[eventType] = EventListenerList();
@@ -40,7 +40,7 @@ void EventDispatcher::addEventListener( const EventType& eventType, const EventD
     _eventMap[eventType].add(New EventDelegate(functionDelegate));
 }
 
-void EventDispatcher::removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
+void Arc::EventDispatcher::removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
     if (!_eventMap.contains(eventType))
         return;
@@ -61,17 +61,17 @@ void EventDispatcher::removeEventListener( const EventType& eventType, const Eve
     }
 }
 
-void EventDispatcher::removeEventListener( const EventType& eventType, void (*function)(const Event&) )
+void Arc::EventDispatcher::removeEventListener( const EventType& eventType, void (*function)(const Event&) )
 {
     removeEventListener(eventType, EventDelegate(function));
 }
 
-void EventDispatcher::addEventListener( const EventType& eventType, void (*function)(const Event&) )
+void Arc::EventDispatcher::addEventListener( const EventType& eventType, void (*function)(const Event&) )
 {
     addEventListener(eventType, EventDelegate(function));
 }
 
-void EventDispatcher::removeAllListeners( void )
+void Arc::EventDispatcher::removeAllListeners( void )
 {
     EventMap::Iterator          mapIt;
     EventListenerList::Iterator listIt;
@@ -93,7 +93,7 @@ void EventDispatcher::removeAllListeners( void )
     _eventMap.clear();
 }
 
-void EventDispatcher::removeAllListeners( const EventType& eventType )
+void Arc::EventDispatcher::removeAllListeners( const EventType& eventType )
 {
     if (!_eventMap.contains(eventType))
         return;
@@ -113,7 +113,7 @@ void EventDispatcher::removeAllListeners( const EventType& eventType )
     _changed = true;
 }
 
-void EventDispatcher::dispatchEvent( const Event& event )
+void Arc::EventDispatcher::dispatchEvent( const Event& event )
 {
     EventType type = event.type();
 
@@ -132,7 +132,7 @@ void EventDispatcher::dispatchEvent( const Event& event )
     }
 }
 
-void EventDispatcher::cleanMap( void )
+void Arc::EventDispatcher::cleanMap( void )
 {
     if (!_changed)
         return;

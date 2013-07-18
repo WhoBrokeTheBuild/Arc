@@ -1,59 +1,62 @@
 #pragma once
 
-#ifndef __EVENT_H__
-#define __EVENT_H__
+#ifndef __ARC_EVENT_H__
+#define __ARC_EVENT_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "GameObject.h"
 
 #include "EventData.h"
 
-typedef string EventType;
-
-class EventDispatcher;
-
-class Event :
-    public GameObject
+namespace Arc
 {
+    typedef string EventType;
 
-    friend class EventDispatcher;
+    class EventDispatcher;
 
-protected:
+    class Event :
+        public GameObject
+    {
 
-    EventDispatcher
-        *_pEventTarget;
+        friend class EventDispatcher;
 
-    EventType
-        _type;
+    protected:
 
-    EventData
-        *_pData;
+        EventDispatcher
+            *_pEventTarget;
 
-public:
+        EventType
+            _type;
 
-    static const EventType EVENT_NULL;
+        EventData
+            *_pData;
 
-    static const EventData BLANK_DATA;
-    static const Event     BLANK_EVENT;
+    public:
 
-    Event( const EventType &type = EVENT_NULL, const EventData &data = BLANK_DATA );
-    Event( const Event &rhs);
-    virtual ~Event( void );
+        static const EventType EVENT_NULL;
 
-    virtual string toString( void ) const;
+        static const EventData BLANK_DATA;
+        static const Event     BLANK_EVENT;
 
-    inline EventType type( void ) const { return _type; };
-    inline EventDispatcher *target( void ) const { return _pEventTarget; };
-    inline void setTarget( EventDispatcher* target ) { _pEventTarget = target; }
+        Event( const EventType &type = EVENT_NULL, const EventData &data = BLANK_DATA );
+        Event( const Event &rhs);
+        virtual ~Event( void )
 
-    template <typename T>
-    inline T* targetAs( void ) const { return dynamic_cast<T*>(_pEventTarget); };
+        virtual string toString( void ) const;
 
-    inline const EventData *data( void ) const { return _pData; };
+        inline EventType type( void ) const { return _type; };
+        inline EventDispatcher *target( void ) const { return _pEventTarget; };
+        inline void setTarget( EventDispatcher* target ) { _pEventTarget = target; }
 
-    template <typename T>
-    inline const T* dataAs( void ) const { return dynamic_cast<const T*>(_pData); };
+        template <typename T>
+        inline T* targetAs( void ) const { return dynamic_cast<T*>(_pEventTarget); };
 
-};
+        inline const EventData *data( void ) const { return _pData; };
+
+        template <typename T>
+        inline const T* dataAs( void ) const { return dynamic_cast<const T*>(_pData); };
+
+    };
+}
 
 #endif

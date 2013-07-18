@@ -1,21 +1,23 @@
-
 #pragma once
 
-#ifndef __MANAGER_H__
-#define __MANAGER_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_MANAGER_H__
+#define __ARC_MANAGER_H__
+
+#include "Common.h"
 
 #include <map>
 
 template <class T>
 class Manager :
-    public GameObject 
+    public GameObject
 {
 
 protected:
 
-    map<ItemKey, T*> 
+    map<ItemKey, T*>
         *mObjects;
 
     static int
@@ -25,8 +27,8 @@ protected:
 
 public:
 
-    Manager( void );
-    virtual ~Manager( void );
+    Manager( void ) { }
+    virtual ~Manager( void ) { term(); }
 
     virtual void init( void );
     virtual void term( void );
@@ -46,7 +48,7 @@ public:
     vector<T*>      getAllItems( void );
     vector<ItemKey> getAllKeys( void );
 
-    void clear( void ); 
+    void clear( void );
 
 };
 
@@ -54,22 +56,11 @@ template <class T>
 int Manager<T>::mNextIndex = 0;
 
 template <class T>
-Manager<T>::Manager( void )
-{
-}
-
-template <class T>
-Manager<T>::~Manager( void )
-{
-    term();
-}
-
-template <class T>
 ItemKey Manager<T>::getNextKey( void )
 {
     ItemKey newKey;
     stringstream ss;
-    do 
+    do
     {
         ss.str(string());
         ss.clear();
@@ -77,7 +68,7 @@ ItemKey Manager<T>::getNextKey( void )
         newKey = ss.str();
 
         ++mNextIndex;
-    } 
+    }
     while (contains(newKey));
 
     return newKey;
@@ -216,3 +207,5 @@ void Manager<T>::clear( void )
 }
 
 #endif //__MANAGER_H__
+
+}

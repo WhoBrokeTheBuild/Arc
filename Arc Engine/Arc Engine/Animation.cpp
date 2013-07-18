@@ -1,21 +1,16 @@
 #include "Animation.h"
 
-std::string Animation::toString( void ) const
-{
-    return "Animation";
-}
-
-void Animation::init( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
+void Arc::Animation::init( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
 {
     _frames = frames;
     Speed = speed;
 }
 
-void Animation::term( void )
+void Arc::Animation::term( void )
 {
 }
 
-Size Animation::frameSize( int frame )
+Size Arc::Animation::frameSize( int frame )
 {
     if (hasFrame(frame))
     {
@@ -25,7 +20,7 @@ Size Animation::frameSize( int frame )
     return Size::ZERO;
 }
 
-Sprite* Animation::frameAt( int frame )
+Sprite* Arc::Animation::frameAt( int frame )
 {
     if (hasFrame(frame))
     {
@@ -35,7 +30,7 @@ Sprite* Animation::frameAt( int frame )
     return nullptr;
 }
 
-bool Animation::hasFrame( int frame )
+bool Arc::Animation::hasFrame( int frame )
 {
     if (_frames.empty())
         return false;
@@ -43,17 +38,17 @@ bool Animation::hasFrame( int frame )
     return between(frame, 0, (int)_frames.size());
 }
 
-void Animation::addFrame( Sprite* frame )
+void Arc::Animation::addFrame( Sprite* frame )
 {
     _frames.add(frame);
 }
 
-bool Animation::removeFrame( Sprite* frame )
+bool Arc::Animation::removeFrame( Sprite* frame )
 {
     return _frames.remove(frame);
 }
 
-bool Animation::removeFrame( int frame )
+bool Arc::Animation::removeFrame( int frame )
 {
     return _frames.removeAt(frame);;
 }

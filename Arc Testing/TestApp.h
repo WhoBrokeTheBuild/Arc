@@ -1,12 +1,12 @@
 #pragma once
 
-#include <ArcApp.h>
+#include <Arc/Program.h>
 #include "Test.h"
-#include <Scene.h>
-#include <Sound.h>
+#include <Arc/Scene.h>
+#include <Arc/Sound.h>
 
 class TestApp :
-    public ArcApp,
+    public Program,
     public IKeyboardListener
 {
 public:

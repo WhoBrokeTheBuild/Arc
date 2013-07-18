@@ -1,30 +1,30 @@
 #include "Event.h"
 #include "EventDispatcher.h"
 
-const EventType Event::EVENT_NULL = "null";
+const EventType Arc::Event::EVENT_NULL = "null";
 
-const EventData Event::BLANK_DATA  = EventData();
-const Event     Event::BLANK_EVENT = Event(EVENT_NULL, BLANK_DATA);
+const EventData Arc::Event::BLANK_DATA  = EventData();
+const Event     Arc::Event::BLANK_EVENT = Event(EVENT_NULL, BLANK_DATA);
 
-Event::Event( const EventType &type /*= EVENT_NULL*/, const EventData &data /*= BLANK_DATA*/ )
+Arc::Event::Event( const EventType &type /*= EVENT_NULL*/, const EventData &data /*= BLANK_DATA*/ )
 {
     _type = type;
     _pData = data.clone();
 }
 
-Event::Event( const Event &rhs )
+Arc::Event::Event( const Event &rhs )
 {
     _type = rhs._type;
     _pData = (rhs._pData != nullptr ? rhs._pData->clone() : nullptr);
 }
 
-Event::~Event( void )
+Arc::Event::~Event( void )
 {
     if (_pData != nullptr)
         delete _pData;
 }
 
-std::string Event::toString( void ) const
+std::string Arc::Event::toString( void ) const
 {
     return "Event";
 }

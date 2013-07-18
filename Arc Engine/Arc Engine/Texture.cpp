@@ -4,43 +4,43 @@
 #include "GraphicsSystem.h"
 #include "Event.h"
 
-Texture::Texture( void )
+Arc::Texture::Texture( void )
 {
     _size = Size::ZERO;
     _filename = "<empty>";
 }
 
-Texture::~Texture( void )
+Arc::Texture::~Texture( void )
 {
     term();
 }
 
-std::string Texture::toString( void ) const
+std::string Arc::Texture::toString( void ) const
 {
     stringstream ss;
     ss << "Texture [File: " << _filename << "]";
     return ss.str();
 }
 
-void Texture::init( string filename )
+void Arc::Texture::init( string filename )
 {
     load(filename);
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
 }
 
-void Texture::init( SDL_Surface* pSurface )
+void Arc::Texture::init( SDL_Surface* pSurface )
 {
     load(pSurface);
 }
 
-void Texture::term( void )
+void Arc::Texture::term( void )
 {
     gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
 
     deleteTexture();
 }
 
-void Texture::load( string filename )
+void Arc::Texture::load( string filename )
 {
     _filename = filename;
 
@@ -58,7 +58,7 @@ void Texture::load( string filename )
     SDL_FreeSurface(surface);
 }
 
-void Texture::load( SDL_Surface* pSurface )
+void Arc::Texture::load( SDL_Surface* pSurface )
 {
     if (_filename == "")
         _filename = "<generated>";
@@ -77,7 +77,7 @@ void Texture::load( SDL_Surface* pSurface )
 
     GLenum mode = GL_RGB;
 
-    if (pSurface->format->BytesPerPixel == 4) 
+    if (pSurface->format->BytesPerPixel == 4)
     {
         mode = GL_RGBA;
     }
@@ -90,7 +90,7 @@ void Texture::load( SDL_Surface* pSurface )
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,  GL_LINEAR);
 }
 
-void Texture::graphicsReset( const Event& event )
+void Arc::Texture::graphicsReset( const Event& event )
 {
     if (_filename != "" && _filename[0] != '<') // Prevent <generated> and <empty>
     {
@@ -99,7 +99,7 @@ void Texture::graphicsReset( const Event& event )
     }
 }
 
-void Texture::deleteTexture( void )
+void Arc::Texture::deleteTexture( void )
 {
     if (_texture != OPENGL_INVALID_TEXTURE)
         glDeleteTextures(1, &_texture);

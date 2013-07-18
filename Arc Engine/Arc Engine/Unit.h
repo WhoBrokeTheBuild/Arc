@@ -1,6 +1,9 @@
 #pragma once
 
-#include "ArcCommon.h"
+namespace Arc
+{
+
+#include "Common.h"
 #include "EventDispatcher.h"
 
 class Unit :
@@ -25,3 +28,4 @@ public:
 
 };
 
+}

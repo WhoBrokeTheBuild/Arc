@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __INPUT_STATE_H__
-#define __INPUT_STATE_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_INPUT_STATE_H__
+#define __ARC_INPUT_STATE_H__
+
+#include "Common.h"
 #include "GameObject.h"
 
 struct InputState
@@ -27,3 +30,5 @@ struct InputState
 };
 
 #endif
+
+}

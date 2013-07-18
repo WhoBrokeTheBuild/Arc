@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __SCENE_H__
-#define __SCENE_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_SCENE_H__
+#define __ARC_SCENE_H__
+
+#include "Common.h"
 #include "EventDispatcher.h"
 #include "IFrameListener.h"
 
@@ -63,3 +66,5 @@ public:
 };
 
 #endif
+
+}

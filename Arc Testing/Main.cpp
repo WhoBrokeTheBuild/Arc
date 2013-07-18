@@ -1,8 +1,4 @@
-
-#include <ArcCommon.h>
-#include <Console.h>
-#include <MemoryTracker.h>
-#include "TestApp.h"
+#include "Common.h"
 
 #ifdef WINDOWS
 

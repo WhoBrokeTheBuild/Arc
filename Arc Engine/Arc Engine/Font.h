@@ -1,47 +1,50 @@
 #pragma once
 
-#ifndef __FONT_H__
-#define __FONT_H__
+#ifndef __ARC_FONT_H__
+#define __ARC_FONT_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "GameObject.h"
 
 #include <SDL/SDL_ttf.h>
 
-class RenderTarget;
-class CachedText;
-
-class Font :
-    public GameObject
+namespace Arc
 {
+    class RenderTarget;
+    class CachedText;
 
-    friend class RenderTarget;
-    friend class CachedText;
+    class Font :
+        public GameObject
+    {
 
-private:
+        friend class RenderTarget;
+        friend class CachedText;
 
-    string
-        _filename;
+    private:
 
-    TTF_Font
-        *_pFont;
+        string
+            _filename;
 
-    int
-        _size;
+        TTF_Font
+            *_pFont;
 
-    virtual TTF_Font* SDLFont( void ) const { return _pFont; }
+        int
+            _size;
 
-public:
+        virtual TTF_Font* SDLFont( void ) const { return _pFont; }
 
-    Font( string filename, int size );
-    virtual ~Font( void );
+    public:
 
-    virtual string toString( void ) const;
+        Font( string filename, int size );
+        virtual ~Font( void );
 
-    virtual int size( void ) const { return _size; }
+        virtual string toString( void ) const;
 
-    virtual Size measureString( string text );
+        virtual int size( void ) const { return _size; }
 
-};
+        virtual Size measureString( string text );
+
+    };
+}
 
 #endif

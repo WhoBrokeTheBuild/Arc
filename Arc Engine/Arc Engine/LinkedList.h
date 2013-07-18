@@ -1,11 +1,15 @@
 #pragma once
 
-#ifndef __LINKED_LIST_H__
-#define __LINKED_LIST_H__
-
-#include "ArcCommon.h"
 #include <list>
 #include <algorithm>
+
+namespace Arc
+{
+
+#ifndef __ARC_LINKED_LIST_H__
+#define __ARC_LINKED_LIST_H__
+
+#include "Common.h"
 
 template <class T>
 class ArrayList;
@@ -227,3 +231,5 @@ Queue<T> LinkedList<T>::toQueue( unsigned int& length )
 }
 
 #endif
+
+}

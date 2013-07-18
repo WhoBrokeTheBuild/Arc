@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __CIRCLE_H__
-#define __CIRCLE_H__
+#ifndef __ARC_CIRCLE_H__
+#define __ARC_CIRCLE_H__
 
 #include "GameObject.h"
 #include "Vector2.h"
@@ -19,7 +19,7 @@ public:
         ZERO,
         ONE;
 
-    float 
+    float
         X,
         Y,
         Radius;

@@ -1,8 +1,8 @@
 
 #pragma once
 
-#ifndef __FUNCTIONS_H__
-#define __FUNCTIONS_H__
+#ifndef __ARC_FUNCTIONS_H__
+#define __ARC_FUNCTIONS_H__
 
 #include "Defines.h"
 
@@ -20,10 +20,10 @@ using namespace std;
 #ifdef DEBUG
 
     #define ERR(SRC, MSG) \
-        cerr << "[" << SRC << "] Error: " << MSG << " (In " << basename(__FILE__) << " on line " << __LINE__ << ")" << endl;
+        cerr << "[" << SRC << "] Error: " << MSG << " (In " << basename(__FILE__) << " on line " << __ARC_LINE__ << ")" << endl;
 
     #define INF(SRC, MSG) \
-        cout << "[" << SRC << "] Info: " << MSG << " (In " << basename(__FILE__) << " on line " << __LINE__ << ")" << endl;
+        cout << "[" << SRC << "] Info: " << MSG << " (In " << basename(__FILE__) << " on line " << __ARC_LINE__ << ")" << endl;
 
 #else
 

@@ -1,12 +1,15 @@
 #pragma once
 
-#ifndef __ARRAY_LIST_H__
-#define __ARRAY_LIST_H__
-
-#include "ArcCommon.h"
-#include "GameObject.h"
-
 #include <vector>
+
+namespace Arc
+{
+
+#ifndef __ARC_ARRAY_LIST_H__
+#define __ARC_ARRAY_LIST_H__
+
+#include "Common.h"
+#include "GameObject.h"
 
 template <class T>
 class LinkedList;
@@ -227,3 +230,5 @@ Queue<T> ArrayList<T>::toQueue( unsigned int& length )
 }
 
 #endif
+
+}

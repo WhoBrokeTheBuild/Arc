@@ -1,6 +1,6 @@
 #include "AudioSystem.h"
 
-void AudioSystem::init( void )
+void Arc::AudioSystem::init( void )
 {
     INF(toString(), "Initializing");
 
@@ -21,8 +21,7 @@ void AudioSystem::init( void )
     INF(toString(), "Complete");
 }
 
-void AudioSystem::term( void )
+void Arc::AudioSystem::term( void )
 {
     Mix_CloseAudio();
 }
- 

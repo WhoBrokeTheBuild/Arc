@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __INPUT_TYPE_H__
-#define __INPUT_TYPE_H__
+#ifndef __ARC_INPUT_TYPE_H__
+#define __ARC_INPUT_TYPE_H__
 
 #include <string>
 
@@ -19,7 +19,7 @@ enum InputType
     NUM_INPUT_TYPES
 };
 
-const string INPUT_TYPE_NAMES[NUM_INPUT_TYPES] = 
+const string INPUT_TYPE_NAMES[NUM_INPUT_TYPES] =
 {
     "Pressed",
     "Released",

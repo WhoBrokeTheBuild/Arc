@@ -1,12 +1,15 @@
 #pragma once
 
-#ifndef __MAP_H__
-#define __MAP_H__
-
-#include "ArcCommon.h"
-#include "GameObject.h"
-
 #include <map>
+
+namespace Arc
+{
+
+#ifndef __ARC_MAP_H__
+#define __ARC_MAP_H__
+
+#include "Common.h"
+#include "GameObject.h"
 
 template <class T>
 class LinkedList;
@@ -32,7 +35,7 @@ public:
 
     Map( void ) { }
     Map( const Map& rhs) : _map(rhs._map) { }
-    virtual ~Map( void );
+    virtual ~Map( void ) { clear(); }
 
     Map& operator= ( const Map& rhs ) { _map = rhs._map; return *this; }
     T&   operator[]( const K& key )   { return at(key); }
@@ -90,12 +93,6 @@ public:
 
 #include "LinkedList.h"
 #include "ArrayList.h"
-
-template <class K, class T, typename Sort>
-Map<K, T, Sort>::~Map( void )
-{
-    clear();
-}
 
 template <class K, class T, typename Sort>
 Map<K, T, Sort>* Map<K, T, Sort>::add( const K& key, const T& item )
@@ -271,3 +268,5 @@ ArrayList<T> Map<K, T, Sort>::valueArrayList( unsigned int& length )
 }
 
 #endif
+
+}

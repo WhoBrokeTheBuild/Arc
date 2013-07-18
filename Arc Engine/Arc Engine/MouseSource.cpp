@@ -1,41 +1,27 @@
 #include "MouseSource.h"
-#include "ArcApp.h"
+#include "Program.h"
 
-const EventType MouseSource::EVENT_MOUSE_MOVED    = "mouseMoved";
-const EventType MouseSource::EVENT_MOUSE_PRESSED  = "mousePressed";
-const EventType MouseSource::EVENT_MOUSE_RELEASED = "mouseReleased";
-const EventType MouseSource::EVENT_MOUSE_HELD     = "mouseHeld";
+const EventType Arc::MouseSource::EVENT_MOUSE_MOVED    = "mouseMoved";
+const EventType Arc::MouseSource::EVENT_MOUSE_PRESSED  = "mousePressed";
+const EventType Arc::MouseSource::EVENT_MOUSE_RELEASED = "mouseReleased";
+const EventType Arc::MouseSource::EVENT_MOUSE_HELD     = "mouseHeld";
 
-MouseSource::MouseSource( void )
-{
-}
-
-MouseSource::~MouseSource( void )
-{
-    term();
-}
-
-std::string MouseSource::toString( void ) const
-{
-    return "Mouse Controller";
-}
-
-void MouseSource::init( void )
+void Arc::MouseSource::init( void )
 {
     for (unsigned int button = 0; button < NUM_MOUSE_BUTTONS; ++button)
     {
         _buttonStates.add((MouseButton)button, InputState());
     }
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &MouseSource::update);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &MouseSource::update);
 }
 
-void MouseSource::term( void )
+void Arc::MouseSource::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &MouseSource::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &MouseSource::update);
 }
 
-void MouseSource::update( const Event& event )
+void Arc::MouseSource::update( const Event& event )
 {
     int
         x, y,

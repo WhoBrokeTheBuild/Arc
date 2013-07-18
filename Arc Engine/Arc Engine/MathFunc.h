@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __MATH_FUNC_H__
-#define __MATH_FUNC_H__
+#ifndef __ARC_MATH_FUNC_H__
+#define __ARC_MATH_FUNC_H__
 
 #include <cmath>
 

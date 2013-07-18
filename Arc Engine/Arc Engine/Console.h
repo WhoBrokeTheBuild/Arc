@@ -1,8 +1,8 @@
 
 #pragma once
 
-#ifndef __CONSOLE_H__
-#define __CONSOLE_H__
+#ifndef __ARC_CONSOLE_H__
+#define __ARC_CONSOLE_H__
 
 #include "Defines.h"
 

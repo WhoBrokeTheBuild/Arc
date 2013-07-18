@@ -2,24 +2,19 @@
 #include "GraphicsSystem.h"
 #include "RenderTarget.h"
 
-CachedText::CachedText( void )
+Arc::CachedText::CachedText( void )
 {
     _pTexture = nullptr;
     _pFont = nullptr;
     _text = string();
 }
 
-CachedText::~CachedText( void )
-{
-    term();
-}
-
-std::string CachedText::toString( void ) const
+std::string Arc::CachedText::toString( void ) const
 {
     return "Text";
 }
 
-void CachedText::init( const string text, Font* pFont )
+void Arc::CachedText::init( const string text, Font* pFont )
 {
     _pFont = pFont;
     _text = text;
@@ -28,7 +23,7 @@ void CachedText::init( const string text, Font* pFont )
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &CachedText::graphicsReset);
 }
 
-void CachedText::term( void )
+void Arc::CachedText::term( void )
 {
     gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &CachedText::graphicsReset);
 
@@ -36,12 +31,12 @@ void CachedText::term( void )
     _pTexture = nullptr;
 }
 
-void CachedText::graphicsReset( const Event& event )
+void Arc::CachedText::graphicsReset( const Event& event )
 {
     renderText();
 }
 
-void CachedText::renderText( void )
+void Arc::CachedText::renderText( void )
 {
     if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
     {
@@ -71,13 +66,13 @@ void CachedText::renderText( void )
     SDL_FreeSurface(surface);
 }
 
-void CachedText::setText( string text )
+void Arc::CachedText::setText( string text )
 {
     _text = text;
     renderText();
 }
 
-const Size CachedText::size( void ) const
+const Size Arc::CachedText::size( void ) const
 {
     if (_pTexture == nullptr)
         return Size::ZERO;
@@ -85,7 +80,7 @@ const Size CachedText::size( void ) const
     return _pTexture->size();
 }
 
-Size CachedText::measureString( string text )
+Size Arc::CachedText::measureString( string text )
 {
     if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
         return Size::ZERO;

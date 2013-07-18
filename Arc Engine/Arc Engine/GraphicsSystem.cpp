@@ -1,17 +1,8 @@
 #include "GraphicsSystem.h"
 
-const EventType GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset";
+const EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset";
 
-GraphicsSystem::GraphicsSystem( void )
-{
-}
-
-GraphicsSystem::~GraphicsSystem( void )
-{
-    term();
-}
-
-void GraphicsSystem::init( Size windowSize, string windowTitle )
+void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
 {
     INF(toString(), "Initializing");
 
@@ -51,7 +42,7 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
     INF(toString(), "Complete");
 }
 
-void GraphicsSystem::term( void )
+void Arc::GraphicsSystem::term( void )
 {
     delete _pRenderTarget;
 
@@ -59,12 +50,12 @@ void GraphicsSystem::term( void )
     SDL_Quit();
 }
 
-std::string GraphicsSystem::toString( void ) const
+std::string Arc::GraphicsSystem::toString( void ) const
 {
     return "Graphics System";
 }
 
-void GraphicsSystem::setFullscreen( bool fullscreen )
+void Arc::GraphicsSystem::setFullscreen( bool fullscreen )
 {
     _fullscreen = fullscreen;
 
@@ -72,7 +63,7 @@ void GraphicsSystem::setFullscreen( bool fullscreen )
     resetGL();
 }
 
-void GraphicsSystem::setWindowSize( Size size )
+void Arc::GraphicsSystem::setWindowSize( Size size )
 {
     _windowSize = size;
 
@@ -80,19 +71,19 @@ void GraphicsSystem::setWindowSize( Size size )
     resetGL();
 }
 
-void GraphicsSystem::setWindowTitle( string title )
+void Arc::GraphicsSystem::setWindowTitle( string title )
 {
     _windowTitle = title;
 
     SDL_WM_SetCaption(_windowTitle.c_str(), nullptr);
 }
 
-void GraphicsSystem::setClearColor( Color clearColor )
+void Arc::GraphicsSystem::setClearColor( Color clearColor )
 {
     _clearColor = clearColor;
 }
 
-void GraphicsSystem::setWindowIcon( string filename )
+void Arc::GraphicsSystem::setWindowIcon( string filename )
 {
     SDL_Surface *pSurface = IMG_Load(filename.c_str());
 
@@ -110,7 +101,7 @@ void GraphicsSystem::setWindowIcon( string filename )
     SDL_FreeSurface(pSurface);
 }
 
-void GraphicsSystem::resetGL( void )
+void Arc::GraphicsSystem::resetGL( void )
 {
     glViewport(0, 0, (int)_windowSize.X, (int)_windowSize.Y);
     glMatrixMode(GL_PROJECTION);
@@ -141,7 +132,7 @@ void GraphicsSystem::resetGL( void )
     gpEventDispatcher->dispatchEvent(Event(EVENT_GRAPHICS_RESET));
 }
 
-void GraphicsSystem::resetVideoMode( void )
+void Arc::GraphicsSystem::resetVideoMode( void )
 {
     unsigned int flags = 0;
 

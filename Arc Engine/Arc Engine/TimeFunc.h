@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __TIME_FUNC_H__
-#define __TIME_FUNC_H__
+#ifndef __ARC_TIME_FUNC_H__
+#define __ARC_TIME_FUNC_H__
 
 #include <ctime>
 

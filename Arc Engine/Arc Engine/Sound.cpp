@@ -3,7 +3,7 @@
 /*
     Supported Formats: .wav, .aiff, .mid, .ogg, .mp3, .flac
 */
-void Sound::init( string filename )
+void Arc::Sound::init( string filename )
 {
     _pChunk = Mix_LoadWAV(filename.c_str());
     _channel = -1;
@@ -18,22 +18,22 @@ void Sound::init( string filename )
     }
 }
 
-void Sound::term( void )
+void Arc::Sound::term( void )
 {
     Mix_FreeChunk(_pChunk);
 }
 
-void Sound::update( const Event& event )
+void Arc::Sound::update( const Event& event )
 {
 
 }
 
-void Sound::play( bool loop /*= false */ )
+void Arc::Sound::play( bool loop /*= false */ )
 {
-    _channel = Mix_PlayChannel(-1, _pChunk, (loop ? -1 : 1));
+    _channel = Mix_PlayChannel(-1, _pChunk, (loop ? -1 : 0));
 }
 
-void Sound::stop( void )
+void Arc::Sound::stop( void )
 {
     if (_channel == -1)
         return;
@@ -42,33 +42,33 @@ void Sound::stop( void )
     _channel = -1;
 }
 
-float Sound::getVolume( void )
+bool Arc::Sound::isPlaying( void )
+{
+    return (_channel != -1);
+}
+
+float Arc::Sound::getVolume( void )
 {
     return (float)Mix_VolumeChunk(_pChunk, -1) / (float)MIX_MAX_VOLUME;
 }
 
-void Sound::setVolume( float vol )
+void Arc::Sound::setVolume( float vol )
 {
     vol = clamp(vol, 0.0f, 1.0f);
     Mix_VolumeChunk(_pChunk, (int)(vol * (float)MIX_MAX_VOLUME));
 }
 
-void Sound::fadeIn( double duration )
+void Arc::Sound::fadeIn( double duration )
 {
 
 }
 
-void Sound::fadeOut( double duration )
+void Arc::Sound::fadeOut( double duration )
 {
 
 }
 
-void Sound::stopFade( void )
+void Arc::Sound::stopFade( void )
 {
 
-}
-
-bool Sound::isPlaying( void )
-{
-    return (_channel != -1);
 }

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __DIRECTION_H__
-#define __DIRECTION_H__
+#ifndef __ARC_DIRECTION_H__
+#define __ARC_DIRECTION_H__
 
 #include <string>
 
@@ -23,7 +23,7 @@ enum Direction
     NUM_DIRECTIONS
 };
 
-const string DIRECTION_NAMES[NUM_DIRECTIONS] = 
+const string DIRECTION_NAMES[NUM_DIRECTIONS] =
 {
     "North",
     "North West",

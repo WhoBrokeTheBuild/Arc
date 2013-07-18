@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __RECT_COLLIDER_H__
-#define __RECT_COLLIDER_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_RECT_COLLIDER_H__
+#define __ARC_RECT_COLLIDER_H__
+
+#include "Common.h"
 #include "Collider.h"
 
 class CircleCollider;
@@ -26,3 +29,5 @@ public:
 };
 
 #endif
+
+}

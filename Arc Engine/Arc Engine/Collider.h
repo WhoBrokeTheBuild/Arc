@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __COLLIDER_H__
-#define __COLLIDER_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_COLLIDER_H__
+#define __ARC_COLLIDER_H__
+
+#include "Common.h"
 
 class Collider
 {
@@ -16,3 +19,5 @@ public:
 };
 
 #endif
+
+}

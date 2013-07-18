@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __RECT_H__
-#define __RECT_H__
+#ifndef __ARC_RECT_H__
+#define __ARC_RECT_H__
 
 #include "GameObject.h"
 #include "Vector2.h"
@@ -19,7 +19,7 @@ public:
         ZERO,
         ONE;
 
-    float 
+    float
         X,
         Y,
         Width,
@@ -63,7 +63,7 @@ public:
 
 };
 
-struct CompRect 
+struct CompRect
     : public binary_function<Rect, Rect, bool>
 {
     bool operator()(const Rect& lhs, const Rect& rhs) const
@@ -72,4 +72,4 @@ struct CompRect
     }
 };
 
-#endif 
+#endif

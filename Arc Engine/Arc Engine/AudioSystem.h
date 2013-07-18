@@ -1,36 +1,39 @@
 #pragma once
 
-#ifndef __AUDIO_SYSTEM_H__
-#define __AUDIO_SYSTEM_H__
+#ifndef __ARC_AUDIO_SYSTEM_H__
+#define __ARC_AUDIO_SYSTEM_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "GameObject.h"
 
 #include <SDL/SDL_mixer.h>
 
-class AudioSystem :
-    public GameObject
+namespace Arc
 {
-protected:
+    class AudioSystem :
+        public GameObject
+    {
+    protected:
 
-    int 
-        _rate,
-        _channels,
-        _chunkSize;
+        int
+            _rate,
+            _channels,
+            _chunkSize;
 
-    uint16_t
-        _format;
+        uint16_t
+            _format;
 
-public:
+    public:
 
-    AudioSystem( void ) { }
-    virtual ~AudioSystem( void ) { term(); }
+        AudioSystem( void ) { }
+        virtual ~AudioSystem( void ) { term(); }
 
-    virtual void init( void );
-    virtual void term( void );
+        virtual void init( void );
+        virtual void term( void );
 
-    virtual string toString( void ) const { return "Audio System"; }
+        virtual string toString( void ) const { return "Audio System"; }
 
-};
+    };
+}
 
 #endif

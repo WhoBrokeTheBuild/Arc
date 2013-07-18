@@ -1,9 +1,9 @@
 #pragma once
 
-#ifndef __MOUSE_CONTROLLER_H__
-#define __MOUSE_CONTROLLER_H__
+#ifndef __ARC_MOUSE_CONTROLLER_H__
+#define __ARC_MOUSE_CONTROLLER_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "EventDispatcher.h"
 
 #include "Mouse.h"
@@ -11,42 +11,45 @@
 
 #include "Map.h"
 
-typedef Map<MouseButton,  InputState> MouseStateMap;
-
-class MouseSource :
-    public EventDispatcher
+namespace Arc
 {
-private:
+    typedef Map<MouseButton,  InputState> MouseStateMap;
 
-    uint8_t
-        _sdlButtonStates;
+    class MouseSource :
+        public EventDispatcher
+    {
+    private:
 
-protected:
+        uint8_t
+            _sdlButtonStates;
 
-    MouseStateMap
-        _buttonStates;
+    protected:
 
-    Vector2
-        _mousePos,
-        _mouseDelta;
+        MouseStateMap
+            _buttonStates;
 
-public:
+        Vector2
+            _mousePos,
+            _mouseDelta;
 
-    static const EventType 
-        EVENT_MOUSE_MOVED,
-        EVENT_MOUSE_PRESSED,
-        EVENT_MOUSE_RELEASED,
-        EVENT_MOUSE_HELD;
+    public:
 
-    MouseSource( void );
-    virtual ~MouseSource( void );
+        static const EventType
+            EVENT_MOUSE_MOVED,
+            EVENT_MOUSE_PRESSED,
+            EVENT_MOUSE_RELEASED,
+            EVENT_MOUSE_HELD;
 
-    virtual string toString( void ) const;
+        MouseSource( void ) { }
+        virtual ~MouseSource( void ) { term(); }
 
-    virtual void init( void );
-    virtual void term( void );
+        virtual string toString( void ) const { return "Mouse Source"; }
 
-    virtual void update( const Event& event );
-};
+        virtual void init( void );
+        virtual void term( void );
+
+        virtual void update( const Event& event );
+    };
+}
 
 #endif

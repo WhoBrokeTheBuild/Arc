@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __RAND_FUNC_H__
-#define __RAND_FUNC_H__
+#ifndef __ARC_RAND_FUNC_H__
+#define __ARC_RAND_FUNC_H__
 
 #include <cstdlib>
 #include <ctime>

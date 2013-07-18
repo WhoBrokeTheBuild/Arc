@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __LAYER_H__
-#define __LAYER_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_LAYER_H__
+#define __ARC_LAYER_H__
+
+#include "Common.h"
 #include "EventDispatcher.h"
 
 #include "Unit.h"
@@ -54,10 +57,12 @@ public:
 struct UnitDepthComp
     : binary_function<Unit*, Unit*, bool>
 {
-    bool operator()( const Unit* lhs, const Unit* rhs ) const 
+    bool operator()( const Unit* lhs, const Unit* rhs ) const
     {
         return lhs->Depth < rhs->Depth;
     }
 };
 
 #endif
+
+}

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <Animation.h>
-#include <Unit.h>
-#include <IDrawableImage.h>
-#include <IPhysicsObject.h>
-#include <ICollidable.h>
+#include <Arc/Animation.h>
+#include <Arc/Unit.h>
+#include <Arc/IDrawableImage.h>
+#include <Arc/IPhysicsObject.h>
+#include <Arc/ICollidable.h>
 
-#include <IFrameListener.h>
-#include <IKeyboardListener.h>
+#include <Arc/IFrameListener.h>
+#include <Arc/IKeyboardListener.h>
 
 class Test :
     public Unit,

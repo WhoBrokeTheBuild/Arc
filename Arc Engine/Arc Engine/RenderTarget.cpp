@@ -1,25 +1,25 @@
 #include "RenderTarget.h"
 #include "GraphicsSystem.h"
 
-RenderTarget::RenderTarget( void )
+Arc::RenderTarget::RenderTarget( void )
 {
 }
 
-RenderTarget::~RenderTarget( void )
+Arc::RenderTarget::~RenderTarget( void )
 {
     term();
 }
 
-void RenderTarget::init( GraphicsSystem* pGraphicsSystem )
+void Arc::RenderTarget::init( GraphicsSystem* pGraphicsSystem )
 {
     _pGraphicsSystem = pGraphicsSystem;
 }
 
-void RenderTarget::term( void )
+void Arc::RenderTarget::term( void )
 {
 }
 
-void RenderTarget::beginDraw( void ) const
+void Arc::RenderTarget::beginDraw( void ) const
 {
     Color clearColor = _pGraphicsSystem->clearColor();
 
@@ -28,7 +28,7 @@ void RenderTarget::beginDraw( void ) const
     glLoadIdentity();
 }
 
-void RenderTarget::endDraw( void ) const
+void Arc::RenderTarget::endDraw( void ) const
 {
     SDL_GL_SwapBuffers();
 }
@@ -40,7 +40,7 @@ void RenderTarget::endDraw( void ) const
 // ShapeValue 5   - Draws Decagon
 // ShapeValue 6   - Draws Circle
 // ShapeValue 12  - Draws Better Circle
-void RenderTarget::drawShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(x, y, 0.0f);
@@ -63,7 +63,7 @@ void RenderTarget::drawShape( const float x, const float y, const float radius, 
     glPopMatrix();
 }
 
-void RenderTarget::fillShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(x, y, 0.0f);
@@ -86,12 +86,12 @@ void RenderTarget::fillShape( const float x, const float y, const float radius, 
     glPopMatrix();
 }
 
-void RenderTarget::drawText( const Vector2 pos, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const Vector2 pos, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawText(pos.X, pos.Y, text, pFont, color, rotation, origin);
 }
 
-void RenderTarget::drawText( const float x, const float y, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const float x, const float y, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     CachedText cachedText;
     cachedText.init(text, pFont);
@@ -99,12 +99,12 @@ void RenderTarget::drawText( const float x, const float y, const string text, Fo
     drawText(x, y, &cachedText, color, rotation, origin);
 }
 
-void RenderTarget::drawText( const Vector2 pos, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const Vector2 pos, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawText(pos.X, pos.Y, pCachedText, color, rotation, origin);
 }
 
-void RenderTarget::drawText( const float x, const float y, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const float x, const float y, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     if (pCachedText->text().length() == 0)
         return;
@@ -118,22 +118,22 @@ void RenderTarget::drawText( const float x, const float y, const CachedText* pCa
     draw(x, y, pCachedText->texture(), color, rotation, origin);
 }
 
-void RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     draw(pos.X, pos.Y, pTexture, color, rotation, origin);
 }
 
-void RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->size()), color, rotation, origin);
 }
 
-void RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
+void Arc::RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
 {
     draw(pos.X, pos.Y, pTexture, sourceRect, color, rotation, origin, flip);
 }
 
-void RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
+void Arc::RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
 {
     glEnable(GL_TEXTURE_2D);
 
@@ -175,12 +175,12 @@ void RenderTarget::draw( const float x, const float y, const Texture* pTexture, 
     glDisable(GL_TEXTURE_2D);
 }
 
-void RenderTarget::drawLine( const Vector2 start, const Vector2 end, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
+void Arc::RenderTarget::drawLine( const Vector2 start, const Vector2 end, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
 {
     drawLine(start.X, start.Y, end.X, end.Y, color, thickness);
 }
 
-void RenderTarget::drawLine( const float x1, const float y1, const float x2, const float y2, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
+void Arc::RenderTarget::drawLine( const float x1, const float y1, const float x2, const float y2, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
 {
     glPushMatrix();
     glTranslatef(0.0f, 0.0f, 0.0f);
@@ -189,23 +189,23 @@ void RenderTarget::drawLine( const float x1, const float y1, const float x2, con
 
     glLineWidth(thickness);
 
-    glBegin(GL_LINES); 
+    glBegin(GL_LINES);
 
     glVertex2f(x1, y1);
     glVertex2f(x2, y2);
 
-    glEnd(); 
+    glEnd();
 
     glPopMatrix();
 }
 
-void RenderTarget::drawRect( const float x, const float y, const float width, const float height, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawRect( const float x, const float y, const float width, const float height, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Rect rect = Rect(x, y, width, height);
     drawRect(rect, color, rotation, origin);
 }
 
-void RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(rect.X, rect.Y, 0.0f);
@@ -216,25 +216,25 @@ void RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
-    glBegin(GL_LINE_LOOP); 
+    glBegin(GL_LINE_LOOP);
 
     glVertex2f(0.0f,       0.0f);
     glVertex2f(rect.Width, 0.0f);
     glVertex2f(rect.Width, rect.Height);
     glVertex2f(0.0f,       rect.Height);
 
-    glEnd(); 
+    glEnd();
 
     glPopMatrix();
 }
 
-void RenderTarget::fillRect( const float x, const float y, const float width, const float height, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillRect( const float x, const float y, const float width, const float height, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Rect rect = Rect(x, y, width, height);
     fillRect(rect, color, rotation, origin);
 }
 
-void RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
     glTranslatef(rect.X, rect.Y, 0.0f);
@@ -257,84 +257,84 @@ void RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE
     glPopMatrix();
 }
 
-void RenderTarget::drawCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Circle circle = Circle(x, y, radius);
     drawCircle(circle, color, rotation, origin);
 }
 
-void RenderTarget::drawCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(circle.X, circle.Y, circle.Radius, 12, color, rotation, origin);
 }
 
-void RenderTarget::fillCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     Circle circle = Circle(x, y, radius);
     fillCircle(circle, color, rotation, origin);
 }
 
-void RenderTarget::fillCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(circle.X, circle.Y, circle.Radius, 12, color, rotation, origin);
 }
 
-void RenderTarget::drawTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawTriangle(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::fillTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillTriangle(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::drawTriangle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawTriangle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(x, y, radius, 1.5, color, rotation, origin);
 }
 
-void RenderTarget::fillTriangle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillTriangle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(x, y, radius, 1.5, color, rotation, origin);
 }
 
-void RenderTarget::drawPentagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawPentagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawPentagon(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::fillPentagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillPentagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillPentagon(pos.X, pos.Y, radius, color, rotation, origin);
 }
 
-void RenderTarget::drawPentagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawPentagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(x, y, radius, 2.5, color, rotation, origin);
 }
 
-void RenderTarget::fillPentagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillPentagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(x, y, radius, 2.5, color, rotation, origin);
 }
 
-void RenderTarget::drawHexagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawHexagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(pos.X, pos.Y, radius, 3, color, rotation, origin);
 }
 
-void RenderTarget::fillHexagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillHexagon( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(pos.X, pos.Y, radius, 3, color, rotation, origin);
 }
 
-void RenderTarget::drawHexagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawHexagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(x, y, radius, 3, color, rotation, origin);
 }
 
-void RenderTarget::fillHexagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillHexagon( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     fillShape(x, y, radius, 3, color, rotation, origin);
 }

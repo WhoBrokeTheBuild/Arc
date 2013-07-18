@@ -1,101 +1,104 @@
 #pragma once
 
-#ifndef __CALLBACKS_H__
-#define __CALLBACKS_H__
+#ifndef __ARC_CALLBACKS_H__
+#define __ARC_CALLBACKS_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "GameObject.h"
 
-template <typename ReturnType, typename Param = void>
-class Callback
-    : public GameObject
+namespace Arc
 {
-
-    friend bool operator==( const Callback<ReturnType, Param>& lhs, const Callback<ReturnType, Param>& rhs ) { return lhs.equalTo(rhs); };
-    friend bool operator!=( const Callback<ReturnType, Param>& lhs, const Callback<ReturnType, Param>& rhs ) { return !lhs.equalTo(rhs); };
-
-protected:
-
-    inline virtual bool equalTo( const Callback<ReturnType, Param>& rhs ) const { return false; };
-
-public:
-
-    virtual ReturnType invoke( Param param ) = 0;
-    virtual Callback* clone( void ) = 0;
-    virtual bool isMethodOf( void* object) = 0;
-
-};
-
-template <typename ReturnType, typename Param = void>
-class StaticFunctionCallback
-    : public Callback<ReturnType, Param>
-{
-protected:
-
-    virtual bool equalTo( const Callback<ReturnType, Param>& rhs ) const
+    template <typename ReturnType, typename Param = void>
+    class Callback
+        : public GameObject
     {
-        if ( const StaticFunctionCallback<ReturnType, Param>* convert = dynamic_cast<const StaticFunctionCallback<ReturnType, Param>*>(&rhs) )
+
+        friend bool operator==( const Callback<ReturnType, Param>& lhs, const Callback<ReturnType, Param>& rhs ) { return lhs.equalTo(rhs); };
+        friend bool operator!=( const Callback<ReturnType, Param>& lhs, const Callback<ReturnType, Param>& rhs ) { return !lhs.equalTo(rhs); };
+
+    protected:
+
+        inline virtual bool equalTo( const Callback<ReturnType, Param>& rhs ) const { return false; };
+
+    public:
+
+        virtual ReturnType invoke( Param param ) = 0;
+        virtual Callback* clone( void ) = 0;
+        virtual bool isMethodOf( void* object) = 0;
+
+    };
+
+    template <typename ReturnType, typename Param = void>
+    class StaticFunctionCallback
+        : public Callback<ReturnType, Param>
+    {
+    protected:
+
+        virtual bool equalTo( const Callback<ReturnType, Param>& rhs ) const
         {
-            return ( _function == convert->_function );
+            if ( const StaticFunctionCallback<ReturnType, Param>* convert = dynamic_cast<const StaticFunctionCallback<ReturnType, Param>*>(&rhs) )
+            {
+                return ( _function == convert->_function );
+            }
+            return false;
         }
-        return false;
-    }
 
-private:
+    private:
 
-    ReturnType 
-        (*_function)(Param);
+        ReturnType
+            (*_function)(Param);
 
-public:
+    public:
 
-    StaticFunctionCallback(ReturnType (*function)(Param))
-    {
-        _function = function;
-    }
-
-    inline virtual ReturnType invoke(Param param) { return (*_function)(param); }
-    inline virtual StaticFunctionCallback* clone( void ) { return New StaticFunctionCallback(_function); }
-    inline virtual bool isMethodOf( void* object ) { return false; }
-    inline virtual string toString( void ) const { return "Static Function Callback"; };
-
-};
-
-template <typename ReturnType, typename Param = void, typename ObjectType = void, typename Method = void>
-class MethodCallback
-    : public Callback<ReturnType, Param>
-{
-protected:
-
-    virtual bool equalTo( const Callback<ReturnType, Param>& rhs ) const
-    {
-        if ( const MethodCallback<ReturnType, Param, ObjectType, Method>* convert = dynamic_cast<const MethodCallback<ReturnType, Param, ObjectType, Method>*>(&rhs) )
+        StaticFunctionCallback(ReturnType (*function)(Param))
         {
-            return ( _object == convert->_object && _method == convert->_method );
+            _function = function;
         }
-        return false;
-    }
 
-private:
+        inline virtual ReturnType invoke(Param param) { return (*_function)(param); }
+        inline virtual StaticFunctionCallback* clone( void ) { return New StaticFunctionCallback(_function); }
+        inline virtual bool isMethodOf( void* object ) { return false; }
+        inline virtual string toString( void ) const { return "Static Function Callback"; };
 
-    void* 
-        _object;
+    };
 
-    Method 
-        _method;
-
-public:
-
-    MethodCallback( void* object, Method method )
+    template <typename ReturnType, typename Param = void, typename ObjectType = void, typename Method = void>
+    class MethodCallback
+        : public Callback<ReturnType, Param>
     {
-        _object = object;
-        _method = method;
-    }
+    protected:
 
-    inline virtual ReturnType invoke( Param param ) { return (static_cast<ObjectType*>(_object)->*_method)(param); }
-    inline virtual MethodCallback* clone( void )    { return New MethodCallback(_object, _method); }
-    inline virtual bool isMethodOf( void* object )    { return _object == object; }
-    inline virtual string toString( void ) const    { return "Method Callback"; };
+        virtual bool equalTo( const Callback<ReturnType, Param>& rhs ) const
+        {
+            if ( const MethodCallback<ReturnType, Param, ObjectType, Method>* convert = dynamic_cast<const MethodCallback<ReturnType, Param, ObjectType, Method>*>(&rhs) )
+            {
+                return ( _object == convert->_object && _method == convert->_method );
+            }
+            return false;
+        }
 
-};
+    private:
+
+        void*
+            _object;
+
+        Method
+            _method;
+
+    public:
+
+        MethodCallback( void* object, Method method )
+        {
+            _object = object;
+            _method = method;
+        }
+
+        inline virtual ReturnType invoke( Param param ) { return (static_cast<ObjectType*>(_object)->*_method)(param); }
+        inline virtual MethodCallback* clone( void )    { return New MethodCallback(_object, _method); }
+        inline virtual bool isMethodOf( void* object )    { return _object == object; }
+        inline virtual string toString( void ) const    { return "Method Callback"; };
+
+    };
+}
 
 #endif

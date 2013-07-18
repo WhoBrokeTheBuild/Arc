@@ -1,11 +1,10 @@
+namespace Arc
+{
+
 #include "MemoryTracker.h"
 
 int MemoryTracker::_sAllocationIndex = 0;
 MemoryTracker* gpMemoryTracker;
-
-MemoryTracker::MemoryTracker( void )
-{
-}
 
 MemoryTracker::~MemoryTracker( void )
 {
@@ -66,4 +65,6 @@ void MemoryTracker::printAllocations( ostream& stream )
         stream << "\t In " << basename(it->second.Filename)
                << " On Line " << it->second.LineNum << "\n";
     }
+}
+
 }

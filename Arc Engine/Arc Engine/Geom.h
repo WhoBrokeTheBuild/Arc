@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __GEOM_H__
-#define __GEOM_H__
+#ifndef __ARC_GEOM_H__
+#define __ARC_GEOM_H__
 
 #include "Direction.h"
 

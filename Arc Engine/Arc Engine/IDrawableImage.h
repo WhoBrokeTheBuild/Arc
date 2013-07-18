@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __IDRAWABLE_IMAGE_H__
-#define __IDRAWABLE_IMAGE_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_IDRAWABLE_IMAGE_H__
+#define __ARC_IDRAWABLE_IMAGE_H__
+
+#include "Common.h"
 #include "IDrawable.h"
 #include "Animation.h"
 
@@ -95,6 +98,8 @@ public:
     bool
         Looping;
 
+    virtual ~IDrawableImage( void ) { }
+
     virtual void init( Animation* pAnimation = nullptr, bool looping = false, Color blendColor = Color::WHITE, float rot = 0.0f, float alpha = 0.0f )
     {
         Frame = 0;
@@ -159,3 +164,5 @@ public:
 };
 
 #endif
+
+}

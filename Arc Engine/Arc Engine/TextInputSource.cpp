@@ -1,29 +1,15 @@
 #include "TextInputSource.h"
-#include "ArcApp.h"
+#include "Program.h"
 
-const EventType TextInputSource::EVENT_TEXT_INPUT_CHAR      = "textInputChar";
-const EventType TextInputSource::EVENT_TEXT_INPUT_NEWLINE   = "textInputNewline";
-const EventType TextInputSource::EVENT_TEXT_INPUT_BACKSPACE = "textInputBackspace";
-const EventType TextInputSource::EVENT_TEXT_INPUT_DELETE    = "textInputDelete";
-const EventType TextInputSource::EVENT_TEXT_INPUT_TAB       = "textInputTab";
-const EventType TextInputSource::EVENT_TEXT_INPUT_ARROWS    = "textInputArrows";
-const EventType TextInputSource::EVENT_TEXT_INPUT_HOME_END  = "textInputHomeEnd";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_CHAR      = "textInputChar";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_NEWLINE   = "textInputNewline";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_BACKSPACE = "textInputBackspace";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_DELETE    = "textInputDelete";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_TAB       = "textInputTab";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_ARROWS    = "textInputArrows";
+const EventType Arc::TextInputSource::EVENT_TEXT_INPUT_HOME_END  = "textInputHomeEnd";
 
-TextInputSource::TextInputSource(void)
-{
-}
-
-TextInputSource::~TextInputSource(void)
-{
-    term();
-}
-
-std::string TextInputSource::toString( void ) const
-{
-    return "Text Input Source";
-}
-
-void TextInputSource::init( void )
+void Arc::TextInputSource::init( void )
 {
     IKeyboardListener::init();
 
@@ -69,20 +55,20 @@ void TextInputSource::init( void )
     _validInputs.add(KEY_HOME);
     _validInputs.add(KEY_END);
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &TextInputSource::update);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &TextInputSource::update);
 }
 
-void TextInputSource::term( void )
+void Arc::TextInputSource::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &TextInputSource::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &TextInputSource::update);
 }
 
-void TextInputSource::update( const Event& event )
+void Arc::TextInputSource::update( const Event& event )
 {
 
 }
 
-void TextInputSource::keyPressed( const Event& event )
+void Arc::TextInputSource::keyPressed( const Event& event )
 {
     const KeyData *data = event.dataAs<KeyData>();
 
@@ -187,7 +173,7 @@ void TextInputSource::keyPressed( const Event& event )
     }
 }
 
-void TextInputSource::keyReleased( const Event& event )
+void Arc::TextInputSource::keyReleased( const Event& event )
 {
     const KeyData *data = event.dataAs<KeyData>();
 
@@ -212,7 +198,7 @@ void TextInputSource::keyReleased( const Event& event )
     }
 }
 
-void TextInputSource::keyHeld( const Event& event )
+void Arc::TextInputSource::keyHeld( const Event& event )
 {
     //const KeyData *data = event.dataAs<KeyData>();
 }

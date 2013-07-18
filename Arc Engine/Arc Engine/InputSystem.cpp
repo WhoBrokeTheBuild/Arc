@@ -1,5 +1,5 @@
 #include "InputSystem.h"
-#include "ArcApp.h"
+#include "Program.h"
 
 InputSystem::InputSystem( void )
 {
@@ -28,14 +28,14 @@ void InputSystem::init( void )
     _pTextInputSource = New TextInputSource();
     _pTextInputSource->init();
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &InputSystem::update);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 
     INF(toString(), "Complete");
 }
 
 void InputSystem::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &InputSystem::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 
     delete _pTextInputSource;
     delete _pMouseSource;
@@ -58,7 +58,7 @@ void InputSystem::handleSDLEvent( SDL_Event sdlEvent )
     {
     case SDL_QUIT:
 
-        gpEventDispatcher->dispatchEvent(Event(ArcApp::EVENT_EXIT));
+        gpEventDispatcher->dispatchEvent(Event(Program::EVENT_EXIT));
 
         break;
     }

@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __IPHYSICS_OBJECT_H__
-#define __IPHYSICS_OBJECT_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_IPHYSICS_OBJECT_H__
+#define __ARC_IPHYSICS_OBJECT_H__
+
+#include "Common.h"
 #include "RenderTarget.h"
 
 class IPhysicsObject
@@ -29,3 +32,5 @@ public:
 };
 
 #endif
+
+}

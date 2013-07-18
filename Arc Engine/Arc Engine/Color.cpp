@@ -1,4 +1,3 @@
-
 #include "Color.h"
 #include "RenderTarget.h"
 #include "CachedText.h"
@@ -29,10 +28,6 @@ Color::Color( int r, int g, int b )
 Color::Color( int r, int g, int b, int a )
 {
     setByte(r, g, b, a);
-}
-
-Color::~Color( void )
-{
 }
 
 string Color::toString( void ) const
@@ -74,7 +69,7 @@ void Color::setByte( int r, int g, int b, int a )
     A = clamp(a, 0, 255);
 }
 
-SDL_Color Color::SDLColor( void )
+SDL_Color Arc::Color::SDLColor( void )
 {
     SDL_Color color = { (uint8_t)R, (uint8_t)G, (uint8_t)B, (uint8_t)A };
     return color;

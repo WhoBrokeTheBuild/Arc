@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __IDRAWABLE_H__
-#define __IDRAWABLE_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_IDRAWABLE_H__
+#define __ARC_IDRAWABLE_H__
+
+#include "Common.h"
 #include "RenderTarget.h"
 #include "OriginLocation.h"
 
@@ -31,6 +34,8 @@ public:
         Rot,
         Alpha;
 
+    virtual ~IDrawable( void ) { }
+
     virtual void init( Color blendColor = Color::WHITE, float rot = 0.0f, float alpha = 0.0f, Vector2 scale = Vector2::ONE )
     {
         BlendColor = blendColor;
@@ -55,3 +60,5 @@ public:
 };
 
 #endif
+
+}

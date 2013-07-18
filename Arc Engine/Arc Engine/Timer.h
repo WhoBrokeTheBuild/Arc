@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __TIMER_H__
-#define __TIMER_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_TIMER_H__
+#define __ARC_TIMER_H__
+
+#include "Common.h"
 #include "GameObject.h"
 
 #include <ctime>
@@ -72,3 +75,5 @@ public:
 };
 
 #endif
+
+}

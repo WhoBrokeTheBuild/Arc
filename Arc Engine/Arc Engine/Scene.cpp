@@ -1,5 +1,5 @@
 #include "Scene.h"
-#include "ArcApp.h"
+#include "Program.h"
 
 void Scene::init( void )
 {
@@ -15,8 +15,8 @@ void Scene::term( void )
     Map<unsigned int, Layer*>::Iterator it;
     for (it = _layers.begin(); it != _layers.end(); ++it)
     {
-        removeEventListener(ArcApp::EVENT_RENDER, it->second, &Layer::render);
-        removeEventListener(ArcApp::EVENT_UPDATE, it->second, &Layer::update);
+        removeEventListener(Program::EVENT_RENDER, it->second, &Layer::render);
+        removeEventListener(Program::EVENT_UPDATE, it->second, &Layer::update);
 
         delete it->second;
     }
@@ -54,8 +54,8 @@ bool Scene::addLayer( int index )
         _layers.add(index, New Layer());
         _layers[index]->init();
 
-        addEventListener(ArcApp::EVENT_UPDATE, _layers[index], &Layer::update);
-        addEventListener(ArcApp::EVENT_RENDER, _layers[index], &Layer::render);
+        addEventListener(Program::EVENT_UPDATE, _layers[index], &Layer::update);
+        addEventListener(Program::EVENT_RENDER, _layers[index], &Layer::render);
 
         return true;
     }

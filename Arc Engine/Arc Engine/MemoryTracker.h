@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __MEMORY_TRACKER_H__
-#define __MEMORY_TRACKER_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_MEMORY_TRACKER_H__
+#define __ARC_MEMORY_TRACKER_H__
+
+#include "Common.h"
 #include "GameObject.h"
 
 #include "Map.h"
@@ -47,7 +50,7 @@ private:
 
 public:
 
-    MemoryTracker( void );
+    MemoryTracker( void ) { }
     virtual ~MemoryTracker( void );
 
     virtual string toString( void ) const { return "Memory Tracker"; }
@@ -65,3 +68,5 @@ public:
 extern MemoryTracker* gpMemoryTracker;
 
 #endif
+
+}

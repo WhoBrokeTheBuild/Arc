@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __PARSE_FUNC_H__
-#define __PARSE_FUNC_H__
+#ifndef __ARC_PARSE_FUNC_H__
+#define __ARC_PARSE_FUNC_H__
 
 #include <string>
 

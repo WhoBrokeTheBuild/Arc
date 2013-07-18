@@ -1,60 +1,63 @@
 #pragma once
 
-#ifndef __TEXTURE_H__
-#define __TEXTURE_H__
+#ifndef __ARC_TEXTURE_H__
+#define __ARC_TEXTURE_H__
 
-#include "ArcCommon.h"
+#include "Common.h"
 #include "GameObject.h"
 
 #include <SDL/SDL_opengl.h>
 #include <SDL/SDL_image.h>
 #include <SDL/SDL.h>
 
-class RenderTarget;
-class CachedText;
-class Event;
-
-class Texture :
-    public GameObject
+namespace Arc
 {
+    class RenderTarget;
+    class CachedText;
+    class Event;
 
-    friend class RenderTarget;
-    friend class CachedText;
+    class Texture :
+        public GameObject
+    {
 
-private:
+        friend class RenderTarget;
+        friend class CachedText;
 
-    string
-        _filename;
+    private:
 
-    GLuint
-        _texture;
+        string
+            _filename;
 
-    Size
-        _size;
+        GLuint
+            _texture;
 
-    virtual void init( SDL_Surface* pSurface );
+        Size
+            _size;
 
-    virtual void load( string filename );
-    virtual void load( SDL_Surface* pSurface );
+        virtual void init( SDL_Surface* pSurface );
 
-    virtual void deleteTexture( void );
+        virtual void load( string filename );
+        virtual void load( SDL_Surface* pSurface );
 
-    virtual GLuint GLTexture( void ) const { return _texture; }
+        virtual void deleteTexture( void );
 
-public:
+        virtual GLuint GLTexture( void ) const { return _texture; }
 
-    Texture( void );
-    virtual ~Texture( void );
+    public:
 
-    virtual string toString( void ) const;
+        Texture( void );
+        virtual ~Texture( void );
 
-    virtual void init( string filename );
-    virtual void term( void );
+        virtual string toString( void ) const;
 
-    virtual void graphicsReset( const Event& event );
+        virtual void init( string filename );
+        virtual void term( void );
 
-    virtual const Size size( void ) const { return _size; }
+        virtual void graphicsReset( const Event& event );
 
-};
+        virtual const Size size( void ) const { return _size; }
+
+    };
+}
 
 #endif

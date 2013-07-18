@@ -5,7 +5,7 @@
 		<Option title="Arc Engine" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Functions/;Project/Util/Geometry/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Graphics/Text/;" />
+		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Functions/;Project/Util/Geometry/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Graphics/Text/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Arc Engine" prefix_auto="1" extension_auto="1" />
@@ -37,18 +37,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Arc Engine/ActiveUnit.cpp">
-			<Option virtualFolder="Project/Units/" />
-		</Unit>
-		<Unit filename="Arc Engine/ActiveUnit.h">
-			<Option virtualFolder="Project/Units/" />
-		</Unit>
-		<Unit filename="Arc Engine/AnimatedUnit.cpp">
-			<Option virtualFolder="Project/Graphics/" />
-		</Unit>
-		<Unit filename="Arc Engine/AnimatedUnit.h">
-			<Option virtualFolder="Project/Units/" />
-		</Unit>
 		<Unit filename="Arc Engine/Animation.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
@@ -67,6 +55,12 @@
 		<Unit filename="Arc Engine/ArrayList.h">
 			<Option virtualFolder="Project/Util/Collections/" />
 		</Unit>
+		<Unit filename="Arc Engine/AudioSystem.cpp">
+			<Option virtualFolder="Project/Audio/" />
+		</Unit>
+		<Unit filename="Arc Engine/AudioSystem.h">
+			<Option virtualFolder="Project/Audio/" />
+		</Unit>
 		<Unit filename="Arc Engine/CachedText.cpp">
 			<Option virtualFolder="Project/Graphics/Text/" />
 		</Unit>
@@ -81,6 +75,15 @@
 		</Unit>
 		<Unit filename="Arc Engine/Circle.h">
 			<Option virtualFolder="Project/Util/Geometry/" />
+		</Unit>
+		<Unit filename="Arc Engine/CircleCollider.cpp">
+			<Option virtualFolder="Project/Units/Colliders/" />
+		</Unit>
+		<Unit filename="Arc Engine/CircleCollider.h">
+			<Option virtualFolder="Project/Units/Colliders/" />
+		</Unit>
+		<Unit filename="Arc Engine/Collider.h">
+			<Option virtualFolder="Project/Units/Colliders/" />
 		</Unit>
 		<Unit filename="Arc Engine/Color.cpp">
 			<Option virtualFolder="Project/Graphics/" />
@@ -148,11 +151,26 @@
 		<Unit filename="Arc Engine/GraphicsSystem.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
+		<Unit filename="Arc Engine/ICollidable.h">
+			<Option virtualFolder="Project/Units/Modules/" />
+		</Unit>
+		<Unit filename="Arc Engine/IDrawable.h">
+			<Option virtualFolder="Project/Units/Modules/" />
+		</Unit>
+		<Unit filename="Arc Engine/IDrawableImage.h">
+			<Option virtualFolder="Project/Units/Modules/" />
+		</Unit>
+		<Unit filename="Arc Engine/IFrameListener.h">
+			<Option virtualFolder="Project/Core/Listeners/" />
+		</Unit>
 		<Unit filename="Arc Engine/IKeyboardListener.h">
 			<Option virtualFolder="Project/Input/Listeners/" />
 		</Unit>
 		<Unit filename="Arc Engine/IMouseListener.h">
 			<Option virtualFolder="Project/Input/Listeners/" />
+		</Unit>
+		<Unit filename="Arc Engine/IPhysicsObject.h">
+			<Option virtualFolder="Project/Units/Modules/" />
 		</Unit>
 		<Unit filename="Arc Engine/ITextInputListener.h">
 			<Option virtualFolder="Project/Input/Listeners/" />
@@ -186,6 +204,12 @@
 		</Unit>
 		<Unit filename="Arc Engine/KeyboardSource.h">
 			<Option virtualFolder="Project/Input/Sources/" />
+		</Unit>
+		<Unit filename="Arc Engine/Layer.cpp">
+			<Option virtualFolder="Project/Units/Containers/" />
+		</Unit>
+		<Unit filename="Arc Engine/Layer.h">
+			<Option virtualFolder="Project/Units/Containers/" />
 		</Unit>
 		<Unit filename="Arc Engine/LinkedList.h">
 			<Option virtualFolder="Project/Util/Collections/" />
@@ -238,11 +262,29 @@
 		<Unit filename="Arc Engine/Rect.h">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
+		<Unit filename="Arc Engine/RectCollider.cpp">
+			<Option virtualFolder="Project/Units/Colliders/" />
+		</Unit>
+		<Unit filename="Arc Engine/RectCollider.h">
+			<Option virtualFolder="Project/Units/Colliders/" />
+		</Unit>
 		<Unit filename="Arc Engine/RenderTarget.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
 		<Unit filename="Arc Engine/RenderTarget.h">
 			<Option virtualFolder="Project/Graphics/" />
+		</Unit>
+		<Unit filename="Arc Engine/Scene.cpp">
+			<Option virtualFolder="Project/Units/Containers/" />
+		</Unit>
+		<Unit filename="Arc Engine/Scene.h">
+			<Option virtualFolder="Project/Units/Containers/" />
+		</Unit>
+		<Unit filename="Arc Engine/Sound.cpp">
+			<Option virtualFolder="Project/Audio/" />
+		</Unit>
+		<Unit filename="Arc Engine/Sound.h">
+			<Option virtualFolder="Project/Audio/" />
 		</Unit>
 		<Unit filename="Arc Engine/Sprite.cpp">
 			<Option virtualFolder="Project/Graphics/" />

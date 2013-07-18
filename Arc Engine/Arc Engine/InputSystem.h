@@ -1,9 +1,12 @@
 #pragma once
 
-#ifndef __INPUT_SYSTEM_H__
-#define __INPUT_SYSTEM_H__
+namespace Arc
+{
 
-#include "ArcCommon.h"
+#ifndef __ARC_INPUT_SYSTEM_H__
+#define __ARC_INPUT_SYSTEM_H__
+
+#include "Common.h"
 #include "EventDispatcher.h"
 
 #include "Mouse.h"
@@ -45,3 +48,5 @@ public:
 };
 
 #endif
+
+}

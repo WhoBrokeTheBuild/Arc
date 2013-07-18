@@ -1,25 +1,11 @@
 #include "KeyboardSource.h"
-#include "ArcApp.h"
+#include "Program.h"
 
-const EventType KeyboardSource::EVENT_KEY_PRESSED  = "keyPressed";
-const EventType KeyboardSource::EVENT_KEY_RELEASED = "keyReleased";
-const EventType KeyboardSource::EVENT_KEY_HELD     = "keyHeld";
+const EventType Arc::KeyboardSource::EVENT_KEY_PRESSED  = "keyPressed";
+const EventType Arc::KeyboardSource::EVENT_KEY_RELEASED = "keyReleased";
+const EventType Arc::KeyboardSource::EVENT_KEY_HELD     = "keyHeld";
 
-KeyboardSource::KeyboardSource( void )
-{
-}
-
-KeyboardSource::~KeyboardSource( void )
-{
-    term();
-}
-
-std::string KeyboardSource::toString( void ) const
-{
-    return "Keyboard Controller";
-}
-
-void KeyboardSource::init( void )
+void Arc::KeyboardSource::init( void )
 {
     _sdlKeys = nullptr;
 
@@ -28,15 +14,15 @@ void KeyboardSource::init( void )
         _keyStates.add((KeyboardKey)key, InputState());
     }
 
-    gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &KeyboardSource::update);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
-void KeyboardSource::term( void )
+void Arc::KeyboardSource::term( void )
 {
-    gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE, this, &KeyboardSource::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
-void KeyboardSource::update( const Event& event )
+void Arc::KeyboardSource::update( const Event& event )
 {
     _sdlKeys = SDL_GetKeyState(nullptr);
 

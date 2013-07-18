@@ -1,5 +1,5 @@
 #include "Layer.h"
-#include "ArcApp.h"
+#include "Program.h"
 #include "Scene.h"
 
 const EventType Layer::EVENT_LAYER_CHANGED = "layerChanged";
@@ -53,14 +53,14 @@ bool Layer::addUnit( Unit* unit )
     {
         _units.add(unit);
 
-        addEventListener(ArcApp::EVENT_UPDATE, unit, &Unit::update);
-        addEventListener(ArcApp::EVENT_RENDER, unit, &Unit::render);
+        addEventListener(Program::EVENT_UPDATE, unit, &Unit::update);
+        addEventListener(Program::EVENT_RENDER, unit, &Unit::render);
 
         dispatchEvent(Event(EVENT_LAYER_CHANGED));
 
         return true;
     }
-    
+
     return false;
 }
 
@@ -85,8 +85,8 @@ unsigned int Layer::removeAllUnits( void )
 
     for (unsigned int i = 0; i < size; ++i)
     {
-        removeEventListener(ArcApp::EVENT_RENDER, _units[i], &Unit::render);
-        removeEventListener(ArcApp::EVENT_UPDATE, _units[i], &Unit::update);
+        removeEventListener(Program::EVENT_RENDER, _units[i], &Unit::render);
+        removeEventListener(Program::EVENT_UPDATE, _units[i], &Unit::update);
 
         delete _units[i];
     }

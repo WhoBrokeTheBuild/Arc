@@ -1,12 +1,15 @@
 #pragma once
 
-#ifndef __STRING_FUNC_H__
-#define __STRING_FUNC_H__
-
 #include <string>
 #include <sstream>
 
 using namespace std;
+
+namespace Arc
+{
+
+#ifndef __ARC_STRING_FUNC_H__
+#define __ARC_STRING_FUNC_H__
 
 template <class T>
 class ArrayList;
@@ -35,3 +38,5 @@ string doubleToStr( const double& value );
 string boolToStr  ( const bool&   value );
 
 #endif
+
+}

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __INPUT_FUNC_H__
-#define __INPUT_FUNC_H__
+#ifndef __ARC_INPUT_FUNC_H__
+#define __ARC_INPUT_FUNC_H__
 
 #include "Keyboard.h"
 #include "Mouse.h"

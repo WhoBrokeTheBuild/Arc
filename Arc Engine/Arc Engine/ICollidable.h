@@ -1,11 +1,12 @@
+#pragma once
 
-#include "ArcCommon.h"
-#include "RenderTarget.h"
-#pragma  once
+namespace Arc
+{
 
-#ifndef __ICOLLIDABLE_H__
-#define __ICOLLIDABLE_H__
+#ifndef __ARC_ICOLLIDABLE_H__
+#define __ARC_ICOLLIDABLE_H__
 
+#include "Common.h"
 #include "Collider.h"
 #include "RectCollider.h"
 #include "CircleCollider.h"
@@ -41,3 +42,5 @@ public:
 };
 
 #endif
+
+}

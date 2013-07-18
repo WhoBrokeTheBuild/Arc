@@ -1,11 +1,15 @@
 #pragma once
 
-#ifndef __QUEUE_H__
-#define __QUEUE_H__
-
-#include "ArcCommon.h"
 #include <queue>
 #include <algorithm>
+
+namespace Arc
+{
+
+#ifndef __ARC_QUEUE_H__
+#define __ARC_QUEUE_H__
+
+#include "Common.h"
 
 template <class T>
 class ArrayList;
@@ -25,7 +29,7 @@ protected:
 public:
 
     Queue ( void ) { }
-    virtual ~Queue( void );
+    virtual ~Queue( void ) { clear(); }
 
     virtual string toString( void ) const { return "Queue"; }
 
@@ -56,12 +60,6 @@ public:
 
 #include "ArrayList.h"
 #include "LinkedList.h"
-
-template <class T>
-Queue<T>::~Queue( void )
-{
-    clear();
-}
 
 template <class T>
 Queue<T>* Queue<T>::push( const T& item )
@@ -132,3 +130,5 @@ LinkedList<T> Queue<T>::toLinkedList( unsigned int& length )
 }
 
 #endif
+
+}
