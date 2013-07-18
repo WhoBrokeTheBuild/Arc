@@ -43,11 +43,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../Libraries/SDL/include;../Libraries/SDL_image/include;../Libraries/SDL_mixer/include;../Libraries/SDL_ttf/include;../Arc Engine/Arc Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Libraries/SDL/include;../Arc Engine/Arc Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../Libraries/SDL/lib/x86;../Libraries/SDL_image/lib;../Libraries/SDL_mixer/lib;../Libraries/SDL_ttf/lib/x86;../Arc Engine/Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../Libraries/SDL/lib/x86;../Arc Engine/Debug</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
       <SubSystem>Windows</SubSystem>
     </Link>
