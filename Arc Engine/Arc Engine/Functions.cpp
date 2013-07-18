@@ -10,6 +10,7 @@ void pause( const string msg /*= "Press enter to continue"*/ )
 {
     static string tmp;
     cout << msg;
+    cin.clear();
     getline(cin, tmp);
     cout << endl;
 }

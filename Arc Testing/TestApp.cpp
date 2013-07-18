@@ -14,6 +14,9 @@ void TestApp::init( void )
     ArcApp::init(Size(600), "Test Arc");
     IKeyboardListener::init();
 
+    sound = New Sound();
+    sound->init("assets/sound.ogg");
+
     scene = New Scene();
     scene->init();
 
@@ -65,6 +68,7 @@ void TestApp::init( void )
 void TestApp::term( void )
 {
     delete scene;
+    delete sound;
 
     delete anim;
 
@@ -94,12 +98,20 @@ void TestApp::keyPressed( const Event& event )
     {
     case KEY_ENTER:
 
-        scene->toggleLayerVisible(0);
+        if (sound->isPlaying())
+            sound->stop();
+        else
+            sound->play();
 
         break;
-    case KEY_SPACE:
+    case KEY_UP:
 
-        scene->toggleLayerEnabled(0);
+        sound->setVolume(sound->getVolume() + 0.1f);
+
+        break;
+    case KEY_DOWN:
+
+        sound->setVolume(sound->getVolume() - 0.1f);
 
         break;
     default:

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="CachedText.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="RectCollider.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StringFunc.cpp" />
     <ClCompile Include="TextInputSource.cpp" />
@@ -49,6 +51,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="ArrayList.h" />
+    <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="CachedText.h" />
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Circle.h" />
@@ -101,6 +104,7 @@
     <ClInclude Include="RectCollider.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StringFunc.h" />
     <ClInclude Include="TextInputSource.h" />

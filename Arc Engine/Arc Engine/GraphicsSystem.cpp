@@ -20,12 +20,6 @@ void GraphicsSystem::init( Size windowSize, string windowTitle )
     _fullscreen  = false;
     _clearColor  = Color::STORM;
 
-    if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
-    {
-        ERR(toString(), "Failed to initialize SDL");
-        die();
-    }
-
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE,           8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,         8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,          8);

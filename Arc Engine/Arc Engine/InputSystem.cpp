@@ -17,6 +17,8 @@ std::string InputSystem::toString( void ) const
 
 void InputSystem::init( void )
 {
+    INF(toString(), "Initializing");
+
     _pKeyboardSource = New KeyboardSource();
     _pKeyboardSource->init();
 
@@ -27,6 +29,8 @@ void InputSystem::init( void )
     _pTextInputSource->init();
 
     gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE, this, &InputSystem::update);
+
+    INF(toString(), "Complete");
 }
 
 void InputSystem::term( void )

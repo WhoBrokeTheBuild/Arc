@@ -31,9 +31,10 @@ void ArcApp::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= 
     _targetFPS  = 60.0f;
     _currentFPS = 0;
 
+    initCore();
     initGraphics(windowSize, windowTitle);
-    initInput();
     initAudio();
+    initInput();
 
     gpEventDispatcher->addEventListener(ArcApp::EVENT_UPDATE,  this, &ArcApp::update);
     gpEventDispatcher->addEventListener(ArcApp::EVENT_RENDER, this, &ArcApp::render);
@@ -51,6 +52,7 @@ void ArcApp::term( void )
     gpEventDispatcher->removeEventListener(ArcApp::EVENT_UPDATE,  this, &ArcApp::update);
 
     delete _pInputSystem;
+    delete _pAudioSystem;
     delete _pGraphicsSystem;
 
     delete gpEventDispatcher;
@@ -110,19 +112,29 @@ void ArcApp::renderFrame( const RenderData& renderData )
     renderData.renderTarget()->endDraw();
 }
 
+void ArcApp::initCore( void )
+{
+    if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
+    {
+        ERR(toString(), "Failed to initialize SDL");
+        die();
+    }
+}
+
 void ArcApp::initGraphics( Size windowSize, string windowTitle )
 {
     _pGraphicsSystem = New GraphicsSystem();
     _pGraphicsSystem->init(windowSize, windowTitle);
 }
 
+void ArcApp::initAudio( void )
+{
+    _pAudioSystem = New AudioSystem();
+    _pAudioSystem->init();
+}
+
 void ArcApp::initInput( void )
 {
     _pInputSystem = New InputSystem();
     _pInputSystem->init();
-}
-
-void ArcApp::initAudio( void )
-{
-
 }

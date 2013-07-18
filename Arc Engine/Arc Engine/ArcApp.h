@@ -18,6 +18,8 @@
 
 #include "InputSystem.h"
 
+#include "AudioSystem.h"
+
 #include "Timer.h"
 
 #include <SDL/SDL.h>
@@ -34,6 +36,9 @@ protected:
 
     InputSystem
         *_pInputSystem;
+
+    AudioSystem
+        *_pAudioSystem;
 
     bool
         _running;
@@ -67,9 +72,10 @@ public:
     virtual void updateFrame( const FrameData&  frameData );
     virtual void renderFrame( const RenderData& renderData );
 
+    virtual void initCore( void );
     virtual void initGraphics( Size windowSize, string windowTitle );
-    virtual void initInput   ( void );
     virtual void initAudio   ( void );
+    virtual void initInput   ( void );
 
     virtual void update( const Event& event ) { };
     virtual void render( const Event& event ) { };

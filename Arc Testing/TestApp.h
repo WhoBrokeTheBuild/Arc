@@ -3,12 +3,16 @@
 #include <ArcApp.h>
 #include "Test.h"
 #include <Scene.h>
+#include <Sound.h>
 
 class TestApp :
     public ArcApp,
     public IKeyboardListener
 {
 public:
+
+    Sound
+        *sound;
 
     Scene
         *scene;
