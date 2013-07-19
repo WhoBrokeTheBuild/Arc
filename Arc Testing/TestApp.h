@@ -1,13 +1,16 @@
 #pragma once
 
+#include "Common.h"
+
 #include <Arc/Program.h>
-#include "Test.h"
 #include <Arc/Scene.h>
 #include <Arc/Sound.h>
 
+#include "Test.h"
+
 class TestApp :
-    public Program,
-    public IKeyboardListener
+    public Arc::Program,
+    public Arc::IKeyboardListener
 {
 public:
 
@@ -31,8 +34,8 @@ public:
     ArrayList<Sprite*>
         sprites;
 
-    TestApp( void );
-    virtual ~TestApp( void );
+    TestApp( void ) { }
+    virtual ~TestApp( void ) { term(); }
 
     virtual string toString( void ) const { return "Test App"; }
 

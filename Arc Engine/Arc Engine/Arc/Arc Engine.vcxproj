@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AudioSystem.cpp" />
+    <ClCompile Include="CachedText.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="CircleCollider.cpp" />
+    <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="EventDispatcher.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GraphicsSystem.cpp" />
+    <ClCompile Include="InputFunc.cpp" />
+    <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="KeyboardSource.cpp" />
+    <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="MathFunc.cpp" />
+    <ClCompile Include="MemoryTracker.cpp" />
+    <ClCompile Include="MouseSource.cpp" />
+    <ClCompile Include="ParseFunc.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="RandFunc.cpp" />
+    <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="RectCollider.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StringFunc.cpp" />
+    <ClCompile Include="TextInputSource.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TimeFunc.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="ArrayList.h" />
+    <ClInclude Include="AudioSystem.h" />
+    <ClInclude Include="CachedText.h" />
+    <ClInclude Include="Callbacks.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="CircleCollider.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Console.h" />
+    <ClInclude Include="Defines.h" />
+    <ClInclude Include="Delegate.h" />
+    <ClInclude Include="Direction.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventData.h" />
+    <ClInclude Include="EventDispatcher.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GamePad.h" />
+    <ClInclude Include="Geom.h" />
+    <ClInclude Include="GraphicsSystem.h" />
+    <ClInclude Include="ICollidable.h" />
+    <ClInclude Include="IDrawable.h" />
+    <ClInclude Include="IDrawableImage.h" />
+    <ClInclude Include="IFrameListener.h" />
+    <ClInclude Include="IKeyboardListener.h" />
+    <ClInclude Include="IMouseListener.h" />
+    <ClInclude Include="IPhysicsObject.h" />
+    <ClInclude Include="InputFunc.h" />
+    <ClInclude Include="InputState.h" />
+    <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="InputSourceType.h" />
+    <ClInclude Include="InputType.h" />
+    <ClInclude Include="ITextInputListener.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="KeyboardSource.h" />
+    <ClInclude Include="Layer.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Manager.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MathFunc.h" />
+    <ClInclude Include="MemoryTracker.h" />
+    <ClInclude Include="Mouse.h" />
+    <ClInclude Include="MouseSource.h" />
+    <ClInclude Include="OriginLocation.h" />
+    <ClInclude Include="ParseFunc.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="RandFunc.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="RectCollider.h" />
+    <ClInclude Include="RenderTarget.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Sound.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StringFunc.h" />
+    <ClInclude Include="TextInputSource.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TimeFunc.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Unit.h" />
+    <ClInclude Include="Vector2.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DF840E53-320E-4217-928A-681EF077FDB3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ArcEngine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Libraries\SDL\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\Libraries\SDL\lib\x86\;..\Libraries\SDL_image\lib\;..\Libraries\SDL_mixer\lib\;..\Libraries\SDL_ttf\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Libraries\SDL\include\;..\..\Libraries\SDL_image\include\;..\..\Libraries\SDL_mixer\include\;..\..\Libraries\SDL_ttf\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

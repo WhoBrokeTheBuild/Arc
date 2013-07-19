@@ -71,6 +71,7 @@
     <ClCompile Include="TestApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TestApp.h" />
   </ItemGroup>

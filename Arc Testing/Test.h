@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Common.h"
+
 #include <Arc/Animation.h>
 #include <Arc/Unit.h>
 #include <Arc/IDrawableImage.h>

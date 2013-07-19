@@ -1,5 +1,10 @@
 #include "Common.h"
 
+#include <Arc/Console.h>
+#include <Arc/MemoryTracker.h>
+
+#include "TestApp.h"
+
 #ifdef WINDOWS
 
 #pragma comment(lib, "Arc Engine.lib")
@@ -17,13 +22,13 @@ int main(int argc, char *argv[])
 {
 #ifdef DEBUG
 
-    init_console();
+    Arc::init_console();
 
 #endif
 
     INF("Main", "Starting Up");
 
-    gpMemoryTracker = new MemoryTracker();
+    gpMemoryTracker = new Arc::MemoryTracker();
 
     TestApp *program = New TestApp();
     program->init();

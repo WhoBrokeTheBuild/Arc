@@ -1,17 +1,8 @@
 #include "TestApp.h"
 
-TestApp::TestApp(void)
-{
-}
-
-TestApp::~TestApp(void)
-{
-    term();
-}
-
 void TestApp::init( void )
 {
-    ArcApp::init(Size(600), "Test Arc");
+    Program::init(Size(600), "Test Arc");
     IKeyboardListener::init();
 
     sound = New Sound();
