@@ -45,7 +45,7 @@ void Arc::Texture::load( string filename )
     {
         stringstream ss;
         ss << "Error Loading Image: " << IMG_GetError();
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
     }
 
     load(surface);

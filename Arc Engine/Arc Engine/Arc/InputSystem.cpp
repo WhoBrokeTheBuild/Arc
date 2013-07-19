@@ -17,7 +17,7 @@ std::string Arc::InputSystem::toString( void ) const
 
 void Arc::InputSystem::init( void )
 {
-    INF(toString(), "Initializing");
+    INFO(toString(), "Initializing");
 
     _pKeyboardSource = New KeyboardSource();
     _pKeyboardSource->init();
@@ -30,7 +30,7 @@ void Arc::InputSystem::init( void )
 
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 
-    INF(toString(), "Complete");
+    INFO(toString(), "Complete");
 }
 
 void Arc::InputSystem::term( void )

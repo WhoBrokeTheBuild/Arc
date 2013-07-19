@@ -37,7 +37,7 @@ double Arc::ceil( double value, int accuracy )
     return std::ceil(value * mult) / mult;
 }
 
-bool Arc::linesIntersect( Vector2 L1P1, Vector2 L1P2, Vector2 L2P1, Vector2 L2P2)
+bool Arc::linesIntersect( Vector2 L1P1, Vector2 L1P2, Vector2 L2P1, Vector2 L2P2 )
 {
     float 
         ua = 0,

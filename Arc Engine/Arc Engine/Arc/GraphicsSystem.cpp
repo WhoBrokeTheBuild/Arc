@@ -4,7 +4,7 @@ const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset"
 
 void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
 {
-    INF(toString(), "Initializing");
+    INFO(toString(), "Initializing");
 
     _windowSize  = windowSize;
     _windowTitle = windowTitle;
@@ -35,11 +35,11 @@ void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
 
     if (TTF_Init() < 0)
     {
-        ERR(toString(), "Failed to initialize TTF Addon");
+        ERROR(toString(), "Failed to initialize TTF Addon");
         die();
     }
 
-    INF(toString(), "Complete");
+    INFO(toString(), "Complete");
 }
 
 void Arc::GraphicsSystem::term( void )
@@ -88,13 +88,7 @@ void Arc::GraphicsSystem::setWindowIcon( string filename )
     SDL_Surface *pSurface = IMG_Load(filename.c_str());
 
     if (!pSurface)
-    {
-        stringstream ss;
-
-        ss << "Cannot Load Icon File: " << filename;
-
-        ERR(toString(), ss.str());
-    }
+        ERRORF(toString(), "Cannot Load Icon File (%s)", filename);
 
     SDL_WM_SetIcon(pSurface, nullptr);
 
@@ -122,10 +116,7 @@ void Arc::GraphicsSystem::resetGL( void )
 
     if (error != GL_NO_ERROR)
     {
-        stringstream ss;
-        ss << "Failed to initialize OpenGL (" << gluErrorString(error) << ")";
-
-        ERR(toString(), ss.str());
+        ERRORF(toString(), "Failed to initialize OpenGL (%s)", gluErrorString(error));
         die();
     }
 
@@ -140,10 +131,7 @@ void Arc::GraphicsSystem::resetVideoMode( void )
 
     if (!info)
     {
-        stringstream ss;
-        ss << "Failed to query SDL video info (" << SDL_GetError() << ")";
-
-        ERR(toString(), ss.str());
+        ERRORF(toString(), "Failed to query SDL video info (%s)", SDL_GetError());
         die();
     }
 
@@ -174,10 +162,7 @@ void Arc::GraphicsSystem::resetVideoMode( void )
 
     if (SDL_SetVideoMode((int)_windowSize.X, (int)_windowSize.Y, _screenBPP, flags) == nullptr)
     {
-        stringstream ss;
-        ss << "Failed to set SDL video mode (" << SDL_GetError() << ")";
-
-        ERR(toString(), ss.str());
+        ERRORF(toString(), "Failed to set SDL video mode (%s)", SDL_GetError());
         die();
     }
 }

@@ -111,7 +111,7 @@ void Arc::RenderTarget::drawText( const float x, const float y, const CachedText
 
     if (pCachedText->texture() == nullptr)
     {
-        ERR(toString(), "Invalid Cached Text");
+        ERROR(toString(), "Invalid Cached Text");
         return;
     }
 

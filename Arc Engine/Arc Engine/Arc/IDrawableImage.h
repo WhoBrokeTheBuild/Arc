@@ -133,7 +133,7 @@ namespace Arc
 
             if (!_pAnimation->hasFrame(Frame))
             {
-                ERR("IDrawableImage", "Frame Index out of range");
+                ERROR("IDrawableImage", "Frame Index out of range");
                 return;
             }
 

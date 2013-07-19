@@ -26,18 +26,20 @@ int main(int argc, char *argv[])
 
 #endif
 
-    INF("Main", "Starting Up");
+    INFOF("Main", "%s", "Hello, World!");
+
+    INFO("Main", "Starting Up");
 
     gpMemoryTracker = new Arc::MemoryTracker();
 
     TestApp *program = New TestApp();
     program->init();
 
-    INF("Main", "Starting Game Loop");
+    INFO("Main", "Starting Game Loop");
 
     program->start();
 
-    INF("Main", "Shutting Down");
+    INFO("Main", "Shutting Down");
 
     delete program;
 

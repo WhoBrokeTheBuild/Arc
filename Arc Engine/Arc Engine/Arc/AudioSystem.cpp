@@ -2,7 +2,7 @@
 
 void Arc::AudioSystem::init( void )
 {
-    INF(toString(), "Initializing");
+    INFO(toString(), "Initializing");
 
     _rate      = 44100;
     _chunkSize = 1024;
@@ -11,14 +11,11 @@ void Arc::AudioSystem::init( void )
 
     if (Mix_OpenAudio(_rate, _format, _channels, _chunkSize))
     {
-        stringstream ss;
-        ss << "Unable to open audio (" << Mix_GetError() << ")";
-
-        ERR(toString(), ss.str());
+        ERRORF(toString(), "Unable to open audio (%s)", Mix_GetError());
         die();
     }
 
-    INF(toString(), "Complete");
+    INFO(toString(), "Complete");
 }
 
 void Arc::AudioSystem::term( void )

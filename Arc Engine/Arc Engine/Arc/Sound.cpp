@@ -13,7 +13,7 @@ void Arc::Sound::init( string filename )
         stringstream ss;
         ss << "Unable to load music (" << filename << ")";
 
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
         return;
     }
 }

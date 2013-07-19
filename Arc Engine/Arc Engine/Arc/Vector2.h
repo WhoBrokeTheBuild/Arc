@@ -49,8 +49,8 @@ namespace Arc
         float halfHeight( void ) { return halfY(); }
 
         Vector2 lerp      ( const Vector2 &other, float fraction );
-		Vector2 normLeft  ( const Vector2 &other);
-		Vector2 normRright( const Vector2 &other);
+		Vector2 normLeft  ( const Vector2 &other );
+		Vector2 normRright( const Vector2 &other );
 		float   dot       ( const Vector2 &rhs );
 
         const Vector2 operator+( const Vector2 &rhs ) const;

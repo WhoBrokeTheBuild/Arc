@@ -161,7 +161,7 @@ T *Manager<T>::get(ItemKey pKey)
     {
         stringstream ss;
         ss << "Tried to access a non existing item: " << pKey;
-        ERR(toString(), ss.str());
+        ERROR(toString(), ss.str());
         die();
         return nullptr;
     }

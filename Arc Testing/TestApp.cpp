@@ -95,6 +95,11 @@ void TestApp::keyPressed( const Event& event )
             sound->play();
 
         break;
+    case KEY_SPACE:
+
+        _pGraphicsSystem->setFullscreen(!_pGraphicsSystem->fullscreen());
+
+        break;
     case KEY_UP:
 
         sound->setVolume(sound->getVolume() + 0.1f);

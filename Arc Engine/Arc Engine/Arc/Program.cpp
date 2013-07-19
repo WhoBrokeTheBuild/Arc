@@ -15,7 +15,7 @@ std::string Arc::Program::toString( void ) const
 
 void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
 {
-    INF(toString(), "Starting Init");
+    INFO(toString(), "Starting Init");
 
     gpEventDispatcher = New EventDispatcher();
 
@@ -27,20 +27,20 @@ void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitl
     initAudio();
     initInput();
 
-    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE,  this, &Program::update);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &Program::update);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &Program::render);
     gpEventDispatcher->addEventListener(Program::EVENT_EXIT,   this, &Program::stop);
 
-    INF(toString(), "Finished Init");
+    INFO(toString(), "Finished Init");
 }
 
 void Arc::Program::term( void )
 {
-    INF(toString(), "Terminating");
+    INFO(toString(), "Terminating");
 
     gpEventDispatcher->removeEventListener(Program::EVENT_EXIT,   this, &Program::stop);
     gpEventDispatcher->removeEventListener(Program::EVENT_RENDER, this, &Program::render);
-    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE,  this, &Program::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &Program::update);
 
     delete _pInputSystem;
     delete _pAudioSystem;
@@ -107,7 +107,7 @@ void Arc::Program::initCore( void )
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
     {
-        ERR(toString(), "Failed to initialize SDL");
+        ERRORF(toString(), "Failed to initialize SDL (%s)", SDL_GetError());
         die();
     }
 }

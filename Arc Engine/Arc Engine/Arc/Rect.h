@@ -45,7 +45,7 @@ namespace Arc
         inline Vector2 center( void ) const { return Vector2( X + halfWidth(), Y + halfHeight() ); }
 
         inline Point pos ( void ) const { return Point( X, Y ); }
-        inline Size    size( void ) const { return Vector2( Width, Height ); }
+        inline Size  size( void ) const { return Vector2( Width, Height ); }
 
         inline float top   ( void ) const { return Y; }
         inline float bottom( void ) const { return Y + Height; }
