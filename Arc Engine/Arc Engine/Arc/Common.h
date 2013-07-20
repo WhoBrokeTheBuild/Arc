@@ -13,7 +13,7 @@ using std::stringstream;
 using std::cin;
 using std::cout;
 using std::cerr;
-#define endl "\n"
+#define endl "\n" // std::endl flushes the stream, which is unnecessary 
 
 #include "Functions.h"
 #include "GameObject.h"

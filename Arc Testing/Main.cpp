@@ -26,8 +26,6 @@ int main(int argc, char *argv[])
 
 #endif
 
-    INFOF("Main", "%s", "Hello, World!");
-
     INFO("Main", "Starting Up");
 
     gpMemoryTracker = new Arc::MemoryTracker();

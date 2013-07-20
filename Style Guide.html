@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Arc -- Style Guide</title>
+    <style type="text/css">
+    
+    body,
+    html
+    {
+        margin: 0;
+        padding: 0;
+        background-color: #EEE;
+        font-family: Arial;
+        font-size: 14px;
+    }
+    
+    .root
+    {
+        width: 960px;
+        margin: 0 auto;
+        background-color: #FFF;
+    }
+    .cont
+    {
+        padding: 20px 40px;
+    }
+    .title
+    {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .footer
+    {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .block
+    {
+        margin: 20px;
+    }
+    .top-link
+    {
+        float: right;
+        margin-right: 20px;
+    }
+    a:link,
+    a:visited
+    {
+        color: #00AAAA;
+        text-decoration: none;
+    }
+    a:hover
+    {
+        color: #00dfdf;
+    }
+    hr
+    {
+        border: 0;
+        height: 0;
+        margin: 10px auto;
+        border-top: 1px solid rgba(0, 0, 0, 0.4);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    h1,
+    h2,
+    h3
+    {
+        padding: 0;
+        margin: 0;
+    }
+    h1
+    {
+        font-size: 28px;
+    }
+    h2
+    {
+        font-size: 20px;
+    }
+    h3
+    {
+        font-size: 16px;
+    }
+    code
+    {
+        display: block;
+        white-space: pre;
+        margin: 15px;
+        padding: 0 10px;
+        background-color: #EEE;
+        font-size: 12px;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div class="cont">
+            <h1 class="title">Arc Coding Style Guide</h1>
+            <a name="toc"></a>
+            <h2>Table of Contents</h2>
+            <div class="toc">
+                <ol>
+                    <li>
+                        <a href="#general-names">General Naming</a>
+                        <ul>
+                            <li>
+                                <a href="#filenames">Filenames</a>
+                            </li>
+                            <li>
+                                <a href="#pointer-variables">Pointer Variables</a>
+                            </li>
+                            <li>
+                                <a href="#curly-brackets">Curly Brackets</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#header-files">Header Files</a>
+                        <ul>
+                            <li>
+                                <a href="#multiple-inclusion">Multiple Inclusion</a>
+                            </li>
+                            <li>
+                                <a href="#include-order">Include Order</a>
+                            </li>
+                            <li>
+                                <a href="#inline-functions">Inline Functions</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#namespaces">Namespaces</a>
+                    </li>
+                    <li>
+                        <a href="#new-vs-new">New vs. new</a>
+                    </li>
+                    <li>
+                        <a href="#functions">Functions</a>
+                    </li>
+                    <li>
+                        <a href="#classes">Classes</a>
+                        <ul>
+                            <li>
+                                <a href="#naming">Naming</a>
+                            </li>
+                            <li>
+                                <a href="#class-variable-naming">Variable Naming</a>
+                            </li>
+                            <li>
+                                <a href="#class-function-naming">Function Naming</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#enums">Enums</a>
+                    </li>
+                    <li>
+                        <a href="#preprocessor">Preprocessor</a>
+                    </li>
+                </ol>
+            </div>
+            <hr />
+            
+            <a name="general-naming" class="top-link" href="#toc">Top</a>
+            <h2>General Naming</h2>
+            <div class="block">
+                <a name="filenames"></a>
+                <h3>Filenames</h3>
+                <p>
+                    Filenames should be camel-case. Ex. If a file managed data, name the file DataManager.h / DataManager.cpp
+                </p>
+                <a name="pointer-variables"></a>
+                <h3>Pointer Variables</h3>
+                <p>
+                    Variables with pointer types should be declared with the asterisk next to the type name, and should start with a 'p' whenever
+                    this seems to make sense. Example:
+                    <code>
+Rect* pRectPointer;
+                    </code>
+                </p>
+                <a name="curly-brackets"></a>
+                <h3>Curly Brackets</h3>
+                <p>
+                    Curly brackets should always start and end on their own lines. Also, there should be no whitespace above or below the items in the curly brackets.
+                    <code>
+if (something == 0)
+{
+    ...
+}
+
+int main( int argc, char** argv )
+{
+    doSomething();
+    
+    return 0;
+}
+                    </code>
+                </p>
+            </div>
+            <hr />
+            
+            <a name="header-files" class="top-link" href="#toc">Top</a>
+            <h2>Header Files</h2>
+            <div class="block">
+                <a name="multiple-inclusion"></a>
+                <h3>Multiple Inclusion</h3>
+                <p>
+                    All header files should be protected from multiple inclusion with both "#pragma once" and #define guards.
+                    The define symbol format should be __&lt;PROJECT&gt;_&lt;FILE&gt;_H__. For example, if the file was included
+                    in the core Arc project, and was named FooBar.h, the code would be as follows:
+                    <code>
+#pragma once
+
+#ifndef __ARC_FOO_BAR_H__
+#define __ARC_FOO_BAR_H__
+
+...
+
+#endif //__ARC_FOO_BAR_H__
+                    </code>
+                </p>
+                
+                <a name="include-order"></a>
+                <h3>Include Order</h3>
+                <p>
+                    The include order is not set in stone, but in general you should follow this order.
+                    <ol>
+                        <li>Common Header Files</li>
+                        <li>Parent classes</li>
+                        <li>C System Files</li>
+                        <li>C++ System Files</li>
+                        <li>Other Library Files</li>
+                        <li>Arc Library Files</li>
+                    </ol>
+                    <code>
+#include "Common.h"
+#include "ParentClass.h"
+
+#include &lt;cstdio.h&gt;
+#include &lt;time.h&gt;
+
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+
+#include &lt;SDL/SDL.h&gt;
+#include &lt;SDL/SDL_image.h&gt;
+
+#include &lt;Arc/Functions.h&gt;
+#include &lt;Arc/ArrayList.h&gt;
+                    </code>
+                </p>
+                
+                <a name="inline-functions"></a>
+                <h3>Inline Functions</h3>
+                <p>
+                    Inline functions should only be used for any function under 10 lines. Use them wherever comfortable, but if you don't use them that's alright too.
+                    <code>
+// Good
+inline float half( float num )
+{
+    return num * 0.5f;
+}
+                    </code>
+                </p>
+            </div>
+            <hr />
+            
+            <a name="namespaces" class="top-link" href="#toc">Top</a>
+            <h2>Namespaces</h2>
+            <div class="block">
+                <p>
+                    Namespaces should be used on all non-testing projects to prevent naming conflicts. All of Arc is wrapped in a namespace named Arc. Below are examples of
+                    how to put different items in a namespace.
+                </p>
+                <h3>Class (with static variable)</h3>
+                <br />
+                <code>
+// Header
+
+#pragma once
+
+#ifndef __FOO_BAR_H__
+#define __FOO_BAR_H__
+
+#include "Common.h"
+#include &lt;Arc/GameObject.h&gt;
+
+namespace Foo
+{
+    class Bar
+    {
+        static int STATIC_VARIABLE;
+        
+        Bar( void );
+        ~Bar( void );
+        
+        void init( void );
+        
+        ...
+        
+    }; // class Bar
+    
+} // namespace Foo
+
+#endif // __FOO_BAR_H__
+
+// Source
+
+#include "Bar.h"
+
+int Foo::Bar::STATIC_VARIABLE = 0;
+
+Foo::Bar( void )
+{
+}
+
+Foo::~Bar( void )
+{
+}
+
+void Foo::Bar::init( void )
+{
+}
+                </code>
+            </div>
+            <hr />
+            
+            <a name="new-vs-new" class="top-link" href="#toc">Top</a>
+            <h2>New vs new</h2>
+            <div class="block">
+                <p>
+                    Arc has a built in memory tracker: gpMemoryTracker. You have to initialize it within the main function using 'new', as shown below.
+                    <code>
+    gpMemoryTracker = new Arc::MemoryTracker();
+                    </code>
+                    After this has been done, you may use New to initialize a class and have it tracked. The class you are initializing must descend
+                    from GameObject, which all of Arc's built in classes do. The memory tracker keeps records of all instances created with New, and
+                    removes them when they are deleted with delete, as shown below.
+                    <code>
+    Arc::InputSystem* pInputSystem = New Arc::InputSystem();
+                    </code>
+                    You can get the number of current allocations any time by calling gpMemoryTracker->numAllocations(), and you can print any remaining
+                    allocations (with the toString() of the object, as well as the filename and line number where it was allocated). To combine these two
+                    things together at the end of the program, you can do this:
+                    <code>
+    if (gpMemoryTracker->numAllocations() > 0)
+    {
+        gpMemoryTracker->printAllocations();
+        pause();
+    }
+                    </code>
+                    That will show you any memory leaks that could be caused by tracked objects, and if there are none, it wont waste your time.
+                    <br />
+                    Also, don't forget to delete the memory tracker at the end of your program with:
+                    <code>
+    delete gpMemoryTracker;
+    gpMemoryTracker = nullptr;
+                    </code>
+                </p>
+            </div>
+            <hr />
+            
+            <a name="functions" class="top-link" href="#toc">Top</a>
+            <h2>Functions</h2>
+            <div class="block">
+                <p>
+                    Functions should be named in camel-case but starting with a lower case letter. Function names should be specific to what the function does. There should be no space between the function name and the
+                    opening parentheses, unless it is to align it to another function. The argument list inside the parentheses should have a space on either
+                    end, and each item should be separated by a comma and a space. For function parameters with default values, they should be declared in the
+                    header file with an equals sign and the value, and the same should exist in the source file except commented out. Examples:
+                    <code>
+// Header
+
+void functionName( int num, string text );
+
+string otherFunction( int num = 4 );
+
+int getOne  ( void );
+int getTwo  ( void );
+int getThree( void );
+
+// Source
+
+void functionName( int num, string text )
+{
+    ...
+}
+
+string otherFunction( int num /*= 4*/ )
+{
+    ...
+}
+
+int getOne( void )
+{
+    ...
+}
+
+int getTwo( void )
+{
+    ...
+}
+
+int getThree( void )
+{
+    ...
+}
+                    </code>
+                    Functions with a lot of parameters can be wrapped on multiple lines in their definition only, like so:
+                    <code>
+void tooManyArguments( int x, int y,
+                       string message,
+                       Color color,
+                       Rect outer,
+                       float diff = 1.0f,
+                       Vector2 point = Vector2::ZERO );
+                    </code>
+                </p>
+            </div>
+            <hr />
+            
+            <a name="classes" class="top-link" href="#toc">Top</a>
+            <h2>Classes</h2>
+            <div class="block">
+                <a name="class-naming"></a>
+                <h3>Naming</h3>
+                <p>
+                    Classes should be named in camel-case. The header and source filenames should match the class name of the main class in the file. For example:
+                </p>
+                <code>
+// FooBar.h
+
+class FooBar
+{
+    ...
+}; // class FooBar
+
+// FooBar.cpp
+
+#include "FooBar.h"
+
+...
+                </code>
+                <a name="class-variable-naming"></a>
+                <h3>Variable Naming</h3>
+                <p>
+                    Member variables should have the type on a line by itself, then the list of variables beneath it tabbed in once past the type.
+                    Private or protected member variables should be named in camel-case starting with an underscore and the first letter being lowercase.
+                    Public member variables should be named in full camel-case. Pointer variables should have the asterisk next to the name in the list
+                    instead of next to the type name, as instructed above. All of these conventions
+                    are shown below:
+                    <code>
+class FooBar
+{
+    private:
+    
+        Rect
+            *_pRectPointer;
+            
+    protected:
+    
+        int
+            _protectedInt;
+    
+    public:
+    
+        string
+            PublicString;
+    
+}; // class FooBar
+                    </code>
+                </p>
+                <a name="class-function-naming"></a>
+                <h3>Function Naming</h3>
+                <p>
+                    Member functions of classes should follow the same naming conventions as all other funtions. Getter and Setter functions should each
+                    start with get and set, respectively. Also, functions with simmilar name lengths and that make sense to logically group together, should
+                    be aligned to each other. Example:
+                    <code>
+int  getWidth( void )      { return _width; }
+void setWidth( int width ) { _width = width; }
+                    </code>
+                </p>
+            </div>
+            <hr />
+            
+            <a name="enums" class="top-link" href="#toc">Top</a>
+            <h2>Enums</h2>
+            <p>
+                Most enums should follow the format below, unless there is good reason not to.
+                <code>
+enum Direction
+{
+    INVALID_DIRECTION = -1,
+    
+    DIRECTION_NORTH,
+    DIRECTION_SOUTH,
+    DIRECTION_EAST,
+    DIRECTION_WEST,
+    
+    NUM_DIRECTIONS
+};
+                </code>
+                The NUM item at the end allows for easy loops through all enum values. As well as the following code which
+                lets you associate text to each enum value.
+                <code>
+const string DIRECTION_NAMES[NUM_DIRECTIONS] =
+{
+    "North",
+    "South",
+    "East",
+    "West"
+};
+                </code>
+            </p>
+            <hr />
+            
+            <a name="preprocessor" class="top-link" href="#toc">Top</a>
+            <h2>Preprocessor</h2>
+            <p>
+                Preprocessor directives should always be at the beginning of a line, even if they are within a preprocessor if. There should be one
+                line of spacing before each preprocessor if, ifdef, ifndef, else, endif, etc. This rule does not apply to preprocessor commands such
+                as include, define, or pragma. Example: 
+                <code>
+#ifdef WINDOWS
+
+#define USING_WINDOWS_FILES
+#include &lt;Windows.h&gt;
+
+#else 
+
+#include &lt;unistd.h&gt;
+
+#endif // WINDOWS
+
+#ifdef DEBUG
+
+    void debugFunction( void ) { ... }
+    
+#else
+
+    void debugFunction( void ) { } // Empty Function
+
+#endif // DEBUG
+                </code>
+                Arc handles several defines for you, such as DEBUG, RELEASE, WINDOWS, and LINUX. These are set based on what compile mode you are running on
+                (as long as your IDE has been properly configured), and what OS you are on. 
+            </p>
+            <hr />
+            
+<!--
+            <a name="" class="top-link" href="#toc">Top</a>
+            <h2></h2>
+            <p>
+                
+                <code>
+                    
+                </code>
+            </p>
+            <hr />
+-->
+
+            <div class="footer">
+                &copy; Stephen Lane-Walsh 2013-2014
+            </div>
+        </div>
+    </div>
+</body>
+</html>
