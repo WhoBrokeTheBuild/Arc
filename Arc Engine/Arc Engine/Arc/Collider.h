@@ -4,10 +4,12 @@
 #define __ARC_COLLIDER_H__
 
 #include "Common.h"
+#include "GameObject.h"
 
 namespace Arc
 {
     class Collider
+        : public GameObject
     {
     public:
 
@@ -15,7 +17,8 @@ namespace Arc
 
         virtual bool check( Vector2 pos, Collider* pOther ) = 0;
 
-    };
-}
+    }; // class Collider
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_COLLIDER_H__

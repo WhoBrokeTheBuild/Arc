@@ -21,20 +21,20 @@ namespace Arc
 
     public:
 
-        Delegate(ReturnType (*function)(Param))
+        Delegate( ReturnType (*function)(Param) )
         {
             _callback = New StaticFunctionCallback<ReturnType, Param>(function);
         }
 
         template <typename ObjectType, typename Method>
-        Delegate(ObjectType* object, Method method)
+        Delegate( ObjectType* object, Method method )
         {
             _callback = New MethodCallback<ReturnType, Param, ObjectType, Method>(object, method);
         }
 
         virtual string toString( void ) const { return "Delegate"; }
 
-        void setFunction( ReturnType (*function)(Param))
+        void setFunction( ReturnType (*function)(Param) )
         {
             if (_callback != nullptr)
                 delete _callback;
@@ -75,7 +75,7 @@ namespace Arc
 
         ~Delegate() { if ( _callback != nullptr ) { delete _callback; _callback = nullptr; } }
 
-        bool operator==(const Delegate<ReturnType, Param>& rhs)
+        bool operator==( const Delegate<ReturnType, Param>& rhs )
         {
             if (_callback == rhs._callback)
                 return true;
@@ -86,7 +86,7 @@ namespace Arc
             return ( *(_callback) == *(rhs._callback) );
         }
 
-        bool operator!=(const Delegate<ReturnType, Param>& rhs)
+        bool operator!=( const Delegate<ReturnType, Param>& rhs )
         {
             if (_callback == rhs._callback)
                 return false;
@@ -96,7 +96,8 @@ namespace Arc
 
             return ( *(_callback) != *(rhs._callback) );
         }
-    };
-}
+    }; // class Delegate
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_DELEGATE_H__

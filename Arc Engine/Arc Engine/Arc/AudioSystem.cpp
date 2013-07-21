@@ -1,5 +1,13 @@
 #include "AudioSystem.h"
 
+Arc::AudioSystem::AudioSystem( void )
+{
+    _rate      = 0;
+    _channels  = 0;
+    _chunkSize = 0;
+    _format    = MIX_DEFAULT_FORMAT;
+}
+
 void Arc::AudioSystem::init( void )
 {
     INFO(toString(), "Initializing");
@@ -20,5 +28,9 @@ void Arc::AudioSystem::init( void )
 
 void Arc::AudioSystem::term( void )
 {
+    INFO(toString(), "Terminating");
+
     Mix_CloseAudio();
+
+    INFO(toString(), "Complete");
 }

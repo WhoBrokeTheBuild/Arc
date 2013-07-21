@@ -4,9 +4,17 @@
 
 const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layerChanged";
 
+Arc::Layer::Layer( void )
+{
+    _units   = ArrayList<Unit*>();
+    _pParent = nullptr;
+    Visible  = false;
+    Enabled  = false;
+}
+
 void Arc::Layer::init( void )
 {
-    _units = ArrayList<Unit*>();
+    _units  = ArrayList<Unit*>();
     Visible = true;
     Enabled = true;
 

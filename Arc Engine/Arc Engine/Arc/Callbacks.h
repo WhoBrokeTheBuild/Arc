@@ -23,10 +23,10 @@ namespace Arc
     public:
 
         virtual ReturnType invoke( Param param ) = 0;
-        virtual Callback* clone( void ) = 0;
-        virtual bool isMethodOf( void* object) = 0;
+        virtual Callback*  clone ( void )        = 0;
+        virtual bool isMethodOf  ( void* object) = 0;
 
-    };
+    }; // class Callback
 
     template <typename ReturnType, typename Param = void>
     class StaticFunctionCallback
@@ -55,12 +55,13 @@ namespace Arc
             _function = function;
         }
 
-        inline virtual ReturnType invoke(Param param) { return (*_function)(param); }
+        inline virtual ReturnType invoke( Param param )      { return (*_function)(param); }
         inline virtual StaticFunctionCallback* clone( void ) { return New StaticFunctionCallback(_function); }
-        inline virtual bool isMethodOf( void* object ) { return false; }
+        inline virtual bool isMethodOf( void* object )       { return false; }
+
         inline virtual string toString( void ) const { return "Static Function Callback"; };
 
-    };
+    }; // class StaticFunctionCallback
 
     template <typename ReturnType, typename Param = void, typename ObjectType = void, typename Method = void>
     class MethodCallback
@@ -95,10 +96,12 @@ namespace Arc
 
         inline virtual ReturnType invoke( Param param ) { return (static_cast<ObjectType*>(_object)->*_method)(param); }
         inline virtual MethodCallback* clone( void )    { return New MethodCallback(_object, _method); }
-        inline virtual bool isMethodOf( void* object )    { return _object == object; }
-        inline virtual string toString( void ) const    { return "Method Callback"; };
+        inline virtual bool isMethodOf( void* object )  { return _object == object; }
 
-    };
-}
+        inline virtual string toString( void ) const { return "Method Callback"; };
 
-#endif
+    }; // class MethodCallback
+
+} // namespace Arc
+
+#endif // __ARC_CALLBACKS_H__

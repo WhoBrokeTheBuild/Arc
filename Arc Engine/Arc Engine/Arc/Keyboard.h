@@ -117,7 +117,8 @@ namespace Arc
         KEY_F12,
 
         NUM_KEYS
-    };
+
+    }; // KeyboardKey
 
     const string KEYBOARD_KEY_NAMES[NUM_KEYS] =
     {
@@ -223,6 +224,7 @@ namespace Arc
         "F11",
         "F12",
     };
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_KEYBOARD_H__

@@ -23,15 +23,25 @@ namespace Arc
         Direction
             Dir;
 
-        TextInputData( Direction dir ) { Dir = dir; }
-        TextInputData( char ch = '\0', Direction dir = INVALID_DIRECTION ) { Char = ch; Dir = dir; }
+        TextInputData( Direction dir )
+        {
+            Char = '\0';
+            Dir = dir;
+        }
+
+        TextInputData( char ch = '\0', Direction dir = INVALID_DIRECTION ) 
+        { 
+            Char = ch;
+            Dir = dir; 
+        }
+
         virtual ~TextInputData( void ) { }
 
         virtual string toString( void ) const { return "Text Input Data"; }
 
         virtual EventData* clone( void ) const { return New TextInputData(Char, Dir); }
 
-    };
+    }; // class TextInputData
 
     class TextInputSource :
         public EventDispatcher,
@@ -59,7 +69,7 @@ namespace Arc
 
         //TODO: Add Insert Mode
 
-        TextInputSource(void) { }
+        TextInputSource(void);
         virtual ~TextInputSource(void) { term(); }
 
         virtual string toString( void ) const { return "Text Input Source"; }
@@ -73,7 +83,8 @@ namespace Arc
         virtual void keyReleased( const Event& event );
         virtual void keyHeld    ( const Event& event );
 
-    };
-}
+    }; // class TextInputSource
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_TEXT_INPUT_SOURCE_H__

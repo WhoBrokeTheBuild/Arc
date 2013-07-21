@@ -37,6 +37,6 @@ namespace Arc
     string doubleToStr( const double& value );
     string boolToStr  ( const bool&   value );
 
-}
+} // namespace Arc
 
-#endif
+#endif // __ARC_STRING_FUNC_H__

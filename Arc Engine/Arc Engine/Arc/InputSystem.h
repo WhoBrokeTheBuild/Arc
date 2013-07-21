@@ -6,6 +6,8 @@
 #include "Common.h"
 #include "EventDispatcher.h"
 
+#include <SDL/SDL.h>
+
 #include "Mouse.h"
 #include "Keyboard.h"
 #include "GamePad.h"
@@ -14,8 +16,6 @@
 #include "KeyboardSource.h"
 #include "MouseSource.h"
 #include "TextInputSource.h"
-
-#include <SDL/SDL.h>
 
 namespace Arc
 {
@@ -38,7 +38,7 @@ namespace Arc
     public:
 
         InputSystem( void );
-        virtual ~InputSystem( void );
+        virtual ~InputSystem( void ) { term(); }
 
         virtual string toString( void ) const;
 
@@ -46,7 +46,9 @@ namespace Arc
         virtual void term( void );
 
         virtual void update( const Event& event );
-    };
-}
 
-#endif
+    }; // class InputSystem
+
+} // namespace Arc
+
+#endif // __ARC_INPUT_SYSTEM_H__

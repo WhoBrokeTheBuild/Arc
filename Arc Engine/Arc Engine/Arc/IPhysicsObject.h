@@ -28,7 +28,8 @@ namespace Arc
             Vel += Acc;
         }
 
-    };
-}
+    }; // class IPhysicsObject
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_IPHYSICS_OBJECT_H__

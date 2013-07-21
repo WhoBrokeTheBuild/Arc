@@ -24,6 +24,7 @@ namespace Arc
     Circle  parseCircle ( const string& value );
     Rect    parseRect   ( const string& value );
     Color   parseColor  ( const string& value );
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_PARSE_FUNC_H__

@@ -4,35 +4,24 @@ double Arc::Timer::MICRO = 1000000.0;
 
 Arc::Timer::Timer( void )
 {
-
 #ifdef WINDOWS
 
     QueryPerformanceFrequency(&_freq);
     _startCount.QuadPart = 0;
     _endCount.QuadPart   = 0;
 
-#else
+#else // LINUX
 
     _startCount.tv_sec = 0;
     _startCount.tv_usec = 0;
     _endCount.tv_sec = 0;
     _endCount.tv_usec = 0;
 
-#endif
+#endif // WINDOWS
 
     _stopped = false;
     _startTimeMicro = 0;
     _endTimeMicro   = 0;
-
-}
-
-Arc::Timer::~Timer( void )
-{
-}
-
-string Arc::Timer::toString( void ) const
-{
-    return "Timer";
 }
 
 void Arc::Timer::start( void )
@@ -43,33 +32,30 @@ void Arc::Timer::start( void )
 
     QueryPerformanceCounter(&_startCount);
 
-#else
+#else // LINUX
 
     gettimeofday(&_startCount, nullptr);
 
-#endif
-
+#endif // WINDOWS
 }
 
 void Arc::Timer::stop( void )
 {
     _stopped = true;
 
-#ifdef WIN32
+#ifdef WINDOWS
 
     QueryPerformanceCounter(&_endCount);
 
-#else
+#else // LINUX
 
     gettimeofday(&_endCount, nullptr);
 
-#endif
-
+#endif // WINDOWS
 }
 
 double Arc::Timer::getElapsedMicro( void )
 {
-
 #ifdef WINDOWS
 
     if (!_stopped)
@@ -78,7 +64,7 @@ double Arc::Timer::getElapsedMicro( void )
     _startTimeMicro = _startCount.QuadPart * (MICRO / _freq.QuadPart);
     _endTimeMicro   = _endCount.QuadPart * (MICRO / _freq.QuadPart);
 
-#else
+#else // LINUX
 
     if (!_stopped)
         gettimeofday(&_endCount, nullptr);
@@ -86,7 +72,7 @@ double Arc::Timer::getElapsedMicro( void )
     _startTimeMicro = (_startCount.tv_sec * MICRO) + _startCount.tv_usec;
     _endTimeMicro   = (_endCount.tv_sec * MICRO) + _endCount.tv_usec;
 
-#endif
+#endif // WINDOWS
 
     return _endTimeMicro - _startTimeMicro;
 }
@@ -103,7 +89,6 @@ double Arc::Timer::getElapsed( void )
 
 void Arc::Timer::sleepUntilElapsed( double millis )
 {
-
     double timeToSleep;
 
 #ifdef WINDOWS
@@ -115,7 +100,7 @@ void Arc::Timer::sleepUntilElapsed( double millis )
     QueryPerformanceCounter(&currentTime);
     timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
 
-#else
+#else // LINUX
 
     timeval
         currentTime,
@@ -124,7 +109,7 @@ void Arc::Timer::sleepUntilElapsed( double millis )
     gettimeofday(&currentTime, nullptr);
     timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
 
-#endif
+#endif // WINDOWS
 
     while (timeToSleep > 0.0)
     {
@@ -136,12 +121,13 @@ void Arc::Timer::sleepUntilElapsed( double millis )
         QueryPerformanceCounter(&currentTime);
         timeElapsed = calcDiffMillis(lastTime, currentTime);
 
-#else
+#else // LINUX
 
         gettimeofday(&currentTime, nullptr);
         timeElapsed = calcDiffMillis(lastTime, currentTime);
 
-#endif
+#endif // WINDOWS
+
         timeToSleep -= abs(timeElapsed);
 
         if( timeToSleep > 10.0 )
@@ -150,11 +136,11 @@ void Arc::Timer::sleepUntilElapsed( double millis )
 
             Sleep(10);
 
-#else
+#else // LINUX
 
             usleep(10 * 1000);
 
-#endif
+#endif // WINDOWS
         }
     }
 }
@@ -168,7 +154,7 @@ double Arc::Timer::calcDiffMillis( LARGE_INTEGER from, LARGE_INTEGER to ) const
     return difference / 1000.0;
 }
 
-#else
+#else // LINUX
 
 double Arc::Timer::calcDiffMillis( timeval from, timeval to ) const
 {
@@ -179,4 +165,4 @@ double Arc::Timer::calcDiffMillis( timeval from, timeval to ) const
     return (end - start) / 1000.0;
 }
 
-#endif
+#endif // WINDOWS

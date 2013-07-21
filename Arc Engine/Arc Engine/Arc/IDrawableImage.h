@@ -5,6 +5,7 @@
 
 #include "Common.h"
 #include "IDrawable.h"
+
 #include "Animation.h"
 
 namespace Arc
@@ -97,6 +98,16 @@ namespace Arc
         bool
             Looping;
 
+        IDrawableImage( void )
+        {
+            _pAnimation        = nullptr;
+            _animationTimeout  = 0.0;
+            _animationComplete = false;
+
+            Frame   = 0;
+            Looping = false;
+        }
+
         virtual ~IDrawableImage( void ) { }
 
         virtual void init( Animation* pAnimation = nullptr, bool looping = false, Color blendColor = Color::WHITE, float rot = 0.0f, float alpha = 0.0f )
@@ -160,7 +171,8 @@ namespace Arc
 
         virtual void animationComplete( void ) { };
 
-    };
-}
+    }; // class IDrawableImage
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_IDRAWABLE_IMAGE_H__

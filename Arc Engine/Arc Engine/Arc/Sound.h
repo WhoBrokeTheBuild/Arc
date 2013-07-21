@@ -24,7 +24,7 @@ namespace Arc
 
     public:
 
-        Sound( void ) { }
+        Sound( void );
         virtual ~Sound( void ) { term(); }
 
         virtual void init( string filename );
@@ -46,7 +46,8 @@ namespace Arc
         virtual void fadeOut ( double duration );
         virtual void stopFade( void );
 
-    };
-}
+    }; // class Sound
 
-#endif
+} // namespace Arc
+
+#endif //__ARC_SOUND_H__

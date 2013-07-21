@@ -23,7 +23,8 @@ namespace Arc
         MOUSE_BUTTON_RIGHT,
 
         NUM_MOUSE_BUTTONS
-    };
+
+    }; // enum MouseButton
 
     const string MOUSE_BUTTON_NAMES[NUM_MOUSE_BUTTONS] =
     {
@@ -31,6 +32,7 @@ namespace Arc
         "Middle Button",
         "Right Button"
     };
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_MOUSE_H__

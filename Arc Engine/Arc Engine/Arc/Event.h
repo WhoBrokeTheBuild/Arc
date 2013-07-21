@@ -42,7 +42,7 @@ namespace Arc
         Event( const Event &rhs);
         virtual ~Event( void );
 
-        virtual string toString( void ) const;
+        virtual string toString( void ) const { return "Event"; }
 
         inline EventType type( void ) const { return _type; };
         inline EventDispatcher *target( void ) const { return _pEventTarget; };
@@ -56,7 +56,8 @@ namespace Arc
         template <typename T>
         inline const T* dataAs( void ) const { return dynamic_cast<const T*>(_pData); };
 
-    };
-}
+    }; // class Event
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_EVENT_H__

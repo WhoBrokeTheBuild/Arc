@@ -1,13 +1,14 @@
 #include "Animation.h"
 
+Arc::Animation::Animation( void )
+{
+    _frames = ArrayList<Sprite*>();
+}
+
 void Arc::Animation::init( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
 {
     _frames = frames;
-    Speed = speed;
-}
-
-void Arc::Animation::term( void )
-{
+    Speed   = speed;
 }
 
 Arc::Size Arc::Animation::frameSize( int frame )

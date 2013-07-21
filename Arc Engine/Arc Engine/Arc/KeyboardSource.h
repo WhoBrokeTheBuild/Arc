@@ -1,20 +1,17 @@
 #pragma once
 
-#ifndef __ARC_KEYBOARD_CONTROLLER_H__
-#define __ARC_KEYBOARD_CONTROLLER_H__
+#ifndef __ARC_KEYBOARD_SOURCE_H__
+#define __ARC_KEYBOARD_SOURCE_H__
 
 #include "Common.h"
 #include "EventDispatcher.h"
 
 #include "Keyboard.h"
 #include "InputState.h"
-
 #include "Map.h"
 
 namespace Arc
 {
-    typedef Map<KeyboardKey, InputState> KeyStateMap;
-
     class KeyboardSource :
         public EventDispatcher
     {
@@ -25,7 +22,7 @@ namespace Arc
 
     protected:
 
-        KeyStateMap
+        Map<KeyboardKey, InputState>
             _keyStates;
 
     public:
@@ -35,7 +32,7 @@ namespace Arc
             EVENT_KEY_RELEASED,
             EVENT_KEY_HELD;
 
-        KeyboardSource( void ) { }
+        KeyboardSource( void );
         virtual ~KeyboardSource( void ) { term(); }
 
         virtual string toString( void ) const { return "Keyboard Source"; }
@@ -44,7 +41,9 @@ namespace Arc
         virtual void term( void );
 
         virtual void update( const Event& event );
-    };
-}
 
-#endif
+    }; // class KeyboardSource
+
+} // namespace Arc
+
+#endif // __ARC_KEYBOARD_SOURCE_H__

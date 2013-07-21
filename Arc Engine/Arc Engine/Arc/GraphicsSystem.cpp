@@ -2,6 +2,16 @@
 
 const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset";
 
+Arc::GraphicsSystem::GraphicsSystem( void )
+{
+    _clearColor    = Color::BLACK;
+    _pRenderTarget = nullptr;
+    _screenBPP     = 0;
+    _windowSize    = Size::ZERO;
+    _windowTitle   = string();
+    _fullscreen    = false;
+}
+
 void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
 {
     INFO(toString(), "Initializing");
@@ -44,15 +54,14 @@ void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
 
 void Arc::GraphicsSystem::term( void )
 {
+    INFO(toString(), "Terminating");
+
     delete _pRenderTarget;
 
     TTF_Quit();
     SDL_Quit();
-}
 
-std::string Arc::GraphicsSystem::toString( void ) const
-{
-    return "Graphics System";
+    INFO(toString(), "Complete");
 }
 
 void Arc::GraphicsSystem::setFullscreen( bool fullscreen )

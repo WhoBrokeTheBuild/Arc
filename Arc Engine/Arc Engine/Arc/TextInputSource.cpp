@@ -9,6 +9,13 @@ const Arc::EventType Arc::TextInputSource::EVENT_TEXT_INPUT_TAB       = "textInp
 const Arc::EventType Arc::TextInputSource::EVENT_TEXT_INPUT_ARROWS    = "textInputArrows";
 const Arc::EventType Arc::TextInputSource::EVENT_TEXT_INPUT_HOME_END  = "textInputHomeEnd";
 
+Arc::TextInputSource::TextInputSource( void )
+{
+    _shiftDown    = false;
+    _capsLockDown = false;
+    _validInputs  = ArrayList<KeyboardKey>();
+}
+
 void Arc::TextInputSource::init( void )
 {
     IKeyboardListener::init();

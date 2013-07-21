@@ -34,7 +34,7 @@ namespace Arc
         static const EventType
             EVENT_LAYER_CHANGED;
 
-        Layer( void ) { }
+        Layer( void );
         virtual ~Layer( void ) { term(); }
 
         virtual void init( void );
@@ -53,7 +53,7 @@ namespace Arc
 
         virtual unsigned int removeAllUnits( void );
 
-    };
+    }; // class Layer
 
     struct UnitDepthComp
         : std::binary_function<Unit*, Unit*, bool>
@@ -62,7 +62,8 @@ namespace Arc
         {
             return lhs->Depth < rhs->Depth;
         }
-    };
-}
+    }; // struct UnitDepthComp
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_LAYER_H__

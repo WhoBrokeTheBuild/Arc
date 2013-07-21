@@ -1,6 +1,13 @@
 #include "Scene.h"
 #include "Program.h"
 
+Arc::Scene::Scene( void )
+{
+    _layers = Map<unsigned int, Layer*>();
+    Visible = false;
+    Enabled = false;
+}
+
 void Arc::Scene::init( void )
 {
     IFrameListener::init();

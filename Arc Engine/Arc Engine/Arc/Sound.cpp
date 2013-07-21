@@ -1,5 +1,11 @@
 #include "Sound.h"
 
+Arc::Sound::Sound( void )
+{
+    _pChunk  = nullptr;
+    _channel = 0;
+}
+
 /*
     Supported Formats: .wav, .aiff, .mid, .ogg, .mp3, .flac
 */

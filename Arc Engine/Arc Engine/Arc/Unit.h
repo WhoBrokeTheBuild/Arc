@@ -13,22 +13,33 @@ namespace Arc
     {
     public:
 
-        Vector2
+        Point
             Pos;
 
         float
             Depth;
 
-        Unit( void ) { }
+        Unit( void ) 
+        {
+            Pos   = Point::ZERO;
+            Depth = 0.0f;
+        }
+
         virtual ~Unit( void ) { term(); }
 
-        virtual void init( Vector2 pos, float depth = 0.0f ) { Pos = pos; Depth = depth; }
+        virtual void init( Vector2 pos, float depth = 0.0f )
+        {
+            Pos = pos;
+            Depth = depth;
+        }
+
         virtual void term( void ) { }
 
         virtual void update( const Event& event ) { }
         virtual void render( const Event& event ) { }
 
-    };
-}
+    }; // class Unit
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_UNIT_H__

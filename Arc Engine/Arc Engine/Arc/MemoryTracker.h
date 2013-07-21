@@ -49,7 +49,7 @@ namespace Arc
 
     public:
 
-        MemoryTracker( void ) { }
+        MemoryTracker( void );
         virtual ~MemoryTracker( void );
 
         virtual string toString( void ) const { return "Memory Tracker"; }
@@ -62,9 +62,10 @@ namespace Arc
         void printAllocations( void );
         void printAllocations( ostream& stream );
 
-    };
-}
+    }; // class MemoryTracker
+
+} // namespace Arc
 
 extern Arc::MemoryTracker* gpMemoryTracker;
 
-#endif
+#endif // __ARC_MEMORY_TRACKER_H__

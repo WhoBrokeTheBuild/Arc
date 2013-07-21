@@ -7,22 +7,27 @@
 
 using std::string;
 
-enum InputSourceType
+namespace Arc
 {
-    INVALID_INPUT_SOURCE_TYPE = -1,
+    enum InputSourceType
+    {
+        INVALID_INPUT_SOURCE_TYPE = -1,
 
-    INPUT_SOURCE_TYPE_KEYBOARD,
-    INPUT_SOURCE_TYPE_MOUSE,
-    INPUT_SOURCE_TYPE_GAME_PAD,
+        INPUT_SOURCE_TYPE_KEYBOARD,
+        INPUT_SOURCE_TYPE_MOUSE,
+        INPUT_SOURCE_TYPE_GAME_PAD,
 
-    NUM_INPUT_SOURCE_TYPES
-};
+        NUM_INPUT_SOURCE_TYPES
 
-const string INPUT_SOURCE_TYPE_NAMES[NUM_INPUT_SOURCE_TYPES] =
-{
-    "Keyboard",
-    "Mouse",
-    "Game Pad"
-};
+    }; // enum InputSourceType
 
-#endif
+    const string INPUT_SOURCE_TYPE_NAMES[NUM_INPUT_SOURCE_TYPES] =
+    {
+        "Keyboard",
+        "Mouse",
+        "Game Pad"
+    };
+
+} // namespace Arc
+
+#endif // __ARC_INPUT_SOURCE_TYPE_H__

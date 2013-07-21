@@ -10,4 +10,4 @@
 #include "Circle.h"
 #include "Triangle.h"
 
-#endif
+#endif // __ARC_GEOM_H__

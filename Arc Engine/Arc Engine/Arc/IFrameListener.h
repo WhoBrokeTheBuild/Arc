@@ -5,6 +5,7 @@
 
 #include "Common.h"
 #include "EventDispatcher.h"
+
 #include "Program.h"
 
 namespace Arc
@@ -31,7 +32,8 @@ namespace Arc
         virtual void update( const Event& event ) { };
         virtual void render( const Event& event ) { };
 
-    };
-}
+    }; // class IFrameListener
+    
+} // namespace Arc
 
-#endif
+#endif // __ARC_IFRAME_LISTENER_H__

@@ -4,6 +4,7 @@
 #define __ARC_IDRAWABLE_H__
 
 #include "Common.h"
+
 #include "RenderTarget.h"
 #include "OriginLocation.h"
 
@@ -16,7 +17,7 @@ namespace Arc
         OriginLocation
             _originLocation;
 
-        Vector2
+        Point
             _origin;
 
         virtual void calcOriginLocation( void ) { }
@@ -32,6 +33,17 @@ namespace Arc
         float
             Rot,
             Alpha;
+
+        IDrawable( void )
+        {
+            _originLocation = INVALID_ORIGIN_LOCATION;
+            _origin         = Point::ZERO;
+
+            BlendColor = Color::BLACK;
+            Scale      = Vector2::ZERO;
+            Rot        = 0.0f;
+            Alpha      = 0.0f;
+        }
 
         virtual ~IDrawable( void ) { }
 
@@ -56,7 +68,8 @@ namespace Arc
             calcOriginLocation();
         }
 
-    };
-}
+    }; // class IDrawable
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_IDRAWABLE_H__

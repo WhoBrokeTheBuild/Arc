@@ -9,19 +9,13 @@
 #include <sstream>
 
 using std::string;
-using std::stringstream;
+using std::stringstream; 
 using std::cin;
 using std::cout;
 using std::cerr;
-#define endl "\n" // std::endl flushes the stream, which is unnecessary 
+#define endl "\n" // std::endl flushes the stream, which is unnecessary
 
 #include "Functions.h"
-#include "GameObject.h"
 #include "Geom.h"
 
-namespace Arc
-{
-    typedef string ItemKey;
-}
-
-#endif
+#endif // __ARC_COMMON_H__

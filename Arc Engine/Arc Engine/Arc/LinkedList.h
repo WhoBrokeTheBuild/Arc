@@ -8,6 +8,8 @@
 #include <list>
 #include <algorithm>
 
+using std::list;
+
 namespace Arc
 {
     template <class T>
@@ -22,15 +24,15 @@ namespace Arc
     {
     protected:
 
-        std::list<T>
+        list<T>
             _list;
 
     public:
 
-        typedef typename std::list<T>::iterator       Iterator;
-        typedef typename std::list<T>::const_iterator ConstIterator;
+        typedef typename list<T>::iterator       Iterator;
+        typedef typename list<T>::const_iterator ConstIterator;
 
-        LinkedList ( void ) { }
+        LinkedList ( void ) { _list = list<T>(); }
         LinkedList ( const LinkedList& rhs) : _list(rhs._list) { }
         virtual ~LinkedList( void );
 
@@ -81,8 +83,9 @@ namespace Arc
         ArrayList<T> toArrayList( unsigned int& length );
         Queue<T>     toQueue    ( unsigned int& length );
 
-    };
-}
+    }; // class LinkedList<T>
+
+} // namespace Arc
 
 #include "ArrayList.h"
 #include "Queue.h"
@@ -224,4 +227,4 @@ Arc::Queue<T> Arc::LinkedList<T>::toQueue( unsigned int& length )
     return other;
 }
 
-#endif
+#endif // __ARC_LINKED_LIST_H__

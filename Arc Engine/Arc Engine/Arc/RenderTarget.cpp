@@ -1,6 +1,11 @@
 #include "RenderTarget.h"
 #include "GraphicsSystem.h"
 
+Arc::RenderTarget::RenderTarget( void )
+{
+    _pGraphicsSystem = nullptr;
+}
+
 void Arc::RenderTarget::init( GraphicsSystem* pGraphicsSystem )
 {
     _pGraphicsSystem = pGraphicsSystem;

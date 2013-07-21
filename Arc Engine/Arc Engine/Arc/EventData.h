@@ -21,7 +21,7 @@ namespace Arc
 
         virtual EventData* clone( void ) const { return New EventData(); };
 
-    };
+    }; // class EventData
 
     class PointData
         : public EventData
@@ -46,7 +46,7 @@ namespace Arc
 
         virtual EventData* clone( void ) const { return New PointData(X, Y); };
 
-    };
+    }; // class PointData
 
     class CountData
         : public EventData
@@ -67,7 +67,7 @@ namespace Arc
 
         virtual EventData* clone( void ) { return New CountData(Count); };
 
-    };
+    }; // class CountData
 
     class FrameData :
         public EventData
@@ -114,7 +114,7 @@ namespace Arc
 
         double deltaTime( void ) const { return _deltaTime; }
 
-    };
+    }; // class FrameData
 
     class RenderData
         : public EventData
@@ -134,7 +134,7 @@ namespace Arc
 
         virtual RenderTarget* renderTarget( void ) const { return _pRenderTarget; }
 
-    };
+    }; // class RenderData
 
     class KeyData
         : public EventData
@@ -150,7 +150,7 @@ namespace Arc
 
         virtual EventData* clone( void ) const { return New KeyData(Key); }
 
-    };
+    }; // class KeyData
 
     class MouseData
         : public EventData
@@ -172,7 +172,8 @@ namespace Arc
 
         virtual EventData* clone( void ) const { return New MouseData(Pos, Delta, Button); }
 
-    };
-}
+    }; // class MouseData
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_EVENT_DATA_H__

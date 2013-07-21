@@ -1,6 +1,6 @@
 #include "Functions.h"
 
-void Arc::die( int errorLevel /*= 0*/ )
+void Arc::die( int errorLevel /*= EXIT_SUCCESS*/ )
 {
     pause();
     exit(errorLevel);

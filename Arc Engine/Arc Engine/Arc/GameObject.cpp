@@ -7,16 +7,16 @@ ostream& operator<<( ostream& os, const Arc::GameObject& go )
     return os;
 }
 
-void *Arc::GameObject::operator new(size_t size)
+void *Arc::GameObject::operator new( size_t size )
 {
     return malloc(size);
 }
-void *Arc::GameObject::operator new[](size_t size)
+void *Arc::GameObject::operator new[]( size_t size )
 {
     return malloc(size);
 }
 
-void *Arc::GameObject::operator new(size_t size, int lineNumber, const char *filename)
+void *Arc::GameObject::operator new( size_t size, int lineNumber, const char *filename )
 {
     void* ptr = ::operator new(size);
     if (gpMemoryTracker)
@@ -24,7 +24,7 @@ void *Arc::GameObject::operator new(size_t size, int lineNumber, const char *fil
     return ptr;
 }
 
-void *Arc::GameObject::operator new[](size_t size, int lineNumber, const char *filename)
+void *Arc::GameObject::operator new[]( size_t size, int lineNumber, const char *filename )
 {
     void* ptr = ::operator new(size);
     if (gpMemoryTracker)
@@ -32,7 +32,7 @@ void *Arc::GameObject::operator new[](size_t size, int lineNumber, const char *f
     return ptr;
 }
 
-void Arc::GameObject::operator delete(void *ptr, int lineNumber, const char *filename)
+void Arc::GameObject::operator delete( void *ptr, int lineNumber, const char *filename )
 {
     ::operator delete(ptr);
     if (gpMemoryTracker)
@@ -40,7 +40,7 @@ void Arc::GameObject::operator delete(void *ptr, int lineNumber, const char *fil
     free(ptr);
 }
 
-void Arc::GameObject::operator delete[](void *ptr, int lineNumber, const char *filename)
+void Arc::GameObject::operator delete[]( void *ptr, int lineNumber, const char *filename )
 {
     ::operator delete(ptr);
     if (gpMemoryTracker)
@@ -48,14 +48,14 @@ void Arc::GameObject::operator delete[](void *ptr, int lineNumber, const char *f
     free(ptr);
 }
 
-void Arc::GameObject::operator delete(void *ptr)
+void Arc::GameObject::operator delete( void *ptr )
 {
     if (gpMemoryTracker)
         gpMemoryTracker->removeAllocation((GameObject*)ptr);
     free(ptr);
 }
 
-void Arc::GameObject::operator delete[](void *ptr)
+void Arc::GameObject::operator delete[]( void *ptr )
 {
     if (gpMemoryTracker)
         gpMemoryTracker->removeAllocation((GameObject*)ptr);

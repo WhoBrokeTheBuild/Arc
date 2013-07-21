@@ -5,13 +5,8 @@
 Arc::CachedText::CachedText( void )
 {
     _pTexture = nullptr;
-    _pFont = nullptr;
-    _text = string();
-}
-
-string Arc::CachedText::toString( void ) const
-{
-    return "Text";
+    _pFont    = nullptr;
+    _text     = string();
 }
 
 void Arc::CachedText::init( const string text, Font* pFont )

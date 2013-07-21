@@ -42,7 +42,7 @@ namespace Arc
 
     public:
 
-        RenderTarget( void ) { }
+        RenderTarget( void );
         virtual ~RenderTarget( void ) { term(); }
 
         virtual void init( GraphicsSystem *pGraphicsSystem );
@@ -235,7 +235,8 @@ namespace Arc
                                   const float rotation = 0.0f,
                                   const Vector2 origin = Vector2::ZERO ) const;
 
-    };
-}
+    }; // class RenderTarget
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_RENDER_TARGET_H__

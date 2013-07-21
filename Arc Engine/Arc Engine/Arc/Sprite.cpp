@@ -2,20 +2,12 @@
 
 Arc::Sprite::Sprite( void )
 {
-    pTexture = nullptr;
-}
-
-string Arc::Sprite::toString( void ) const
-{
-    return "Sprite";
+    pTexture   = nullptr;
+    SourceRect = Rect::ZERO;
 }
 
 void Arc::Sprite::init( Texture *texture, Rect source )
 {
     SourceRect = source;
     pTexture = texture;
-}
-
-void Arc::Sprite::term( void )
-{
 }

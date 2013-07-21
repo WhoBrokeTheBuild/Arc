@@ -66,7 +66,8 @@ namespace Arc
         void setByte( int r, int g, int b );
         void setByte( int r, int g, int b, int a );
 
-    };
-}
+    }; // class Color
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_COLOR_H__

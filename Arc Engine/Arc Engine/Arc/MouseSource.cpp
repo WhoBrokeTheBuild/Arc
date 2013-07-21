@@ -6,6 +6,14 @@ const Arc::EventType Arc::MouseSource::EVENT_MOUSE_PRESSED  = "mousePressed";
 const Arc::EventType Arc::MouseSource::EVENT_MOUSE_RELEASED = "mouseReleased";
 const Arc::EventType Arc::MouseSource::EVENT_MOUSE_HELD     = "mouseHeld";
 
+Arc::MouseSource::MouseSource( void )
+{
+    _sdlButtonStates = 0;
+    _buttonStates    = Map<MouseButton, InputState>();
+    _mousePos        = Point::ZERO;
+    _mouseDelta      = Vector2::ZERO;
+}
+
 void Arc::MouseSource::init( void )
 {
     for (unsigned int button = 0; button < NUM_MOUSE_BUTTONS; ++button)
@@ -45,7 +53,7 @@ void Arc::MouseSource::update( const Event& event )
     MouseButton button;
     InputState *pState;
 
-    MouseStateMap::Iterator it;
+    Map<MouseButton, InputState>::Iterator it;
     for (it = _buttonStates.begin(); it != _buttonStates.end(); ++it)
     {
         button =  it->first;

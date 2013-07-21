@@ -31,7 +31,7 @@ namespace Arc
         CachedText( void );
         virtual ~CachedText( void ) { term(); }
 
-        virtual string toString( void ) const;
+        virtual string toString( void ) const { return "Cached Text"; }
 
         virtual void init( const string text, Font* pFont );
         virtual void term( void );
@@ -46,7 +46,9 @@ namespace Arc
         virtual Size measureString( string text );
 
         virtual Texture* texture( void ) const { return _pTexture; }
-    };
-}
 
-#endif
+    }; // class CachedText
+
+} // namespace Arc
+
+#endif // __ARC_CACHED_TEXT_H__

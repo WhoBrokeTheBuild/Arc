@@ -24,13 +24,13 @@ namespace Arc
         double
             Speed;
 
-        Animation( void ) { }
+        Animation( void );
         virtual ~Animation( void ) { term(); }
 
         virtual string toString( void ) const { return "Animation"; }
 
         virtual void init( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), double speed = -1.0 );
-        virtual void term( void );
+        virtual void term( void ) { }
 
         virtual bool hasFrame   ( int frame );
         virtual void addFrame   ( Sprite* pFrame );
@@ -42,7 +42,8 @@ namespace Arc
 
         virtual int length( void ) { return (int)_frames.size(); }
 
-    };
-}
+    }; // class Animation
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_ANIMATION_H__

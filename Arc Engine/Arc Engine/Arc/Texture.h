@@ -57,7 +57,8 @@ namespace Arc
 
         virtual const Size size( void ) const { return _size; }
 
-    };
-}
+    }; // class Texture
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_TEXTURE_H__

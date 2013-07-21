@@ -32,7 +32,7 @@ namespace Arc
         typedef typename vector<T>::iterator       Iterator;
         typedef typename vector<T>::const_iterator ConstIterator;
 
-        ArrayList ( void ) { }
+        ArrayList ( void ) { _list = vector<T>(); }
         ArrayList ( const ArrayList& rhs) : _list(rhs._list) { }
         virtual ~ArrayList( void ) { clear(); }
 
@@ -84,8 +84,9 @@ namespace Arc
         LinkedList<T> toLinkedList( unsigned int& length );
         Queue<T>      toQueue     ( unsigned int& length );
 
-    };
-}
+    }; // class ArrayList<T>
+
+} // namespace Arc
 
 #include "LinkedList.h"
 #include "Queue.h"
@@ -225,4 +226,4 @@ Arc::Queue<T> Arc::ArrayList<T>::toQueue( unsigned int& length )
     return other;
 }
 
-#endif
+#endif // __ARC_ARRAY_LIST_H__

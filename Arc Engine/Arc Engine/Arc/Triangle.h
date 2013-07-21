@@ -4,6 +4,7 @@
 #define __ARC_TRIANGLE_H__
 
 #include "GameObject.h"
+
 #include "Vector2.h"
 #include "MathFunc.h"
 
@@ -41,7 +42,8 @@ namespace Arc
 	    bool containsRect    ( Rect     other );
 	    bool containsTriangle( Triangle other );
 	
-    };
-}
+    }; // class Triangle
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_TRIANGLE_H__

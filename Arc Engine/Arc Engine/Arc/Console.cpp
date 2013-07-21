@@ -1,9 +1,8 @@
-
 #include "Console.h"
 
 #ifdef WINDOWS
 
-void Arc::init_console( void )
+void Arc::initConsole( void )
 {
     int hConHandle;
     long lStdHandle;
@@ -43,4 +42,4 @@ void Arc::init_console( void )
     ios::sync_with_stdio();
 }
 
-#endif
+#endif // WINDOWS

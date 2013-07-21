@@ -54,7 +54,7 @@ namespace Arc
         vsprintf_s(buffer, format.c_str(), args);
         string message = string(buffer);
 
-        stream << "[" << type << "] " << source << ": " << message << " (from " << basename(filename) << ":" << line << ")" << endl;
+        dispMessage(filename, line, stream, type, source, message);
     }
 
     void formatError( string filename, int line, string source, string format, ... );
@@ -83,7 +83,7 @@ namespace Arc
 #endif
 
     inline void noop ( void ) { }
-    void die  ( int errorLevel = 0 );
+    void die  ( int errorLevel = EXIT_SUCCESS );
     void pause( const std::string msg = "Press enter to continue" );
 
     template <typename Value>
@@ -109,6 +109,7 @@ namespace Arc
 
         return -1;
     }
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_FUNCTIONS_H__

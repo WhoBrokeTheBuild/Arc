@@ -29,7 +29,7 @@ namespace Arc
 
     public:
 
-        Queue ( void ) { }
+        Queue ( void ) { _queue = queue<T>(); }
         virtual ~Queue( void ) { clear(); }
 
         virtual string toString( void ) const { return "Queue"; }
@@ -57,8 +57,9 @@ namespace Arc
         ArrayList<T>  toArrayList ( unsigned int& length );
         LinkedList<T> toLinkedList( unsigned int& length );
 
-    };
-}
+    }; // class Queue<T>
+
+} // namespace Arc
 
 #include "ArrayList.h"
 #include "LinkedList.h"
@@ -131,4 +132,4 @@ Arc::LinkedList<T> Arc::Queue<T>::toLinkedList( unsigned int& length )
     return other;
 }
 
-#endif
+#endif // __ARC_QUEUE_H__

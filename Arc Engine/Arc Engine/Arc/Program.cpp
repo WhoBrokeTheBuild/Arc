@@ -8,14 +8,19 @@ const Arc::EventType Arc::Program::EVENT_RENDER       = "render";
 const Arc::EventType Arc::Program::EVENT_RENDER_END   = "renderEnd";
 const Arc::EventType Arc::Program::EVENT_EXIT         = "exit";
 
-std::string Arc::Program::toString( void ) const
+Arc::Program::Program( void )
 {
-    return "Game";
+    _pGraphicsSystem = nullptr;
+    _pInputSystem    = nullptr;
+    _pAudioSystem    = nullptr;
+    _running         = false;
+    _targetFPS       = 0.0f;
+    _currentFPS      = 0.0f;
 }
 
 void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
 {
-    INFO(toString(), "Starting Init");
+    INFO(toString(), "Initializing");
 
     gpEventDispatcher = New EventDispatcher();
 
@@ -31,7 +36,7 @@ void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitl
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &Program::render);
     gpEventDispatcher->addEventListener(Program::EVENT_EXIT,   this, &Program::stop);
 
-    INFO(toString(), "Finished Init");
+    INFO(toString(), "Complete");
 }
 
 void Arc::Program::term( void )
@@ -47,6 +52,8 @@ void Arc::Program::term( void )
     delete _pGraphicsSystem;
 
     delete gpEventDispatcher;
+
+    INFO(toString(), "Complete");
 }
 
 void Arc::Program::start( void )
@@ -63,7 +70,7 @@ void Arc::Program::start( void )
     Timer fpsTimer = Timer();
     fpsTimer.start();
 
-    stringstream ss;
+    INFO(toString(), "Starting Loop");
 
     while (_running)
     {

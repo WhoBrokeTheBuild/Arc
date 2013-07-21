@@ -17,10 +17,6 @@ Arc::Vector2::Vector2( float both )
     Y = both;
 }
 
-Arc::Vector2::~Vector2( void )
-{
-}
-
 std::string Arc::Vector2::toString( void ) const
 {
     stringstream ss;

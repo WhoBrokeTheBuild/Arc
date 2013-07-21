@@ -1,16 +1,22 @@
 #include "MemoryTracker.h"
 
 int Arc::MemoryTracker::_sAllocationIndex = 0;
-Arc::MemoryTracker* gpMemoryTracker;
+Arc::MemoryTracker*     gpMemoryTracker   = nullptr;
+
+Arc::MemoryTracker::MemoryTracker( void )
+{
+    _sAllocationIndex = 0;
+    _allocations      = Map<GameObject*, AllocationRecord>();
+}
 
 Arc::MemoryTracker::~MemoryTracker( void )
 {
-    #ifdef DEBUG
+#ifdef DEBUG
 
     INFO(toString(), "Final Allocations");
     printAllocations();
 
-    #endif
+#endif // DEBUG
 }
 
 void Arc::MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber, string filename )

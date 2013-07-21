@@ -12,6 +12,7 @@ namespace Arc
     time_t now( void );
 
     void delay( double millis );
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_TIME_FUNC_H__

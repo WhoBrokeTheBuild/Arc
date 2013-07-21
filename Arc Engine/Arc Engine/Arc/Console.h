@@ -1,4 +1,3 @@
-
 #pragma once
 
 #ifndef __ARC_CONSOLE_H__
@@ -7,8 +6,6 @@
 #include "Defines.h"
 
 #ifdef WINDOWS
-
-#include "Defines.h"
 
 #include <windows.h>
 
@@ -25,16 +22,18 @@ namespace Arc
 {
     static const WORD MAX_CONSOLE_LINES = 500;
 
-    void init_console( void );
-}
+    void initConsole( void );
 
-#else
+} // namespace Arc
+
+#else // LINUX
 
 namespace Arc
 {
-    void init_console( void ) { }
-}
+    void initConsole( void ) { }
 
-#endif
+} // namespace Arc
 
-#endif //__CONSOLE_H__
+#endif // WINDOWS
+
+#endif // __ARC_CONSOLE_H__

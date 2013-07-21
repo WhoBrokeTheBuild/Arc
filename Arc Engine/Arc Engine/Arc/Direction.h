@@ -23,7 +23,8 @@ namespace Arc
         DIR_NORTH_EAST,
 
         NUM_DIRECTIONS
-    };
+
+    }; // enum Direction
 
     const string DIRECTION_NAMES[NUM_DIRECTIONS] =
     {
@@ -36,6 +37,7 @@ namespace Arc
         "East",
         "North East"
     };
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_DIRECTION_H__

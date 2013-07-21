@@ -5,30 +5,17 @@
 
 #include "TestApp.h"
 
-#ifdef WINDOWS
-
-#pragma comment(lib, "Arc Engine.lib")
-#pragma comment(lib, "SDL.lib")
-#pragma comment(lib, "SDLmain.lib")
-#pragma comment(lib, "SDL_image.lib")
-#pragma comment(lib, "SDL_mixer.lib")
-#pragma comment(lib, "SDL_ttf.lib")
-#pragma comment(lib, "opengl32.lib")
-#pragma comment(lib, "glu32.lib")
-
-#endif
-
 int main(int argc, char *argv[])
 {
 #ifdef DEBUG
 
-    Arc::init_console();
+    initConsole();
 
 #endif
 
     INFO("Main", "Starting Up");
 
-    gpMemoryTracker = new Arc::MemoryTracker();
+    gpMemoryTracker = new MemoryTracker();
 
     TestApp *program = New TestApp();
     program->init();
@@ -49,10 +36,10 @@ int main(int argc, char *argv[])
         pause();
     }
 
+#endif
+
     delete gpMemoryTracker;
     gpMemoryTracker = nullptr;
 
-#endif
-
-    return 0;
+    return EXIT_SUCCESS;
 }

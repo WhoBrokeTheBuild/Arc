@@ -3,11 +3,9 @@
 
 Arc::InputSystem::InputSystem( void )
 {
-}
-
-Arc::InputSystem::~InputSystem( void )
-{
-    term();
+    _pKeyboardSource  = nullptr;
+    _pMouseSource     = nullptr;
+    _pTextInputSource = nullptr;
 }
 
 std::string Arc::InputSystem::toString( void ) const
@@ -35,11 +33,15 @@ void Arc::InputSystem::init( void )
 
 void Arc::InputSystem::term( void )
 {
+    INFO(toString(), "Terminating");
+
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 
     delete _pTextInputSource;
     delete _pMouseSource;
     delete _pKeyboardSource;
+
+    INFO(toString(), "Complete");
 }
 
 void Arc::InputSystem::update( const Event& event )

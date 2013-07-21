@@ -32,7 +32,7 @@ namespace Arc
         Vector2( void ) { X = Y = 0; }
         Vector2( float x, float y );
         Vector2( float both );
-        virtual ~Vector2( void );
+        virtual ~Vector2( void ) { }
 
         virtual string toString( void ) const;
 
@@ -43,9 +43,9 @@ namespace Arc
         float halfX( void ) { return (X * 0.5f); }
         float halfY( void ) { return (Y * 0.5f); }
 
-        float width( void )  { return X; }
+        float width ( void ) { return X; }
         float height( void ) { return Y; }
-        float halfWidth( void )  { return halfX(); }
+        float halfWidth ( void ) { return halfX(); }
         float halfHeight( void ) { return halfY(); }
 
         Vector2 lerp      ( const Vector2 &other, float fraction );
@@ -67,7 +67,7 @@ namespace Arc
         bool operator==( const Vector2 &rhs ) const;
         bool operator!=( const Vector2 &rhs ) const;
 
-    };
+    }; // class Vector2
 
     struct CompVector2
         : public std::binary_function<Vector2, Vector2, bool>
@@ -76,7 +76,9 @@ namespace Arc
         {
             return lhs.X < rhs.X; // Simple Sorting
         }
-    };
-}
 
-#endif
+    }; // struct CompVector2
+
+} // namespace Arc
+
+#endif // __ARC_VECTOR_2_H__

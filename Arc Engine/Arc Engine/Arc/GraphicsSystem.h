@@ -45,13 +45,13 @@ namespace Arc
 
         static const EventType EVENT_GRAPHICS_RESET;
 
-        GraphicsSystem( void ) { }
+        GraphicsSystem( void );
         virtual ~GraphicsSystem( void ) { term(); }
 
         virtual void init( Size windowSize, string windowTitle );
         virtual void term( void );
 
-        virtual string toString( void ) const;
+        virtual string toString( void ) const { return "Graphics System"; }
 
         virtual void setFullscreen ( bool fullscreen );
         virtual void setWindowSize ( Size size );
@@ -65,7 +65,9 @@ namespace Arc
         virtual Color  clearColor ( void ) { return _clearColor;  }
 
         virtual RenderTarget *renderTarget( void ) { return _pRenderTarget; };
-    };
-}
 
-#endif
+    }; // class GraphicsSystem
+
+} // namespace Arc
+
+#endif // __ARC_GRAPHICS_SYSTEM_H__

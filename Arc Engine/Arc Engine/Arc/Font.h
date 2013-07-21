@@ -35,8 +35,11 @@ namespace Arc
 
     public:
 
-        Font( string filename, int size );
-        virtual ~Font( void );
+        Font( void );
+        virtual ~Font( void ) { term(); }
+
+        virtual void init( string filename, int size );
+        virtual void term( void );
 
         virtual string toString( void ) const;
 
@@ -44,7 +47,8 @@ namespace Arc
 
         virtual Size measureString( string text );
 
-    };
-}
+    }; // class Font
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_FONT_H__

@@ -1,20 +1,17 @@
 #pragma once
 
-#ifndef __ARC_MOUSE_CONTROLLER_H__
-#define __ARC_MOUSE_CONTROLLER_H__
+#ifndef __ARC_MOUSE_SOURCE_H__
+#define __ARC_MOUSE_SOURCE_H__
 
 #include "Common.h"
 #include "EventDispatcher.h"
 
 #include "Mouse.h"
 #include "InputState.h"
-
 #include "Map.h"
 
 namespace Arc
 {
-    typedef Map<MouseButton,  InputState> MouseStateMap;
-
     class MouseSource :
         public EventDispatcher
     {
@@ -25,11 +22,13 @@ namespace Arc
 
     protected:
 
-        MouseStateMap
+        Map<MouseButton, InputState>
             _buttonStates;
 
+        Point
+            _mousePos;
+
         Vector2
-            _mousePos,
             _mouseDelta;
 
     public:
@@ -40,7 +39,7 @@ namespace Arc
             EVENT_MOUSE_RELEASED,
             EVENT_MOUSE_HELD;
 
-        MouseSource( void ) { }
+        MouseSource( void );
         virtual ~MouseSource( void ) { term(); }
 
         virtual string toString( void ) const { return "Mouse Source"; }
@@ -49,7 +48,9 @@ namespace Arc
         virtual void term( void );
 
         virtual void update( const Event& event );
-    };
-}
 
-#endif
+    }; // class MouseSource
+
+} // namespace Arc
+
+#endif // __MOUSE_SOURCE_H__

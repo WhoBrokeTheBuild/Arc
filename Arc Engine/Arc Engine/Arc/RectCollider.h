@@ -25,7 +25,10 @@ namespace Arc
 
         virtual bool check( Vector2 pos, Collider* pOther );
 
-    };
-}
+        virtual string toString( void ) const { return "Rect Collider"; }
 
-#endif
+    }; // class RectCollider
+
+} // namespace Arc
+
+#endif // __ARC_RECT_COLLIDER_H__

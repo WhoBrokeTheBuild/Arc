@@ -50,7 +50,8 @@ namespace Arc
         STICK_RIGHT_LEFT,
 
         NUM_GAME_PAD_BUTTONS
-    };
+
+    }; // enum GamePadButton
 
     const string GAME_PAD_BUTTON_NAMES[NUM_GAME_PAD_BUTTONS] =
     {
@@ -90,6 +91,7 @@ namespace Arc
         "Right Stick Right"
         "Right Stick Left"
     };
-}
 
-#endif
+} // namespace Arc
+
+#endif //__ARC_GAME_PAD_H__

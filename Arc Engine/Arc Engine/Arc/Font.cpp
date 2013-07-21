@@ -2,7 +2,14 @@
 #include "RenderTarget.h"
 #include "CachedText.h"
 
-Arc::Font::Font( string filename, int size )
+Arc::Font::Font( void )
+{
+    _filename = string();
+    _pFont    = nullptr;
+    _size     = 0;
+}
+
+void Arc::Font::init( string filename, int size )
 {
     _pFont = nullptr;
     _filename = filename;
@@ -19,15 +26,17 @@ Arc::Font::Font( string filename, int size )
     }
 }
 
-Arc::Font::~Font( void )
+void Arc::Font::term( void )
 {
     if (_pFont != nullptr)
         TTF_CloseFont(_pFont);
 }
 
-string Arc::Font::toString( void ) const
+std::string Arc::Font::toString( void ) const
 {
-    return "Font";
+    stringstream ss;
+    ss << "Font [File: " << _filename << ", Size: " << _size << "]";
+    return ss.str();
 }
 
 Arc::Size Arc::Font::measureString( string text )

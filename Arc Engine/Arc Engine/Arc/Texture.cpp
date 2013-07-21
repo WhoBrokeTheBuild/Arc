@@ -7,7 +7,7 @@
 Arc::Texture::Texture( void )
 {
     _size = Size::ZERO;
-    _filename = "<empty>";
+    _filename = string();
 }
 
 std::string Arc::Texture::toString( void ) const
@@ -42,11 +42,7 @@ void Arc::Texture::load( string filename )
     SDL_Surface *surface = IMG_Load(_filename.c_str());
 
     if (!surface)
-    {
-        stringstream ss;
-        ss << "Error Loading Image: " << IMG_GetError();
-        ERROR(toString(), ss.str());
-    }
+        ERRORF(toString(), "Error Loading Image (%s)", IMG_GetError());
 
     load(surface);
 
@@ -87,7 +83,7 @@ void Arc::Texture::load( SDL_Surface* pSurface )
 
 void Arc::Texture::graphicsReset( const Event& event )
 {
-    if (_filename != "" && _filename[0] != '<') // Prevent <generated> and <empty>
+    if (_filename != "" && _filename[0] != '<') // Prevent <generated>
     {
         deleteTexture();
         load(_filename);

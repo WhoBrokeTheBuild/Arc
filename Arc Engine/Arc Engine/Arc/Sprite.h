@@ -24,12 +24,13 @@ namespace Arc
         Sprite( void );
         virtual ~Sprite( void ) { term(); }
 
-        virtual string toString( void ) const;
+        virtual string toString( void ) const { return "Sprite"; }
 
         virtual void init( Texture *texture, Rect source );
-        virtual void term( void );
+        virtual void term( void ) { }
 
-    };
-}
+    }; // class Sprite
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_SPRITE_H__

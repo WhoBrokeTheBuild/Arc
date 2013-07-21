@@ -5,6 +5,12 @@ const Arc::EventType Arc::KeyboardSource::EVENT_KEY_PRESSED  = "keyPressed";
 const Arc::EventType Arc::KeyboardSource::EVENT_KEY_RELEASED = "keyReleased";
 const Arc::EventType Arc::KeyboardSource::EVENT_KEY_HELD     = "keyHeld";
 
+Arc::KeyboardSource::KeyboardSource( void )
+{
+    _sdlKeys   = nullptr;
+    _keyStates = Map<KeyboardKey, InputState>();
+}
+
 void Arc::KeyboardSource::init( void )
 {
     _sdlKeys = nullptr;
@@ -30,7 +36,7 @@ void Arc::KeyboardSource::update( const Event& event )
     KeyboardKey key;
     InputState *pState;
 
-    KeyStateMap::Iterator it;
+    Map<KeyboardKey, InputState>::Iterator it;
     for (it = _keyStates.begin(); it != _keyStates.end(); ++it)
     {
         key    =  it->first;

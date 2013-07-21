@@ -26,7 +26,8 @@ namespace Arc
         ORIGIN_LOCATION_RIGHT_CENTER,
 
         NUM_ORIGIN_LOCATIONS
-    };
+
+    }; // enum OriginLocation
 
     const string ORIGIN_LOCATION_NAMES[NUM_ORIGIN_LOCATIONS] = 
     {
@@ -41,6 +42,7 @@ namespace Arc
         "Left Center",
         "Right Center"
     };
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_ORIGIN_LOCATION_H__

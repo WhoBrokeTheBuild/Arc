@@ -37,7 +37,7 @@ namespace Arc
 
         typedef pair<K, T> Pair;
 
-        Map( void ) { }
+        Map( void ) { _map = map<K, T, Sort>(); }
         Map( const Map& rhs) : _map(rhs._map) { }
         virtual ~Map( void ) { clear(); }
 
@@ -93,8 +93,10 @@ namespace Arc
         T*            valueArray     ( unsigned int& length );
         LinkedList<T> valueLinkedList( unsigned int& length );
         ArrayList<T>  valueArrayList ( unsigned int& length );
-    };
-}
+
+    }; // class Map<T, K, Sort>
+
+} // namespace Arc
 
 #include "LinkedList.h"
 #include "ArrayList.h"
@@ -272,4 +274,4 @@ Arc::ArrayList<T> Arc::Map<K, T, Sort>::valueArrayList( unsigned int& length )
     return other;
 }
 
-#endif
+#endif // __ARC_MAP_H__

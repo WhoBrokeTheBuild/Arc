@@ -13,6 +13,7 @@ namespace Arc
     int    randInt   ( int    min, int    max );
     float  randFloat ( float  min, float  max );
     double randDouble( double min, double max );
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_RAND_FUNC_H__

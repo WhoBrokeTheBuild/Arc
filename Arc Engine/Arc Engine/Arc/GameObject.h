@@ -14,8 +14,6 @@ namespace Arc
 {
     class GameObject
     {
-    private:
-
     public:
 
         virtual ~GameObject( void ) { }
@@ -24,29 +22,30 @@ namespace Arc
 
         friend ostream& operator<<( ostream& os, const GameObject& go );
 
-        void* operator new  (size_t size);
-        void* operator new[](size_t size);
+        void* operator new  ( size_t size );
+        void* operator new[]( size_t size );
+                              
+        void* operator new  ( size_t pSize, int pLineNumber, const char *pFilename );
+        void* operator new[]( size_t pSize, int pLineNumber, const char *pFilename );
 
-        void* operator new  (size_t pSize, int pLineNumber, const char *pFilename);
-        void* operator new[](size_t pSize, int pLineNumber, const char *pFilename);
+        void operator delete  ( void *ptr);
+        void operator delete[]( void *ptr);
+                                
+        void operator delete  ( void *pPtr, int pLineNumber, const char *pFilename );
+        void operator delete[]( void *pPtr, int pLineNumber, const char *pFilename );
 
-        void operator delete  (void *ptr);
-        void operator delete[](void *ptr);
+#ifdef DEBUG
 
-        void operator delete  (void *pPtr, int pLineNumber, const char *pFilename);
-        void operator delete[](void *pPtr, int pLineNumber, const char *pFilename);
+#define New new(__LINE__, __FILE__)
 
-        #ifdef DEBUG
+#else
 
-        #define New new(__LINE__, __FILE__)
-
-        #else
-
-        #define New new
-
-        #endif
-
-    };
-}
+#define New new
 
 #endif
+
+    }; // class GameObject
+
+} // namespace Arc
+
+#endif // __ARC_GAME_OBJECT_H__

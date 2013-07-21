@@ -3,9 +3,8 @@
 #ifndef __ARC_RECT_H__
 #define __ARC_RECT_H__
 
-#include <cstdlib>
-
 #include "GameObject.h"
+
 #include "Vector2.h"
 
 namespace Arc
@@ -70,7 +69,7 @@ namespace Arc
         bool operator==( const Rect &rhs ) const;
         bool operator!=( const Rect &rhs ) const;
 
-    };
+    }; // class Rect
 
     struct CompRect
         : public std::binary_function<Rect, Rect, bool>
@@ -79,7 +78,8 @@ namespace Arc
         {
             return lhs.X < rhs.X; // Simple Sorting
         }
-    };
-}
+    }; // struct CompRect
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_RECT_H__

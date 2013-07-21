@@ -19,7 +19,8 @@ namespace Arc
         INPUT_TYPE_OTHER,
 
         NUM_INPUT_TYPES
-    };
+
+    }; // enum InputType
 
     const string INPUT_TYPE_NAMES[NUM_INPUT_TYPES] =
     {
@@ -28,6 +29,7 @@ namespace Arc
         "Held",
         "Other"
     };
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_INPUT_TYPE_H__

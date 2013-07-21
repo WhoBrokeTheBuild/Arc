@@ -25,7 +25,7 @@ namespace Arc
 
     public:
 
-        AudioSystem( void ) { }
+        AudioSystem( void );
         virtual ~AudioSystem( void ) { term(); }
 
         virtual void init( void );
@@ -33,7 +33,8 @@ namespace Arc
 
         virtual string toString( void ) const { return "Audio System"; }
 
-    };
-}
+    }; // class AudioSystem
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_AUDIO_SYSTEM_H__

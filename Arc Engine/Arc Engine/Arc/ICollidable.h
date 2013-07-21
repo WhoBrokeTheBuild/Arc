@@ -19,6 +19,11 @@ namespace Arc
 
     public:
 
+        ICollidable( void )
+        {
+            _pCollider = nullptr;
+        }
+
         ~ICollidable( void ) { term(); }
 
         virtual void init( RectCollider Collider )
@@ -38,7 +43,8 @@ namespace Arc
 
         virtual void collided( void ) { }
 
-    };
-}
+    }; // class ICollidable
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_ICOLLIDABLE_H__

@@ -103,7 +103,7 @@
             <div class="toc">
                 <ol>
                     <li>
-                        <a href="#general-names">General Naming</a>
+                        <a href="#general-naming">General Naming</a>
                         <ul>
                             <li>
                                 <a href="#filenames">Filenames</a>
@@ -218,7 +218,7 @@ int main( int argc, char** argv )
 
 ...
 
-#endif //__ARC_FOO_BAR_H__
+#endif // __ARC_FOO_BAR_H__
                     </code>
                 </p>
                 
@@ -501,7 +501,8 @@ enum Direction
     DIRECTION_WEST,
     
     NUM_DIRECTIONS
-};
+    
+}; // enum Direction
                 </code>
                 The NUM item at the end allows for easy loops through all enum values. As well as the following code which
                 lets you associate text to each enum value.

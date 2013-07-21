@@ -12,12 +12,12 @@
 
 #include <Windows.h>
 
-#else
+#else // LINUX
 
 #include <sys/time.h>
 #include <unistd.h>
 
-#endif
+#endif // WINDOWS
 
 namespace Arc
 {
@@ -58,9 +58,9 @@ namespace Arc
     public:
 
         Timer( void );
-        virtual ~Timer( void );
+        virtual ~Timer( void ) { }
 
-        virtual string toString( void ) const;
+        virtual string toString( void ) const { return "Timer"; }
 
         void start( void );
         void stop ( void );
@@ -71,7 +71,8 @@ namespace Arc
 
         void sleepUntilElapsed( double millis );
 
-    };
-}
+    }; // class Timer
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_TIMER_H__

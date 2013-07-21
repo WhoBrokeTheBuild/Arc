@@ -70,7 +70,7 @@ namespace Arc
                 _sDispatchers[i]->cleanMap();
         }
 
-    };
+    }; // class EventDispatcher
 
     template <typename ObjectType, typename Method>
     void EventDispatcher::addEventListener( const EventType& eventType, ObjectType* object, Method method )
@@ -111,8 +111,9 @@ namespace Arc
             }
         }
     }
-}
+
+} // namespace Arc
 
 extern Arc::EventDispatcher* gpEventDispatcher;
 
-#endif
+#endif // __ARC_EVENT_DISPATCHER_H__

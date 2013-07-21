@@ -3,9 +3,10 @@
 #ifndef __ARC_INPUT_FUNC_H__
 #define __ARC_INPUT_FUNC_H__
 
+#include <SDL/SDL.h>
+
 #include "Keyboard.h"
 #include "Mouse.h"
-#include <SDL/SDL.h>
 
 namespace Arc
 {
@@ -15,6 +16,7 @@ namespace Arc
 
     MouseButton SDLMouseToMouse( int sdlButton );
     int         MouseToSDLMouse( MouseButton button );
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_INPUT_FUCN_H__

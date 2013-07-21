@@ -26,7 +26,7 @@ namespace Arc
             Enabled,
             Visible;
 
-        Scene( void ) { }
+        Scene( void );
         virtual ~Scene( void ) { term(); }
 
         virtual void init( void );
@@ -62,7 +62,8 @@ namespace Arc
         virtual Layer* getUnitLayer     ( Unit* unit );
         virtual int    getUnitLayerIndex( Unit* unit );
 
-    };
-}
+    }; // class Scene
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_SCENE_H__

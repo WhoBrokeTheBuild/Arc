@@ -4,6 +4,7 @@
 #define __ARC_CIRCLE_H__
 
 #include "GameObject.h"
+
 #include "Vector2.h"
 
 namespace Arc
