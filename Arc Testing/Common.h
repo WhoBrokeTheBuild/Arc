@@ -16,4 +16,4 @@ using std::cout;
 using std::string;
 using std::stringstream;
 
-#endif
+#endif // __COMMON_H__

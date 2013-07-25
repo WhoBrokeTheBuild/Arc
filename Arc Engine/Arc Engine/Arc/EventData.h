@@ -77,7 +77,9 @@ namespace Arc
         double
             _totalMilliseconds,
             _elapsedMilliseconds,
-            _deltaTime;
+            _deltaTime,
+            _currentFPS,
+            _targetFPS;
 
     public:
 
@@ -101,9 +103,12 @@ namespace Arc
 
         inline void update(double elapsedMillis, double currFPS, double targetFPS)
         {
+            _currentFPS = currFPS;
+            _targetFPS  = targetFPS;
+
             _elapsedMilliseconds = elapsedMillis;
             _totalMilliseconds += elapsedMillis;
-            _deltaTime = targetFPS / currFPS;
+            _deltaTime = _targetFPS / _currentFPS;
         }
 
         double totalSeconds  ( void ) const { return _totalMilliseconds   / 1000.0; }
@@ -113,6 +118,9 @@ namespace Arc
         double elapsedMilliseconds( void ) const { return _elapsedMilliseconds; }
 
         double deltaTime( void ) const { return _deltaTime; }
+
+        double currentFPS( void ) const { return _currentFPS; }
+        double targetFPS( void ) const { return _currentFPS; }
 
     }; // class FrameData
 

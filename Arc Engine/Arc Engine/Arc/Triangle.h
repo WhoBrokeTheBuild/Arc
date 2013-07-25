@@ -31,6 +31,7 @@ namespace Arc
 		    C;
 
 	    Triangle( void ) { A = B = C = Point::ZERO; }
+        Triangle( Point center, float radius );
 	    Triangle( Point a, Point b, Point c);
 	    Triangle( float aX, float aY, float bX, float bY, float cX, float cY);
 	    virtual ~Triangle( void ) { }

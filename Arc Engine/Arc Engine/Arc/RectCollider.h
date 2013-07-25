@@ -23,9 +23,11 @@ namespace Arc
         RectCollider( float x, float y, float width, float height) { RectMask = Rect(x, y, width, height); }
         virtual ~RectCollider( void ) { }
 
-        virtual bool check( Vector2 pos, Collider* pOther );
+        virtual bool check( Point pos, Collider* pOther, Point otherPos );
 
         virtual string toString( void ) const { return "Rect Collider"; }
+
+        virtual void render( const RenderTarget* renderTarget, Point pos );
 
     }; // class RectCollider
 

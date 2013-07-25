@@ -15,6 +15,9 @@ namespace Arc
     #define TO_RAD (PI / 180.0)
     #define TO_DEG (180.0 / PI)
 
+    inline float toRad( int deg ) { return (float)( deg * TO_RAD ); }
+    inline float toDeg( int rad ) { return (float)( rad * TO_DEG ); };
+
     inline float toRad( float deg ) { return (float)( deg * TO_RAD ); }
     inline float toDeg( float rad ) { return (float)( rad * TO_DEG ); };
 
@@ -58,10 +61,10 @@ namespace Arc
 
         mu2 = mu * mu;
         mu3 = mu2 * mu;
-        m0  = (x1-x0) * (1 + bias) * (1 - tension) / 2;
-        m0 += (x2-x1) * (1 - bias) * (1 - tension) / 2;
-        m1  = (x2-x1) * (1 + bias) * (1 - tension) / 2;
-        m1 += (x3-x2) * (1 - bias) * (1 - tension) / 2;
+        m0  = (x1 - x0) * (1 + bias) * (1 - tension) / 2;
+        m0 += (x2 - x1) * (1 - bias) * (1 - tension) / 2;
+        m1  = (x2 - x1) * (1 + bias) * (1 - tension) / 2;
+        m1 += (x3 - x2) * (1 - bias) * (1 - tension) / 2;
         a0 =  2 * mu3 - 3 * mu2 + 1;
         a1 =      mu3 - 2 * mu2 + mu;
         a2 =      mu3 -     mu2;

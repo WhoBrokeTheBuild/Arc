@@ -5,112 +5,63 @@ void TestApp::init( void )
     Program::init(Size(600), "Test Arc");
     IKeyboardListener::init();
 
-    sound = New Sound();
-    sound->init("assets/sound.ogg");
+    _pGraphicsSystem->setClearColor(Color::PEACH);
+    _targetFPS = 10000.0f;
 
-    scene = New Scene();
-    scene->init();
+    pScene = New Scene();
+    pScene->init();
 
-    tex  = New Texture();
-    anim = New Animation();
+    pTestUnit = New TestUnit();
+    pTestUnit->init(Point(100), New RectCollider(Point(-120.0f), Size(240.0f)), 0.0f, false);
 
-    sprites = ArrayList<Sprite*>();
+    pTestUnit2 = New TestUnit();
+    pTestUnit2->init(Point(300), New CircleCollider(Point::ZERO, 120.0f));
 
-    Rect source = Rect(0, 0, 255, 255);
-    for (unsigned int i = 0; i < 8; ++i)
-    {
-        sprites.add(New Sprite());
-        sprites.back()->init(tex, source);
-        source.X += source.Width;
-    }
+    pScene->addUnit(pTestUnit, 0);
+    pScene->addUnit(pTestUnit2, 0);
 
-    tex->init("assets/test.png");
-    anim->init(sprites, 100);
+    pScene->addUnitTag(pTestUnit,  "test");
+    pScene->addUnitTag(pTestUnit2, "test");
 
-    pTest = New Test();
-    pTest->init(anim);
-    pTest->BlendColor = Color::BLUE;
-    pTest->Pos = Vector2::ZERO;
-    pTest->Depth = 1.0f;
+    pFont = New Font();
+    pFont->init("assets/action-is.ttf", 20);
 
-    pTest2 = New Test();
-    pTest2->init(anim);
-    pTest2->BlendColor = Color::RED;
-    pTest2->Pos = Vector2(100, 0);
-    pTest2->Depth = 1.0f;
-
-    pTest3 = New Test();
-    pTest3->init(anim);
-    pTest3->BlendColor = Color::GREEN;
-    pTest3->Pos = Vector2(0, 300);
-    pTest3->Depth = 1.0f;
-
-    pTest4 = New Test();
-    pTest4->init(anim);
-    pTest4->BlendColor = Color::BLACK;
-    pTest4->Pos = Vector2(100, 300);
-
-    scene->addUnit(pTest,  1);
-    scene->addUnit(pTest2, 1);
-    scene->addUnit(pTest3, 0);
-    scene->addUnit(pTest4, 0);
+    pFPSText = New CachedText();
+    pFPSText->init("0", pFont);
 }
 
 void TestApp::term( void )
 {
-    delete scene;
-    delete sound;
+    delete pScene;
 
-    delete anim;
-
-    for (unsigned int i = 0; i < sprites.size(); ++i)
-    {
-        delete sprites[i];
-    }
-    sprites.clear();
-
-    delete tex;
+    delete pFont;
+    delete pFPSText;
 }
 
 void TestApp::update( const Event& event )
 {
-    //const FrameData* data = event.dataAs<FrameData>();
+    const FrameData* data = event.dataAs<FrameData>();
+
+    stringstream ss;
+
+    ss.str(string());
+    ss << "FPS: " << ceil(_currentFPS, 1);
+    pFPSText->setText(ss.str());
 }
 
 void TestApp::render( const Event& event )
 {
+    const RenderData* data = event.dataAs<RenderData>();
+    
+    data->renderTarget()->drawText(Point(10), pFPSText, Color::BLACK);
 }
 
 void TestApp::keyPressed( const Event& event )
 {
     const KeyData* data = event.dataAs<KeyData>();
 
-    switch (data->Key)
+    if (data->Key == KEY_ESCAPE)
     {
-    case KEY_ENTER:
-
-        if (sound->isPlaying())
-            sound->stop();
-        else
-            sound->play();
-
-        break;
-    case KEY_SPACE:
-
-        _pGraphicsSystem->setFullscreen(!_pGraphicsSystem->fullscreen());
-
-        break;
-    case KEY_UP:
-
-        sound->setVolume(sound->getVolume() + 0.1f);
-
-        break;
-    case KEY_DOWN:
-
-        sound->setVolume(sound->getVolume() - 0.1f);
-
-        break;
-    default:
-        break;
+        gpEventDispatcher->dispatchEvent(Event(EVENT_EXIT));
     }
 }

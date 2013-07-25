@@ -70,7 +70,7 @@ namespace Arc
 
         bool contains( const T& item ) const;
         bool hasIndex( const int& index ) const;
-        bool empty   ( void )    const { return _list.empty(); }
+        bool empty   ( void ) const { return _list.empty(); }
 
         int indexOf( T& item ) const;
 

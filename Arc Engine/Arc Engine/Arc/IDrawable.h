@@ -54,7 +54,7 @@ namespace Arc
             Alpha      = alpha;
         }
 
-        virtual void render( const RenderTarget* renderTarget, const Vector2 pos ) = 0;
+        virtual void render( const RenderTarget* renderTarget, const Vector2 pos ) { };
 
         virtual void setOrigin( Vector2 origin )
         {
@@ -64,7 +64,7 @@ namespace Arc
 
         virtual void setOrigin( OriginLocation originLocation )
         {
-            _originLocation = ORIGIN_LOCATION_MANUAL;
+            _originLocation = originLocation;
             calcOriginLocation();
         }
 

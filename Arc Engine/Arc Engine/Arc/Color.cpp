@@ -9,6 +9,7 @@ Arc::Color Arc::Color::GREEN             = Color(0,   255, 0);
 Arc::Color Arc::Color::BLUE              = Color(0,   0,   255);
 Arc::Color Arc::Color::CORNFLOWER_BLUE   = Color(100, 149, 237);
 Arc::Color Arc::Color::STORM             = Color(0,   170, 170);
+Arc::Color Arc::Color::PEACH             = Color(0,   170, 170);
 
 Arc::Color::Color( float r, float g, float b )
 {
@@ -39,18 +40,18 @@ string Arc::Color::toString( void ) const
 
 void Arc::Color::setFrac( float r, float g, float b )
 {
-    R = (int)(clamp(r, 0.0f, 1.0f) * 255.0f);
-    G = (int)(clamp(g, 0.0f, 1.0f) * 255.0f);
-    B = (int)(clamp(b, 0.0f, 1.0f) * 255.0f);
+    R = (uint8_t)(clamp(r, 0.0f, 1.0f) * 255.0f);
+    G = (uint8_t)(clamp(g, 0.0f, 1.0f) * 255.0f);
+    B = (uint8_t)(clamp(b, 0.0f, 1.0f) * 255.0f);
     A = 255;
 }
 
 void Arc::Color::setFrac( float r, float g, float b, float a )
 {
-    R = (int)(clamp(r, 0.0f, 1.0f) * 255.0f);
-    G = (int)(clamp(g, 0.0f, 1.0f) * 255.0f);
-    B = (int)(clamp(b, 0.0f, 1.0f) * 255.0f);
-    A = (int)(clamp(a, 0.0f, 1.0f) * 255.0f);
+    R = (uint8_t)(clamp(r, 0.0f, 1.0f) * 255.0f);
+    G = (uint8_t)(clamp(g, 0.0f, 1.0f) * 255.0f);
+    B = (uint8_t)(clamp(b, 0.0f, 1.0f) * 255.0f);
+    A = (uint8_t)(clamp(a, 0.0f, 1.0f) * 255.0f);
 }
 
 void Arc::Color::setByte( int r, int g, int b )
@@ -71,6 +72,6 @@ void Arc::Color::setByte( int r, int g, int b, int a )
 
 SDL_Color Arc::Color::SDLColor( void )
 {
-    SDL_Color color = { (uint8_t)R, (uint8_t)G, (uint8_t)B, (uint8_t)A };
+    SDL_Color color = { R, G, B, A };
     return color;
 }

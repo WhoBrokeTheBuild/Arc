@@ -22,9 +22,11 @@ namespace Arc
         CircleCollider( Vector2 pos, float radius ) { CircleMask = Circle(pos, radius); }
         CircleCollider( float x, float y, float radius ) { CircleMask = Circle(x, y, radius); }
 
-        virtual bool check( Vector2 pos, Collider* pOther );
+        virtual bool check( Point pos, Collider* pOther, Point otherPos );
 
         virtual string toString( void ) const { return "Circle Collider"; }
+
+        virtual void render( const RenderTarget* renderTarget, Point pos );
 
     }; // class CircleCollider
 

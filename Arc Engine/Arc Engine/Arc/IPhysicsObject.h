@@ -4,7 +4,6 @@
 #define __ARC_IPHYSICS_OBJECT_H__
 
 #include "Common.h"
-#include "RenderTarget.h"
 
 namespace Arc
 {

@@ -5,18 +5,6 @@ Arc::Vector2 Arc::Vector2::ZERO         = Vector2(0);
 Arc::Vector2 Arc::Vector2::ONE          = Vector2(1);
 Arc::Vector2 Arc::Vector2::NEGATIVE_ONE = Vector2(-1);
 
-Arc::Vector2::Vector2( float x, float y )
-{
-    X = x;
-    Y = y;
-}
-
-Arc::Vector2::Vector2( float both )
-{
-    X = both;
-    Y = both;
-}
-
 std::string Arc::Vector2::toString( void ) const
 {
     stringstream ss;
@@ -108,12 +96,12 @@ float Arc::Vector2::distanceTo( Vector2 other )
     return sqrt(dx * dx + dy * dy);
 }
 
-float Arc::Vector2::directionToDeg( Vector2 other )
+float Arc::Vector2::angleToDeg( Vector2 other )
 {
-    return toDeg(directionToRad(other));
+    return toDeg(angleToRad(other));
 }
 
-float Arc::Vector2::directionToRad( Vector2 other )
+float Arc::Vector2::angleToRad( Vector2 other )
 {
     float dx = other.X - X,
           dy = other.Y - Y;

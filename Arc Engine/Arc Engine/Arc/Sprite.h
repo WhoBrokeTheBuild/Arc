@@ -13,10 +13,11 @@ namespace Arc
     class Sprite :
         public GameObject
     {
-    public:
+    protected:
 
         Texture
             *pTexture;
+    public:
 
         Rect
             SourceRect;
@@ -28,6 +29,9 @@ namespace Arc
 
         virtual void init( Texture *texture, Rect source );
         virtual void term( void ) { }
+
+        virtual Texture* getTexture( void ) { return pTexture; }
+        virtual void setTexture( Texture* texture ) { pTexture = texture; }
 
     }; // class Sprite
 

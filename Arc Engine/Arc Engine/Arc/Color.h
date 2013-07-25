@@ -23,7 +23,7 @@ namespace Arc
 
     public:
 
-        int
+        uint8_t
             R,
             G,
             B,
@@ -36,7 +36,8 @@ namespace Arc
             GREEN,
             BLUE,
             CORNFLOWER_BLUE,
-            STORM;
+            STORM,
+            PEACH;
 
         Color( void ) { setByte(0, 0, 0, 0); }
 

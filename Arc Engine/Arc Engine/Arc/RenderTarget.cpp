@@ -13,7 +13,7 @@ void Arc::RenderTarget::init( GraphicsSystem* pGraphicsSystem )
 
 void Arc::RenderTarget::beginDraw( void ) const
 {
-    Color clearColor = _pGraphicsSystem->clearColor();
+    Color clearColor = _pGraphicsSystem->getClearColor();
 
     glClearColor(clearColor.fracR(), clearColor.fracG(), clearColor.fracB(), clearColor.fracA());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -98,16 +98,16 @@ void Arc::RenderTarget::drawText( const Vector2 pos, const CachedText* pCachedTe
 
 void Arc::RenderTarget::drawText( const float x, const float y, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    if (pCachedText->text().length() == 0)
+    if (pCachedText->getText().length() == 0)
         return;
 
-    if (pCachedText->texture() == nullptr)
+    if (pCachedText->getTexture() == nullptr)
     {
         ERROR(toString(), "Invalid Cached Text");
         return;
     }
 
-    draw(x, y, pCachedText->texture(), color, rotation, origin);
+    draw(x, y, pCachedText->getTexture(), color, rotation, origin);
 }
 
 void Arc::RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
@@ -136,7 +136,7 @@ void Arc::RenderTarget::draw( const float x, const float y, const Texture* pText
     glRotatef(toDeg(rotation), 0.0f, 0, 1.0f);
     glTranslatef(-origin.X, -origin.Y, 0);
 
-    glBindTexture(GL_TEXTURE_2D, pTexture->GLTexture());
+    glBindTexture(GL_TEXTURE_2D, pTexture->getGLTexture());
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
@@ -257,7 +257,7 @@ void Arc::RenderTarget::drawCircle( const float x, const float y, const float ra
 
 void Arc::RenderTarget::drawCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    drawShape(circle.X, circle.Y, circle.Radius, 12, color, rotation, origin);
+    drawShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, origin);
 }
 
 void Arc::RenderTarget::fillCircle( const float x, const float y, const float radius, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
@@ -268,7 +268,7 @@ void Arc::RenderTarget::fillCircle( const float x, const float y, const float ra
 
 void Arc::RenderTarget::fillCircle( const Circle circle, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    fillShape(circle.X, circle.Y, circle.Radius, 12, color, rotation, origin);
+    fillShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, origin);
 }
 
 void Arc::RenderTarget::drawTriangle( const Vector2 pos, const float radius, const Color color /*= Color::WHITE*/,  const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const

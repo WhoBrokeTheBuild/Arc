@@ -59,12 +59,12 @@ namespace Arc
         virtual void setClearColor ( Color clearColor );
         virtual void setWindowIcon ( string filename );
 
-        virtual bool   fullscreen ( void ) { return _fullscreen;  }
-        virtual Size   windowSize ( void ) { return _windowSize;  }
-        virtual string windowTitle( void ) { return _windowTitle; }
-        virtual Color  clearColor ( void ) { return _clearColor;  }
+        virtual bool   isFullscreen ( void ) { return _fullscreen;  }
+        virtual Size   getWindowSize ( void ) { return _windowSize;  }
+        virtual string getWindowTitle( void ) { return _windowTitle; }
+        virtual Color  getClearColor ( void ) { return _clearColor;  }
 
-        virtual RenderTarget *renderTarget( void ) { return _pRenderTarget; };
+        virtual RenderTarget *getRenderTarget( void ) { return _pRenderTarget; };
 
     }; // class GraphicsSystem
 

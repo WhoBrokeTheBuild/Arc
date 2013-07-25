@@ -4,6 +4,7 @@
 Arc::Scene::Scene( void )
 {
     _layers = Map<unsigned int, Layer*>();
+    _tags   = Map<string, ArrayList<Unit*>>();
     Visible = false;
     Enabled = false;
 }
@@ -13,6 +14,7 @@ void Arc::Scene::init( void )
     IFrameListener::init();
 
     _layers = Map<unsigned int, Layer*>();
+    _tags   = Map<string, ArrayList<Unit*>>();
     Visible = true;
     Enabled = true;
 }
@@ -28,6 +30,7 @@ void Arc::Scene::term( void )
         delete it->second;
     }
     _layers.clear();
+    _tags.clear();
 }
 
 void Arc::Scene::update( const Event& event )
@@ -59,7 +62,7 @@ bool Arc::Scene::addLayer( int index )
     if (!hasLayer(index))
     {
         _layers.add(index, New Layer());
-        _layers[index]->init();
+        _layers[index]->init(this);
 
         addEventListener(Program::EVENT_UPDATE, _layers[index], &Layer::update);
         addEventListener(Program::EVENT_RENDER, _layers[index], &Layer::render);
@@ -236,4 +239,46 @@ int Arc::Scene::getUnitLayerIndex( Unit* unit )
     }
 
     return index;
+}
+
+bool Arc::Scene::addUnitTag( Unit* unit, string tag )
+{
+    if (hasUnitTag(unit, tag))
+        return false;
+
+    if (!_tags.containsKey(tag))
+        _tags.add(tag, ArrayList<Unit*>());
+
+    _tags[tag].add(unit);
+
+    return true;
+}
+
+bool Arc::Scene::removeUnitTag( Unit* unit, string tag )
+{
+    if (!hasUnitTag(unit, tag))
+        return false;
+
+    return _tags[tag].remove(unit);
+}
+
+bool Arc::Scene::hasUnitTag( Unit* unit, string tag )
+{
+    if (!_tags.containsKey(tag))
+        return false;
+
+    return _tags[tag].contains(unit);
+}
+
+Arc::ArrayList<string> Arc::Scene::getAllTags( string tag )
+{
+    return _tags.keyArrayList();
+}
+
+Arc::ArrayList<Arc::Unit*> Arc::Scene::getUnitsByTag( string tag )
+{
+    if (!_tags.containsKey(tag))
+        return ArrayList<Unit*>();
+
+    return _tags[tag];
 }

@@ -39,13 +39,13 @@ namespace Arc
         virtual void graphicsReset( const Event& event );
         virtual void renderText( void );
 
-        virtual string text ( void ) const { return _text; }
+        virtual string getText( void ) const { return _text; }
         virtual void setText( string text );
 
         virtual const Size size( void ) const;
         virtual Size measureString( string text );
 
-        virtual Texture* texture( void ) const { return _pTexture; }
+        virtual Texture* getTexture( void ) const { return _pTexture; }
 
     }; // class CachedText
 

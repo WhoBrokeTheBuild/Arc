@@ -12,11 +12,12 @@ Arc::Layer::Layer( void )
     Enabled  = false;
 }
 
-void Arc::Layer::init( void )
+void Arc::Layer::init( Scene* scene )
 {
-    _units  = ArrayList<Unit*>();
-    Visible = true;
-    Enabled = true;
+    _units   = ArrayList<Unit*>();
+    _pParent = scene;
+    Visible  = true;
+    Enabled  = true;
 
     addEventListener(EVENT_LAYER_CHANGED, this, &Layer::layerChanged);
 }
@@ -60,6 +61,7 @@ bool Arc::Layer::addUnit( Unit* unit )
     if (!_units.contains(unit))
     {
         _units.add(unit);
+        unit->setParentLayer(this);
 
         addEventListener(Program::EVENT_UPDATE, unit, &Unit::update);
         addEventListener(Program::EVENT_RENDER, unit, &Unit::render);
@@ -74,6 +76,14 @@ bool Arc::Layer::addUnit( Unit* unit )
 
 bool Arc::Layer::removeUnit( Unit* unit )
 {
+    if (!hasUnit(unit))
+        return false;
+
+    unit->setParentLayer(nullptr);
+
+    removeEventListener(Program::EVENT_RENDER, unit, &Unit::render);
+    removeEventListener(Program::EVENT_UPDATE, unit, &Unit::update);
+
     return _units.remove(unit);
 }
 

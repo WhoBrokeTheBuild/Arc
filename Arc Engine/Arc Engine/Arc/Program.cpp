@@ -65,7 +65,7 @@ void Arc::Program::start( void )
         frameDelay = 1;
 
     FrameData frameData = FrameData();
-    RenderData renderData = RenderData(_pGraphicsSystem->renderTarget());
+    RenderData renderData = RenderData(_pGraphicsSystem->getRenderTarget());
 
     Timer fpsTimer = Timer();
     fpsTimer.start();

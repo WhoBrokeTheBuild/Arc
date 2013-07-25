@@ -6,6 +6,8 @@
 #include "Common.h"
 #include "GameObject.h"
 
+#include "RenderTarget.h"
+
 namespace Arc
 {
     class Collider
@@ -15,7 +17,9 @@ namespace Arc
 
         virtual ~Collider( void ) { }
 
-        virtual bool check( Vector2 pos, Collider* pOther ) = 0;
+        virtual bool check( Point pos, Collider* pOther, Point otherPos ) = 0;
+
+        virtual void render( const RenderTarget* renderTarget, Point pos ) { }
 
     }; // class Collider
 

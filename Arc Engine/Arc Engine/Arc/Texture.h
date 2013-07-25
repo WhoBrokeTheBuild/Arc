@@ -41,7 +41,7 @@ namespace Arc
 
         virtual void deleteTexture( void );
 
-        virtual GLuint GLTexture( void ) const { return _texture; }
+        virtual GLuint getGLTexture( void ) const { return _texture; }
 
     public:
 

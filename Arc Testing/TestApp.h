@@ -1,38 +1,36 @@
 #pragma once
 
+#ifndef __TEST_APP_H__
+#define __TEST_APP_H__
+
 #include "Common.h"
-
 #include <Arc/Program.h>
-#include <Arc/Scene.h>
-#include <Arc/Sound.h>
+#include <Arc/IKeyboardListener.h>
 
-#include "Test.h"
+#include <Arc/Scene.h>
+#include <Arc/Font.h>
+#include <Arc/CachedText.h>
+
+#include "TestUnit.h"
 
 class TestApp :
-    public Arc::Program,
-    public Arc::IKeyboardListener
+    public Program,
+    public IKeyboardListener
 {
 public:
 
-    Sound
-        *sound;
-
     Scene
-        *scene;
+        *pScene;
 
-    Test
-        *pTest,
-        *pTest2,
-        *pTest3,
-        *pTest4;
+    TestUnit
+        *pTestUnit,
+        *pTestUnit2;
 
-    Texture
-        *tex;
-    Animation
-        *anim;
+    Font
+        *pFont;
 
-    ArrayList<Sprite*>
-        sprites;
+    CachedText
+        *pFPSText;
 
     TestApp( void ) { }
     virtual ~TestApp( void ) { term(); }
@@ -47,5 +45,6 @@ public:
 
     virtual void keyPressed( const Event& event );
 
-};
+}; // class TestApp
 
+#endif // __TEST_APP_H__

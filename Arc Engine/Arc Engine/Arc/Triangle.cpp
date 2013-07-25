@@ -11,26 +11,27 @@ Arc::Triangle::Triangle( Point a, Point b, Point c )
 	B = b;
 	C = c;
 
-	if (B.Y < A.Y)
-	{
-		Vector2 tmpA = A;
-		A = B;
-		B = tmpA;
-	}
+    if (B.Y < A.Y)
+    {
+        std::swap(A, B);
+    }
 
-	if (C.Y < A.Y)
-	{
-		Vector2 tmpA = A;
-		A = C;
-		C = tmpA;
-	}
+    if (C.Y < A.Y)
+    {
+        std::swap(A, C);
+    }
 
-	if (C.X < B.X)
-	{
-		Vector2 tmpB = B;
-		B = C;
-		C = tmpB;
-	}
+    if (C.X < B.X)
+    {
+        std::swap(B, C);
+    }
+}
+
+Arc::Triangle::Triangle( Point center, float radius )
+{
+    A = center - Point(0.0f, radius);
+    B = center + Point(cos(toRad(120)) * radius, sin(toRad(120)) * radius);
+    C = center + Point(cos(toRad(-120)) * radius, sin(toRad(-120)) * radius);
 }
 
 Arc::Triangle::Triangle( float aX, float aY, float bX, float bY, float cX, float cY )
@@ -41,23 +42,17 @@ Arc::Triangle::Triangle( float aX, float aY, float bX, float bY, float cX, float
 
 	if (B.Y < A.Y)
 	{
-		Vector2 tmpA = A;
-		A = B;
-		B = tmpA;
+        std::swap(A, B);
 	}
 
 	if (C.Y < A.Y)
-	{
-		Vector2 tmpA = A;
-		A = C;
-		C = tmpA;
+    {
+        std::swap(A, C);
 	}
 
 	if (C.X < B.X)
-	{
-		Vector2 tmpB = B;
-		B = C;
-		C = tmpB;
+    {
+        std::swap(B, C);
 	}
 }
 

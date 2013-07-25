@@ -37,7 +37,7 @@ namespace Arc
         Layer( void );
         virtual ~Layer( void ) { term(); }
 
-        virtual void init( void );
+        virtual void init( Scene* scene );
         virtual void term( void );
 
         virtual string toString( void ) const { return "Layer"; }
@@ -52,6 +52,8 @@ namespace Arc
         virtual bool hasUnit   ( Unit* unit );
 
         virtual unsigned int removeAllUnits( void );
+
+        virtual Scene* getParentScene( void ) { return _pParent; }
 
     }; // class Layer
 

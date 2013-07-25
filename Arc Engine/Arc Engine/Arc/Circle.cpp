@@ -34,9 +34,7 @@ bool Arc::Circle::containsCircle( Circle other )
 
 bool Arc::Circle::containsRect( Rect rect ) //TODO: Test this later when primitives are implemented
 {
-    Rect bounds = Rect(left(), top(), diameter(), diameter());
-
-    if (!rect.containsRect(bounds))
+    if (!rect.containsRect(bounds()))
         return false;
 
     Point rectCenter = rect.center();
@@ -76,5 +74,5 @@ bool Arc::Circle::containsPoint( Point point )
 
 Arc::Rect Arc::Circle::bounds( void )
 {
-    return Rect(Point(top(), left()), Size(Radius * 2.0f));
+    return Rect(top(), left(), diameter(), diameter());
 }

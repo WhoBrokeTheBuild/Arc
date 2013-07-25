@@ -20,6 +20,9 @@ namespace Arc
         Map<unsigned int, Layer*>
             _layers;
 
+        Map<string, ArrayList<Unit*>>
+            _tags;
+
     public:
 
         bool
@@ -61,6 +64,13 @@ namespace Arc
 
         virtual Layer* getUnitLayer     ( Unit* unit );
         virtual int    getUnitLayerIndex( Unit* unit );
+
+        virtual bool addUnitTag   ( Unit* unit, string tag );
+        virtual bool removeUnitTag( Unit* unit, string tag );
+        virtual bool hasUnitTag   ( Unit* unit, string tag );
+
+        virtual ArrayList<string> getAllTags   ( string tag );
+        virtual ArrayList<Unit*>  getUnitsByTag( string tag );
 
     }; // class Scene
 

@@ -4,10 +4,10 @@
     <ClCompile Include="Main.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="TestApp.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="TestApp.cpp">
+    <ClCompile Include="TestUnit.cpp">
       <Filter>Project</Filter>
     </ClCompile>
   </ItemGroup>
@@ -15,10 +15,10 @@
     <ClInclude Include="Common.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h">
+    <ClInclude Include="TestApp.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="TestApp.h">
+    <ClInclude Include="TestUnit.h">
       <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>
