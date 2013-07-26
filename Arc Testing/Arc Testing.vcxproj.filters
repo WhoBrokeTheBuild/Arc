@@ -8,7 +8,13 @@
       <Filter>Project</Filter>
     </ClCompile>
     <ClCompile Include="TestUnit.cpp">
-      <Filter>Project</Filter>
+      <Filter>Project\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Project\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Project\Units</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -19,12 +25,21 @@
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="TestUnit.h">
-      <Filter>Project</Filter>
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Project\Units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Project">
       <UniqueIdentifier>{915194f0-9074-4e1f-9375-35a976d54413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units">
+      <UniqueIdentifier>{a003da92-b2df-49bc-a092-835eafdf6f0f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -6,25 +6,27 @@
 #include "Common.h"
 #include <Arc/Program.h>
 #include <Arc/IKeyboardListener.h>
+#include <Arc/IMouseListener.h>
 
 #include <Arc/Scene.h>
 #include <Arc/Font.h>
 #include <Arc/CachedText.h>
 
-#include "TestUnit.h"
+#include "Wall.h"
+#include "Ball.h"
 
 class TestApp :
     public Program,
-    public IKeyboardListener
+    public IKeyboardListener,
+    public IMouseListener
 {
 public:
 
     Scene
         *pScene;
 
-    TestUnit
-        *pTestUnit,
-        *pTestUnit2;
+    Ball
+        *pBall;
 
     Font
         *pFont;
@@ -44,6 +46,8 @@ public:
     virtual void render( const Event& event );
 
     virtual void keyPressed( const Event& event );
+
+    virtual void mousePressed( const Event& event );
 
 }; // class TestApp
 

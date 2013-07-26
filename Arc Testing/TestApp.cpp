@@ -4,27 +4,56 @@ void TestApp::init( void )
 {
     Program::init(Size(600), "Test Arc");
     IKeyboardListener::init();
+    IMouseListener::init();
 
-    _pGraphicsSystem->setClearColor(Color::PEACH);
-    _targetFPS = 10000.0f;
+    _pGraphicsSystem->setClearColor(Color(150, 150, 150));
 
     pScene = New Scene();
     pScene->init();
+    pScene->setLayerEnabled(0, false);
 
-    pTestUnit = New TestUnit();
-    pTestUnit->init(Point(100), New RectCollider(Point(-120.0f), Size(240.0f)), 0.0f, false);
+    Wall* wall;
 
-    pTestUnit2 = New TestUnit();
-    pTestUnit2->init(Point(300), New CircleCollider(Point::ZERO, 120.0f));
+    // Top
 
-    pScene->addUnit(pTestUnit, 0);
-    pScene->addUnit(pTestUnit2, 0);
+    wall = New Wall();
+    wall->init(Point::ZERO, Rect(0, 0, 600, 20));
 
-    pScene->addUnitTag(pTestUnit,  "test");
-    pScene->addUnitTag(pTestUnit2, "test");
+    pScene->addUnit(wall, 0);
+    pScene->addUnitTag(wall, "wall-vert");
+
+    // Bottom
+
+    wall = New Wall();
+    wall->init(Point(0, 580), Rect(0, 0, 600, 20));
+
+    pScene->addUnit(wall, 0);
+    pScene->addUnitTag(wall, "wall-vert");
+
+    // Left
+
+    wall = New Wall();
+    wall->init(Point(580, 0), Rect(0, 0, 20, 600));
+
+    pScene->addUnit(wall, 0);
+    pScene->addUnitTag(wall, "wall-horiz");
+
+    // Right
+
+    wall = New Wall();
+    wall->init(Point::ZERO, Rect(0, 0, 20, 600));
+
+    pScene->addUnit(wall, 0);
+    pScene->addUnitTag(wall, "wall-horiz");
+
+    pBall = New Ball();
+    pBall->init(Point(300));
+
+    pScene->addUnit(pBall, 0);
+    pScene->addUnitTag(pBall, "ball");
 
     pFont = New Font();
-    pFont->init("assets/action-is.ttf", 20);
+    pFont->init("assets/ds-digital.ttf", 20);
 
     pFPSText = New CachedText();
     pFPSText->init("0", pFont);
@@ -53,7 +82,7 @@ void TestApp::render( const Event& event )
 {
     const RenderData* data = event.dataAs<RenderData>();
     
-    data->renderTarget()->drawText(Point(10), pFPSText, Color::BLACK);
+    data->renderTarget()->drawText(Point(25), pFPSText, Color::BLACK);
 }
 
 void TestApp::keyPressed( const Event& event )
@@ -63,5 +92,16 @@ void TestApp::keyPressed( const Event& event )
     if (data->Key == KEY_ESCAPE)
     {
         gpEventDispatcher->dispatchEvent(Event(EVENT_EXIT));
+    }
+}
+
+void TestApp::mousePressed( const Event& event )
+{
+    const MouseData* data = event.dataAs<MouseData>();
+
+    if (data->Button == MOUSE_BUTTON_LEFT)
+    {
+        pBall->setTarget(data->Pos);
+        pScene->setLayerEnabled(0, true);
     }
 }

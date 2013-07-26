@@ -74,5 +74,5 @@ bool Arc::Circle::containsPoint( Point point )
 
 Arc::Rect Arc::Circle::bounds( void )
 {
-    return Rect(top(), left(), diameter(), diameter());
+    return Rect(left(), top(), diameter(), diameter());
 }

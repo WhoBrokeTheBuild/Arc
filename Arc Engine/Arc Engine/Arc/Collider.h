@@ -13,13 +13,22 @@ namespace Arc
     class Collider
         : public GameObject
     {
+    protected:
+
+        bool 
+            _debugOutlines;
+
     public:
 
-        virtual ~Collider( void ) { }
+        virtual ~Collider( void ) { _debugOutlines = false; }
 
         virtual bool check( Point pos, Collider* pOther, Point otherPos ) = 0;
 
         virtual void render( const RenderTarget* renderTarget, Point pos ) { }
+
+        virtual void setDebugOutlines( bool enabled ) { _debugOutlines = enabled; }
+        virtual bool isDebugOutlines( void ) { return _debugOutlines; }
+        virtual void toggleDebugOutlines( void ) { _debugOutlines = !_debugOutlines; }
 
     }; // class Collider
 
