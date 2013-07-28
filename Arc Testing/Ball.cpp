@@ -1,71 +1,116 @@
 #include "Ball.h"
 
 Ball::Ball(void)
+    : _radius(),
+      _gravity(),
+      _maxSpeed(),
+      _damping(),
+      _pPing(nullptr),
+      _pPong(nullptr),
+      _ping()
 {
 }
 
 void Ball::init( Vector2 pos, float depth /*= 0.0f */ )
 {
-    _radius  = 25.0f;
-    _gravity = 0.08f;
-    _speed   = 5.0f;
-    _damping = 0.90f;
+    _radius   = 30.0f;
+    _gravity  = 0.08f;
+    _maxSpeed = 15.0f;
+    _damping  = 1.0f;
 
     Unit::init(pos, depth);
     ICollidable::init(CircleCollider(0, 0, _radius));
     IPhysicsObject::init(Vector2::ZERO, Vector2(0.0f, _gravity));
     IDrawable::init(Color::RED);
 
-    setOrigin(OriginLocation::ORIGIN_LOCATION_CENTER);
+    setSize(Size(_radius * 2.0f));
+    setOriginLocation(OriginLocation::ORIGIN_LOCATION_CENTER);
+
+    _pPing = New Sound();
+    _pPing->init("assets/ping.wav");
+
+    _pPong = New Sound();
+    _pPong->init("assets/pong.wav");
+
+    _ping = true;
 }
 
 void Ball::term( void )
 {
+    delete _pPong;
+    delete _pPing;
 }
 
-void Ball::update( const Event& event )
+void Ball::update( const FrameData* data )
 {
-    const FrameData* data = event.dataAs<FrameData>();
+    if (!Rect(0, 0, 600, 600).containsPoint(Pos))
+        Pos = Point(300);
 
-    if (collideTag("wall-vert", getParentScene(), Pos))
+    CollisionData coll = collideTagListFirst(*ArrayList<string>().add("wall"), getParentScene(), Pos, getOrigin());
+    if (coll.Collided)
     {
-        Vel.Y *= -_damping;
+        Direction side = coll.getSide();
+
+        if (side == DIR_NORTH || side == DIR_SOUTH)
+        {
+            //_pPong->play();
+
+            Vel.Y *= -randFloat(0.7f, _damping);
+        }
+        else if (side == DIR_WEST || side == DIR_EAST)
+        {
+            //_pPing->play();
+
+            Vel.X *= -randFloat(0.7f, _damping);
+        }
+
         do 
         {
-            Pos.Y += Vel.Y;
+            float revAng = coll.Angle + (float)PI;
+            Pos += Vector2(cos(revAng) * 2.0f, sin(revAng) * 2.0f);
         } 
-        while (collideTag("wall-vert", getParentScene(), Pos));
+        while (checkTagList(*ArrayList<string>().add("wall"), getParentScene(), Pos, getOrigin()));
     }
-    else if (collideTag("wall-horiz", getParentScene(), Pos))
-    {
-        Vel.X *= -_damping;
-        do 
-        {
-            Pos.X += Vel.X;
-        } 
-        while (collideTag("wall-horiz", getParentScene(), Pos));
-    }
+    
+    Vel.X = clamp(Vel.X, -_maxSpeed, _maxSpeed);
+    Vel.Y = clamp(Vel.Y, -_maxSpeed, _maxSpeed);
+
+    Rot += 0.08f;
 
     IPhysicsObject::update(Pos, data->deltaTime());
+
 }
 
-void Ball::render( const Event& event )
+void Ball::render( const RenderData* data )
 {
-    const RenderData* data = event.dataAs<RenderData>();
+    const RenderTarget* target = data->renderTarget();
 
-    render(data->renderTarget(), Pos);
-}
+    //target->fillCircle(Circle(Pos, _radius), BlendColor, 0.0f, getOrigin());
 
-void Ball::render( const RenderTarget* renderTarget, const Vector2 pos )
-{
-    renderTarget->fillCircle(Circle(Pos, _radius), BlendColor, 0.0f, _origin);
+    Color 
+        first  = Color::RED,
+        second = Color::BLUE;
+
+    first.A = 100;
+    second.A = 100;
+
+    //target->fillTriangle(Pos, 50.0f, first, Rot, _origin);
+    //target->fillTriangle(Pos, 50.0f, second, Rot + (float)PI, _origin);
+
+    bool color = false;
+    for (int deg = 0; deg < 360; deg += 15)
+    {
+        target->fillPentagon(Pos + Vector2(-5.0f, 5.0f), 5.0f, (color ? first : second), (Rot / 2.0f) + toRad(deg), Vector2(-25.0f, 0));
+        color = !color;
+    }
+
+    //_pCollider->render(target, Pos, getOrigin());
 }
 
 void Ball::setTarget( Point target )
 {
-    _speed = Pos.distanceTo(target) / 20.0f;
-
+    float speed = Pos.distanceTo(target) / 20.0f;
     float angle = Pos.angleToRad(target);
 
-    Vel = Vector2(cos(angle) * _speed, sin(angle) * _speed);
+    Vel = Vector2(cos(angle) * speed, sin(angle) * speed);
 }

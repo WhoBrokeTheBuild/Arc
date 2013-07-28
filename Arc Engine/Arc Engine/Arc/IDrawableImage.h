@@ -35,59 +35,7 @@ namespace Arc
                 return;
             }
 
-            Size size = _pAnimation->frameSize(0);
-
-            switch (_originLocation)
-            {
-            case ORIGIN_LOCATION_TOP_LEFT:
-
-                _origin = Vector2::ZERO;
-
-                break;
-            case ORIGIN_LOCATION_TOP_RIGHT:
-
-                _origin = Vector2(size.width(), 0);
-
-                break;
-            case ORIGIN_LOCATION_BOTTOM_LEFT:
-
-                _origin = Vector2(0, size.height());
-
-                break;
-            case ORIGIN_LOCATION_BOTTOM_RIGHT:
-
-                _origin = Vector2(size.width(), size.height());
-
-                break;
-            case ORIGIN_LOCATION_CENTER:
-
-                _origin = Vector2(size.halfWidth(), size.halfHeight());
-
-                break;
-            case ORIGIN_LOCATION_TOP_CENTER:
-
-                _origin = Vector2(size.halfWidth(), 0);
-
-                break;
-            case ORIGIN_LOCATION_BOTTOM_CENTER:
-
-                _origin = Vector2(size.halfWidth(), size.height());
-
-                break;
-            case ORIGIN_LOCATION_LEFT_CENTER:
-
-                _origin = Vector2(0, size.halfHeight());
-
-                break;
-            case ORIGIN_LOCATION_RIGHT_CENTER:
-
-                _origin = Vector2(size.width(), size.halfHeight());
-
-                break;
-            default:
-                break;
-            }
-
+            setSize(_pAnimation->frameSize(0));
         }
 
     public:
@@ -118,7 +66,7 @@ namespace Arc
             IDrawable::init(blendColor, rot, alpha);
         }
 
-        virtual void update( const double elapsedMillis )
+        virtual void updateImage( const double elapsedMillis )
         {
             if (_pAnimation == nullptr)
                 return;
@@ -137,7 +85,7 @@ namespace Arc
             }
         }
 
-        virtual void render( const RenderTarget* renderTarget, const Vector2 pos )
+        virtual void renderImage( const RenderTarget* renderTarget, const Vector2 pos )
         {
             if (_pAnimation == nullptr)
                 return;
@@ -150,7 +98,7 @@ namespace Arc
 
             Sprite* sprite = _pAnimation->frameAt(Frame);
 
-            renderTarget->draw(pos, sprite->pTexture, sprite->SourceRect, BlendColor, Rot, Vector2::ZERO);
+            renderTarget->draw(pos + _origin, sprite->getTexture(), sprite->SourceRect, BlendColor, Rot, Vector2::ZERO);
         }
 
         virtual void setAnimation( Animation *pAnimation )

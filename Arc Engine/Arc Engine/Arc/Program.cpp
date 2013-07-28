@@ -27,6 +27,8 @@ void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitl
     _targetFPS  = 60.0f;
     _currentFPS = 0;
 
+    initRandom();
+
     initCore();
     initGraphics(windowSize, windowTitle);
     initAudio();

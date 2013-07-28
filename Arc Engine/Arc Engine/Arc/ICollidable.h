@@ -13,6 +13,46 @@
 
 namespace Arc
 {
+    struct CollisionData
+        : public GameObject
+    {
+    public:
+
+        bool
+            Collided;
+
+        Unit
+            *pOther;
+
+        Point
+            Pos;
+
+        float
+            Angle;
+
+        CollisionData( void )
+            : Collided(false),
+              pOther(nullptr),
+              Pos(),
+              Angle()
+        {
+        }
+
+        CollisionData( Unit* other, Point pos, float angle )
+        {
+            Collided = true;
+            pOther   = other;
+            Pos      = pos;
+            Angle    = angle;
+        }
+
+        virtual string toString( void ) const { return "Collision Data"; }
+
+        Direction getSide( void ) { return angleRadToDirFour(Angle); }
+        Direction getSideEightWay( void ) { return angleRadToDirEight(Angle); }
+
+    };
+
     class ICollidable
     {
     protected:
@@ -34,16 +74,19 @@ namespace Arc
 
         virtual void init( Collider* collider )
         {
+            delete _pCollider;
             _pCollider = collider;
         }
 
         virtual void init( RectCollider collider )
         {
+            delete _pCollider;
             _pCollider = New RectCollider(collider.RectMask);
         }
 
         virtual void init( CircleCollider collider )
         {
+            delete _pCollider;
             _pCollider = New CircleCollider(collider.CircleMask);
         }
 
@@ -52,17 +95,19 @@ namespace Arc
             delete _pCollider;
         }
 
-        virtual Collider* getCollider( void )
-        {
-            return _pCollider;
-        }
+        virtual Collider* getCollider( void ) { return _pCollider; }
 
-        virtual bool collideUnit( Unit* unit, Point pos )
+        virtual bool checkUnit( Unit* other, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
         {
             if (getCollider() == nullptr)
                 return false;
 
-            ICollidable* unitColl = dynamic_cast<ICollidable*>(unit);
+            Point otherPos;
+
+            pos = (pos - origin) + offset;
+            otherPos = other->Pos - other->getOrigin();
+
+            ICollidable* unitColl = dynamic_cast<ICollidable*>(other);
 
             if (unitColl == nullptr)
                 return false;
@@ -70,60 +115,139 @@ namespace Arc
             if (unitColl == this)
                 return false;
 
-            return getCollider()->check(pos, unitColl->getCollider(), unit->Pos);
+            return getCollider()->check(pos, unitColl->getCollider(), otherPos);
         }
 
-        virtual bool collideList( ArrayList<Unit*> list, Point pos )
+        virtual bool checkList( ArrayList<Unit*> otherList, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
         {
-            for (unsigned int i = 0; i < list.size(); ++i)
+            for (unsigned int i = 0; i < otherList.size(); ++i)
             {
-                if (collideUnit(list[i], pos))
+                if (checkUnit(otherList[i], pos, origin, offset))
                     return true;
             }
 
             return false;
         }
 
-        virtual Unit* collideListFirst( ArrayList<Unit*> list, Point pos )
+        virtual bool checkTag( string tag, Scene* scene, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
         {
-            for (unsigned int i = 0; i < list.size(); ++i)
+            return checkList(scene->getUnitsByTag(tag), pos, origin, offset);
+        }
+
+        virtual bool checkTagList( ArrayList<string> tagList, Scene* scene, Point pos, Point origin, Vector2 offset = Vector2::ZERO )
+        {
+            for (unsigned int i = 0; i < tagList.size(); ++i)
             {
-                if (collideUnit(list[i], pos))
-                    return list[i];
+                if (checkList(scene->getUnitsByTag(tagList[i]), pos, origin, offset))
+                    return true;
             }
 
             return false;
         }
+        
+        //virtual bool checkPoint( Point point, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
+        //virtual bool checkRect( Rect rect, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
+        //virtual bool checkCircle( Circle circle, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
 
-        virtual ArrayList<Unit*> collideListAll( ArrayList<Unit*> list, Point pos )
+        virtual CollisionData collideUnit( Unit* other, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
         {
-            ArrayList<Unit*> returnList = ArrayList<Unit*>();
+            CollisionData data;
+            data.pOther = other;
+            data.Collided = false;
 
-            for (unsigned int i = 0; i < list.size(); ++i)
+            Point otherPos;
+            Point centerPos;
+
+            pos = (pos - origin) + offset;
+            otherPos = other->Pos - other->getOrigin();
+
+            centerPos = pos + getCollider()->center();
+
+            if (getCollider() == nullptr)
+                return data;
+
+            ICollidable* unitColl = dynamic_cast<ICollidable*>(other);
+
+            if (unitColl == nullptr || unitColl == this)
+                return data;
+
+            data.Collided = getCollider()->check(pos, unitColl->getCollider(), otherPos);
+
+            if (data.Collided)
             {
-                if (collideUnit(list[i], pos))
-                    returnList.add(list[i]);
+                data.Pos = getCollider()->getCollisionPoint(pos, unitColl->getCollider(), otherPos);
+                data.Angle = centerPos.angleToRad(data.Pos);
             }
 
-            return returnList;
+            return data;
         }
 
-        virtual bool collideTag( string tag, Scene* scene, Point pos )
+        virtual ArrayList<CollisionData> collideList( ArrayList<Unit*> otherList, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
         {
-            return collideList(scene->getUnitsByTag(tag), pos);
+            ArrayList<CollisionData> dataList;
+
+            CollisionData data;
+            for (unsigned int i = 0; i < otherList.size(); ++i)
+            {
+                data = collideUnit(otherList[i], pos, origin, offset);
+                if (data.Collided)
+                    dataList.add(data);
+            }
+
+            return dataList;
         }
 
-        // collideTag - pass in scene
-        // collideTags - pass in scene
-// collideUnit
-// collideList
-// collideListFirst
-// collideListAll
-        // collideRect
-        // collideCircle
-        // collidePoint
+        virtual CollisionData collideListFirst( ArrayList<Unit*> otherList, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
+        {
+            CollisionData data;
+            for (unsigned int i = 0; i < otherList.size(); ++i)
+            {
+                data = collideUnit(otherList[i], pos, origin, offset);
+                if (data.Collided)
+                    return data;
+            }
+            data = CollisionData();
+            data.Collided = false;
+            return data;
+        }
 
-        virtual void collided( void ) { }
+        virtual ArrayList<CollisionData> collideTag( string tag, Scene* scene, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
+        {
+            return collideList(scene->getUnitsByTag(tag), pos, origin, offset);
+        }
+
+        virtual ArrayList<CollisionData> collideTagList( ArrayList<string> tagList, Scene* scene, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
+        {
+            ArrayList<CollisionData> dataList;
+
+            for (unsigned int i = 0; i < tagList.size(); ++i)
+                dataList.merge(collideTag(tagList[i], scene, pos, origin, offset));
+
+            return dataList;
+        }
+
+        virtual CollisionData collideTagFirst( string tag, Scene* scene, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
+        {
+            return collideListFirst(scene->getUnitsByTag(tag), pos, origin, offset);
+        }
+
+        virtual CollisionData collideTagListFirst( ArrayList<string> tagList, Scene* scene, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO )
+        {
+            CollisionData data;
+            for (unsigned int i = 0; i < tagList.size(); ++i)
+            {
+                data = collideTagFirst(tagList[i], scene, pos, origin, offset);
+                if (data.Collided)
+                    return data;
+            }
+
+            return data;
+        }
+
+        //virtual CollisionData collidePoint( Point point, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
+        //virtual CollisionData collideRect( Rect rect, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
+        //virtual CollisionData collideCircle( Circle circle, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
+
 
     }; // class ICollidable
 

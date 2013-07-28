@@ -1,12 +1,6 @@
 #include "GameObject.h"
 #include "MemoryTracker.h"
 
-ostream& operator<<( ostream& os, const Arc::GameObject& go )
-{
-    os << go.toString();
-    return os;
-}
-
 void *Arc::GameObject::operator new( size_t size )
 {
     return malloc(size);

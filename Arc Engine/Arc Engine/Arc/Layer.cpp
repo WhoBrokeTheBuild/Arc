@@ -5,16 +5,15 @@
 const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layerChanged";
 
 Arc::Layer::Layer( void )
+    : _units(),
+      _pParent(),
+      Visible(),
+      Enabled()
 {
-    _units   = ArrayList<Unit*>();
-    _pParent = nullptr;
-    Visible  = false;
-    Enabled  = false;
 }
 
 void Arc::Layer::init( Scene* scene )
 {
-    _units   = ArrayList<Unit*>();
     _pParent = scene;
     Visible  = true;
     Enabled  = true;
@@ -63,9 +62,6 @@ bool Arc::Layer::addUnit( Unit* unit )
         _units.add(unit);
         unit->setParentLayer(this);
 
-        addEventListener(Program::EVENT_UPDATE, unit, &Unit::update);
-        addEventListener(Program::EVENT_RENDER, unit, &Unit::render);
-
         dispatchEvent(Event(EVENT_LAYER_CHANGED));
 
         return true;
@@ -80,9 +76,6 @@ bool Arc::Layer::removeUnit( Unit* unit )
         return false;
 
     unit->setParentLayer(nullptr);
-
-    removeEventListener(Program::EVENT_RENDER, unit, &Unit::render);
-    removeEventListener(Program::EVENT_UPDATE, unit, &Unit::update);
 
     return _units.remove(unit);
 }
@@ -103,9 +96,6 @@ unsigned int Arc::Layer::removeAllUnits( void )
 
     for (unsigned int i = 0; i < size; ++i)
     {
-        removeEventListener(Program::EVENT_RENDER, _units[i], &Unit::render);
-        removeEventListener(Program::EVENT_UPDATE, _units[i], &Unit::update);
-
         delete _units[i];
     }
     _units.clear();

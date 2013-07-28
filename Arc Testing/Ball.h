@@ -8,6 +8,8 @@
 #include <Arc/IPhysicsObject.h>
 #include <Arc/IDrawable.h>
 
+#include <Arc/Sound.h>
+
 class Ball :
     public Unit,
     public ICollidable,
@@ -19,8 +21,15 @@ private:
     float
         _radius,
         _gravity,
-        _speed,
+        _maxSpeed,
         _damping;
+
+    Sound
+        *_pPing,
+        *_pPong;
+
+    bool 
+        _ping;
 
 public:
 
@@ -32,10 +41,8 @@ public:
 
     virtual string toString( void ) const { return "Ball"; }
 
-    virtual void update( const Event& event );
-    virtual void render( const Event& event );
-
-    virtual void render( const RenderTarget* renderTarget, const Vector2 pos );
+    virtual void update( const FrameData* event  );
+    virtual void render( const RenderData* event );
 
     virtual void setTarget( Point target );
 

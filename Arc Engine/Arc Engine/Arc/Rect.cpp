@@ -120,4 +120,14 @@ bool Arc::Rect::operator!=( const Rect &rhs ) const
     return !(*this == rhs);
 }
 
+Arc::Rect Arc::Rect::intersect( Rect other ) const
+{
+    float newLeft   = std::max(left(),   other.left());
+    float newRight  = std::min(right(),  other.right());
+    float newTop    = std::max(top(),    other.top());
+    float newBottom = std::min(bottom(), other.bottom());
+
+    return Rect(newLeft, newTop, newRight - newLeft, newBottom - newTop);
+}
+
 

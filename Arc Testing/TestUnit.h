@@ -33,10 +33,8 @@ public:
     virtual void init( Vector2 pos, Collider* collider, float depth = 0.0f, bool active = true );
     virtual void term( void );
 
-    virtual void update( const Event& event );
-    virtual void render( const Event& event );
-
-    virtual void render( const RenderTarget* renderTarget, const Vector2 pos );
+    virtual void update( const FrameData* event  );
+    virtual void render( const RenderData* event );
 
     virtual void keyHeld    ( const Event& event );
     virtual void keyReleased( const Event& event );

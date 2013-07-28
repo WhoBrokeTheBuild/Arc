@@ -20,7 +20,11 @@ namespace Arc
 
         virtual string toString( void ) const = 0;
 
-        friend ostream& operator<<( ostream& os, const GameObject& go );
+        friend ostream& operator<<( ostream& os, const GameObject& go )
+        {
+            os << go.toString();
+            return os;
+        }
 
         void* operator new  ( size_t size );
         void* operator new[]( size_t size );

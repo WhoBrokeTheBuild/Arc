@@ -28,10 +28,8 @@ public:
 
     virtual string toString( void ) const { return "Wall"; }
 
-    virtual void update( const Event& event );
-    virtual void render( const Event& event );
-
-    virtual void render( const RenderTarget* renderTarget, const Vector2 pos );
+    virtual void update( const FrameData* event  );
+    virtual void render( const RenderData* event );
 
 }; // class Wall
 

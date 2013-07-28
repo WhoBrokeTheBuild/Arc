@@ -35,6 +35,7 @@ void Arc::MouseSource::update( const Event& event )
         x, y,
         dX, dY;
 
+    SDL_PumpEvents();
     _sdlButtonStates = SDL_GetMouseState(&x, &y);
     SDL_GetRelativeMouseState(&dX, &dY);
 
@@ -59,7 +60,7 @@ void Arc::MouseSource::update( const Event& event )
         button =  it->first;
         pState = &it->second;
 
-        down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) == 1);
+        down =  ((_sdlButtonStates & SDL_BUTTON(MouseToSDLMouse(button))) != 0);
 
         pState->Pressed  = false;
         pState->Released = false;

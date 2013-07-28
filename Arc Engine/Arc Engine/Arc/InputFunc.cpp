@@ -2,7 +2,7 @@
 
 Arc::KeyboardKey Arc::SDLKeyToKey( SDLKey sdlKey )
 {
-    KeyboardKey key;
+    KeyboardKey key = INVALID_KEY;;
 
     switch (sdlKey)
     {
@@ -251,9 +251,6 @@ Arc::KeyboardKey Arc::SDLKeyToKey( SDLKey sdlKey )
 
         break;
     default:
-
-        key = INVALID_KEY;
-
         break;
     }
 
@@ -262,7 +259,7 @@ Arc::KeyboardKey Arc::SDLKeyToKey( SDLKey sdlKey )
 
 SDLKey Arc::KeyToSDLKey( KeyboardKey key )
 {
-    SDLKey sdlKey;
+    SDLKey sdlKey = SDLK_UNKNOWN;;
 
     switch (key)
     {
@@ -511,9 +508,6 @@ SDLKey Arc::KeyToSDLKey( KeyboardKey key )
 
         break;
     default:
-
-        sdlKey = SDLK_UNKNOWN;
-
         break;
     }
 
@@ -522,7 +516,7 @@ SDLKey Arc::KeyToSDLKey( KeyboardKey key )
 
 char Arc::KeyToChar( KeyboardKey key, bool shift /*= false */ )
 {
-    char ch;
+    char ch = '\0';
 
     switch (key)
     {
@@ -706,9 +700,6 @@ char Arc::KeyToChar( KeyboardKey key, bool shift /*= false */ )
 
         break;
     default:
-
-        ch = '\0';
-
         break;
     }
 
@@ -717,7 +708,7 @@ char Arc::KeyToChar( KeyboardKey key, bool shift /*= false */ )
 
 Arc::MouseButton Arc::SDLMouseToMouse( int sdlButton )
 {
-    MouseButton button;
+    MouseButton button = INVALID_MOUSE_BUTTON;
 
     switch (sdlButton)
     {
@@ -737,9 +728,6 @@ Arc::MouseButton Arc::SDLMouseToMouse( int sdlButton )
 
         break;
     default:
-
-        button = INVALID_MOUSE_BUTTON;
-
         break;
     }
 
@@ -748,7 +736,7 @@ Arc::MouseButton Arc::SDLMouseToMouse( int sdlButton )
 
 int Arc::MouseToSDLMouse( MouseButton button )
 {
-    int sdlButton;
+    int sdlButton = 0;
 
     switch (button)
     {
@@ -768,9 +756,6 @@ int Arc::MouseToSDLMouse( MouseButton button )
 
         break;
     default:
-
-        sdlButton = 0;
-
         break;
     }
 

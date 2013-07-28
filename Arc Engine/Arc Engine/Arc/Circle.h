@@ -35,13 +35,14 @@ namespace Arc
         virtual string toString( void ) const;
 
         inline Point pos ( void ) { return Point(X, Y); }
+        inline Point center( void ) { return Point(X + Radius, Y + Radius); }
 
         inline float diameter( void ) { return Radius * 2.0f; }
 
-        inline float top   ( void ){ return Y - Radius; }
-        inline float bottom( void ){ return Y + Radius; }
-        inline float left  ( void ){ return X - Radius; }
-        inline float right ( void ){ return X + Radius; }
+        inline float top   ( void ){ return Y; }
+        inline float bottom( void ){ return Y + diameter(); }
+        inline float left  ( void ){ return X; }
+        inline float right ( void ){ return X + diameter(); }
 
         Rect bounds( void );
 

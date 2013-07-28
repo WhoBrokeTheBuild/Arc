@@ -35,7 +35,7 @@ void Arc::RenderTarget::endDraw( void ) const
 void Arc::RenderTarget::drawShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
-    glTranslatef(x, y, 0.0f);
+    glTranslatef(x - origin.X + radius, y - origin.Y - radius, 0.0f);
 
     glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(toDeg(rotation) - 90.0f, 0.0f, 0, 1.0f);
@@ -58,7 +58,7 @@ void Arc::RenderTarget::drawShape( const float x, const float y, const float rad
 void Arc::RenderTarget::fillShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
-    glTranslatef(x, y, 0.0f);
+    glTranslatef(x - origin.X + radius, y - origin.Y - radius, 0.0f);
 
     glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(toDeg(rotation) - 90.0f, 0.0f, 0.0f, 1.0f);
@@ -130,7 +130,7 @@ void Arc::RenderTarget::draw( const float x, const float y, const Texture* pText
     glEnable(GL_TEXTURE_2D);
 
     glPushMatrix();
-    glTranslatef(x, y, 0);
+    glTranslatef(x - origin.X, y - origin.Y, 0);
 
     glTranslatef(origin.X, origin.Y, 0);
     glRotatef(toDeg(rotation), 0.0f, 0, 1.0f);
@@ -200,7 +200,7 @@ void Arc::RenderTarget::drawRect( const float x, const float y, const float widt
 void Arc::RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
-    glTranslatef(rect.X, rect.Y, 0.0f);
+    glTranslatef(rect.X - origin.X, rect.Y - origin.Y, 0.0f);
 
     glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(toDeg(rotation), 0.0f, 0.0f, 1.0f);
@@ -229,7 +229,7 @@ void Arc::RenderTarget::fillRect( const float x, const float y, const float widt
 void Arc::RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE*/, const float rotation /*= 0.0f */, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
-    glTranslatef(rect.X, rect.Y, 0.0f);
+    glTranslatef(rect.X - origin.X, rect.Y - origin.Y, 0.0f);
 
     glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(toDeg(rotation), 0.0f, 0.0f, 1.0f);

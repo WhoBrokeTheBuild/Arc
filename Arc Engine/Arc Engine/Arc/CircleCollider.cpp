@@ -30,8 +30,37 @@ bool Arc::CircleCollider::check( Point pos, Collider* pOther, Point otherPos )
     return false;
 }
 
-void Arc::CircleCollider::render( const RenderTarget* renderTarget, Point pos )
+Arc::Point Arc::CircleCollider::getCollisionPoint( Point pos, Collider* pOther, Point otherPos )
 {
-    renderTarget->drawCircle(Circle(CircleMask.pos() + pos, CircleMask.Radius), Color::GREEN);
+    RectCollider*   rectOther   = dynamic_cast<RectCollider*>(pOther);
+    CircleCollider* circleOther = dynamic_cast<CircleCollider*>(pOther);
+
+    Rect newMask = CircleMask.bounds();
+    newMask.X += pos.X;
+    newMask.Y += pos.Y;
+
+    if (rectOther != nullptr)
+    {
+        Rect newOtherMask = rectOther->RectMask;
+        newOtherMask.X += otherPos.X;
+        newOtherMask.Y += otherPos.Y;
+
+        return newOtherMask.intersect(newMask).center();
+    }
+    else if (circleOther != nullptr)
+    {
+        Rect newOtherMask = circleOther->CircleMask.bounds();
+        newOtherMask.X += otherPos.X;
+        newOtherMask.Y += otherPos.Y;
+
+        return newOtherMask.intersect(newMask).center();
+    }
+
+    return Point::ZERO;
+}
+
+void Arc::CircleCollider::render( const RenderTarget* renderTarget, Point pos, Vector2 origin /*= Vector2::ZERO*/ )
+{
+    renderTarget->drawCircle(Circle(CircleMask.pos() + pos, CircleMask.Radius), Color::GREEN, 0.0f, origin);
 }
 

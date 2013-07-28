@@ -18,19 +18,14 @@ void Wall::term( void )
 {
 }
 
-void Wall::update( const Event& event )
+void Wall::update( const FrameData* data )
 {
-    const FrameData* data = event.dataAs<FrameData>();
 }
 
-void Wall::render( const Event& event )
+void Wall::render( const RenderData* data )
 {
-    const RenderData* data = event.dataAs<RenderData>();
+    const RenderTarget* target = data->renderTarget();
 
-    render(data->renderTarget(), Pos);
-}
-
-void Wall::render( const RenderTarget* renderTarget, const Vector2 pos )
-{
-    renderTarget->fillRect(Rect(_area.pos() + pos, _area.size()), BlendColor);
+    target->fillRect(Rect(_area.pos() + Pos, _area.size()), BlendColor, 0.0f, getOrigin());
+    _pCollider->render(target, Pos, getOrigin());
 }

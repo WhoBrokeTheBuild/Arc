@@ -8,6 +8,7 @@
 namespace Arc
 {
     class Vector2;
+    enum Direction;
 
     #define PI  3.14159
     #define PI2 6.28318
@@ -74,6 +75,14 @@ namespace Arc
     }
 
     bool linesIntersect( Vector2 L1P1, Vector2 L1P2, Vector2 L2P1, Vector2 L2P2 );
+
+    Direction angleRadToDir     ( float angle );
+    Direction angleRadToDirEight( float angle );
+    Direction angleRadToDirFour ( float angle );
+
+    Direction angleDegToDir     ( float angle );
+    Direction angleDegToDirEight( float angle );
+    Direction angleDegToDirFour ( float angle );
 
 } // namespace Arc
 

@@ -6,21 +6,12 @@
 #include "Common.h"
 
 #include "RenderTarget.h"
-#include "OriginLocation.h"
 
 namespace Arc
 {
     class IDrawable
     {
     protected:
-
-        OriginLocation
-            _originLocation;
-
-        Point
-            _origin;
-
-        virtual void calcOriginLocation( void ) { }
 
     public:
 
@@ -36,9 +27,6 @@ namespace Arc
 
         IDrawable( void )
         {
-            _originLocation = INVALID_ORIGIN_LOCATION;
-            _origin         = Point::ZERO;
-
             BlendColor = Color::BLACK;
             Scale      = Vector2::ZERO;
             Rot        = 0.0f;
@@ -52,20 +40,6 @@ namespace Arc
             BlendColor = blendColor;
             Rot        = rot;
             Alpha      = alpha;
-        }
-
-        virtual void render( const RenderTarget* renderTarget, const Vector2 pos ) { };
-
-        virtual void setOrigin( Vector2 origin )
-        {
-            _origin = origin;
-            _originLocation = ORIGIN_LOCATION_MANUAL;
-        }
-
-        virtual void setOrigin( OriginLocation originLocation )
-        {
-            _originLocation = originLocation;
-            calcOriginLocation();
         }
 
     }; // class IDrawable

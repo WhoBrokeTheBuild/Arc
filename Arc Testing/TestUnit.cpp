@@ -24,27 +24,16 @@ void TestUnit::term( void )
 {
 }
 
-void TestUnit::update( const Event& event )
+void TestUnit::update( const FrameData* data )
 {
-    const FrameData* data = event.dataAs<FrameData>();
-
     if (Active)
         IPhysicsObject::update(Pos, data->deltaTime());
-
-    if (collideTag("test", getParentScene(), Pos))
-        INFO(toString(), "Colliding");
 }
 
-void TestUnit::render( const Event& event )
+void TestUnit::render( const RenderData* data )
 {
-    const RenderData* data = event.dataAs<RenderData>();
+    const RenderTarget* target = data->renderTarget();
 
-    render(data->renderTarget(), Pos);
-    _pCollider->render(data->renderTarget(), Pos);
-}
-
-void TestUnit::render( const RenderTarget* renderTarget, const Vector2 pos )
-{
     Color 
         first  = Color::RED,
         second = Color::BLUE;
@@ -52,15 +41,17 @@ void TestUnit::render( const RenderTarget* renderTarget, const Vector2 pos )
     first.A = 100;
     second.A = 100;
 
-    renderTarget->fillTriangle(Pos, 50.0f, first, Rot, _origin);
-    renderTarget->fillTriangle(Pos, 50.0f, second, Rot + (float)PI, _origin);
+    target->fillTriangle(Pos, 50.0f, first, Rot, _origin);
+    target->fillTriangle(Pos, 50.0f, second, Rot + (float)PI, _origin);
 
     bool color = false;
     for (int deg = 0; deg < 360; deg += 15)
     {
-        renderTarget->fillPentagon(Pos + Vector2(100.0f, 0), 20.0f, (color ? first : second), (Rot / 2.0f) + toRad(deg), Vector2(-100.0f, 0));
+        target->fillPentagon(Pos + Vector2(100.0f, 0), 20.0f, (color ? first : second), (Rot / 2.0f) + toRad(deg), Vector2(-100.0f, 0));
         color = !color;
     }
+
+    _pCollider->render(target, Pos, _origin);
 }
 
 void TestUnit::keyHeld( const Event& event )

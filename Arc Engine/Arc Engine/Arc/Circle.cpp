@@ -42,15 +42,15 @@ bool Arc::Circle::containsRect( Rect rect ) //TODO: Test this later when primiti
     float
         halfWidth  = rect.halfWidth(),
         halfHeight = rect.halfHeight(),
-        dx = abs(X - rectCenter.X),
-        dy = abs(Y - rectCenter.Y);
+        dx = abs(center().X - rectCenter.X),
+        dy = abs(center().Y - rectCenter.Y);
 
     if (dx > (Radius + halfWidth) || dy > (Radius + halfHeight))
     {
         return false;
     }
 
-    Size circleDist = Size(abs(X - rect.X - halfWidth), abs(Y - rect.Y - halfHeight));
+    Size circleDist = Size(abs(center().X - rect.X - halfWidth), abs(center().Y - rect.Y - halfHeight));
 
     if (circleDist.X <= halfWidth)
     {

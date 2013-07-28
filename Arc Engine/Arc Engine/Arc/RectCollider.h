@@ -24,10 +24,12 @@ namespace Arc
         virtual ~RectCollider( void ) { }
 
         virtual bool check( Point pos, Collider* pOther, Point otherPos );
+        virtual Point getCollisionPoint( Point pos, Collider* pOther, Point otherPos );
+        virtual Point center( void ) { return RectMask.center(); }
 
         virtual string toString( void ) const { return "Rect Collider"; }
 
-        virtual void render( const RenderTarget* renderTarget, Point pos );
+        virtual void render( const RenderTarget* renderTarget, Point pos, Vector2 origin = Vector2::ZERO );
 
     }; // class RectCollider
 

@@ -60,6 +60,8 @@ namespace Arc
         bool containsCircle( Circle other ) const;
         bool containsPoint ( Vector2 point ) const;
 
+        Rect intersect( Rect other ) const;
+
         const Rect operator+( const Rect &rhs ) const;
         const Rect operator-( const Rect &rhs ) const;
 

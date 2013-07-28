@@ -76,6 +76,10 @@ namespace Arc
 
         size_t size( void ) const { return _list.size(); }
 
+        unsigned int merge( ArrayList<T> list );
+        unsigned int merge( LinkedList<T> list );
+        unsigned int merge( Queue<T> list );
+
         T*            toArray     ( void ) { unsigned int i; return toArray(i); }
         LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
         Queue<T>      toQueue     ( void ) { unsigned int i; return toQueue(i); }
@@ -188,6 +192,35 @@ template <class T>
 bool Arc::ArrayList<T>::hasIndex( const int& index ) const
 {
     return (between(index, 0, (const int)size()));
+}
+
+template <class T>
+unsigned int Arc::ArrayList<T>::merge( ArrayList<T> list )
+{
+    for (unsigned int i = 0; i < list.size(); ++i)
+        add(list[i]);
+    return list.size();
+}
+
+template <class T>
+unsigned int Arc::ArrayList<T>::merge( LinkedList<T> list )
+{
+    LinkedList<T>::ConstIterator it;
+    for (it = list.cbegin(); it != list.cend(); ++it)
+        add(*it);
+    return list.size();
+}
+
+template <class T>
+unsigned int Arc::ArrayList<T>::merge( Queue<T> list )
+{
+    unsigned int count;
+    while (!list.empty())
+    {
+        add(list.pop());
+        count++;
+    }
+    return count;
 }
 
 template <class T>

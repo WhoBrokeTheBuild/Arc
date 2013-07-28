@@ -10,7 +10,6 @@ void TestApp::init( void )
 
     pScene = New Scene();
     pScene->init();
-    pScene->setLayerEnabled(0, false);
 
     Wall* wall;
 
@@ -20,7 +19,7 @@ void TestApp::init( void )
     wall->init(Point::ZERO, Rect(0, 0, 600, 20));
 
     pScene->addUnit(wall, 0);
-    pScene->addUnitTag(wall, "wall-vert");
+    pScene->addUnitTag(wall, "wall");
 
     // Bottom
 
@@ -28,7 +27,7 @@ void TestApp::init( void )
     wall->init(Point(0, 580), Rect(0, 0, 600, 20));
 
     pScene->addUnit(wall, 0);
-    pScene->addUnitTag(wall, "wall-vert");
+    pScene->addUnitTag(wall, "wall");
 
     // Left
 
@@ -36,7 +35,7 @@ void TestApp::init( void )
     wall->init(Point(580, 0), Rect(0, 0, 20, 600));
 
     pScene->addUnit(wall, 0);
-    pScene->addUnitTag(wall, "wall-horiz");
+    pScene->addUnitTag(wall, "wall");
 
     // Right
 
@@ -44,10 +43,24 @@ void TestApp::init( void )
     wall->init(Point::ZERO, Rect(0, 0, 20, 600));
 
     pScene->addUnit(wall, 0);
-    pScene->addUnitTag(wall, "wall-horiz");
+    pScene->addUnitTag(wall, "wall");
 
     pBall = New Ball();
     pBall->init(Point(300));
+
+    int startCount = 100;
+
+    Ball *ball;
+    for (int i = 0; i < startCount; ++i)
+    {
+        ball = New Ball();
+        ball->init(randFloat(100, 500), randFloat(100, 500));
+        ball->Vel.X = randFloat(-5.0f, 5.0f);
+        ball->Vel.Y = randFloat(-5.0f, 5.0f);
+
+        pScene->addUnit(ball, 0);
+        pScene->addUnitTag(ball, "ball");
+    }
 
     pScene->addUnit(pBall, 0);
     pScene->addUnitTag(pBall, "ball");
@@ -83,6 +96,9 @@ void TestApp::render( const Event& event )
     const RenderData* data = event.dataAs<RenderData>();
     
     data->renderTarget()->drawText(Point(25), pFPSText, Color::BLACK);
+
+    data->renderTarget()->drawLine(300, 0, 300, 600, Color::BLUE);
+    data->renderTarget()->drawLine(0, 300, 600, 300, Color::BLUE);
 }
 
 void TestApp::keyPressed( const Event& event )
@@ -101,7 +117,18 @@ void TestApp::mousePressed( const Event& event )
 
     if (data->Button == MOUSE_BUTTON_LEFT)
     {
-        pBall->setTarget(data->Pos);
-        pScene->setLayerEnabled(0, true);
+        ArrayList<Unit*> balls = pScene->getUnitsByTag("ball");
+        for (unsigned int i = 0; i < balls.size(); ++i)
+        {
+            ((Ball*)balls[i])->setTarget(data->Pos);
+        }
+    }
+    else if (data->Button == MOUSE_BUTTON_RIGHT)
+    {
+        Ball* ball = New Ball();
+        ball->init(data->Pos);
+
+        pScene->addUnit(ball, 0);
+        pScene->addUnitTag(ball, "ball");
     }
 }
