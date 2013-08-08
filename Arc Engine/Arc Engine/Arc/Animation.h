@@ -37,8 +37,8 @@ namespace Arc
         virtual bool removeFrame( int pFrame );
         virtual bool removeFrame( Sprite* pFrame );
 
-        virtual Size    frameSize( int frame );
-        virtual Sprite* frameAt  ( int frame );
+        virtual Size    getFrameSize( int frame );
+        virtual Sprite* getFrameAt  ( int frame );
 
         virtual int length( void ) { return (int)_frames.size(); }
 

@@ -4,7 +4,7 @@
 #define __ARC_TIMER_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <ctime>
 
@@ -22,7 +22,7 @@
 namespace Arc
 {
     class Timer :
-        public GameObject
+        public ManagedObject
     {
     private:
 

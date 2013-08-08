@@ -4,7 +4,7 @@
 #define __ARC_EVENT_DISPATCHER_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Event.h"
 #include "Delegate.h"
@@ -19,7 +19,7 @@ namespace Arc
     typedef Map<EventType, EventListenerList> EventMap;
 
     class EventDispatcher
-        : public GameObject
+        : public ManagedObject
     {
     private:
 

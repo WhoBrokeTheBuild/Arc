@@ -4,14 +4,14 @@
 #define __ARC_COLOR_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <SDL/SDL.h>
 
 namespace Arc
 {
     class Color
-        : public GameObject
+        : public ManagedObject
     {
 
         friend class RenderTarget;

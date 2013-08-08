@@ -4,7 +4,7 @@
 #define __ARC_EVENT_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "EventData.h"
 
@@ -15,7 +15,7 @@ namespace Arc
     class EventDispatcher;
 
     class Event :
-        public GameObject
+        public ManagedObject
     {
 
         friend class EventDispatcher;

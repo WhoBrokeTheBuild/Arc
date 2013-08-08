@@ -4,7 +4,7 @@
 #define __ARC_MAP_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <map>
 
@@ -23,7 +23,7 @@ namespace Arc
 
     template <class K, class T, typename Sort = less<K>>
     class Map :
-        public GameObject
+        public ManagedObject
     {
     protected:
 
@@ -41,8 +41,9 @@ namespace Arc
         Map( const Map& rhs) : _map(rhs._map) { }
         virtual ~Map( void ) { clear(); }
 
-        Map& operator= ( const Map& rhs ) { _map = rhs._map; return *this; }
-        T&   operator[]( const K& key )   { return at(key); }
+        Map& operator= ( const Map& rhs )     { _map = rhs._map; return *this; }
+        T&   operator[]( const K& key )       { return at(key); }
+        T&   operator[]( const K& key ) const { return at(key); }
 
         virtual string toString( void ) const { return "Map"; }
 
@@ -67,6 +68,7 @@ namespace Arc
         bool             removeAllValues( const T& value );
 
         T& at( const K& key ) { return _map[key]; }
+        T& at( const K& key ) const { return _map[key]; }
 
         bool contains     ( const K& key );
         bool containsKey  ( const K& key );

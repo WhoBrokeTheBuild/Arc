@@ -4,7 +4,7 @@
 #define __ARC_EVENT_DATA_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "RenderTarget.h"
 #include "Keyboard.h"
@@ -13,7 +13,7 @@
 namespace Arc
 {
     class EventData
-        : public GameObject
+        : public ManagedObject
     {
     public:
 

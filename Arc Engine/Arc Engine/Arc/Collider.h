@@ -4,14 +4,14 @@
 #define __ARC_COLLIDER_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "RenderTarget.h"
 
 namespace Arc
 {
     class Collider
-        : public GameObject
+        : public ManagedObject
     {
     protected:
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __ARC_GAME_OBJECT_H__
-#define __ARC_GAME_OBJECT_H__
+#ifndef __ARC_MANAGED_OBJECT_H__
+#define __ARC_MANAGED_OBJECT_H__
 
 #include <string>
 #include <sstream>
@@ -12,15 +12,15 @@ using std::ostream;
 
 namespace Arc
 {
-    class GameObject
+    class ManagedObject
     {
     public:
 
-        virtual ~GameObject( void ) { }
+        virtual ~ManagedObject( void ) { }
 
         virtual string toString( void ) const = 0;
 
-        friend ostream& operator<<( ostream& os, const GameObject& go )
+        friend ostream& operator<<( ostream& os, const ManagedObject& go )
         {
             os << go.toString();
             return os;
@@ -48,8 +48,8 @@ namespace Arc
 
 #endif
 
-    }; // class GameObject
+    }; // class ManagedObject
 
 } // namespace Arc
 
-#endif // __ARC_GAME_OBJECT_H__
+#endif // __ARC_MANAGED_OBJECT_H__

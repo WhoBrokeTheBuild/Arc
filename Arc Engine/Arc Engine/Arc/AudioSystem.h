@@ -4,14 +4,14 @@
 #define __ARC_AUDIO_SYSTEM_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <SDL/SDL_mixer.h>
 
 namespace Arc
 {
     class AudioSystem :
-        public GameObject
+        public ManagedObject
     {
     protected:
 

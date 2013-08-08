@@ -14,7 +14,7 @@
 namespace Arc
 {
     struct CollisionData
-        : public GameObject
+        : public ManagedObject
     {
     public:
 

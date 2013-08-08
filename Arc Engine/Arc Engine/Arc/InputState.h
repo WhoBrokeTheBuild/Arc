@@ -4,12 +4,12 @@
 #define __ARC_INPUT_STATE_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 namespace Arc
 {
     struct InputState
-        : public GameObject
+        : public ManagedObject
     {
         bool
             Pressed,

@@ -3,7 +3,7 @@
 #ifndef __ARC_RECT_H__
 #define __ARC_RECT_H__
 
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Vector2.h"
 
@@ -12,7 +12,7 @@ namespace Arc
     class Circle;
 
     class Rect
-        : public GameObject
+        : public ManagedObject
     {
     private:
 

@@ -4,7 +4,7 @@
 #define __ARC_QUEUE_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <queue>
 
@@ -20,7 +20,7 @@ namespace Arc
 
     template <class T>
     class Queue :
-        public GameObject
+        public ManagedObject
     {
     protected:
 

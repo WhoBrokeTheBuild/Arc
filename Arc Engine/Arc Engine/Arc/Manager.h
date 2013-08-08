@@ -12,7 +12,7 @@ namespace Arc
 
 template <class T>
 class Manager :
-    public GameObject
+    public ManagedObject
 {
 
 protected:

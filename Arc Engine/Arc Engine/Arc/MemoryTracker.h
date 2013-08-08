@@ -4,7 +4,7 @@
 #define __ARC_MEMORY_TRACKER_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Map.h"
 
@@ -34,14 +34,14 @@ namespace Arc
     };
 
     class MemoryTracker
-        : public GameObject
+        : public ManagedObject
     {
     private:
 
         static int
             _sAllocationIndex;
 
-        Map<GameObject*, AllocationRecord>
+        Map<ManagedObject*, AllocationRecord>
             _allocations;
 
         MemoryTracker(const MemoryTracker&);
@@ -54,8 +54,8 @@ namespace Arc
 
         virtual string toString( void ) const { return "Memory Tracker"; }
 
-        void addAllocation   (GameObject *ptr, size_t size, int lineNumber, string filename);
-        bool removeAllocation(GameObject *ptr);
+        void addAllocation   (ManagedObject *ptr, size_t size, int lineNumber, string filename);
+        bool removeAllocation(ManagedObject *ptr);
 
         int  numAllocations( void );
 

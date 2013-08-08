@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="CachedText.cpp" />
@@ -22,7 +23,7 @@
     <ClCompile Include="EventDispatcher.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Functions.cpp" />
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="ManagedObject.cpp" />
     <ClCompile Include="GraphicsSystem.cpp" />
     <ClCompile Include="InputFunc.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -51,6 +52,7 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Angle.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="AudioSystem.h" />
@@ -70,7 +72,7 @@
     <ClInclude Include="EventDispatcher.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Functions.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="ManagedObject.h" />
     <ClInclude Include="GamePad.h" />
     <ClInclude Include="Geom.h" />
     <ClInclude Include="GraphicsSystem.h" />

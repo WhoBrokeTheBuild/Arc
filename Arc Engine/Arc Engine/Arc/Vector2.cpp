@@ -1,4 +1,5 @@
 #include "Vector2.h"
+#include "Angle.h"
 #include "MathFunc.h"
 
 Arc::Vector2 Arc::Vector2::ZERO         = Vector2(0);
@@ -107,6 +108,11 @@ float Arc::Vector2::angleToRad( Vector2 other )
           dy = other.Y - Y;
 
     return atan2(dy, dx);
+}
+
+Arc::Angle Arc::Vector2::angleTo( Vector2 other )
+{
+    return Angle(angleToRad(other), ANGLE_TYPE_RAD);
 }
 
 Arc::Vector2 Arc::Vector2::lerp( const Vector2& other, float fraction )

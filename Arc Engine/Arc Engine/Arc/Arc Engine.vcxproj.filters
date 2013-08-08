@@ -108,9 +108,6 @@
     <ClCompile Include="Rect.cpp">
       <Filter>Project\Util\Geom</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Project\Tracking</Filter>
-    </ClCompile>
     <ClCompile Include="MemoryTracker.cpp">
       <Filter>Project\Tracking</Filter>
     </ClCompile>
@@ -180,6 +177,12 @@
     <ClCompile Include="Unit.cpp">
       <Filter>Project\Units</Filter>
     </ClCompile>
+    <ClCompile Include="Angle.cpp">
+      <Filter>Project\Util\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagedObject.cpp">
+      <Filter>Project\Tracking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -232,9 +235,6 @@
     </ClInclude>
     <ClInclude Include="Rect.h">
       <Filter>Project\Util\Geom</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Project\Tracking</Filter>
     </ClInclude>
     <ClInclude Include="MemoryTracker.h">
       <Filter>Project\Tracking</Filter>
@@ -379,6 +379,12 @@
     </ClInclude>
     <ClInclude Include="Line.h">
       <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Angle.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagedObject.h">
+      <Filter>Project\Tracking</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

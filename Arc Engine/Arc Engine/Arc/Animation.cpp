@@ -11,17 +11,17 @@ void Arc::Animation::init( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
     Speed   = speed;
 }
 
-Arc::Size Arc::Animation::frameSize( int frame )
+Arc::Size Arc::Animation::getFrameSize( int frame )
 {
     if (hasFrame(frame))
     {
-        return frameAt(frame)->SourceRect.size();
+        return getFrameAt(frame)->SourceRect.size();
     }
 
     return Size::ZERO;
 }
 
-Arc::Sprite* Arc::Animation::frameAt( int frame )
+Arc::Sprite* Arc::Animation::getFrameAt( int frame )
 {
     if (hasFrame(frame))
     {

@@ -4,7 +4,7 @@
 #define __ARC_SOUND_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 #include "IFrameListener.h"
 
 #include <SDL/SDL_mixer.h>
@@ -12,7 +12,7 @@
 namespace Arc
 {
     class Sound :
-        public GameObject
+        public ManagedObject
     {
     protected:
 

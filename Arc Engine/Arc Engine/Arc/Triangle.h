@@ -3,7 +3,7 @@
 #ifndef __ARC_TRIANGLE_H__
 #define __ARC_TRIANGLE_H__
 
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Vector2.h"
 #include "MathFunc.h"
@@ -14,7 +14,7 @@ namespace Arc
     class Circle;
 
     class Triangle :
-        public GameObject
+        public ManagedObject
     {
     private:
 

@@ -6,7 +6,7 @@ Arc::MemoryTracker*     gpMemoryTracker   = nullptr;
 Arc::MemoryTracker::MemoryTracker( void )
 {
     _sAllocationIndex = 0;
-    _allocations      = Map<GameObject*, AllocationRecord>();
+    _allocations      = Map<ManagedObject*, AllocationRecord>();
 }
 
 Arc::MemoryTracker::~MemoryTracker( void )
@@ -19,7 +19,7 @@ Arc::MemoryTracker::~MemoryTracker( void )
 #endif // DEBUG
 }
 
-void Arc::MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNumber, string filename )
+void Arc::MemoryTracker::addAllocation( ManagedObject *ptr, size_t size, int lineNumber, string filename )
 {
     if (_allocations.contains(ptr))
     {
@@ -33,7 +33,7 @@ void Arc::MemoryTracker::addAllocation( GameObject *ptr, size_t size, int lineNu
     ++_sAllocationIndex;
 }
 
-bool Arc::MemoryTracker::removeAllocation( GameObject *ptr )
+bool Arc::MemoryTracker::removeAllocation( ManagedObject *ptr )
 {
     if (_allocations.size() == 0 || !_allocations.contains(ptr))
         return false;
@@ -56,7 +56,7 @@ void Arc::MemoryTracker::printAllocations( ostream& stream )
 {
     stream << "Allocations: \n";
 
-    Map<GameObject*, AllocationRecord>::Iterator it;
+    Map<ManagedObject*, AllocationRecord>::Iterator it;
     for (it = _allocations.begin(); it != _allocations.end(); ++it)
     {
         stream << "#" << it->second.Num

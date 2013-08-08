@@ -3,18 +3,19 @@
 #ifndef __ARC_VECTOR_2_H__
 #define __ARC_VECTOR_2_H__
 
-#include "GameObject.h"
+#include "ManagedObject.h"
 #include "Functions.h"
 
 namespace Arc
 {
     class Vector2;
+    class Angle;
 
     typedef Vector2 Point;
     typedef Vector2 Size;
 
     class Vector2
-        : public GameObject
+        : public ManagedObject
     {
     public:
 
@@ -48,6 +49,7 @@ namespace Arc
         float distanceTo( Vector2 other );
         float angleToDeg( Vector2 other );
         float angleToRad( Vector2 other );
+        Angle angleTo( Vector2 other );
 
         float halfX( void ) { return (X * 0.5f); }
         float halfY( void ) { return (Y * 0.5f); }

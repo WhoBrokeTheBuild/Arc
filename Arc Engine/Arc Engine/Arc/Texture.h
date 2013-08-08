@@ -4,7 +4,7 @@
 #define __ARC_TEXTURE_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <SDL/SDL_opengl.h>
 #include <SDL/SDL_image.h>
@@ -17,7 +17,7 @@ namespace Arc
     class Event;
 
     class Texture :
-        public GameObject
+        public ManagedObject
     {
 
         friend class RenderTarget;

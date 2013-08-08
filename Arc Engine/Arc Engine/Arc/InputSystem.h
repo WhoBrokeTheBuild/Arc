@@ -40,7 +40,7 @@ namespace Arc
         InputSystem( void );
         virtual ~InputSystem( void ) { term(); }
 
-        virtual string toString( void ) const;
+        virtual string toString( void ) const { return "Input System"; }
 
         virtual void init( void );
         virtual void term( void );

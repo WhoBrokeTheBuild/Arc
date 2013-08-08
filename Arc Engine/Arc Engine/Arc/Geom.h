@@ -5,6 +5,7 @@
 
 #include "Direction.h"
 
+#include "Angle.h"
 #include "Vector2.h"
 #include "Rect.h"
 #include "Circle.h"

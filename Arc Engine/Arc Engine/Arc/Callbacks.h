@@ -4,13 +4,13 @@
 #define __ARC_CALLBACKS_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 namespace Arc
 {
     template <typename ReturnType, typename Param = void>
     class Callback
-        : public GameObject
+        : public ManagedObject
     {
 
         friend bool operator==( const Callback<ReturnType, Param>& lhs, const Callback<ReturnType, Param>& rhs ) { return lhs.equalTo(rhs); };

@@ -4,7 +4,7 @@
 #define __ARC_TEXT_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Texture.h"
 #include "Font.h"
@@ -13,7 +13,7 @@
 namespace Arc
 {
     class CachedText :
-        public GameObject
+        public ManagedObject
     {
     private:
 

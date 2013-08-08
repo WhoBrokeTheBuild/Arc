@@ -4,14 +4,14 @@
 #define __ARC_SPRITE_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Texture.h"
 
 namespace Arc
 {
     class Sprite :
-        public GameObject
+        public ManagedObject
     {
     protected:
 

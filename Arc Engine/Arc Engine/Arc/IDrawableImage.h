@@ -24,20 +24,6 @@ namespace Arc
         bool
             _animationComplete;
 
-        virtual void calcOriginLocation( void )
-        {
-            if (_originLocation == ORIGIN_LOCATION_MANUAL)
-                return;
-
-            if (_pAnimation == nullptr)
-            {
-                _origin = Vector2::ZERO;
-                return;
-            }
-
-            setSize(_pAnimation->frameSize(0));
-        }
-
     public:
 
         int
@@ -47,28 +33,31 @@ namespace Arc
             Looping;
 
         IDrawableImage( void )
+            : _pAnimation(nullptr),
+              _animationTimeout(),
+              _animationComplete(),
+              Frame(),
+              Looping()
         {
-            _pAnimation        = nullptr;
-            _animationTimeout  = 0.0;
-            _animationComplete = false;
-
-            Frame   = 0;
-            Looping = false;
         }
 
         virtual ~IDrawableImage( void ) { }
 
         virtual void init( Animation* pAnimation = nullptr, bool looping = false, Color blendColor = Color::WHITE, float rot = 0.0f, float alpha = 0.0f )
         {
+            IDrawable::init(blendColor, rot, alpha);
+
             Frame = 0;
             Looping = looping;
             setAnimation(pAnimation);
-            IDrawable::init(blendColor, rot, alpha);
         }
 
         virtual void updateImage( const double elapsedMillis )
         {
             if (_pAnimation == nullptr)
+                return;
+
+            if (_animationComplete)
                 return;
 
             _animationTimeout -= elapsedMillis;
@@ -77,15 +66,15 @@ namespace Arc
                 if (!Looping && Frame == _pAnimation->length() - 1)
                 {
                     animationComplete();
+                    _animationComplete = true;
                     return;
                 }
                 Frame = (Frame + 1) % _pAnimation->length();
                 _animationTimeout = _pAnimation->Speed;
-                calcOriginLocation();
             }
         }
 
-        virtual void renderImage( const RenderTarget* renderTarget, const Vector2 pos )
+        virtual void renderImage( const RenderTarget* renderTarget, const Point pos, const Vector2 origin )
         {
             if (_pAnimation == nullptr)
                 return;
@@ -96,12 +85,12 @@ namespace Arc
                 return;
             }
 
-            Sprite* sprite = _pAnimation->frameAt(Frame);
+            Sprite* sprite = _pAnimation->getFrameAt(Frame);
 
-            renderTarget->draw(pos + _origin, sprite->getTexture(), sprite->SourceRect, BlendColor, Rot, Vector2::ZERO);
+            renderTarget->draw(pos, sprite->getTexture(), sprite->SourceRect, BlendColor, Rot, origin);
         }
 
-        virtual void setAnimation( Animation *pAnimation )
+        virtual void setAnimation( Animation* pAnimation )
         {
             _pAnimation = pAnimation;
 

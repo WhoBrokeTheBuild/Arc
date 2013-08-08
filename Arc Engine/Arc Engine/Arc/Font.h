@@ -4,7 +4,7 @@
 #define __ARC_FONT_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <SDL/SDL_ttf.h>
 
@@ -14,7 +14,7 @@ namespace Arc
     class CachedText;
 
     class Font :
-        public GameObject
+        public ManagedObject
     {
 
         friend class RenderTarget;

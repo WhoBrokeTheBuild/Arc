@@ -3,14 +3,16 @@
 #ifndef __ARC_LINE_H__
 #define __ARC_LINE_H__
 
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Vector2.h"
 
 namespace Arc
 {
+    class Angle;
+
     class Line :
-        public GameObject
+        public ManagedObject
     {
     public:
 
@@ -39,16 +41,19 @@ namespace Arc
 
         virtual string toString( void ) const { return "Line"; }
 
-        float length( void ) { return A.distanceTo(B); }
+        inline float length( void ) { return A.distanceTo(B); }
 
-        float angleAtoBDeg( void ) { A.angleToDeg(B); }
-        float angleBtoADeg( void ) { B.angleToDeg(A); }
+        inline float angleAtoBDeg( void ) { A.angleToDeg(B); }
+        inline float angleBtoADeg( void ) { B.angleToDeg(A); }
 
-        float angleAtoBRad( void ) { A.angleToRad(B); }
-        float angleBtoARad( void ) { B.angleToRad(A); }
+        inline float angleAtoBRad( void ) { A.angleToRad(B); }
+        inline float angleBtoARad( void ) { B.angleToRad(A); }
 
-        Point lerp   ( float fraction ) { return A.lerp(B, fraction); }
-        Point lerpRev( float fraction ) { return B.lerp(A, fraction); }
+        inline Angle angleAtoB( void );
+        inline Angle angleBtoA( void );
+
+        inline Point lerp   ( float fraction ) { return A.lerp(B, fraction); }
+        inline Point lerpRev( float fraction ) { return B.lerp(A, fraction); }
 
         Line& operator= ( const Line& rhs );
 

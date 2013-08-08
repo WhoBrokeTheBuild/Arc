@@ -20,7 +20,7 @@ namespace Arc
 
     template <class T>
     class LinkedList :
-        public GameObject
+        public ManagedObject
     {
     protected:
 

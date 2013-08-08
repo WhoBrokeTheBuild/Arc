@@ -4,7 +4,7 @@
 #define __ARC_ARRAY_LIST_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include <vector>
 
@@ -20,7 +20,7 @@ namespace Arc
 
     template <class T>
     class ArrayList :
-        public GameObject
+        public ManagedObject
     {
     protected:
 
@@ -38,6 +38,7 @@ namespace Arc
 
         ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; return *this; }
         T&         operator[]( const int index)       { return at(index); }
+        const T    operator[]( const int index) const { return at(index); }
 
         virtual string toString( void ) const { return "Array List"; }
 
@@ -61,6 +62,7 @@ namespace Arc
         bool          removeBack ( void );
 
         T& at( int index ) { return _list[index]; }
+        const T at( int index ) const { return _list[index]; }
 
         T& front( void ) { return _list.front(); }
         T& back ( void ) { return _list.back(); }

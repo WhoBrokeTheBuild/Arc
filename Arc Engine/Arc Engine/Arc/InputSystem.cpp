@@ -8,11 +8,6 @@ Arc::InputSystem::InputSystem( void )
     _pTextInputSource = nullptr;
 }
 
-std::string Arc::InputSystem::toString( void ) const
-{
-    return "Input System";
-}
-
 void Arc::InputSystem::init( void )
 {
     INFO(toString(), "Initializing");

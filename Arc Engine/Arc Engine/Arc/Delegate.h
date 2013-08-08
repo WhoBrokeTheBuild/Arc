@@ -4,7 +4,7 @@
 #define __ARC_DELEGATE_H__
 
 #include "Common.h"
-#include "GameObject.h"
+#include "ManagedObject.h"
 
 #include "Callbacks.h"
 
@@ -12,7 +12,7 @@ namespace Arc
 {
     template <typename ReturnType, typename Param = void>
     class Delegate
-        : public GameObject
+        : public ManagedObject
     {
     private:
 
