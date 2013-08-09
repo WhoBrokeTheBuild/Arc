@@ -13,7 +13,7 @@ extern "C"
     #include <lua.h>
     #include <lualib.h>
     #include <lauxlib.h>
-};
+}
 
 namespace Arc
 {
@@ -24,7 +24,7 @@ namespace Arc
         public ManagedObject
     {
     protected:
-        
+
         lua_State
             *_pLuaState;
 

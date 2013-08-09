@@ -5,7 +5,7 @@
 		<Option title="Arc Engine" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Functions/;Project/Util/Geometry/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Graphics/Text/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;" />
+		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Geometry/;Project/Util/Functions/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="Debug/libArc" prefix_auto="1" extension_auto="1" />
@@ -15,6 +15,7 @@
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
+					<Add option="-pedantic" />
 					<Add option="-std=c++0x" />
 					<Add option="-Wall" />
 					<Add option="-g" />
@@ -42,6 +43,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Arc Engine/Arc/Angle.cpp">
+			<Option virtualFolder="Project/Util/Geometry/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Angle.h">
+			<Option virtualFolder="Project/Util/Geometry/" />
+		</Unit>
 		<Unit filename="Arc Engine/Arc/Animation.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
@@ -56,12 +63,6 @@
 		</Unit>
 		<Unit filename="Arc Engine/Arc/AudioSystem.h">
 			<Option virtualFolder="Project/Audio/" />
-		</Unit>
-		<Unit filename="Arc Engine/Arc/CachedText.cpp">
-			<Option virtualFolder="Project/Graphics/Text/" />
-		</Unit>
-		<Unit filename="Arc Engine/Arc/CachedText.h">
-			<Option virtualFolder="Project/Graphics/Text/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Callbacks.h">
 			<Option virtualFolder="Project/Events/" />
@@ -103,7 +104,7 @@
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Direction.h">
-			<Option virtualFolder="Project/Util/" />
+			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Event.cpp">
 			<Option virtualFolder="Project/Events/" />
@@ -121,22 +122,16 @@
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Font.cpp">
-			<Option virtualFolder="Project/Graphics/Text/" />
+			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Font.h">
-			<Option virtualFolder="Project/Graphics/Text/" />
+			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Functions.cpp">
-			<Option virtualFolder="Project/Util/" />
+			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Functions.h">
-			<Option virtualFolder="Project/Util/" />
-		</Unit>
-		<Unit filename="Arc Engine/Arc/GameObject.cpp">
-			<Option virtualFolder="Project/Core/" />
-		</Unit>
-		<Unit filename="Arc Engine/Arc/GameObject.h">
-			<Option virtualFolder="Project/Core/" />
+			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/GamePad.h">
 			<Option virtualFolder="Project/Input/Inputs/" />
@@ -219,6 +214,12 @@
 		<Unit filename="Arc Engine/Arc/LinkedList.h">
 			<Option virtualFolder="Project/Util/Collections/" />
 		</Unit>
+		<Unit filename="Arc Engine/Arc/ManagedObject.cpp">
+			<Option virtualFolder="Project/Tracking/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/ManagedObject.h">
+			<Option virtualFolder="Project/Tracking/" />
+		</Unit>
 		<Unit filename="Arc Engine/Arc/Manager.h">
 			<Option virtualFolder="Project/Util/" />
 		</Unit>
@@ -250,7 +251,7 @@
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/ParseFunc.h">
-			<Option virtualFolder="Project/Util/" />
+			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Program.cpp">
 			<Option virtualFolder="Project/Core/" />
@@ -283,6 +284,12 @@
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/RenderTarget.h">
+			<Option virtualFolder="Project/Graphics/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/RenderedText.cpp">
+			<Option virtualFolder="Project/Graphics/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/RenderedText.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Scene.cpp">
