@@ -6,6 +6,8 @@ void TestApp::init( void )
     IKeyboardListener::init();
     IMouseListener::init();
 
+    _pScriptingSystem->executeFile("assets/test.lua");
+
     _pGraphicsSystem->setClearColor(Color(150, 150, 150));
 
     pScene = New Scene();

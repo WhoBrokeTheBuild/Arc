@@ -40,6 +40,7 @@
     <ClCompile Include="RectCollider.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ScriptingSystem.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StringFunc.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="RectCollider.h" />
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="ScriptingSystem.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StringFunc.h" />
@@ -163,7 +165,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\Libraries\SDL\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../Libraries/SDL/include/;../../../Libraries/lua/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>

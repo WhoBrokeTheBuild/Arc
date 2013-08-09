@@ -1,5 +1,7 @@
 #include "Program.h"
 
+Arc::Program* Arc::Program::_pInstance = nullptr;
+
 const Arc::EventType Arc::Program::EVENT_UPDATE_START = "updateStart";
 const Arc::EventType Arc::Program::EVENT_UPDATE       = "update";
 const Arc::EventType Arc::Program::EVENT_UPDATE_END   = "updateEnd";
@@ -10,6 +12,7 @@ const Arc::EventType Arc::Program::EVENT_EXIT         = "exit";
 
 Arc::Program::Program( void )
 {
+    _pInstance       = this;
     _pGraphicsSystem = nullptr;
     _pInputSystem    = nullptr;
     _pAudioSystem    = nullptr;
@@ -33,6 +36,7 @@ void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitl
     initGraphics(windowSize, windowTitle);
     initAudio();
     initInput();
+    initScripting();
 
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &Program::update);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &Program::render);
@@ -49,6 +53,7 @@ void Arc::Program::term( void )
     gpEventDispatcher->removeEventListener(Program::EVENT_RENDER, this, &Program::render);
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &Program::update);
 
+    delete _pScriptingSystem;
     delete _pInputSystem;
     delete _pAudioSystem;
     delete _pGraphicsSystem;
@@ -137,4 +142,10 @@ void Arc::Program::initInput( void )
 {
     _pInputSystem = New InputSystem();
     _pInputSystem->init();
+}
+
+void Arc::Program::initScripting( void )
+{
+    _pScriptingSystem = New ScriptingSystem();
+    _pScriptingSystem->init();
 }
