@@ -46,7 +46,7 @@ namespace Arc
             Angle    = angle;
         }
 
-        virtual string toString( void ) const { return "Collision Data"; }
+        virtual inline string toString( void ) const { return "Collision Data"; }
 
         Direction getSide( void ) { return angleRadToDirFour(Angle); }
         Direction getSideEightWay( void ) { return angleRadToDirEight(Angle); }

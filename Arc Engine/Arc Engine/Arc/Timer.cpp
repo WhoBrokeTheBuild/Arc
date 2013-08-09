@@ -58,7 +58,7 @@ double Arc::Timer::getElapsedMicro( void )
 {
 #ifdef WINDOWS
 
-    if (!_stopped)
+    if ( ! _stopped)
         QueryPerformanceCounter(&_endCount);
 
     _startTimeMicro = _startCount.QuadPart * (MICRO / _freq.QuadPart);
@@ -66,7 +66,7 @@ double Arc::Timer::getElapsedMicro( void )
 
 #else // LINUX
 
-    if (!_stopped)
+    if ( ! _stopped)
         gettimeofday(&_endCount, nullptr);
 
     _startTimeMicro = (_startCount.tv_sec * MICRO) + _startCount.tv_usec;

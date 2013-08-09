@@ -33,7 +33,7 @@ public:
     virtual void init( void );
     virtual void term( void );
 
-    virtual string toString( void ) const;
+    virtual inline string toString( void ) const;
 
     bool      contains(ItemKey pItemKey);
     T        *add(ItemKey pItemKey, T *pObject);

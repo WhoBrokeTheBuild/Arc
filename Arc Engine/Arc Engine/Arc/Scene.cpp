@@ -59,7 +59,7 @@ void Arc::Scene::render( const Event& event )
 
 bool Arc::Scene::addLayer( int index )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
     {
         _layers.add(index, New Layer());
         _layers[index]->init(this);
@@ -75,7 +75,7 @@ bool Arc::Scene::addLayer( int index )
 
 Arc::Layer* Arc::Scene::getLayer( int index )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
     return _layers[index];
@@ -88,10 +88,10 @@ bool Arc::Scene::hasLayer( int index )
 
 void Arc::Scene::swapLayers( int index, int newIndex )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
-    if (!hasLayer(newIndex))
+    if ( ! hasLayer(newIndex))
         addLayer(newIndex);
 
     std::swap(_layers[index], _layers[newIndex]);
@@ -99,7 +99,7 @@ void Arc::Scene::swapLayers( int index, int newIndex )
 
 unsigned int Arc::Scene::emptyLayer( int index )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
     return _layers[index]->removeAllUnits();
@@ -117,7 +117,7 @@ void Arc::Scene::hideLayer( int index )
 
 void Arc::Scene::setLayerVisible( int index, bool visible )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
     _layers[index]->Visible = visible;
@@ -130,7 +130,7 @@ void Arc::Scene::toggleLayerVisible( int index )
 
 bool Arc::Scene::isLayerVisible( int index )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
     return _layers[index]->Visible;
@@ -148,7 +148,7 @@ void Arc::Scene::disableLayer( int index )
 
 void Arc::Scene::setLayerEnabled( int index, bool enabled )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
     _layers[index]->Enabled = enabled;
@@ -161,7 +161,7 @@ void Arc::Scene::toggleLayerEnabled( int index )
 
 bool Arc::Scene::isLayerEnabled( int index )
 {
-    if (!hasLayer(index))
+    if ( ! hasLayer(index))
         addLayer(index);
 
     return _layers[index]->Enabled;
@@ -246,7 +246,7 @@ bool Arc::Scene::addUnitTag( Unit* unit, string tag )
     if (hasUnitTag(unit, tag))
         return false;
 
-    if (!_tags.containsKey(tag))
+    if ( ! _tags.containsKey(tag))
         _tags.add(tag, ArrayList<Unit*>());
 
     _tags[tag].add(unit);
@@ -256,7 +256,7 @@ bool Arc::Scene::addUnitTag( Unit* unit, string tag )
 
 bool Arc::Scene::removeUnitTag( Unit* unit, string tag )
 {
-    if (!hasUnitTag(unit, tag))
+    if ( ! hasUnitTag(unit, tag))
         return false;
 
     return _tags[tag].remove(unit);
@@ -264,7 +264,7 @@ bool Arc::Scene::removeUnitTag( Unit* unit, string tag )
 
 bool Arc::Scene::hasUnitTag( Unit* unit, string tag )
 {
-    if (!_tags.containsKey(tag))
+    if ( ! _tags.containsKey(tag))
         return false;
 
     return _tags[tag].contains(unit);
@@ -277,7 +277,7 @@ Arc::ArrayList<string> Arc::Scene::getAllTags( string tag )
 
 Arc::ArrayList<Arc::Unit*> Arc::Scene::getUnitsByTag( string tag )
 {
-    if (!_tags.containsKey(tag))
+    if ( ! _tags.containsKey(tag))
         return ArrayList<Unit*>();
 
     return _tags[tag];

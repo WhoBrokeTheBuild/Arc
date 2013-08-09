@@ -61,7 +61,7 @@ namespace Arc
             }
         }
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
         inline float getDeg( void ) const { return _degrees; }
         inline float getRad( void ) const { return toRad(_degrees); }

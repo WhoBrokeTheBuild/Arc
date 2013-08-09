@@ -45,7 +45,7 @@ namespace Arc
         T&   operator[]( const K& key )       { return at(key); }
         T&   operator[]( const K& key ) const { return at(key); }
 
-        virtual string toString( void ) const { return "Map"; }
+        virtual inline string toString( void ) const { return "Map"; }
 
         Iterator begin ( void ) { return _map.begin(); }
         Iterator end   ( void ) { return _map.end(); }

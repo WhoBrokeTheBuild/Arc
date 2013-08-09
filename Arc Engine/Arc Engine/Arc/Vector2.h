@@ -44,7 +44,7 @@ namespace Arc
 
         virtual ~Vector2( void ) { }
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
         float distanceTo( Vector2 other );
         float angleToDeg( Vector2 other );

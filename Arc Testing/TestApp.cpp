@@ -68,7 +68,7 @@ void TestApp::init( void )
     pFont = New Font();
     pFont->init("assets/ds-digital.ttf", 20);
 
-    pFPSText = New CachedText();
+    pFPSText = New RenderedText();
     pFPSText->init("0", pFont);
 }
 

@@ -85,29 +85,29 @@ void Arc::RenderTarget::drawText( const Vector2 pos, const string text, Font* pF
 
 void Arc::RenderTarget::drawText( const float x, const float y, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    CachedText cachedText;
-    cachedText.init(text, pFont);
+    RenderedText renderedText;
+    renderedText.init(text, pFont);
 
-    drawText(x, y, &cachedText, color, rotation, origin);
+    drawText(x, y, &renderedText, color, rotation, origin);
 }
 
-void Arc::RenderTarget::drawText( const Vector2 pos, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const Vector2 pos, const RenderedText* renderedText, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    drawText(pos.X, pos.Y, pCachedText, color, rotation, origin);
+    drawText(pos.X, pos.Y, renderedText, color, rotation, origin);
 }
 
-void Arc::RenderTarget::drawText( const float x, const float y, const CachedText* pCachedText, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const float x, const float y, const RenderedText* renderedText, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    if (pCachedText->getText().length() == 0)
+    if (renderedText->getText().length() == 0)
         return;
 
-    if (pCachedText->getTexture() == nullptr)
+    if (renderedText->getTexture() == nullptr)
     {
-        ERROR(toString(), "Invalid Cached Text");
+        ERROR(toString(), "Invalid Rendered Text");
         return;
     }
 
-    draw(x, y, pCachedText->getTexture(), color, rotation, origin);
+    draw(x, y, renderedText->getTexture(), color, rotation, origin);
 }
 
 void Arc::RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
@@ -117,7 +117,7 @@ void Arc::RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const 
 
 void Arc::RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->size()), color, rotation, origin);
+    draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->getSize()), color, rotation, origin);
 }
 
 void Arc::RenderTarget::draw( const Vector2 pos, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/, const bool flip /*= false*/ ) const
@@ -142,7 +142,7 @@ void Arc::RenderTarget::draw( const float x, const float y, const Texture* pText
 
     glBegin(GL_QUADS);
 
-    Size texSize = pTexture->size();
+    Size texSize = pTexture->getSize();
     Rect convSrcRect = Rect(sourceRect.left() / texSize.width(), sourceRect.top() / texSize.height(), sourceRect.Width / texSize.width(), sourceRect.Height / texSize.height());
 
     if (flip)

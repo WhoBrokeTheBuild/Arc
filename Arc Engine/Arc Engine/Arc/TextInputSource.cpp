@@ -171,7 +171,7 @@ void Arc::TextInputSource::keyPressed( const Event& event )
             break;
         default:
             {
-                bool shifted = (!_capsLockDown && _shiftDown) || (_capsLockDown && !_shiftDown);
+                bool shifted = ( ! _capsLockDown && _shiftDown ) || ( _capsLockDown && ! _shiftDown );
 
                 gpEventDispatcher->dispatchEvent(Event(EVENT_TEXT_INPUT_CHAR, TextInputData(KeyToChar(key, shifted))));
             }

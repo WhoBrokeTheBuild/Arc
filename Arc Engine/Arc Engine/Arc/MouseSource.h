@@ -42,7 +42,7 @@ namespace Arc
         MouseSource( void );
         virtual ~MouseSource( void ) { term(); }
 
-        virtual string toString( void ) const { return "Mouse Source"; }
+        virtual inline string toString( void ) const { return "Mouse Source"; }
 
         virtual void init( void );
         virtual void term( void );

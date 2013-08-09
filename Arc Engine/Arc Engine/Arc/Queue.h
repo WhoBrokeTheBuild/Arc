@@ -32,7 +32,7 @@ namespace Arc
         Queue ( void ) { _queue = queue<T>(); }
         virtual ~Queue( void ) { clear(); }
 
-        virtual string toString( void ) const { return "Queue"; }
+        virtual inline string toString( void ) const { return "Queue"; }
 
         Queue<T>* push ( const T& item );
         T         peek ( void );
@@ -88,7 +88,7 @@ T Arc::Queue<T>::pop ( void )
 template <class T>
 Arc::Queue<T>* Arc::Queue<T>::clear( void )
 {
-    while (!empty())
+    while ( ! empty())
         _queue.pop();
     return this;
 }

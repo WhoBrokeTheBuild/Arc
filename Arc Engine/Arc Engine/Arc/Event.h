@@ -42,7 +42,7 @@ namespace Arc
         Event( const Event &rhs);
         virtual ~Event( void );
 
-        virtual string toString( void ) const { return "Event"; }
+        virtual inline string toString( void ) const { return "Event"; }
 
         inline EventType type( void ) const { return _type; };
         inline EventDispatcher *target( void ) const { return _pEventTarget; };

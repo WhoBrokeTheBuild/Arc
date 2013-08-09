@@ -33,7 +33,7 @@ namespace Arc
         Rect( Vector2 pos, Size size );
         virtual ~Rect( void ) { }
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
         void setPos( Vector2 pos );
         void setSize( Size size );

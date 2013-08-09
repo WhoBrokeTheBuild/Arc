@@ -38,7 +38,7 @@ namespace Arc
 
         LinkedList& operator=( const LinkedList& rhs ) { _list = rhs._list; return *this; }
 
-        virtual string toString( void ) const { return "Linked List"; }
+        virtual inline string toString( void ) const { return "Linked List"; }
 
         Iterator begin ( void ) { return _list.begin(); }
         Iterator end   ( void ) { return _list.end(); }
@@ -147,7 +147,7 @@ bool Arc::LinkedList<T>::removeAll( const T& item )
 template <class T>
 bool Arc::LinkedList<T>::removeAt( const unsigned int& index )
 {
-    if (!hasIndex(index))
+    if ( ! hasIndex(index))
         return false;
 
     _list.erase(begin() + index);
@@ -217,7 +217,7 @@ template <class T>
 unsigned int Arc::LinkedList<T>::merge( Queue<T> list )
 {
     unsigned int count;
-    while (!list.empty())
+    while ( ! list.empty())
     {
         add(list.pop());
         count++;

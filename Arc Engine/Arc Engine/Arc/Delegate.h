@@ -32,7 +32,7 @@ namespace Arc
             _callback = New MethodCallback<ReturnType, Param, ObjectType, Method>(object, method);
         }
 
-        virtual string toString( void ) const { return "Delegate"; }
+        virtual inline string toString( void ) const { return "Delegate"; }
 
         void setFunction( ReturnType (*function)(Param) )
         {

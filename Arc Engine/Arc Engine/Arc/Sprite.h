@@ -16,7 +16,7 @@ namespace Arc
     protected:
 
         Texture
-            *pTexture;
+            *_pTexture;
     public:
 
         Rect
@@ -25,13 +25,13 @@ namespace Arc
         Sprite( void );
         virtual ~Sprite( void ) { term(); }
 
-        virtual string toString( void ) const { return "Sprite"; }
+        virtual inline string toString( void ) const { return "Sprite"; }
 
         virtual void init( Texture *texture, Rect source );
         virtual void term( void ) { }
 
-        virtual Texture* getTexture( void ) { return pTexture; }
-        virtual void setTexture( Texture* texture ) { pTexture = texture; }
+        virtual Texture* getTexture( void ) { return _pTexture; }
+        virtual void setTexture( Texture* texture ) { _pTexture = texture; }
 
     }; // class Sprite
 

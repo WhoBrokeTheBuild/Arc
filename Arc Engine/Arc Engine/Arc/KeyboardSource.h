@@ -35,7 +35,7 @@ namespace Arc
         KeyboardSource( void );
         virtual ~KeyboardSource( void ) { term(); }
 
-        virtual string toString( void ) const { return "Keyboard Source"; }
+        virtual inline string toString( void ) const { return "Keyboard Source"; }
 
         virtual void init( void );
         virtual void term( void );

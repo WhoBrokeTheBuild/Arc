@@ -40,7 +40,7 @@ namespace Arc
         virtual void init( Scene* scene );
         virtual void term( void );
 
-        virtual string toString( void ) const { return "Layer"; }
+        virtual inline string toString( void ) const { return "Layer"; }
 
         virtual void update( const Event& event );
         virtual void render( const Event& event );

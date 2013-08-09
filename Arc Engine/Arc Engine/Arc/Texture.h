@@ -13,7 +13,7 @@
 namespace Arc
 {
     class RenderTarget;
-    class CachedText;
+    class RenderedText;
     class Event;
 
     class Texture :
@@ -21,7 +21,7 @@ namespace Arc
     {
 
         friend class RenderTarget;
-        friend class CachedText;
+        friend class RenderedText;
 
     private:
 
@@ -48,14 +48,14 @@ namespace Arc
         Texture( void );
         virtual ~Texture( void ) { term(); }
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
         virtual void init( string filename );
         virtual void term( void );
 
         virtual void graphicsReset( const Event& event );
 
-        virtual const Size size( void ) const { return _size; }
+        virtual const Size getSize( void ) const { return _size; }
 
     }; // class Texture
 

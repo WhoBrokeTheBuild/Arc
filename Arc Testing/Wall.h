@@ -26,7 +26,7 @@ public:
     virtual void init( Vector2 pos, Rect area, float depth = 0.0f );
     virtual void term( void );
 
-    virtual string toString( void ) const { return "Wall"; }
+    virtual inline string toString( void ) const { return "Wall"; }
 
     virtual void update( const FrameData* event  );
     virtual void render( const RenderData* event );

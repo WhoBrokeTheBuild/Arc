@@ -60,7 +60,7 @@ namespace Arc
         Timer( void );
         virtual ~Timer( void ) { }
 
-        virtual string toString( void ) const { return "Timer"; }
+        virtual inline string toString( void ) const { return "Timer"; }
 
         void start( void );
         void stop ( void );

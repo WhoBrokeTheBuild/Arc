@@ -18,7 +18,7 @@
 #include "Animation.h"
 #include "Sprite.h"
 #include "Texture.h"
-#include "CachedText.h"
+#include "RenderedText.h"
 #include "Timer.h"
 
 namespace Arc
@@ -58,7 +58,7 @@ namespace Arc
         Program( void );
         virtual ~Program( void ) { term(); }
 
-        virtual string toString( void ) const { return "Program"; }
+        virtual inline string toString( void ) const { return "Program"; }
 
         virtual void init( Size windowSize = Size(640, 480), string windowTitle = "Arc" );
         virtual void term( void );

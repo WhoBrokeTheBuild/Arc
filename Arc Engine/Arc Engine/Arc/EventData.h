@@ -17,7 +17,7 @@ namespace Arc
     {
     public:
 
-        virtual string toString( void ) const { return "Event Data"; };
+        virtual inline string toString( void ) const { return "Event Data"; };
 
         virtual EventData* clone( void ) const { return New EventData(); };
 
@@ -37,7 +37,7 @@ namespace Arc
 
         Vector2 vector2( void ) { return Vector2(X, Y); };
 
-        virtual string toString( void ) const
+        virtual inline string toString( void ) const
         {
             stringstream ss;
             ss << "Point Data [X: " << X << ", Y: " << Y << "]";
@@ -58,7 +58,7 @@ namespace Arc
 
         CountData( int count ) { Count = count; };
 
-        virtual string toString( void ) const
+        virtual inline string toString( void ) const
         {
             stringstream ss;
             ss << "Count Data [Count: " << Count << "]";
@@ -97,7 +97,7 @@ namespace Arc
             _deltaTime           = deltaTime;
         }
 
-        virtual string toString( void ) const { return "Frame Data"; }
+        virtual inline string toString( void ) const { return "Frame Data"; }
 
         virtual EventData* clone( void ) const { return New FrameData(_totalMilliseconds, _elapsedMilliseconds, _deltaTime); }
 
@@ -136,7 +136,7 @@ namespace Arc
 
         RenderData( RenderTarget *pRenderTarget ) { _pRenderTarget = pRenderTarget; }
 
-        virtual string toString( void ) const { return "Render Data"; }
+        virtual inline string toString( void ) const { return "Render Data"; }
 
         virtual EventData* clone( void ) const { return New RenderData(_pRenderTarget); }
 
@@ -154,7 +154,7 @@ namespace Arc
 
         KeyData( KeyboardKey key ) { Key = key; }
 
-        virtual string toString( void ) const { return "Key Data"; }
+        virtual inline string toString( void ) const { return "Key Data"; }
 
         virtual EventData* clone( void ) const { return New KeyData(Key); }
 
@@ -176,7 +176,7 @@ namespace Arc
 
         MouseData( Vector2 pos, Vector2 delta, MouseButton button = INVALID_MOUSE_BUTTON ) { Pos = pos; Delta = delta; Button = button; }
 
-        virtual string toString( void ) const { return "Mouse Data"; }
+        virtual inline string toString( void ) const { return "Mouse Data"; }
 
         virtual EventData* clone( void ) const { return New MouseData(Pos, Delta, Button); }
 

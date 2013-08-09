@@ -69,7 +69,7 @@ void Arc::MouseSource::update( const Event& event )
         {
             pState->Pressed = true;
         }
-        else if (!down && pState->Down)
+        else if ( ! down && pState->Down)
         {
             pState->Released = true;
         }

@@ -8,7 +8,7 @@
 
 #include "Color.h"
 #include "Font.h"
-#include "CachedText.h"
+#include "RenderedText.h"
 #include "Texture.h"
 
 #include <SDL/SDL.h>
@@ -48,7 +48,7 @@ namespace Arc
         virtual void init( GraphicsSystem *pGraphicsSystem );
         virtual void term( void ) { }
 
-        virtual string toString( void ) const { return "Render Target"; }
+        virtual inline string toString( void ) const { return "Render Target"; }
 
         virtual void beginDraw( void ) const;
         virtual void endDraw  ( void ) const;
@@ -68,13 +68,13 @@ namespace Arc
                                const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawText( const Vector2 pos,
-                               const CachedText* pCachedText, 
+                               const RenderedText* pCachedText, 
                                const Color color = Color::WHITE, 
                                const Angle rotation = Angle::ZERO,
                                const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawText( const float x, const float y,
-                               const CachedText* pCachedText,
+                               const RenderedText* pCachedText,
                                const Color color = Color::WHITE,
                                const Angle rotation = Angle::ZERO, 
                                const Vector2 origin = Vector2::ZERO ) const;

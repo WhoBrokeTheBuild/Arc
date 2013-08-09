@@ -1,6 +1,6 @@
 #include "Texture.h"
 #include "RenderTarget.h"
-#include "CachedText.h"
+#include "RenderedText.h"
 #include "GraphicsSystem.h"
 #include "Event.h"
 
@@ -41,7 +41,7 @@ void Arc::Texture::load( string filename )
 
     SDL_Surface *surface = IMG_Load(_filename.c_str());
 
-    if (!surface)
+    if ( ! surface)
         ERRORF(toString(), "Error Loading Image (%s)", IMG_GetError());
 
     load(surface);

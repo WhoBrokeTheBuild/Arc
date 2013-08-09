@@ -39,7 +39,7 @@ public:
     virtual void init( Vector2 pos, float depth = 0.0f );
     virtual void term( void );
 
-    virtual string toString( void ) const { return "Ball"; }
+    virtual inline string toString( void ) const { return "Ball"; }
 
     virtual void update( const FrameData* event  );
     virtual void render( const RenderData* event );

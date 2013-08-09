@@ -23,7 +23,7 @@ void Arc::Unit::init( Vector2 pos, float depth /*= 0.0f */ )
 
 void Arc::Unit::update( const Event& event )
 {
-    if (!Enabled) 
+    if ( ! Enabled) 
         return;
 
     const FrameData* data = event.dataAs<FrameData>();
@@ -33,7 +33,7 @@ void Arc::Unit::update( const Event& event )
 
 void Arc::Unit::render( const Event& event )
 {
-    if (!Visible)
+    if ( ! Visible)
         return;
 
     const RenderData* data = event.dataAs<RenderData>();

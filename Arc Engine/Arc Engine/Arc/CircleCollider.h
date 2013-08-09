@@ -26,7 +26,7 @@ namespace Arc
         virtual Point getCollisionPoint( Point pos, Collider* pOther, Point otherPos );
         virtual Point center( void ) { return CircleMask.center(); }
 
-        virtual string toString( void ) const { return "Circle Collider"; }
+        virtual inline string toString( void ) const { return "Circle Collider"; }
 
         virtual void render( const RenderTarget* renderTarget, Point pos, Vector2 origin = Vector2::ZERO );
 

@@ -31,7 +31,7 @@ namespace Arc
         virtual void init( void );
         virtual void term( void );
 
-        virtual string toString( void ) const { return "Audio System"; }
+        virtual inline string toString( void ) const { return "Audio System"; }
 
     }; // class AudioSystem
 

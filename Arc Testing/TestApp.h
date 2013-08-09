@@ -10,7 +10,7 @@
 
 #include <Arc/Scene.h>
 #include <Arc/Font.h>
-#include <Arc/CachedText.h>
+#include <Arc/RenderedText.h>
 
 #include "Wall.h"
 #include "Ball.h"
@@ -31,13 +31,13 @@ public:
     Font
         *pFont;
 
-    CachedText
+    RenderedText
         *pFPSText;
 
     TestApp( void ) { }
     virtual ~TestApp( void ) { term(); }
 
-    virtual string toString( void ) const { return "Test App"; }
+    virtual inline string toString( void ) const { return "Test App"; }
 
     virtual void init( void );
     virtual void term( void );

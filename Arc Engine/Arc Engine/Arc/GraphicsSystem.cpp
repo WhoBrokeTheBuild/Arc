@@ -96,7 +96,7 @@ void Arc::GraphicsSystem::setWindowIcon( string filename )
 {
     SDL_Surface *pSurface = IMG_Load(filename.c_str());
 
-    if (!pSurface)
+    if ( ! pSurface)
         ERRORF(toString(), "Cannot Load Icon File (%s)", filename);
 
     SDL_WM_SetIcon(pSurface, nullptr);
@@ -138,7 +138,7 @@ void Arc::GraphicsSystem::resetVideoMode( void )
 
     const SDL_VideoInfo* info = SDL_GetVideoInfo();
 
-    if (!info)
+    if ( ! info)
     {
         ERRORF(toString(), "Failed to query SDL video info (%s)", SDL_GetError());
         die();

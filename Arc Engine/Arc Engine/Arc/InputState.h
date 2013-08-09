@@ -25,7 +25,7 @@ namespace Arc
             Tapped   = tapped;
         }
 
-        virtual string toString( void ) const { return "Input State"; }
+        virtual inline string toString( void ) const { return "Input State"; }
     };
 }
 

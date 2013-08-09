@@ -51,7 +51,7 @@ namespace Arc
         virtual void init( Size windowSize, string windowTitle );
         virtual void term( void );
 
-        virtual string toString( void ) const { return "Graphics System"; }
+        virtual inline string toString( void ) const { return "Graphics System"; }
 
         virtual void setFullscreen ( bool fullscreen );
         virtual void setWindowSize ( Size size );

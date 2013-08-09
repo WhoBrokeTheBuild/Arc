@@ -38,8 +38,7 @@ namespace Arc
               _animationComplete(),
               Frame(),
               Looping()
-        {
-        }
+        { }
 
         virtual ~IDrawableImage( void ) { }
 
@@ -63,13 +62,13 @@ namespace Arc
             _animationTimeout -= elapsedMillis;
             if (_animationTimeout <= 0)
             {
-                if (!Looping && Frame == _pAnimation->length() - 1)
+                if ( ! Looping && Frame == _pAnimation->getLength() - 1)
                 {
                     animationComplete();
                     _animationComplete = true;
                     return;
                 }
-                Frame = (Frame + 1) % _pAnimation->length();
+                Frame = (Frame + 1) % _pAnimation->getLength();
                 _animationTimeout = _pAnimation->Speed;
             }
         }
@@ -79,7 +78,7 @@ namespace Arc
             if (_pAnimation == nullptr)
                 return;
 
-            if (!_pAnimation->hasFrame(Frame))
+            if ( ! _pAnimation->hasFrame(Frame))
             {
                 ERROR("IDrawableImage", "Frame Index out of range");
                 return;

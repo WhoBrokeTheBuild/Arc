@@ -15,11 +15,11 @@ namespace Arc
     {
 
         friend class RenderTarget;
-        friend class CachedText;
+        friend class RenderedText;
 
     private:
 
-        virtual SDL_Color SDLColor( void );
+        virtual SDL_Color getSDLColor( void );
 
     public:
 
@@ -49,7 +49,7 @@ namespace Arc
 
         virtual ~Color( void ) { }
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
         float fracR( void ) const { return (float)((1.0f / 255.0f) * R); }
         float fracG( void ) const { return (float)((1.0f / 255.0f) * G); }

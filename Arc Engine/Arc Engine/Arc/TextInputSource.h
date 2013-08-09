@@ -37,7 +37,7 @@ namespace Arc
 
         virtual ~TextInputData( void ) { }
 
-        virtual string toString( void ) const { return "Text Input Data"; }
+        virtual inline string toString( void ) const { return "Text Input Data"; }
 
         virtual EventData* clone( void ) const { return New TextInputData(Char, Dir); }
 
@@ -72,7 +72,7 @@ namespace Arc
         TextInputSource(void);
         virtual ~TextInputSource(void) { term(); }
 
-        virtual string toString( void ) const { return "Text Input Source"; }
+        virtual inline string toString( void ) const { return "Text Input Source"; }
 
         virtual void init( void );
         virtual void term( void );

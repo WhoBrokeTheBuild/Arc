@@ -1,6 +1,6 @@
 #include "Color.h"
 #include "RenderTarget.h"
-#include "CachedText.h"
+#include "RenderedText.h"
 
 Arc::Color Arc::Color::BLACK             = Color(0,   0,   0);
 Arc::Color Arc::Color::WHITE             = Color(255, 255, 255);
@@ -70,7 +70,7 @@ void Arc::Color::setByte( int r, int g, int b, int a )
     A = clamp(a, 0, 255);
 }
 
-SDL_Color Arc::Color::SDLColor( void )
+SDL_Color Arc::Color::getSDLColor( void )
 {
     SDL_Color color = { R, G, B, A };
     return color;

@@ -36,7 +36,7 @@ namespace Arc
 	    Triangle( float aX, float aY, float bX, float bY, float cX, float cY);
 	    virtual ~Triangle( void ) { }
 
-	    virtual string toString( void ) const;
+	    virtual inline string toString( void ) const;
 
 	    bool containsPoint   ( Point    other );
 	    bool containsCircle  ( Circle   other );

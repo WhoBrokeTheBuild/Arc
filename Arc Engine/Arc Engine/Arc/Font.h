@@ -11,14 +11,14 @@
 namespace Arc
 {
     class RenderTarget;
-    class CachedText;
+    class RenderedText;
 
     class Font :
         public ManagedObject
     {
 
         friend class RenderTarget;
-        friend class CachedText;
+        friend class RenderedText;
 
     private:
 
@@ -29,7 +29,7 @@ namespace Arc
             *_pFont;
 
         int
-            _size;
+            _fontSize;
 
         virtual TTF_Font* SDLFont( void ) const { return _pFont; }
 
@@ -41,9 +41,9 @@ namespace Arc
         virtual void init( string filename, int size );
         virtual void term( void );
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
-        virtual int size( void ) const { return _size; }
+        virtual int getFontSize( void ) const { return _fontSize; }
 
         virtual Size measureString( string text );
 

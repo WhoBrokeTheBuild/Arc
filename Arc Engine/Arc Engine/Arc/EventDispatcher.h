@@ -41,7 +41,7 @@ namespace Arc
         EventDispatcher( void );
         virtual ~EventDispatcher( void );
 
-        virtual string toString( void ) const { return "Event Dispatcher"; }
+        virtual inline string toString( void ) const { return "Event Dispatcher"; }
 
         void addEventListener   ( const EventType& eventType, const EventDelegate& functionDelegate );
         void removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate );

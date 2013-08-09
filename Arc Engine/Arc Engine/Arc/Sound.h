@@ -30,7 +30,7 @@ namespace Arc
         virtual void init( string filename );
         virtual void term( void );
 
-        virtual string toString( void ) const { return "Sound"; }
+        virtual inline string toString( void ) const { return "Sound"; }
 
         virtual void update( const Event& event );
 

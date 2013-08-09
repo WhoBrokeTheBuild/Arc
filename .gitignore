@@ -11,3 +11,44 @@
 *.lai
 *.la
 *.a
+
+/Arc Engine/*.opensdf
+/Arc Engine/*.sdf
+
+/Arc Engine/*.suo
+
+/Arc Engine/Arc Engine/Arc/Debug/*.obj
+/Arc Engine/Arc Engine/Arc/Debug/*.log
+/Arc Engine/Arc Engine/Arc/Debug/Arc Engine.lastbuildstate
+/Arc Engine/Arc Engine/Arc/Debug/CL.read.1.tlog
+/Arc Engine/Arc Engine/Arc/Debug/CL.write.1.tlog
+/Arc Engine/Arc Engine/Arc/Debug/Lib-link.read.1.tlog
+/Arc Engine/Arc Engine/Arc/Debug/Lib-link.write.1.tlog
+/Arc Engine/Arc Engine/Arc/Debug/cl.command.1.tlog
+/Arc Engine/Arc Engine/Arc/Debug/lib.command.1.tlog
+/Arc Engine/Arc Engine/Arc/Debug/vc110.idb
+/Arc Engine/Arc Engine/Arc/Debug/vc110.pdb
+/Arc Engine/Debug/Arc Testing.exe
+/Arc Engine/Debug/Arc Testing.ilk
+/Arc Engine/Debug/Arc Testing.pdb
+/Arc Engine/Debug/stderr.txt
+/Arc Engine/Debug/stdout.txt
+/Arc Testing/Debug/Arc Testing.lastbuildstate
+/Arc Testing/Debug/Arc Testing.log
+/Arc Testing/Debug/Ball.obj
+/Arc Testing/Debug/CL.read.1.tlog
+/Arc Testing/Debug/CL.write.1.tlog
+/Arc Testing/Debug/Main.obj
+/Arc Testing/Debug/TestApp.obj
+/Arc Testing/Debug/TestUnit.obj
+/Arc Testing/Debug/Wall.obj
+/Arc Testing/Debug/cl.command.1.tlog
+/Arc Testing/Debug/link-cvtres.read.1.tlog
+/Arc Testing/Debug/link-cvtres.write.1.tlog
+/Arc Testing/Debug/link-rc.read.1.tlog
+/Arc Testing/Debug/link-rc.write.1.tlog
+/Arc Testing/Debug/link.command.1.tlog
+/Arc Testing/Debug/link.read.1.tlog
+/Arc Testing/Debug/link.write.1.tlog
+/Arc Testing/Debug/vc110.idb
+/Arc Testing/Debug/vc110.pdb

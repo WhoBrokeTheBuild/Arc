@@ -40,7 +40,7 @@ namespace Arc
         T&         operator[]( const int index)       { return at(index); }
         const T    operator[]( const int index) const { return at(index); }
 
-        virtual string toString( void ) const { return "Array List"; }
+        virtual inline string toString( void ) const { return "Array List"; }
 
         Iterator begin ( void ) { return _list.begin(); }
         Iterator end   ( void ) { return _list.end(); }
@@ -147,7 +147,7 @@ bool Arc::ArrayList<T>::removeAll( const T& item )
 template <class T>
 bool Arc::ArrayList<T>::removeAt( const unsigned int& index )
 {
-    if (!hasIndex(index))
+    if ( ! hasIndex(index))
         return false;
 
     _list.erase(begin() + index);
@@ -217,7 +217,7 @@ template <class T>
 unsigned int Arc::ArrayList<T>::merge( Queue<T> list )
 {
     unsigned int count;
-    while (!list.empty())
+    while ( ! list.empty())
     {
         add(list.pop());
         count++;

@@ -30,7 +30,7 @@ void Arc::Layer::term( void )
 
 void Arc::Layer::update( const Event& event )
 {
-    if (Enabled)
+    if ( Enabled )
     {
         for (unsigned int i = 0; i < _units.size(); ++i)
         {
@@ -57,7 +57,7 @@ void Arc::Layer::layerChanged( const Event& event )
 
 bool Arc::Layer::addUnit( Unit* unit )
 {
-    if (!_units.contains(unit))
+    if ( ! _units.contains(unit) )
     {
         _units.add(unit);
         unit->setParentLayer(this);
@@ -72,7 +72,7 @@ bool Arc::Layer::addUnit( Unit* unit )
 
 bool Arc::Layer::removeUnit( Unit* unit )
 {
-    if (!hasUnit(unit))
+    if ( ! hasUnit(unit) )
         return false;
 
     unit->setParentLayer(nullptr);

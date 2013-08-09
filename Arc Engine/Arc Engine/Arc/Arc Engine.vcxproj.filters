@@ -22,9 +22,6 @@
     <Filter Include="Project\Graphics">
       <UniqueIdentifier>{d2214987-b11d-4777-a5a1-9dd1cf0749a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Project\Graphics\Text">
-      <UniqueIdentifier>{aa0c0f51-59fb-443c-8107-4e933805a3c5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Project\Input">
       <UniqueIdentifier>{bb63cfb7-3001-4c17-8125-01e2fde06dd1}</UniqueIdentifier>
     </Filter>
@@ -89,12 +86,6 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Project\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="CachedText.cpp">
-      <Filter>Project\Graphics\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="Font.cpp">
-      <Filter>Project\Graphics\Text</Filter>
     </ClCompile>
     <ClCompile Include="Console.cpp">
       <Filter>Project\Util</Filter>
@@ -183,6 +174,12 @@
     <ClCompile Include="ManagedObject.cpp">
       <Filter>Project\Tracking</Filter>
     </ClCompile>
+    <ClCompile Include="RenderedText.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -217,12 +214,6 @@
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Project\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="CachedText.h">
-      <Filter>Project\Graphics\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Project\Graphics\Text</Filter>
     </ClInclude>
     <ClInclude Include="Console.h">
       <Filter>Project\Util</Filter>
@@ -385,6 +376,12 @@
     </ClInclude>
     <ClInclude Include="ManagedObject.h">
       <Filter>Project\Tracking</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderedText.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Project\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

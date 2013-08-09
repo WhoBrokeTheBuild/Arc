@@ -28,7 +28,7 @@ public:
     TestUnit( void );
     virtual ~TestUnit( void ) { term(); }
 
-    virtual string toString( void ) const { return "Test Unit"; }
+    virtual inline string toString( void ) const { return "Test Unit"; }
 
     virtual void init( Vector2 pos, Collider* collider, float depth = 0.0f, bool active = true );
     virtual void term( void );

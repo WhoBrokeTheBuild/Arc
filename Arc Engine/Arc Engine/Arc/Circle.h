@@ -32,7 +32,7 @@ namespace Arc
         Circle( Point pos, float radius );
         virtual ~Circle( void ) { }
 
-        virtual string toString( void ) const;
+        virtual inline string toString( void ) const;
 
         inline Point pos ( void ) { return Point(X, Y); }
         inline Point center( void ) { return Point(X + Radius, Y + Radius); }

@@ -100,7 +100,7 @@ void Ball::render( const RenderData* data )
     bool color = false;
     for (int deg = 0; deg < 360; deg += 15)
     {
-        target->fillPentagon(Pos + Vector2(-5.0f, 5.0f), 5.0f, (color ? first : second), (Rot / 2.0f) + toRad(deg), Vector2(-25.0f, 0));
+        target->fillPentagon(Pos + Vector2(-5.0f, 5.0f), 5.0f, (color ? first : second), Angle((Rot / 2.0f) + toRad(deg), ANGLE_TYPE_RAD), Vector2(-25.0f, 0));
         color = !color;
     }
 

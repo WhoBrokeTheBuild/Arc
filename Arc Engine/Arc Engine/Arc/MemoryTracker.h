@@ -52,7 +52,7 @@ namespace Arc
         MemoryTracker( void );
         virtual ~MemoryTracker( void );
 
-        virtual string toString( void ) const { return "Memory Tracker"; }
+        virtual inline string toString( void ) const { return "Memory Tracker"; }
 
         void addAllocation   (ManagedObject *ptr, size_t size, int lineNumber, string filename);
         bool removeAllocation(ManagedObject *ptr);

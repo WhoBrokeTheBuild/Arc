@@ -21,7 +21,7 @@ Arc::EventDispatcher::~EventDispatcher( void )
 
 void Arc::EventDispatcher::addEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
-    if (!_eventMap.contains(eventType))
+    if ( ! _eventMap.contains(eventType))
         _eventMap[eventType] = EventListenerList();
 
     int length = _eventMap[eventType].size();
@@ -39,7 +39,7 @@ void Arc::EventDispatcher::addEventListener( const EventType& eventType, const E
 
 void Arc::EventDispatcher::removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
-    if (!_eventMap.contains(eventType))
+    if ( ! _eventMap.contains(eventType))
         return;
 
     int length = _eventMap[eventType].size();
@@ -92,7 +92,7 @@ void Arc::EventDispatcher::removeAllListeners( void )
 
 void Arc::EventDispatcher::removeAllListeners( const EventType& eventType )
 {
-    if (!_eventMap.contains(eventType))
+    if ( ! _eventMap.contains(eventType))
         return;
 
     int length = _eventMap[eventType].size();
@@ -114,7 +114,7 @@ void Arc::EventDispatcher::dispatchEvent( const Event& event )
 {
     EventType type = event.type();
 
-    if (!_eventMap.contains(type))
+    if ( ! _eventMap.contains(type))
         return;
 
     Event tmp = Event(event);
@@ -131,7 +131,7 @@ void Arc::EventDispatcher::dispatchEvent( const Event& event )
 
 void Arc::EventDispatcher::cleanMap( void )
 {
-    if (!_changed)
+    if ( ! _changed)
         return;
 
     bool needRepeat = true;

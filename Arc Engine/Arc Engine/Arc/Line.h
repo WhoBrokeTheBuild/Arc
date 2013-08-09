@@ -39,7 +39,7 @@ namespace Arc
 
         virtual ~Line(void) { }
 
-        virtual string toString( void ) const { return "Line"; }
+        virtual inline string toString( void ) const { return "Line"; }
 
         inline float length( void ) { return A.distanceTo(B); }
 

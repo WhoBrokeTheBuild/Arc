@@ -1,23 +1,23 @@
 #include "Font.h"
 #include "RenderTarget.h"
-#include "CachedText.h"
+#include "RenderedText.h"
 
 Arc::Font::Font( void )
 {
     _filename = string();
     _pFont    = nullptr;
-    _size     = 0;
+    _fontSize     = 0;
 }
 
 void Arc::Font::init( string filename, int size )
 {
     _pFont = nullptr;
     _filename = filename;
-    _size = size;
+    _fontSize = size;
 
-    _pFont = TTF_OpenFont(_filename.c_str(), _size);
+    _pFont = TTF_OpenFont(_filename.c_str(), _fontSize);
 
-    if (!_pFont)
+    if ( ! _pFont)
     {
         _pFont = nullptr;
         stringstream ss;
@@ -35,7 +35,7 @@ void Arc::Font::term( void )
 std::string Arc::Font::toString( void ) const
 {
     stringstream ss;
-    ss << "Font [File: " << _filename << ", Size: " << _size << "]";
+    ss << "Font [File: " << _filename << ", Size: " << _fontSize << "]";
     return ss.str();
 }
 

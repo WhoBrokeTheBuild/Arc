@@ -14,7 +14,7 @@
     <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
-    <ClCompile Include="CachedText.cpp" />
+    <ClCompile Include="RenderedText.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Color.cpp" />
@@ -56,7 +56,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="AudioSystem.h" />
-    <ClInclude Include="CachedText.h" />
+    <ClInclude Include="RenderedText.h" />
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CircleCollider.h" />
