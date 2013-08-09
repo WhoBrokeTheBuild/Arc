@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     if (gpMemoryTracker->numAllocations() > 0)
     {
         gpMemoryTracker->printAllocations();
-        pause();
+        Arc::pause();
     }
 
 #endif

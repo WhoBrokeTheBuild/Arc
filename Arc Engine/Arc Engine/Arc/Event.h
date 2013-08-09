@@ -49,12 +49,12 @@ namespace Arc
         inline void setTarget( EventDispatcher* target ) { _pEventTarget = target; }
 
         template <typename T>
-        inline T* targetAs( void ) const { return dynamic_cast<T*>(_pEventTarget); };
+        inline T* targetAs( void ) const { return dynamic_cast<T*>(_pEventTarget); }
 
-        inline const EventData *data( void ) const { return _pData; };
+        inline const EventData *data( void ) const { return _pData; }
 
         template <typename T>
-        inline const T* dataAs( void ) const { return dynamic_cast<const T*>(_pData); };
+        inline const T* dataAs( void ) const { return dynamic_cast<const T*>(_pData); }
 
     }; // class Event
 

@@ -18,7 +18,7 @@ namespace Arc
 
         virtual ~ManagedObject( void ) { }
 
-        virtual inline string toString( void ) const = 0;
+        virtual string toString( void ) const = 0;
 
         friend ostream& operator<<( ostream& os, const ManagedObject& go )
         {
@@ -28,13 +28,13 @@ namespace Arc
 
         void* operator new  ( size_t size );
         void* operator new[]( size_t size );
-                              
+
         void* operator new  ( size_t pSize, int pLineNumber, const char *pFilename );
         void* operator new[]( size_t pSize, int pLineNumber, const char *pFilename );
 
         void operator delete  ( void *ptr);
         void operator delete[]( void *ptr);
-                                
+
         void operator delete  ( void *pPtr, int pLineNumber, const char *pFilename );
         void operator delete[]( void *pPtr, int pLineNumber, const char *pFilename );
 

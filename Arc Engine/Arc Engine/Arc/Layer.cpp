@@ -7,8 +7,8 @@ const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layerChanged";
 Arc::Layer::Layer( void )
     : _units(),
       _pParent(),
-      Visible(),
-      Enabled()
+      Enabled(),
+      Visible()
 {
 }
 

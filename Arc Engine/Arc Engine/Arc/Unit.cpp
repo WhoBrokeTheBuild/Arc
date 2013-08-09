@@ -4,8 +4,8 @@
 
 Arc::Unit::Unit( void )
     : _pParent(),
-      _origin(),
       _originLocation(INVALID_ORIGIN_LOCATION),
+      _origin(),
       Pos(),
       Depth(),
       Enabled(),
@@ -23,7 +23,7 @@ void Arc::Unit::init( Vector2 pos, float depth /*= 0.0f */ )
 
 void Arc::Unit::update( const Event& event )
 {
-    if ( ! Enabled) 
+    if ( ! Enabled)
         return;
 
     const FrameData* data = event.dataAs<FrameData>();

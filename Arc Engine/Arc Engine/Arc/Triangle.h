@@ -36,13 +36,18 @@ namespace Arc
 	    Triangle( float aX, float aY, float bX, float bY, float cX, float cY);
 	    virtual ~Triangle( void ) { }
 
-	    virtual inline string toString( void ) const;
+	    virtual inline string toString( void ) const
+	    {
+            stringstream ss;
+            ss << "Triangle [A: " << A << ", B: " << B << ", C: " << C << "]";
+            return ss.str();
+	    }
 
 	    bool containsPoint   ( Point    other );
 	    bool containsCircle  ( Circle   other );
 	    bool containsRect    ( Rect     other );
 	    bool containsTriangle( Triangle other );
-	
+
     }; // class Triangle
 
 } // namespace Arc

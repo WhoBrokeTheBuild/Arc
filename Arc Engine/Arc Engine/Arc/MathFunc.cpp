@@ -1,11 +1,10 @@
 #include "MathFunc.h"
 #include "Vector2.h"
-#include "Direction.h"
 
 float Arc::floor( float value, int accuracy )
 {
-    int mult = 10 * accuracy; 
-    return std::floorf(value * mult) / mult;
+    int mult = 10 * accuracy;
+    return floorf(value * mult) / mult;
 }
 
 double Arc::floor( double value, int accuracy )
@@ -17,7 +16,7 @@ double Arc::floor( double value, int accuracy )
 float Arc::nearest( float value, int accuracy )
 {
     int mult = 10 * accuracy;
-    return std::floorf(value * mult + 0.5f) / mult;
+    return floorf(value * mult + 0.5f) / mult;
 }
 
 double Arc::nearest( double value, int accuracy )
@@ -29,7 +28,7 @@ double Arc::nearest( double value, int accuracy )
 float Arc::ceil( float value, int accuracy )
 {
     int mult = 10 * accuracy;
-    return std::ceilf(value * mult) / mult;
+    return ceilf(value * mult) / mult;
 }
 
 double Arc::ceil( double value, int accuracy )
@@ -40,7 +39,7 @@ double Arc::ceil( double value, int accuracy )
 
 bool Arc::linesIntersect( Vector2 L1P1, Vector2 L1P2, Vector2 L2P1, Vector2 L2P2 )
 {
-    float 
+    float
         ua = 0,
         ub = 0,
         ud = (L2P2.Y - L2P1.Y) * (L1P2.X - L1P1.X) - (L2P2.X - L2P1.X) * (L1P2.Y - L1P1.Y);

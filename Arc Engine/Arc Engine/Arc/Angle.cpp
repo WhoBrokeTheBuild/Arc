@@ -7,13 +7,6 @@ const Arc::Angle Arc::Angle::DOWN        = Arc::Angle(270.0f);
 const Arc::Angle Arc::Angle::LEFT        = Arc::Angle(180.0f);
 const Arc::Angle Arc::Angle::RIGHT       = Arc::Angle(0.0f);
 
-string Arc::Angle::toString( void ) const
-{
-    stringstream ss;
-    ss << "Angle [Deg: " << getDeg() << ", Rad: " << getRad() << "]";
-    return ss.str();
-}
-
 const Arc::Angle Arc::Angle::operator+( const Angle& rhs ) const
 {
     Angle result = *this;

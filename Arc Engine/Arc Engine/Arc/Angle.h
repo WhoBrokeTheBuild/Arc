@@ -20,7 +20,7 @@ namespace Arc
 
     }; // enum AngleType
 
-    const string ANGLE_TYPE_NAMES[NUM_ANGLE_TYPES] = 
+    const string ANGLE_TYPE_NAMES[NUM_ANGLE_TYPES] =
     {
         "Degrees",
         "Radians"
@@ -31,7 +31,7 @@ namespace Arc
     {
     protected:
 
-        float 
+        float
             _degrees;
 
     public:
@@ -58,10 +58,17 @@ namespace Arc
                 setRad(value);
 
                 break;
+            default:
+                break;
             }
         }
 
-        virtual inline string toString( void ) const;
+        virtual inline string toString( void ) const
+        {
+            stringstream ss;
+            ss << "Angle [Deg: " << getDeg() << ", Rad: " << getRad() << "]";
+            return ss.str();
+        }
 
         inline float getDeg( void ) const { return _degrees; }
         inline float getRad( void ) const { return toRad(_degrees); }
