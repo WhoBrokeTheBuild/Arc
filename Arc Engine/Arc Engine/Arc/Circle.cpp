@@ -18,13 +18,6 @@ Arc::Circle::Circle( Point pos, float radius )
     Radius = radius;
 }
 
-std::string Arc::Circle::toString( void ) const
-{
-    stringstream ss;
-    ss << "Circle [X: " << X << ", Y: " << Y << ", R:" << Radius << "]";
-    return ss.str();
-}
-
 bool Arc::Circle::containsCircle( Circle other )
 {
     float dist = pos().distanceTo(other.pos());

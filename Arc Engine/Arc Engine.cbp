@@ -8,7 +8,7 @@
 		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Functions/;Project/Util/Geometry/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Graphics/Text/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Arc Engine" prefix_auto="1" extension_auto="1" />
+				<Option output="Debug/libArc" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -16,11 +16,13 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add option="-D_DEBUG" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Arc Engine" prefix_auto="1" extension_auto="1" />
+				<Option output="Release/libArc" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -28,6 +30,9 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+					<Add option="-Wall" />
+					<Add option="-D_RELEASE" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -37,301 +42,307 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Arc Engine/Animation.cpp">
+		<Unit filename="Arc Engine/Arc/Animation.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/Animation.h">
+		<Unit filename="Arc Engine/Arc/Animation.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/ArcApp.cpp">
-			<Option virtualFolder="Project/Core/" />
-		</Unit>
-		<Unit filename="Arc Engine/ArcApp.h">
-			<Option virtualFolder="Project/Core/" />
-		</Unit>
-		<Unit filename="Arc Engine/ArcCommon.h">
-			<Option virtualFolder="Project/" />
-		</Unit>
-		<Unit filename="Arc Engine/ArrayList.h">
+		<Unit filename="Arc Engine/Arc/ArrayList.h">
 			<Option virtualFolder="Project/Util/Collections/" />
 		</Unit>
-		<Unit filename="Arc Engine/AudioSystem.cpp">
+		<Unit filename="Arc Engine/Arc/AudioSystem.cpp">
 			<Option virtualFolder="Project/Audio/" />
 		</Unit>
-		<Unit filename="Arc Engine/AudioSystem.h">
+		<Unit filename="Arc Engine/Arc/AudioSystem.h">
 			<Option virtualFolder="Project/Audio/" />
 		</Unit>
-		<Unit filename="Arc Engine/CachedText.cpp">
+		<Unit filename="Arc Engine/Arc/CachedText.cpp">
 			<Option virtualFolder="Project/Graphics/Text/" />
 		</Unit>
-		<Unit filename="Arc Engine/CachedText.h">
+		<Unit filename="Arc Engine/Arc/CachedText.h">
 			<Option virtualFolder="Project/Graphics/Text/" />
 		</Unit>
-		<Unit filename="Arc Engine/Callbacks.h">
+		<Unit filename="Arc Engine/Arc/Callbacks.h">
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
-		<Unit filename="Arc Engine/Circle.cpp">
+		<Unit filename="Arc Engine/Arc/Circle.cpp">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
-		<Unit filename="Arc Engine/Circle.h">
+		<Unit filename="Arc Engine/Arc/Circle.h">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
-		<Unit filename="Arc Engine/CircleCollider.cpp">
+		<Unit filename="Arc Engine/Arc/CircleCollider.cpp">
 			<Option virtualFolder="Project/Units/Colliders/" />
 		</Unit>
-		<Unit filename="Arc Engine/CircleCollider.h">
+		<Unit filename="Arc Engine/Arc/CircleCollider.h">
 			<Option virtualFolder="Project/Units/Colliders/" />
 		</Unit>
-		<Unit filename="Arc Engine/Collider.h">
+		<Unit filename="Arc Engine/Arc/Collider.h">
 			<Option virtualFolder="Project/Units/Colliders/" />
 		</Unit>
-		<Unit filename="Arc Engine/Color.cpp">
+		<Unit filename="Arc Engine/Arc/Color.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/Color.h">
+		<Unit filename="Arc Engine/Arc/Color.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/Console.cpp">
-			<Option virtualFolder="Project/Util/" />
-		</Unit>
-		<Unit filename="Arc Engine/Console.h">
-			<Option virtualFolder="Project/Util/" />
-		</Unit>
-		<Unit filename="Arc Engine/Defines.h">
+		<Unit filename="Arc Engine/Arc/Common.h">
 			<Option virtualFolder="Project/" />
 		</Unit>
-		<Unit filename="Arc Engine/Delegate.h">
-			<Option virtualFolder="Project/Events/" />
-		</Unit>
-		<Unit filename="Arc Engine/Direction.h">
+		<Unit filename="Arc Engine/Arc/Console.cpp">
 			<Option virtualFolder="Project/Util/" />
 		</Unit>
-		<Unit filename="Arc Engine/Event.cpp">
+		<Unit filename="Arc Engine/Arc/Console.h">
+			<Option virtualFolder="Project/Util/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Defines.h">
+			<Option virtualFolder="Project/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Delegate.h">
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
-		<Unit filename="Arc Engine/Event.h">
+		<Unit filename="Arc Engine/Arc/Direction.h">
+			<Option virtualFolder="Project/Util/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Event.cpp">
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
-		<Unit filename="Arc Engine/EventData.h">
+		<Unit filename="Arc Engine/Arc/Event.h">
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
-		<Unit filename="Arc Engine/EventDispatcher.cpp">
+		<Unit filename="Arc Engine/Arc/EventData.h">
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
-		<Unit filename="Arc Engine/EventDispatcher.h">
+		<Unit filename="Arc Engine/Arc/EventDispatcher.cpp">
 			<Option virtualFolder="Project/Events/" />
 		</Unit>
-		<Unit filename="Arc Engine/Font.cpp">
+		<Unit filename="Arc Engine/Arc/EventDispatcher.h">
+			<Option virtualFolder="Project/Events/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Font.cpp">
 			<Option virtualFolder="Project/Graphics/Text/" />
 		</Unit>
-		<Unit filename="Arc Engine/Font.h">
+		<Unit filename="Arc Engine/Arc/Font.h">
 			<Option virtualFolder="Project/Graphics/Text/" />
 		</Unit>
-		<Unit filename="Arc Engine/Functions.cpp">
+		<Unit filename="Arc Engine/Arc/Functions.cpp">
 			<Option virtualFolder="Project/Util/" />
 		</Unit>
-		<Unit filename="Arc Engine/Functions.h">
+		<Unit filename="Arc Engine/Arc/Functions.h">
 			<Option virtualFolder="Project/Util/" />
 		</Unit>
-		<Unit filename="Arc Engine/GameObject.cpp">
+		<Unit filename="Arc Engine/Arc/GameObject.cpp">
 			<Option virtualFolder="Project/Core/" />
 		</Unit>
-		<Unit filename="Arc Engine/GameObject.h">
+		<Unit filename="Arc Engine/Arc/GameObject.h">
 			<Option virtualFolder="Project/Core/" />
 		</Unit>
-		<Unit filename="Arc Engine/GamePad.h">
+		<Unit filename="Arc Engine/Arc/GamePad.h">
 			<Option virtualFolder="Project/Input/Inputs/" />
 		</Unit>
-		<Unit filename="Arc Engine/Geom.h">
+		<Unit filename="Arc Engine/Arc/Geom.h">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
-		<Unit filename="Arc Engine/GraphicsSystem.cpp">
+		<Unit filename="Arc Engine/Arc/GraphicsSystem.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/GraphicsSystem.h">
+		<Unit filename="Arc Engine/Arc/GraphicsSystem.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/ICollidable.h">
+		<Unit filename="Arc Engine/Arc/ICollidable.h">
 			<Option virtualFolder="Project/Units/Modules/" />
 		</Unit>
-		<Unit filename="Arc Engine/IDrawable.h">
+		<Unit filename="Arc Engine/Arc/IDrawable.h">
 			<Option virtualFolder="Project/Units/Modules/" />
 		</Unit>
-		<Unit filename="Arc Engine/IDrawableImage.h">
+		<Unit filename="Arc Engine/Arc/IDrawableImage.h">
 			<Option virtualFolder="Project/Units/Modules/" />
 		</Unit>
-		<Unit filename="Arc Engine/IFrameListener.h">
+		<Unit filename="Arc Engine/Arc/IFrameListener.h">
 			<Option virtualFolder="Project/Core/Listeners/" />
 		</Unit>
-		<Unit filename="Arc Engine/IKeyboardListener.h">
+		<Unit filename="Arc Engine/Arc/IKeyboardListener.h">
 			<Option virtualFolder="Project/Input/Listeners/" />
 		</Unit>
-		<Unit filename="Arc Engine/IMouseListener.h">
+		<Unit filename="Arc Engine/Arc/IMouseListener.h">
 			<Option virtualFolder="Project/Input/Listeners/" />
 		</Unit>
-		<Unit filename="Arc Engine/IPhysicsObject.h">
+		<Unit filename="Arc Engine/Arc/IPhysicsObject.h">
 			<Option virtualFolder="Project/Units/Modules/" />
 		</Unit>
-		<Unit filename="Arc Engine/ITextInputListener.h">
+		<Unit filename="Arc Engine/Arc/ITextInputListener.h">
 			<Option virtualFolder="Project/Input/Listeners/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputFunc.cpp">
+		<Unit filename="Arc Engine/Arc/InputFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputFunc.h">
+		<Unit filename="Arc Engine/Arc/InputFunc.h">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputSourceType.h">
+		<Unit filename="Arc Engine/Arc/InputSourceType.h">
 			<Option virtualFolder="Project/Input/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputState.h">
+		<Unit filename="Arc Engine/Arc/InputState.h">
 			<Option virtualFolder="Project/Input/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputSystem.cpp">
+		<Unit filename="Arc Engine/Arc/InputSystem.cpp">
 			<Option virtualFolder="Project/Input/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputSystem.h">
+		<Unit filename="Arc Engine/Arc/InputSystem.h">
 			<Option virtualFolder="Project/Input/" />
 		</Unit>
-		<Unit filename="Arc Engine/InputType.h">
+		<Unit filename="Arc Engine/Arc/InputType.h">
 			<Option virtualFolder="Project/Input/" />
 		</Unit>
-		<Unit filename="Arc Engine/Keyboard.h">
+		<Unit filename="Arc Engine/Arc/Keyboard.h">
 			<Option virtualFolder="Project/Input/Inputs/" />
 		</Unit>
-		<Unit filename="Arc Engine/KeyboardSource.cpp">
+		<Unit filename="Arc Engine/Arc/KeyboardSource.cpp">
 			<Option virtualFolder="Project/Input/Sources/" />
 		</Unit>
-		<Unit filename="Arc Engine/KeyboardSource.h">
+		<Unit filename="Arc Engine/Arc/KeyboardSource.h">
 			<Option virtualFolder="Project/Input/Sources/" />
 		</Unit>
-		<Unit filename="Arc Engine/Layer.cpp">
+		<Unit filename="Arc Engine/Arc/Layer.cpp">
 			<Option virtualFolder="Project/Units/Containers/" />
 		</Unit>
-		<Unit filename="Arc Engine/Layer.h">
+		<Unit filename="Arc Engine/Arc/Layer.h">
 			<Option virtualFolder="Project/Units/Containers/" />
 		</Unit>
-		<Unit filename="Arc Engine/LinkedList.h">
+		<Unit filename="Arc Engine/Arc/Line.cpp">
+			<Option virtualFolder="Project/Util/Geometry/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Line.h">
+			<Option virtualFolder="Project/Util/Geometry/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/LinkedList.h">
 			<Option virtualFolder="Project/Util/Collections/" />
 		</Unit>
-		<Unit filename="Arc Engine/Manager.h">
+		<Unit filename="Arc Engine/Arc/Manager.h">
 			<Option virtualFolder="Project/Util/" />
 		</Unit>
-		<Unit filename="Arc Engine/Map.h">
+		<Unit filename="Arc Engine/Arc/Map.h">
 			<Option virtualFolder="Project/Util/Collections/" />
 		</Unit>
-		<Unit filename="Arc Engine/MathFunc.cpp">
+		<Unit filename="Arc Engine/Arc/MathFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/MathFunc.h">
+		<Unit filename="Arc Engine/Arc/MathFunc.h">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/MemoryTracker.cpp">
+		<Unit filename="Arc Engine/Arc/MemoryTracker.cpp">
 			<Option virtualFolder="Project/Tracking/" />
 		</Unit>
-		<Unit filename="Arc Engine/MemoryTracker.h">
+		<Unit filename="Arc Engine/Arc/MemoryTracker.h">
 			<Option virtualFolder="Project/Tracking/" />
 		</Unit>
-		<Unit filename="Arc Engine/Mouse.h">
+		<Unit filename="Arc Engine/Arc/Mouse.h">
 			<Option virtualFolder="Project/Input/Inputs/" />
 		</Unit>
-		<Unit filename="Arc Engine/MouseSource.cpp">
+		<Unit filename="Arc Engine/Arc/MouseSource.cpp">
 			<Option virtualFolder="Project/Input/Sources/" />
 		</Unit>
-		<Unit filename="Arc Engine/MouseSource.h">
+		<Unit filename="Arc Engine/Arc/MouseSource.h">
 			<Option virtualFolder="Project/Input/Sources/" />
 		</Unit>
-		<Unit filename="Arc Engine/ParseFunc.cpp">
+		<Unit filename="Arc Engine/Arc/ParseFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/ParseFunc.h">
+		<Unit filename="Arc Engine/Arc/ParseFunc.h">
 			<Option virtualFolder="Project/Util/" />
 		</Unit>
-		<Unit filename="Arc Engine/Queue.h">
+		<Unit filename="Arc Engine/Arc/Program.cpp">
+			<Option virtualFolder="Project/Core/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Program.h">
+			<Option virtualFolder="Project/Core/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/Queue.h">
 			<Option virtualFolder="Project/Util/Collections/" />
 		</Unit>
-		<Unit filename="Arc Engine/RandFunc.cpp">
+		<Unit filename="Arc Engine/Arc/RandFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/RandFunc.h">
+		<Unit filename="Arc Engine/Arc/RandFunc.h">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/Rect.cpp">
+		<Unit filename="Arc Engine/Arc/Rect.cpp">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
-		<Unit filename="Arc Engine/Rect.h">
+		<Unit filename="Arc Engine/Arc/Rect.h">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
-		<Unit filename="Arc Engine/RectCollider.cpp">
+		<Unit filename="Arc Engine/Arc/RectCollider.cpp">
 			<Option virtualFolder="Project/Units/Colliders/" />
 		</Unit>
-		<Unit filename="Arc Engine/RectCollider.h">
+		<Unit filename="Arc Engine/Arc/RectCollider.h">
 			<Option virtualFolder="Project/Units/Colliders/" />
 		</Unit>
-		<Unit filename="Arc Engine/RenderTarget.cpp">
+		<Unit filename="Arc Engine/Arc/RenderTarget.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/RenderTarget.h">
+		<Unit filename="Arc Engine/Arc/RenderTarget.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/Scene.cpp">
+		<Unit filename="Arc Engine/Arc/Scene.cpp">
 			<Option virtualFolder="Project/Units/Containers/" />
 		</Unit>
-		<Unit filename="Arc Engine/Scene.h">
+		<Unit filename="Arc Engine/Arc/Scene.h">
 			<Option virtualFolder="Project/Units/Containers/" />
 		</Unit>
-		<Unit filename="Arc Engine/Sound.cpp">
+		<Unit filename="Arc Engine/Arc/Sound.cpp">
 			<Option virtualFolder="Project/Audio/" />
 		</Unit>
-		<Unit filename="Arc Engine/Sound.h">
+		<Unit filename="Arc Engine/Arc/Sound.h">
 			<Option virtualFolder="Project/Audio/" />
 		</Unit>
-		<Unit filename="Arc Engine/Sprite.cpp">
+		<Unit filename="Arc Engine/Arc/Sprite.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/Sprite.h">
+		<Unit filename="Arc Engine/Arc/Sprite.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/StringFunc.cpp">
+		<Unit filename="Arc Engine/Arc/StringFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/StringFunc.h">
+		<Unit filename="Arc Engine/Arc/StringFunc.h">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/TextInputSource.cpp">
+		<Unit filename="Arc Engine/Arc/TextInputSource.cpp">
 			<Option virtualFolder="Project/Input/Sources/" />
 		</Unit>
-		<Unit filename="Arc Engine/TextInputSource.h">
+		<Unit filename="Arc Engine/Arc/TextInputSource.h">
 			<Option virtualFolder="Project/Input/Sources/" />
 		</Unit>
-		<Unit filename="Arc Engine/Texture.cpp">
+		<Unit filename="Arc Engine/Arc/Texture.cpp">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/Texture.h">
+		<Unit filename="Arc Engine/Arc/Texture.h">
 			<Option virtualFolder="Project/Graphics/" />
 		</Unit>
-		<Unit filename="Arc Engine/TimeFunc.cpp">
+		<Unit filename="Arc Engine/Arc/TimeFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/TimeFunc.h">
+		<Unit filename="Arc Engine/Arc/TimeFunc.h">
 			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
-		<Unit filename="Arc Engine/Timer.cpp">
+		<Unit filename="Arc Engine/Arc/Timer.cpp">
 			<Option virtualFolder="Project/Timing/" />
 		</Unit>
-		<Unit filename="Arc Engine/Timer.h">
+		<Unit filename="Arc Engine/Arc/Timer.h">
 			<Option virtualFolder="Project/Timing/" />
 		</Unit>
-		<Unit filename="Arc Engine/Unit.cpp">
+		<Unit filename="Arc Engine/Arc/Unit.cpp">
 			<Option virtualFolder="Project/Units/" />
 		</Unit>
-		<Unit filename="Arc Engine/Unit.h">
+		<Unit filename="Arc Engine/Arc/Unit.h">
 			<Option virtualFolder="Project/Units/" />
 		</Unit>
-		<Unit filename="Arc Engine/Vector2.cpp">
+		<Unit filename="Arc Engine/Arc/Vector2.cpp">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
-		<Unit filename="Arc Engine/Vector2.h">
+		<Unit filename="Arc Engine/Arc/Vector2.h">
 			<Option virtualFolder="Project/Util/Geometry/" />
 		</Unit>
 		<Extensions>

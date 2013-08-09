@@ -6,13 +6,6 @@ Arc::Vector2 Arc::Vector2::ZERO         = Vector2(0);
 Arc::Vector2 Arc::Vector2::ONE          = Vector2(1);
 Arc::Vector2 Arc::Vector2::NEGATIVE_ONE = Vector2(-1);
 
-std::string Arc::Vector2::toString( void ) const
-{
-    stringstream ss;
-    ss << "Vector2 [X: " << X << ", Y: " << Y << "]";
-    return ss.str();
-}
-
 const Arc::Vector2 Arc::Vector2::operator+( const Vector2 &rhs ) const
 {
     Vector2 result = *this;

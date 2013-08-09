@@ -56,23 +56,16 @@ Arc::Triangle::Triangle( float aX, float aY, float bX, float bY, float cX, float
 	}
 }
 
-std::string Arc::Triangle::toString( void ) const
-{
-	stringstream ss;
-	ss << "Triangle [A: " << A << ", B: " << B << ", C: " << C << "]";
-	return ss.str();
-}
-
 bool Arc::Triangle::containsPoint( Point other )
 {
 	// Compute vectors
-	Vector2 
+	Vector2
 		v0 = C - A,
 		v1 = B - A,
 		v2 = other - A;
 
 	// Compute dot products
-	float 
+	float
 		dot00 = v0.dot(v0),
 		dot01 = v0.dot(v1),
 		dot02 = v0.dot(v2),
@@ -103,8 +96,8 @@ bool Arc::Triangle::containsCircle( Circle other )
 		c2 = other.pos() - B,
 		c3 = other.pos() - C;
 
-	
-	float 
+
+	float
 		k,
 		len;
 
@@ -122,7 +115,7 @@ bool Arc::Triangle::containsCircle( Circle other )
 
 	// Edge 2
 	k = c2.dot(e2);
-	
+
 	if( k > 0)
 	{
 		len = e2.dot(e2);
@@ -134,7 +127,7 @@ bool Arc::Triangle::containsCircle( Circle other )
 
 	// Edge 3
 	k = c3.dot(e3);
-	
+
 	if( k > 0)
 	{
 		len = e3.dot(e3);
@@ -161,9 +154,9 @@ bool Arc::Triangle::containsRect( Rect other )
 		oBotLeft  = other.bottomLeft(),
 		oBotRight = other.bottomRight();
 
-	if (containsPoint(oTopLeft)  || 
-		containsPoint(oTopRight) || 
-		containsPoint(oBotLeft)  ||		
+	if (containsPoint(oTopLeft)  ||
+		containsPoint(oTopRight) ||
+		containsPoint(oBotLeft)  ||
 		containsPoint(oBotRight) )
 		return true;
 

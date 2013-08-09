@@ -51,7 +51,17 @@ namespace Arc
     inline void formatMessage( string filename, int line, ostream& stream, string type, string source, string format, va_list args )
     {
         static char buffer[100];
+
+#ifdef WINDOWS
+
         vsprintf_s(buffer, format.c_str(), args);
+
+#else // LINUX
+
+        vsprintf(buffer, format.c_str(), args);
+
+#endif // WINDOWS
+
         string message = string(buffer);
 
         dispMessage(filename, line, stream, type, source, message);

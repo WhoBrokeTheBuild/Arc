@@ -207,7 +207,7 @@ unsigned int Arc::ArrayList<T>::merge( ArrayList<T> list )
 template <class T>
 unsigned int Arc::ArrayList<T>::merge( LinkedList<T> list )
 {
-    LinkedList<T>::ConstIterator it;
+    typename LinkedList<T>::ConstIterator it;
     for (it = list.cbegin(); it != list.cend(); ++it)
         add(*it);
     return list.size();

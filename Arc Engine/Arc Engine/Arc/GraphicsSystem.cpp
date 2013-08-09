@@ -97,7 +97,7 @@ void Arc::GraphicsSystem::setWindowIcon( string filename )
     SDL_Surface *pSurface = IMG_Load(filename.c_str());
 
     if ( ! pSurface)
-        ERRORF(toString(), "Cannot Load Icon File (%s)", filename);
+        ERRORF(toString(), "Cannot Load Icon File (%s)", filename.c_str());
 
     SDL_WM_SetIcon(pSurface, nullptr);
 

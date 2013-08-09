@@ -4,11 +4,11 @@
 #define __ARC_MATH_FUNC_H__
 
 #include <cmath>
+#include "Direction.h"
 
 namespace Arc
 {
     class Vector2;
-    enum Direction;
 
     #define PI  3.14159
     #define PI2 6.28318
@@ -17,13 +17,13 @@ namespace Arc
     #define TO_DEG (180.0 / PI)
 
     inline float toRad( int deg ) { return (float)( deg * TO_RAD ); }
-    inline float toDeg( int rad ) { return (float)( rad * TO_DEG ); };
+    inline float toDeg( int rad ) { return (float)( rad * TO_DEG ); }
 
     inline float toRad( float deg ) { return (float)( deg * TO_RAD ); }
-    inline float toDeg( float rad ) { return (float)( rad * TO_DEG ); };
+    inline float toDeg( float rad ) { return (float)( rad * TO_DEG ); }
 
     inline double toRad( double deg ) { return (double)( deg * TO_RAD ); }
-    inline double toDeg( double rad ) { return (double)( rad * TO_DEG ); };
+    inline double toDeg( double rad ) { return (double)( rad * TO_DEG ); }
 
     float floor  (float value, int accuracy);
     float nearest(float value, int accuracy);

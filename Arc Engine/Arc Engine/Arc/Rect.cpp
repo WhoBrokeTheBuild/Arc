@@ -28,15 +28,8 @@ Arc::Rect::Rect( Vector2 pos, Vector2 size )
     Height = size.Y;
 }
 
-string Arc::Rect::toString( void ) const
-{
-    stringstream ss;
-    ss << "Rect [X: " << X << ", Y: " << Y << ", W: " << Width << ", H: " << Height << "]";
-    return ss.str();
-}
-
 void Arc::Rect::setPos( Vector2 pos )
-{ 
+{
     X = pos.X;
     Y = pos.Y;
 }

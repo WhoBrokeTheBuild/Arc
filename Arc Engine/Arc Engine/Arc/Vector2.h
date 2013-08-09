@@ -44,7 +44,12 @@ namespace Arc
 
         virtual ~Vector2( void ) { }
 
-        virtual inline string toString( void ) const;
+        virtual inline string toString( void ) const
+        {
+            stringstream ss;
+            ss << "Vector2 [X: " << X << ", Y: " << Y << "]";
+            return ss.str();
+        }
 
         float distanceTo( Vector2 other );
         float angleToDeg( Vector2 other );
