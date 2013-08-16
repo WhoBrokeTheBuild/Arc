@@ -7,6 +7,7 @@
 #include "ManagedObject.h"
 
 #include <ctime>
+#include <cmath>
 
 #ifdef WINDOWS
 
@@ -30,8 +31,8 @@ namespace Arc
             MICRO;
 
         double
-            _startTimeMicro,
-            _endTimeMicro;
+            _startTimeMillis,
+            _endTimeMillis;
 
         bool
             _stopped;
@@ -65,7 +66,6 @@ namespace Arc
         void start( void );
         void stop ( void );
 
-        double getElapsedMicro( void );
         double getElapsedMilli( void );
         double getElapsed( void );
 

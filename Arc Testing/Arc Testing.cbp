@@ -28,6 +28,7 @@
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
 					<Add library="GLU" />
+					<Add library="lua" />
 					<Add directory="../Arc Engine/Debug" />
 				</Linker>
 			</Target>
@@ -53,6 +54,7 @@
 					<Add library="SDL_ttf" />
 					<Add library="GL" />
 					<Add library="GLU" />
+					<Add library="lua" />
 					<Add directory="../Arc Engine/Release" />
 				</Linker>
 			</Target>

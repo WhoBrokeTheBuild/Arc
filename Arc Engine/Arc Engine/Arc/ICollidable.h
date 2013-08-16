@@ -27,29 +27,29 @@ namespace Arc
         Point
             Pos;
 
-        float
-            Angle;
+        Angle
+            AngleTo;
 
         CollisionData( void )
             : Collided(false),
               pOther(nullptr),
               Pos(),
-              Angle()
+              AngleTo()
         {
         }
 
-        CollisionData( Unit* other, Point pos, float angle )
+        CollisionData( Unit* other, Point pos, Angle angle )
         {
             Collided = true;
             pOther   = other;
             Pos      = pos;
-            Angle    = angle;
+            AngleTo  = angle;
         }
 
         virtual inline string toString( void ) const { return "Collision Data"; }
 
-        Direction getSide( void ) { return angleRadToDirFour(Angle); }
-        Direction getSideEightWay( void ) { return angleRadToDirEight(Angle); }
+        Direction getSide( void ) { return angleRadToDirFour(AngleTo.getRad()); }
+        Direction getSideEightWay( void ) { return angleRadToDirEight(AngleTo.getRad()); }
 
     };
 
@@ -62,7 +62,7 @@ namespace Arc
 
     public:
 
-        bool 
+        bool
             Collidable;
 
         ICollidable( void )
@@ -144,7 +144,7 @@ namespace Arc
 
             return false;
         }
-        
+
         //virtual bool checkPoint( Point point, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
         //virtual bool checkRect( Rect rect, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
         //virtual bool checkCircle( Circle circle, Point pos, Point origin = Point::ZERO, Vector2 offset = Vector2::ZERO );
@@ -176,7 +176,9 @@ namespace Arc
             if (data.Collided)
             {
                 data.Pos = getCollider()->getCollisionPoint(pos, unitColl->getCollider(), otherPos);
-                data.Angle = centerPos.angleToRad(data.Pos);
+                data.AngleTo = centerPos.angleTo(data.Pos);
+                //cout << centerPos << endl;
+                //cout << data.Pos << endl;
             }
 
             return data;

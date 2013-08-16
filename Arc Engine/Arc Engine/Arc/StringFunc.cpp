@@ -55,10 +55,9 @@ string Arc::strSubstring( string str, unsigned int begin, int maxLength /*= -1 *
     if (begin >= str.length())
         return "";
 
-    if (maxLength == -1)
-        maxLength = string::npos;
+    unsigned int fullMaxLength = (maxLength < 0 ? string::npos : unsigned(maxLength));
 
-    return str.substr(begin, maxLength);
+    return str.substr(begin, fullMaxLength);
 }
 
 bool Arc::strContains( string str, string sub )

@@ -20,8 +20,8 @@ Arc::Timer::Timer( void )
 #endif // WINDOWS
 
     _stopped = false;
-    _startTimeMicro = 0;
-    _endTimeMicro   = 0;
+    _startTimeMillis = 0;
+    _endTimeMillis   = 0;
 }
 
 void Arc::Timer::start( void )
@@ -54,32 +54,27 @@ void Arc::Timer::stop( void )
 #endif // WINDOWS
 }
 
-double Arc::Timer::getElapsedMicro( void )
+double Arc::Timer::getElapsedMilli( void )
 {
 #ifdef WINDOWS
 
     if ( ! _stopped)
         QueryPerformanceCounter(&_endCount);
 
-    _startTimeMicro = _startCount.QuadPart * (MICRO / _freq.QuadPart);
-    _endTimeMicro   = _endCount.QuadPart * (MICRO / _freq.QuadPart);
+    _startTimeMillis = (_startCount.QuadPart * (MICRO / _freq.QuadPart)) / 1000.0;
+    _endTimeMillis   = (_endCount.QuadPart * (MICRO / _freq.QuadPart)) / 1000.0;
 
 #else // LINUX
 
     if ( ! _stopped)
         gettimeofday(&_endCount, nullptr);
 
-    _startTimeMicro = (_startCount.tv_sec * MICRO) + _startCount.tv_usec;
-    _endTimeMicro   = (_endCount.tv_sec * MICRO) + _endCount.tv_usec;
+    _startTimeMillis = ((_startCount.tv_sec * MICRO) + _startCount.tv_usec) / 1000.0;
+    _endTimeMillis   = ((_endCount.tv_sec * MICRO) + _endCount.tv_usec) / 1000.0;
 
 #endif // WINDOWS
 
-    return _endTimeMicro - _startTimeMicro;
-}
-
-double Arc::Timer::getElapsedMilli( void )
-{
-    return getElapsedMicro() / 1000.0;
+    return _endTimeMillis - _startTimeMillis;
 }
 
 double Arc::Timer::getElapsed( void )
@@ -111,6 +106,8 @@ void Arc::Timer::sleepUntilElapsed( double millis )
 
 #endif // WINDOWS
 
+    timeToSleep = std::max(0.0, timeToSleep);
+
     while (timeToSleep > 0.0)
     {
         double timeElapsed;
@@ -128,7 +125,7 @@ void Arc::Timer::sleepUntilElapsed( double millis )
 
 #endif // WINDOWS
 
-        timeToSleep -= abs(timeElapsed);
+        timeToSleep -= timeElapsed;
 
         if( timeToSleep > 10.0 )
         {
@@ -158,11 +155,7 @@ double Arc::Timer::calcDiffMillis( LARGE_INTEGER from, LARGE_INTEGER to ) const
 
 double Arc::Timer::calcDiffMillis( timeval from, timeval to ) const
 {
-    double
-        start = (from.tv_sec / MICRO) + from.tv_usec,
-        end   = (to.tv_sec   / MICRO) + to.tv_usec;
-
-    return (end - start) / 1000.0;
+    return (double)( ((to.tv_sec - from.tv_sec) * 1000.0) + ((to.tv_usec - from.tv_usec) / 1000.0) );
 }
 
 #endif // WINDOWS

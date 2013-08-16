@@ -23,8 +23,8 @@ namespace Arc
 
         virtual void update( Vector2& pos, double delta )
         {
-            pos += Vel;
-            Vel += Acc;
+            pos += Vel * delta;
+            Vel += Acc * delta;
         }
 
     }; // class IPhysicsObject

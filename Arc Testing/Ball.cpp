@@ -26,6 +26,8 @@ void Ball::init( Vector2 pos, float depth /*= 0.0f */ )
     setSize(Size(_radius * 2.0f));
     setOriginLocation(OriginLocation::ORIGIN_LOCATION_CENTER);
 
+    cout << getOrigin() << endl;
+
     _pPing = New Sound();
     _pPing->init("assets/ping.wav");
 
@@ -64,14 +66,14 @@ void Ball::update( const FrameData* data )
             Vel.X *= -randFloat(0.7f, _damping);
         }
 
-        do 
+        do
         {
-            float revAng = coll.Angle + (float)PI;
-            Pos += Vector2(cos(revAng) * 2.0f, sin(revAng) * 2.0f);
-        } 
+            Angle revAng = coll.AngleTo + Angle::HALF_CIRCLE;
+            Pos += Vector2(revAng.getCos() * 2.0f, revAng.getSin() * 2.0f);
+        }
         while (checkTagList(*ArrayList<string>().add("wall"), getParentScene(), Pos, getOrigin()));
     }
-    
+
     Vel.X = clamp(Vel.X, -_maxSpeed, _maxSpeed);
     Vel.Y = clamp(Vel.Y, -_maxSpeed, _maxSpeed);
 
@@ -87,7 +89,7 @@ void Ball::render( const RenderData* data )
 
     //target->fillCircle(Circle(Pos, _radius), BlendColor, 0.0f, getOrigin());
 
-    Color 
+    Color
         first  = Color::RED,
         second = Color::BLUE;
 
@@ -110,7 +112,7 @@ void Ball::render( const RenderData* data )
 void Ball::setTarget( Point target )
 {
     float speed = Pos.distanceTo(target) / 20.0f;
-    float angle = Pos.angleToRad(target);
+    Angle angle = Pos.angleTo(target);
 
-    Vel = Vector2(cos(angle) * speed, sin(angle) * speed);
+    Vel = Vector2(angle.getCos() * speed, angle.getSin() * speed);
 }

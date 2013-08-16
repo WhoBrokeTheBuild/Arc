@@ -28,7 +28,7 @@ namespace Arc
             X,
             Y;
 
-        Vector2( void ) { X = Y = 0; }
+        Vector2( void ) { X = Y = 0.0f; }
 
         Vector2( float x, float y )
         {

@@ -4,20 +4,20 @@
 Arc::Rect Arc::Rect::ZERO = Rect(0, 0, 0, 0);
 Arc::Rect Arc::Rect::ONE  = Rect(0, 0, 1, 1);
 
-Arc::Rect::Rect( float x, float y, float width, float height )
-{
-    X = x;
-    Y = y;
-    Width = width;
-    Height = height;
-}
-
 Arc::Rect::Rect( void )
 {
     X = 0;
     Y = 0;
     Width = 0;
     Height = 0;
+}
+
+Arc::Rect::Rect( float x, float y, float width, float height )
+{
+    X = x;
+    Y = y;
+    Width = width;
+    Height = height;
 }
 
 Arc::Rect::Rect( Vector2 pos, Vector2 size )

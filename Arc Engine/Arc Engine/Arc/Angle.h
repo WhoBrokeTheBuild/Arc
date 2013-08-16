@@ -44,6 +44,7 @@ namespace Arc
             LEFT,
             RIGHT;
 
+        Angle( void ) { _degrees = 0.0f; }
         Angle( float value, AngleType type = ANGLE_TYPE_DEG )
         {
             switch (type)

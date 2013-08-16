@@ -27,7 +27,7 @@ namespace Arc
             Y,
             Radius;
 
-        Circle( void ) { X = Y = Radius = 0; }
+        Circle( void ) { X = Y = Radius = 0.0f; }
         Circle( float x, float y, float radius );
         Circle( Point pos, float radius );
         virtual ~Circle( void ) { }

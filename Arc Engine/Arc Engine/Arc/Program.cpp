@@ -71,6 +71,8 @@ void Arc::Program::start( void )
         fpsDelay = 1000.0 / _targetFPS,
         frameDelay = 1;
 
+    _currentFPS = 1; // Prevent divide-by-zero errors in deltaTime
+
     FrameData frameData = FrameData();
     RenderData renderData = RenderData(_pGraphicsSystem->getRenderTarget());
 

@@ -96,7 +96,7 @@ void TestApp::update( const Event& event )
 void TestApp::render( const Event& event )
 {
     const RenderData* data = event.dataAs<RenderData>();
-    
+
     data->renderTarget()->drawText(Point(25), pFPSText, Color::BLACK);
 
     data->renderTarget()->drawLine(300, 0, 300, 600, Color::BLUE);

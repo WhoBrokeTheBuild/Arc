@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1376060741 source:/home/stephen/workspace/Arc/Arc Testing/Main.cpp
+1376111567 source:/home/stephen/workspace/Arc/Arc Testing/Main.cpp
 	"Common.h"
 	<Arc/Console.h>
 	<Arc/MemoryTracker.h>
 	"TestApp.h"
 
-1374768864 /home/stephen/workspace/Arc/Arc Testing/Common.h
+1376111567 /home/stephen/workspace/Arc/Arc Testing/Common.h
 	<cstdlib>
 	<iostream>
 	<string>
@@ -13,7 +13,7 @@
 	<Arc/Functions.h>
 	<Arc/Geom.h>
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Functions.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Functions.h
 	"Defines.h"
 	<iostream>
 	<iomanip>
@@ -25,41 +25,41 @@
 	"StringFunc.h"
 	"InputFunc.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Defines.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Defines.h
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.h
 	<ctime>
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MathFunc.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MathFunc.h
 	<cmath>
 	"Direction.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RandFunc.h
+1376622592 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RandFunc.h
 	<cstdlib>
 	<ctime>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ParseFunc.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ParseFunc.h
 	<string>
 	<sstream>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StringFunc.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StringFunc.h
 	<string>
 	<sstream>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputFunc.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputFunc.h
 	<SDL/SDL.h>
 	"Keyboard.h"
 	"Mouse.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Keyboard.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Keyboard.h
 	<string>
 	<SDL/SDL.h>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Mouse.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Mouse.h
 	<string>
 	<SDL/SDL.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Geom.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Geom.h
 	"Direction.h"
 	"Angle.h"
 	"Vector2.h"
@@ -67,10 +67,10 @@
 	"Circle.h"
 	"Triangle.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Direction.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Direction.h
 	<string>
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Vector2.h
+1376619014 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Vector2.h
 	"ManagedObject.h"
 	"Functions.h"
 
@@ -79,20 +79,20 @@
 	<sstream>
 	<iostream>
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
 	"ManagedObject.h"
 	"Vector2.h"
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
+1376619008 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
 	"ManagedObject.h"
 	"Vector2.h"
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Triangle.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Triangle.h
 	"ManagedObject.h"
 	"Vector2.h"
 	"MathFunc.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Console.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Console.h
 	"Defines.h"
 	<windows.h>
 	<stdio.h>
@@ -101,12 +101,12 @@
 	<iostream>
 	<fstream>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.h
 	"Common.h"
 	"ManagedObject.h"
 	"Map.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Common.h
+1376617195 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Common.h
 	<cstdlib>
 	<iostream>
 	<string>
@@ -114,35 +114,35 @@
 	"Functions.h"
 	"Geom.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Map.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Map.h
 	"Common.h"
 	"ManagedObject.h"
 	<map>
 	"LinkedList.h"
 	"ArrayList.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/LinkedList.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/LinkedList.h
 	"Common.h"
 	<list>
 	<algorithm>
 	"ArrayList.h"
 	"Queue.h"
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ArrayList.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ArrayList.h
 	"Common.h"
 	"ManagedObject.h"
 	<vector>
 	"LinkedList.h"
 	"Queue.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Queue.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Queue.h
 	"Common.h"
 	"ManagedObject.h"
 	<queue>
 	"ArrayList.h"
 	"LinkedList.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Testing/TestApp.h
+1376111567 /home/stephen/workspace/Arc/Arc Testing/TestApp.h
 	"Common.h"
 	<Arc/Program.h>
 	<Arc/IKeyboardListener.h>
@@ -153,7 +153,7 @@
 	"Wall.h"
 	"Ball.h"
 
-1376061627 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.h
 	"Common.h"
 	"EventDispatcher.h"
 	<SDL/SDL.h>
@@ -170,7 +170,7 @@
 	"RenderedText.h"
 	"Timer.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.h
 	"Common.h"
 	"ManagedObject.h"
 	"Event.h"
@@ -178,19 +178,19 @@
 	"Map.h"
 	"ArrayList.h"
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Event.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Event.h
 	"Common.h"
 	"ManagedObject.h"
 	"EventData.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventData.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventData.h
 	"Common.h"
 	"ManagedObject.h"
 	"RenderTarget.h"
 	"Keyboard.h"
 	"Mouse.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.h
 	"Common.h"
 	"ManagedObject.h"
 	"Color.h"
@@ -200,12 +200,12 @@
 	<SDL/SDL.h>
 	<SDL/SDL_opengl.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.h
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.h
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_ttf.h>
@@ -217,23 +217,23 @@
 	"Font.h"
 	"Color.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.h
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_opengl.h>
 	<SDL/SDL_image.h>
 	<SDL/SDL.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Delegate.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Delegate.h
 	"Common.h"
 	"ManagedObject.h"
 	"Callbacks.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Callbacks.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Callbacks.h
 	"Common.h"
 	"ManagedObject.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.h
 	"Common.h"
 	"EventDispatcher.h"
 	"RenderTarget.h"
@@ -242,7 +242,7 @@
 	<SDL/SDL_opengl.h>
 	<SDL/SDL_ttf.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.h
 	"Common.h"
 	"EventDispatcher.h"
 	<SDL/SDL.h>
@@ -254,79 +254,80 @@
 	"MouseSource.h"
 	"TextInputSource.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GamePad.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GamePad.h
 	<string>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
 	"Common.h"
 	"ManagedObject.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.h
 	"Common.h"
 	"EventDispatcher.h"
 	"Keyboard.h"
 	"InputState.h"
 	"Map.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.h
 	"Common.h"
 	"EventDispatcher.h"
 	"Mouse.h"
 	"InputState.h"
 	"Map.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.h
 	"Common.h"
 	"EventDispatcher.h"
 	"IKeyboardListener.h"
 	"ArrayList.h"
 	"Queue.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IKeyboardListener.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IKeyboardListener.h
 	"Common.h"
 	"KeyboardSource.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.h
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_mixer.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.h
 	"Common.h"
 	"EventDispatcher.h"
 	"ArrayList.h"
 	"Sprite.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.h
 	"Common.h"
 	"ManagedObject.h"
 	"Texture.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.h
+1376617441 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.h
 	"Common.h"
 	"ManagedObject.h"
 	<ctime>
+	<cmath>
 	<Windows.h>
 	<sys/time.h>
 	<unistd.h>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.h
 	"Common.h"
 	"EventDispatcher.h"
 	"IFrameListener.h"
 	"Layer.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IFrameListener.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IFrameListener.h
 	"Common.h"
 	"EventDispatcher.h"
 	"Program.h"
 
-1376059478 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.h
 	"Common.h"
 	"EventDispatcher.h"
 	"Unit.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.h
 	"Common.h"
 	"EventDispatcher.h"
 	"OriginLocation.h"
@@ -339,17 +340,17 @@
 	<Arc/ICollidable.h>
 	<Arc/IKeyboardListener.h>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IDrawable.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IDrawable.h
 	"Common.h"
 	"RenderTarget.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/OriginLocation.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/OriginLocation.h
 	<string>
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IPhysicsObject.h
+1376623349 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IPhysicsObject.h
 	"Common.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ICollidable.h
+1376620900 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ICollidable.h
 	"Common.h"
 	"Collider.h"
 	"RectCollider.h"
@@ -357,71 +358,71 @@
 	"ArrayList.h"
 	"Scene.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Collider.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Collider.h
 	"Common.h"
 	"ManagedObject.h"
 	"RenderTarget.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RectCollider.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RectCollider.h
 	"Common.h"
 	"Collider.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CircleCollider.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CircleCollider.h
 	"Common.h"
 	"Collider.h"
 
-1376060917 source:/home/stephen/workspace/Arc/Arc Testing/TestApp.cpp
+1376617996 source:/home/stephen/workspace/Arc/Arc Testing/TestApp.cpp
 	"TestApp.h"
 
 1374774403 source:/home/stephen/workspace/Arc/Arc Testing/TestUnit.cpp
 	"TestUnit.h"
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.h
+1376618997 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.h
 	"ManagedObject.h"
 	"Functions.h"
 
-1376060741 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h
 	<string>
 	<sstream>
 	<iostream>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.h
 	"Common.h"
 	"ManagedObject.h"
 	"Texture.h"
 	"Font.h"
 	"Color.h"
 
-1375199421 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IMouseListener.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IMouseListener.h
 	"Common.h"
 	"MouseSource.h"
 
-1376055250 /home/stephen/workspace/Arc/Arc Testing/Wall.h
+1376111567 /home/stephen/workspace/Arc/Arc Testing/Wall.h
 	"Common.h"
 	<Arc/Unit.h>
 	<Arc/ICollidable.h>
 	<Arc/IDrawable.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Testing/Ball.h
+1376111567 /home/stephen/workspace/Arc/Arc Testing/Ball.h
 	"Common.h"
 	<Arc/ICollidable.h>
 	<Arc/IPhysicsObject.h>
 	<Arc/IDrawable.h>
 	<Arc/Sound.h>
 
-1376055250 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sound.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sound.h
 	"Common.h"
 	"ManagedObject.h"
 	"IFrameListener.h"
 	<SDL/SDL_mixer.h>
 
-1376055250 source:/home/stephen/workspace/Arc/Arc Testing/Ball.cpp
+1376623247 source:/home/stephen/workspace/Arc/Arc Testing/Ball.cpp
 	"Ball.h"
 
-1375199424 source:/home/stephen/workspace/Arc/Arc Testing/Wall.cpp
+1376111567 source:/home/stephen/workspace/Arc/Arc Testing/Wall.cpp
 	"Wall.h"
 
-1376061627 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.h
+1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.h
 	"Common.h"
 	"ManagedObject.h"
 	"Timer.h"

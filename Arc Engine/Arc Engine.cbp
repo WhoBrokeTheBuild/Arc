@@ -5,7 +5,7 @@
 		<Option title="Arc Engine" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Geometry/;Project/Util/Functions/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;" />
+		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Geometry/;Project/Util/Functions/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;Project/Scripting/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="Debug/libArc" prefix_auto="1" extension_auto="1" />
@@ -19,6 +19,8 @@
 					<Add option="-std=c++0x" />
 					<Add option="-Wall" />
 					<Add option="-g" />
+					<Add option="-m64" />
+					<Add option="-fPIC" />
 					<Add option="-D_DEBUG" />
 				</Compiler>
 			</Target>
@@ -297,6 +299,12 @@
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Scene.h">
 			<Option virtualFolder="Project/Units/Containers/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/ScriptingSystem.cpp">
+			<Option virtualFolder="Project/Scripting/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/ScriptingSystem.h">
+			<Option virtualFolder="Project/Scripting/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Sound.cpp">
 			<Option virtualFolder="Project/Audio/" />

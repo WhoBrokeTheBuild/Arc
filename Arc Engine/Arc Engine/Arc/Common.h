@@ -9,7 +9,7 @@
 #include <sstream>
 
 using std::string;
-using std::stringstream; 
+using std::stringstream;
 using std::cin;
 using std::cout;
 using std::cerr;
