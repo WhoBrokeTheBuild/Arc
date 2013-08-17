@@ -4,19 +4,11 @@
 Arc::Rect Arc::Rect::ZERO = Rect(0, 0, 0, 0);
 Arc::Rect Arc::Rect::ONE  = Rect(0, 0, 1, 1);
 
-Arc::Rect::Rect( void )
-{
-    X = 0;
-    Y = 0;
-    Width = 0;
-    Height = 0;
-}
-
 Arc::Rect::Rect( float x, float y, float width, float height )
 {
     X = x;
     Y = y;
-    Width = width;
+    Width  = width;
     Height = height;
 }
 
@@ -24,8 +16,32 @@ Arc::Rect::Rect( Vector2 pos, Vector2 size )
 {
     X = pos.X;
     Y = pos.Y;
-    Width = size.X;
+    Width  = size.X;
     Height = size.Y;
+}
+
+int Arc::Rect::serialize( ostream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamWriteFloat(X, stream);
+    bytes += streamWriteFloat(Y, stream);
+    bytes += streamWriteFloat(Width,  stream);
+    bytes += streamWriteFloat(Height, stream);
+
+    return bytes;
+}
+
+int Arc::Rect::deserialize( istream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamReadFloat(X, stream);
+    bytes += streamReadFloat(Y, stream);
+    bytes += streamReadFloat(Width,  stream);
+    bytes += streamReadFloat(Height, stream);
+
+    return bytes;
 }
 
 void Arc::Rect::setPos( Vector2 pos )

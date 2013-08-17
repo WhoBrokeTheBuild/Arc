@@ -4,6 +4,8 @@
 #define __ARC_CIRCLE_H__
 
 #include "ManagedObject.h"
+#include "ISerializable.h"
+#include "Functions.h"
 
 #include "Vector2.h"
 
@@ -12,7 +14,8 @@ namespace Arc
     class Rect;
 
     class Circle :
-        public ManagedObject
+        public ManagedObject,
+        public ISerializable
     {
     private:
 
@@ -38,6 +41,9 @@ namespace Arc
             ss << "Circle [X: " << X << ", Y: " << Y << ", R:" << Radius << "]";
             return ss.str();
         }
+
+        virtual int serialize( ostream &stream );
+        virtual int deserialize( istream &stream );
 
         inline Point pos ( void ) { return Point(X, Y); }
         inline Point center( void ) { return Point(X + Radius, Y + Radius); }

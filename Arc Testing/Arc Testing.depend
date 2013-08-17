@@ -82,12 +82,16 @@
 	<sstream>
 	<iostream>
 
-1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
+1376704011 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
 	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
 	"Vector2.h"
 
-1376619008 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
+1376703853 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
 	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
 	"Vector2.h"
 
 1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Triangle.h
@@ -380,8 +384,9 @@
 1374774403 source:/home/stephen/workspace/Arc/Arc Testing/TestUnit.cpp
 	"TestUnit.h"
 
-1376701073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.h
+1376703864 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.h
 	"ManagedObject.h"
+	"ISerializable.h"
 	"Functions.h"
 
 1376111566 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h

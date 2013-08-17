@@ -8,16 +8,23 @@ const Arc::Angle Arc::Angle::DOWN        = Arc::Angle(270.0f);
 const Arc::Angle Arc::Angle::LEFT        = Arc::Angle(180.0f);
 const Arc::Angle Arc::Angle::RIGHT       = Arc::Angle(0.0f);
 
-virtual int serialize( ostream &stream )
+int Arc::Angle::serialize( ostream &stream )
 {
-    int bytes;
+    int bytes = 0;
 
     bytes += streamWriteFloat(_degrees, stream);
 
     return bytes;
 }
 
-virtual int deserialize( istream &stream );
+int Arc::Angle::deserialize( istream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamReadFloat(_degrees, stream);
+
+    return bytes;
+}
 
 Arc::Vector2 Arc::Angle::getVector2( void ) const
 {
