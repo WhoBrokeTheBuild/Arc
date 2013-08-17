@@ -4,6 +4,7 @@
 #define __ARC_VECTOR_2_H__
 
 #include "ManagedObject.h"
+#include "ISerializable.h"
 #include "Functions.h"
 
 namespace Arc
@@ -15,7 +16,8 @@ namespace Arc
     typedef Vector2 Size;
 
     class Vector2
-        : public ManagedObject
+        : public ManagedObject,
+          public ISerializable
     {
     public:
 
@@ -51,9 +53,35 @@ namespace Arc
             return ss.str();
         }
 
-        float distanceTo( Vector2 other );
-        float angleToDeg( Vector2 other );
-        float angleToRad( Vector2 other );
+        virtual int serialize( ostream &stream );
+        virtual int deserialize( istream &stream );
+
+        inline float distanceToSquared( Vector2 other )
+        {
+            float dx = other.X - X,
+                  dy = other.Y - Y;
+
+            return (dx * dx + dy * dy);
+        }
+
+        inline float distanceTo( Vector2 other )
+        {
+            return sqrt(distanceToSquared(other));
+        }
+
+        inline float angleToDeg( Vector2 other )
+        {
+            return toDeg(angleToRad(other));
+        }
+
+        inline float angleToRad( Vector2 other )
+        {
+            float dx = other.X - X,
+                  dy = other.Y - Y;
+
+            return atan2(dy, dx);
+        }
+
         Angle angleTo( Vector2 other );
 
         float halfX( void ) { return (X * 0.5f); }

@@ -16,6 +16,7 @@
 #include "ParseFunc.h"
 #include "StringFunc.h"
 #include "InputFunc.h"
+#include "StreamFunc.h"
 
 using std::string;
 using std::stringstream;

@@ -1,4 +1,5 @@
 #include "Angle.h"
+#include "Vector2.h"
 
 const Arc::Angle Arc::Angle::ZERO        = Arc::Angle(0.0f);
 const Arc::Angle Arc::Angle::HALF_CIRCLE = Arc::Angle(180.0f);
@@ -6,6 +7,22 @@ const Arc::Angle Arc::Angle::UP          = Arc::Angle(90.0f);
 const Arc::Angle Arc::Angle::DOWN        = Arc::Angle(270.0f);
 const Arc::Angle Arc::Angle::LEFT        = Arc::Angle(180.0f);
 const Arc::Angle Arc::Angle::RIGHT       = Arc::Angle(0.0f);
+
+virtual int serialize( ostream &stream )
+{
+    int bytes;
+
+    bytes += streamWriteFloat(_degrees, stream);
+
+    return bytes;
+}
+
+virtual int deserialize( istream &stream );
+
+Arc::Vector2 Arc::Angle::getVector2( void ) const
+{
+    return Vector2(getCos(), getSin());
+}
 
 const Arc::Angle Arc::Angle::operator+( const Angle& rhs ) const
 {

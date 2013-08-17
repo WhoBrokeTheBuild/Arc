@@ -84,7 +84,7 @@ void TestApp::term( void )
 
 void TestApp::update( const Event& event )
 {
-    const FrameData* data = event.dataAs<FrameData>();
+    //const FrameData* data = event.dataAs<FrameData>();
 
     stringstream ss;
 

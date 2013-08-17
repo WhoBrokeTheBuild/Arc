@@ -5,6 +5,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <sstream>
 
@@ -12,6 +13,8 @@
 #include <Arc/Geom.h>
 
 using namespace Arc;
+using std::fstream;
+using std::ios;
 using std::cout;
 using std::string;
 using std::stringstream;

@@ -1,10 +1,31 @@
 #include "Vector2.h"
 #include "Angle.h"
 #include "MathFunc.h"
+#include "StreamFunc.h"
 
 Arc::Vector2 Arc::Vector2::ZERO         = Vector2(0);
 Arc::Vector2 Arc::Vector2::ONE          = Vector2(1);
 Arc::Vector2 Arc::Vector2::NEGATIVE_ONE = Vector2(-1);
+
+int Arc::Vector2::serialize( ostream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamWriteFloat(X, stream);
+    bytes += streamWriteFloat(Y, stream);
+
+    return bytes;
+}
+
+int Arc::Vector2::deserialize( istream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamReadFloat(X, stream);
+    bytes += streamReadFloat(Y, stream);
+
+    return bytes;
+}
 
 const Arc::Vector2 Arc::Vector2::operator+( const Vector2 &rhs ) const
 {
@@ -80,27 +101,6 @@ bool Arc::Vector2::operator==( const Vector2 &rhs ) const
 bool Arc::Vector2::operator!=( const Vector2 &rhs ) const
 {
     return !(*this == rhs);
-}
-
-float Arc::Vector2::distanceTo( Vector2 other )
-{
-    float dx = other.X - X,
-          dy = other.Y - Y;
-
-    return sqrt(dx * dx + dy * dy);
-}
-
-float Arc::Vector2::angleToDeg( Vector2 other )
-{
-    return toDeg(angleToRad(other));
-}
-
-float Arc::Vector2::angleToRad( Vector2 other )
-{
-    float dx = other.X - X,
-          dy = other.Y - Y;
-
-    return atan2(dy, dx);
 }
 
 Arc::Angle Arc::Vector2::angleTo( Vector2 other )

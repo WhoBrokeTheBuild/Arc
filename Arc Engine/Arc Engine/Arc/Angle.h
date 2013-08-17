@@ -8,6 +8,7 @@
 
 namespace Arc
 {
+    class Vector2;
 
     enum AngleType
     {
@@ -45,6 +46,7 @@ namespace Arc
             RIGHT;
 
         Angle( void ) { _degrees = 0.0f; }
+
         Angle( float value, AngleType type = ANGLE_TYPE_DEG )
         {
             switch (type)
@@ -71,6 +73,9 @@ namespace Arc
             return ss.str();
         }
 
+        virtual int serialize( ostream &stream );
+        virtual int deserialize( istream &stream );
+
         inline float getDeg( void ) const { return _degrees; }
         inline float getRad( void ) const { return toRad(_degrees); }
 
@@ -79,6 +84,8 @@ namespace Arc
 
         inline float getCos( void ) const { return cosf(getRad()); }
         inline float getSin( void ) const { return sinf(getRad()); }
+
+        Vector2 getVector2( void ) const;
 
         inline void addAngle( float value, AngleType type ) { Angle other = Angle(value, type); *this += other; }
         inline void subAngle( float value, AngleType type ) { addAngle(-value, type); }
