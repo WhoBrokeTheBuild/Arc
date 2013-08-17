@@ -4,6 +4,8 @@
 #define __ARC_LINE_H__
 
 #include "ManagedObject.h"
+#include "ISerializable.h"
+#include "Functions.h"
 
 #include "Vector2.h"
 
@@ -12,7 +14,8 @@ namespace Arc
     class Angle;
 
     class Line :
-        public ManagedObject
+        public ManagedObject,
+        public ISerializable
     {
     public:
 
@@ -39,7 +42,15 @@ namespace Arc
 
         virtual ~Line(void) { }
 
-        virtual inline string toString( void ) const { return "Line"; }
+        virtual inline string toString( void ) const
+        {
+            stringstream ss;
+            ss << "Line [A: [" << A.X << ", " << A.Y << "], B: [" << B.X << ", " << B.Y << "] ]";
+            return ss.str();
+        }
+
+        virtual int serialize( ostream &stream );
+        virtual int deserialize( istream &stream );
 
         inline float length( void ) { return A.distanceTo(B); }
 

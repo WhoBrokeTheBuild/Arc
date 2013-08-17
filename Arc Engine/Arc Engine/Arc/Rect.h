@@ -4,6 +4,8 @@
 #define __ARC_RECT_H__
 
 #include "ManagedObject.h"
+#include "ISerializable.h"
+#include "Functions.h"
 
 #include "Vector2.h"
 
@@ -11,8 +13,9 @@ namespace Arc
 {
     class Circle;
 
-    class Rect
-        : public ManagedObject
+    class Rect :
+        public ManagedObject,
+        public ISerializable
     {
     private:
 
@@ -28,7 +31,7 @@ namespace Arc
             Width,
             Height;
 
-        Rect( void );
+        Rect( void ) { X = Y = Width = Height = 0; }
         Rect( float x, float y, float width, float height );
         Rect( Vector2 pos, Size size );
         virtual ~Rect( void ) { }
@@ -39,6 +42,9 @@ namespace Arc
             ss << "Rect [X: " << X << ", Y: " << Y << ", W: " << Width << ", H: " << Height << "]";
             return ss.str();
         }
+
+        virtual int serialize( ostream &stream );
+        virtual int deserialize( istream &stream );
 
         void setPos( Vector2 pos );
         void setSize( Size size );

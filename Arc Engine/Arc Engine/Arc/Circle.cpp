@@ -18,6 +18,28 @@ Arc::Circle::Circle( Point pos, float radius )
     Radius = radius;
 }
 
+int Arc::Circle::serialize( ostream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamWriteFloat(X, stream);
+    bytes += streamWriteFloat(Y, stream);
+    bytes += streamWriteFloat(Radius, stream);
+
+    return bytes;
+}
+
+int Arc::Circle::deserialize( istream &stream )
+{
+    int bytes = 0;
+
+    bytes += streamReadFloat(X, stream);
+    bytes += streamReadFloat(Y, stream);
+    bytes += streamReadFloat(Radius, stream);
+
+    return bytes;
+}
+
 bool Arc::Circle::containsCircle( Circle other )
 {
     float dist = pos().distanceTo(other.pos());

@@ -11,6 +11,26 @@ Arc::Line& Arc::Line::operator=( const Line &rhs )
     return *this;
 }
 
+int Arc::Line::serialize( ostream &stream )
+{
+    int bytes = 0;
+
+    bytes += A.serialize(stream);
+    bytes += B.serialize(stream);
+
+    return bytes;
+}
+
+int Arc::Line::deserialize( istream &stream )
+{
+    int bytes = 0;
+
+    bytes += A.deserialize(stream);
+    bytes += B.deserialize(stream);
+
+    return bytes;
+}
+
 bool Arc::Line::operator==( const Line &rhs ) const
 {
     return (A == rhs.A && B == rhs.B);

@@ -4,6 +4,7 @@
 #define __ARC_ANGLE_H__
 
 #include "ManagedObject.h"
+#include "ISerializable.h"
 #include "Functions.h"
 
 namespace Arc
@@ -27,8 +28,9 @@ namespace Arc
         "Radians"
     };
 
-    class Angle
-        : public ManagedObject
+    class Angle :
+        public ManagedObject,
+        public ISerializable
     {
     protected:
 
