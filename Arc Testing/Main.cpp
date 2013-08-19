@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 
 #endif
 
+    /*
     fstream out("vector2.test", ios::out | ios::binary | ios::trunc);
 
     Vector2 test(25.0f, 32.0f);
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
     in.close();
 
     die();
+    */
 
     INFO("Main", "Starting Up");
 

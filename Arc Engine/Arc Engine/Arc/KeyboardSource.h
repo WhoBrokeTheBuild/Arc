@@ -17,7 +17,7 @@ namespace Arc
     {
     private:
 
-        Uint8
+        uint8_t
             *_sdlKeys;
 
     protected:
