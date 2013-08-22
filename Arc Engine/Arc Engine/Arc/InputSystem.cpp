@@ -10,7 +10,7 @@ Arc::InputSystem::InputSystem( void )
 
 void Arc::InputSystem::init( void )
 {
-    INFO(toString(), "Initializing");Fuck
+    INFO(toString(), "Initializing");
 
     _pKeyboardSource = New KeyboardSource();
     _pKeyboardSource->init();
