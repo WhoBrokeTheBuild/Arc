@@ -8,7 +8,7 @@
 		<Option virtualFolders="Project/;Project/Timing/;Project/Core/;Project/Util/;Project/Util/Geometry/;Project/Util/Functions/;Project/Util/Collections/;Project/Graphics/;Project/Units/;Project/Audio/;Project/Events/;Project/Tracking/;Project/Input/;Project/Input/Listeners/;Project/Input/Sources/;Project/Input/Inputs/;Project/Units/Colliders/;Project/Units/Modules/;Project/Units/Containers/;Project/Core/Listeners/;Project/Scripting/;" />
 		<Build>
 			<Target title="Debug">
-				<Option output="Debug/libArc" prefix_auto="1" extension_auto="1" />
+				<Option output="Debug/Arc" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -25,7 +25,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="Release/libArc" prefix_auto="1" extension_auto="1" />
+				<Option output="Release/Arc" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -317,6 +317,12 @@
 		</Unit>
 		<Unit filename="Arc Engine/Arc/Sprite.h">
 			<Option virtualFolder="Project/Graphics/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/StreamFunc.cpp">
+			<Option virtualFolder="Project/Util/Functions/" />
+		</Unit>
+		<Unit filename="Arc Engine/Arc/StreamFunc.h">
+			<Option virtualFolder="Project/Util/Functions/" />
 		</Unit>
 		<Unit filename="Arc Engine/Arc/StringFunc.cpp">
 			<Option virtualFolder="Project/Util/Functions/" />
