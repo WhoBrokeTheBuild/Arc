@@ -26,8 +26,6 @@ void Ball::init( Vector2 pos, float depth /*= 0.0f */ )
     setSize(Size(_radius * 2.0f));
     setOriginLocation(OriginLocation::ORIGIN_LOCATION_CENTER);
 
-    cout << getOrigin() << endl;
-
     _pPing = New Sound();
     _pPing->init("assets/ping.wav");
 

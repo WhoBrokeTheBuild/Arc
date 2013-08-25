@@ -186,6 +186,9 @@
     <ClCompile Include="ScriptingSystem.cpp">
       <Filter>Project\Scripting</Filter>
     </ClCompile>
+    <ClCompile Include="StreamFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -391,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="ScriptingSystem.h">
       <Filter>Project\Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="StreamFunc.h">
+      <Filter>Project\Util\Functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

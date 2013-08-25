@@ -106,7 +106,7 @@ void Arc::Timer::sleepUntilElapsed( double millis )
 
 #endif // WINDOWS
 
-    timeToSleep = std::max(0.0, timeToSleep);
+    timeToSleep = max(0.0, timeToSleep);
 
     while (timeToSleep > 0.0)
     {

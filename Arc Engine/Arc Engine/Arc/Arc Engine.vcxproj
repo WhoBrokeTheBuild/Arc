@@ -43,6 +43,7 @@
     <ClCompile Include="ScriptingSystem.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StreamFunc.cpp" />
     <ClCompile Include="StringFunc.cpp" />
     <ClCompile Include="TextInputSource.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="ScriptingSystem.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StreamFunc.h" />
     <ClInclude Include="StringFunc.h" />
     <ClInclude Include="TextInputSource.h" />
     <ClInclude Include="Texture.h" />

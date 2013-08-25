@@ -7,7 +7,10 @@
     <ClCompile Include="TestApp.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="TestUnit.cpp">
+    <ClCompile Include="Ball.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
       <Filter>Project</Filter>
     </ClCompile>
   </ItemGroup>
@@ -18,7 +21,10 @@
     <ClInclude Include="TestApp.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="TestUnit.h">
+    <ClInclude Include="Ball.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
       <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>
