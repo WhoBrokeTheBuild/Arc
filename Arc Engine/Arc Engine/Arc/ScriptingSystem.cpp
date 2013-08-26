@@ -2,6 +2,11 @@
 #include "Program.h"
 #include "GraphicsSystem.h"
 
+Arc::ScriptingSystem::ScriptingSystem( void )
+{
+    _pLuaState = nullptr;
+}
+
 void Arc::ScriptingSystem::init( void )
 {
     _pLuaState = luaL_newstate();

@@ -35,7 +35,7 @@ namespace Arc
         PointData( float x, float y ) { X = x; Y = y; };
         PointData( Vector2 point ) { X = point.X; Y = point.Y; };
 
-        Vector2 vector2( void ) { return Vector2(X, Y); };
+        Vector2 getVector2( void ) { return Vector2(X, Y); };
 
         virtual inline string toString( void ) const
         {

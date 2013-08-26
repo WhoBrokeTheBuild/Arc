@@ -30,10 +30,7 @@ namespace Arc
 
     public:
 
-        ScriptingSystem( void )
-            : _pLuaState(nullptr)
-        { }
-
+        ScriptingSystem( void );
         virtual ~ScriptingSystem( void ) { term(); }
 
         virtual void init( void );

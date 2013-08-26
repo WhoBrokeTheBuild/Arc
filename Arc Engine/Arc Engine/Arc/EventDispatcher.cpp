@@ -112,7 +112,7 @@ void Arc::EventDispatcher::removeAllListeners( const EventType& eventType )
 
 void Arc::EventDispatcher::dispatchEvent( const Event& event )
 {
-    EventType type = event.type();
+    EventType type = event.getType();
 
     if ( ! _eventMap.contains(type))
         return;

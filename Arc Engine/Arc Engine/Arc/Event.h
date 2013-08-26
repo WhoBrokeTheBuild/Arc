@@ -34,7 +34,6 @@ namespace Arc
     public:
 
         static const EventType EVENT_NULL;
-
         static const EventData BLANK_DATA;
         static const Event     BLANK_EVENT;
 
@@ -44,8 +43,9 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Event"; }
 
-        inline EventType type( void ) const { return _type; };
-        inline EventDispatcher *target( void ) const { return _pEventTarget; };
+        inline EventType getType( void )          const { return _type; };
+        inline EventDispatcher *getTarget( void ) const { return _pEventTarget; };
+
         inline void setTarget( EventDispatcher* target ) { _pEventTarget = target; }
 
         template <typename T>
