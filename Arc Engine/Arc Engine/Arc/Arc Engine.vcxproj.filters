@@ -64,8 +64,8 @@
     <Filter Include="Project\Scripting">
       <UniqueIdentifier>{f922a664-be1d-49b4-8c18-21e9f6708245}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Project\Networking">
-      <UniqueIdentifier>{9198316c-1bfd-4e35-bbb6-c306a81d628a}</UniqueIdentifier>
+    <Filter Include="Project\Units\Components">
+      <UniqueIdentifier>{659464c9-4032-43c6-bb50-42611551ce82}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -192,14 +192,8 @@
     <ClCompile Include="StreamFunc.cpp">
       <Filter>Project\Util\Functions</Filter>
     </ClCompile>
-    <ClCompile Include="NetworkSystem.cpp">
-      <Filter>Project\Networking</Filter>
-    </ClCompile>
-    <ClCompile Include="IPAddress.cpp">
-      <Filter>Project\Networking</Filter>
-    </ClCompile>
-    <ClCompile Include="Socket.cpp">
-      <Filter>Project\Networking</Filter>
+    <ClCompile Include="Component.cpp">
+      <Filter>Project\Units\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -410,17 +404,8 @@
     <ClInclude Include="StreamFunc.h">
       <Filter>Project\Util\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="NetworkSystem.h">
-      <Filter>Project\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="SocketType.h">
-      <Filter>Project\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="IPAddress.h">
-      <Filter>Project\Networking</Filter>
-    </ClInclude>
-    <ClInclude Include="Socket.h">
-      <Filter>Project\Networking</Filter>
+    <ClInclude Include="Component.h">
+      <Filter>Project\Units\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -14,8 +14,7 @@
     <ClCompile Include="Angle.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
-    <ClCompile Include="IPAddress.cpp" />
-    <ClCompile Include="NetworkSystem.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="RenderedText.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
@@ -43,7 +42,6 @@
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScriptingSystem.cpp" />
-    <ClCompile Include="Socket.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StreamFunc.cpp" />
@@ -61,8 +59,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="AudioSystem.h" />
-    <ClInclude Include="IPAddress.h" />
-    <ClInclude Include="NetworkSystem.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="RenderedText.h" />
     <ClInclude Include="Callbacks.h" />
     <ClInclude Include="Circle.h" />
@@ -117,8 +114,6 @@
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScriptingSystem.h" />
-    <ClInclude Include="Socket.h" />
-    <ClInclude Include="SocketType.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StreamFunc.h" />
