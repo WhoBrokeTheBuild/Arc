@@ -10,7 +10,8 @@ namespace Arc
 {
 	class Unit;
 
-	class Component : public EventDispatcher
+	class Component :
+        public EventDispatcher
 	{
 	protected:
 

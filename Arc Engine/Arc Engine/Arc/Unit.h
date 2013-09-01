@@ -35,7 +35,9 @@ namespace Arc
             _size;
 
 		ArrayList<Component*>
-			_components,
+			_components;
+
+        LinkedList<Componenet*>
 			_componentsToAdd,
 			_componentsToRemove;
 

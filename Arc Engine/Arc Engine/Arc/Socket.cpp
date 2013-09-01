@@ -1,7 +1,16 @@
 #include "Socket.h"
 
-void Arc::Socket::init( void )
+Arc::Socket::Socket( void )
 {
+    _address = IPAddress();
+    _type = INVALID_SOCKET_TYPE;
+}
+
+void Arc::Socket::init( IPAddress addr, SocketType type )
+{
+    _address = addr;
+    _type    = type;
+
 
 }
 

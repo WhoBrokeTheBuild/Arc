@@ -32,18 +32,32 @@ namespace Arc
         SOCKET
             _socket;
 
+        SOCKET getWinSocket( void ) const { return _socket; }
+
 #else // LINUX
 
+        int
+            _socket;
+
+        int getUnixSocket( void ) const { return _socket; }
 
 #endif
+
+        IPAddress
+            _address;
+
+        SocketType
+            _type;
 
     public:
 
         Socket( void );
         virtual ~Socket( void ) { term(); }
 
-        virtual void init( void );
+        virtual void init( IPAddress addr, SocketType type );
         virtual void term( void );
+
+        virtual SocketType getType( void ) const { return _type; }
 
     }; // class Socket
 
