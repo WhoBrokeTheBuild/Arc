@@ -12,6 +12,7 @@ namespace Arc
 {
     class Layer;
     class Scene;
+	class Component;
 
     class Unit :
         public EventDispatcher
@@ -33,9 +34,16 @@ namespace Arc
         Size
             _size;
 
+		ArrayList<Component*>
+			_components,
+			_componentsToAdd,
+			_componentsToRemove;
+
         virtual void calcOriginLocation( void );
 
         virtual void setParentLayer( Layer* layer ) { _pParent = layer; }
+
+		void updateComponentLists( void );
 
     public:
 

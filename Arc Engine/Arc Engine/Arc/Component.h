@@ -17,6 +17,8 @@ namespace Arc
 		Unit*
 			_pParent;
 
+		void setParentUnit( Unit* unit ) { _pParent = unit; }
+
 	public:
 
 		bool
@@ -33,6 +35,12 @@ namespace Arc
 		virtual void term( void );
 
 		virtual inline string toString( void ) const { return "Component"; }
+
+		virtual void update( const Event& event );
+        virtual void render( const Event& event );
+
+        virtual void update( const FrameData* data )  = 0;
+        virtual void render( const RenderData* data ) = 0;
 
 		bool removeSelf();
 
