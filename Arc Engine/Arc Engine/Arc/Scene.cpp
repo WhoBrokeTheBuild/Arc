@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Unit.h"
 #include "Program.h"
 
 Arc::Scene::Scene( void )

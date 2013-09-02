@@ -45,7 +45,7 @@ namespace Arc
 
 		bool removeSelf();
 
-		Unit* getParentUnit( void ) const { return _pParent; }
+		inline Unit* getParentUnit( void ) const { return _pParent; }
 
 	}; // class Component
 

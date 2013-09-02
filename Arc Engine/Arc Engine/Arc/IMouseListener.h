@@ -12,10 +12,10 @@ namespace Arc
     {
     public:
 
-        IMouseListener( void ) { }
-        virtual ~IMouseListener( void ) { term(); };
+        inline IMouseListener( void ) { }
+        virtual inline ~IMouseListener( void ) { term(); };
 
-        virtual void init( void )
+        inline virtual void init( void )
         {
             gpEventDispatcher->addEventListener(MouseSource::EVENT_MOUSE_PRESSED,  this, &IMouseListener::mousePressed);
             gpEventDispatcher->addEventListener(MouseSource::EVENT_MOUSE_RELEASED, this, &IMouseListener::mouseReleased);
@@ -23,7 +23,7 @@ namespace Arc
             gpEventDispatcher->addEventListener(MouseSource::EVENT_MOUSE_MOVED,    this, &IMouseListener::mouseMoved);
         }
 
-        virtual void term( void )
+        inline virtual void term( void )
         {
             gpEventDispatcher->removeEventListener(MouseSource::EVENT_MOUSE_MOVED,    this, &IMouseListener::mouseMoved);
             gpEventDispatcher->removeEventListener(MouseSource::EVENT_MOUSE_HELD,     this, &IMouseListener::mouseHeld);
@@ -31,10 +31,10 @@ namespace Arc
             gpEventDispatcher->removeEventListener(MouseSource::EVENT_MOUSE_PRESSED,  this, &IMouseListener::mousePressed);
         }
 
-        virtual void mousePressed ( const Event& event ) { };
-        virtual void mouseReleased( const Event& event ) { };
-        virtual void mouseHeld    ( const Event& event ) { };
-        virtual void mouseMoved   ( const Event& event ) { };
+        virtual inline void mousePressed ( const Event& event ) { };
+        virtual inline void mouseReleased( const Event& event ) { };
+        virtual inline void mouseHeld    ( const Event& event ) { };
+        virtual inline void mouseMoved   ( const Event& event ) { };
 
     };
 }

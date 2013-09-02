@@ -32,25 +32,25 @@ namespace Arc
         typedef typename vector<T>::iterator       Iterator;
         typedef typename vector<T>::const_iterator ConstIterator;
 
-        ArrayList ( void ) { _list = vector<T>(); }
-        ArrayList ( const ArrayList& rhs) : _list(rhs._list) { }
-        virtual ~ArrayList( void ) { clear(); }
+        inline ArrayList ( void ) { _list = vector<T>(); }
+        inline ArrayList ( const ArrayList& rhs) : _list(rhs._list) { }
+        virtual inline ~ArrayList( void ) { clear(); }
 
-        ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; return *this; }
-        T&         operator[]( const int index)       { return at(index); }
-        const T    operator[]( const int index) const { return at(index); }
+        inline ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; return *this; }
+        inline T&         operator[]( const int index)       { return at(index); }
+        inline const T    operator[]( const int index) const { return at(index); }
 
         virtual inline string toString( void ) const { return "Array List"; }
 
-        Iterator begin ( void ) { return _list.begin(); }
-        Iterator end   ( void ) { return _list.end(); }
-        Iterator rbegin( void ) { return _list.rbegin(); }
-        Iterator rend  ( void ) { return _list.rend(); }
+        inline Iterator begin ( void ) { return _list.begin(); }
+        inline Iterator end   ( void ) { return _list.end(); }
+        inline Iterator rbegin( void ) { return _list.rbegin(); }
+        inline Iterator rend  ( void ) { return _list.rend(); }
 
-        ConstIterator cbegin ( void ) const { return _list.cbegin(); }
-        ConstIterator cend   ( void ) const { return _list.cend(); }
-        ConstIterator crbegin( void ) const { return _list.crbegin(); }
-        ConstIterator crend  ( void ) const { return _list.crend(); }
+        inline ConstIterator cbegin ( void ) const { return _list.cbegin(); }
+        inline ConstIterator cend   ( void ) const { return _list.cend(); }
+        inline ConstIterator crbegin( void ) const { return _list.crbegin(); }
+        inline ConstIterator crend  ( void ) const { return _list.crend(); }
 
         ArrayList<T>* add        ( const T& item );
         ArrayList<T>* insertAt   ( const T& item, const int& index );
@@ -61,30 +61,30 @@ namespace Arc
         bool          removeFront( void );
         bool          removeBack ( void );
 
-        T& at( int index ) { return _list[index]; }
-        const T at( int index ) const { return _list[index]; }
+        inline T& at( int index ) { return _list[index]; }
+        inline const T at( int index ) const { return _list[index]; }
 
-        T& front( void ) { return _list.front(); }
-        T& back ( void ) { return _list.back(); }
+        inline T& front( void ) { return _list.front(); }
+        inline T& back ( void ) { return _list.back(); }
 
-        const T& front( void ) const { return _list.front(); }
-        const T& back ( void ) const { return _list.back(); }
+        inline const T& front( void ) const { return _list.front(); }
+        inline const T& back ( void ) const { return _list.back(); }
 
         bool contains( const T& item ) const;
         bool hasIndex( const int& index ) const;
-        bool empty   ( void ) const { return _list.empty(); }
+        inline bool empty   ( void ) const { return _list.empty(); }
 
         int indexOf( T& item ) const;
 
-        size_t size( void ) const { return _list.size(); }
+        inline size_t size( void ) const { return _list.size(); }
 
         unsigned int merge( ArrayList<T> list );
         unsigned int merge( LinkedList<T> list );
         unsigned int merge( Queue<T> list );
 
-        T*            toArray     ( void ) { unsigned int i; return toArray(i); }
-        LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
-        Queue<T>      toQueue     ( void ) { unsigned int i; return toQueue(i); }
+        inline T*            toArray     ( void ) { unsigned int i; return toArray(i); }
+        inline LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
+        inline Queue<T>      toQueue     ( void ) { unsigned int i; return toQueue(i); }
 
         T*            toArray     ( unsigned int& length );
         LinkedList<T> toLinkedList( unsigned int& length );

@@ -14,23 +14,23 @@ namespace Arc
     {
     public:
 
-        IFrameListener( void ) { }
-        virtual ~IFrameListener( void ) { term(); };
+        inline IFrameListener( void ) { }
+        virtual inline ~IFrameListener( void ) { term(); };
 
-        virtual void init( void )
+        virtual inline void init( void )
         {
             gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &IFrameListener::update);
             gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &IFrameListener::render);
         }
 
-        virtual void term( void )
+        virtual inline void term( void )
         {
             gpEventDispatcher->removeEventListener(Program::EVENT_RENDER, this, &IFrameListener::render);
             gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &IFrameListener::update);
         }
 
-        virtual void update( const Event& event ) { };
-        virtual void render( const Event& event ) { };
+        virtual inline void update( const Event& event ) { };
+        virtual inline void render( const Event& event ) { };
 
     }; // class IFrameListener
     

@@ -40,7 +40,7 @@ namespace Arc
             EVENT_MOUSE_HELD;
 
         MouseSource( void );
-        virtual ~MouseSource( void ) { term(); }
+        virtual inline ~MouseSource( void ) { term(); }
 
         virtual inline string toString( void ) const { return "Mouse Source"; }
 

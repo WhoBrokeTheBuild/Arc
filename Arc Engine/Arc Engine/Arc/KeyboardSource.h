@@ -33,7 +33,7 @@ namespace Arc
             EVENT_KEY_HELD;
 
         KeyboardSource( void );
-        virtual ~KeyboardSource( void ) { term(); }
+        virtual inline ~KeyboardSource( void ) { term(); }
 
         virtual inline string toString( void ) const { return "Keyboard Source"; }
 

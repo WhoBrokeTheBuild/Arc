@@ -31,10 +31,10 @@ namespace Arc
             Width,
             Height;
 
-        Rect( void ) { X = Y = Width = Height = 0; }
+        inline Rect( void ) { X = Y = Width = Height = 0; }
         Rect( float x, float y, float width, float height );
         Rect( Vector2 pos, Size size );
-        virtual ~Rect( void ) { }
+        virtual inline ~Rect( void ) { }
 
         virtual inline string toString( void ) const
         {
@@ -49,8 +49,8 @@ namespace Arc
         void setPos( Vector2 pos );
         void setSize( Size size );
 
-        float halfWidth ( void ) const { return Width * 0.5f; }
-        float halfHeight( void ) const { return Height * 0.5f; }
+        inline float halfWidth ( void ) const { return Width * 0.5f; }
+        inline float halfHeight( void ) const { return Height * 0.5f; }
 
         inline Vector2 center( void ) const { return Vector2( X + halfWidth(), Y + halfHeight() ); }
 
@@ -87,7 +87,7 @@ namespace Arc
     struct CompRect
         : public std::binary_function<Rect, Rect, bool>
     {
-        bool operator()(const Rect& lhs, const Rect& rhs) const
+        inline bool operator()(const Rect& lhs, const Rect& rhs) const
         {
             return lhs.X < rhs.X; // Simple Sorting
         }

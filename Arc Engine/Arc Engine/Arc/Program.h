@@ -84,10 +84,10 @@ namespace Arc
 
         static Program* getInstance( void ) { return _pInstance; }
 
-        GraphicsSystem*  getGraphicsSystem ( void ) { return _pGraphicsSystem; }
-        InputSystem*     getInputSystem    ( void ) { return _pInputSystem; }
-        AudioSystem*     getAudioSystem    ( void ) { return _pAudioSystem; }
-        ScriptingSystem* getScriptingSystem( void ) { return _pScriptingSystem; }
+        inline GraphicsSystem*  getGraphicsSystem ( void ) { return _pGraphicsSystem; }
+        inline InputSystem*     getInputSystem    ( void ) { return _pInputSystem; }
+        inline AudioSystem*     getAudioSystem    ( void ) { return _pAudioSystem; }
+        inline ScriptingSystem* getScriptingSystem( void ) { return _pScriptingSystem; }
 
         virtual void update( const Event& event ) { };
         virtual void render( const Event& event ) { };

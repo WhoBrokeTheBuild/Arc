@@ -70,7 +70,7 @@ namespace Arc
         //TODO: Add Insert Mode
 
         TextInputSource(void);
-        virtual ~TextInputSource(void) { term(); }
+        virtual inline ~TextInputSource(void) { term(); }
 
         virtual inline string toString( void ) const { return "Text Input Source"; }
 

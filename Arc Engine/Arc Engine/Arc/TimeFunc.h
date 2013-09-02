@@ -7,8 +7,6 @@
 
 namespace Arc
 {
-    class Timer;
-
     time_t now( void );
 
     void delay( double millis );

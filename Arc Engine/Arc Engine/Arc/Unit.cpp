@@ -1,6 +1,4 @@
 #include "Unit.h"
-#include "Layer.h"
-#include "Scene.h"
 
 Arc::Unit::Unit( void )
     : _pParent(),
@@ -39,11 +37,6 @@ void Arc::Unit::render( const Event& event )
     const RenderData* data = event.dataAs<RenderData>();
 
     render(data);
-}
-
-Arc::Scene* Arc::Unit::getParentScene( void )
-{
-    return _pParent->getParentScene();
 }
 
 void Arc::Unit::calcOriginLocation( void )

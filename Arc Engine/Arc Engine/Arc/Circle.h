@@ -30,10 +30,10 @@ namespace Arc
             Y,
             Radius;
 
-        Circle( void ) { X = Y = Radius = 0.0f; }
+        inline Circle( void ) { X = Y = Radius = 0.0f; }
         Circle( float x, float y, float radius );
         Circle( Point pos, float radius );
-        virtual ~Circle( void ) { }
+        virtual inline ~Circle( void ) { }
 
         virtual inline string toString( void ) const
         {
@@ -62,6 +62,15 @@ namespace Arc
         bool containsPoint (Point  point);
 
     };
+
+    struct CompCircle
+        : public std::binary_function<Circle, Circle, bool>
+    {
+        inline bool operator()(const Circle& lhs, const Circle& rhs) const
+        {
+            return lhs.X < rhs.X; // Simple Sorting
+        }
+    }; // struct CompRect
 }
 
 #endif

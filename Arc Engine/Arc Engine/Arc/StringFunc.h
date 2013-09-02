@@ -23,7 +23,7 @@ namespace Arc
     string basename( string fullPath );
 
     template <class Number>
-    string numToStr( const Number& value )
+    inline string numToStr( const Number& value )
     {
         stringstream ss;
         ss << value;

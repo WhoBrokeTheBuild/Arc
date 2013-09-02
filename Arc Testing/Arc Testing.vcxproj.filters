@@ -33,4 +33,9 @@
       <UniqueIdentifier>{915194f0-9074-4e1f-9375-35a976d54413}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\test.lua">
+      <Filter>Project</Filter>
+    </None>
+  </ItemGroup>
 </Project>

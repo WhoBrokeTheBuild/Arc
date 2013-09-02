@@ -407,5 +407,8 @@
     <ClInclude Include="Component.h">
       <Filter>Project\Units\Components</Filter>
     </ClInclude>
+    <ClInclude Include="ArrayFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -37,28 +37,28 @@ namespace Arc
 
         typedef pair<K, T> Pair;
 
-        Map( void ) { _map = map<K, T, Sort>(); }
-        Map( const Map& rhs) : _map(rhs._map) { }
-        virtual ~Map( void ) { clear(); }
+        inline Map( void ) { _map = map<K, T, Sort>(); }
+        inline Map( const Map& rhs) : _map(rhs._map) { }
+        virtual inline ~Map( void ) { clear(); }
 
-        Map& operator= ( const Map& rhs )     { _map = rhs._map; return *this; }
-        T&   operator[]( const K& key )       { return at(key); }
-        T&   operator[]( const K& key ) const { return at(key); }
+        inline Map& operator= ( const Map& rhs )     { _map = rhs._map; return *this; }
+        inline T&   operator[]( const K& key )       { return at(key); }
+        inline T&   operator[]( const K& key ) const { return at(key); }
 
         virtual inline string toString( void ) const { return "Map"; }
 
-        Iterator begin ( void ) { return _map.begin(); }
-        Iterator end   ( void ) { return _map.end(); }
-        Iterator rbegin( void ) { return _map.rbegin(); }
-        Iterator rend  ( void ) { return _map.rend(); }
-
-        ConstIterator cbegin ( void ) const { return _map.cbegin(); }
-        ConstIterator cend   ( void ) const { return _map.cend(); }
-        ConstIterator crbegin( void ) const { return _map.crbegin(); }
-        ConstIterator crend  ( void ) const { return _map.crend(); }
-
-        Iterator      find( K& key )       { return _map.find(key); }
-        ConstIterator find (K& key ) const { return _map.find(key); }
+        inline Iterator begin ( void ) { return _map.begin(); }
+        inline Iterator end   ( void ) { return _map.end(); }
+        inline Iterator rbegin( void ) { return _map.rbegin(); }
+        inline Iterator rend  ( void ) { return _map.rend(); }
+		
+        inline ConstIterator cbegin ( void ) const { return _map.cbegin(); }
+        inline ConstIterator cend   ( void ) const { return _map.cend(); }
+        inline ConstIterator crbegin( void ) const { return _map.crbegin(); }
+        inline ConstIterator crend  ( void ) const { return _map.crend(); }
+		
+        inline Iterator      find( K& key )       { return _map.find(key); }
+        inline ConstIterator find (K& key ) const { return _map.find(key); }
 
         Map<K, T, Sort>* add            ( const K& key, const T& item );
         Map<K, T, Sort>* clear          ( void );
@@ -67,26 +67,26 @@ namespace Arc
         bool             removeValue    ( const T& value );
         bool             removeAllValues( const T& value );
 
-        T& at( const K& key ) { return _map[key]; }
-        T& at( const K& key ) const { return _map[key]; }
+        inline T& at( const K& key ) { return _map[key]; }
+        inline T& at( const K& key ) const { return _map[key]; }
 
         bool contains     ( const K& key );
         bool containsKey  ( const K& key );
         bool containsValue( const T& value );
 
-        bool empty( void ) const { return _map.empty(); }
+        inline bool empty( void ) const { return _map.empty(); }
 
         K& indexOf( T& item );
 
-        size_t size( void ) const { return _map.size(); }
+        inline size_t size( void ) const { return _map.size(); }
 
-        K*            keyArray     ( void ) { unsigned int i; return keyArray(i); }
-        LinkedList<K> keyLinkedList( void ) { unsigned int i; return keyLinkedList(i); }
-        ArrayList<K>  keyArrayList ( void ) { unsigned int i; return keyArrayList(i); }
+        inline K*            keyArray     ( void ) { unsigned int i; return keyArray(i); }
+        inline LinkedList<K> keyLinkedList( void ) { unsigned int i; return keyLinkedList(i); }
+        inline ArrayList<K>  keyArrayList ( void ) { unsigned int i; return keyArrayList(i); }
 
-        T*            valueArray     ( void ) { unsigned int i; return valueArray(i); }
-        LinkedList<T> valueLinkedList( void ) { unsigned int i; return valueLinkedList(i); }
-        ArrayList<T>  valueArrayList ( void ) { unsigned int i; return valueArrayList(i); }
+        inline T*            valueArray     ( void ) { unsigned int i; return valueArray(i); }
+        inline LinkedList<T> valueLinkedList( void ) { unsigned int i; return valueLinkedList(i); }
+        inline ArrayList<T>  valueArrayList ( void ) { unsigned int i; return valueArrayList(i); }
 
         K*            keyArray     ( unsigned int& length );
         LinkedList<K> keyLinkedList( unsigned int& length );

@@ -34,22 +34,22 @@ namespace Arc
     double ceil   (double value, int accuracy);
 
     template <class Number>
-    Number clamp(Number value, Number min, Number max) { return ( ( value > max ) ? max : ( ( value < min ) ? min : value ) ); }
+    inline Number clamp(Number value, Number min, Number max) { return ( ( value > max ) ? max : ( ( value < min ) ? min : value ) ); }
 
     template <class Number>
-    int sign( Number value ) { return ( value > 0 ? 1 : ( value < 0 ? -1 : 0 ) ); }
+    inline int sign( Number value ) { return ( value > 0 ? 1 : ( value < 0 ? -1 : 0 ) ); }
 
     template <class Number>
-    Number approach( Number value, Number target, Number speed ) { return ( ( value > target ) ? max( value - speed, target ) : min( value + speed, target ) ); }
+    inline Number approach( Number value, Number target, Number speed ) { return ( ( value > target ) ? max( value - speed, target ) : min( value + speed, target ) ); }
 
     template <class Number>
-    Number reduce( Number value, Number speed ) { return ( ( value > 0 ) ? max( value - speed, 0 ) : min( value + speed, 0 ) ); }
+    inline Number reduce( Number value, Number speed ) { return ( ( value > 0 ) ? max( value - speed, 0 ) : min( value + speed, 0 ) ); }
 
     template <class Number>
-    bool between( Number value, Number min, Number max ) { return ( value >= min && value <= max); }
+    inline bool between( Number value, Number min, Number max ) { return ( value >= min && value <= max); }
 
     template <class Number>
-    Number lerp( Number start, Number end, float fraction) { return ( start + (end - start) * fraction ); }
+    inline Number lerp( Number start, Number end, float fraction) { return ( start + (end - start) * fraction ); }
 
     // Source: http://paulbourke.net/miscellaneous/interpolation/
     // Tension: 1 is high, 0 normal, -1 is low

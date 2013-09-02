@@ -17,7 +17,7 @@ namespace Arc
             Down,
             Tapped;
 
-        InputState( bool pressed = false, bool released = false, bool down = false, bool tapped = false )
+        inline InputState( bool pressed = false, bool released = false, bool down = false, bool tapped = false )
         {
             Pressed  = pressed;
             Released = released;

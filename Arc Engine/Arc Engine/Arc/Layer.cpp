@@ -1,6 +1,7 @@
 #include "Layer.h"
 #include "Program.h"
 #include "Scene.h"
+#include "Unit.h"
 
 const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layerChanged";
 

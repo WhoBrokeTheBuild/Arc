@@ -30,21 +30,11 @@ namespace Arc
             X,
             Y;
 
-        Vector2( void ) { X = Y = 0.0f; }
+        inline Vector2( void ) { X = Y = 0.0f; }
+		inline Vector2( float both ) { X = Y = both; }
+        inline Vector2( float x, float y ) { X = x; Y = y; }
 
-        Vector2( float x, float y )
-        {
-            X = x;
-            Y = y;
-        }
-
-        Vector2( float both )
-        {
-            X = both;
-            Y = both;
-        }
-
-        virtual ~Vector2( void ) { }
+        virtual inline ~Vector2( void ) { }
 
         virtual inline string toString( void ) const
         {
@@ -64,16 +54,6 @@ namespace Arc
             return (dx * dx + dy * dy);
         }
 
-        inline float distanceTo( Vector2 other )
-        {
-            return sqrt(distanceToSquared(other));
-        }
-
-        inline float angleToDeg( Vector2 other )
-        {
-            return toDeg(angleToRad(other));
-        }
-
         inline float angleToRad( Vector2 other )
         {
             float dx = other.X - X,
@@ -82,15 +62,18 @@ namespace Arc
             return atan2(dy, dx);
         }
 
+        inline float distanceTo( Vector2 other ) { return sqrt(distanceToSquared(other)); }
+        inline float angleToDeg( Vector2 other ) { return toDeg(angleToRad(other)); }
+
         Angle angleTo( Vector2 other );
 
         float halfX( void ) { return (X * 0.5f); }
         float halfY( void ) { return (Y * 0.5f); }
 
-        float width ( void ) { return X; }
-        float height( void ) { return Y; }
-        float halfWidth ( void ) { return halfX(); }
-        float halfHeight( void ) { return halfY(); }
+        inline float width ( void ) { return X; }
+        inline float height( void ) { return Y; }
+        inline float halfWidth ( void ) { return halfX(); }
+        inline float halfHeight( void ) { return halfY(); }
 
         Vector2 lerp      ( const Vector2& other, float fraction );
 		Vector2 normLeft  ( const Vector2& other );
@@ -116,7 +99,7 @@ namespace Arc
     struct CompVector2
         : public std::binary_function<Vector2, Vector2, bool>
     {
-        bool operator()(const Vector2& lhs, const Vector2& rhs) const
+        inline bool operator()(const Vector2& lhs, const Vector2& rhs) const
         {
             return lhs.X < rhs.X; // Simple Sorting
         }

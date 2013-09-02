@@ -26,6 +26,7 @@ int Arc::Angle::deserialize( istream &stream )
     return bytes;
 }
 
+//TODO: Rename better
 Arc::Vector2 Arc::Angle::getVector2( void ) const
 {
     return Vector2(getCos(), getSin());

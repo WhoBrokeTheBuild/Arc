@@ -33,6 +33,10 @@ using std::ostream;
 
 namespace Arc
 {
+    inline void nop ( void ) { }
+    void die  ( int errorLevel = EXIT_SUCCESS );
+    void pause( const std::string msg = "Press enter to continue" );
+
     inline void dispMessage( string filename, int line, ostream& stream, string type, string source, string message )
     {
         stream << "[" << type << "] " << source << ": " << message << " (from " << basename(filename) << ":" << line << ")" << endl;
@@ -92,34 +96,6 @@ namespace Arc
 #define INFOF(SRC, FMT, ...)
 
 #endif
-
-    inline void noop ( void ) { }
-    void die  ( int errorLevel = EXIT_SUCCESS );
-    void pause( const std::string msg = "Press enter to continue" );
-
-    template <typename Value>
-    bool arrayContains(unsigned int size, const Value list[], const Value& element)
-    {
-        for (unsigned int i = 0; i < size; ++i)
-        {
-            if (list[i] == element)
-                return true;
-        }
-
-        return false;
-    }
-
-    template <typename Value>
-    int arrayIndexOf(unsigned int size, const Value list[], const Value& element)
-    {
-        for (unsigned int i = 0; i < size; ++i)
-        {
-            if (list[i] == element)
-                return i;
-        }
-
-        return -1;
-    }
 
 } // namespace Arc
 

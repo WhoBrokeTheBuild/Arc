@@ -20,7 +20,7 @@ namespace Arc
 
         virtual string toString( void ) const = 0;
 
-        friend ostream& operator<<( ostream& os, const ManagedObject& go )
+        inline friend ostream& operator<<( ostream& os, const ManagedObject& go )
         {
             os << go.toString();
             return os;

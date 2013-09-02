@@ -32,23 +32,23 @@ namespace Arc
         typedef typename list<T>::iterator       Iterator;
         typedef typename list<T>::const_iterator ConstIterator;
 
-        LinkedList ( void ) { _list = list<T>(); }
-        LinkedList ( const LinkedList& rhs) : _list(rhs._list) { }
-        virtual ~LinkedList( void );
+        inline LinkedList ( void ) { _list = list<T>(); }
+        inline LinkedList ( const LinkedList& rhs) : _list(rhs._list) { }
+		virtual inline ~LinkedList( void ) { clear(); }
 
-        LinkedList& operator=( const LinkedList& rhs ) { _list = rhs._list; return *this; }
+        inline LinkedList& operator=( const LinkedList& rhs ) { _list = rhs._list; return *this; }
 
         virtual inline string toString( void ) const { return "Linked List"; }
 
-        Iterator begin ( void ) { return _list.begin(); }
-        Iterator end   ( void ) { return _list.end(); }
-        Iterator rbegin( void ) { return _list.rbegin(); }
-        Iterator rend  ( void ) { return _list.rend(); }
+        inline Iterator begin ( void ) { return _list.begin(); }
+        inline Iterator end   ( void ) { return _list.end(); }
+        inline Iterator rbegin( void ) { return _list.rbegin(); }
+        inline Iterator rend  ( void ) { return _list.rend(); }
 
-        ConstIterator cbegin ( void ) const { return _list.cbegin(); }
-        ConstIterator cend   ( void ) const { return _list.cend(); }
-        ConstIterator crbegin( void ) const { return _list.crbegin(); }
-        ConstIterator crend  ( void ) const { return _list.crend(); }
+        inline ConstIterator cbegin ( void ) const { return _list.cbegin(); }
+        inline ConstIterator cend   ( void ) const { return _list.cend(); }
+        inline ConstIterator crbegin( void ) const { return _list.crbegin(); }
+        inline ConstIterator crend  ( void ) const { return _list.crend(); }
 
         LinkedList<T>* add        ( const T& item );
         LinkedList<T>* addFront   ( const T& item );
@@ -61,27 +61,27 @@ namespace Arc
         bool           removeFront( void );
         bool           removeBack ( void );
 
-        T& front( void ) { return _list.front(); }
-        T& back ( void ) { return _list.back(); }
+        inline T& front( void ) { return _list.front(); }
+        inline T& back ( void ) { return _list.back(); }
 
-        const T& front( void ) const { return _list.front(); }
-        const T& back ( void ) const { return _list.back(); }
+        inline const T& front( void ) const { return _list.front(); }
+        inline const T& back ( void ) const { return _list.back(); }
 
         bool contains( const T& item ) const;
         bool hasIndex( const int& index) const;
-        bool empty   ( void )    const { return _list.empty(); }
+        inline bool empty   ( void )    const { return _list.empty(); }
 
         int indexOf( T& item ) const;
 
-        size_t size( void ) const { return _list.size(); }
+        inline size_t size( void ) const { return _list.size(); }
 
         unsigned int merge( ArrayList<T> list );
         unsigned int merge( LinkedList<T> list );
         unsigned int merge( Queue<T> list );
 
-        T*           toArray    ( void ) { unsigned int i; return toArray(i); }
-        ArrayList<T> toArrayList( void ) { unsigned int i; return toArrayList(i); }
-        Queue<T>     toQueue    ( void ) { unsigned int i; return toQueue(i); }
+        inline T*           toArray    ( void ) { unsigned int i; return toArray(i); }
+        inline ArrayList<T> toArrayList( void ) { unsigned int i; return toArrayList(i); }
+        inline Queue<T>     toQueue    ( void ) { unsigned int i; return toQueue(i); }
 
         T*           toArray    ( unsigned int& length );
         ArrayList<T> toArrayList( unsigned int& length );

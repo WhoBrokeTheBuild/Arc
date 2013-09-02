@@ -29,8 +29,8 @@ namespace Arc
 
     public:
 
-        Queue ( void ) { _queue = queue<T>(); }
-        virtual ~Queue( void ) { clear(); }
+        inline Queue ( void ) { _queue = queue<T>(); }
+        virtual inline ~Queue( void ) { clear(); }
 
         virtual inline string toString( void ) const { return "Queue"; }
 
@@ -39,19 +39,19 @@ namespace Arc
         T         pop  ( void );
         Queue<T>* clear( void );
 
-        T& front( void ) { return _queue.front(); }
-        T& back ( void ) { return _queue.back(); }
+        inline T& front( void ) { return _queue.front(); }
+        inline T& back ( void ) { return _queue.back(); }
 
-        const T& front( void ) const { return _queue.front(); }
-        const T& back ( void ) const { return _queue.back(); }
+        inline const T& front( void ) const { return _queue.front(); }
+        inline const T& back ( void ) const { return _queue.back(); }
 
-        bool empty( void ) const { return _queue.empty(); }
+        inline bool empty( void ) const { return _queue.empty(); }
 
-        size_t size( void ) const { return _queue.size(); }
+        inline size_t size( void ) const { return _queue.size(); }
 
-        T*            toArray     ( void ) { unsigned int i; return toArray(i); }
-        ArrayList<T>  toArrayList ( void ) { unsigned int i; return toArrayList(i); }
-        LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
+        inline T*            toArray     ( void ) { unsigned int i; return toArray(i); }
+        inline ArrayList<T>  toArrayList ( void ) { unsigned int i; return toArrayList(i); }
+        inline LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
 
         T*            toArray     ( unsigned int& length );
         ArrayList<T>  toArrayList ( unsigned int& length );

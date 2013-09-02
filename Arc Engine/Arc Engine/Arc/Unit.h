@@ -7,11 +7,11 @@
 #include "EventDispatcher.h"
 
 #include "OriginLocation.h"
+#include "Layer.h"
+#include "Scene.h"
 
 namespace Arc
 {
-    class Layer;
-    class Scene;
 	class Component;
 
     class Unit :
@@ -37,7 +37,7 @@ namespace Arc
 		ArrayList<Component*>
 			_components;
 
-        LinkedList<Componenet*>
+        LinkedList<Component*>
 			_componentsToAdd,
 			_componentsToRemove;
 
@@ -73,16 +73,25 @@ namespace Arc
 
         virtual Size  getSize  ( void ) { return _size; }
         virtual Point getOrigin( void ) { return _origin; }
-        virtual OriginLocation getOriginLocation( void ) { return _originLocation; }
+        virtual inline OriginLocation getOriginLocation( void ) { return _originLocation; }
 
         virtual void setSize  ( Size size );
         virtual void setOrigin( Vector2 origin );
         virtual void setOriginLocation( OriginLocation originLocation );
 
-        virtual Layer* getParentLayer( void ) { return _pParent; }
-        virtual Scene* getParentScene( void );
+        inline Layer* getParentLayer( void ) { return _pParent; }
+		inline Scene* getParentScene( void ) { return _pParent->getParentScene(); }
 
     }; // class Unit
+
+    struct UnitDepthComp
+        : std::binary_function<Unit*, Unit*, bool>
+    {
+        bool operator()( const Unit* lhs, const Unit* rhs ) const
+        {
+            return lhs->Depth < rhs->Depth;
+        }
+    }; // struct UnitDepthComp
 
 } // namespace Arc
 

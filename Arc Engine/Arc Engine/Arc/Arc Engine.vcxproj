@@ -57,6 +57,7 @@
   <ItemGroup>
     <ClInclude Include="Angle.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="ArrayFunc.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="Component.h" />

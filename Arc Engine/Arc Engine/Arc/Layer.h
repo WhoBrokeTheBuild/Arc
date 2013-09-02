@@ -6,11 +6,10 @@
 #include "Common.h"
 #include "EventDispatcher.h"
 
-#include "Unit.h"
-
 namespace Arc
 {
     class Scene;
+	class Unit;
 
     class Layer :
         public EventDispatcher
@@ -53,18 +52,9 @@ namespace Arc
 
         virtual unsigned int removeAllUnits( void );
 
-        virtual Scene* getParentScene( void ) { return _pParent; }
+        inline Scene* getParentScene( void ) { return _pParent; }
 
     }; // class Layer
-
-    struct UnitDepthComp
-        : std::binary_function<Unit*, Unit*, bool>
-    {
-        bool operator()( const Unit* lhs, const Unit* rhs ) const
-        {
-            return lhs->Depth < rhs->Depth;
-        }
-    }; // struct UnitDepthComp
 
 } // namespace Arc
 

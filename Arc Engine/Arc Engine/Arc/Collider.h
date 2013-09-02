@@ -28,9 +28,9 @@ namespace Arc
 
         virtual void render( const RenderTarget* renderTarget, Point pos, Vector2 origin = Vector2::ZERO ) { }
 
-        virtual void setDebugOutlines( bool enabled ) { _debugOutlines = enabled; }
-        virtual bool isDebugOutlines( void ) { return _debugOutlines; }
-        virtual void toggleDebugOutlines( void ) { _debugOutlines = !_debugOutlines; }
+        virtual inline void setDebugOutlines( bool enabled ) { _debugOutlines = enabled; }
+        virtual inline bool isDebugOutlines( void ) { return _debugOutlines; }
+        virtual inline void toggleDebugOutlines( void ) { _debugOutlines = !_debugOutlines; }
 
     }; // class Collider
 
