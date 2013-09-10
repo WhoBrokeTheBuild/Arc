@@ -24,11 +24,11 @@ Arc::IPAddress::IPAddress( uint8_t a, uint8_t b, uint8_t c, uint8_t d )
     _quads[3] = d;
 }
 
-std::string Arc::IPAddress::toString( void )
+std::string Arc::IPAddress::toString( void ) const
 {
     stringstream ss;
     ss << "IP Address ["
-       << _quads[0] << ", " 
+       << _quads[0] << ", "
        << _quads[1] << ", "
        << _quads[2] << ", "
        << _quads[3] << "]";

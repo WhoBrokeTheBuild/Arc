@@ -10,8 +10,6 @@ void Arc::Socket::init( IPAddress addr, SocketType type )
 {
     _address = addr;
     _type    = type;
-
-
 }
 
 void Arc::Socket::term( void )

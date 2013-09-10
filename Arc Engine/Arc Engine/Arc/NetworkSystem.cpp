@@ -27,10 +27,10 @@ void Arc::NetworkSystem::term( void )
 
 Arc::Socket Arc::NetworkSystem::connect( string hostname, SocketType type )
 {
-
+    return Socket();
 }
 
 Arc::Socket Arc::NetworkSystem::connect( IPAddress addr, SocketType type )
 {
-
+    return Socket();
 }

@@ -7,6 +7,9 @@
 #include "ManagedObject.h"
 
 #include "LinkedList.h"
+#include "SocketType.h"
+#include "Socket.h"
+#include "IPAddress.h"
 
 #ifdef WINDOWS
 
@@ -28,10 +31,6 @@
 
 namespace Arc
 {
-    class Socket;
-    class IPAddress;
-    class SocketType;
-
     class NetworkSystem :
         public ManagedObject
     {

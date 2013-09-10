@@ -25,10 +25,10 @@ namespace Arc
         IPAddress( uint8_t a, uint8_t b, uint8_t c, uint8_t d );
         virtual ~IPAddress( void );
 
-        virtual inline string toString( void );
+        virtual string toString( void ) const;
 
     }; // class IPAddress
-   
+
 } // namespace Arc
 
 #endif // __ARC_IP_ADDRESS_H__

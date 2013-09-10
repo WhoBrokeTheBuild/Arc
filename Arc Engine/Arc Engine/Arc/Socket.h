@@ -6,6 +6,9 @@
 #include "Common.h"
 #include "ManagedObject.h"
 
+#include "IPAddress.h"
+#include "SocketType.h"
+
 #ifdef WINDOWS
 
 #include <winsock2.h>
@@ -56,6 +59,8 @@ namespace Arc
 
         virtual void init( IPAddress addr, SocketType type );
         virtual void term( void );
+
+        virtual inline string toString( void ) const { return "Socket"; }
 
         virtual SocketType getType( void ) const { return _type; }
 
