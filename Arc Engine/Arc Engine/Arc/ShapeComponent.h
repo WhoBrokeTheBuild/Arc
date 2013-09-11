@@ -1,10 +1,29 @@
 #pragma once
-#include "component.h"
-class ShapeComponent :
-	public Component
+
+#ifndef __ARC_SHAPE_COMPONENT_H__
+#define __ARC_SHAPE_COMPONENT_H__
+
+#include "Common.h"
+#include "Component.h"
+
+namespace Arc
 {
-public:
-	ShapeComponent(void);
-	virtual ~ShapeComponent(void);
-};
+	class ShapeComponent :
+		public Component
+	{
+	public:
+
+		ShapeComponent( void );
+		virtual inline ~ShapeComponent( void ) { term (); }
+
+		virtual void init( void );
+		virtual void term( void );
+
+		virtual inline string toString( void ) const { return "Shape Component"; }
+
+	}; // class ShapeComponent
+
+} // namespace Arc
+
+#endif // __ARC_SHAPE_COMPONENT_H__
 

@@ -40,8 +40,8 @@ namespace Arc
 		virtual void update( const Event& event );
         virtual void render( const Event& event );
 
-        virtual void update( const FrameData* data )  = 0;
-        virtual void render( const RenderData* data ) = 0;
+        virtual void update( const FrameData* data )  { };
+		virtual void render( const RenderData* data ) { };
 
 		bool removeSelf();
 
