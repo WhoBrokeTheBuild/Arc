@@ -195,6 +195,18 @@
     <ClCompile Include="Component.cpp">
       <Filter>Project\Units\Components</Filter>
     </ClCompile>
+    <ClCompile Include="ImageComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatedComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -409,6 +421,18 @@
     </ClInclude>
     <ClInclude Include="ArrayFunc.h">
       <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatedComponent.h">
+      <Filter>Project\Units\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
