@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include "Component.h"
 
 Arc::Unit::Unit( void )
     : _pParent(),
@@ -26,6 +27,7 @@ void Arc::Unit::update( const Event& event )
 
     const FrameData* data = event.dataAs<FrameData>();
 
+    updateComponents(data);
     update(data);
 }
 
@@ -36,6 +38,7 @@ void Arc::Unit::render( const Event& event )
 
     const RenderData* data = event.dataAs<RenderData>();
 
+    renderComponents(data);
     render(data);
 }
 
@@ -109,4 +112,47 @@ void Arc::Unit::setOriginLocation( OriginLocation originLocation )
 {
     _originLocation = originLocation;
     calcOriginLocation();
+}
+
+void Arc::Unit::updateComponents( const FrameData* data )
+{
+    for (auto it = _componentsToAdd.begin(); it != _componentsToAdd.end(); ++it)
+        _components.add(*it);
+
+    for (auto it = _componentsToRemove.begin(); it != _componentsToRemove.end(); ++it)
+        _components.remove(*it);
+
+    _componentsToAdd.clear();
+    _componentsToRemove.clear();
+
+    for (auto it = _components.begin(); it != _components.end(); ++it)
+        (*it)->update(data);
+}
+
+void Arc::Unit::renderComponents( const RenderData* data )
+{
+    for (auto it = _components.begin(); it != _components.end(); ++it)
+        (*it)->render(data);
+}
+
+bool Arc::Unit::addComponent( Component* component )
+{
+    if (_components.contains(component))
+        return false;
+
+    if (_componentsToAdd.contains(component))
+        return false;
+
+    return _componentsToAdd.add(component);
+}
+
+bool Arc::Unit::removeComponent( Component* component )
+{
+    if ( ! _components.contains(component))
+        return false;
+
+    if (_componentsToRemove.contains(component))
+        return false;
+
+    return _componentsToRemove.add(component);
 }

@@ -37,13 +37,10 @@ namespace Arc
 
 		virtual inline string toString( void ) const { return "Component"; }
 
-		virtual void update( const Event& event );
-        virtual void render( const Event& event );
-
         virtual void update( const FrameData* data )  { };
 		virtual void render( const RenderData* data ) { };
 
-		bool removeSelf();
+		bool removeSelf( void );
 
 		inline Unit* getParentUnit( void ) const { return _pParent; }
 

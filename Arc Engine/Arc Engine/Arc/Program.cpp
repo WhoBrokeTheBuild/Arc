@@ -32,12 +32,6 @@ void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitl
 
     initRandom();
 
-    initCore();
-    initGraphics(windowSize, windowTitle);
-    initAudio();
-    initInput();
-    initScripting();
-
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &Program::update);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &Program::render);
     gpEventDispatcher->addEventListener(Program::EVENT_EXIT,   this, &Program::stop);
@@ -53,6 +47,7 @@ void Arc::Program::term( void )
     gpEventDispatcher->removeEventListener(Program::EVENT_RENDER, this, &Program::render);
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &Program::update);
 
+    delete _pNetworkSystem;
     delete _pScriptingSystem;
     delete _pInputSystem;
     delete _pAudioSystem;
@@ -119,6 +114,16 @@ void Arc::Program::renderFrame( const RenderData& renderData )
     renderData.renderTarget()->endDraw();
 }
 
+void Arc::Program::initAll( Size windowSize, string windowTitle )
+{
+    initCore();
+    initInput();
+    initGraphics(windowSize, windowTitle);
+    initAudio();
+    initScripting();
+    initNetworking();
+}
+
 void Arc::Program::initCore( void )
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) > 0)
@@ -150,4 +155,10 @@ void Arc::Program::initScripting( void )
 {
     _pScriptingSystem = New ScriptingSystem();
     _pScriptingSystem->init();
+}
+
+void Arc::Program::initNetworking( void )
+{
+    _pNetworkSystem = New NetworkSystem();
+    _pNetworkSystem->init();
 }

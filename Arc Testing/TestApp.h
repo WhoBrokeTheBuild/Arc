@@ -12,9 +12,6 @@
 #include <Arc/Font.h>
 #include <Arc/RenderedText.h>
 
-#include "Wall.h"
-#include "Ball.h"
-
 class TestApp :
     public Program,
     public IKeyboardListener,
@@ -24,9 +21,6 @@ public:
 
     Scene
         *pScene;
-
-    Ball
-        *pBall;
 
     Font
         *pFont;

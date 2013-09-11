@@ -23,6 +23,12 @@ void Arc::NetworkSystem::init( void )
 void Arc::NetworkSystem::term( void )
 {
 
+#ifdef WINDOWS
+
+    WSACleanup(_wsa);
+
+#endif // WINDOWS
+
 }
 
 Arc::Socket Arc::NetworkSystem::connect( string hostname, SocketType type )

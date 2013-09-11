@@ -14,6 +14,7 @@
 #include "InputSystem.h"
 #include "AudioSystem.h"
 #include "ScriptingSystem.h"
+#include "NetworkSystem.h"
 
 #include "RenderTarget.h"
 #include "Animation.h"
@@ -29,7 +30,7 @@ namespace Arc
     {
     protected:
 
-        static Program 
+        static Program
             *_pInstance;
 
         GraphicsSystem
@@ -43,6 +44,9 @@ namespace Arc
 
         ScriptingSystem
             *_pScriptingSystem;
+
+        NetworkSystem
+            *_pNetworkSystem;
 
         bool
             _running;
@@ -76,11 +80,13 @@ namespace Arc
         virtual void updateFrame( const FrameData&  frameData );
         virtual void renderFrame( const RenderData& renderData );
 
-        virtual void initCore     ( void );
-        virtual void initGraphics ( Size windowSize, string windowTitle );
-        virtual void initAudio    ( void );
-        virtual void initInput    ( void );
-        virtual void initScripting( void );
+        virtual void initAll       ( Size windowSize, string windowTitle );
+        virtual void initCore      ( void );
+        virtual void initGraphics  ( Size windowSize, string windowTitle );
+        virtual void initAudio     ( void );
+        virtual void initInput     ( void );
+        virtual void initScripting ( void );
+        virtual void initNetworking( void );
 
         static Program* getInstance( void ) { return _pInstance; }
 
@@ -88,6 +94,7 @@ namespace Arc
         inline InputSystem*     getInputSystem    ( void ) { return _pInputSystem; }
         inline AudioSystem*     getAudioSystem    ( void ) { return _pAudioSystem; }
         inline ScriptingSystem* getScriptingSystem( void ) { return _pScriptingSystem; }
+        inline NetworkSystem*   getNetworkSystem  ( void ) { return _pNetworkSystem; }
 
         virtual void update( const Event& event ) { };
         virtual void render( const Event& event ) { };

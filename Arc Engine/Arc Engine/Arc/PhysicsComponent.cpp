@@ -1,11 +1,13 @@
 #include "PhysicsComponent.h"
 
-
-PhysicsComponent::PhysicsComponent(void)
+Arc::PhysicsComponent::PhysicsComponent(void)
 {
 }
 
+void Arc::PhysicsComponent::init( void )
+{
+}
 
-PhysicsComponent::~PhysicsComponent(void)
+void Arc::PhysicsComponent::term( void )
 {
 }

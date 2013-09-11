@@ -45,7 +45,8 @@ namespace Arc
 
         virtual void setParentLayer( Layer* layer ) { _pParent = layer; }
 
-		void updateComponentLists( void );
+		virtual void updateComponents( const FrameData* data );
+		virtual void renderComponents( const RenderData* data );
 
     public:
 
@@ -81,6 +82,10 @@ namespace Arc
 
         inline Layer* getParentLayer( void ) { return _pParent; }
 		inline Scene* getParentScene( void ) { return _pParent->getParentScene(); }
+
+		virtual bool addComponent   ( Component* component );
+		virtual bool removeComponent( Component* component );
+		virtual inline bool hasComponent( Component* component ) { return _components.contains(component); }
 
     }; // class Unit
 
