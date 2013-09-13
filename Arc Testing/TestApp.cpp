@@ -1,5 +1,9 @@
 #include "TestApp.h"
 
+#include <Arc/Unit.h>
+#include <Arc/Texture.h>
+#include <Arc/ImageComponent.h>
+
 void TestApp::init( void )
 {
     Program::init();
@@ -14,6 +18,19 @@ void TestApp::init( void )
 
     pScene = New Scene();
     pScene->init();
+
+    Unit* unit = New Unit();
+    unit->init(Vector2(100.0f));
+
+    Texture* tex = New Texture();
+    tex->init("assets/test.png");
+
+    ImageComponent* imgCmp = New ImageComponent();
+    imgCmp->init(tex);
+
+    unit->addComponent(imgCmp);
+
+    pScene->addUnit(unit, 0);
 
     pFont = New Font();
     pFont->init("assets/ds-digital.ttf", 20);

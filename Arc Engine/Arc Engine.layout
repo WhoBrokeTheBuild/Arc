@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="Arc Engine/Arc/Angle.cpp" open="1" top="0" tabpos="24">
+		<Cursor position="603" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/ArrayList.h" open="1" top="0" tabpos="7">
+		<Cursor position="5466" topLine="181" />
+	</File>
+	<File name="Arc Engine/Arc/Circle.cpp" open="1" top="0" tabpos="10">
+		<Cursor position="251" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/Circle.h" open="1" top="0" tabpos="9">
+		<Cursor position="478" topLine="4" />
+	</File>
+	<File name="Arc Engine/Arc/Direction.h" open="1" top="0" tabpos="8">
+		<Cursor position="508" topLine="2" />
+	</File>
+	<File name="Arc Engine/Arc/Event.h" open="1" top="0" tabpos="11">
+		<Cursor position="1292" topLine="25" />
+	</File>
+	<File name="Arc Engine/Arc/Functions.h" open="0" top="0" tabpos="1">
+		<Cursor position="1485" topLine="39" />
+	</File>
+	<File name="Arc Engine/Arc/GraphicsSystem.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="2459" topLine="71" />
+	</File>
+	<File name="Arc Engine/Arc/ICollidable.h" open="1" top="0" tabpos="4">
+		<Cursor position="2069" topLine="71" />
+	</File>
+	<File name="Arc Engine/Arc/Layer.cpp" open="1" top="0" tabpos="18">
+		<Cursor position="136" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/Layer.h" open="1" top="0" tabpos="17">
+		<Cursor position="466" topLine="5" />
+	</File>
+	<File name="Arc Engine/Arc/Line.cpp" open="1" top="0" tabpos="21">
+		<Cursor position="521" topLine="5" />
+	</File>
+	<File name="Arc Engine/Arc/Line.h" open="1" top="0" tabpos="3">
+		<Cursor position="860" topLine="19" />
+	</File>
+	<File name="Arc Engine/Arc/LinkedList.h" open="1" top="0" tabpos="16">
+		<Cursor position="252" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/MathFunc.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="128" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/MathFunc.h" open="1" top="0" tabpos="6">
+		<Cursor position="721" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/Rect.cpp" open="1" top="0" tabpos="15">
+		<Cursor position="616" topLine="1" />
+	</File>
+	<File name="Arc Engine/Arc/Rect.h" open="1" top="0" tabpos="14">
+		<Cursor position="622" topLine="7" />
+	</File>
+	<File name="Arc Engine/Arc/ScriptingSystem.h" open="1" top="0" tabpos="20">
+		<Cursor position="236" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/Timer.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="2162" topLine="91" />
+	</File>
+	<File name="Arc Engine/Arc/Unit.cpp" open="1" top="0" tabpos="19">
+		<Cursor position="152" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/Vector2.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="233" topLine="0" />
+	</File>
+	<File name="Arc Engine/Arc/Vector2.h" open="1" top="0" tabpos="12">
+		<Cursor position="735" topLine="15" />
+	</File>
+</CodeBlocks_layout_file>

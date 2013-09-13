@@ -18,8 +18,6 @@ namespace Arc
 		Unit*
 			_pParent;
 
-		void setParentUnit( Unit* unit ) { _pParent = unit; }
-
 	public:
 
 		bool
@@ -43,6 +41,7 @@ namespace Arc
 		bool removeSelf( void );
 
 		inline Unit* getParentUnit( void ) const { return _pParent; }
+		inline void setParentUnit( Unit* unit ) { _pParent = unit; }
 
 	}; // class Component
 

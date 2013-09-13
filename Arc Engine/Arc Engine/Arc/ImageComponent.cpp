@@ -26,5 +26,8 @@ void Arc::ImageComponent::render( const RenderData* data )
 {
 	const Unit* parent = getParentUnit();
 
+	if (parent == nullptr)
+        return;
+
 	data->renderTarget()->draw(parent->Pos + Offset, _pTexture, Rect(Vector2::ZERO, _pTexture->getSize()), BlendColor, Rotation, Origin);
 }

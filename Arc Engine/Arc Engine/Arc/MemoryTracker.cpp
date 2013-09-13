@@ -11,12 +11,6 @@ Arc::MemoryTracker::MemoryTracker( void )
 
 Arc::MemoryTracker::~MemoryTracker( void )
 {
-#ifdef DEBUG
-
-    INFO(toString(), "Final Allocations");
-    printAllocations();
-
-#endif // DEBUG
 }
 
 void Arc::MemoryTracker::addAllocation( ManagedObject *ptr, size_t size, int lineNumber, string filename )

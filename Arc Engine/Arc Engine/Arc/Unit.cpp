@@ -2,14 +2,12 @@
 #include "Component.h"
 
 Arc::Unit::Unit( void )
-    : _pParent(),
-      _originLocation(INVALID_ORIGIN_LOCATION),
-      _origin(),
-      Pos(),
-      Depth(),
-      Enabled(),
-      Visible()
 {
+    _pParent = nullptr;
+    _originLocation = INVALID_ORIGIN_LOCATION;
+    _origin = Pos = Vector2::ZERO;
+    Depth = 0.0f;
+    Enabled = Visible = false;
 }
 
 void Arc::Unit::init( Vector2 pos, float depth /*= 0.0f */ )
@@ -116,14 +114,15 @@ void Arc::Unit::setOriginLocation( OriginLocation originLocation )
 
 void Arc::Unit::updateComponents( const FrameData* data )
 {
-    for (auto it = _componentsToAdd.begin(); it != _componentsToAdd.end(); ++it)
-        _components.add(*it);
+    while ( ! _componentsToAdd.empty())
+    {
+        Component* cmp = _componentsToAdd.popFront();
+        cmp->setParentUnit(this);
+        _components.add(cmp);
+    }
 
-    for (auto it = _componentsToRemove.begin(); it != _componentsToRemove.end(); ++it)
-        _components.remove(*it);
-
-    _componentsToAdd.clear();
-    _componentsToRemove.clear();
+    while ( ! _componentsToRemove.empty())
+        _components.remove(_componentsToRemove.popFront());
 
     for (auto it = _components.begin(); it != _components.end(); ++it)
         (*it)->update(data);
