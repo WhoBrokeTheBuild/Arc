@@ -142,7 +142,8 @@ bool Arc::Unit::addComponent( Component* component )
     if (_componentsToAdd.contains(component))
         return false;
 
-    return _componentsToAdd.add(component);
+	_componentsToAdd.add(component);
+    return true;
 }
 
 bool Arc::Unit::removeComponent( Component* component )
@@ -153,5 +154,15 @@ bool Arc::Unit::removeComponent( Component* component )
     if (_componentsToRemove.contains(component))
         return false;
 
-    return _componentsToRemove.add(component);
+	_componentsToRemove.add(component);
+    return true;
+}
+
+void Arc::Unit::term( void )
+{
+	while ( ! _componentsToAdd.empty())
+		delete _componentsToAdd.popBack();
+
+	while ( ! _components.empty())
+		delete _components.popBack();
 }

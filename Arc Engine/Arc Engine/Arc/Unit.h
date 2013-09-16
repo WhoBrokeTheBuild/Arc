@@ -64,7 +64,7 @@ namespace Arc
         virtual ~Unit( void ) { term(); }
 
         virtual void init( Vector2 pos, float depth = 0.0f );
-        virtual void term( void ) { }
+        virtual void term( void );
 
         virtual void update( const Event& event );
         virtual void render( const Event& event );

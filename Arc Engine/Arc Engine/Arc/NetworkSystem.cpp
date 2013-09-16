@@ -25,7 +25,7 @@ void Arc::NetworkSystem::term( void )
 
 #ifdef WINDOWS
 
-    WSACleanup(_wsa);
+    WSACleanup();
 
 #endif // WINDOWS
 

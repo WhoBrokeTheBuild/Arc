@@ -54,7 +54,9 @@ namespace Arc
 
         ArrayList<T>* add        ( const T& item );
         ArrayList<T>* insertAt   ( const T& item, const int& index );
-        ArrayList<T>* clear      ( void );
+		ArrayList<T>* clear      ( void );
+		T             popFront   ( void );
+		T             popBack    ( void );
         bool          remove     ( const T& item );
         bool          removeAll  ( const T& item );
         bool          removeAt   ( const unsigned int& index );
@@ -109,6 +111,22 @@ Arc::ArrayList<T>* Arc::ArrayList<T>::insertAt( const T& item, const int& index 
 {
     _list.insert(_list.begin() + index, item);
     return this;
+}
+
+template <class T>
+T Arc::ArrayList<T>::popFront( void )
+{
+	T tmp = front();
+	removeFront();
+	return tmp;
+}
+
+template <class T>
+T Arc::ArrayList<T>::popBack( void )
+{
+	T tmp = back();
+	removeBack();
+	return tmp;
 }
 
 template <class T>

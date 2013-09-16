@@ -7,10 +7,7 @@
     <ClCompile Include="TestApp.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
-    <ClCompile Include="Wall.cpp">
+    <ClCompile Include="ResourceManager.cpp">
       <Filter>Project</Filter>
     </ClCompile>
   </ItemGroup>
@@ -21,10 +18,7 @@
     <ClInclude Include="TestApp.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="Wall.h">
+    <ClInclude Include="ResourceManager.h">
       <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>

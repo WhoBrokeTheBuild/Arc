@@ -19,11 +19,16 @@ void TestApp::init( void )
     pScene = New Scene();
     pScene->init();
 
+	pResourceManager = New ResourceManager();
+	pResourceManager->init();
+
     Unit* unit = New Unit();
     unit->init(Vector2(100.0f));
 
     Texture* tex = New Texture();
     tex->init("assets/test.png");
+
+	pResourceManager->addTexture(tex);
 
     ImageComponent* imgCmp = New ImageComponent();
     imgCmp->init(tex);
@@ -42,6 +47,8 @@ void TestApp::init( void )
 void TestApp::term( void )
 {
     delete pScene;
+
+	delete pResourceManager;
 
     delete pFont;
     delete pFPSText;

@@ -55,8 +55,8 @@ namespace Arc
         LinkedList<T>* addBack    ( const T& item );
         LinkedList<T>* insertAt   ( const T& item, const int& index );
         LinkedList<T>* clear      ( void );
-        T&             popFront   ( void );
-        T&             popBack    ( void );
+        T              popFront   ( void );
+        T              popBack    ( void );
         bool           remove     ( const T& item );
         bool           removeAll  ( const T& item );
         bool           removeAt   ( const unsigned int& index );
@@ -125,17 +125,17 @@ Arc::LinkedList<T>* Arc::LinkedList<T>::insertAt( const T& item, const int& inde
 }
 
 template <class T>
-T& Arc::LinkedList<T>::popFront( void )
+T Arc::LinkedList<T>::popFront( void )
 {
-    T& tmp = front();
+    T tmp = front();
     removeFront();
     return tmp;
 }
 
 template <class T>
-T& Arc::LinkedList<T>::popBack( void )
+T Arc::LinkedList<T>::popBack( void )
 {
-    T& tmp = back();
+    T tmp = back();
     removeBack();
     return tmp;
 }

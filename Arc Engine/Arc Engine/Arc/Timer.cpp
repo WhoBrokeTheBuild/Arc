@@ -94,7 +94,6 @@ void Arc::Timer::sleepUntilElapsed( double millis )
 
     QueryPerformanceCounter(&currentTime);
     timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
-    timeToSleep = max(0.0, timeToSleep);
 
 #else // LINUX
 
@@ -104,9 +103,10 @@ void Arc::Timer::sleepUntilElapsed( double millis )
 
     gettimeofday(&currentTime, nullptr);
     timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
-    timeToSleep = std::max(0.0, timeToSleep);
 
 #endif // WINDOWS
+	
+    timeToSleep = std::max(0.0, timeToSleep);
 
     while (timeToSleep > 0.0)
     {

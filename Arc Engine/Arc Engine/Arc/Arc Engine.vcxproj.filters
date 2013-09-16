@@ -67,6 +67,9 @@
     <Filter Include="Project\Units\Components">
       <UniqueIdentifier>{659464c9-4032-43c6-bb50-42611551ce82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Networking">
+      <UniqueIdentifier>{52390d8e-c153-40c6-b41d-54cefbc4e9cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp">
@@ -206,6 +209,15 @@
     </ClCompile>
     <ClCompile Include="AnimatedComponent.cpp">
       <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="IPAddress.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkSystem.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket.cpp">
+      <Filter>Project\Networking</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -433,6 +445,18 @@
     </ClInclude>
     <ClInclude Include="AnimatedComponent.h">
       <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="IPAddress.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkSystem.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketType.h">
+      <Filter>Project\Networking</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

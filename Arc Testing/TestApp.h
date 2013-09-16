@@ -12,6 +12,8 @@
 #include <Arc/Font.h>
 #include <Arc/RenderedText.h>
 
+#include "ResourceManager.h"
+
 class TestApp :
     public Program,
     public IKeyboardListener,
@@ -27,6 +29,9 @@ public:
 
     RenderedText
         *pFPSText;
+
+	ResourceManager
+		*pResourceManager;
 
     TestApp( void ) { }
     virtual ~TestApp( void ) { term(); }
