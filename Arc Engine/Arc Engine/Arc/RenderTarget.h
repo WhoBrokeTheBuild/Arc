@@ -124,6 +124,12 @@ namespace Arc
                                const Angle rotation = Angle::ZERO, 
                                const Vector2 origin = Vector2::ZERO ) const;
 
+		virtual void drawRect( const Point pos,
+							   const Size size, 
+							   const Color color = Color::WHITE, 
+							   const Angle rotation = Angle::ZERO, 
+							   const Vector2 origin = Vector2::ZERO ) const;
+
         virtual void drawRect( const Rect rect,
                                const Color color = Color::WHITE,
                                const Angle rotation = Angle::ZERO,
@@ -134,7 +140,14 @@ namespace Arc
                                const float height, 
                                const Color color = Color::WHITE,
                                const Angle rotation = Angle::ZERO, 
-                               const Vector2 origin = Vector2::ZERO ) const;
+							   const Vector2 origin = Vector2::ZERO ) const;
+
+		virtual void fillRect( const Point pos,
+							   const Size size, 
+							   const float height, 
+							   const Color color = Color::WHITE,
+							   const Angle rotation = Angle::ZERO, 
+							   const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void fillRect( const Rect rect,
                                const Color color = Color::WHITE,
@@ -145,7 +158,13 @@ namespace Arc
                                  const float radius, 
                                  const Color color = Color::WHITE,
                                  const Angle rotation = Angle::ZERO,
-                                 const Vector2 origin = Vector2::ZERO ) const;
+								 const Vector2 origin = Vector2::ZERO ) const;
+
+		virtual void drawCircle( const Point pos,
+			                     const float radius,
+			                     const Color color = Color::WHITE,
+			                     const Angle rotation = Angle::ZERO,
+			                     const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawCircle( const Circle circle,
                                  const Color color = Color::WHITE, 
@@ -156,7 +175,13 @@ namespace Arc
                                  const float radius,
                                  const Color color = Color::WHITE,
                                  const Angle rotation = Angle::ZERO,
-                                 const Vector2 origin = Vector2::ZERO ) const;
+								 const Vector2 origin = Vector2::ZERO ) const;
+
+		virtual void fillCircle( const Point pos,
+								 const float radius,
+							     const Color color = Color::WHITE,
+							     const Angle rotation = Angle::ZERO,
+							     const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void fillCircle( const Circle circle,
                                  const Color color = Color::WHITE,

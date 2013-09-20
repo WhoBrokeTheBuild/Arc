@@ -197,6 +197,12 @@ void Arc::RenderTarget::drawRect( const float x, const float y, const float widt
     drawRect(rect, color, rotation, origin);
 }
 
+void Arc::RenderTarget::drawRect( const Point pos, const Size size, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+{
+	Rect rect = Rect(pos, size);
+	drawRect(rect, color, rotation, origin);
+}
+
 void Arc::RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
@@ -224,6 +230,12 @@ void Arc::RenderTarget::fillRect( const float x, const float y, const float widt
 {
     Rect rect = Rect(x, y, width, height);
     fillRect(rect, color, rotation, origin);
+}
+
+void Arc::RenderTarget::fillRect( const Point pos, const Size size, const float height, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
+{
+	Rect rect = Rect(pos, size);
+	fillRect(rect, color, rotation, origin);
 }
 
 void Arc::RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
@@ -255,6 +267,12 @@ void Arc::RenderTarget::drawCircle( const float x, const float y, const float ra
     drawCircle(circle, color, rotation, origin);
 }
 
+void Arc::RenderTarget::drawCircle( const Point pos, const float radius, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
+{
+	Circle circle = Circle(pos, radius);
+	drawCircle(circle, color, rotation, origin);
+}
+
 void Arc::RenderTarget::drawCircle( const Circle circle, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     drawShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, origin);
@@ -264,6 +282,12 @@ void Arc::RenderTarget::fillCircle( const float x, const float y, const float ra
 {
     Circle circle = Circle(x, y, radius);
     fillCircle(circle, color, rotation, origin);
+}
+
+void Arc::RenderTarget::fillCircle( const Point pos, const float radius, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
+{
+	Circle circle = Circle(pos, radius);
+	fillCircle(circle, color, rotation, origin);
 }
 
 void Arc::RenderTarget::fillCircle( const Circle circle, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const

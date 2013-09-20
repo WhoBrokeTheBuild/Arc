@@ -18,6 +18,18 @@ void Arc::Unit::init( Vector2 pos, float depth /*= 0.0f */ )
     Visible = true;
 }
 
+void Arc::Unit::term( void )
+{
+	while ( ! _componentsToAdd.empty())
+		delete _componentsToAdd.popBack();
+
+	while ( ! _componentsToRemove.empty())
+		delete _componentsToRemove.popBack();
+
+	while ( ! _components.empty())
+		delete _components.popBack();
+}
+
 void Arc::Unit::update( const Event& event )
 {
     if ( ! Enabled)
@@ -117,12 +129,16 @@ void Arc::Unit::updateComponents( const FrameData* data )
     while ( ! _componentsToAdd.empty())
     {
         Component* cmp = _componentsToAdd.popFront();
-        cmp->setParentUnit(this);
+        cmp->setUnit(this);
         _components.add(cmp);
     }
 
     while ( ! _componentsToRemove.empty())
-        _components.remove(_componentsToRemove.popFront());
+	{
+		Component* cmp = _componentsToRemove.popFront();
+        _components.remove(cmp);
+		delete cmp;
+	}
 
     for (auto it = _components.begin(); it != _components.end(); ++it)
         (*it)->update(data);
@@ -156,13 +172,4 @@ bool Arc::Unit::removeComponent( Component* component )
 
 	_componentsToRemove.add(component);
     return true;
-}
-
-void Arc::Unit::term( void )
-{
-	while ( ! _componentsToAdd.empty())
-		delete _componentsToAdd.popBack();
-
-	while ( ! _components.empty())
-		delete _components.popBack();
 }

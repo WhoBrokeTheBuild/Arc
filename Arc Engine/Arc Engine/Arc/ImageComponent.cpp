@@ -24,7 +24,7 @@ void Arc::ImageComponent::term( void )
 
 void Arc::ImageComponent::render( const RenderData* data )
 {
-	const Unit* parent = getParentUnit();
+	const Unit* parent = getUnit();
 
 	if (parent == nullptr)
         return;

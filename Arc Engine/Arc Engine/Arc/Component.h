@@ -16,7 +16,7 @@ namespace Arc
 	protected:
 
 		Unit*
-			_pParent;
+			_pUnit;
 
 	public:
 
@@ -40,8 +40,8 @@ namespace Arc
 
 		bool removeSelf( void );
 
-		inline Unit* getParentUnit( void ) const { return _pParent; }
-		inline void setParentUnit( Unit* unit ) { _pParent = unit; }
+		inline Unit* getUnit( void ) const { return _pUnit; }
+		inline void setUnit( Unit* unit ) { _pUnit = unit; }
 
 	}; // class Component
 

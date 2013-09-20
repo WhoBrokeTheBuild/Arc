@@ -3,6 +3,8 @@
 #include <Arc/Unit.h>
 #include <Arc/Texture.h>
 #include <Arc/ImageComponent.h>
+#include "Arc/ShapeComponent.h"
+#include "Arc/PhysicsComponent.h"
 
 void TestApp::init( void )
 {
@@ -30,10 +32,28 @@ void TestApp::init( void )
 
 	pResourceManager->addTexture(tex);
 
-    ImageComponent* imgCmp = New ImageComponent();
-    imgCmp->init(tex);
+	ShapeComponent *cmp = New ShapeComponent();
+	cmp->init(Vector2::ZERO, Angle::ZERO, Color::BLUE);
+	cmp->setCircle(1.0f);
 
-    unit->addComponent(imgCmp);
+	unit->addComponent(cmp);
+
+	cmp = New ShapeComponent();
+	cmp->init(Vector2::ZERO, Angle::ZERO, Color::RED, 100.0f);
+	cmp->setCircle(100.0f);
+
+	unit->addComponent(cmp);
+
+	cmp = New ShapeComponent();
+	cmp->init(Vector2::ZERO, Angle(randFloat(0.0f, (float)PI2), ANGLE_TYPE_RAD), Color::GREEN);
+	cmp->setRectangle(Size(50.0f));
+
+	unit->addComponent(cmp);
+
+	PhysicsComponent* phys = New PhysicsComponent();
+	phys->init(Vector2(randFloat(-2.0f, 2.0f), randFloat(-2.0f, 2.0f)), Vector2(randFloat(-0.1f, 0.1f), randFloat(-0.1f, 0.1f)));
+
+	unit->addComponent(phys);
 
     pScene->addUnit(unit, 0);
 

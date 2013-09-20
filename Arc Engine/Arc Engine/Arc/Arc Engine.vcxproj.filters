@@ -458,5 +458,8 @@
     <ClInclude Include="SocketType.h">
       <Filter>Project\Networking</Filter>
     </ClInclude>
+    <ClInclude Include="Shapes.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

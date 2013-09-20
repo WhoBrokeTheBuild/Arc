@@ -128,6 +128,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScriptingSystem.h" />
     <ClInclude Include="ShapeComponent.h" />
+    <ClInclude Include="Shapes.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="SocketType.h" />
     <ClInclude Include="Sound.h" />

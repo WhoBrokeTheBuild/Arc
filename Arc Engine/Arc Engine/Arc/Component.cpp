@@ -3,12 +3,12 @@
 
 Arc::Component::Component( void )
 {
-    _pParent = nullptr;
+    _pUnit = nullptr;
 }
 
 void Arc::Component::init( Unit* parent )
 {
-    _pParent = parent;
+    _pUnit = parent;
 }
 
 void Arc::Component::term( void )
@@ -17,5 +17,5 @@ void Arc::Component::term( void )
 
 bool Arc::Component::removeSelf( void )
 {
-    return getParentUnit()->removeComponent(this);
+    return getUnit()->removeComponent(this);
 }
