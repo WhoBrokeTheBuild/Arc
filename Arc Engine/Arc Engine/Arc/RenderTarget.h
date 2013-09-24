@@ -27,30 +27,31 @@ namespace Arc
             *_pGraphicsSystem;
 
         virtual void drawShape( const float x, const float y,
-                                const float radius, 
+                                const float radius,
                                 const float shapeValue,
-                                const Color color = Color::WHITE, 
-                                const Angle rotation = Angle::ZERO, 
+                                const Color color = Color::WHITE,
+                                const Angle rotation = Angle::ZERO,
                                 const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void fillShape( const float x, const float y,
-                                const float radius, 
+                                const float radius,
                                 const float shapeValue,
                                 const Color color = Color::WHITE,
-                                const Angle rotation = Angle::ZERO, 
+                                const Angle rotation = Angle::ZERO,
                                 const Vector2 origin = Vector2::ZERO ) const;
 
     public:
 
         RenderTarget( GraphicsSystem *pGraphicsSystem );
+        virtual inline ~RenderTarget( void ) { }
 
         virtual inline string toString( void ) const { return "Render Target"; }
 
         virtual void beginDraw( void ) const;
         virtual void endDraw  ( void ) const;
 
-        virtual void drawText( const Vector2 pos, 
-                               const string text, 
+        virtual void drawText( const Vector2 pos,
+                               const string text,
                                Font* pFont,
                                const Color color = Color::WHITE,
                                const Angle rotation = Angle::ZERO,
@@ -58,32 +59,32 @@ namespace Arc
 
         virtual void drawText( const float x, const float y,
                                const string text,
-                               Font* pFont, 
+                               Font* pFont,
                                const Color color = Color::WHITE,
                                const Angle rotation = Angle::ZERO,
                                const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawText( const Vector2 pos,
-                               const RenderedText* pCachedText, 
-                               const Color color = Color::WHITE, 
+                               const RenderedText* pCachedText,
+                               const Color color = Color::WHITE,
                                const Angle rotation = Angle::ZERO,
                                const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawText( const float x, const float y,
                                const RenderedText* pCachedText,
                                const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO, 
+                               const Angle rotation = Angle::ZERO,
                                const Vector2 origin = Vector2::ZERO ) const;
 
-        virtual void draw( const Vector2 pos, 
-                           const Texture *pTexture, 
-                           const Color color = Color::WHITE, 
+        virtual void draw( const Vector2 pos,
+                           const Texture *pTexture,
+                           const Color color = Color::WHITE,
                            const Angle rotation = Angle::ZERO,
                            const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void draw( const float x, const float y,
-                           const Texture *pTexture, 
-                           const Color color = Color::WHITE, 
+                           const Texture *pTexture,
+                           const Color color = Color::WHITE,
                            const Angle rotation = Angle::ZERO,
                            const Vector2 origin = Vector2::ZERO ) const;
 
@@ -98,14 +99,14 @@ namespace Arc
         virtual void draw( const float x, const float y,
                            const Texture *pTexture,
                            const Rect sourceRect,
-                           const Color color = Color::WHITE, 
+                           const Color color = Color::WHITE,
                            const Angle rotation = Angle::ZERO,
                            const Vector2 origin = Vector2::ZERO,
                            bool flip = false ) const;
 
         virtual void drawLine( const Vector2 start,
-                               const Vector2 end, 
-                               const Color color = Color::WHITE, 
+                               const Vector2 end,
+                               const Color color = Color::WHITE,
                                const float thickness = 1.0f ) const;
 
         virtual void drawLine( const float x1, const float y1,
@@ -117,13 +118,13 @@ namespace Arc
                                const float width,
                                const float height,
                                const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO, 
+                               const Angle rotation = Angle::ZERO,
                                const Vector2 origin = Vector2::ZERO ) const;
 
 		virtual void drawRect( const Point pos,
-							   const Size size, 
-							   const Color color = Color::WHITE, 
-							   const Angle rotation = Angle::ZERO, 
+							   const Size size,
+							   const Color color = Color::WHITE,
+							   const Angle rotation = Angle::ZERO,
 							   const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawRect( const Rect rect,
@@ -132,17 +133,17 @@ namespace Arc
                                const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void fillRect( const float x, const float y,
-                               const float width, 
-                               const float height, 
+                               const float width,
+                               const float height,
                                const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO, 
+                               const Angle rotation = Angle::ZERO,
 							   const Vector2 origin = Vector2::ZERO ) const;
 
 		virtual void fillRect( const Point pos,
-							   const Size size, 
-							   const float height, 
+							   const Size size,
+							   const float height,
 							   const Color color = Color::WHITE,
-							   const Angle rotation = Angle::ZERO, 
+							   const Angle rotation = Angle::ZERO,
 							   const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void fillRect( const Rect rect,
@@ -151,7 +152,7 @@ namespace Arc
                                const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawCircle( const float x, const float y,
-                                 const float radius, 
+                                 const float radius,
                                  const Color color = Color::WHITE,
                                  const Angle rotation = Angle::ZERO,
 								 const Vector2 origin = Vector2::ZERO ) const;
@@ -163,7 +164,7 @@ namespace Arc
 			                     const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawCircle( const Circle circle,
-                                 const Color color = Color::WHITE, 
+                                 const Color color = Color::WHITE,
                                  const Angle rotation = Angle::ZERO,
                                  const Vector2 origin = Vector2::ZERO ) const;
 
@@ -181,7 +182,7 @@ namespace Arc
 
         virtual void fillCircle( const Circle circle,
                                  const Color color = Color::WHITE,
-                                 const Angle rotation = Angle::ZERO, 
+                                 const Angle rotation = Angle::ZERO,
                                  const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawTriangle( const Vector2 pos,
@@ -192,37 +193,37 @@ namespace Arc
 
         virtual void fillTriangle( const Vector2 pos,
                                    const float radius,
-                                   const Color color = Color::WHITE, 
+                                   const Color color = Color::WHITE,
                                    const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawTriangle( const float x, const float y,
                                    const float radius,
                                    const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO, 
+                                   const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
-        virtual void fillTriangle( const float x, const float y, 
-                                   const float radius, 
+        virtual void fillTriangle( const float x, const float y,
+                                   const float radius,
                                    const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO, 
+                                   const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawPentagon( const Vector2 pos,
                                    const float radius,
                                    const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO, 
+                                   const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void fillPentagon( const Vector2 pos,
                                    const float radius,
-                                   const Color color = Color::WHITE, 
-                                   const Angle rotation = Angle::ZERO, 
+                                   const Color color = Color::WHITE,
+                                   const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
-        virtual void drawPentagon( const float x, const float y, 
-                                   const float radius, 
-                                   const Color color = Color::WHITE, 
+        virtual void drawPentagon( const float x, const float y,
+                                   const float radius,
+                                   const Color color = Color::WHITE,
                                    const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
@@ -232,16 +233,16 @@ namespace Arc
                                    const Angle rotation = Angle::ZERO,
                                    const Vector2 origin = Vector2::ZERO ) const;
 
-        virtual void drawHexagon( const Vector2 pos, 
-                                  const float radius, 
+        virtual void drawHexagon( const Vector2 pos,
+                                  const float radius,
                                   const Color color = Color::WHITE,
                                   const Angle rotation = Angle::ZERO,
                                   const Vector2 origin = Vector2::ZERO ) const;
 
-        virtual void fillHexagon( const Vector2 pos, 
-                                  const float radius, 
-                                  const Color color = Color::WHITE, 
-                                  const Angle rotation = Angle::ZERO, 
+        virtual void fillHexagon( const Vector2 pos,
+                                  const float radius,
+                                  const Color color = Color::WHITE,
+                                  const Angle rotation = Angle::ZERO,
                                   const Vector2 origin = Vector2::ZERO ) const;
 
         virtual void drawHexagon( const float x, const float y,

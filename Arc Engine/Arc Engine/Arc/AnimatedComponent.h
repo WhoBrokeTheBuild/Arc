@@ -13,11 +13,8 @@ namespace Arc
 	{
 	public:
 
-		AnimatedComponent( void );
-		virtual inline ~AnimatedComponent( void ) { term (); }
-
-		virtual void init( void );
-		virtual void term( void );
+		AnimatedComponent( Unit* pUnit );
+		virtual ~AnimatedComponent( void );
 
 		virtual inline string toString( void ) const { return "Animated Component"; }
 

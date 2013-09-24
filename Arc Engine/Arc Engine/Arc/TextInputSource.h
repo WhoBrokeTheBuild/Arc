@@ -24,15 +24,15 @@ namespace Arc
             Dir;
 
         TextInputData( Direction dir )
+            : Char('\0'),
+              Dir(dir)
         {
-            Char = '\0';
-            Dir = dir;
         }
 
-        TextInputData( char ch = '\0', Direction dir = INVALID_DIRECTION ) 
-        { 
-            Char = ch;
-            Dir = dir; 
+        TextInputData( char ch = '\0', Direction dir = INVALID_DIRECTION )
+            : Char(ch),
+              Dir(dir)
+        {
         }
 
         virtual ~TextInputData( void ) { }
@@ -70,12 +70,9 @@ namespace Arc
         //TODO: Add Insert Mode
 
         TextInputSource(void);
-        virtual inline ~TextInputSource(void) { term(); }
+        virtual ~TextInputSource(void);
 
         virtual inline string toString( void ) const { return "Text Input Source"; }
-
-        virtual void init( void );
-        virtual void term( void );
 
         virtual void update( const Event& event );
 

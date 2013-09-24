@@ -17,6 +17,8 @@ namespace Arc
     {
     public:
 
+        virtual inline ~EventData( void ) { }
+
         virtual inline string toString( void ) const { return "Event Data"; };
 
         virtual EventData* clone( void ) const { return New EventData(); };

@@ -6,13 +6,10 @@ Arc::InputSystem::InputSystem( void )
     INFO(toString(), "Initializing");
 
     _pKeyboardSource = New KeyboardSource();
-    _pKeyboardSource->init();
 
     _pMouseSource = New MouseSource();
-    _pMouseSource->init();
 
     _pTextInputSource = New TextInputSource();
-    _pTextInputSource->init();
 
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 

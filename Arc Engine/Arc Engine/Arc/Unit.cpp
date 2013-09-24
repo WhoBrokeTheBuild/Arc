@@ -1,6 +1,11 @@
 #include "Unit.h"
 #include "Component.h"
 
+#include "PhysicsComponent.h"
+#include "ImageComponent.h"
+#include "ShapeComponent.h"
+#include "AnimatedComponent.h"
+
 Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
 	  _originLocation(INVALID_ORIGIN_LOCATION),
@@ -166,4 +171,39 @@ bool Arc::Unit::removeComponent( Component* component )
 
 	_componentsToRemove.add(component);
     return true;
+}
+
+Arc::Component* Arc::Unit::addNewComponent( void )
+{
+    Component* cmp = New Component(this);
+    addComponent(cmp);
+    return cmp;
+}
+
+PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
+{
+    PhysicsComponent* cmp = New PhysicsComponent(this, vel, acc);
+    addComponent(cmp);
+    return cmp;
+}
+
+ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+{
+    ImageComponent* cmp = New ImageComponent(this, pTexture, offset, rotation, blendColor, origin);
+    addComponent(cmp);
+    return cmp;
+}
+
+ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+{
+    ShapeComponent* cmp = New ShapeComponent(this, offset, rotation, blendColor, origin);
+    addComponent(cmp);
+    return cmp;
+}
+
+AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
+{
+    AnimatedComponent* cmp = New AnimatedComponent(this);
+    addComponent(cmp);
+    return cmp;
 }

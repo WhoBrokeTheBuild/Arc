@@ -33,12 +33,9 @@ namespace Arc
             EVENT_KEY_HELD;
 
         KeyboardSource( void );
-        virtual inline ~KeyboardSource( void ) { term(); }
+        virtual ~KeyboardSource( void );
 
         virtual inline string toString( void ) const { return "Keyboard Source"; }
-
-        virtual void init( void );
-        virtual void term( void );
 
         virtual void update( const Event& event );
 

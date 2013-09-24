@@ -19,11 +19,8 @@ namespace Arc
 			Vel,
 			Acc;
 
-		PhysicsComponent( void );
-		virtual inline ~PhysicsComponent( void ) { term (); }
-
-		virtual void init( Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO );
-		virtual inline void term( void ) { }
+		PhysicsComponent( Unit* pUnit, Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO );
+		virtual inline ~PhysicsComponent( void );
 
 		virtual inline string toString( void ) const { return "Physics Component"; }
 

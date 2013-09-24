@@ -5,8 +5,8 @@
 Arc::Scene::Scene( void )
 	: _layers(),
 	  _tags(),
-	  Visible(true),
-	  Enabled(true)
+	  Enabled(true),
+	  Visible(true)
 {
 }
 
@@ -28,7 +28,7 @@ void Arc::Scene::update( const Event& event )
 {
     if ( ! Enabled)
 		return;
-    
+
     Map<unsigned int, Layer*>::Iterator it;
     for (it = _layers.begin(); it != _layers.end(); ++it)
     {
@@ -183,7 +183,7 @@ bool Arc::Scene::removeUnit( Unit* unit )
 bool Arc::Scene::hasUnit( Unit* unit )
 {
     bool flag = false;
-	
+
     auto end = _layers.end();
     for (auto it = _layers.begin(); it != end; ++it)
     {
@@ -200,7 +200,7 @@ bool Arc::Scene::hasUnit( Unit* unit )
 Arc::Layer* Arc::Scene::getUnitLayer( Unit* unit )
 {
     Layer* tmp = nullptr;
-	
+
     auto end = _layers.end();
     for (auto it = _layers.begin(); it != end; ++it)
     {
@@ -217,7 +217,7 @@ Arc::Layer* Arc::Scene::getUnitLayer( Unit* unit )
 int Arc::Scene::getUnitLayerIndex( Unit* unit )
 {
     int index = -1;
-	
+
     auto end = _layers.end();
     for (auto it = _layers.begin(); it != end; ++it)
     {

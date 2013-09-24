@@ -31,8 +31,7 @@ Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color 
     resetVideoMode();
     resetGL();
 
-    _pRenderTarget = New RenderTarget();
-    _pRenderTarget->init(this);
+    _pRenderTarget = New RenderTarget(this);
 
     if (TTF_Init() < 0)
     {
@@ -44,7 +43,7 @@ Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color 
 }
 
 Arc::GraphicsSystem::~GraphicsSystem( void )
-{	
+{
     INFO(toString(), "Terminating");
 
     delete _pRenderTarget;

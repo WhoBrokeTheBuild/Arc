@@ -3,8 +3,8 @@
 #include "RenderedText.h"
 
 Arc::Font::Font( string filename, int size )
-	: _pFont(nullptr),
-	  _filename(filename),
+	: _filename(filename),
+	  _pFont(nullptr),
 	  _fontSize(size)
 {
     _pFont = TTF_OpenFont(_filename.c_str(), _fontSize);

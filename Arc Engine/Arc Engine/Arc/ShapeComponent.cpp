@@ -1,19 +1,16 @@
 #include "ShapeComponent.h"
 #include "Unit.h"
 
-Arc::ShapeComponent::ShapeComponent(void)
+Arc::ShapeComponent::ShapeComponent( Unit* pUnit, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO */ )
+    : Component(pUnit),
+      Offset(offset),
+      Rotation(rotation),
+      BlendColor(blendColor),
+      Origin(origin)
 {
 }
 
-void Arc::ShapeComponent::init( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO */ )
-{
-	Offset = offset;
-	Rotation = rotation;
-	BlendColor = blendColor;
-	Origin = origin;
-}
-
-void Arc::ShapeComponent::term( void )
+Arc::ShapeComponent::~ShapeComponent( void)
 {
 }
 
@@ -51,5 +48,7 @@ void Arc::ShapeComponent::render( const RenderData* data )
 		data->renderTarget()->drawCircle(parent->Pos + Offset, _radius, BlendColor, Rotation, Origin );
 
 		break;
+    default:
+        break;
 	}
 }

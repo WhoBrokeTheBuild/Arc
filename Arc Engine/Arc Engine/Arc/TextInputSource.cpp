@@ -11,15 +11,6 @@ const Arc::EventType Arc::TextInputSource::EVENT_TEXT_INPUT_HOME_END  = "textInp
 
 Arc::TextInputSource::TextInputSource( void )
 {
-    _shiftDown    = false;
-    _capsLockDown = false;
-    _validInputs  = ArrayList<KeyboardKey>();
-}
-
-void Arc::TextInputSource::init( void )
-{
-    IKeyboardListener::init();
-
     _shiftDown = false;
     _capsLockDown = false;
 
@@ -65,7 +56,7 @@ void Arc::TextInputSource::init( void )
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &TextInputSource::update);
 }
 
-void Arc::TextInputSource::term( void )
+Arc::TextInputSource::~TextInputSource( void )
 {
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &TextInputSource::update);
 }

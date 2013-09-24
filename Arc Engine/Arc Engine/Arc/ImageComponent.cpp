@@ -1,24 +1,17 @@
 #include "ImageComponent.h"
 #include "Unit.h"
 
-Arc::ImageComponent::ImageComponent( void )
+Arc::ImageComponent::ImageComponent( Unit* pUnit, Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+    : Component(pUnit),
+      _pTexture(nullptr),
+      Offset(offset),
+      Rotation(rotation),
+      BlendColor(blendColor),
+      Origin(origin)
 {
-	_pTexture = nullptr;
-	Offset = Origin = Point::ZERO;
-	Rotation = Angle::ZERO;
-	BlendColor = Color::WHITE;
 }
 
-void Arc::ImageComponent::init( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
-{
-	_pTexture  = pTexture;
-	Offset     = offset;
-	Rotation   = rotation;
-	BlendColor = blendColor;
-	Origin     = origin;
-}
-
-void Arc::ImageComponent::term( void )
+Arc::ImageComponent::~ImageComponent( void )
 {
 }
 

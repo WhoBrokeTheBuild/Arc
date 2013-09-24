@@ -13,6 +13,10 @@
 namespace Arc
 {
 	class Component;
+	class PhysicsComponent;
+	class ImageComponent;
+	class ShapeComponent;
+	class AnimatedComponent;
 
     class Unit :
         public EventDispatcher
@@ -83,6 +87,12 @@ namespace Arc
 		virtual bool addComponent   ( Component* component );
 		virtual bool removeComponent( Component* component );
 		virtual inline bool hasComponent( Component* component ) { return _components.contains(component); }
+
+		virtual Component*         addNewComponent( void );
+		virtual PhysicsComponent*  addNewPhysicsComponent( Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO );
+		virtual ImageComponent*    addNewImageComponent( Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
+		virtual ShapeComponent*    addNewShapeComponent( Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
+		virtual AnimatedComponent* addNewAnimatedComponent( void );
 
     }; // class Unit
 

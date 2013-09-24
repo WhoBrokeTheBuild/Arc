@@ -3,11 +3,11 @@
 #include "RenderTarget.h"
 
 Arc::RenderedText::RenderedText( const string text, Font* pFont )
-	: _pFont(pFont),
-	  _text(text)
+	: _text(text),
+      _pFont(pFont)
 {
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
-	
+
     renderText();
 }
 
@@ -46,10 +46,7 @@ void Arc::RenderedText::renderText( void )
     }
 
     delete _pTexture;
-    _pTexture = nullptr;
-
-    _pTexture = New Texture();
-    _pTexture->init(surface);
+    _pTexture = New Texture(surface);
 
     SDL_FreeSurface(surface);
 }

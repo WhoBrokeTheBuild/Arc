@@ -30,11 +30,8 @@ namespace Arc
 		Color
 			BlendColor;
 
-		ImageComponent( void );
-		virtual inline ~ImageComponent( void ) { term (); }
-
-		virtual void init( Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
-		virtual void term( void );
+		ImageComponent( Unit* pUnit, Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
+		virtual inline ~ImageComponent( void );
 
 		virtual inline string toString( void ) const { return "Image Component"; }
 

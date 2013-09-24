@@ -73,7 +73,7 @@ namespace Arc
 
         inline ReturnType invoke( Param param ) { return _callback->invoke(param); }
 
-        ~Delegate() { if ( _callback != nullptr ) { delete _callback; _callback = nullptr; } }
+        virtual inline ~Delegate() { if ( _callback != nullptr ) { delete _callback; _callback = nullptr; } }
 
         bool operator==( const Delegate<ReturnType, Param>& rhs )
         {

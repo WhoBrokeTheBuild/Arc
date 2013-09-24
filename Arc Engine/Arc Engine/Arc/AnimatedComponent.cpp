@@ -1,13 +1,10 @@
 #include "AnimatedComponent.h"
 
-Arc::AnimatedComponent::AnimatedComponent(void)
+Arc::AnimatedComponent::AnimatedComponent( Unit* pUnit )
+    : Component(pUnit)
 {
 }
 
-void Arc::AnimatedComponent::init( void )
-{
-}
-
-void Arc::AnimatedComponent::term( void )
+Arc::AnimatedComponent::~AnimatedComponent( void )
 {
 }

@@ -62,12 +62,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Ball.cpp">
-			<Option virtualFolder="Project/" />
-		</Unit>
-		<Unit filename="Ball.h">
-			<Option virtualFolder="Project/" />
-		</Unit>
 		<Unit filename="Common.h">
 			<Option virtualFolder="Project/" />
 		</Unit>
@@ -80,22 +74,7 @@
 		<Unit filename="TestApp.h">
 			<Option virtualFolder="Project/" />
 		</Unit>
-		<Unit filename="Wall.cpp">
-			<Option virtualFolder="Project/" />
-		</Unit>
-		<Unit filename="Wall.h">
-			<Option virtualFolder="Project/" />
-		</Unit>
 		<Unit filename="assets/ds-digital.ttf">
-			<Option virtualFolder="Project/" />
-		</Unit>
-		<Unit filename="assets/ping.wav">
-			<Option virtualFolder="Project/" />
-		</Unit>
-		<Unit filename="assets/pong.wav">
-			<Option virtualFolder="Project/" />
-		</Unit>
-		<Unit filename="assets/sound.ogg">
 			<Option virtualFolder="Project/" />
 		</Unit>
 		<Unit filename="assets/test.lua">

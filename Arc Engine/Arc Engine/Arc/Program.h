@@ -75,7 +75,7 @@ namespace Arc
             EVENT_RENDER_END,
             EVENT_EXIT;
 
-        Program( Size windowSize= Size(640, 480), string windowTitle = "Arc" );
+        Program( void );
         virtual ~Program( void );
 
         virtual inline string toString( void ) const { return "Program"; }
@@ -89,9 +89,9 @@ namespace Arc
         virtual void updateFrame( const FrameData&  frameData );
         virtual void renderFrame( const RenderData& renderData );
 
-        virtual void initAll       ( Size windowSize, string windowTitle );
+        virtual void initAll       ( Size windowSize, string windowTitle, Color clearColor = Color::BLACK );
         virtual void initCore      ( void );
-        virtual void initGraphics  ( Size windowSize, string windowTitle );
+        virtual void initGraphics  ( Size windowSize, string windowTitle, Color clearColor = Color::BLACK);
         virtual void initAudio     ( void );
         virtual void initInput     ( void );
         virtual void initScripting ( void );

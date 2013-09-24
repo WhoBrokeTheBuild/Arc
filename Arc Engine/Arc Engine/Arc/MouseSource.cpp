@@ -7,15 +7,12 @@ const Arc::EventType Arc::MouseSource::EVENT_MOUSE_RELEASED = "mouseReleased";
 const Arc::EventType Arc::MouseSource::EVENT_MOUSE_HELD     = "mouseHeld";
 
 Arc::MouseSource::MouseSource( void )
+    : _sdlButtonStates(0),
+      _buttonStates(),
+      _mousePos(),
+      _mouseDelta()
 {
-    _sdlButtonStates = 0;
-    _buttonStates    = Map<MouseButton, InputState>();
-    _mousePos        = Point::ZERO;
-    _mouseDelta      = Vector2::ZERO;
-}
 
-void Arc::MouseSource::init( void )
-{
     for (unsigned int button = 0; button < NUM_MOUSE_BUTTONS; ++button)
     {
         _buttonStates.add((MouseButton)button, InputState());
@@ -24,7 +21,7 @@ void Arc::MouseSource::init( void )
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &MouseSource::update);
 }
 
-void Arc::MouseSource::term( void )
+Arc::MouseSource::~MouseSource( void )
 {
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &MouseSource::update);
 }

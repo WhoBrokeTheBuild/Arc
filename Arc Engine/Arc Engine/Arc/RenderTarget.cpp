@@ -80,8 +80,7 @@ void Arc::RenderTarget::drawText( const Vector2 pos, const string text, Font* pF
 
 void Arc::RenderTarget::drawText( const float x, const float y, const string text, Font* pFont, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
-    RenderedText renderedText;
-    renderedText.init(text, pFont);
+    RenderedText renderedText(text, pFont);
 
     drawText(x, y, &renderedText, color, rotation, origin);
 }

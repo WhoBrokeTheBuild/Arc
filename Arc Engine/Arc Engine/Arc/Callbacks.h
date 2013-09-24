@@ -9,7 +9,7 @@
 namespace Arc
 {
 	/** A base class for callbacks used by events
-	  * 
+	  *
 	  * @deriveIf Override equalTo, invoke, clone, and isMethodOf
 	  */
     template <typename ReturnType, typename Param = void>
@@ -26,12 +26,14 @@ namespace Arc
 
     public:
 
+        virtual inline ~Callback( void ) { }
+
         virtual ReturnType invoke( Param param ) = 0;
         virtual Callback*  clone ( void )        = 0;
         virtual bool isMethodOf  ( void* object) = 0;
 
     }; // class Callback
-	
+
 	/** A static function stored as a callback for events
 	  */
     template <typename ReturnType, typename Param = void>
@@ -61,10 +63,10 @@ namespace Arc
         {
             _function = function;
         }
-		
+
 		// Call the function with the (const Event& event) parameter
         inline virtual ReturnType invoke( Param param )      { return (*_function)(param); }
-		
+
 		// Clone the callback, preserving the data
         inline virtual StaticFunctionCallback* clone( void ) { return New StaticFunctionCallback(_function); }
         inline virtual bool isMethodOf( void* object )       { return false; }
@@ -72,7 +74,7 @@ namespace Arc
         inline virtual string toString( void ) const { return "Static Function Callback"; };
 
     }; // class StaticFunctionCallback
-	
+
 	/** A method function and object stored as a callback for events
 	  */
     template <typename ReturnType, typename Param = void, typename ObjectType = void, typename Method = void>

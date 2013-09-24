@@ -33,8 +33,8 @@ public:
 	ResourceManager
 		*pResourceManager;
 
-    TestApp( void ) { }
-    virtual ~TestApp( void ) { term(); }
+    TestApp( void );
+    virtual ~TestApp( void );
 
     virtual inline string toString( void ) const { return "Test App"; }
 

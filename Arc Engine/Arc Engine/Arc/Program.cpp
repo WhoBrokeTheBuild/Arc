@@ -10,7 +10,7 @@ const Arc::EventType Arc::Program::EVENT_RENDER       = "render";
 const Arc::EventType Arc::Program::EVENT_RENDER_END   = "renderEnd";
 const Arc::EventType Arc::Program::EVENT_EXIT         = "exit";
 
-Arc::Program::Program( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
+Arc::Program::Program( void )
 	: _pGraphicsSystem(nullptr),
 	  _pInputSystem(nullptr),
 	  _pAudioSystem(nullptr),
@@ -110,11 +110,11 @@ void Arc::Program::renderFrame( const RenderData& renderData )
     renderData.renderTarget()->endDraw();
 }
 
-void Arc::Program::initAll( Size windowSize, string windowTitle )
+void Arc::Program::initAll( Size windowSize, string windowTitle, Color clearColor /*= Color::BLACK*/ )
 {
     initCore();
     initInput();
-    initGraphics(windowSize, windowTitle);
+    initGraphics(windowSize, windowTitle, clearColor);
     initAudio();
     initScripting();
     initNetworking();
@@ -129,32 +129,27 @@ void Arc::Program::initCore( void )
     }
 }
 
-void Arc::Program::initGraphics( Size windowSize, string windowTitle )
+void Arc::Program::initGraphics( Size windowSize, string windowTitle, Color clearColor /*= Color::BLACK*/ )
 {
-    _pGraphicsSystem = New GraphicsSystem();
-    _pGraphicsSystem->init(windowSize, windowTitle);
+    _pGraphicsSystem = New GraphicsSystem(windowSize, windowTitle, clearColor);
 }
 
 void Arc::Program::initAudio( void )
 {
     _pAudioSystem = New AudioSystem();
-    _pAudioSystem->init();
 }
 
 void Arc::Program::initInput( void )
 {
     _pInputSystem = New InputSystem();
-    _pInputSystem->init();
 }
 
 void Arc::Program::initScripting( void )
 {
     _pScriptingSystem = New ScriptingSystem();
-    _pScriptingSystem->init();
 }
 
 void Arc::Program::initNetworking( void )
 {
     _pNetworkSystem = New NetworkSystem();
-    _pNetworkSystem->init();
 }

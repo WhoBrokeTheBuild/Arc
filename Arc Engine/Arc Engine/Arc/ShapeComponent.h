@@ -36,11 +36,8 @@ namespace Arc
 		Color
 			BlendColor;
 
-		ShapeComponent( void );
+		ShapeComponent( Unit* pUnit, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
 		virtual inline ~ShapeComponent( void ) { term (); }
-
-		virtual void init( Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
-		virtual void term( void );
 
 		virtual inline void setTriangle ( float radius ) { _shape = SHAPE_TRIANGLE;  _radius = radius; }
 		virtual inline void setRectangle( Size size )    { _shape = SHAPE_RECTANGLE; _size = size; }

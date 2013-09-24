@@ -1,17 +1,12 @@
 #include "Component.h"
 #include "Unit.h"
 
-Arc::Component::Component( void )
+Arc::Component::Component( Unit* pUnit )
+    : _pUnit(pUnit)
 {
-    _pUnit = nullptr;
 }
 
-void Arc::Component::init( Unit* parent )
-{
-    _pUnit = parent;
-}
-
-void Arc::Component::term( void )
+Arc::Component::~Component( void)
 {
 }
 

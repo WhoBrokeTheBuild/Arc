@@ -6,15 +6,9 @@ const Arc::EventType Arc::KeyboardSource::EVENT_KEY_RELEASED = "keyReleased";
 const Arc::EventType Arc::KeyboardSource::EVENT_KEY_HELD     = "keyHeld";
 
 Arc::KeyboardSource::KeyboardSource( void )
+    : _sdlKeys(nullptr),
+      _keyStates()
 {
-    _sdlKeys   = nullptr;
-    _keyStates = Map<KeyboardKey, InputState>();
-}
-
-void Arc::KeyboardSource::init( void )
-{
-    _sdlKeys = nullptr;
-
     for (unsigned int key = 0; key < NUM_KEYS; ++key)
     {
         _keyStates.add((KeyboardKey)key, InputState());
@@ -23,7 +17,7 @@ void Arc::KeyboardSource::init( void )
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
-void Arc::KeyboardSource::term( void )
+Arc::KeyboardSource::~KeyboardSource( void )
 {
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &KeyboardSource::update);
 }

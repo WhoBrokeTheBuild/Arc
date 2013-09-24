@@ -27,11 +27,8 @@ namespace Arc
 		static const EventType
 			EVENT_UNIT_CHANGED;
 
-		Component( void );
-		virtual ~Component() { term(); }
-
-		virtual void init( Unit* parent );
-		virtual void term( void );
+		Component( Unit* pUnit );
+		virtual ~Component();
 
 		virtual inline string toString( void ) const { return "Component"; }
 
