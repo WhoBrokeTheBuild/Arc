@@ -60,11 +60,8 @@ namespace Arc
             Enabled,
             Visible;
 
-        Unit( void );
-        virtual ~Unit( void ) { term(); }
-
-        virtual void init( Vector2 pos, float depth = 0.0f );
-        virtual void term( void );
+        Unit( Vector2 pos, float depth = 0.0f );
+        virtual ~Unit( void );
 
         virtual void update( const Event& event );
         virtual void render( const Event& event );

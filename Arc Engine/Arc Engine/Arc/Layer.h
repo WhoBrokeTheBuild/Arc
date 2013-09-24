@@ -33,11 +33,8 @@ namespace Arc
         static const EventType
             EVENT_LAYER_CHANGED;
 
-        Layer( void );
-        virtual ~Layer( void ) { term(); }
-
-        virtual void init( Scene* scene );
-        virtual void term( void );
+        Layer( Scene* scene );
+        virtual ~Layer( void );
 
         virtual inline string toString( void ) const { return "Layer"; }
 

@@ -31,17 +31,12 @@ namespace Arc
     public:
 
         ScriptingSystem( void );
-        virtual ~ScriptingSystem( void ) { term(); }
-
-        virtual void init( void );
-        virtual void term( void );
+        virtual ~ScriptingSystem( void );
 
         virtual inline string toString( void ) const { return "Scripting System"; }
 
         virtual void registerFunctions( void );
-
         virtual void executeFile( string filename );
-
         virtual void showErrors( int status );
 
     }; // class ScriptingSystem

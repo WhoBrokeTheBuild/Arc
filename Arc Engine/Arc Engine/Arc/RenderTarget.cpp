@@ -1,14 +1,9 @@
 #include "RenderTarget.h"
 #include "GraphicsSystem.h"
 
-Arc::RenderTarget::RenderTarget( void )
+Arc::RenderTarget::RenderTarget( GraphicsSystem* pGraphicsSystem )
+	:_pGraphicsSystem(pGraphicsSystem)
 {
-    _pGraphicsSystem = nullptr;
-}
-
-void Arc::RenderTarget::init( GraphicsSystem* pGraphicsSystem )
-{
-    _pGraphicsSystem = pGraphicsSystem;
 }
 
 void Arc::RenderTarget::beginDraw( void ) const

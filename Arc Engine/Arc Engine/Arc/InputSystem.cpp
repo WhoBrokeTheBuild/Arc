@@ -3,13 +3,6 @@
 
 Arc::InputSystem::InputSystem( void )
 {
-    _pKeyboardSource  = nullptr;
-    _pMouseSource     = nullptr;
-    _pTextInputSource = nullptr;
-}
-
-void Arc::InputSystem::init( void )
-{
     INFO(toString(), "Initializing");
 
     _pKeyboardSource = New KeyboardSource();
@@ -26,7 +19,7 @@ void Arc::InputSystem::init( void )
     INFO(toString(), "Complete");
 }
 
-void Arc::InputSystem::term( void )
+Arc::InputSystem::~InputSystem( void )
 {
     INFO(toString(), "Terminating");
 

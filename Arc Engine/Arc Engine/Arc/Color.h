@@ -47,8 +47,6 @@ namespace Arc
         Color( int r, int g, int b );
         Color( int r, int g, int b, int a );
 
-        virtual ~Color( void ) { }
-
         virtual inline string toString( void ) const;
 
         float fracR( void ) const { return (float)((1.0f / 255.0f) * R); }

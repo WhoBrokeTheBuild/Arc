@@ -35,11 +35,8 @@ namespace Arc
 
     public:
 
-        Font( void );
-        virtual ~Font( void ) { term(); }
-
-        virtual void init( string filename, int size );
-        virtual void term( void );
+        Font( string filename, int size );
+        virtual ~Font( void );
 
         virtual inline string toString( void ) const;
 

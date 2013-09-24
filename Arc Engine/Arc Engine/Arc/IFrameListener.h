@@ -18,20 +18,17 @@ namespace Arc
     {
     public:
 
-        inline IFrameListener( void ) { }
-        virtual inline ~IFrameListener( void ) { term(); };
-
-        virtual inline void init( void )
-        {
+        inline IFrameListener( void ) 
+		{
             gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &IFrameListener::update);
             gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &IFrameListener::render);
-        }
+		}
 
-        virtual inline void term( void )
-        {
+        virtual inline ~IFrameListener( void ) 
+		{
             gpEventDispatcher->removeEventListener(Program::EVENT_RENDER, this, &IFrameListener::render);
             gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &IFrameListener::update);
-        }
+		};
 
         virtual inline void update( const Event& event ) { };
         virtual inline void render( const Event& event ) { };

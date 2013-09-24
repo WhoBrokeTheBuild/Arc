@@ -3,27 +3,17 @@
 #include "Program.h"
 
 Arc::Scene::Scene( void )
+	: _layers(),
+	  _tags(),
+	  Visible(true),
+	  Enabled(true)
 {
-    _layers = Map<unsigned int, Layer*>();
-    _tags   = Map<string, ArrayList<Unit*>>();
-    Visible = false;
-    Enabled = false;
 }
 
-void Arc::Scene::init( void )
+Arc::Scene::~Scene( void )
 {
-    IFrameListener::init();
-
-    _layers = Map<unsigned int, Layer*>();
-    _tags   = Map<string, ArrayList<Unit*>>();
-    Visible = true;
-    Enabled = true;
-}
-
-void Arc::Scene::term( void )
-{
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
+	auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
     {
         removeEventListener(Program::EVENT_RENDER, it->second, &Layer::render);
         removeEventListener(Program::EVENT_UPDATE, it->second, &Layer::update);
@@ -36,25 +26,25 @@ void Arc::Scene::term( void )
 
 void Arc::Scene::update( const Event& event )
 {
-    if (Enabled)
+    if ( ! Enabled)
+		return;
+    
+    Map<unsigned int, Layer*>::Iterator it;
+    for (it = _layers.begin(); it != _layers.end(); ++it)
     {
-        Map<unsigned int, Layer*>::Iterator it;
-        for (it = _layers.begin(); it != _layers.end(); ++it)
-        {
-            it->second->update(event);
-        }
+        it->second->update(event);
     }
 }
 
 void Arc::Scene::render( const Event& event )
 {
-    if (Visible)
+    if ( ! Visible)
+		return;
+
+    Map<unsigned int, Layer*>::Iterator it;
+    for (it = _layers.begin(); it != _layers.end(); ++it)
     {
-        Map<unsigned int, Layer*>::Iterator it;
-        for (it = _layers.begin(); it != _layers.end(); ++it)
-        {
-            it->second->render(event);
-        }
+        it->second->render(event);
     }
 }
 
@@ -62,8 +52,7 @@ bool Arc::Scene::addLayer( int index )
 {
     if ( ! hasLayer(index))
     {
-        _layers.add(index, New Layer());
-        _layers[index]->init(this);
+        _layers.add(index, New Layer(this));
 
         addEventListener(Program::EVENT_UPDATE, _layers[index], &Layer::update);
         addEventListener(Program::EVENT_RENDER, _layers[index], &Layer::render);
@@ -181,8 +170,8 @@ void Arc::Scene::moveUnit( Unit* unit, int newLayer )
 
 bool Arc::Scene::removeUnit( Unit* unit )
 {
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
+    auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
     {
         if (it->second->removeUnit(unit))
             return true;
@@ -194,9 +183,9 @@ bool Arc::Scene::removeUnit( Unit* unit )
 bool Arc::Scene::hasUnit( Unit* unit )
 {
     bool flag = false;
-
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
+	
+    auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
     {
         if (it->second->hasUnit(unit))
         {
@@ -211,9 +200,9 @@ bool Arc::Scene::hasUnit( Unit* unit )
 Arc::Layer* Arc::Scene::getUnitLayer( Unit* unit )
 {
     Layer* tmp = nullptr;
-
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
+	
+    auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
     {
         if (it->second->hasUnit(unit))
         {
@@ -228,9 +217,9 @@ Arc::Layer* Arc::Scene::getUnitLayer( Unit* unit )
 int Arc::Scene::getUnitLayerIndex( Unit* unit )
 {
     int index = -1;
-
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
+	
+    auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
     {
         if (it->second->hasUnit(unit))
         {

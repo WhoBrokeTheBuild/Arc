@@ -59,7 +59,6 @@ namespace Arc
     public:
 
         Timer( void );
-        virtual ~Timer( void ) { }
 
         virtual inline string toString( void ) const { return "Timer"; }
 

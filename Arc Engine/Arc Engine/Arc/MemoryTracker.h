@@ -50,7 +50,6 @@ namespace Arc
     public:
 
         MemoryTracker( void );
-        virtual ~MemoryTracker( void );
 
         virtual inline string toString( void ) const { return "Memory Tracker"; }
 

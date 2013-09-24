@@ -9,10 +9,6 @@ Arc::MemoryTracker::MemoryTracker( void )
     _allocations      = Map<ManagedObject*, AllocationRecord>();
 }
 
-Arc::MemoryTracker::~MemoryTracker( void )
-{
-}
-
 void Arc::MemoryTracker::addAllocation( ManagedObject *ptr, size_t size, int lineNumber, string filename )
 {
     if (_allocations.contains(ptr))

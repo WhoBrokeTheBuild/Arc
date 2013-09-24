@@ -17,16 +17,18 @@ namespace Arc
             Down,
             Tapped;
 
-        inline InputState( bool pressed = false, bool released = false, bool down = false, bool tapped = false )
+        InputState( bool pressed = false, bool released = false, bool down = false, bool tapped = false )
+			: Pressed(pressed),
+			  Released(released),
+			  Down(down),
+			  Tapped(tapped)
         {
-            Pressed  = pressed;
-            Released = released;
-            Down     = down;
-            Tapped   = tapped;
         }
 
         virtual inline string toString( void ) const { return "Input State"; }
-    };
-}
+
+    }; // struct InputState
+
+} // namespace Arc
 
 #endif

@@ -2,23 +2,16 @@
 #include "GraphicsSystem.h"
 #include "RenderTarget.h"
 
-Arc::RenderedText::RenderedText( void )
+Arc::RenderedText::RenderedText( const string text, Font* pFont )
+	: _pFont(pFont),
+	  _text(text)
 {
-    _pTexture = nullptr;
-    _pFont    = nullptr;
-    _text     = string();
-}
-
-void Arc::RenderedText::init( const string text, Font* pFont )
-{
-    _pFont = pFont;
-    _text = text;
-    renderText();
-
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
+	
+    renderText();
 }
 
-void Arc::RenderedText::term( void )
+Arc::RenderedText::~RenderedText( void )
 {
     gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
 

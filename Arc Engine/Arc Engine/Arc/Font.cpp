@@ -2,19 +2,11 @@
 #include "RenderTarget.h"
 #include "RenderedText.h"
 
-Arc::Font::Font( void )
+Arc::Font::Font( string filename, int size )
+	: _pFont(nullptr),
+	  _filename(filename),
+	  _fontSize(size)
 {
-    _filename = string();
-    _pFont    = nullptr;
-    _fontSize     = 0;
-}
-
-void Arc::Font::init( string filename, int size )
-{
-    _pFont = nullptr;
-    _filename = filename;
-    _fontSize = size;
-
     _pFont = TTF_OpenFont(_filename.c_str(), _fontSize);
 
     if ( ! _pFont)
@@ -26,7 +18,7 @@ void Arc::Font::init( string filename, int size )
     }
 }
 
-void Arc::Font::term( void )
+Arc::Font::~Font( void )
 {
     if (_pFont != nullptr)
         TTF_CloseFont(_pFont);

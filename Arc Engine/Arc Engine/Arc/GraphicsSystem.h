@@ -43,23 +43,21 @@ namespace Arc
 
     public:
 
-        static const EventType EVENT_GRAPHICS_RESET;
+        static const EventType 
+			EVENT_GRAPHICS_RESET;
 
-        GraphicsSystem( void );
-        virtual ~GraphicsSystem( void ) { term(); }
-
-        virtual void init( Size windowSize, string windowTitle );
-        virtual void term( void );
+        GraphicsSystem( Size windowSize, string windowTitle, Color clearColor );
+        virtual ~GraphicsSystem( void );
 
         virtual inline string toString( void ) const { return "Graphics System"; }
 
         virtual void setFullscreen ( bool fullscreen );
         virtual void setWindowSize ( Size size );
         virtual void setWindowTitle( string title );
-        virtual void setClearColor ( Color clearColor );
         virtual void setWindowIcon ( string filename );
+		virtual inline void setClearColor ( Color clearColor ) { _clearColor = clearColor; }
 
-        virtual bool   isFullscreen ( void ) { return _fullscreen;  }
+        virtual bool   isFullscreen  ( void ) { return _fullscreen;  }
         virtual Size   getWindowSize ( void ) { return _windowSize;  }
         virtual string getWindowTitle( void ) { return _windowTitle; }
         virtual Color  getClearColor ( void ) { return _clearColor;  }

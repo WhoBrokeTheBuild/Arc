@@ -16,8 +16,6 @@ namespace Arc
     {
     public:
 
-        virtual ~ManagedObject( void ) { }
-
         virtual string toString( void ) const = 0;
 
         inline friend ostream& operator<<( ostream& os, const ManagedObject& go )

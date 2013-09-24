@@ -1,24 +1,18 @@
 #include "Unit.h"
 #include "Component.h"
 
-Arc::Unit::Unit( void )
+Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
+	: _pParent(nullptr),
+	  _originLocation(INVALID_ORIGIN_LOCATION),
+	  _origin(),
+	  Pos(pos),
+	  Depth(depth),
+	  Enabled(true),
+	  Visible(true)
 {
-    _pParent = nullptr;
-    _originLocation = INVALID_ORIGIN_LOCATION;
-    _origin = Pos = Vector2::ZERO;
-    Depth = 0.0f;
-    Enabled = Visible = false;
 }
 
-void Arc::Unit::init( Vector2 pos, float depth /*= 0.0f */ )
-{
-    Pos     = pos;
-    Depth   = depth;
-    Enabled = true;
-    Visible = true;
-}
-
-void Arc::Unit::term( void )
+Arc::Unit::~Unit( void )
 {
 	while ( ! _componentsToAdd.empty())
 		delete _componentsToAdd.popBack();

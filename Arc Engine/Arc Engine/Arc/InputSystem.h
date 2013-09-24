@@ -38,12 +38,9 @@ namespace Arc
     public:
 
         InputSystem( void );
-        virtual ~InputSystem( void ) { term(); }
+        virtual ~InputSystem( void );
 
         virtual inline string toString( void ) const { return "Input System"; }
-
-        virtual void init( void );
-        virtual void term( void );
 
         virtual void update( const Event& event );
 

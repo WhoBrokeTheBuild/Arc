@@ -4,10 +4,22 @@
 #include "GraphicsSystem.h"
 #include "Event.h"
 
-Arc::Texture::Texture( void )
+Arc::Texture::Texture( string filename )
 {
-    _size = Size::ZERO;
-    _filename = string();
+    load(filename);
+    gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+}
+
+Arc::Texture::Texture( SDL_Surface* pSurface )
+{
+    load(pSurface);
+    gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+}
+
+Arc::Texture::~Texture( void )
+{
+    gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+    deleteTexture();
 }
 
 std::string Arc::Texture::toString( void ) const
@@ -15,24 +27,6 @@ std::string Arc::Texture::toString( void ) const
     stringstream ss;
     ss << "Texture [File: " << _filename << "]";
     return ss.str();
-}
-
-void Arc::Texture::init( string filename )
-{
-    load(filename);
-    gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
-}
-
-void Arc::Texture::init( SDL_Surface* pSurface )
-{
-    load(pSurface);
-}
-
-void Arc::Texture::term( void )
-{
-    gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
-
-    deleteTexture();
 }
 
 void Arc::Texture::load( string filename )

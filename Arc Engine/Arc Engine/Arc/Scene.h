@@ -30,10 +30,7 @@ namespace Arc
             Visible;
 
         Scene( void );
-        virtual ~Scene( void ) { term(); }
-
-        virtual void init( void );
-        virtual void term( void );
+        virtual ~Scene( void );
 
         virtual void update( const Event& event );
         virtual void render( const Event& event );

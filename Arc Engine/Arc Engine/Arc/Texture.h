@@ -34,7 +34,7 @@ namespace Arc
         Size
             _size;
 
-        virtual void init( SDL_Surface* pSurface );
+        Texture( SDL_Surface* pSurface );
 
         virtual void load( string filename );
         virtual void load( SDL_Surface* pSurface );
@@ -45,8 +45,8 @@ namespace Arc
 
     public:
 
-        Texture( void );
-        virtual ~Texture( void ) { term(); }
+        Texture( string filename );
+        virtual ~Texture( void );
 
         virtual inline string toString( void ) const;
 

@@ -4,11 +4,6 @@
 
 Arc::ScriptingSystem::ScriptingSystem( void )
 {
-    _pLuaState = nullptr;
-}
-
-void Arc::ScriptingSystem::init( void )
-{
     _pLuaState = luaL_newstate();
 
     luaL_openlibs(_pLuaState);
@@ -16,7 +11,7 @@ void Arc::ScriptingSystem::init( void )
     registerFunctions();
 }
 
-void Arc::ScriptingSystem::term( void )
+Arc::ScriptingSystem::~ScriptingSystem( void )
 {
     lua_close(_pLuaState);
 }

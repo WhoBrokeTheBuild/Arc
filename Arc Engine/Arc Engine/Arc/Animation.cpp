@@ -1,21 +1,20 @@
 #include "Animation.h"
 
-Arc::Animation::Animation( void )
+Arc::Animation::Animation( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
+	: _frames(frames),
+	  _speed(speed)
 {
-    _frames = ArrayList<Sprite*>();
 }
 
-void Arc::Animation::init( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
+Arc::Animation::~Animation( void )
 {
-    _frames = frames;
-    Speed   = speed;
 }
 
 Arc::Size Arc::Animation::getFrameSize( int frame )
 {
     if (hasFrame(frame))
     {
-        return getFrameAt(frame)->SourceRect.size();
+		return getFrameAt(frame)->getSourceRect().size();
     }
 
     return Size::ZERO;
@@ -51,5 +50,5 @@ bool Arc::Animation::removeFrame( Sprite* frame )
 
 bool Arc::Animation::removeFrame( int frame )
 {
-    return _frames.removeAt(frame);;
+    return _frames.removeAt(frame);
 }

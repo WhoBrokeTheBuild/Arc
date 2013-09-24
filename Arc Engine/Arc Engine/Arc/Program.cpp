@@ -10,7 +10,7 @@ const Arc::EventType Arc::Program::EVENT_RENDER       = "render";
 const Arc::EventType Arc::Program::EVENT_RENDER_END   = "renderEnd";
 const Arc::EventType Arc::Program::EVENT_EXIT         = "exit";
 
-Arc::Program::Program( void )
+Arc::Program::Program( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
 	: _pGraphicsSystem(nullptr),
 	  _pInputSystem(nullptr),
 	  _pAudioSystem(nullptr),
@@ -18,10 +18,6 @@ Arc::Program::Program( void )
 	  _running(),
 	  _targetFPS(),
 	  _currentFPS()
-{
-}
-
-void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
 {
     INFO(toString(), "Initializing");
 
@@ -39,7 +35,7 @@ void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitl
     INFO(toString(), "Complete");
 }
 
-void Arc::Program::term( void )
+Arc::Program::~Program( void )
 {
     INFO(toString(), "Terminating");
 

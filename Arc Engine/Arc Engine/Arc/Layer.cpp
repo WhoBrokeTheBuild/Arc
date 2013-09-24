@@ -5,49 +5,40 @@
 
 const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layerChanged";
 
-Arc::Layer::Layer( void )
+Arc::Layer::Layer( Scene* scene )
     : _units(),
-      _pParent(),
-      Enabled(),
-      Visible()
+      _pParent(scene),
+      Enabled(true),
+      Visible(true)
 {
-}
-
-void Arc::Layer::init( Scene* scene )
-{
-    _pParent = scene;
-    Visible  = true;
-    Enabled  = true;
-
     addEventListener(EVENT_LAYER_CHANGED, this, &Layer::layerChanged);
 }
 
-void Arc::Layer::term( void )
+Arc::Layer::~Layer( void )
 {
     removeEventListener(EVENT_LAYER_CHANGED, this, &Layer::layerChanged);
-
     removeAllUnits();
 }
 
 void Arc::Layer::update( const Event& event )
 {
-    if ( Enabled )
+    if ( ! Enabled )
+		return;
+
+    for (unsigned int i = 0; i < _units.size(); ++i)
     {
-        for (unsigned int i = 0; i < _units.size(); ++i)
-        {
-            _units[i]->update(event);
-        }
+        _units[i]->update(event);
     }
 }
 
 void Arc::Layer::render( const Event& event )
 {
-    if (Visible)
+    if ( ! Visible)
+		return;
+
+    for (unsigned int i = 0; i < _units.size(); ++i)
     {
-        for (unsigned int i = 0; i < _units.size(); ++i)
-        {
-            _units[i]->render(event);
-        }
+        _units[i]->render(event);
     }
 }
 

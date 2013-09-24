@@ -2,24 +2,15 @@
 
 const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset";
 
-Arc::GraphicsSystem::GraphicsSystem( void )
-{
-    _clearColor    = Color::BLACK;
-    _pRenderTarget = nullptr;
-    _screenBPP     = 0;
-    _windowSize    = Size::ZERO;
-    _windowTitle   = string();
-    _fullscreen    = false;
-}
-
-void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
+Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color clearColor )
+	: _clearColor(clearColor),
+      _pRenderTarget(nullptr),
+	  _screenBPP(),
+	  _windowSize(windowSize),
+	  _windowTitle(windowTitle),
+	  _fullscreen(false)
 {
     INFO(toString(), "Initializing");
-
-    _windowSize  = windowSize;
-    _windowTitle = windowTitle;
-    _fullscreen  = false;
-    _clearColor  = Color::STORM;
 
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE,           8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,         8);
@@ -52,8 +43,8 @@ void Arc::GraphicsSystem::init( Size windowSize, string windowTitle )
     INFO(toString(), "Complete");
 }
 
-void Arc::GraphicsSystem::term( void )
-{
+Arc::GraphicsSystem::~GraphicsSystem( void )
+{	
     INFO(toString(), "Terminating");
 
     delete _pRenderTarget;
@@ -85,11 +76,6 @@ void Arc::GraphicsSystem::setWindowTitle( string title )
     _windowTitle = title;
 
     SDL_WM_SetCaption(_windowTitle.c_str(), nullptr);
-}
-
-void Arc::GraphicsSystem::setClearColor( Color clearColor )
-{
-    _clearColor = clearColor;
 }
 
 void Arc::GraphicsSystem::setWindowIcon( string filename )

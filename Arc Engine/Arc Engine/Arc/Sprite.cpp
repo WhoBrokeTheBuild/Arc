@@ -1,13 +1,11 @@
 #include "Sprite.h"
 
-Arc::Sprite::Sprite( void )
+Arc::Sprite::Sprite( Texture* pTexture, Rect sourceRect )
+	: _pTexture(pTexture),
+	  _sourceRect(sourceRect)
 {
-    _pTexture  = nullptr;
-    SourceRect = Rect::ZERO;
 }
 
-void Arc::Sprite::init( Texture *texture, Rect source )
+Arc::Sprite::~Sprite( void )
 {
-    SourceRect = source;
-    _pTexture  = texture;
 }

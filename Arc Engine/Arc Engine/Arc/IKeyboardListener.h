@@ -12,17 +12,14 @@ namespace Arc
     {
     public:
 
-        inline IKeyboardListener( void ) { }
-        virtual inline ~IKeyboardListener( void ) { term(); };
-
-        virtual inline void init( void )
+        inline IKeyboardListener( void )
         {
             gpEventDispatcher->addEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
             gpEventDispatcher->addEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
             gpEventDispatcher->addEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
         }
 
-        virtual inline void term( void )
+        virtual inline ~IKeyboardListener( void )
         {
             gpEventDispatcher->removeEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
             gpEventDispatcher->removeEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
@@ -33,7 +30,8 @@ namespace Arc
         virtual inline void keyReleased( const Event& event ) { };
         virtual inline void keyHeld    ( const Event& event ) { };
 
-    };
-}
+    }; // class IKeyboardListener
+
+} // namespace Arc
 
 #endif

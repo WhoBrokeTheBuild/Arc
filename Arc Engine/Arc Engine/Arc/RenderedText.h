@@ -30,13 +30,10 @@ namespace Arc
 
     public:
 
-        RenderedText( void );
-        virtual ~RenderedText( void ) { term(); }
+        RenderedText( const string text, Font* pFont );
+        virtual ~RenderedText( void );
 
         virtual inline string toString( void ) const { return "Cached Text"; }
-
-        virtual void init( const string text, Font* pFont );
-        virtual void term( void );
 
         virtual void graphicsReset( const Event& event );
 

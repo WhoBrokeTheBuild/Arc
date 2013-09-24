@@ -29,16 +29,10 @@ namespace Arc
 
     public:
 
-        double
-            Speed;
-
-        Animation( void );
-        virtual ~Animation( void ) { term(); }
+        Animation( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), double speed = -1.0 );
+        virtual ~Animation( void );
 
         virtual inline string toString( void ) const { return "Animation"; }
-
-        virtual void init( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), double speed = -1.0 );
-        virtual void term( void ) { }
 
         virtual bool hasFrame   ( int frame );
         virtual void addFrame   ( Sprite* pFrame );
@@ -47,6 +41,9 @@ namespace Arc
 
         virtual Size    getFrameSize( int frame );
         virtual Sprite* getFrameAt  ( int frame );
+
+		virtual inline double getSpeed( void ) { return _speed; }
+		virtual inline void setSpeed( double speed ) { _speed = speed; }
 
         virtual int getLength( void ) { return (int)_frames.size(); }
 

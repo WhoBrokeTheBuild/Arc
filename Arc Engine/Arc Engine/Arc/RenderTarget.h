@@ -42,11 +42,7 @@ namespace Arc
 
     public:
 
-        RenderTarget( void );
-        virtual ~RenderTarget( void ) { term(); }
-
-        virtual void init( GraphicsSystem *pGraphicsSystem );
-        virtual void term( void ) { }
+        RenderTarget( GraphicsSystem *pGraphicsSystem );
 
         virtual inline string toString( void ) const { return "Render Target"; }
 

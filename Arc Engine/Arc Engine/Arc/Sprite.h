@@ -17,21 +17,24 @@ namespace Arc
 
         Texture
             *_pTexture;
-    public:
 
         Rect
-            SourceRect;
+            _sourceRect;
 
-        Sprite( void );
-        virtual ~Sprite( void ) { term(); }
+    public:
+
+        Sprite( Texture* pTexture, Rect sourceRect );
+        virtual ~Sprite( void );
 
         virtual inline string toString( void ) const { return "Sprite"; }
 
-        virtual void init( Texture *texture, Rect source );
-        virtual void term( void ) { }
+        virtual inline Texture* getTexture( void ) { return _pTexture; }
+		virtual inline Rect     getSourceRect( void) { return _sourceRect; }
 
-        virtual Texture* getTexture( void ) { return _pTexture; }
-        virtual void setTexture( Texture* texture ) { _pTexture = texture; }
+        virtual inline void setTexture( Texture* texture ) { _pTexture = texture; }
+        virtual inline void setSourceRect( Rect sourceRect ) { _sourceRect = sourceRect; }
+
+
 
     }; // class Sprite
 

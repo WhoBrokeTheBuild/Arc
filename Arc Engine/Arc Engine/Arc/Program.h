@@ -75,16 +75,13 @@ namespace Arc
             EVENT_RENDER_END,
             EVENT_EXIT;
 
-        Program( void );
-        virtual ~Program( void ) { term(); }
+        Program( Size windowSize= Size(640, 480), string windowTitle = "Arc" );
+        virtual ~Program( void );
 
         virtual inline string toString( void ) const { return "Program"; }
 
 		// Get the static instance of the class
         static Program* getInstance( void ) { return _pInstance; }
-
-        virtual void init( Size windowSize = Size(640, 480), string windowTitle = "Arc" );
-        virtual void term( void );
 
         virtual void start( void );
         virtual void stop ( const Event& event );
