@@ -11,14 +11,14 @@ const Arc::EventType Arc::Program::EVENT_RENDER_END   = "renderEnd";
 const Arc::EventType Arc::Program::EVENT_EXIT         = "exit";
 
 Arc::Program::Program( void )
+	: _pGraphicsSystem(nullptr),
+	  _pInputSystem(nullptr),
+	  _pAudioSystem(nullptr),
+	  _pNetworkSystem(nullptr),
+	  _running(),
+	  _targetFPS(),
+	  _currentFPS()
 {
-    _pInstance       = this;
-    _pGraphicsSystem = nullptr;
-    _pInputSystem    = nullptr;
-    _pAudioSystem    = nullptr;
-    _running         = false;
-    _targetFPS       = 0.0f;
-    _currentFPS      = 0.0f;
 }
 
 void Arc::Program::init( Size windowSize /*= Size(640, 480)*/, string windowTitle /*= "Arc"*/ )
@@ -63,7 +63,7 @@ void Arc::Program::start( void )
     _running = true;
 
     double
-        fpsDelay = 1000.0 / _targetFPS,
+        fpsDelay = 1000.0 / _targetFPS, // The milliseconds to sleep each frame
         frameDelay = 1;
 
     _currentFPS = 1; // Prevent divide-by-zero errors in deltaTime

@@ -25,31 +25,40 @@
 
 namespace Arc
 {
+	/** This is the control class for the entire program. It handles the update and render loops,
+	  * as well as storing all of the system class instances.
+	  */
     class Program :
         public EventDispatcher
     {
     protected:
 
+		// A static instance used to access the instances of the managers
         static Program
             *_pInstance;
 
+		// A system for managing the window and drawing
         GraphicsSystem
             *_pGraphicsSystem;
 
+		// A system for managing the keyboard, mouse, and game pad input
         InputSystem
             *_pInputSystem;
 
+		// A system for managing the playing and looping of audio
         AudioSystem
             *_pAudioSystem;
 
+		// A system for managing and interfacing with Lua
         ScriptingSystem
             *_pScriptingSystem;
 
+		// A system for managing sockets and connections
         NetworkSystem
             *_pNetworkSystem;
 
         bool
-            _running;
+            _running; // Whether the game is supposed to be running or not
 
         float
             _targetFPS,
@@ -71,6 +80,9 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Program"; }
 
+		// Get the static instance of the class
+        static Program* getInstance( void ) { return _pInstance; }
+
         virtual void init( Size windowSize = Size(640, 480), string windowTitle = "Arc" );
         virtual void term( void );
 
@@ -87,8 +99,6 @@ namespace Arc
         virtual void initInput     ( void );
         virtual void initScripting ( void );
         virtual void initNetworking( void );
-
-        static Program* getInstance( void ) { return _pInstance; }
 
         inline GraphicsSystem*  getGraphicsSystem ( void ) { return _pGraphicsSystem; }
         inline InputSystem*     getInputSystem    ( void ) { return _pInputSystem; }
