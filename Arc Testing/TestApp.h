@@ -38,9 +38,6 @@ public:
 
     virtual inline string toString( void ) const { return "Test App"; }
 
-    virtual void init( void );
-    virtual void term( void );
-
     virtual void update( const Event& event );
     virtual void render( const Event& event );
 

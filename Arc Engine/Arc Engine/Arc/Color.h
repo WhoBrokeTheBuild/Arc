@@ -49,6 +49,11 @@ namespace Arc
 
         virtual inline string toString( void ) const;
 
+		inline static Color rand( int minR, int maxR, int minG, int maxG, int minB, int maxB, int minA, int maxA )
+		{
+			return Color(randInt(minR, maxR), randInt(minG, maxG), randInt(minB, maxB), randInt(minA, maxA));
+		}
+
         float fracR( void ) const { return (float)((1.0f / 255.0f) * R); }
         float fracG( void ) const { return (float)((1.0f / 255.0f) * G); }
         float fracB( void ) const { return (float)((1.0f / 255.0f) * B); }

@@ -43,6 +43,11 @@ namespace Arc
             return ss.str();
         }
 
+		inline static Vector2 rand( float minX, float minY, float maxX, float maxY )
+		{
+			return Vector2(randFloat(minX, maxX), randFloat(minY, maxY));
+		}
+
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 

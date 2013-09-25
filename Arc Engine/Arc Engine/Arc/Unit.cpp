@@ -180,30 +180,126 @@ Arc::Component* Arc::Unit::addNewComponent( void )
     return cmp;
 }
 
-PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
+Arc::PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
 {
     PhysicsComponent* cmp = New PhysicsComponent(this, vel, acc);
     addComponent(cmp);
     return cmp;
 }
 
-ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
 {
     ImageComponent* cmp = New ImageComponent(this, pTexture, offset, rotation, blendColor, origin);
     addComponent(cmp);
     return cmp;
 }
 
-ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
 {
     ShapeComponent* cmp = New ShapeComponent(this, offset, rotation, blendColor, origin);
     addComponent(cmp);
     return cmp;
 }
 
-AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
+Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
 {
     AnimatedComponent* cmp = New AnimatedComponent(this);
     addComponent(cmp);
     return cmp;
+}
+
+Arc::PhysicsComponent* Arc::Unit::getFirstPhysicsComponent( void )
+{
+	PhysicsComponent* tmp;
+	{
+		auto end = _components.end();
+		for (auto it = _components.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<PhysicsComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	{
+		auto end = _componentsToAdd.end();
+		for (auto it = _componentsToAdd.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<PhysicsComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	return nullptr;
+}
+
+Arc::ImageComponent* Arc::Unit::getFirstImageComponent( void )
+{
+	ImageComponent* tmp;
+	{
+		auto end = _components.end();
+		for (auto it = _components.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<ImageComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	{
+		auto end = _componentsToAdd.end();
+		for (auto it = _componentsToAdd.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<ImageComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	return nullptr;
+}
+
+Arc::ShapeComponent* Arc::Unit::getFirstShapeComponent( void )
+{
+	ShapeComponent* tmp;
+	{
+		auto end = _components.end();
+		for (auto it = _components.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<ShapeComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	{
+		auto end = _componentsToAdd.end();
+		for (auto it = _componentsToAdd.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<ShapeComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	return nullptr;
+}
+
+Arc::AnimatedComponent* Arc::Unit::getFirstAnimatedComponent( void )
+{
+	AnimatedComponent* tmp;
+	{
+		auto end = _components.end();
+		for (auto it = _components.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<AnimatedComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	{
+		auto end = _componentsToAdd.end();
+		for (auto it = _componentsToAdd.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<AnimatedComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	return nullptr;
 }

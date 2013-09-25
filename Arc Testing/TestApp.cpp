@@ -20,13 +20,22 @@ TestApp::TestApp( void )
 
     Unit* unit = New Unit(Vector2(100.0f));
 
+	pScene->addUnit(unit, 0);
+
     Texture* tex = New Texture("assets/test.png");
 	pResourceManager->addTexture(tex);
 
     unit->addNewShapeComponent(Vector2::ZERO, Angle::ZERO, Color::BLUE)->setCircle(1.0f);
 	unit->addNewShapeComponent(Vector2::ZERO, Angle::ZERO, Color::RED, 100.0f)->setCircle(100.0f);
-    unit->addNewShapeComponent(Vector2::ZERO, Angle(randFloat(0.0f, (float)PI2), ANGLE_TYPE_RAD), Color::GREEN)->setRectangle(Size(50.0f));
-    unit->addNewPhysicsComponent(Vector2(randFloat(-2.0f, 2.0f), randFloat(-2.0f, 2.0f)), Vector2(randFloat(-0.1f, 0.1f), randFloat(-0.1f, 0.1f)));
+    unit->addNewShapeComponent(Vector2::ZERO, Angle::rand(0.0f, (float)PI2, ANGLE_TYPE_RAD), Color::GREEN, Vector2(25.0f))->setRectangle(Size(50.0f));
+    unit->addNewPhysicsComponent(Vector2::rand(-2.0f, 2.0f, -2.0f, 2.0f), Vector2::rand(-0.1f, 0.1f, -0.1f, 0.1f));
+
+	PhysicsComponent* physicsCmp = unit->getFirstPhysicsComponent();
+	if (physicsCmp != nullptr)
+	{
+	unit->getFirstPhysicsComponent()->Vel = Vector2::ZERO;
+	unit->getFirstPhysicsComponent()->Acc = Vector2::ZERO;
+	}
 
     pFont = New Font("assets/ds-digital.ttf", 20);
     pFPSText = New RenderedText("0", pFont);

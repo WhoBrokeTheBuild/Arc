@@ -75,6 +75,11 @@ namespace Arc
             return ss.str();
         }
 
+		inline static Angle rand( float min, float max, AngleType type = ANGLE_TYPE_DEG )
+		{
+			return Angle(randFloat(min, max), type);
+		}
+
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 

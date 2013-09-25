@@ -45,6 +45,11 @@ namespace Arc
             return ss.str();
         }
 
+		inline static Rect rand( float minX, float maxX, float minY, float maxY, float minWidth, float maxWidth, float minHeight, float maxHeight )
+		{
+			return Rect(randFloat(minX, maxX), randFloat(minY, maxY), randFloat(minWidth, maxWidth), randFloat(minHeight, maxHeight));
+		}
+
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 
