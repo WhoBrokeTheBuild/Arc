@@ -141,7 +141,6 @@ namespace Arc
 
 		virtual void fillRect( const Point pos,
 							   const Size size,
-							   const float height,
 							   const Color color = Color::WHITE,
 							   const Angle rotation = Angle::ZERO,
 							   const Vector2 origin = Vector2::ZERO ) const;

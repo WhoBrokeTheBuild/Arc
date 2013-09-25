@@ -10,6 +10,9 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Project</Filter>
     </ClCompile>
+    <ClCompile Include="Duck.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -19,6 +22,9 @@
       <Filter>Project</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Duck.h">
       <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>

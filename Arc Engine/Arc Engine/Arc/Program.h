@@ -103,8 +103,12 @@ namespace Arc
         inline ScriptingSystem* getScriptingSystem( void ) { return _pScriptingSystem; }
         inline NetworkSystem*   getNetworkSystem  ( void ) { return _pNetworkSystem; }
 
-        virtual void update( const Event& event ) { };
-        virtual void render( const Event& event ) { };
+		virtual void updateStart( const Event& event ) { }
+        virtual void update     ( const Event& event ) { }
+		virtual void updateEnd  ( const Event& event ) { }
+		virtual void renderStart( const Event& event ) { }
+        virtual void render     ( const Event& event ) { }
+		virtual void renderEnd  ( const Event& event ) { }
 
     }; // class Program
 

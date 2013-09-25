@@ -38,6 +38,16 @@ namespace Arc
         Size
             _size;
 
+        Point
+            _pos;
+
+        float
+            _depth;
+
+        bool
+            _enabled,
+            _visible;
+
 		ArrayList<Component*>
 			_components;
 
@@ -54,16 +64,6 @@ namespace Arc
 
     public:
 
-        Point
-            Pos;
-
-        float
-            Depth;
-
-        bool
-            Enabled,
-            Visible;
-
         Unit( Vector2 pos, float depth = 0.0f );
         virtual ~Unit( void );
 
@@ -72,14 +72,30 @@ namespace Arc
 
         virtual void update( const FrameData* data )  { };
         virtual void render( const RenderData* data ) { };
+		
+		virtual inline bool isEnabled( void ) const { return _enabled; }
+		virtual inline bool isVisible( void ) const { return _visible; }
+		virtual inline void setEnabled( bool enabled ) { _enabled = enabled; }
+		virtual inline void setVisible( bool visible ) { _visible = visible; }
+		virtual inline void toggleEnabled( void ) { _enabled = !_enabled; }
+		virtual inline void toggleVisible( void ) { _visible = !_visible; }
 
-        virtual Size  getSize  ( void ) { return _size; }
-        virtual Point getOrigin( void ) { return _origin; }
-        virtual inline OriginLocation getOriginLocation( void ) { return _originLocation; }
+		virtual inline Point getPos    ( void ) const { return _pos; }
+		virtual inline void  setPos    ( Point pos )   { _pos = pos; }
+		virtual inline void  addToPos  ( Point val ) { setPos(_pos + val); }
+		virtual inline void  subFromPos( Point val ) { setPos(_pos - val); }
 
-        virtual void setSize  ( Size size );
-        virtual void setOrigin( Vector2 origin );
-        virtual void setOriginLocation( OriginLocation originLocation );
+		virtual inline float getDepth( void ) const { return _depth; };
+		virtual inline void  setDepth( float depth ) { _depth = depth; };
+
+        virtual inline Size  getSize( void ) const { return _size; }
+        virtual void         setSize( Size size );
+
+        virtual inline Point getOrigin( void ) const { return _origin; }
+        virtual void         setOrigin( Vector2 origin );
+
+        virtual inline OriginLocation getOriginLocation( void ) const { return _originLocation; }
+		virtual void                  setOriginLocation( OriginLocation originLocation );
 
         inline Layer* getParentLayer( void ) { return _pParent; }
 		inline Scene* getParentScene( void ) { return _pParent->getParentScene(); }
@@ -107,7 +123,7 @@ namespace Arc
     {
         bool operator()( const Unit* lhs, const Unit* rhs ) const
         {
-            return lhs->Depth < rhs->Depth;
+			return lhs->getDepth() < rhs->getDepth();
         }
     }; // struct UnitDepthComp
 

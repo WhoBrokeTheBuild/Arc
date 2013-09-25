@@ -10,10 +10,10 @@ Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
 	  _originLocation(INVALID_ORIGIN_LOCATION),
 	  _origin(),
-	  Pos(pos),
-	  Depth(depth),
-	  Enabled(true),
-	  Visible(true)
+	  _pos(pos),
+	  _depth(depth),
+	  _enabled(true),
+	  _visible(true)
 {
 }
 
@@ -31,7 +31,7 @@ Arc::Unit::~Unit( void )
 
 void Arc::Unit::update( const Event& event )
 {
-    if ( ! Enabled)
+    if ( ! isEnabled())
         return;
 
     const FrameData* data = event.dataAs<FrameData>();
@@ -42,7 +42,7 @@ void Arc::Unit::update( const Event& event )
 
 void Arc::Unit::render( const Event& event )
 {
-    if ( ! Visible)
+    if ( ! isVisible())
         return;
 
     const RenderData* data = event.dataAs<RenderData>();

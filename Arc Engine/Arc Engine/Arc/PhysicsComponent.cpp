@@ -14,6 +14,6 @@ Arc::PhysicsComponent::~PhysicsComponent( void )
 
 void Arc::PhysicsComponent::update( const FrameData* data )
 {
-	_pUnit->Pos += Vel;
+	_pUnit->addToPos(Vel);
 	Vel += Acc;
 }
