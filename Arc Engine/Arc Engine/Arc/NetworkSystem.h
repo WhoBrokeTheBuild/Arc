@@ -56,8 +56,10 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Network System"; }
 
-        virtual Socket connect( string hostname, SocketType type );
-        virtual Socket connect( IPAddress addr, SocketType type );
+		virtual IPAddress lookup( string hostname );
+
+        virtual Socket* connect( string hostname, int port, SocketType type );
+        virtual Socket* connect( IPAddress addr, int port, SocketType type );
 
     }; // class NetworkSystem
 

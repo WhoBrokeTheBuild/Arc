@@ -58,10 +58,24 @@ void Arc::Rect::setSize( Vector2 size )
 
 bool Arc::Rect::containsRect( Rect other ) const
 {
-    if ( left() > other.right()  ||
-         top()  > other.bottom() ||
-         other.left() > right()  ||
-         other.top()  > bottom() )
+	Rect normal = Rect(X, Y, Width, Height);
+
+	if (normal.Width < 0)
+	{
+		normal.Width = abs(normal.Width);
+		normal.X -= normal.Width;
+	}
+
+	if (normal.Height < 0)
+	{
+		normal.Height = abs(normal.Height);
+		normal.Y -= normal.Height;
+	}
+
+    if ( normal.left() > other.right()  ||
+         normal.top()  > other.bottom() ||
+         other.left() > normal.right()  ||
+         other.top()  > normal.bottom() )
     {
         return false;
     }
@@ -76,10 +90,24 @@ bool Arc::Rect::containsCircle( Circle other ) const
 
 bool Arc::Rect::containsPoint( Vector2 point ) const
 {
-    if( point.X < left()   ||
-        point.X > right()  ||
-        point.Y < top()    ||
-        point.Y > bottom() )
+	Rect normal = Rect(X, Y, Width, Height);
+
+	if (normal.Width < 0)
+	{
+		normal.Width = abs(normal.Width);
+		normal.X -= normal.Width;
+	}
+
+	if (normal.Height < 0)
+	{
+		normal.Height = abs(normal.Height);
+		normal.Y -= normal.Height;
+	}
+
+	if( point.X < normal.left()   ||
+		point.X > normal.right()  ||
+		point.Y < normal.top()    ||
+		point.Y > normal.bottom() )
     {
         return false;
     }

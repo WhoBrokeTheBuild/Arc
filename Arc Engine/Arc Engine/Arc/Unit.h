@@ -116,6 +116,35 @@ namespace Arc
 		virtual ShapeComponent*    getFirstShapeComponent   ( void );
 		virtual AnimatedComponent* getFirstAnimatedComponent( void );
 
+		template <class T>
+		ArrayList<T*> getComponentListAs( void )
+		{
+			ArrayList<T*> list = ArrayList<T*>();
+
+			for (auto it = _components.begin(); it != _components.end(); ++it)
+			{
+				Component* cmp = (*it);
+				T* newCmp = dynamic_cast<T*>(cmp);
+				if (newCmp != nullptr)
+					list.add(newCmp);
+			}
+
+			return list;
+		}
+
+		template <class T>
+		T* getFirstComponenAs( void )
+		{
+			for (auto it = _components.begin(); it != _components.end(); ++it)
+			{
+				Component* cmp = (*it);
+				T* newCmp = dynamic_cast<T*>(cmp);
+				if (newCmp != nullptr)
+					return newCmp;
+			}
+			return nullptr;
+		}
+
     }; // class Unit
 
     struct UnitDepthComp

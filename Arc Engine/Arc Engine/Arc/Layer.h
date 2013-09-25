@@ -20,7 +20,13 @@ namespace Arc
             _units;
 
         Scene
-            *_pParent;
+			*_pParent;
+
+		bool
+			_shouldSort;
+
+		unsigned int
+			_unitCount;
 
         virtual void sortByDepth( void );
 
@@ -43,9 +49,14 @@ namespace Arc
 
         virtual void layerChanged( const Event& event );
 
-        virtual bool addUnit   ( Unit* unit );
-        virtual bool removeUnit( Unit* unit );
-        virtual bool hasUnit   ( Unit* unit );
+		virtual bool addUnit     ( Unit* unit );
+		virtual bool removeUnit  ( Unit* unit, bool del = false );
+		virtual bool removeUnitAt( unsigned int index, bool del = false );
+		virtual bool hasUnit     ( Unit* unit );
+		virtual Unit* getUnit    ( unsigned int index );
+
+		virtual inline unsigned int getUnitCount( void ) const { return _unitCount; }
+		inline ArrayList<Unit*>*    getUnitList( void ) { return &_units; }
 
         virtual unsigned int removeAllUnits( void );
 
