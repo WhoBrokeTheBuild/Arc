@@ -53,20 +53,49 @@ namespace Arc
         IPAddress
             _address;
 
+		unsigned int
+			_port;
+
         SocketType
             _type;
+
+		bool
+			_error;
+
+		// TODO: Hack
+		stringstream
+			_buffer;
 
     public:
 
         Socket( void );
         virtual ~Socket( void ) { term(); }
 
-        virtual void init( IPAddress addr, SocketType type );
+        virtual void init( IPAddress addr, unsigned int port, SocketType type );
         virtual void term( void );
 
         virtual inline string toString( void ) const { return "Socket"; }
 
-        virtual SocketType getType( void ) const { return _type; }
+        virtual SocketType getType( void )   const { return _type; }
+		virtual inline bool hasError( void ) const { return _error; }
+
+		virtual string readString( unsigned int bufferLength = 2000 );
+		virtual bool   readBool  ( void );
+		virtual int    readInt   ( void );
+		virtual float  readFloat ( void );
+		virtual double readDouble( void );
+
+		virtual int sendString( string data, bool buffer = false );
+		virtual int sendBool  ( bool data,   bool buffer = false );
+		virtual int sendInt   ( int data,    bool buffer = false );
+		virtual int sendFloat ( float data,  bool buffer = false );
+		virtual int sendDouble( double data, bool buffer = false );
+
+		virtual inline int bufferString( string data ) { return sendString(data, true); }
+		virtual inline int bufferBool  ( bool data )   { return sendBool(data,   true); }
+		virtual inline int bufferInt   ( int data )    { return sendInt(data,    true); }
+		virtual inline int bufferFloat ( float data )  { return sendFloat(data,  true); }
+		virtual inline int bufferDouble( double data ) { return sendDouble(data, true); }
 
     }; // class Socket
 

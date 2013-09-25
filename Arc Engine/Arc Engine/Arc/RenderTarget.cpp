@@ -35,7 +35,7 @@ void Arc::RenderTarget::endDraw( void ) const
 void Arc::RenderTarget::drawShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
-    glTranslatef(x - origin.X + radius, y - origin.Y - radius, 0.0f);
+    glTranslatef(x - origin.X, y - origin.Y, 0.0f);
 
     glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(rotation.getDeg() - 90.0f, 0.0f, 0, 1.0f);
@@ -58,7 +58,7 @@ void Arc::RenderTarget::drawShape( const float x, const float y, const float rad
 void Arc::RenderTarget::fillShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
 {
     glPushMatrix();
-    glTranslatef(x - origin.X + radius, y - origin.Y - radius, 0.0f);
+    glTranslatef(x - origin.X, y - origin.Y, 0.0f);
 
     glTranslatef(origin.X, origin.Y, 0.0f);
     glRotatef(rotation.getDeg() - 90.0f, 0.0f, 0.0f, 1.0f);
@@ -232,7 +232,7 @@ void Arc::RenderTarget::fillRect( const float x, const float y, const float widt
     fillRect(rect, color, rotation, origin);
 }
 
-void Arc::RenderTarget::fillRect( const Point pos, const Size size, const float height, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
+void Arc::RenderTarget::fillRect( const Point pos, const Size size, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
 {
 	Rect rect = Rect(pos, size);
 	fillRect(rect, color, rotation, origin);

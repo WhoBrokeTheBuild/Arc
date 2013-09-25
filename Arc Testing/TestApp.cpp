@@ -12,6 +12,14 @@ void TestApp::init( void )
     IKeyboardListener::init();
     IMouseListener::init();
 
+	initNetworking();
+
+	Socket* sock = getNetworkSystem()->connect("google.com", 80, SocketType::SOCKET_TYPE_TCP);
+
+	sock->sendString("GET /");
+
+	die();
+
     initAll(Size(600, 600), "Testing");
 
     _pScriptingSystem->executeFile("assets/test.lua");
@@ -33,19 +41,19 @@ void TestApp::init( void )
 	pResourceManager->addTexture(tex);
 
 	ShapeComponent *cmp = New ShapeComponent();
-	cmp->init(Vector2::ZERO, Angle::ZERO, Color::BLUE);
+	cmp->init(true, Vector2::ZERO, Angle::ZERO, Color::BLUE);
 	cmp->setCircle(1.0f);
 
 	unit->addComponent(cmp);
 
 	cmp = New ShapeComponent();
-	cmp->init(Vector2::ZERO, Angle::ZERO, Color::RED, 100.0f);
+	cmp->init(true, Vector2::ZERO, Angle::ZERO, Color::RED, 100.0f);
 	cmp->setCircle(100.0f);
 
 	unit->addComponent(cmp);
 
 	cmp = New ShapeComponent();
-	cmp->init(Vector2::ZERO, Angle(randFloat(0.0f, (float)PI2), ANGLE_TYPE_RAD), Color::GREEN);
+	cmp->init(true, Vector2::ZERO, Angle(randFloat(0.0f, (float)PI2), ANGLE_TYPE_RAD), Color::GREEN);
 	cmp->setRectangle(Size(50.0f));
 
 	unit->addComponent(cmp);
@@ -83,6 +91,16 @@ void TestApp::update( const Event& event )
     ss.str(string());
     ss << "FPS: " << ceil(_currentFPS, 1);
     pFPSText->setText(ss.str());
+	 
+	if (pScene->getLayer(0) != nullptr && pScene->getLayer(0)->getUnitCount() < 0)
+	{
+		PhysicsComponent* phys2 = pScene->getLayer(0)->getUnit(0)->getFirstComponenAs<PhysicsComponent>();
+
+		if (phys2 == nullptr)
+			cout << "ERROR" << endl;
+		else
+			cout << (*phys2) << endl;
+	}
 }
 
 void TestApp::render( const Event& event )

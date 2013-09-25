@@ -1,4 +1,7 @@
 #include "IPAddress.h"
+#include "Socket.h"
+
+const Arc::IPAddress Arc::IPAddress::ZERO = IPAddress(0, 0, 0, 0);
 
 Arc::IPAddress::IPAddress( void )
 {
@@ -28,10 +31,23 @@ std::string Arc::IPAddress::toString( void ) const
 {
     stringstream ss;
     ss << "IP Address ["
-       << _quads[0] << ", "
-       << _quads[1] << ", "
-       << _quads[2] << ", "
-       << _quads[3] << "]";
+		<< (int)_quads[0] << ", "
+		<< (int)_quads[1] << ", "
+		<< (int)_quads[2] << ", "
+		<< (int)_quads[3] << "]";
 
     return ss.str();
+}
+
+bool Arc::IPAddress::operator==( const IPAddress& rhs ) const
+{
+	return ( _quads[0] == rhs._quads[0] &&
+		     _quads[1] == rhs._quads[1] &&
+			 _quads[2] == rhs._quads[2] &&
+			 _quads[3] == rhs._quads[3] );
+}
+
+bool Arc::IPAddress::operator!=( const IPAddress& rhs ) const
+{
+	return !(*this == rhs);
 }

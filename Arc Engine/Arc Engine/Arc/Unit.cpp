@@ -16,6 +16,7 @@ void Arc::Unit::init( Vector2 pos, float depth /*= 0.0f */ )
     Depth   = depth;
     Enabled = true;
     Visible = true;
+	_components = ArrayList<Component*>();
 }
 
 void Arc::Unit::term( void )

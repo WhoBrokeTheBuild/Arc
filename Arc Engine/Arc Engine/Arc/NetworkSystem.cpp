@@ -31,12 +31,27 @@ void Arc::NetworkSystem::term( void )
 
 }
 
-Arc::Socket Arc::NetworkSystem::connect( string hostname, SocketType type )
+Arc::Socket* Arc::NetworkSystem::connect( string hostname, int port, SocketType type )
 {
-    return Socket();
+	return connect(lookup(hostname), port, type);
 }
 
-Arc::Socket Arc::NetworkSystem::connect( IPAddress addr, SocketType type )
+Arc::Socket* Arc::NetworkSystem::connect( IPAddress addr, int port, SocketType type )
 {
-    return Socket();
+	Socket* sock = New Socket();
+	sock->init(addr, port, type);
+	return sock;
+}
+
+Arc::IPAddress Arc::NetworkSystem::lookup( string hostname )
+{
+	hostent* host = gethostbyname(hostname.c_str());
+
+	if ( ! host)
+		return IPAddress::ZERO;
+
+	return IPAddress(host->h_addr_list[0][0],
+					 host->h_addr_list[0][1],
+					 host->h_addr_list[0][2], 
+					 host->h_addr_list[0][3]);
 }
