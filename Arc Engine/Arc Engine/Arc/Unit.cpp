@@ -10,10 +10,10 @@ Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
 	  _originLocation(INVALID_ORIGIN_LOCATION),
 	  _origin(),
-	  Pos(pos),
-	  Depth(depth),
-	  Enabled(true),
-	  Visible(true)
+	  _pos(pos),
+	  _depth(depth),
+	  _enabled(true),
+	  _visible(true)
 {
 }
 
@@ -31,7 +31,7 @@ Arc::Unit::~Unit( void )
 
 void Arc::Unit::update( const Event& event )
 {
-    if ( ! Enabled)
+    if ( ! isEnabled())
         return;
 
     const FrameData* data = event.dataAs<FrameData>();
@@ -42,7 +42,7 @@ void Arc::Unit::update( const Event& event )
 
 void Arc::Unit::render( const Event& event )
 {
-    if ( ! Visible)
+    if ( ! isVisible())
         return;
 
     const RenderData* data = event.dataAs<RenderData>();
@@ -180,28 +180,28 @@ Arc::Component* Arc::Unit::addNewComponent( void )
     return cmp;
 }
 
-PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
+Arc::PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
 {
     PhysicsComponent* cmp = New PhysicsComponent(this, vel, acc);
     addComponent(cmp);
     return cmp;
 }
 
-ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
 {
     ImageComponent* cmp = New ImageComponent(this, pTexture, offset, rotation, blendColor, origin);
     addComponent(cmp);
     return cmp;
 }
 
-ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
 {
     ShapeComponent* cmp = New ShapeComponent(this, offset, rotation, blendColor, origin);
     addComponent(cmp);
     return cmp;
 }
 
-AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
+Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
 {
     AnimatedComponent* cmp = New AnimatedComponent(this);
     addComponent(cmp);

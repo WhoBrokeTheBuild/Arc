@@ -19,4 +19,8 @@ using std::cout;
 using std::string;
 using std::stringstream;
 
+#ifndef GRID_SIZE
+#define GRID_SIZE 61.0f
+#endif // GRID_SIZE
+
 #endif // __COMMON_H__

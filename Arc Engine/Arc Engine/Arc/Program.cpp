@@ -28,8 +28,12 @@ Arc::Program::Program( void )
 
     initRandom();
 
-    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &Program::update);
-    gpEventDispatcher->addEventListener(Program::EVENT_RENDER, this, &Program::render);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE_START, this, &Program::updateStart);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE,       this, &Program::update);
+    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE_END,   this, &Program::updateEnd);
+    gpEventDispatcher->addEventListener(Program::EVENT_RENDER_START, this, &Program::renderStart);
+    gpEventDispatcher->addEventListener(Program::EVENT_RENDER,       this, &Program::render);
+    gpEventDispatcher->addEventListener(Program::EVENT_RENDER_END,   this, &Program::renderEnd);
     gpEventDispatcher->addEventListener(Program::EVENT_EXIT,   this, &Program::stop);
 
     INFO(toString(), "Complete");
@@ -40,8 +44,12 @@ Arc::Program::~Program( void )
     INFO(toString(), "Terminating");
 
     gpEventDispatcher->removeEventListener(Program::EVENT_EXIT,   this, &Program::stop);
-    gpEventDispatcher->removeEventListener(Program::EVENT_RENDER, this, &Program::render);
-    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &Program::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_RENDER_END,   this, &Program::renderEnd);
+    gpEventDispatcher->removeEventListener(Program::EVENT_RENDER,       this, &Program::render);
+    gpEventDispatcher->removeEventListener(Program::EVENT_RENDER_START, this, &Program::renderStart);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE_END,   this, &Program::updateEnd);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE,       this, &Program::update);
+    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE_START, this, &Program::updateStart);
 
     delete _pNetworkSystem;
     delete _pScriptingSystem;

@@ -226,7 +226,7 @@ void Arc::RenderTarget::fillRect( const float x, const float y, const float widt
     fillRect(rect, color, rotation, origin);
 }
 
-void Arc::RenderTarget::fillRect( const Point pos, const Size size, const float height, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
+void Arc::RenderTarget::fillRect( const Point pos, const Size size, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 origin /*= Vector2::ZERO */ ) const
 {
 	Rect rect = Rect(pos, size);
 	fillRect(rect, color, rotation, origin);

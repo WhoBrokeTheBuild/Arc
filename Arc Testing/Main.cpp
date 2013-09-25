@@ -18,7 +18,6 @@ int main(int argc, char *argv[])
     gpMemoryTracker = new MemoryTracker();
 
     TestApp *program = New TestApp();
-    program->init();
 
     INFO("Main", "Starting Game Loop");
 

@@ -50,9 +50,6 @@ namespace Arc
 
         virtual inline string toString( void ) const;
 
-        virtual void init( string filename );
-        virtual void term( void );
-
         virtual void graphicsReset( const Event& event );
 
         virtual const Size getSize( void ) const { return _size; }

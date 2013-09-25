@@ -14,11 +14,19 @@
 
 #include "ResourceManager.h"
 
+#include "Duck.h"
+
 class TestApp :
     public Program,
     public IKeyboardListener,
     public IMouseListener
 {
+protected:
+	
+	ArrayList<Vector2> 
+		_dirs,
+		_obstacles;
+
 public:
 
     Scene
@@ -33,20 +41,22 @@ public:
 	ResourceManager
 		*pResourceManager;
 
+	Duck
+		*pPlayer;
+
     TestApp( void );
     virtual ~TestApp( void );
 
     virtual inline string toString( void ) const { return "Test App"; }
 
-    virtual void init( void );
-    virtual void term( void );
-
     virtual void update( const Event& event );
     virtual void render( const Event& event );
+	virtual void renderEnd( const Event& event );
 
     virtual void keyPressed( const Event& event );
-
     virtual void mousePressed( const Event& event );
+
+	ArrayList<Vector2> getValidMoveSpaces( Duck* duck );
 
 }; // class TestApp
 

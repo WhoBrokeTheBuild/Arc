@@ -3,7 +3,8 @@
 #include "RenderTarget.h"
 
 Arc::RenderedText::RenderedText( const string text, Font* pFont )
-	: _text(text),
+	: _pTexture(nullptr),
+	  _text(text),
       _pFont(pFont)
 {
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
