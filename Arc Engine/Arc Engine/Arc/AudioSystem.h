@@ -6,8 +6,6 @@
 #include "Common.h"
 #include "ManagedObject.h"
 
-#include <SDL/SDL_mixer.h>
-
 namespace Arc
 {
     class AudioSystem :
@@ -15,13 +13,6 @@ namespace Arc
     {
     protected:
 
-        int
-            _rate,
-            _channels,
-            _chunkSize;
-
-        uint16_t
-            _format;
 
     public:
 
