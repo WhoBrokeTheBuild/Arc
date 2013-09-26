@@ -25,9 +25,9 @@ TestApp::TestApp( void )
 
     Texture* tex = New Texture("assets/test.png");
 	pResourceManager->addTexture(tex);
-
+	
 	pPlayer->addNewImageComponent(tex);
-
+	
 	pScene->addUnit(pPlayer, 0);
 	pScene->addUnitTag(pPlayer, "duck");
 
@@ -62,7 +62,7 @@ void TestApp::render( const Event& event )
 	const RenderTarget* renderTarget = data->renderTarget();
 
 	Size winSize = getGraphicsSystem()->getWindowSize();
-
+	
 	for (float i = 0; i < winSize.width(); i += GRID_SIZE)
 	{
 		renderTarget->drawLine(i, 0.0f, i, winSize.height(), Color::BLACK);
@@ -71,7 +71,7 @@ void TestApp::render( const Event& event )
 	{
 		renderTarget->drawLine(0.0f, j, winSize.width(), j, Color::BLACK);
 	}
-
+	
 	ArrayList<Unit*> ducks = pScene->getUnitsByTag("duck");
 	
 	Duck* duck;
@@ -80,11 +80,16 @@ void TestApp::render( const Event& event )
 	{
 		duck = (Duck*)(*it);
 		ArrayList<Vector2> spaces = getValidMoveSpaces(duck);
-
+	
 		for (unsigned int i = 0; i < spaces.size(); ++i)
 		{
-			renderTarget->fillRect(spaces[i], Vector2(GRID_SIZE) - Vector2::ONE, Color::RED);
+			renderTarget->fillRect(spaces[i], Vector2(GRID_SIZE) - Vector2::ONE, Color::BLUE);
 		}
+	}
+	
+	for (unsigned int i = 0; i < _obstacles.size(); ++i)
+	{
+		renderTarget->fillRect(_obstacles[i] * GRID_SIZE, Vector2(GRID_SIZE) - Vector2::ONE, Color::RED);
 	}
 }
 
@@ -122,7 +127,7 @@ void TestApp::mousePressed( const Event& event )
 	{
 		duck = (Duck*)(*it);
 		ArrayList<Vector2> spaces = getValidMoveSpaces(duck);
-
+	
 		for (unsigned int i = 0; i < spaces.size(); ++i)
 		{
 			if (Rect(spaces[i], Vector2(GRID_SIZE) - Vector2::ONE).containsPoint(data->Pos))
@@ -141,8 +146,9 @@ ArrayList<Vector2> TestApp::getValidMoveSpaces( Duck* duck )
 	Size winSize = getGraphicsSystem()->getWindowSize();
 	
 	ArrayList<Vector2> spaces;
-
+	
 	Point pos;
+	Point gridPos;
 	Vector2 dir;
 	for (int d = 0; d < _dirs.size(); ++d)
 	{
@@ -151,10 +157,25 @@ ArrayList<Vector2> TestApp::getValidMoveSpaces( Duck* duck )
 		for (int i = 0; i < duck->getSpeed(); ++i)
 		{
 			pos += dir * GRID_SIZE;
-
+			gridPos.X = (int)(pos.X / GRID_SIZE);
+			gridPos.Y = (int)(pos.Y / GRID_SIZE);
+	
 			if (pos.X < 0 || pos.Y < 0 || pos.X > winSize.width() || pos.Y > winSize.height())
 				break;
-
+	
+			bool obstacle = false;
+			for (unsigned int j = 0; j < _obstacles.size(); ++j)
+			{
+				if (gridPos == _obstacles[j])
+				{
+					obstacle = true;
+					break;
+				}
+			}
+	
+			if (obstacle)
+				break;
+	
 			spaces.add(pos);
 		}
 	}

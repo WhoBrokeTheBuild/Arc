@@ -34,6 +34,9 @@ namespace Arc
         Size
             _size;
 
+		bool
+			_generated;
+
         Texture( SDL_Surface* pSurface );
 
         virtual void load( string filename );

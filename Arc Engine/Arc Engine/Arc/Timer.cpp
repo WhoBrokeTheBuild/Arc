@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-double Arc::Timer::MICRO = 1000000.0;
+double Arc::Timer::MICRO     = 1000000.0;
 
 Arc::Timer::Timer( void )
 {
@@ -61,16 +61,16 @@ double Arc::Timer::getElapsedMilli( void )
     if ( ! _stopped)
         QueryPerformanceCounter(&_endCount);
 
-    _startTimeMillis = (_startCount.QuadPart * (MICRO / _freq.QuadPart)) / 1000.0;
-    _endTimeMillis   = (_endCount.QuadPart * (MICRO / _freq.QuadPart)) / 1000.0;
+    _startTimeMillis = (_startCount.QuadPart * (MICRO / _freq.QuadPart)) * 0.001;
+    _endTimeMillis   = (_endCount.QuadPart * (MICRO / _freq.QuadPart)) * 0.001;
 
 #else // LINUX
 
     if ( ! _stopped)
         gettimeofday(&_endCount, nullptr);
 
-    _startTimeMillis = ((_startCount.tv_sec * MICRO) + _startCount.tv_usec) / 1000.0;
-    _endTimeMillis   = ((_endCount.tv_sec * MICRO) + _endCount.tv_usec) / 1000.0;
+    _startTimeMillis = ((_startCount.tv_sec * MICRO) + _startCount.tv_usec) * 0.001;
+    _endTimeMillis   = ((_endCount.tv_sec * MICRO) + _endCount.tv_usec) * 0.001;
 
 #endif // WINDOWS
 
@@ -141,21 +141,3 @@ void Arc::Timer::sleepUntilElapsed( double millis )
         }
     }
 }
-
-#ifdef WINDOWS
-
-double Arc::Timer::calcDiffMillis( LARGE_INTEGER from, LARGE_INTEGER to ) const
-{
-    double difference = (double)(to.QuadPart - from.QuadPart) * (MICRO / _freq.QuadPart);
-
-    return difference / 1000.0;
-}
-
-#else // LINUX
-
-double Arc::Timer::calcDiffMillis( timeval from, timeval to ) const
-{
-    return (double)( ((to.tv_sec - from.tv_sec) * 1000.0) + ((to.tv_usec - from.tv_usec) / 1000.0) );
-}
-
-#endif // WINDOWS

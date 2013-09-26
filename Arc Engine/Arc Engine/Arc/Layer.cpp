@@ -62,15 +62,35 @@ bool Arc::Layer::addUnit( Unit* unit )
     return false;
 }
 
-bool Arc::Layer::removeUnit( Unit* unit )
+bool Arc::Layer::removeUnit( Unit* unit, bool del /*= false*/ )
 {
     if ( ! hasUnit(unit) )
         return false;
 
     unit->setParentLayer(nullptr);
 
-    return _units.remove(unit);
+	bool success = _units.remove(unit);
+	delete unit;
+
+    return success;
 }
+
+bool Arc::Layer::removeUnitAt( unsigned int index, bool del /*= false */ )
+{
+	if ( ! _units.hasIndex(index))
+		return false;
+
+	return removeUnit(_units[index], del);
+}
+
+Arc::Unit* Arc::Layer::getUnit( unsigned int index )
+{
+	if ( ! _units.hasIndex(index))
+		return nullptr;
+
+	return _units[index];
+}
+
 
 bool Arc::Layer::hasUnit( Unit* unit )
 {

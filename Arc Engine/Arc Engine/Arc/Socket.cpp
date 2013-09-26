@@ -122,27 +122,27 @@ int Arc::Socket::sendDouble( double data, bool buffer /*= false */ )
 	}
 }
 
-string Arc::readString( unsigned int bufferLength /*= 2000 */ )
+string Arc::Socket::readString( unsigned int bufferLength /*= 2000 */ )
 {
-
+	return string();
 }
 
 bool Arc::Socket::readBool( void )
 {
-
+	return false;
 }
 
 int Arc::Socket::readInt( void )
 {
-
+	return 0;
 }
 
 float Arc::Socket::readFloat( void )
 {
-
+	return 0.0f;
 }
 
 double Arc::Socket::readDouble( void )
 {
-
+	return 0.0;
 }

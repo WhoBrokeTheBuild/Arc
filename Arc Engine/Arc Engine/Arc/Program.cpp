@@ -21,6 +21,8 @@ Arc::Program::Program( void )
 {
     INFO(toString(), "Initializing");
 
+	_pInstance = this;
+
     gpEventDispatcher = New EventDispatcher();
 
     _targetFPS  = 60.0f;

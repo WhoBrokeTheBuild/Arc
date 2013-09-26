@@ -2,10 +2,11 @@
 #include "GraphicsSystem.h"
 #include "RenderTarget.h"
 
-Arc::RenderedText::RenderedText( const string text, Font* pFont )
+Arc::RenderedText::RenderedText( const string text, Font* pFont, Color color /*= Color::WHITE*/ )
 	: _pTexture(nullptr),
 	  _text(text),
-      _pFont(pFont)
+      _pFont(pFont),
+	  _color(color)
 {
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
 
@@ -38,7 +39,7 @@ void Arc::RenderedText::renderText( void )
     if (text.length() == 0)
         text = " ";
 
-    SDL_Surface* surface = TTF_RenderUTF8_Blended(_pFont->SDLFont(), text.c_str(), Color::WHITE.getSDLColor());
+    SDL_Surface* surface = TTF_RenderUTF8_Blended(_pFont->SDLFont(), text.c_str(), _color.getSDLColor());
 
     if ( ! surface)
     {

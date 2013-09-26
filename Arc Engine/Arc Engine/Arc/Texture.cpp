@@ -13,12 +13,13 @@ Arc::Texture::Texture( string filename )
 Arc::Texture::Texture( SDL_Surface* pSurface )
 {
     load(pSurface);
-    gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+	_generated;
 }
 
 Arc::Texture::~Texture( void )
 {
-    gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+	if ( ! _generated)
+		gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
     deleteTexture();
 }
 
@@ -45,9 +46,6 @@ void Arc::Texture::load( string filename )
 
 void Arc::Texture::load( SDL_Surface* pSurface )
 {
-    if (_filename == "")
-        _filename = "<generated>";
-
     if (_texture != OPENGL_INVALID_TEXTURE)
         glDeleteTextures(1, &_texture);
 

@@ -26,11 +26,14 @@ namespace Arc
         Font
             *_pFont;
 
+		Color 
+			_color;
+
         virtual void renderText( void );
 
     public:
 
-        RenderedText( const string text, Font* pFont );
+        RenderedText( const string text, Font* pFont, Color color = Color::WHITE );
         virtual ~RenderedText( void );
 
         virtual inline string toString( void ) const { return "Cached Text"; }

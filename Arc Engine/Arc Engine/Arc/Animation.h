@@ -12,7 +12,6 @@
 namespace Arc
 {
 	/** A collection of Sprites to act as frames in an animation.
-	  *
 	  */
     class Animation :
         public EventDispatcher
