@@ -6,6 +6,9 @@
 #include "Common.h"
 #include "ManagedObject.h"
 
+#include <AL/al.h>
+#include <AL/alc.h>
+
 namespace Arc
 {
     class AudioSystem :
@@ -13,14 +16,16 @@ namespace Arc
     {
     protected:
 
+		ALCdevice
+			*_pDevice;
+
+		ALCcontext
+			*_pContext;
 
     public:
 
         AudioSystem( void );
-        virtual ~AudioSystem( void ) { term(); }
-
-        virtual void init( void );
-        virtual void term( void );
+        virtual ~AudioSystem( void );
 
         virtual inline string toString( void ) const { return "Audio System"; }
 

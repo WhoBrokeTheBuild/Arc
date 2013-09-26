@@ -43,14 +43,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../Libraries/SDL/include;../Arc Engine/Arc Engine;../Libraries/lua/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../Libraries/SDL/include;../Arc Engine/Arc Engine;../Libraries/lua/include;../Libraries/AL/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../Libraries/SDL/lib/x86;../Arc Engine/Debug;../Libraries/lua/lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../Libraries/SDL/lib/x86;../Arc Engine/Debug;../Libraries/lua/lib;../Libraries/AL/lib/x86</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;SDL_image.lib;SDL_mixer.lib;SDL_ttf.lib;opengl32.lib;glu32.lib;Arc.lib;lua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;SDL_image.lib;SDL_mixer.lib;SDL_ttf.lib;opengl32.lib;glu32.lib;Arc.lib;lua.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

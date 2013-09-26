@@ -159,9 +159,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Project\Units\Organization</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>Project\Audio</Filter>
-    </ClCompile>
     <ClCompile Include="AudioSystem.cpp">
       <Filter>Project\Audio</Filter>
     </ClCompile>
@@ -388,9 +385,6 @@
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Project\Units\Organization</Filter>
-    </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>Project\Audio</Filter>
     </ClInclude>
     <ClInclude Include="AudioSystem.h">
       <Filter>Project\Audio</Filter>

@@ -49,7 +49,6 @@
     <ClCompile Include="ScriptingSystem.cpp" />
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Socket.cpp" />
-    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StreamFunc.cpp" />
     <ClCompile Include="StringFunc.cpp" />
@@ -131,7 +130,6 @@
     <ClInclude Include="Shapes.h" />
     <ClInclude Include="Socket.h" />
     <ClInclude Include="SocketType.h" />
-    <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StreamFunc.h" />
     <ClInclude Include="StringFunc.h" />
@@ -186,7 +184,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../Libraries/SDL/include/;../../../Libraries/lua/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../Libraries/SDL/include/;../../../Libraries/lua/include/;../../../Libraries/AL/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
