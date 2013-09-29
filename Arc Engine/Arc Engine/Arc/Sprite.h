@@ -34,8 +34,6 @@ namespace Arc
         virtual inline void setTexture( Texture* texture ) { _pTexture = texture; }
         virtual inline void setSourceRect( Rect sourceRect ) { _sourceRect = sourceRect; }
 
-
-
     }; // class Sprite
 
 } // namespace Arc
