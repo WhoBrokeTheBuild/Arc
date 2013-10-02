@@ -13,7 +13,7 @@ TestApp::TestApp( void )
 
     _pScriptingSystem->executeFile("assets/test.lua");
 
-    _pGraphicsSystem->setClearColor(Color(150, 150, 150));
+    _praphicsSystem->setClearColor(Color(150, 150, 150));
 
 	_dirs.add(Vector2(0.0f, -1.0f))->add(Vector2(0.0f, 1.0f))->add(Vector2(-1.0f, 0.0f))->add(Vector2(1.0f, 0.0f));
 	_obstacles.add(Vector2(5.0f, 3.0f));

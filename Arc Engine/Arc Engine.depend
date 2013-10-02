@@ -1,14 +1,21 @@
 # depslib dependency file v1.0
+<<<<<<< Updated upstream
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.cpp
 	"Animation.h"
 
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.h
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.cpp
+	"Animation.h"
+
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"ArrayList.h"
 	"Sprite.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Common.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Common.h
 	<cstdlib>
 	<iostream>
 	<string>
@@ -16,7 +23,7 @@
 	"Functions.h"
 	"Geom.h"
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Functions.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Functions.h
 	"Defines.h"
 	<iostream>
 	<iomanip>
@@ -29,48 +36,52 @@
 	"InputFunc.h"
 	"StreamFunc.h"
 
+<<<<<<< Updated upstream
 1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Defines.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Defines.h
+>>>>>>> Stashed changes
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.h
 	<ctime>
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MathFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MathFunc.h
 	<cmath>
 	"Direction.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Direction.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Direction.h
 	<string>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RandFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RandFunc.h
 	<cstdlib>
 	<ctime>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ParseFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ParseFunc.h
 	<string>
 	<sstream>
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StringFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StringFunc.h
 	<string>
 	<sstream>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputFunc.h
 	<SDL/SDL.h>
 	"Keyboard.h"
 	"Mouse.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Keyboard.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Keyboard.h
 	<string>
 	<SDL/SDL.h>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Mouse.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Mouse.h
 	<string>
 	<SDL/SDL.h>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StreamFunc.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StreamFunc.h
 	<iostream>
 	<string>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Geom.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Geom.h
 	"Direction.h"
 	"Angle.h"
 	"Vector2.h"
@@ -78,43 +89,51 @@
 	"Circle.h"
 	"Triangle.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.h
 	"ManagedObject.h"
 	"ISerializable.h"
 	"Functions.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h
+>>>>>>> Stashed changes
 	<string>
 	<sstream>
 	<iostream>
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ISerializable.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ISerializable.h
 	<iostream>
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Vector2.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Vector2.h
 	"ManagedObject.h"
 	"ISerializable.h"
 	"Functions.h"
 
+<<<<<<< Updated upstream
 1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
+>>>>>>> Stashed changes
 	"ManagedObject.h"
 	"ISerializable.h"
 	"Functions.h"
 	"Vector2.h"
 	<cmath>
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
 	"ManagedObject.h"
 	"ISerializable.h"
 	"Functions.h"
 	"Vector2.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Triangle.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Triangle.h
 	"ManagedObject.h"
 	"Vector2.h"
 	"MathFunc.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.h
 	"Common.h"
 	"ManagedObject.h"
 	"Event.h"
@@ -122,19 +141,27 @@
 	"Map.h"
 	"ArrayList.h"
 
-1377626195 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Event.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Event.h
 	"Common.h"
 	"ManagedObject.h"
 	"EventData.h"
 
+<<<<<<< Updated upstream
 1380052205 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventData.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventData.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"RenderTarget.h"
 	"Keyboard.h"
 	"Mouse.h"
 
+<<<<<<< Updated upstream
 1380054782 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"Color.h"
@@ -144,110 +171,146 @@
 	<SDL/SDL.h>
 	<SDL/SDL_opengl.h>
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL.h>
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_ttf.h>
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"Texture.h"
 	"Font.h"
 	"Color.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_opengl.h>
 	<SDL/SDL_image.h>
 	<SDL/SDL.h>
 
+<<<<<<< Updated upstream
 1380052859 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Delegate.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Delegate.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"Callbacks.h"
 
+<<<<<<< Updated upstream
 1380052344 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Callbacks.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Callbacks.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Map.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Map.h
 	"Common.h"
 	"ManagedObject.h"
 	<map>
 	"LinkedList.h"
 	"ArrayList.h"
 
+<<<<<<< Updated upstream
 1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/LinkedList.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/LinkedList.h
+>>>>>>> Stashed changes
 	"Common.h"
 	<list>
 	<algorithm>
 	"ArrayList.h"
 	"Queue.h"
 
+<<<<<<< Updated upstream
 1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ArrayList.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ArrayList.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	<vector>
 	"LinkedList.h"
 	"Queue.h"
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Queue.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Queue.h
 	"Common.h"
 	"ManagedObject.h"
 	<queue>
 	"ArrayList.h"
 	"LinkedList.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"Texture.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.cpp
 	"AudioSystem.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.h
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_mixer.h>
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.cpp
 	"Circle.h"
 	"Rect.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CircleCollider.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CircleCollider.cpp
 	"CircleCollider.h"
 	"RectCollider.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CircleCollider.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CircleCollider.h
 	"Common.h"
 	"Collider.h"
 
-1378145166 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Collider.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Collider.h
 	"Common.h"
 	"ManagedObject.h"
 	"RenderTarget.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RectCollider.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RectCollider.h
 	"Common.h"
 	"Collider.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.cpp
 	"Color.h"
 	"RenderTarget.h"
 	"RenderedText.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Console.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Console.cpp
 	"Console.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Console.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Console.h
 	"Defines.h"
 	<windows.h>
 	<stdio.h>
@@ -256,26 +319,37 @@
 	<iostream>
 	<fstream>
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Event.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Event.cpp
 	"Event.h"
 	"EventDispatcher.h"
 
-1377626195 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.cpp
 	"EventDispatcher.h"
 	"Event.h"
 
+<<<<<<< Updated upstream
 1380054760 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.cpp
+>>>>>>> Stashed changes
 	"Font.h"
 	"RenderTarget.h"
 	"RenderedText.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Functions.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Functions.cpp
 	"Functions.h"
 
+<<<<<<< Updated upstream
 1380052821 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.cpp
 	"GraphicsSystem.h"
 
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.h
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.cpp
+	"GraphicsSystem.h"
+
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"RenderTarget.h"
@@ -284,14 +358,22 @@
 	<SDL/SDL_opengl.h>
 	<SDL/SDL_ttf.h>
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputFunc.cpp
 	"InputFunc.h"
 
+<<<<<<< Updated upstream
 1380054354 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.cpp
 	"InputSystem.h"
 	"Program.h"
 
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.h
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.cpp
+	"InputSystem.h"
+	"Program.h"
+
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	<SDL/SDL.h>
@@ -303,39 +385,63 @@
 	"MouseSource.h"
 	"TextInputSource.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GamePad.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GamePad.h
 	<string>
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
 	"Common.h"
 	"ManagedObject.h"
 
 1380054374 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
+	"Common.h"
+	"ManagedObject.h"
+
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"Keyboard.h"
 	"InputState.h"
 	"Map.h"
 
+<<<<<<< Updated upstream
 1380054586 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"Mouse.h"
 	"InputState.h"
 	"Map.h"
 
+<<<<<<< Updated upstream
 1380054007 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"IKeyboardListener.h"
 	"ArrayList.h"
 	"Queue.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IKeyboardListener.h
 	"Common.h"
 	"KeyboardSource.h"
 
 1380054943 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IKeyboardListener.h
+	"Common.h"
+	"KeyboardSource.h"
+
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	<SDL/SDL.h>
@@ -353,7 +459,11 @@
 	"RenderedText.h"
 	"Timer.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"Timer.h"
@@ -361,7 +471,11 @@
 	<lualib.h>
 	<lauxlib.h>
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	<ctime>
@@ -370,72 +484,107 @@
 	<sys/time.h>
 	<unistd.h>
 
+<<<<<<< Updated upstream
 1380054476 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.cpp
 	"KeyboardSource.h"
 	"Program.h"
 
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.cpp
+	"KeyboardSource.h"
+	"Program.h"
+
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.cpp
+>>>>>>> Stashed changes
 	"Layer.h"
 	"Program.h"
 	"Scene.h"
 	"Unit.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.h
 	"Common.h"
 	"EventDispatcher.h"
 
 1380056197 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.h
+	"Common.h"
+	"EventDispatcher.h"
+
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"OriginLocation.h"
 	"Layer.h"
 	"Scene.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/OriginLocation.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/OriginLocation.h
 	<string>
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"IFrameListener.h"
 	"Layer.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IFrameListener.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IFrameListener.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 	"Program.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Line.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Line.cpp
 	"Line.h"
 	"Angle.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Line.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Line.h
 	"ManagedObject.h"
 	"ISerializable.h"
 	"Functions.h"
 	"Vector2.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.cpp
 	"ManagedObject.h"
 	"MemoryTracker.h"
 
+<<<<<<< Updated upstream
 1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"ManagedObject.h"
 	"Map.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MathFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MathFunc.cpp
 	"MathFunc.h"
 	"Vector2.h"
 
+<<<<<<< Updated upstream
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.cpp
 	"MemoryTracker.h"
 
 1380054514 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.cpp
+	"MemoryTracker.h"
+
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.cpp
+>>>>>>> Stashed changes
 	"MouseSource.h"
 	"Program.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ParseFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ParseFunc.cpp
 	"ParseFunc.h"
 	"StringFunc.h"
 	"Vector2.h"
@@ -444,85 +593,124 @@
 	"Color.h"
 	"ArrayList.h"
 
+<<<<<<< Updated upstream
 1380054950 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.cpp
+>>>>>>> Stashed changes
 	"Program.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RandFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RandFunc.cpp
 	"RandFunc.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.cpp
 	"Rect.h"
 	"Circle.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RectCollider.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RectCollider.cpp
 	"RectCollider.h"
 	"CircleCollider.h"
 
+<<<<<<< Updated upstream
 1380053193 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.cpp
 	"RenderTarget.h"
 	"GraphicsSystem.h"
 
 1380053270 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.cpp
+	"RenderTarget.h"
+	"GraphicsSystem.h"
+
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.cpp
+>>>>>>> Stashed changes
 	"RenderedText.h"
 	"GraphicsSystem.h"
 	"RenderTarget.h"
 
+<<<<<<< Updated upstream
 1380054619 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.cpp
+>>>>>>> Stashed changes
 	"Scene.h"
 	"Unit.h"
 	"Program.h"
 
+<<<<<<< Updated upstream
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.cpp
+>>>>>>> Stashed changes
 	"ScriptingSystem.h"
 	"Program.h"
 	"GraphicsSystem.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sound.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sound.cpp
 	"Sound.h"
 
-1377537595 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sound.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sound.h
 	"Common.h"
 	"ManagedObject.h"
 	"IFrameListener.h"
 	<SDL/SDL_mixer.h>
 
+<<<<<<< Updated upstream
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.cpp
+>>>>>>> Stashed changes
 	"Sprite.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StreamFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StreamFunc.cpp
 	"StreamFunc.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StringFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/StringFunc.cpp
 	"StringFunc.h"
 	"ArrayList.h"
 
+<<<<<<< Updated upstream
 1380054034 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.cpp
 	"TextInputSource.h"
 	"Program.h"
 
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.cpp
+	"TextInputSource.h"
+	"Program.h"
+
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.cpp
+>>>>>>> Stashed changes
 	"Texture.h"
 	"RenderTarget.h"
 	"RenderedText.h"
 	"GraphicsSystem.h"
 	"Event.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.cpp
 	"TimeFunc.h"
 	"Timer.h"
 
-1378145166 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Angle.cpp
 	"Angle.h"
 	"Vector2.h"
 
+<<<<<<< Updated upstream
 1380051376 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.cpp
 	"Timer.h"
 
 1380052073 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.cpp
+	"Timer.h"
+
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.cpp
+>>>>>>> Stashed changes
 	"Unit.h"
 	"Component.h"
 
-1377537595 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Vector2.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Vector2.cpp
 	"Vector2.h"
 	"Angle.h"
 	"MathFunc.h"
@@ -531,15 +719,19 @@
 1378828262 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IPAddress.cpp
 	"IPAddress.h"
 
-1378828292 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IPAddress.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IPAddress.h
 	"Common.h"
 	"ManagedObject.h"
 	"ArrayList.h"
 
+<<<<<<< Updated upstream
 1380051376 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/NetworkSystem.cpp
+=======
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/NetworkSystem.cpp
+>>>>>>> Stashed changes
 	"NetworkSystem.h"
 
-1378827725 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/NetworkSystem.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/NetworkSystem.h
 	"Common.h"
 	"ManagedObject.h"
 	"LinkedList.h"
@@ -553,10 +745,10 @@
 	<netinet/in.h>
 	<arpa/inet.h>
 
-1377626195 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/SocketType.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/SocketType.h
 	<string>
 
-1378828683 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Socket.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Socket.h
 	"Common.h"
 	"ManagedObject.h"
 	"IPAddress.h"
@@ -568,7 +760,7 @@
 	<netinet/in.h>
 	<arpa/inet.h>
 
-1378828653 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Socket.cpp
+1379378835 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Socket.cpp
 	"Socket.h"
 
 1378925975 source:/home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AnimatedComponent.cpp
@@ -578,7 +770,11 @@
 	"Common.h"
 	"Component.h"
 
+<<<<<<< Updated upstream
 1380055450 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Component.h
+=======
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Component.h
+>>>>>>> Stashed changes
 	"Common.h"
 	"EventDispatcher.h"
 
