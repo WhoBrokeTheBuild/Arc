@@ -11,6 +11,15 @@ TestApp::TestApp( void )
 {
     initAll(Size(610, 610), "Testing");
 
+	Socket* pSock = getNetworkSystem()->connect("localhost", 8080, SocketType::SOCKET_TYPE_TCP);
+
+	pSock->sendString("GET / HTTP/1.0\n\n");
+	cout << pSock->readString(2000);
+	pSock->sendString("\n\n");
+	cout << pSock->readString(2000);
+
+	die();
+
     _pScriptingSystem->executeFile("assets/test.lua");
 
     _praphicsSystem->setClearColor(Color(150, 150, 150));

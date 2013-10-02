@@ -36,7 +36,7 @@ Arc::Program::Program( void )
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER_START, this, &Program::renderStart);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER,       this, &Program::render);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER_END,   this, &Program::renderEnd);
-    gpEventDispatcher->addEventListener(Program::EVENT_EXIT,   this, &Program::stop);
+    gpEventDispatcher->addEventListener(Program::EVENT_EXIT,         this, &Program::stop);
 
     INFO(toString(), "Complete");
 }

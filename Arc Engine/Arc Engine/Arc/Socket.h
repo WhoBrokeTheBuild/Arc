@@ -76,7 +76,9 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Socket"; }
 
-        virtual SocketType getType( void )   const { return _type; }
+        virtual inline SocketType getType   ( void ) const { return _type; }
+		virtual inline IPAddress  getAddress( void ) const { return _address; }
+
 		virtual inline bool hasError( void ) const { return _error; }
 
 		virtual string readString( unsigned int bufferLength = 2000 );

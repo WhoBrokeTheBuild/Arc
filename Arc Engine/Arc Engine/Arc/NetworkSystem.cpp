@@ -3,24 +3,19 @@
 Arc::NetworkSystem::NetworkSystem( void )
 {
 
-}
-
-void Arc::NetworkSystem::init( void )
-{
-
 #ifdef WINDOWS
 
-    int res = 0;
+	int res = 0;
 
-    res = WSAStartup(MAKEWORD(2,2), &_wsa);
-    if (res != 0)
-        ERRORF(toString(), "WSAStartup failed: %d", res);
+	res = WSAStartup(MAKEWORD(2,2), &_wsa);
+	if (res != 0)
+		ERRORF(toString(), "WSAStartup failed: %d", res);
 
 #endif // WINDOWS
 
 }
 
-void Arc::NetworkSystem::term( void )
+Arc::NetworkSystem::~NetworkSystem( void )
 {
 
 #ifdef WINDOWS

@@ -66,7 +66,7 @@ int Arc::Socket::sendString( string data, bool buffer /*= false */ )
 	}
 	else
 	{
-		return send(_socket, data.c_str(), data.length() + 1, 0);
+		return send(_socket, data.c_str(), data.length(), 0);
 	}
 }
 
@@ -124,7 +124,19 @@ int Arc::Socket::sendDouble( double data, bool buffer /*= false */ )
 
 string Arc::Socket::readString( unsigned int bufferLength /*= 2000 */ )
 {
-	return string();
+	char* buffer = new char[bufferLength + 1];
+
+	int bytes = recv(_socket, buffer, bufferLength, 0);
+
+	if (bytes == -1)
+		return "";
+
+	buffer[bytes] = '\0';
+	string data = string(buffer);
+
+	delete[] buffer;
+
+	return data;
 }
 
 bool Arc::Socket::readBool( void )

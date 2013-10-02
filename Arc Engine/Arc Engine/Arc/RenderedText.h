@@ -36,7 +36,7 @@ namespace Arc
         RenderedText( const string text, Font* pFont, Color color = Color::WHITE );
         virtual ~RenderedText( void );
 
-        virtual inline string toString( void ) const { return "Cached Text"; }
+        virtual inline string toString( void ) const { return "Rendered Text"; }
 
         virtual void graphicsReset( const Event& event );
 

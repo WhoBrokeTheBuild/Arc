@@ -49,10 +49,7 @@ namespace Arc
     public:
 
         NetworkSystem( void );
-        virtual ~NetworkSystem( void ) { term(); }
-
-        virtual void init( void );
-        virtual void term( void );
+        virtual ~NetworkSystem( void );
 
         virtual inline string toString( void ) const { return "Network System"; }
 
