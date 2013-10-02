@@ -31,9 +31,9 @@ std::string Arc::IPAddress::toString( void ) const
 {
     stringstream ss;
     ss << "IP Address ["
-		<< (int)_quads[0] << ", "
-		<< (int)_quads[1] << ", "
-		<< (int)_quads[2] << ", "
+		<< (int)_quads[0] << "."
+		<< (int)_quads[1] << "."
+		<< (int)_quads[2] << "."
 		<< (int)_quads[3] << "]";
 
     return ss.str();
