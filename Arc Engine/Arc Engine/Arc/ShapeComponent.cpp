@@ -2,11 +2,7 @@
 #include "Unit.h"
 
 Arc::ShapeComponent::ShapeComponent( Unit* pUnit, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO */ )
-    : Component(pUnit),
-      Offset(offset),
-      Rotation(rotation),
-      BlendColor(blendColor),
-      Origin(origin)
+    : DrawableComponent(pUnit, offset, rotation, blendColor, origin)
 {
 }
 
@@ -25,27 +21,27 @@ void Arc::ShapeComponent::render( const RenderData* data )
 	{
 	case SHAPE_TRIANGLE:
 
-		data->renderTarget()->drawTriangle(parent->getPos() + Offset, _radius, BlendColor, Rotation, Origin );
+		data->renderTarget()->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getOrigin() );
 
 		break;
 	case SHAPE_RECTANGLE:
 
-		data->renderTarget()->drawRect(parent->getPos() + Offset, _size, BlendColor, Rotation, Origin );
+		data->renderTarget()->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getOrigin() );
 
 		break;
 	case SHAPE_PENTAGON:
 
-		data->renderTarget()->drawPentagon(parent->getPos() + Offset, _radius, BlendColor, Rotation, Origin );
+		data->renderTarget()->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getOrigin() );
 
 		break;
 	case SHAPE_HEXAGON:
 
-		data->renderTarget()->drawHexagon(parent->getPos() + Offset, _radius, BlendColor, Rotation, Origin );
+		data->renderTarget()->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getOrigin() );
 
 		break;
 	case SHAPE_CIRCLE:
 
-		data->renderTarget()->drawCircle(parent->getPos() + Offset, _radius, BlendColor, Rotation, Origin );
+		data->renderTarget()->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getOrigin() );
 
 		break;
     default:

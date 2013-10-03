@@ -26,14 +26,11 @@ namespace Arc
         Font
             *_pFont;
 
-		Color 
-			_color;
-
         virtual void renderText( void );
 
     public:
 
-        RenderedText( const string text, Font* pFont, Color color = Color::WHITE );
+        RenderedText( const string text, Font* pFont );
         virtual ~RenderedText( void );
 
         virtual inline string toString( void ) const { return "Rendered Text"; }
@@ -42,6 +39,9 @@ namespace Arc
 
         virtual string getText( void ) const { return _text; }
         virtual void setText( string text );
+
+        virtual Font* getFont( void ) const { return _pFont; }
+        virtual void setFont( Font *pFont);
 
         virtual const Size getSize( void ) const;
         virtual Size measureString( string text );

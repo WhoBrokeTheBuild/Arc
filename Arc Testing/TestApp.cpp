@@ -11,18 +11,21 @@ TestApp::TestApp( void )
 {
     initAll(Size(610, 610), "Testing");
 
-	Socket* pSock = getNetworkSystem()->connect("localhost", 8080, SocketType::SOCKET_TYPE_TCP);
-
-	pSock->sendString("GET / HTTP/1.0\n\n");
-	cout << pSock->readString(2000);
-	pSock->sendString("\n\n");
-	cout << pSock->readString(2000);
-
-	die();
+	//Socket* pSock = getNetworkSystem()->connect("localhost", 8080, SocketType::SOCKET_TYPE_TCP);
+	//
+	//pSock->sendString("GET / HTTP/1.0\n\n");
+	//cout << pSock->readString(2000);
+	//pSock->sendString("\n\n");
+	//cout << pSock->readString(2000);
+	//
+	//die();
 
     _pScriptingSystem->executeFile("assets/test.lua");
 
-    _praphicsSystem->setClearColor(Color(150, 150, 150));
+    _pGraphicsSystem->setClearColor(Color(150, 150, 150));
+
+    pFont = New Font("assets/ds-digital.ttf", 20);
+    pFPSText = New RenderedText("0", pFont);
 
 	_dirs.add(Vector2(0.0f, -1.0f))->add(Vector2(0.0f, 1.0f))->add(Vector2(-1.0f, 0.0f))->add(Vector2(1.0f, 0.0f));
 	_obstacles.add(Vector2(5.0f, 3.0f));
@@ -32,16 +35,15 @@ TestApp::TestApp( void )
 
     pPlayer = New Duck(Vector2(1.0f), 3);
 
-    Texture* tex = New Texture("assets/test.png");
-	pResourceManager->addTexture(tex);
-	
-	pPlayer->addNewImageComponent(tex);
+    //Texture* tex = New Texture("assets/test.png");
+	//pResourceManager->addTexture(tex);
+	//
+	//pPlayer->addNewImageComponent(tex);
+
+	pPlayer->addNewTextComponent(pFont, "Hello");
 	
 	pScene->addUnit(pPlayer, 0);
 	pScene->addUnitTag(pPlayer, "duck");
-
-    pFont = New Font("assets/ds-digital.ttf", 20);
-    pFPSText = New RenderedText("0", pFont);
 }
 
 TestApp::~TestApp( void )

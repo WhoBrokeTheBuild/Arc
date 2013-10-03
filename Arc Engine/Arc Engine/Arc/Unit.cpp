@@ -5,6 +5,7 @@
 #include "ImageComponent.h"
 #include "ShapeComponent.h"
 #include "AnimatedComponent.h"
+#include "TextComponent.h"
 
 Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
@@ -208,6 +209,13 @@ Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
     return cmp;
 }
 
+Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, string text, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+{
+    TextComponent* cmp = New TextComponent(this, pFont, text);
+    addComponent(cmp);
+    return cmp;
+}
+
 Arc::PhysicsComponent* Arc::Unit::getFirstPhysicsComponent( void )
 {
 	PhysicsComponent* tmp;
@@ -303,3 +311,28 @@ Arc::AnimatedComponent* Arc::Unit::getFirstAnimatedComponent( void )
 	}
 	return nullptr;
 }
+
+Arc::TextComponent* Arc::Unit::getFirstTextComponent( void )
+{
+	TextComponent* tmp;
+	{
+		auto end = _components.end();
+		for (auto it = _components.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<TextComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	{
+		auto end = _componentsToAdd.end();
+		for (auto it = _componentsToAdd.begin(); it != end; ++it)
+		{
+			tmp = dynamic_cast<TextComponent*>(*it);
+			if (tmp != nullptr)
+				return tmp;
+		}
+	}
+	return nullptr;
+}
+

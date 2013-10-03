@@ -4,14 +4,14 @@
 #define __ARC_IMAGE_COMPONENT_H__
 
 #include "Common.h"
-#include "Component.h"
+#include "DrawableComponent.h"
 
 #include "Texture.h"
 
 namespace Arc
 {
 	class ImageComponent :
-		public Component
+		public DrawableComponent
 	{
 	protected:
 
@@ -19,16 +19,6 @@ namespace Arc
 			*_pTexture;
 
 	public:
-
-		Point
-			Offset,
-			Origin;
-
-		Angle
-			Rotation;
-
-		Color
-			BlendColor;
 
 		ImageComponent( Unit* pUnit, Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
 		virtual inline ~ImageComponent( void );

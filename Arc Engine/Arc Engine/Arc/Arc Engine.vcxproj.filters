@@ -49,9 +49,6 @@
     <Filter Include="Project\Util\Functions">
       <UniqueIdentifier>{46a06fd9-2e72-4d21-b9fd-9704ef57bbdf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Project\Units\Interfaces">
-      <UniqueIdentifier>{233d7f88-490d-455f-9e86-a8261585fa64}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Project\Core\Interfaces">
       <UniqueIdentifier>{f26db4c4-d104-4a70-a074-5ca4e05f6025}</UniqueIdentifier>
     </Filter>
@@ -219,6 +216,12 @@
     <ClCompile Include="Socket.cpp">
       <Filter>Project\Networking</Filter>
     </ClCompile>
+    <ClCompile Include="DrawableComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TextComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -353,18 +356,6 @@
     <ClInclude Include="Unit.h">
       <Filter>Project\Units</Filter>
     </ClInclude>
-    <ClInclude Include="IDrawable.h">
-      <Filter>Project\Units\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IDrawableImage.h">
-      <Filter>Project\Units\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="IPhysicsObject.h">
-      <Filter>Project\Units\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="ICollidable.h">
-      <Filter>Project\Units\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="IFrameListener.h">
       <Filter>Project\Core\Interfaces</Filter>
     </ClInclude>
@@ -460,6 +451,12 @@
     </ClInclude>
     <ClInclude Include="Shapes.h">
       <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawableComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TextComponent.h">
+      <Filter>Project\Units\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

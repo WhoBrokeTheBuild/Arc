@@ -4,14 +4,14 @@
 #define __ARC_SHAPE_COMPONENT_H__
 
 #include "Common.h"
-#include "Component.h"
+#include "DrawableComponent.h"
 
 #include "Shapes.h"
 
 namespace Arc
 {
 	class ShapeComponent :
-		public Component
+		public DrawableComponent
 	{
 	protected:
 
@@ -25,16 +25,6 @@ namespace Arc
 			_radius;
 
 	public:
-
-		Point
-			Offset,
-			Origin;
-
-		Angle
-			Rotation;
-
-		Color
-			BlendColor;
 
 		ShapeComponent( Unit* pUnit, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
 		virtual ~ShapeComponent( void );

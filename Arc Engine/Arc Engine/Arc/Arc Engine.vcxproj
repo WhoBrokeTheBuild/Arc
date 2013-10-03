@@ -16,6 +16,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DrawableComponent.cpp" />
     <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="IPAddress.cpp" />
     <ClCompile Include="NetworkSystem.cpp" />
@@ -53,6 +54,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StreamFunc.cpp" />
     <ClCompile Include="StringFunc.cpp" />
+    <ClCompile Include="TextComponent.cpp" />
     <ClCompile Include="TextInputSource.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeFunc.cpp" />
@@ -69,6 +71,7 @@
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="IPAddress.h" />
     <ClInclude Include="NetworkSystem.h" />
@@ -93,13 +96,9 @@
     <ClInclude Include="GamePad.h" />
     <ClInclude Include="Geom.h" />
     <ClInclude Include="GraphicsSystem.h" />
-    <ClInclude Include="ICollidable.h" />
-    <ClInclude Include="IDrawable.h" />
-    <ClInclude Include="IDrawableImage.h" />
     <ClInclude Include="IFrameListener.h" />
     <ClInclude Include="IKeyboardListener.h" />
     <ClInclude Include="IMouseListener.h" />
-    <ClInclude Include="IPhysicsObject.h" />
     <ClInclude Include="InputFunc.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="InputSystem.h" />
@@ -135,6 +134,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StreamFunc.h" />
     <ClInclude Include="StringFunc.h" />
+    <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextInputSource.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeFunc.h" />

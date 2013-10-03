@@ -17,6 +17,7 @@ namespace Arc
 	class ImageComponent;
 	class ShapeComponent;
 	class AnimatedComponent;
+	class TextComponent;
 
     class Unit :
         public EventDispatcher
@@ -109,12 +110,14 @@ namespace Arc
 		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
 		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
 		virtual AnimatedComponent* addNewAnimatedComponent( void );
+		virtual TextComponent*     addNewTextComponent    ( Font *pFont, string text, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
 
 		virtual Component*         getFirstComponent        ( void ) { return ( _components.empty() ? nullptr : _components[0] ); }
 		virtual PhysicsComponent*  getFirstPhysicsComponent ( void );
 		virtual ImageComponent*    getFirstImageComponent   ( void );
 		virtual ShapeComponent*    getFirstShapeComponent   ( void );
 		virtual AnimatedComponent* getFirstAnimatedComponent( void );
+		virtual TextComponent*     getFirstTextComponent    ( void );
 
 		template <class T>
 		ArrayList<T*> getComponentListAs( void )
