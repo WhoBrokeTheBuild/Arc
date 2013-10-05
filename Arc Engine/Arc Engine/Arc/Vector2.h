@@ -86,12 +86,16 @@ namespace Arc
 		float   dot       ( const Vector2& rhs );
 
         const Vector2 operator+( const Vector2& rhs ) const;
-        const Vector2 operator-( const Vector2& rhs ) const;
+		const Vector2 operator-( const Vector2& rhs ) const;
+		const Vector2 operator*( const Vector2& rhs ) const;
+		const Vector2 operator/( const Vector2& rhs ) const;
         const Vector2 operator*( float value ) const;
         const Vector2 operator/( float value ) const;
 
         Vector2& operator+=( const Vector2& rhs );
-        Vector2& operator-=( const Vector2& rhs );
+		Vector2& operator-=( const Vector2& rhs );
+		Vector2& operator*=( const Vector2& rhs );
+		Vector2& operator/=( const Vector2& rhs );
         Vector2& operator*=( float value );
         Vector2& operator/=( float value );
         Vector2& operator= ( const Vector2& rhs );

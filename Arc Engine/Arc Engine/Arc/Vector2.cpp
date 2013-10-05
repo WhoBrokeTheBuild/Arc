@@ -41,6 +41,20 @@ const Arc::Vector2 Arc::Vector2::operator-( const Vector2 &rhs ) const
     return result;
 }
 
+const Arc::Vector2 Arc::Vector2::operator*( const Vector2& rhs ) const
+{
+	Vector2 result = *this;
+	result *= rhs;
+	return result;
+}
+
+const Arc::Vector2 Arc::Vector2::operator/( const Vector2& rhs ) const
+{
+	Vector2 result = *this;
+	result /= rhs;
+	return result;
+}
+
 const Arc::Vector2 Arc::Vector2::operator*( float value ) const
 {
     Vector2 result = *this;
@@ -67,6 +81,20 @@ Arc::Vector2& Arc::Vector2::operator-=( const Vector2 &rhs )
     X -= rhs.X;
     Y -= rhs.Y;
     return *this;
+}
+
+Arc::Vector2& Arc::Vector2::operator*=( const Vector2& rhs )
+{
+	X *= rhs.X;
+	Y *= rhs.Y;
+	return *this;
+}
+
+Arc::Vector2& Arc::Vector2::operator/=( const Vector2& rhs )
+{
+	X /= rhs.X;
+	Y /= rhs.Y;
+	return *this;
 }
 
 Arc::Vector2& Arc::Vector2::operator*=( float value )

@@ -30,15 +30,6 @@ namespace Arc
         Layer
             *_pParent;
 
-        OriginLocation
-            _originLocation;
-
-        Point
-            _origin;
-
-        Size
-            _size;
-
         Point
             _pos;
 
@@ -55,8 +46,6 @@ namespace Arc
         LinkedList<Component*>
 			_componentsToAdd,
 			_componentsToRemove;
-
-        virtual void calcOriginLocation( void );
 
         virtual void setParentLayer( Layer* layer ) { _pParent = layer; }
 
@@ -89,15 +78,6 @@ namespace Arc
 		virtual inline float getDepth( void ) const { return _depth; };
 		virtual inline void  setDepth( float depth ) { _depth = depth; };
 
-        virtual inline Size  getSize( void ) const { return _size; }
-        virtual void         setSize( Size size );
-
-        virtual inline Point getOrigin( void ) const { return _origin; }
-        virtual void         setOrigin( Vector2 origin );
-
-        virtual inline OriginLocation getOriginLocation( void ) const { return _originLocation; }
-		virtual void                  setOriginLocation( OriginLocation originLocation );
-
         inline Layer* getParentLayer( void ) { return _pParent; }
 		inline Scene* getParentScene( void ) { return _pParent->getParentScene(); }
 
@@ -105,12 +85,51 @@ namespace Arc
 		virtual bool removeComponent( Component* component );
 		virtual inline bool hasComponent( Component* component ) { return _components.contains(component); }
 
-		virtual Component*         addNewComponent        ( void );
 		virtual PhysicsComponent*  addNewPhysicsComponent ( Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO );
-		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
-		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
+
+		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture,
+															Point offset = Point::ZERO,
+															Point origin = Point::ZERO, 
+															Vector2 scale = Vector2::ZERO,
+															Angle rotation = Angle::ZERO,
+															Color blendColor = Color::WHITE );
+
+		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture, 
+															Point offset = Point::ZERO,
+															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, 
+															Vector2 scale = Vector2::ZERO,
+															Angle rotation = Angle::ZERO,
+															Color blendColor = Color::WHITE );
+
+		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO,
+															Point origin = Point::ZERO,
+															Vector2 scale = Vector2::ZERO, 
+															Angle rotation = Angle::ZERO,
+															Color blendColor = Color::WHITE );
+
+		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO,
+															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, 
+															Vector2 scale = Vector2::ZERO,
+															Angle rotation = Angle::ZERO, 
+															Color blendColor = Color::WHITE );
+
 		virtual AnimatedComponent* addNewAnimatedComponent( void );
-		virtual TextComponent*     addNewTextComponent    ( Font *pFont, string text, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
+
+		virtual TextComponent*     addNewTextComponent    ( Font *pFont,
+															string text, 
+															Point offset = Point::ZERO,
+															Point origin = Point::ZERO,
+															Vector2 scale = Vector2::ZERO, 
+															Angle rotation = Angle::ZERO, 
+															Color blendColor = Color::WHITE );
+
+		virtual TextComponent*     addNewTextComponent    ( Font *pFont,
+															string text,
+															Point offset = Point::ZERO,
+															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
+															Vector2 scale = Vector2::ZERO, 
+															Angle rotation = Angle::ZERO,
+															Color blendColor = Color::WHITE );
 
 		virtual Component*         getFirstComponent        ( void ) { return ( _components.empty() ? nullptr : _components[0] ); }
 		virtual PhysicsComponent*  getFirstPhysicsComponent ( void );
@@ -153,7 +172,7 @@ namespace Arc
     struct UnitDepthComp
         : std::binary_function<Unit*, Unit*, bool>
     {
-        bool operator()( const Unit* lhs, const Unit* rhs ) const
+        inline bool operator()( const Unit* lhs, const Unit* rhs ) const
         {
 			return lhs->getDepth() < rhs->getDepth();
         }

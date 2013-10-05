@@ -1,7 +1,7 @@
 #include "AnimatedComponent.h"
 
 Arc::AnimatedComponent::AnimatedComponent( Unit* pUnit )
-    : Component(pUnit)
+    : DrawableComponent(pUnit, Vector2::ZERO, Vector2::ZERO)
 {
 }
 

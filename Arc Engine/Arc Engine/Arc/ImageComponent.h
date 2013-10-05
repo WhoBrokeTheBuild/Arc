@@ -20,7 +20,20 @@ namespace Arc
 
 	public:
 
-		ImageComponent( Unit* pUnit, Texture *pTexture, Point offset = Point::ZERO, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE, Point origin = Point::ZERO );
+		ImageComponent( Unit* pUnit, 
+						Texture *pTexture,
+						Point offset = Point::ZERO,
+						Point origin = Point::ZERO,
+						Vector2 scale = Vector2::ONE,
+						Angle rotation = Angle::ZERO, 
+						Color blendColor = Color::WHITE );
+		ImageComponent( Unit* pUnit,
+						Texture *pTexture,
+						Point offset = Point::ZERO,
+						OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
+						Vector2 scale = Vector2::ONE,
+						Angle rotation = Angle::ZERO,
+						Color blendColor = Color::WHITE );
 		virtual inline ~ImageComponent( void );
 
 		virtual inline string toString( void ) const { return "Image Component"; }
@@ -29,6 +42,8 @@ namespace Arc
 
 		virtual inline Texture* getTexture( void ) const { return _pTexture; }
 		virtual inline void setTexture( Texture* pTexture ) { _pTexture = pTexture; }
+
+		virtual inline Vector2 getSize( void ) const { return (_pTexture == nullptr ? Size::ZERO : _pTexture->getSize() * getScale()); }
 
 	}; // class ImageComponent
 

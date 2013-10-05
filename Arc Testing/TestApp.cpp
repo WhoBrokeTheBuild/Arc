@@ -3,8 +3,9 @@
 #include <Arc/Unit.h>
 #include <Arc/Texture.h>
 #include <Arc/ImageComponent.h>
-#include "Arc/ShapeComponent.h"
-#include "Arc/PhysicsComponent.h"
+#include <Arc/ShapeComponent.h>
+#include <Arc/PhysicsComponent.h>
+#include <Arc/TextComponent.h>
 
 TestApp::TestApp( void )
     : Program()
@@ -35,12 +36,12 @@ TestApp::TestApp( void )
 
     pPlayer = New Duck(Vector2(1.0f), 3);
 
-    //Texture* tex = New Texture("assets/test.png");
-	//pResourceManager->addTexture(tex);
-	//
-	//pPlayer->addNewImageComponent(tex);
-
-	pPlayer->addNewTextComponent(pFont, "Hello");
+    Texture* tex = New Texture("assets/test.png");
+	pResourceManager->addTexture(tex);
+	
+	pPlayer->addNewImageComponent(tex, Vector2(30.0f), OriginLocation::ORIGIN_LOCATION_CENTER, Vector2(1.0f, 2.0f), Angle(-90.0f, ANGLE_TYPE_DEG));
+	TextComponent* cmp = pPlayer->addNewTextComponent(pFont, "Hello", Vector2(30.0f), Vector2::ZERO, Vector2(2.0f, 2.0f));
+	cmp->setOrigin(Vector2(cmp->getSize().halfWidth(), -60.0f));
 	
 	pScene->addUnit(pPlayer, 0);
 	pScene->addUnitTag(pPlayer, "duck");
@@ -59,6 +60,11 @@ TestApp::~TestApp( void )
 void TestApp::update( const Event& event )
 {
     //const FrameData* data = event.dataAs<FrameData>();
+
+	Angle rot = pPlayer->getFirstImageComponent()->getRotation();
+	rot += Angle(0.05f, ANGLE_TYPE_RAD);
+	pPlayer->getFirstImageComponent()->setRotation(rot);
+	pPlayer->getFirstTextComponent()->setRotation(rot);
 
     stringstream ss;
 
@@ -145,7 +151,7 @@ void TestApp::mousePressed( const Event& event )
 			{
 				int gX = (int)(spaces[i].X / GRID_SIZE),
 					gY = (int)(spaces[i].Y / GRID_SIZE);
-				duck->setPos(Point(gX, gY));
+				duck->setPos(Point((float)gX, (float)gY));
 				break;
 			}
 		}
@@ -161,15 +167,15 @@ ArrayList<Vector2> TestApp::getValidMoveSpaces( Duck* duck )
 	Point pos;
 	Point gridPos;
 	Vector2 dir;
-	for (int d = 0; d < _dirs.size(); ++d)
+	for (unsigned int d = 0; d < _dirs.size(); ++d)
 	{
 		dir = _dirs[d];
 		pos = duck->getPos();
 		for (int i = 0; i < duck->getSpeed(); ++i)
 		{
 			pos += dir * GRID_SIZE;
-			gridPos.X = (int)(pos.X / GRID_SIZE);
-			gridPos.Y = (int)(pos.Y / GRID_SIZE);
+			gridPos.X = floorf(pos.X / GRID_SIZE);
+			gridPos.Y = floorf(pos.Y / GRID_SIZE);
 	
 			if (pos.X < 0 || pos.Y < 0 || pos.X > winSize.width() || pos.Y > winSize.height())
 				break;

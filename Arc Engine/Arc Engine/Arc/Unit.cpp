@@ -9,8 +9,6 @@
 
 Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
-	  _originLocation(INVALID_ORIGIN_LOCATION),
-	  _origin(),
 	  _pos(pos),
 	  _depth(depth),
 	  _enabled(true),
@@ -50,78 +48,6 @@ void Arc::Unit::render( const Event& event )
 
     renderComponents(data);
     render(data);
-}
-
-void Arc::Unit::calcOriginLocation( void )
-{
-    switch (_originLocation)
-    {
-    case ORIGIN_LOCATION_TOP_LEFT:
-
-        _origin = Vector2::ZERO;
-
-        break;
-    case ORIGIN_LOCATION_TOP_RIGHT:
-
-        _origin = Vector2(_size.width(), 0);
-
-        break;
-    case ORIGIN_LOCATION_BOTTOM_LEFT:
-
-        _origin = Vector2(0, _size.height());
-
-        break;
-    case ORIGIN_LOCATION_BOTTOM_RIGHT:
-
-        _origin = Vector2(_size.width(), _size.height());
-
-        break;
-    case ORIGIN_LOCATION_CENTER:
-
-        _origin = Vector2(_size.halfWidth(), _size.halfHeight());
-
-        break;
-    case ORIGIN_LOCATION_TOP_CENTER:
-
-        _origin = Vector2(_size.halfWidth(), 0);
-
-        break;
-    case ORIGIN_LOCATION_BOTTOM_CENTER:
-
-        _origin = Vector2(_size.halfWidth(), _size.height());
-
-        break;
-    case ORIGIN_LOCATION_LEFT_CENTER:
-
-        _origin = Vector2(0, _size.halfHeight());
-
-        break;
-    case ORIGIN_LOCATION_RIGHT_CENTER:
-
-        _origin = Vector2(_size.width(), _size.halfHeight());
-
-        break;
-    default:
-        break;
-    }
-}
-
-void Arc::Unit::setSize( Size size )
-{
-    _size = size;
-    calcOriginLocation();
-}
-
-void Arc::Unit::setOrigin( Vector2 origin )
-{
-    _origin = origin;
-    _originLocation = ORIGIN_LOCATION_MANUAL;
-}
-
-void Arc::Unit::setOriginLocation( OriginLocation originLocation )
-{
-    _originLocation = originLocation;
-    calcOriginLocation();
 }
 
 void Arc::Unit::updateComponents( const FrameData* data )
@@ -174,13 +100,6 @@ bool Arc::Unit::removeComponent( Component* component )
     return true;
 }
 
-Arc::Component* Arc::Unit::addNewComponent( void )
-{
-    Component* cmp = New Component(this);
-    addComponent(cmp);
-    return cmp;
-}
-
 Arc::PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
 {
     PhysicsComponent* cmp = New PhysicsComponent(this, vel, acc);
@@ -188,18 +107,32 @@ Arc::PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector
     return cmp;
 }
 
-Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
 {
-    ImageComponent* cmp = New ImageComponent(this, pTexture, offset, rotation, blendColor, origin);
+    ImageComponent* cmp = New ImageComponent(this, pTexture, offset, origin, scale, rotation, blendColor);
     addComponent(cmp);
     return cmp;
 }
 
-Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
 {
-    ShapeComponent* cmp = New ShapeComponent(this, offset, rotation, blendColor, origin);
+	ImageComponent* cmp = New ImageComponent(this, pTexture, offset, originLocation, scale, rotation, blendColor);
+	addComponent(cmp);
+	return cmp;
+}
+
+Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
+{
+    ShapeComponent* cmp = New ShapeComponent(this, offset, origin, scale, rotation, blendColor);
     addComponent(cmp);
     return cmp;
+}
+
+Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
+{
+	ShapeComponent* cmp = New ShapeComponent(this, offset, originLocation, scale, rotation, blendColor);
+	addComponent(cmp);
+	return cmp;
 }
 
 Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
@@ -209,11 +142,18 @@ Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
     return cmp;
 }
 
-Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, string text, Point offset /*= Point::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/, Point origin /*= Point::ZERO*/ )
+Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, string text, Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
 {
-    TextComponent* cmp = New TextComponent(this, pFont, text);
+    TextComponent* cmp = New TextComponent(this, pFont, text, offset, origin, scale, rotation, blendColor);
     addComponent(cmp);
     return cmp;
+}
+
+Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, string text, Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
+{
+	TextComponent* cmp = New TextComponent(this, pFont, text, offset, originLocation, scale, rotation, blendColor);
+	addComponent(cmp);
+	return cmp;
 }
 
 Arc::PhysicsComponent* Arc::Unit::getFirstPhysicsComponent( void )

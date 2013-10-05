@@ -26,19 +26,27 @@ namespace Arc
         GraphicsSystem
             *_pGraphicsSystem;
 
-        virtual void drawShape( const float x, const float y,
-                                const float radius,
-                                const float shapeValue,
-                                const Color color = Color::WHITE,
-                                const Angle rotation = Angle::ZERO,
-                                const Vector2 origin = Vector2::ZERO ) const;
+        virtual void drawShape(
+			const float x,
+			const float y,
+			const float radius,
+			const float shapeValue,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const;
 
-        virtual void fillShape( const float x, const float y,
-                                const float radius,
-                                const float shapeValue,
-                                const Color color = Color::WHITE,
-                                const Angle rotation = Angle::ZERO,
-                                const Vector2 origin = Vector2::ZERO ) const;
+        virtual void fillShape( 
+			const float x, 
+			const float y,
+            const float radius,
+            const float shapeValue,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO 
+			) const;
 
     public:
 
@@ -48,213 +56,423 @@ namespace Arc
         virtual inline string toString( void ) const { return "Render Target"; }
 
         virtual void beginDraw( void ) const;
-        virtual void endDraw  ( void ) const;
+		virtual inline void endDraw  ( void ) const { SDL_GL_SwapBuffers(); }
 
-        virtual void drawText( const Vector2 pos,
-                               const string text,
-                               Font* pFont,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawText( 
+			const Vector2 pos,
+			const string text,
+			Font* pFont,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawText(pos.X, pos.Y, text, pFont, color, rotation, scale, origin);
+		}
 
-        virtual void drawText( const float x, const float y,
-                               const string text,
-                               Font* pFont,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawText(
+			const float x, 
+			const float y,
+			const string text,
+			Font* pFont,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			RenderedText renderedText(text, pFont);
+			drawText(x, y, &renderedText, color, rotation, scale, origin);
+		}
 
-        virtual void drawText( const Vector2 pos,
-                               const RenderedText* pCachedText,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawText( 
+			const Vector2 pos,
+            const RenderedText* pRenderedText,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawText(pos.X, pos.Y, pRenderedText, color, rotation, scale, origin);
+		}
 
-        virtual void drawText( const float x, const float y,
-                               const RenderedText* pCachedText,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual void drawText(
+			const float x, 
+			const float y,
+			const RenderedText* pRenderedText,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const;
 
-        virtual void draw( const Vector2 pos,
-                           const Texture *pTexture,
-                           const Color color = Color::WHITE,
-                           const Angle rotation = Angle::ZERO,
-                           const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void draw(
+			const Vector2 pos,
+			const Texture *pTexture,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			draw(pos.X, pos.Y, pTexture, color, rotation, scale, origin);
+		}
 
-        virtual void draw( const float x, const float y,
-                           const Texture *pTexture,
-                           const Color color = Color::WHITE,
-                           const Angle rotation = Angle::ZERO,
-                           const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void draw( 
+			const float x, 
+			const float y,
+			const Texture *pTexture,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->getSize()), color, rotation, scale, origin);
+		}
 
-        virtual void draw( const Vector2 pos,
-                           const Texture *pTexture,
-                           const Rect sourceRect,
-                           const Color color = Color::WHITE,
-                           const Angle rotation = Angle::ZERO,
-                           const Vector2 origin = Vector2::ZERO,
-                           bool flip = false ) const;
+        virtual inline void draw( 
+			const Vector2 pos,
+			const Texture *pTexture,
+			const Rect sourceRect,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			draw(pos.X, pos.Y, pTexture, sourceRect, color, rotation, scale, origin);
+		}
 
-        virtual void draw( const float x, const float y,
-                           const Texture *pTexture,
-                           const Rect sourceRect,
-                           const Color color = Color::WHITE,
-                           const Angle rotation = Angle::ZERO,
-                           const Vector2 origin = Vector2::ZERO,
-                           bool flip = false ) const;
+        virtual void draw( 
+			const float x,
+			const float y,
+            const Texture *pTexture,
+            const Rect sourceRect,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO
+			) const;
 
-        virtual void drawLine( const Vector2 start,
-                               const Vector2 end,
-                               const Color color = Color::WHITE,
-                               const float thickness = 1.0f ) const;
+        virtual inline void drawLine(
+			const Vector2 start,
+            const Vector2 end,
+            const Color color = Color::WHITE,
+            const float thickness = 1.0f
+			) const
+		{
+			drawLine(start.X, start.Y, end.X, end.Y, color, thickness);
+		}
 
-        virtual void drawLine( const float x1, const float y1,
-                               const float x2, const float y2,
-                               const Color color = Color::WHITE,
-                               const float thickness = 1.0f ) const;
+        virtual void drawLine( 
+			const float x1, 
+			const float y1,
+            const float x2,
+			const float y2,
+            const Color color = Color::WHITE,
+            const float thickness = 1.0f
+			) const;
 
-        virtual void drawRect( const float x, const float y,
-                               const float width,
-                               const float height,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawRect(
+			const float x,
+			const float y,
+			const float width,
+			const float height,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			Rect rect = Rect(x, y, width, height);
+			drawRect(rect, color, rotation, scale, origin);
+		}
 
-		virtual void drawRect( const Point pos,
-							   const Size size,
-							   const Color color = Color::WHITE,
-							   const Angle rotation = Angle::ZERO,
-							   const Vector2 origin = Vector2::ZERO ) const;
+		virtual inline void drawRect( 
+			const Point pos,
+			const Size size,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			Rect rect = Rect(pos, size);
+			drawRect(rect, color, rotation, scale, origin);
+		}
 
-        virtual void drawRect( const Rect rect,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual void drawRect(
+			const Rect rect,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const;
 
-        virtual void fillRect( const float x, const float y,
-                               const float width,
-                               const float height,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-							   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillRect( 
+			const float x,
+			const float y,
+            const float width,
+            const float height,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			Rect rect = Rect(x, y, width, height);
+			fillRect(rect, color, rotation, scale, origin);
+		}
 
-		virtual void fillRect( const Point pos,
-							   const Size size,
-							   const Color color = Color::WHITE,
-							   const Angle rotation = Angle::ZERO,
-							   const Vector2 origin = Vector2::ZERO ) const;
+		virtual inline void fillRect(
+			const Point pos,
+			const Size size,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			Rect rect = Rect(pos, size);
+			fillRect(rect, color, rotation, scale, origin);
+		}
 
-        virtual void fillRect( const Rect rect,
-                               const Color color = Color::WHITE,
-                               const Angle rotation = Angle::ZERO,
-                               const Vector2 origin = Vector2::ZERO ) const;
+        virtual void fillRect(
+			const Rect rect,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO
+			) const;
 
-        virtual void drawCircle( const float x, const float y,
-                                 const float radius,
-                                 const Color color = Color::WHITE,
-                                 const Angle rotation = Angle::ZERO,
-								 const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawCircle(
+			const float x,
+			const float y,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			Circle circle = Circle(x, y, radius);
+			drawCircle(circle, color, rotation, scale, origin);
+		}
 
-		virtual void drawCircle( const Point pos,
-			                     const float radius,
-			                     const Color color = Color::WHITE,
-			                     const Angle rotation = Angle::ZERO,
-			                     const Vector2 origin = Vector2::ZERO ) const;
+		virtual inline void drawCircle(
+			const Point pos,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			Circle circle = Circle(pos, radius);
+			drawCircle(circle, color, rotation, scale, origin);
+		}
 
-        virtual void drawCircle( const Circle circle,
-                                 const Color color = Color::WHITE,
-                                 const Angle rotation = Angle::ZERO,
-                                 const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawCircle( 
+			const Circle circle,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			drawShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, scale, origin);
+		}
 
-        virtual void fillCircle( const float x, const float y,
-                                 const float radius,
-                                 const Color color = Color::WHITE,
-                                 const Angle rotation = Angle::ZERO,
-								 const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillCircle( 
+			const float x, 
+			const float y,
+            const float radius,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			Circle circle = Circle(x, y, radius);
+			fillCircle(circle, color, rotation, scale, origin);
+		}
 
-		virtual void fillCircle( const Point pos,
-								 const float radius,
-							     const Color color = Color::WHITE,
-							     const Angle rotation = Angle::ZERO,
-							     const Vector2 origin = Vector2::ZERO ) const;
+		virtual inline void fillCircle( 
+			const Point pos,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			Circle circle = Circle(pos, radius);
+			fillCircle(circle, color, rotation, scale, origin);
+		}
 
-        virtual void fillCircle( const Circle circle,
-                                 const Color color = Color::WHITE,
-                                 const Angle rotation = Angle::ZERO,
-                                 const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillCircle( 
+			const Circle circle,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			fillShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, scale, origin);
+		}
 
-        virtual void drawTriangle( const Vector2 pos,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawTriangle(
+			const Vector2 pos,
+            const float radius,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawTriangle(pos.X, pos.Y, radius, color, rotation, scale, origin);
+		}
 
-        virtual void fillTriangle( const Vector2 pos,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillTriangle(
+			const Vector2 pos,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			fillTriangle(pos.X, pos.Y, radius, color, rotation, scale, origin);
+		}
 
-        virtual void drawTriangle( const float x, const float y,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawTriangle( 
+			const float x,
+			const float y,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawShape(x, y, radius, 1.5, color, rotation, scale, origin);
+		}
 
-        virtual void fillTriangle( const float x, const float y,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillTriangle( 
+			const float x,
+			const float y,
+            const float radius,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			fillShape(x, y, radius, 1.5, color, rotation, scale, origin);
+		}
 
-        virtual void drawPentagon( const Vector2 pos,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawPentagon( 
+			const Vector2 pos,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawPentagon(pos.X, pos.Y, radius, color, rotation, scale, origin);
+		}
 
-        virtual void fillPentagon( const Vector2 pos,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillPentagon( 
+			const Vector2 pos,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			fillPentagon(pos.X, pos.Y, radius, color, rotation, scale, origin);
+		}
 
-        virtual void drawPentagon( const float x, const float y,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawPentagon( 
+			const float x, 
+			const float y,
+            const float radius,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawShape(x, y, radius, 2.5, color, rotation, scale, origin);
+		}
 
-        virtual void fillPentagon( const float x, const float y,
-                                   const float radius,
-                                   const Color color = Color::WHITE,
-                                   const Angle rotation = Angle::ZERO,
-                                   const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillPentagon( 
+			const float x,
+			const float y,
+            const float radius,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			fillShape(x, y, radius, 2.5, color, rotation, scale, origin);
+		}
 
-        virtual void drawHexagon( const Vector2 pos,
-                                  const float radius,
-                                  const Color color = Color::WHITE,
-                                  const Angle rotation = Angle::ZERO,
-                                  const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawHexagon(
+			const Vector2 pos,
+            const float radius,
+            const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+            const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			drawShape(pos.X, pos.Y, radius, 3, color, rotation, scale, origin);
+		}
 
-        virtual void fillHexagon( const Vector2 pos,
-                                  const float radius,
-                                  const Color color = Color::WHITE,
-                                  const Angle rotation = Angle::ZERO,
-                                  const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillHexagon( 
+			const Vector2 pos,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			fillShape(pos.X, pos.Y, radius, 3, color, rotation, scale, origin);
+		}
 
-        virtual void drawHexagon( const float x, const float y,
-                                  const float radius,
-                                  const Color color = Color::WHITE,
-                                  const Angle rotation = Angle::ZERO,
-                                  const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void drawHexagon(
+			const float x,
+			const float y,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO
+			) const
+		{
+			drawShape(x, y, radius, 3, color, rotation, scale, origin);
+		}
 
-        virtual void fillHexagon( const float x, const float y,
-                                  const float radius,
-                                  const Color color = Color::WHITE,
-                                  const Angle rotation = Angle::ZERO,
-                                  const Vector2 origin = Vector2::ZERO ) const;
+        virtual inline void fillHexagon( 
+			const float x, 
+			const float y,
+			const float radius,
+			const Color color = Color::WHITE,
+			const Angle rotation = Angle::ZERO,
+			const Vector2 scale = Vector2::ONE,
+			const Vector2 origin = Vector2::ZERO 
+			) const
+		{
+			fillShape(x, y, radius, 3, color, rotation, scale, origin);
+		}
 
     }; // class RenderTarget
 
