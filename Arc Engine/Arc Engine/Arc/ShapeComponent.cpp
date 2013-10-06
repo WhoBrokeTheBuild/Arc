@@ -27,27 +27,27 @@ void Arc::ShapeComponent::render( const RenderData* data )
 	{
 	case SHAPE_TRIANGLE:
 
-		data->renderTarget()->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		data->getRenderTarget()->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 
 		break;
 	case SHAPE_RECTANGLE:
 
-		data->renderTarget()->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		data->getRenderTarget()->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
 
 		break;
 	case SHAPE_PENTAGON:
 
-		data->renderTarget()->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		data->getRenderTarget()->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 
 		break;
 	case SHAPE_HEXAGON:
 
-		data->renderTarget()->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		data->getRenderTarget()->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 
 		break;
 	case SHAPE_CIRCLE:
 
-		data->renderTarget()->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		data->getRenderTarget()->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 
 		break;
     default:
@@ -61,7 +61,7 @@ Arc::Vector2 Arc::ShapeComponent::getSize( void ) const
 	{
 	case SHAPE_RECTANGLE:
 
-		return _size * getScale();
+		return _size;
 
 		break;
 	case SHAPE_TRIANGLE:
@@ -69,7 +69,7 @@ Arc::Vector2 Arc::ShapeComponent::getSize( void ) const
 	case SHAPE_HEXAGON:
 	case SHAPE_CIRCLE:
 
-		return Size(_radius * 2.0f, _radius * 2.0f) * getScale();
+		return Size(_radius * 2.0f, _radius * 2.0f);
 
 		break;
 	default:

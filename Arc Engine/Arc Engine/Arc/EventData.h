@@ -113,16 +113,16 @@ namespace Arc
             _deltaTime = _targetFPS / _currentFPS;
         }
 
-        double totalSeconds  ( void ) const { return _totalMilliseconds   / 1000.0; }
-        double elapsedSeconds( void ) const { return _elapsedMilliseconds / 1000.0; }
+        double getTotalSeconds  ( void ) const { return _totalMilliseconds   / 1000.0; }
+        double getElapsedSeconds( void ) const { return _elapsedMilliseconds / 1000.0; }
 
-        double totalMilliseconds  ( void ) const { return _totalMilliseconds; }
-        double elapsedMilliseconds( void ) const { return _elapsedMilliseconds; }
+        double getTotalMilliseconds  ( void ) const { return _totalMilliseconds; }
+        double getElapsedMilliseconds( void ) const { return _elapsedMilliseconds; }
 
-        double deltaTime( void ) const { return _deltaTime; }
+        double getDeltaTime( void ) const { return _deltaTime; }
 
-        double currentFPS( void ) const { return _currentFPS; }
-        double targetFPS( void ) const { return _currentFPS; }
+        double getCurrentFPS( void ) const { return _currentFPS; }
+        double getTargetFPS( void ) const { return _currentFPS; }
 
     }; // class FrameData
 
@@ -142,7 +142,7 @@ namespace Arc
 
         virtual EventData* clone( void ) const { return New RenderData(_pRenderTarget); }
 
-        virtual RenderTarget* renderTarget( void ) const { return _pRenderTarget; }
+        virtual RenderTarget* getRenderTarget( void ) const { return _pRenderTarget; }
 
     }; // class RenderData
 

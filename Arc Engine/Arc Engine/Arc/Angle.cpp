@@ -122,3 +122,13 @@ bool Arc::Angle::operator>=( const Angle& rhs ) const
 {
     return (_degrees >= rhs._degrees);
 }
+
+void Arc::Angle::setDeg( float value )
+{
+	_degrees = value;
+	
+	while ( ! between(_degrees, 0.0f, 360.0f))
+	{
+		_degrees += 360.0f * sign(-_degrees);
+	}
+}

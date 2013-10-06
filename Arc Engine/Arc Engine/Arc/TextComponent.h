@@ -48,7 +48,7 @@ namespace Arc
 
 		virtual void render( const RenderData* data );
 
-		virtual inline Vector2 getSize( void ) const { return (_pRenderedText == nullptr ? Vector2::ZERO : _pRenderedText->getSize() * getScale()); }
+		virtual inline Vector2 getSize( void ) const { return (_pRenderedText == nullptr ? Vector2::ZERO : _pRenderedText->getSize()); }
 
 	}; // class TextComponent
 

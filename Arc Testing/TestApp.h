@@ -18,16 +18,31 @@ class TestApp :
     public Program,
     public IKeyboardListener
 {
+protected:
+
+	Font
+		*_pFont;
+
+	RenderedText
+		*_pFPSText;
+
+	ArrayList<Angle>
+		_rots;
+
+	ArrayList<RenderedText*>
+		_texts;
+
+	float 
+		_turnSpeed,
+		_toMove;
+
+	int
+		_optionIndex;
+
 public:
 
     Scene
         *pScene;
-
-    Font
-        *pFont;
-
-    RenderedText
-        *pFPSText;
 
 	ResourceManager
 		*pResourceManager;

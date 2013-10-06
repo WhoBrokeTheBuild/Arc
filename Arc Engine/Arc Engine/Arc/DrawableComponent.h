@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __ARC_DRAWABLE_H__
-#define __ARC_DRAWABLE_H__
+#ifndef __ARC_DRAWABLE_COMPONENT_H__
+#define __ARC_DRAWABLE_COMPONENT_H__
 
 #include "Common.h"
 #include "Component.h"
@@ -35,8 +35,18 @@ namespace Arc
 
 	public:
 
-		DrawableComponent( Unit* pUnit, Point offset = Point::ZERO, Point origin = Point::ZERO, Vector2 scale = Vector2::ONE, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE );
-		DrawableComponent( Unit* pUnit, Point offset = Point::ZERO, OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, Vector2 scale = Vector2::ONE, Angle rotation = Angle::ZERO, Color blendColor = Color::WHITE );
+		DrawableComponent( Unit* pUnit,
+			               Point offset = Point::ZERO, 
+			               Point origin = Point::ZERO, 
+			               Vector2 scale = Vector2::ONE,
+			               Angle rotation = Angle::ZERO, 
+			               Color blendColor = Color::WHITE );
+		DrawableComponent( Unit* pUnit,
+			               Point offset = Point::ZERO,
+			               OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
+			               Vector2 scale = Vector2::ONE,
+			               Angle rotation = Angle::ZERO,
+			               Color blendColor = Color::WHITE );
 		virtual ~DrawableComponent( void );
 
 		virtual inline string toString( void ) const { return "Drawable Component"; }
@@ -63,4 +73,4 @@ namespace Arc
 
 } // namespace Arc
 
-#endif // __ARC_DRAWABLE_H__
+#endif // __ARC_DRAWABLE_COMPONENT_H__

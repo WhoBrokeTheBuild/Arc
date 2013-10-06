@@ -136,12 +136,6 @@ Arc::Angle Arc::Vector2::angleTo( Vector2 other )
     return Angle(angleToRad(other), ANGLE_TYPE_RAD);
 }
 
-Arc::Vector2 Arc::Vector2::lerp( const Vector2& other, float fraction )
-{
-    using Arc::lerp;
-    return Vector2(lerp(X, other.X, fraction), lerp(Y, other.Y, fraction));
-}
-
 Arc::Vector2 Arc::Vector2::normLeft( const Vector2& other)
 {
 	float dx = other.X - X;

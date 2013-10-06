@@ -43,7 +43,7 @@ namespace Arc
 		virtual inline Texture* getTexture( void ) const { return _pTexture; }
 		virtual inline void setTexture( Texture* pTexture ) { _pTexture = pTexture; }
 
-		virtual inline Vector2 getSize( void ) const { return (_pTexture == nullptr ? Size::ZERO : _pTexture->getSize() * getScale()); }
+		virtual inline Vector2 getSize( void ) const { return (_pTexture == nullptr ? Size::ZERO : _pTexture->getSize()); }
 
 	}; // class ImageComponent
 

@@ -54,6 +54,14 @@ namespace Arc
 			return Color(randInt(minR, maxR), randInt(minG, maxG), randInt(minB, maxB), randInt(minA, maxA));
 		}
 
+		inline static Color lerp( const Color& start, const Color& end, float fraction )
+		{
+			return Color(lerpNumber(start.byteR(), end.byteR(), fraction), 
+				         lerpNumber(start.byteG(), end.byteG(), fraction), 
+						 lerpNumber(start.byteB(), end.byteB(), fraction),
+						 lerpNumber(start.byteA(), end.byteA(), fraction));
+		}
+
         float fracR( void ) const { return (float)((1.0f / 255.0f) * R); }
         float fracG( void ) const { return (float)((1.0f / 255.0f) * G); }
         float fracB( void ) const { return (float)((1.0f / 255.0f) * B); }

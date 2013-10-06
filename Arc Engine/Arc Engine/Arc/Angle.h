@@ -86,7 +86,7 @@ namespace Arc
         inline float getDeg( void ) const { return _degrees; }
         inline float getRad( void ) const { return toRad(_degrees); }
 
-        inline void setDeg( float value ) { _degrees = fmodf(abs(value), 360.0f) * sign(value); }
+        void setDeg( float value );
         inline void setRad( float value ) { setDeg(toDeg(value)); }
 
         inline float getCos( void ) const { return cosf(getRad()); }

@@ -48,6 +48,11 @@ namespace Arc
 			return Vector2(randFloat(minX, maxX), randFloat(minY, maxY));
 		}
 
+		inline static Vector2 lerp( const Vector2& start, const Vector2& end, float fraction )
+		{
+			return Vector2(lerpNumber(start.X, end.X, fraction), lerpNumber(start.Y, end.Y, fraction));
+		}
+
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 

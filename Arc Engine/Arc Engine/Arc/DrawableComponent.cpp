@@ -28,7 +28,7 @@ Arc::DrawableComponent::~DrawableComponent(void)
 
 void Arc::DrawableComponent::calcOriginLocation( void )
 {
-	Vector2 size = getSize();
+	Vector2 size = getSize() * getScale();
 	switch (_originLocation)
 	{
 	case ORIGIN_LOCATION_TOP_LEFT:

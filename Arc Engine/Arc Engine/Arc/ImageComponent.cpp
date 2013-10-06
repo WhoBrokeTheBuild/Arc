@@ -25,5 +25,5 @@ void Arc::ImageComponent::render( const RenderData* data )
 	if (parent == nullptr)
         return;
 
-	data->renderTarget()->draw(parent->getPos() + getOffset(), _pTexture, Rect(Vector2::ZERO, _pTexture->getSize()), getBlendColor(), getRotation(), getScale(), getOrigin());
+	data->getRenderTarget()->draw(parent->getPos() + getOffset(), _pTexture, Rect(Vector2::ZERO, _pTexture->getSize()), getBlendColor(), getRotation(), getScale(), getOrigin());
 }

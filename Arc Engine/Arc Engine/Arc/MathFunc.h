@@ -49,7 +49,7 @@ namespace Arc
     inline bool between( Number value, Number min, Number max ) { return ( value >= min && value <= max); }
 
     template <class Number>
-    inline Number lerp( Number start, Number end, float fraction) { return ( start + (end - start) * fraction ); }
+    inline Number lerpNumber( Number start, Number end, float fraction) { return (Number)( start + (end - start) * fraction ); }
 
     // Source: http://paulbourke.net/miscellaneous/interpolation/
     // Tension: 1 is high, 0 normal, -1 is low

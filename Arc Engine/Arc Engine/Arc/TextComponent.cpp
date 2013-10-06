@@ -28,5 +28,5 @@ void Arc::TextComponent::render( const RenderData* data )
 	if (parent == nullptr)
         return;
 
-	data->renderTarget()->drawText(parent->getPos() + getOffset(), _pRenderedText, getBlendColor(), getRotation(), getScale(), getOrigin());
+	data->getRenderTarget()->drawText(parent->getPos() + getOffset(), _pRenderedText, getBlendColor(), getRotation(), getScale(), getOrigin());
 }

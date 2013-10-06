@@ -111,13 +111,13 @@ void Arc::Program::updateFrame( const FrameData& frameData )
 
 void Arc::Program::renderFrame( const RenderData& renderData )
 {
-    renderData.renderTarget()->beginDraw();
+    renderData.getRenderTarget()->beginDraw();
 
     gpEventDispatcher->dispatchEvent(Event(Program::EVENT_RENDER_START, renderData));
     gpEventDispatcher->dispatchEvent(Event(Program::EVENT_RENDER,       renderData));
     gpEventDispatcher->dispatchEvent(Event(Program::EVENT_RENDER_END,   renderData));
 
-    renderData.renderTarget()->endDraw();
+    renderData.getRenderTarget()->endDraw();
 }
 
 void Arc::Program::initAll( Size windowSize, string windowTitle, Color clearColor /*= Color::BLACK*/ )
