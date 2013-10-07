@@ -20,6 +20,15 @@ MenuItem::MenuItem( MenuLevel *pParentLevel, string text, Font *pFont, string va
 	_pLabel = New RenderedText(text, pFont);
 }
 
+MenuItem::MenuItem( MenuLevel *pParentLevel, string text, Font *pFont, MenuActionType type )
+	: _pParentLevel(pParentLevel),
+	  _action(this, type),
+	  _pFont(pFont),
+	  _pLabel(nullptr)
+{
+	_pLabel = New RenderedText(text, pFont);
+}
+
 MenuItem::~MenuItem( void )
 {
 	delete _pLabel;

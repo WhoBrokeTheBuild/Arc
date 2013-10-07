@@ -3,6 +3,7 @@
 
 MenuLevel::MenuLevel( SpinMenu *pParentMenu, Font *pFont )
 	: _pParentMenu(pParentMenu),
+	  _pBackLevel(nullptr),
 	  _pFont(pFont),
 	  _menuItems(),
 	  _toMove(),
@@ -55,6 +56,12 @@ void MenuLevel::addItem( string text, string variable )
 	updateRotations();
 }
 
+void MenuLevel::addItem( string text, MenuActionType type )
+{
+	_menuItems.add(New MenuItem(this, text, _pFont, type));
+	updateRotations();
+}
+
 void MenuLevel::update( const FrameData* data )
 {
 	if (between(_toMove, -_turnSpeed, _turnSpeed))
@@ -74,7 +81,7 @@ void MenuLevel::update( const FrameData* data )
 	}
 }
 
-void MenuLevel::render( const RenderTarget* pTarget, const Point pos )
+void MenuLevel::render( const RenderTarget* pTarget, const Point pos, const float transAmount )
 {
 	for (unsigned int i = 0; i < _menuItems.getSize(); ++i)
 	{
@@ -85,6 +92,8 @@ void MenuLevel::render( const RenderTarget* pTarget, const Point pos )
 
 		Vector2 scale = Vector2::lerp(backScale, frontScale, dist);
 		Color color = Color::lerp(backColor, frontColor, dist);
+
+		color = Color(color.byteR(), color.byteG(), color.byteB(), lerpNumber(50, 255, transAmount));
 
 		pTarget->drawText(pos + Point(250.0f * _rotations[i].getCos(), 30.0f * _rotations[i].getSin()), _menuItems[i]->getRenderedText(), color, Angle::ZERO, scale);
 	}

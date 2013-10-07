@@ -7,6 +7,8 @@
 #include <Arc/PhysicsComponent.h>
 #include <Arc/TextComponent.h>
 
+#include "MenuAction.h"
+
 TestApp::TestApp( void )
     : Program()
 {
@@ -29,13 +31,18 @@ TestApp::TestApp( void )
 	MenuLevel *mainLevel = New MenuLevel(menu, _pFont);
 	MenuLevel *optionsLevel = New MenuLevel(menu, _pFont);
 
+	optionsLevel->setBackLevel(mainLevel);
+
 	mainLevel->addItem("Start", "Test");
 	mainLevel->addItem("Options", optionsLevel);
-	mainLevel->addItem("Exit", "Test");
+	mainLevel->addItem("Exit", MenuActionType::MENU_ACTION_EXIT);
 
 	optionsLevel->addItem("Volume", "Test");
 	optionsLevel->addItem("SFX", "Test");
-	optionsLevel->addItem("Back", mainLevel);
+	optionsLevel->addItem("Vasily", "Test");
+	optionsLevel->addItem("Vasily", "Test");
+	optionsLevel->addItem("Vasily", "Test");
+	optionsLevel->addItem("Back", MenuActionType::MENU_ACTION_BACK);
 
 	menu->addLevel(mainLevel);
 	menu->addLevel(optionsLevel);

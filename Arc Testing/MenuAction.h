@@ -15,6 +15,8 @@ enum MenuActionType
 
 	MENU_ACTION_SWITCH_LEVEL,
 	MENU_ACTION_TOGGLE_VAR,
+	MENU_ACTION_BACK,
+	MENU_ACTION_EXIT,
 
 	NUM_MENU_ACTION_TYPES
 };
@@ -40,6 +42,7 @@ public:
 
 	MenuAction( MenuItem *pParent, MenuLevel *pLevel );
 	MenuAction( MenuItem *pParent, string variable );
+	MenuAction( MenuItem *pParent, MenuActionType type );
 	virtual ~MenuAction( void );
 
 	virtual inline string toString( void ) const { return "Menu Action"; }

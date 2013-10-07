@@ -32,6 +32,7 @@ public:
 
 	MenuItem( MenuLevel *pParentLevel, string text, Font *pFont, MenuLevel *pLevel );
 	MenuItem( MenuLevel *pParentLevel, string text, Font *pFont, string variable );
+	MenuItem( MenuLevel *pParentLevel, string text, Font *pFont, MenuActionType type );
 	virtual ~MenuItem( void );
 
 	virtual inline string toString( void ) const { return "Menu Item"; }

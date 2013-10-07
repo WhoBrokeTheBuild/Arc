@@ -23,7 +23,8 @@ protected:
 
 	MenuLevel
 		*_pCurrLevel,
-		*_pPrevLevel;
+		*_pPrevLevel,
+		*_pNextLevel;
 
 	bool
 		_trans;
@@ -48,7 +49,7 @@ public:
 
 	inline void addLevel( MenuLevel* pLevel ) { _levels.add(pLevel); }
 
-	void switchLevel( MenuLevel* pLevel );
+	void switchLevel( MenuLevel* pLevel, Direction dir = Direction::DIR_NORTH );
 
 	virtual void keyPressed( const Event& event );
 
