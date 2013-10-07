@@ -37,9 +37,6 @@ public:
     Scene
         *pScene;
 
-	ResourceManager
-		*pResourceManager;
-
     TestApp( void );
     virtual ~TestApp( void );
 

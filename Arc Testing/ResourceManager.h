@@ -47,4 +47,6 @@ public:
 
 };
 
+extern ResourceManager *gpResourceManager;
+
 #endif // __RESOURCE_MANAGER_H__

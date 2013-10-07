@@ -5,49 +5,36 @@
 
 #include "Common.h"
 #include <Arc/Unit.h>
+#include <Arc/IKeyboardListener.h>
 
-enum MenuActions
-{
-	MENU_ACT_NONE,
-	MENU_ACT_MENU,
-	MENU_ACT_EXIT
-};
+#include "MenuLevel.h"
 
 class SpinMenu :
-	public Unit
+	public Unit,
+	public IKeyboardListener
 {
 protected:
-
-	SpinMenu
-		*_pParentMenu;
 
 	Font
 		*_pFont;
 
-	ArrayList<Angle>
-		_textRotations;
+	ArrayList<MenuLevel*>
+		_levels;
 
-	Map<unsigned int, SpinMenu*>
-		_subMenus;
+	MenuLevel
+		*_pCurrLevel,
+		*_pPrevLevel;
 
-	Map<unsigned int, MenuActions>
-		_actions;
+	bool
+		_trans;
 
-	ArrayList<RenderedText*>
-		_menuItems;
-
-	float 
-		_turnSpeed,
-		_toMove;
-
-	int
-		_optionIndex;
-
-	bool 
-		_active;
+	Direction
+		_transDir;
 
 	float 
-		_darkOffset;
+		_transSpeedMax,
+		_transSpeed,
+		_transAmount;
 
 public:
 
@@ -56,21 +43,14 @@ public:
 
 	virtual inline string toString( void ) const { return "Spin Menu"; }
 
-	void addItem( string text, MenuActions action = MENU_ACT_NONE, SpinMenu* pSubMenu = nullptr );
-
 	virtual void update( const FrameData* data );
 	virtual void render( const RenderData* data );
 
-	inline SpinMenu* getParentMenu( void ) const { return _pParentMenu; }
-	inline void setParentMenu( SpinMenu* pParent ) { _pParentMenu = pParent; }
+	inline void addLevel( MenuLevel* pLevel ) { _levels.add(pLevel); }
 
-	void tickLeft ( void );
-	void tickRight( void );
-	SpinMenu* select( void );
+	void switchLevel( MenuLevel* pLevel );
 
-	inline void activate( void ) { _active = true; }
-	inline void deactivate( void ) { _active = false; _darkOffset = 0.0f; }
-	inline bool isActive( void ) { return _active; }
+	virtual void keyPressed( const Event& event );
 
 }; // class SpinMenu
 

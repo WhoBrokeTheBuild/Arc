@@ -1,5 +1,7 @@
 #include "ResourceManager.h"
 
+ResourceManager *gpResourceManager = nullptr;
+
 ResourceManager::ResourceManager( void )
 	: _textureList(),
 	  _spriteList(),

@@ -19,39 +19,37 @@ TestApp::TestApp( void )
 	_pFont = New Font("assets/ds-digital.ttf", 20);
 	_pFPSText = New RenderedText("0", _pFont);
 
-	_pRootMenu = New SpinMenu(Point(250.0f), _pFont);
-	_pCurrMenu = _pRootMenu;
-
-	SpinMenu* optionsMenu = New SpinMenu(Point(250.0f), _pFont);
-
-	_pRootMenu->addItem("Start");
-	_pRootMenu->addItem("Options", MenuActions::MENU_ACT_MENU, optionsMenu);
-	_pRootMenu->addItem("Save");
-	_pRootMenu->addItem("Load");
-	_pRootMenu->addItem("Quit", MenuActions::MENU_ACT_EXIT);
-
-	optionsMenu->addItem("Something");
-	optionsMenu->addItem("Back", MenuActions::MENU_ACT_MENU, _pRootMenu);
-
-	optionsMenu->setParentMenu(_pRootMenu);
-
-	_pRootMenu->activate();
-
     pScene = New Scene();
-	pResourceManager = New ResourceManager();
+	gpResourceManager = New ResourceManager();
 
-	pResourceManager->addSound(New Sound("assets/menu-moved.wav"));
-	pResourceManager->addSound(New Sound("assets/menu-selected.wav"));
+	gpResourceManager->addSound(New Sound("assets/menu-moved.wav"));
+	gpResourceManager->addSound(New Sound("assets/menu-selected.wav"));
 
-	pScene->addUnit(_pRootMenu, 0);
-	pScene->addUnit(optionsMenu, 0);
+	SpinMenu *menu = New SpinMenu(Point(250.0f), _pFont);
+	MenuLevel *mainLevel = New MenuLevel(menu, _pFont);
+	MenuLevel *optionsLevel = New MenuLevel(menu, _pFont);
+
+	mainLevel->addItem("Start", "Test");
+	mainLevel->addItem("Options", optionsLevel);
+	mainLevel->addItem("Exit", "Test");
+
+	optionsLevel->addItem("Volume", "Test");
+	optionsLevel->addItem("SFX", "Test");
+	optionsLevel->addItem("Back", mainLevel);
+
+	menu->addLevel(mainLevel);
+	menu->addLevel(optionsLevel);
+
+	menu->switchLevel(mainLevel);
+
+	pScene->addUnit(menu, 0);
 }
 
 TestApp::~TestApp( void )
 {
     delete pScene;
 
-	delete pResourceManager;
+	delete gpResourceManager;
 
     delete _pFont;
     delete _pFPSText;
@@ -87,30 +85,5 @@ void TestApp::keyPressed( const Event& event )
 
 	switch (data->Key)
 	{
-	case KeyboardKey::KEY_LEFT:
-
-		pResourceManager->getSound(0)->play();
-		_pCurrMenu->tickLeft();
-
-		break;
-	case KeyboardKey::KEY_RIGHT:
-
-		pResourceManager->getSound(0)->play();
-		_pCurrMenu->tickRight();
-
-		break;
-	case KeyboardKey::KEY_ENTER:
-
-		pResourceManager->getSound(1)->play();
-		SpinMenu* menu = _pCurrMenu->select();
-
-		if (menu != nullptr)
-		{
-			_pCurrMenu->deactivate();
-			_pCurrMenu = menu;
-			_pCurrMenu->activate();
-		}
-
-		break;
 	}
 }
