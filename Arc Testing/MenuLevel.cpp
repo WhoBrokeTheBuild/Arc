@@ -88,7 +88,7 @@ void MenuLevel::render( const RenderTarget* pTarget, const Point pos, const floa
 		float dist = abs((_rotations[i] + Angle(270.0f, ANGLE_TYPE_DEG)).getDeg() - 180.0f) / 180.0f;
 
 		Vector2 backScale(1.1f), frontScale(2.0f);
-		Color backColor(Color::STORM), frontColor(61, 204, 139);
+		Color backColor(Color(255, 50, 50)), frontColor(Color::GREEN);
 
 		Vector2 scale = Vector2::lerp(backScale, frontScale, dist);
 		Color color = Color::lerp(backColor, frontColor, dist);

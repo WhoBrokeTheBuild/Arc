@@ -30,8 +30,10 @@ TestApp::TestApp( void )
 	SpinMenu *menu = New SpinMenu(Point(250.0f), _pFont);
 	MenuLevel *mainLevel = New MenuLevel(menu, _pFont);
 	MenuLevel *optionsLevel = New MenuLevel(menu, _pFont);
+	MenuLevel *languageLevel = New MenuLevel(menu, _pFont);
 
 	optionsLevel->setBackLevel(mainLevel);
+	languageLevel->setBackLevel(optionsLevel);
 
 	mainLevel->addItem("Start", "Test");
 	mainLevel->addItem("Options", optionsLevel);
@@ -39,13 +41,21 @@ TestApp::TestApp( void )
 
 	optionsLevel->addItem("Volume", "Test");
 	optionsLevel->addItem("SFX", "Test");
-	optionsLevel->addItem("Vasily", "Test");
+	optionsLevel->addItem("Language", languageLevel);
 	optionsLevel->addItem("Vasily", "Test");
 	optionsLevel->addItem("Vasily", "Test");
 	optionsLevel->addItem("Back", MenuActionType::MENU_ACTION_BACK);
 
+	languageLevel->addItem("Vasily", "Test");
+	languageLevel->addItem("Vasily", "Test");
+	languageLevel->addItem("Vasily", "Test");
+	languageLevel->addItem("Vasily", "Test");
+	languageLevel->addItem("Vasily", "Test");
+	languageLevel->addItem("Back", MenuActionType::MENU_ACTION_BACK);
+
 	menu->addLevel(mainLevel);
 	menu->addLevel(optionsLevel);
+	menu->addLevel(languageLevel);
 
 	menu->switchLevel(mainLevel);
 
@@ -83,7 +93,7 @@ void TestApp::renderEnd( const Event& event )
     const RenderData* data = event.dataAs<RenderData>();
 	const RenderTarget* renderTarget = data->getRenderTarget();
 	
-    renderTarget->drawText(Point(25), _pFPSText, Color::BLACK);
+    renderTarget->drawText(Point(25), _pFPSText, Color::WHITE);
 }
 
 void TestApp::keyPressed( const Event& event )
