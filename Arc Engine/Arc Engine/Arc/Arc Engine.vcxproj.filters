@@ -87,9 +87,6 @@
     <ClCompile Include="RenderTarget.cpp">
       <Filter>Project\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Project\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>Project\Graphics</Filter>
     </ClCompile>
@@ -457,6 +454,9 @@
     </ClInclude>
     <ClInclude Include="TextComponent.h">
       <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ISerializable.h">
+      <Filter>Project\Core\Interfaces</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

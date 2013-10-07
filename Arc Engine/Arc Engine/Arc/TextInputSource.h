@@ -12,14 +12,18 @@
 
 namespace Arc
 {
+	/** Event Data for 
+	  */
     class TextInputData
         : public EventData
     {
     public:
 
+		// The character that was entered
         char
             Char;
 
+		// The direction for the arrow keys, page up/page down, and home/end
         Direction
             Dir;
 
@@ -42,7 +46,9 @@ namespace Arc
         virtual EventData* clone( void ) const { return New TextInputData(Char, Dir); }
 
     }; // class TextInputData
-
+	
+	/** Class for managing text input and dispatching events
+	  */
     class TextInputSource :
         public EventDispatcher,
         public IKeyboardListener
@@ -50,9 +56,10 @@ namespace Arc
     protected:
 
         bool
-            _shiftDown,
-            _capsLockDown;
+            _shiftDown,    // Whether the shift key is down or not
+            _capsLockDown; // Whether the caps lock key is down or not
 
+		// Array of keyboard keys that are valid text inputs
         ArrayList<KeyboardKey>
             _validInputs;
 
@@ -67,7 +74,8 @@ namespace Arc
             EVENT_TEXT_INPUT_ARROWS,
             EVENT_TEXT_INPUT_HOME_END;
 
-        //TODO: Add Insert Mode
+		// TODO: Add Page Up/Page Down
+        // TODO: Add Insert Mode
 
         TextInputSource(void);
         virtual ~TextInputSource(void);

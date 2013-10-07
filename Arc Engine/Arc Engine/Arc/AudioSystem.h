@@ -26,10 +26,7 @@ namespace Arc
     public:
 
         AudioSystem( void );
-        virtual ~AudioSystem( void ) { term(); }
-
-        virtual void init( void );
-        virtual void term( void );
+        virtual ~AudioSystem( void );
 
         virtual inline string toString( void ) const { return "Audio System"; }
 

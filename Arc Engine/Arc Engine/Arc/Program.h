@@ -83,10 +83,16 @@ namespace Arc
 		// Get the static instance of the class
         static Program* getInstance( void ) { return _pInstance; }
 
+		// Start the program and the update/render loop
         virtual void start( void );
+
+		// Trigger a flag to stop the update/render loop in response to an EVENT_EXIT event
         virtual void stop ( const Event& event );
 
+		// Send out the EVENT_UPDATE_START, EVENT_UPDATE, and EVENT_UPDATE_END events in that order
         virtual void updateFrame( const FrameData&  frameData );
+
+		// Send out the EVENT_RENDER_START, EVENT_RENDER, and EVENT_RENDER_END events in that order
         virtual void renderFrame( const RenderData& renderData );
 
         virtual void initAll       ( Size windowSize, string windowTitle, Color clearColor = Color::BLACK );

@@ -8,6 +8,8 @@
 
 namespace Arc
 {
+	/** Interface for listening to mouse events
+	  */
     class IMouseListener
     {
     public:

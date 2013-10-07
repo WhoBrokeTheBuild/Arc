@@ -12,6 +12,8 @@
 
 namespace Arc
 {
+	/** Base class for data to be passed along with an event 
+	  */
     class EventData
         : public ManagedObject
     {
@@ -25,6 +27,8 @@ namespace Arc
 
     }; // class EventData
 
+	/** Event data containing a single X,Y coordinate
+	  */
     class PointData
         : public EventData
     {
@@ -50,6 +54,8 @@ namespace Arc
 
     }; // class PointData
 
+	/** Event data containing a index or count
+	  */
     class CountData
         : public EventData
     {
@@ -71,32 +77,40 @@ namespace Arc
 
     }; // class CountData
 
+	/** Event data containing timing and frame rate information for each update
+	  */
     class FrameData :
         public EventData
     {
     private:
 
         double
-            _totalMilliseconds,
-            _elapsedMilliseconds,
-            _deltaTime,
-            _currentFPS,
-            _targetFPS;
+            _totalMilliseconds,   // Total milliseconds since the program started
+            _elapsedMilliseconds, // Elapsed milliseconds since the last frame
+            _deltaTime,           // Modifier based on ratio between the current and target FPS
+			                      // the value is 1.0 if current FPS = target FPS and higher than
+								  // 1.0 if current FPS < target FPS
+            _currentFPS,          // Current FPS that the program is running at
+            _targetFPS;           // Target FPS that the program is trying to run at
 
     public:
 
         FrameData( void )
+			: _totalMilliseconds(),
+			  _elapsedMilliseconds(),
+			  _deltaTime(),
+			  _currentFPS(),
+			  _targetFPS()
         {
-            _totalMilliseconds   = 0;
-            _elapsedMilliseconds = 0;
-            _deltaTime = 0;
         }
 
-        FrameData( double totalMillis, double elapsedMillis, double deltaTime )
+		FrameData( double totalMillis, double elapsedMillis, double deltaTime )
+			: _totalMilliseconds(totalMillis),
+			_elapsedMilliseconds(elapsedMillis),
+			_deltaTime(deltaTime),
+			_currentFPS(),
+			_targetFPS()
         {
-            _totalMilliseconds   = totalMillis;
-            _elapsedMilliseconds = elapsedMillis;
-            _deltaTime           = deltaTime;
         }
 
         virtual inline string toString( void ) const { return "Frame Data"; }
@@ -109,7 +123,7 @@ namespace Arc
             _targetFPS  = targetFPS;
 
             _elapsedMilliseconds = elapsedMillis;
-            _totalMilliseconds += elapsedMillis;
+            _totalMilliseconds += _elapsedMilliseconds;
             _deltaTime = _targetFPS / _currentFPS;
         }
 
@@ -126,13 +140,15 @@ namespace Arc
 
     }; // class FrameData
 
+	/** Event data containing the render target for drawing to during render events
+	  */
     class RenderData
         : public EventData
     {
     private:
 
         RenderTarget
-            *_pRenderTarget;
+            *_pRenderTarget; // The render target for the program
 
     public:
 
@@ -146,13 +162,15 @@ namespace Arc
 
     }; // class RenderData
 
+	/** Event data containing a KeyboardKey used in Keyboard events
+	  */
     class KeyData
         : public EventData
     {
     public:
 
         KeyboardKey
-            Key;
+            Key; // Keyboard Key that was either pressed, released, or held
 
         KeyData( KeyboardKey key ) { Key = key; }
 
@@ -162,6 +180,8 @@ namespace Arc
 
     }; // class KeyData
 
+	/** Event data containing a position, delta position, and MouseButton used in Mouse events
+	  */
     class MouseData
         : public EventData
     {
@@ -170,11 +190,11 @@ namespace Arc
     public:
 
         Vector2
-            Pos,
-            Delta;
+            Pos,   // Current mouse position
+            Delta; // Change in position from the last frame
 
         MouseButton
-            Button;
+            Button; // Mouse Button that was either pressed, released, or held
 
         MouseData( Vector2 pos, Vector2 delta, MouseButton button = INVALID_MOUSE_BUTTON ) { Pos = pos; Delta = delta; Button = button; }
 

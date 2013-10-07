@@ -20,11 +20,14 @@ namespace Arc
     class Program;
     class GraphicsSystem;
 
+	/** A system for managing and interfacing with Lua
+	  */
     class ScriptingSystem :
         public ManagedObject
     {
     protected:
 
+		// The lua_State used to interact with a lua instance
         lua_State
             *_pLuaState;
 
@@ -35,17 +38,24 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Scripting System"; }
 
+		// Connect lua_* functions in C++ to arc_* functions in lua
         virtual void registerFunctions( void );
+
+		// Load an execute a lua file
         virtual void executeFile( string filename );
+		
+		// Display lua errors
         virtual void showErrors( int status );
 
     }; // class ScriptingSystem
 
+	// Wrapper functions for utility functions
     int lua_die  ( lua_State* state );
     int lua_info ( lua_State* state );
     int lua_error( lua_State* state );
     int lua_sleep( lua_State *state );
 
+	// Wrapper functions for window management functions
     int lua_set_window_title( lua_State* state );
     int lua_set_window_size ( lua_State* state );
 

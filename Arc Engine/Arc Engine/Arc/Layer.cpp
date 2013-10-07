@@ -25,7 +25,7 @@ void Arc::Layer::update( const Event& event )
     if ( ! Enabled )
 		return;
 
-    for (unsigned int i = 0; i < _units.size(); ++i)
+    for (unsigned int i = 0; i < _units.getSize(); ++i)
     {
         _units[i]->update(event);
     }
@@ -36,7 +36,7 @@ void Arc::Layer::render( const Event& event )
     if ( ! Visible)
 		return;
 
-    for (unsigned int i = 0; i < _units.size(); ++i)
+    for (unsigned int i = 0; i < _units.getSize(); ++i)
     {
         _units[i]->render(event);
     }
@@ -104,7 +104,7 @@ void Arc::Layer::sortByDepth( void )
 
 unsigned int Arc::Layer::removeAllUnits( void )
 {
-    unsigned int size = _units.size();
+    unsigned int size = _units.getSize();
 
     for (unsigned int i = 0; i < size; ++i)
     {

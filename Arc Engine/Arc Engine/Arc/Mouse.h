@@ -10,28 +10,29 @@ using std::string;
 
 namespace Arc
 {
-    const int
-        MOUSE_WHEEL_DOWN = 4,
-        MOUSE_WHEEL_UP   = 5;
+	// Enum of mouse buttons including the wheel up/down
+	enum MouseButton
+	{
+		INVALID_MOUSE_BUTTON = -1,
 
-    enum MouseButton
-    {
-        INVALID_MOUSE_BUTTON = -1,
+		MOUSE_BUTTON_LEFT,
+		MOUSE_BUTTON_MIDDLE,
+		MOUSE_BUTTON_RIGHT,
+		MOUSE_BUTTON_WHEEL_DOWN,
+		MOUSE_BUTTON_WHEEL_UP,
 
-        MOUSE_BUTTON_LEFT,
-        MOUSE_BUTTON_MIDDLE,
-        MOUSE_BUTTON_RIGHT,
+		NUM_MOUSE_BUTTONS
 
-        NUM_MOUSE_BUTTONS
+	}; // enum MouseButton
 
-    }; // enum MouseButton
-
-    const string MOUSE_BUTTON_NAMES[NUM_MOUSE_BUTTONS] =
-    {
-        "Left Button",
-        "Middle Button",
-        "Right Button"
-    };
+	const string MOUSE_BUTTON_NAMES[NUM_MOUSE_BUTTONS] =
+	{
+		"Left Button",
+		"Middle Button",
+		"Right Button",
+		"Wheel Down",
+		"Wheel Up"
+	};
 
 } // namespace Arc
 

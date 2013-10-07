@@ -10,10 +10,10 @@ using std::istream;
 
 namespace Arc
 {
+	/** An interface for serializing and deserializing objects
+	  */
     class ISerializable
     {
-        protected:
-
         public:
 
             virtual int serialize( ostream &stream ) = 0;

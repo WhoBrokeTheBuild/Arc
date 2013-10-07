@@ -12,24 +12,38 @@
 
 namespace Arc
 {
+	class InputSystem;
+	
+	/** Class for managing mouse input and dispatching events
+	  */
     class MouseSource :
         public EventDispatcher
-    {
+	{
+
+		friend class InputSystem;
+
     private:
 
+		// SDL managed array of the mouse button states
         uint8_t
             _sdlButtonStates;
 
     protected:
 
+		// Map of mouse buttons to their states (up, down, pressed, released)
         Map<MouseButton, InputState>
             _buttonStates;
 
+		// Current mouse position
         Point
             _mousePos;
 
+		// Change in the mouse position between the current frame and the last
         Vector2
-            _mouseDelta;
+			_mouseDelta;
+
+		// Function for reading input only available through SDL Events
+		virtual void handleSDLEvent( SDL_Event sdlEvent );
 
     public:
 
@@ -37,7 +51,9 @@ namespace Arc
             EVENT_MOUSE_MOVED,
             EVENT_MOUSE_PRESSED,
             EVENT_MOUSE_RELEASED,
-            EVENT_MOUSE_HELD;
+			EVENT_MOUSE_HELD,
+			EVENT_MOUSE_WHEEL_UP,
+			EVENT_MOUSE_WHEEL_DOWN;
 
         MouseSource( void );
         virtual ~MouseSource( void );

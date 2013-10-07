@@ -7,9 +7,9 @@ Arc::Font::Font( string filename, int size )
 	  _pFont(nullptr),
 	  _fontSize(size)
 {
-    _pFont = TTF_OpenFont(_filename.c_str(), _fontSize);
+    _pFont = TTF_OpenFont(_filename.c_str(), _fontSize); // Load the font from file
 
-    if ( ! _pFont)
+    if ( ! _pFont) // Error loading font
     {
         _pFont = nullptr;
         stringstream ss;
@@ -21,7 +21,7 @@ Arc::Font::Font( string filename, int size )
 Arc::Font::~Font( void )
 {
     if (_pFont != nullptr)
-        TTF_CloseFont(_pFont);
+        TTF_CloseFont(_pFont); // Delete font from memory
 }
 
 std::string Arc::Font::toString( void ) const

@@ -10,7 +10,7 @@ Arc::ArrayList<string> Arc::strSplit( string str, char sep, int limit /*= -1*/ )
     {
         if (str[i] == sep)
         {
-            if (limit != -1 && stringParts.size() >= (unsigned)limit - 1)
+            if (limit != -1 && stringParts.getSize() >= (unsigned)limit - 1)
             {
                 break;
             }
@@ -71,7 +71,7 @@ string Arc::basename( string fullPath )
 
     ArrayList<string> parts = strSplit(fullPath, splitString);
 
-    return parts[parts.size() - 1];
+    return parts[parts.getSize() - 1];
 }
 
 string Arc::shortToStr( const short& value )

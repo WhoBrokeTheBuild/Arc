@@ -15,30 +15,41 @@
 
 namespace Arc
 {
+	/** A system for managing the window and drawing.
+	  */
     class GraphicsSystem :
         public EventDispatcher
     {
     private:
 
+		// Color to clear the background to
         Color
-            _clearColor;
+            _clearColor; 
 
+		// The render target, used for drawing primitives and textures
         RenderTarget
-            *_pRenderTarget;
+            *_pRenderTarget; 
 
+		// The bytes-per-pixel of the screen
         int
-            _screenBPP;
+            _screenBPP; 
 
+		// The size of the window
         Size
-            _windowSize;
+            _windowSize; 
 
+		// The title of the window
         string
             _windowTitle;
 
+		// Whether or not the window is fullscreen
         bool
             _fullscreen;
 
+		// Reset OpenGL and reload all texture and font data
         void resetGL( void );
+
+		// Reset SDL and reload OpenGL
         void resetVideoMode( void );
 
     public:
@@ -54,13 +65,15 @@ namespace Arc
         virtual void setFullscreen ( bool fullscreen );
         virtual void setWindowSize ( Size size );
         virtual void setWindowTitle( string title );
-        virtual void setWindowIcon ( string filename );
 		virtual inline void setClearColor ( Color clearColor ) { _clearColor = clearColor; }
 
-        virtual bool   isFullscreen  ( void ) { return _fullscreen;  }
-        virtual Size   getWindowSize ( void ) { return _windowSize;  }
-        virtual string getWindowTitle( void ) { return _windowTitle; }
-        virtual Color  getClearColor ( void ) { return _clearColor;  }
+        virtual inline bool   isFullscreen  ( void ) { return _fullscreen;  }
+        virtual inline Size   getWindowSize ( void ) { return _windowSize;  }
+        virtual inline string getWindowTitle( void ) { return _windowTitle; }
+        virtual inline Color  getClearColor ( void ) { return _clearColor;  }
+
+		// Load an image and set it as the icon of the window
+		virtual void setWindowIcon ( string filename );
 
         virtual RenderTarget *getRenderTarget( void ) { return _pRenderTarget; };
 

@@ -9,6 +9,7 @@ using std::string;
 
 namespace Arc
 {
+	// Enum of game pad buttons
     enum GamePadButton
     {
         INVALID_GAME_PAD_BUTTON = -1,

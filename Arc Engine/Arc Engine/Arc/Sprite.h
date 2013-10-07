@@ -10,21 +10,32 @@
 
 namespace Arc
 {
+	/** A texture and the source rect of the image on the texture
+	  */
     class Sprite :
         public ManagedObject
     {
     protected:
 
+		// The texture to take a spot from
         Texture
             *_pTexture;
 
+		// The source rectangle of the spot to take
         Rect
             _sourceRect;
 
     public:
 
-        Sprite( Texture* pTexture, Rect sourceRect );
-        virtual ~Sprite( void );
+		inline Sprite( Texture* pTexture, Rect sourceRect )
+			: _pTexture(pTexture),
+			_sourceRect(sourceRect)
+		{
+		}
+
+        virtual inline ~Sprite( void )
+		{
+		}
 
         virtual inline string toString( void ) const { return "Sprite"; }
 

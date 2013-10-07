@@ -14,6 +14,7 @@ Arc::Program::Program( void )
 	: _pGraphicsSystem(nullptr),
 	  _pInputSystem(nullptr),
 	  _pAudioSystem(nullptr),
+	  _pScriptingSystem(nullptr),
 	  _pNetworkSystem(nullptr),
 	  _running(),
 	  _targetFPS(),
@@ -23,6 +24,7 @@ Arc::Program::Program( void )
 
 	_pInstance = this;
 
+	// Create the global event dispatcher
     gpEventDispatcher = New EventDispatcher();
 
     _targetFPS  = 60.0f;
@@ -89,10 +91,16 @@ void Arc::Program::start( void )
         updateFrame(frameData);
         renderFrame(renderData);
 
+		// Calculate current FPS based on the time last frame took
         _currentFPS = (float)(1000.0 / frameDelay);
 
+		// Delay the program for the time needed to stay at the target FPS
         fpsTimer.sleepUntilElapsed(fpsDelay);
+
+		// Get how long the timer had to sleep
         frameDelay = fpsTimer.getElapsedMilli();
+
+		// Reset the timer 
         fpsTimer.start();
     }
 }
@@ -141,25 +149,30 @@ void Arc::Program::initCore( void )
 
 void Arc::Program::initGraphics( Size windowSize, string windowTitle, Color clearColor /*= Color::BLACK*/ )
 {
+	delete _pGraphicsSystem;
     _pGraphicsSystem = New GraphicsSystem(windowSize, windowTitle, clearColor);
 }
 
 void Arc::Program::initAudio( void )
 {
+	delete _pAudioSystem;
     _pAudioSystem = New AudioSystem();
 }
 
 void Arc::Program::initInput( void )
 {
+	delete _pInputSystem;
     _pInputSystem = New InputSystem();
 }
 
 void Arc::Program::initScripting( void )
 {
+	delete _pScriptingSystem;
     _pScriptingSystem = New ScriptingSystem();
 }
 
 void Arc::Program::initNetworking( void )
 {
+	delete _pNetworkSystem;
     _pNetworkSystem = New NetworkSystem();
 }

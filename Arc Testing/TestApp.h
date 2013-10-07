@@ -11,8 +11,10 @@
 #include <Arc/Scene.h>
 #include <Arc/Font.h>
 #include <Arc/RenderedText.h>
+#include <Arc/Sound.h>
 
 #include "ResourceManager.h"
+#include "SpinMenu.h"
 
 class TestApp :
     public Program,
@@ -26,18 +28,9 @@ protected:
 	RenderedText
 		*_pFPSText;
 
-	ArrayList<Angle>
-		_rots;
-
-	ArrayList<RenderedText*>
-		_texts;
-
-	float 
-		_turnSpeed,
-		_toMove;
-
-	int
-		_optionIndex;
+	SpinMenu
+		*_pRootMenu,
+		*_pCurrMenu;
 
 public:
 

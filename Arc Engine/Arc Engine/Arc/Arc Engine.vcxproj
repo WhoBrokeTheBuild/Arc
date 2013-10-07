@@ -51,7 +51,6 @@
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="Sound.cpp" />
-    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StreamFunc.cpp" />
     <ClCompile Include="StringFunc.cpp" />
     <ClCompile Include="TextComponent.cpp" />
@@ -74,6 +73,7 @@
     <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="IPAddress.h" />
+    <ClInclude Include="ISerializable.h" />
     <ClInclude Include="NetworkSystem.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="RenderedText.h" />

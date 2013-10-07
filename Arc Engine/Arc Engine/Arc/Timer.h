@@ -22,24 +22,28 @@
 
 namespace Arc
 {
+	/** A timer class to handle calculating lengths of time and sleeping for lengths of time
+	  */
     class Timer :
         public ManagedObject
     {
     private:
 
+		// Constant for converting from microseconds to seconds
         static double
-            MICRO,
-			INV_MICRO;
+            MICRO;
 
         double
-            _startTimeMillis,
-            _endTimeMillis;
+            _startTimeMillis, // Start time in milliseconds
+            _endTimeMillis;   // End time in milliseconds
 
+		// Whether the timer is stopped or not
         bool
             _stopped;
 
 #ifdef WINDOWS
 
+		// Start and end times 
         LARGE_INTEGER
             _freq,
             _startCount,
@@ -47,13 +51,12 @@ namespace Arc
 
 		inline double calcDiffMillis( LARGE_INTEGER from, LARGE_INTEGER to ) const
 		{
-			double difference = (double)(to.QuadPart - from.QuadPart) * (MICRO / _freq.QuadPart);
-
-			return difference * 0.001;
+			return (double)(to.QuadPart - from.QuadPart) * (MICRO / _freq.QuadPart) * 0.001;
 		}
 
 #else
 
+		// Start and end times 
         timeval
             _startCount,
 			_endCount;
@@ -68,15 +71,24 @@ namespace Arc
     public:
 
         Timer( void );
+		virtual inline ~Timer( void ) { }
 
         virtual inline string toString( void ) const { return "Timer"; }
 
+		// Start the timer and reset the time
         void start( void );
+
+		// Stop the timer and record the stop time
         void stop ( void );
 
+		// Get the elapsed milliseconds from when the timer was started until now
+		// if the timer is running, or until it stopped if it isn't running 
         double getElapsedMilli( void );
-        double getElapsed( void );
 
+		// Get the elapsed time in seconds
+        double getElapsedSeconds( void );
+
+		// Sleep until the specificed number of milliseconds have passed
         void sleepUntilElapsed( double millis );
 
     }; // class Timer

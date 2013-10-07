@@ -38,13 +38,15 @@ namespace Arc
         virtual bool removeFrame( int pFrame );
         virtual bool removeFrame( Sprite* pFrame );
 
+		// Get the size of the sprite the specified frame
         virtual Size    getFrameSize( int frame );
         virtual Sprite* getFrameAt  ( int frame );
 
 		virtual inline double getSpeed( void ) { return _speed; }
 		virtual inline void setSpeed( double speed ) { _speed = speed; }
 
-        virtual int getLength( void ) { return (int)_frames.size(); }
+		// Get the number of frames
+        virtual int getLength( void ) { return (int)_frames.getSize(); }
 
     }; // class Animation
 

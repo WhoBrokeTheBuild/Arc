@@ -8,6 +8,8 @@
 
 namespace Arc
 {
+	/** Interface for listening to text input events
+	  */
     class ITextInputListener
     {
     public:

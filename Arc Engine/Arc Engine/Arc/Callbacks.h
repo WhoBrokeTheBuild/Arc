@@ -9,8 +9,6 @@
 namespace Arc
 {
 	/** A base class for callbacks used by events
-	  *
-	  * @deriveIf Override equalTo, invoke, clone, and isMethodOf
 	  */
     template <typename ReturnType, typename Param = void>
     class Callback

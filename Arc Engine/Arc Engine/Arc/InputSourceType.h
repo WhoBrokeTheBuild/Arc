@@ -9,6 +9,7 @@ using std::string;
 
 namespace Arc
 {
+	// Enum of different input types
     enum InputSourceType
     {
         INVALID_INPUT_SOURCE_TYPE = -1,

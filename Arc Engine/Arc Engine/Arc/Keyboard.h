@@ -10,6 +10,7 @@ using std::string;
 
 namespace Arc
 {
+	// Enum of all supported keyboard keys
     enum KeyboardKey
     {
         INVALID_KEY = -1,

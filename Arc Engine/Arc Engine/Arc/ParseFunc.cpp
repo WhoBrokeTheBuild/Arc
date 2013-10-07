@@ -36,7 +36,7 @@ Arc::Vector2 Arc::parseVector2( const string& value )
 {
     ArrayList<string> parts = strSplit(value, ',', 2);
 
-    if (parts.size() < 2)
+    if (parts.getSize() < 2)
         return Vector2::ZERO;
 
     return Vector2(parseFloat(parts[0]), parseFloat(parts[1]));
@@ -46,7 +46,7 @@ Arc::Circle Arc::parseCircle( const string& value )
 {
     ArrayList<string> parts = strSplit(value, ',', 3);
 
-    if (parts.size() < 3)
+    if (parts.getSize() < 3)
         return Circle::ZERO;
 
     return Circle(parseFloat(parts[0]), parseFloat(parts[1]), parseFloat(parts[2]));
@@ -56,7 +56,7 @@ Arc::Rect Arc::parseRect( const string& value )
 {
     ArrayList<string> parts = strSplit(value, ',', 4);
 
-    if (parts.size() < 4)
+    if (parts.getSize() < 4)
         return Rect::ZERO;
 
     return Rect(parseFloat(parts[0]), parseFloat(parts[1]), parseFloat(parts[2]), parseFloat(parts[3]));
@@ -66,7 +66,7 @@ Arc::Color Arc::parseColor( const string& value )
 {
     ArrayList<string> parts = strSplit(value, ',', 4);
 
-    if (parts.size() < 4)
+    if (parts.getSize() < 4)
         return Color::WHITE;
 
     return Color(parseInt(parts[0]), parseInt(parts[1]), parseInt(parts[2]), parseInt(parts[3]));

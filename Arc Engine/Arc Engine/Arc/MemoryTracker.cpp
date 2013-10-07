@@ -11,7 +11,7 @@ Arc::MemoryTracker::MemoryTracker( void )
 
 void Arc::MemoryTracker::addAllocation( ManagedObject *ptr, size_t size, int lineNumber, string filename )
 {
-    if (_allocations.contains(ptr))
+    if (_allocations.containsKey(ptr))
     {
         ERROR(toString(), "Element already in map");
         return;
@@ -25,16 +25,16 @@ void Arc::MemoryTracker::addAllocation( ManagedObject *ptr, size_t size, int lin
 
 bool Arc::MemoryTracker::removeAllocation( ManagedObject *ptr )
 {
-    if (_allocations.size() == 0 || !_allocations.contains(ptr))
+    if (_allocations.getSize() == 0 || !_allocations.containsKey(ptr))
         return false;
 
-    _allocations.remove(ptr);
+    _allocations.removeKey(ptr);
     return true;
 }
 
 int Arc::MemoryTracker::numAllocations( void )
 {
-    return _allocations.size();
+    return _allocations.getSize();
 }
 
 void Arc::MemoryTracker::printAllocations( void )

@@ -10,9 +10,9 @@
 
 namespace Arc
 {
-	/** A interface for listening to update and render events
+	/** An interface for listening to update and render events
 	  *
-	  * @interfaceThis
+	  * @interface
 	  */
     class IFrameListener
     {

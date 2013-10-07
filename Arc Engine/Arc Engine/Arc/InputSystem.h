@@ -24,15 +24,19 @@ namespace Arc
     {
     protected:
 
+		// Manager for keyboard input
         KeyboardSource
             *_pKeyboardSource;
 
+		// Manager for mouse input
         MouseSource
             *_pMouseSource;
 
+		// Manager for text input
         TextInputSource
             *_pTextInputSource;
 
+		// Function for handling the SDL Event loop
         virtual void handleSDLEvent( SDL_Event sdlEvent );
 
     public:

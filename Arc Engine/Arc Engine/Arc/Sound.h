@@ -24,11 +24,8 @@ namespace Arc
 
     public:
 
-        Sound( void );
-        virtual ~Sound( void ) { term(); }
-
-        virtual void init( string filename );
-        virtual void term( void );
+        Sound( string filename );
+        virtual ~Sound( void );
 
         virtual inline string toString( void ) const { return "Sound"; }
 

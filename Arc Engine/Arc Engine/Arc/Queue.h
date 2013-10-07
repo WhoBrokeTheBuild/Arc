@@ -18,19 +18,41 @@ namespace Arc
     template <class T>
     class LinkedList;
 
+	/** A templated Queue 
+	  */
     template <class T>
     class Queue :
         public ManagedObject
     {
     protected:
 
+		// A STL queue to handle the storage
         queue<T>
-            _queue;
+			_queue;
+
+		// A cached length of the collection
+		size_t
+			_size;
+
+		virtual inline void updateSize( void ) { _size = _queue.size(); }
 
     public:
 
-        inline Queue ( void ) { _queue = queue<T>(); }
-        virtual inline ~Queue( void ) { clear(); }
+		inline Queue ( void )
+			: _queue(),
+			  _size()
+		{
+		}
+
+		inline Queue ( const Queue& rhs) 
+			: _queue(rhs._queue),
+			  _size(rhs._queue.size())
+		{
+		}
+
+		virtual inline ~Queue( void ) { clear(); }
+
+		inline Queue& operator=( const Queue& rhs ) { _queue = rhs._queue; updateSize(); return *this; }
 
         virtual inline string toString( void ) const { return "Queue"; }
 
@@ -39,23 +61,25 @@ namespace Arc
         T         pop  ( void );
         Queue<T>* clear( void );
 
-        inline T& front( void ) { return _queue.front(); }
-        inline T& back ( void ) { return _queue.back(); }
+        inline T& getFront( void ) { return _queue.front(); }
+        inline T& getBack ( void ) { return _queue.back(); }
 
-        inline const T& front( void ) const { return _queue.front(); }
-        inline const T& back ( void ) const { return _queue.back(); }
+        inline const T& getFront( void ) const { return _queue.front(); }
+        inline const T& getBack ( void ) const { return _queue.back(); }
 
-        inline bool empty( void ) const { return _queue.empty(); }
+        inline bool isEmpty( void ) const { return (_size == 0); }
 
-        inline size_t size( void ) const { return _queue.size(); }
+		inline size_t getSize( void ) const { return _size; }
+
+		// Convert the queue into a different storage type
+
+		T*            toArray     ( unsigned int& length );
+		ArrayList<T>  toArrayList ( unsigned int& length );
+		LinkedList<T> toLinkedList( unsigned int& length );
 
         inline T*            toArray     ( void ) { unsigned int i; return toArray(i); }
         inline ArrayList<T>  toArrayList ( void ) { unsigned int i; return toArrayList(i); }
         inline LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
-
-        T*            toArray     ( unsigned int& length );
-        ArrayList<T>  toArrayList ( unsigned int& length );
-        LinkedList<T> toLinkedList( unsigned int& length );
 
     }; // class Queue<T>
 
@@ -67,7 +91,8 @@ namespace Arc
 template <class T>
 Arc::Queue<T>* Arc::Queue<T>::push( const T& item )
 {
-    _queue.push(item);
+	_queue.push(item);
+	updateSize();
     return this;
 }
 
@@ -81,15 +106,17 @@ template <class T>
 T Arc::Queue<T>::pop ( void )
 {
     T value = peek();
-    _queue.pop();
+	_queue.pop();
+	updateSize();
     return value;
 }
 
 template <class T>
 Arc::Queue<T>* Arc::Queue<T>::clear( void )
 {
-    while ( ! empty())
-        _queue.pop();
+    while ( ! isEmpty())
+		_queue.pop();
+	updateSize();
     return this;
 }
 
@@ -97,7 +124,7 @@ template <class T>
 T*  Arc::Queue<T>::toArray( unsigned int& length )
 {
     queue<T> tmp = _queue;
-    length = size();
+    length = getSize();
     T* other = new T[length];
 
     for (unsigned int i = 0; i < length; ++i)
@@ -110,7 +137,7 @@ template <class T>
 Arc::ArrayList<T> Arc::Queue<T>::toArrayList( unsigned int& length )
 {
     queue<T> tmp = _queue;
-    length = size();
+    length = getSize();
     ArrayList<T> other;
 
     for (unsigned int i = 0; i < length; ++i)
@@ -123,7 +150,7 @@ template <class T>
 Arc::LinkedList<T> Arc::Queue<T>::toLinkedList( unsigned int& length )
 {
     queue<T> tmp = _queue;
-    length = size();
+    length = getSize();
     LinkedList<T> other;
 
     for (unsigned int i = 0; i < length; ++i)

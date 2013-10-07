@@ -10,10 +10,10 @@ const Arc::EventType Arc::TextInputSource::EVENT_TEXT_INPUT_ARROWS    = "textInp
 const Arc::EventType Arc::TextInputSource::EVENT_TEXT_INPUT_HOME_END  = "textInputHomeEnd";
 
 Arc::TextInputSource::TextInputSource( void )
+	: _shiftDown(false),
+	  _capsLockDown(false)
 {
-    _shiftDown = false;
-    _capsLockDown = false;
-
+	// Populate the valid inputs array
     _validInputs.add(KEY_BACKSPACE);
     _validInputs.add(KEY_ENTER);
     _validInputs.add(KEY_TAB);

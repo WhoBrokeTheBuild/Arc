@@ -131,7 +131,7 @@ namespace Arc
 															Angle rotation = Angle::ZERO,
 															Color blendColor = Color::WHITE );
 
-		virtual Component*         getFirstComponent        ( void ) { return ( _components.empty() ? nullptr : _components[0] ); }
+		virtual Component*         getFirstComponent        ( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
 		virtual PhysicsComponent*  getFirstPhysicsComponent ( void );
 		virtual ImageComponent*    getFirstImageComponent   ( void );
 		virtual ShapeComponent*    getFirstShapeComponent   ( void );

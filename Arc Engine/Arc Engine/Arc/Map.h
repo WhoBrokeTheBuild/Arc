@@ -20,15 +20,24 @@ namespace Arc
 
     template <class T>
     class ArrayList;
-
+	
+	/** A templated Map 
+	  */
     template <class K, class T, typename Sort = less<K>>
     class Map :
         public ManagedObject
     {
     protected:
 
+		// A STL map to handle the storage
         map<K, T, Sort>
-            _map;
+			_map;
+
+		// A cached length of the collection
+		size_t
+			_size;
+
+		virtual inline void updateSize( void ) { _size = _map.size(); }
 
     public:
 
@@ -37,11 +46,21 @@ namespace Arc
 
         typedef pair<K, T> Pair;
 
-        inline Map( void ) { _map = map<K, T, Sort>(); }
-        inline Map( const Map& rhs) : _map(rhs._map) { }
+        inline Map( void )
+			: _map(),
+			  _size()
+		{
+		}
+
+        inline Map( const Map& rhs) 
+			: _map(rhs._map)
+			  _size(rhs._map.size())
+		{
+		}
+
         virtual inline ~Map( void ) { clear(); }
 
-        inline Map& operator= ( const Map& rhs )     { _map = rhs._map; return *this; }
+        inline Map& operator= ( const Map& rhs )     { _map = rhs._map; updateSize(); return *this; }
         inline T&   operator[]( const K& key )       { return at(key); }
         inline T&   operator[]( const K& key ) const { return at(key); }
 
@@ -60,25 +79,30 @@ namespace Arc
         inline Iterator      find( K& key )       { return _map.find(key); }
         inline ConstIterator find (K& key ) const { return _map.find(key); }
 
-        Map<K, T, Sort>* add            ( const K& key, const T& item );
-        Map<K, T, Sort>* clear          ( void );
-        bool             remove         ( const K& key );
-        bool             removeKey      ( const K& key );
-        bool             removeValue    ( const T& value );
-        bool             removeAllValues( const T& value );
+        Map<K, T, Sort>* add  ( const K& key, const T& item );
+        Map<K, T, Sort>* clear( void );
+
+		// Remove element with the given key
+        bool removeKey( const K& key );
+
+		// Remove the first element with the given value
+        bool removeFirstValue( const T& value );
+
+		// Remove all elements with the given value
+        bool removeAllValues ( const T& value );
 
         inline T& at( const K& key ) { return _map[key]; }
         inline T& at( const K& key ) const { return _map[key]; }
 
-        bool contains     ( const K& key );
         bool containsKey  ( const K& key );
         bool containsValue( const T& value );
 
-        inline bool empty( void ) const { return _map.empty(); }
+        inline bool isEmpty( void ) const { return (_size == 0); }
 
+		// Get the index of a value
         K& indexOf( T& item );
 
-        inline size_t size( void ) const { return _map.size(); }
+        inline size_t getSize( void ) const { return _size; }
 
         inline K*            keyArray     ( void ) { unsigned int i; return keyArray(i); }
         inline LinkedList<K> keyLinkedList( void ) { unsigned int i; return keyLinkedList(i); }
@@ -107,22 +131,20 @@ template <class K, class T, typename Sort>
 Arc::Map<K, T, Sort>* Arc::Map<K, T, Sort>::add( const K& key, const T& item )
 {
     _map.insert(Pair(key, item));
+	updateSize();
     return this;
-}
-
-template <class K, class T, typename Sort>
-bool Arc::Map<K, T, Sort>::remove( const K& key )
-{
-    return removeKey(key);
 }
 
 template <class K, class T, typename Sort>
 bool Arc::Map<K, T, Sort>::removeKey( const K& key )
 {
-    return (_map.erase(key) == 1);
+	bool removed = (_map.erase(key) == 1);
+	updateSize();
+	return removed;
 }
+
 template <class K, class T, typename Sort>
-bool Arc::Map<K, T, Sort>::removeValue( const T& value )
+bool Arc::Map<K, T, Sort>::removeFirstValue( const T& value )
 {
     Iterator it;
 
@@ -133,7 +155,8 @@ bool Arc::Map<K, T, Sort>::removeValue( const T& value )
             _map.erase(it);
             return true;
         }
-    }
+	}
+	updateSize();
     return false;
 }
 
@@ -150,21 +173,17 @@ bool Arc::Map<K, T, Sort>::removeAllValues( const T& value )
             _map.erase(it);
             found = true;
         }
-    }
+	}
+	updateSize();
     return true;
 }
 
 template <class K, class T, typename Sort>
 Arc::Map<K, T, Sort>* Arc::Map<K, T, Sort>::clear( void )
 {
-    _map.clear();
+	_map.clear();
+	updateSize();
     return this;
-}
-
-template <class K, class T, typename Sort>
-bool Arc::Map<K, T, Sort>::contains( const K& key )
-{
-    return containsKey(key);
 }
 
 template <class K, class T, typename Sort>
@@ -205,7 +224,7 @@ K& Arc::Map<K, T, Sort>::indexOf( T& item )
 template <class K, class T, typename Sort>
 K* Arc::Map<K, T, Sort>::keyArray( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     K* other = new T[length];
 
     int index = 0;
@@ -218,7 +237,7 @@ K* Arc::Map<K, T, Sort>::keyArray( unsigned int& length )
 template <class K, class T, typename Sort>
 Arc::LinkedList<K> Arc::Map<K, T, Sort>::keyLinkedList( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     LinkedList<K> other;
 
     for (Iterator it = begin(); it != end(); ++it)
@@ -230,7 +249,7 @@ Arc::LinkedList<K> Arc::Map<K, T, Sort>::keyLinkedList( unsigned int& length )
 template <class K, class T, typename Sort>
 Arc::ArrayList<K> Arc::Map<K, T, Sort>::keyArrayList( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     ArrayList<K> other;
 
     for (Iterator it = begin(); it != end(); ++it)
@@ -242,7 +261,7 @@ Arc::ArrayList<K> Arc::Map<K, T, Sort>::keyArrayList( unsigned int& length )
 template <class K, class T, typename Sort>
 T* Arc::Map<K, T, Sort>::valueArray( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     T* other = new T[length];
 
     int index = 0;
@@ -255,7 +274,7 @@ T* Arc::Map<K, T, Sort>::valueArray( unsigned int& length )
 template <class K, class T, typename Sort>
 Arc::LinkedList<T> Arc::Map<K, T, Sort>::valueLinkedList( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     LinkedList<T> other;
 
     for (Iterator it = begin(); it != end(); ++it)
@@ -267,7 +286,7 @@ Arc::LinkedList<T> Arc::Map<K, T, Sort>::valueLinkedList( unsigned int& length )
 template <class K, class T, typename Sort>
 Arc::ArrayList<T> Arc::Map<K, T, Sort>::valueArrayList( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     ArrayList<T> other;
 
     for (Iterator it = begin(); it != end(); ++it)

@@ -17,26 +17,43 @@ namespace Arc
 
     template <class T>
     class Queue;
-
+	
+	/** A templated Array List 
+	  */
     template <class T>
     class ArrayList :
         public ManagedObject
     {
     protected:
 
+		// A STL vector to handle the storage
         vector<T>
             _list;
+
+		// A cached length of the collection
+		size_t
+			_size;
+
+		virtual inline void updateSize( void ) { _size = _list.size(); }
 
     public:
 
         typedef typename vector<T>::iterator       Iterator;
         typedef typename vector<T>::const_iterator ConstIterator;
 
-        inline ArrayList ( void ) { _list = vector<T>(); }
-        inline ArrayList ( const ArrayList& rhs) : _list(rhs._list) { }
+        inline ArrayList ( void )
+			: _list(),
+			  _size()
+		{ }
+
+        inline ArrayList ( const ArrayList& rhs)
+			: _list(rhs._list),
+		      _size(rhs._list.size())
+		{ }
+
         virtual inline ~ArrayList( void ) { clear(); }
 
-        inline ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; return *this; }
+        inline ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; updateSize(); return *this; }
         inline T&         operator[]( const int index)       { return at(index); }
         inline const T    operator[]( const int index) const { return at(index); }
 
@@ -74,15 +91,20 @@ namespace Arc
 
         bool contains( const T& item ) const;
         bool hasIndex( const int& index ) const;
-        inline bool empty   ( void ) const { return _list.empty(); }
+        inline bool isEmpty( void ) const { return (_size == 0); }
 
+		// Get the index of a value
         int indexOf( T& item ) const;
 
-        inline size_t size( void ) const { return _list.size(); }
+        inline size_t getSize( void ) const { return _size; }
+
+		// Merge this collection with another collection
 
         unsigned int merge( ArrayList<T> list );
         unsigned int merge( LinkedList<T> list );
-        unsigned int merge( Queue<T> list );
+		unsigned int merge( Queue<T> list );
+
+		// Convert the queue into a different storage type
 
         inline T*            toArray     ( void ) { unsigned int i; return toArray(i); }
         inline LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
@@ -103,13 +125,15 @@ template <class T>
 Arc::ArrayList<T>* Arc::ArrayList<T>::add( const T& item )
 {
     _list.push_back(item);
+	updateSize();
     return this;
 }
 
 template <class T>
 Arc::ArrayList<T>* Arc::ArrayList<T>::insertAt( const T& item, const int& index )
 {
-    _list.insert(_list.begin() + index, item);
+	_list.insert(_list.begin() + index, item);
+	updateSize();
     return this;
 }
 
@@ -141,7 +165,8 @@ bool Arc::ArrayList<T>::remove( const T& item )
             _list.erase(it);
             return true;
         }
-    }
+	}
+	updateSize();
     return false;
 }
 
@@ -158,7 +183,8 @@ bool Arc::ArrayList<T>::removeAll( const T& item )
             _list.erase(it);
             found = true;
         }
-    }
+	}
+	updateSize();
     return found;
 }
 
@@ -168,14 +194,15 @@ bool Arc::ArrayList<T>::removeAt( const unsigned int& index )
     if ( ! hasIndex(index))
         return false;
 
-    _list.erase(begin() + index);
+	_list.erase(begin() + index);
+	updateSize();
     return true;
 }
 
 template <class T>
 bool Arc::ArrayList<T>::removeFront( void )
 {
-    if (empty())
+    if (isEmpty())
         return false;
 
     removeAt(0);
@@ -185,10 +212,11 @@ bool Arc::ArrayList<T>::removeFront( void )
 template <class T>
 bool Arc::ArrayList<T>::removeBack( void )
 {
-    if (empty())
+    if (isEmpty())
         return false;
 
-    _list.pop_back();
+	_list.pop_back();
+	updateSize();
     return true;
 }
 
@@ -202,7 +230,7 @@ Arc::ArrayList<T>* Arc::ArrayList<T>::clear( void )
 template <class T>
 bool Arc::ArrayList<T>::contains( const T& item ) const
 {
-    if (empty())
+    if (isEmpty())
         return false;
 
     return (find(cbegin(), cend(), item) != cend());
@@ -211,7 +239,7 @@ bool Arc::ArrayList<T>::contains( const T& item ) const
 template <class T>
 bool Arc::ArrayList<T>::hasIndex( const int& index ) const
 {
-    return (between(index, 0, (const int)size()));
+    return (between(index, 0, (const int)getSize()));
 }
 
 template <class T>
@@ -228,14 +256,14 @@ unsigned int Arc::ArrayList<T>::merge( LinkedList<T> list )
     typename LinkedList<T>::ConstIterator it;
     for (it = list.cbegin(); it != list.cend(); ++it)
         add(*it);
-    return list.size();
+    return list.getSize();
 }
 
 template <class T>
 unsigned int Arc::ArrayList<T>::merge( Queue<T> list )
 {
     unsigned int count;
-    while ( ! list.empty())
+    while ( ! list.isEmpty())
     {
         add(list.pop());
         count++;
@@ -246,7 +274,7 @@ unsigned int Arc::ArrayList<T>::merge( Queue<T> list )
 template <class T>
 T* Arc::ArrayList<T>::toArray( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     T* other = new T[length];
 
     int index = 0;
@@ -259,7 +287,7 @@ T* Arc::ArrayList<T>::toArray( unsigned int& length )
 template <class T>
 Arc::LinkedList<T> Arc::ArrayList<T>::toLinkedList( unsigned int& length )
 {
-    length = size();
+    length = getSize();
     LinkedList<T> other;
 
     for (Iterator it = begin(); it != end(); ++it)

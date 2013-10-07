@@ -1,24 +1,24 @@
 #include "ResourceManager.h"
 
-ResourceManager::ResourceManager(void)
+ResourceManager::ResourceManager( void )
+	: _textureList(),
+	  _spriteList(),
+	  _animationList(),
+	  _soundList()
 {
 }
 
-void ResourceManager::init( void )
+ResourceManager::~ResourceManager( void )
 {
-	_textureList   = ArrayList<Texture*>();
-	_spriteList    = ArrayList<Sprite*>();
-	_animationList = ArrayList<Animation*>();
-}
-
-void ResourceManager::term( void )
-{
-	while ( ! _textureList.empty())
+	while ( ! _textureList.isEmpty())
 		delete _textureList.popBack();
 
-	while ( ! _spriteList.empty())
+	while ( ! _spriteList.isEmpty())
 		delete _spriteList.popBack();
 
-	while ( ! _animationList.empty())
+	while ( ! _animationList.isEmpty())
 		delete _animationList.popBack();
+
+	while ( ! _soundList.isEmpty())
+		delete _soundList.popBack();
 }

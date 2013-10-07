@@ -21,10 +21,10 @@ Arc::EventDispatcher::~EventDispatcher( void )
 
 void Arc::EventDispatcher::addEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
-    if ( ! _eventMap.contains(eventType))
+    if ( ! _eventMap.containsKey(eventType))
         _eventMap[eventType] = EventListenerList();
 
-    int length = _eventMap[eventType].size();
+    int length = _eventMap[eventType].getSize();
 
     for(int i = 0; i < length; ++i)
     {
@@ -39,10 +39,10 @@ void Arc::EventDispatcher::addEventListener( const EventType& eventType, const E
 
 void Arc::EventDispatcher::removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate )
 {
-    if ( ! _eventMap.contains(eventType))
+    if ( ! _eventMap.containsKey(eventType))
         return;
 
-    int length = _eventMap[eventType].size();
+    int length = _eventMap[eventType].getSize();
 
     for(int i = 0; i < length; ++i)
     {
@@ -76,7 +76,7 @@ void Arc::EventDispatcher::removeAllListeners( void )
     int length;
     for (mapIt = _eventMap.begin(); mapIt != _eventMap.end(); ++mapIt)
     {
-        length = mapIt->second.size();
+        length = mapIt->second.getSize();
         for (int i = 0; i < length; ++i)
         {
             if (mapIt->second[i] != nullptr)
@@ -92,10 +92,10 @@ void Arc::EventDispatcher::removeAllListeners( void )
 
 void Arc::EventDispatcher::removeAllListeners( const EventType& eventType )
 {
-    if ( ! _eventMap.contains(eventType))
+    if ( ! _eventMap.containsKey(eventType))
         return;
 
-    int length = _eventMap[eventType].size();
+    int length = _eventMap[eventType].getSize();
     for(int i = 0; i < length; ++i)
     {
         if ( _eventMap[eventType][i] != nullptr )
@@ -105,7 +105,7 @@ void Arc::EventDispatcher::removeAllListeners( const EventType& eventType )
         }
     }
 
-    _eventMap.remove(eventType);
+    _eventMap.removeKey(eventType);
 
     _changed = true;
 }
@@ -114,14 +114,14 @@ void Arc::EventDispatcher::dispatchEvent( const Event& event )
 {
     EventType type = event.getType();
 
-    if ( ! _eventMap.contains(type))
+    if ( ! _eventMap.containsKey(type))
         return;
 
     Event tmp = Event(event);
 
     tmp.setTarget(this);
 
-    unsigned int length = _eventMap[type].size();
+    unsigned int length = _eventMap[type].getSize();
     for(unsigned int i = 0; i < length; ++i)
     {
         if (_eventMap[type][i] != nullptr)
@@ -144,7 +144,7 @@ void Arc::EventDispatcher::cleanMap( void )
         for (mapIt = _eventMap.begin(); !needRepeat && mapIt != _eventMap.end(); ++mapIt)
         {
             list = &mapIt->second;
-            for (unsigned int i = 0; !needRepeat && i < list->size(); ++i)
+            for (unsigned int i = 0; !needRepeat && i < list->getSize(); ++i)
             {
                 if (list->at(i) == nullptr)
                 {

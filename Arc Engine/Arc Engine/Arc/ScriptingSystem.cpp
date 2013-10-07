@@ -4,8 +4,10 @@
 
 Arc::ScriptingSystem::ScriptingSystem( void )
 {
+	// Create the lua state 
     _pLuaState = luaL_newstate();
 
+	// Initialize lua's libraries
     luaL_openlibs(_pLuaState);
 
     registerFunctions();

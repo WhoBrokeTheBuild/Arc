@@ -13,6 +13,8 @@ namespace Arc
     class RenderTarget;
     class RenderedText;
 
+	/** A TTF font with a font size.
+	  */
     class Font :
         public ManagedObject
     {
@@ -22,15 +24,19 @@ namespace Arc
 
     private:
 
+		// Filename of the font, used during a graphics reset
         string
-            _filename;
+            _filename; 
 
+		// SDL TTF_Font struct
         TTF_Font
-            *_pFont;
+            *_pFont; 
 
+		// Size of the text 
         int
-            _fontSize;
+            _fontSize; 
 
+		// Get the SDL TTF_Font struct
         virtual TTF_Font* SDLFont( void ) const { return _pFont; }
 
     public:
@@ -42,6 +48,7 @@ namespace Arc
 
         virtual int getFontSize( void ) const { return _fontSize; }
 
+		// Get the width and height of the texture if the text was rendered using the font and size
         virtual Size measureString( string text );
 
     }; // class Font

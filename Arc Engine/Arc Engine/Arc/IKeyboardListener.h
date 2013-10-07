@@ -8,6 +8,8 @@
 
 namespace Arc
 {
+	/** Interface for listening to keyboard events
+	  */
     class IKeyboardListener
     {
     public:

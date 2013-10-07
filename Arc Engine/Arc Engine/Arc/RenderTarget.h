@@ -55,6 +55,7 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Render Target"; }
 
+		// Clear the screen and reset OpenGL
         virtual void beginDraw( void ) const;
 		virtual inline void endDraw  ( void ) const { SDL_GL_SwapBuffers(); }
 

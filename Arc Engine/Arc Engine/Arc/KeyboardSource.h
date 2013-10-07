@@ -12,18 +12,30 @@
 
 namespace Arc
 {
+	class InputSystem;
+
+	/** Class for managing keyboard input and dispatching events
+	  */
     class KeyboardSource :
         public EventDispatcher
-    {
+	{
+
+		friend class InputSystem;
+
     private:
 
+		// SDL managed array of key states
         uint8_t
             *_sdlKeys;
 
     protected:
 
+		// Map of keys to their states (up, down, pressed, released)
         Map<KeyboardKey, InputState>
-            _keyStates;
+			_keyStates;
+
+		// Function for reading input only available through SDL Events
+		virtual void handleSDLEvent( SDL_Event sdlEvent );
 
     public:
 

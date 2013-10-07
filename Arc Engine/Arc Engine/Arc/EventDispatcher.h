@@ -27,7 +27,7 @@ namespace Arc
             _eventMap;
 
         bool
-            _changed;
+            _changed; 
 
         static ArrayList<EventDispatcher*>
             _sDispatchers;
@@ -43,12 +43,15 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Event Dispatcher"; }
 
+		// Add or remove an event listener with a pre-made EventDelegate
         void addEventListener   ( const EventType& eventType, const EventDelegate& functionDelegate );
         void removeEventListener( const EventType& eventType, const EventDelegate& functionDelegate );
 
+		// Add or remove an event with a static function callback
         void addEventListener   ( const EventType& eventType, void (*function)(const Event&));
         void removeEventListener( const EventType& eventType, void (*function)(const Event&));
 
+		// Add or remove an event listener with a method function callback
         template <typename ObjectType, typename Method>
         void addEventListener( const EventType& eventType, ObjectType* object, Method method);
 
@@ -65,7 +68,7 @@ namespace Arc
 
         static void cleanEvents( void )
         {
-            int length = _sDispatchers.size();
+            int length = _sDispatchers.getSize();
             for (int i = 0; i < length; ++i)
                 _sDispatchers[i]->cleanMap();
         }

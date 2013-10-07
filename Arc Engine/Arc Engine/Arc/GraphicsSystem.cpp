@@ -12,6 +12,7 @@ Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color 
 {
     INFO(toString(), "Initializing");
 
+	// Set SDL/OpenGL constants
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE,           8);
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE,         8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE,          8);
@@ -28,12 +29,12 @@ Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color 
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,       1);
 
     setWindowTitle(_windowTitle);
-    resetVideoMode();
-    resetGL();
+    resetVideoMode(); // Create the window
+    resetGL(); // Initialize OpenGL
 
     _pRenderTarget = New RenderTarget(this);
 
-    if (TTF_Init() < 0)
+    if (TTF_Init() < 0) // Initialize the SDL TTF Addon for loading Fonts
     {
         ERROR(toString(), "Failed to initialize TTF Addon");
         die();
@@ -49,7 +50,7 @@ Arc::GraphicsSystem::~GraphicsSystem( void )
     delete _pRenderTarget;
 
     TTF_Quit();
-    SDL_Quit();
+    SDL_Quit(); // Cleanup SDL
 
     INFO(toString(), "Complete");
 }
@@ -91,6 +92,7 @@ void Arc::GraphicsSystem::setWindowIcon( string filename )
 
 void Arc::GraphicsSystem::resetGL( void )
 {
+	// Setup OpenGL for drawing 2D
     glViewport(0, 0, (int)_windowSize.X, (int)_windowSize.Y);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -99,21 +101,25 @@ void Arc::GraphicsSystem::resetGL( void )
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+	// Enable blending and set the blending function for scaling
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	// Clear the background to the clear color
     glClearColor(_clearColor.fracR(), _clearColor.fracG(), _clearColor.fracB(), _clearColor.fracA());
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapBuffers();
 
     GLenum error = glGetError();
 
+	// Handle any errors
     if (error != GL_NO_ERROR)
     {
         ERRORF(toString(), "Failed to initialize OpenGL (%s)", gluErrorString(error));
         die();
     }
 
+	// Tell any textures or fonts to reload their data
     gpEventDispatcher->dispatchEvent(Event(EVENT_GRAPHICS_RESET));
 }
 
@@ -121,6 +127,7 @@ void Arc::GraphicsSystem::resetVideoMode( void )
 {
     unsigned int flags = 0;
 
+	// Query current video capabilities
     const SDL_VideoInfo* info = SDL_GetVideoInfo();
 
     if ( ! info)
@@ -129,6 +136,7 @@ void Arc::GraphicsSystem::resetVideoMode( void )
         die();
     }
 
+	// Set flags based on current video capabilities
     _screenBPP = info->vfmt->BitsPerPixel;
 
     flags |= SDL_OPENGL;
@@ -154,6 +162,7 @@ void Arc::GraphicsSystem::resetVideoMode( void )
         flags |= SDL_FULLSCREEN;
     }
 
+	// Initialize SDL with the requested video settings and handle errors
     if (SDL_SetVideoMode((int)_windowSize.X, (int)_windowSize.Y, _screenBPP, flags) == nullptr)
     {
         ERRORF(toString(), "Failed to set SDL video mode (%s)", SDL_GetError());

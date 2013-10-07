@@ -2,6 +2,7 @@
 #include "RenderTarget.h"
 #include "RenderedText.h"
 
+// Definitions for the predefined list of colors
 Arc::Color Arc::Color::BLACK             = Color(0,   0,   0);
 Arc::Color Arc::Color::WHITE             = Color(255, 255, 255);
 Arc::Color Arc::Color::RED               = Color(255, 0,   0);

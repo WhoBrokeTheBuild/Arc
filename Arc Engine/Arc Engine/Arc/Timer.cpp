@@ -58,17 +58,21 @@ double Arc::Timer::getElapsedMilli( void )
 {
 #ifdef WINDOWS
 
+	// Get the current time if the timer is still going
     if ( ! _stopped)
         QueryPerformanceCounter(&_endCount);
 
+	// Convert the start and end times into milliseconds
     _startTimeMillis = (_startCount.QuadPart * (MICRO / _freq.QuadPart)) * 0.001;
     _endTimeMillis   = (_endCount.QuadPart * (MICRO / _freq.QuadPart)) * 0.001;
 
 #else // LINUX
 
+	// Get the current time if the timer is still going
     if ( ! _stopped)
         gettimeofday(&_endCount, nullptr);
 
+	// Convert the start and end times into milliseconds
     _startTimeMillis = ((_startCount.tv_sec * MICRO) + _startCount.tv_usec) * 0.001;
     _endTimeMillis   = ((_endCount.tv_sec * MICRO) + _endCount.tv_usec) * 0.001;
 
@@ -77,7 +81,7 @@ double Arc::Timer::getElapsedMilli( void )
     return _endTimeMillis - _startTimeMillis;
 }
 
-double Arc::Timer::getElapsed( void )
+double Arc::Timer::getElapsedSeconds( void )
 {
     return getElapsedMilli() / 1000.0;
 }
@@ -92,6 +96,7 @@ void Arc::Timer::sleepUntilElapsed( double millis )
         currentTime,
         lastTime;
 
+	// Calculate time necessary to sleep
     QueryPerformanceCounter(&currentTime);
     timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
 
@@ -101,13 +106,16 @@ void Arc::Timer::sleepUntilElapsed( double millis )
         currentTime,
         lastTime;
 
+	// Calculate time necessary to sleep
     gettimeofday(&currentTime, nullptr);
     timeToSleep = millis - calcDiffMillis(_startCount, currentTime);
 
 #endif // WINDOWS
 	
+	// Hack for preventing negative time to sleep
     timeToSleep = std::max(0.0, timeToSleep);
 
+	// Loop until the time to sleep has been exhausted
     while (timeToSleep > 0.0)
     {
         double timeElapsed;
@@ -131,10 +139,12 @@ void Arc::Timer::sleepUntilElapsed( double millis )
         {
 #ifdef WINDOWS
 
+			// Sleep for 10 milliseconds per loop
             Sleep(10);
 
 #else // LINUX
 
+			// Sleep for 10 milliseconds per loop
             usleep(10 * 1000);
 
 #endif // WINDOWS

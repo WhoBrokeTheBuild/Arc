@@ -19,26 +19,32 @@ TestApp::TestApp( void )
 	_pFont = New Font("assets/ds-digital.ttf", 20);
 	_pFPSText = New RenderedText("0", _pFont);
 
-	_texts.add(New RenderedText("Start", _pFont))
-		 ->add(New RenderedText("Options", _pFont))
-		 ->add(New RenderedText("Controls", _pFont))
-		 ->add(New RenderedText("Save", _pFont))
-		 ->add(New RenderedText("Load", _pFont))
-		 ->add(New RenderedText("Quit", _pFont));
+	_pRootMenu = New SpinMenu(Point(250.0f), _pFont);
+	_pCurrMenu = _pRootMenu;
 
-	float size = 360.0f / (float)_texts.size();
+	SpinMenu* optionsMenu = New SpinMenu(Point(250.0f), _pFont);
 
-	for (int i = 0; i < _texts.size(); ++i)
-	{
-		_rots.add(Angle(90.0f + i * size, ANGLE_TYPE_DEG));
-	}
+	_pRootMenu->addItem("Start");
+	_pRootMenu->addItem("Options", MenuActions::MENU_ACT_MENU, optionsMenu);
+	_pRootMenu->addItem("Save");
+	_pRootMenu->addItem("Load");
+	_pRootMenu->addItem("Quit", MenuActions::MENU_ACT_EXIT);
 
-	_optionIndex = 0;
-	_toMove = 0.0f;
-	_turnSpeed = 3.0f;
+	optionsMenu->addItem("Something");
+	optionsMenu->addItem("Back", MenuActions::MENU_ACT_MENU, _pRootMenu);
+
+	optionsMenu->setParentMenu(_pRootMenu);
+
+	_pRootMenu->activate();
 
     pScene = New Scene();
 	pResourceManager = New ResourceManager();
+
+	pResourceManager->addSound(New Sound("assets/menu-moved.wav"));
+	pResourceManager->addSound(New Sound("assets/menu-selected.wav"));
+
+	pScene->addUnit(_pRootMenu, 0);
+	pScene->addUnit(optionsMenu, 0);
 }
 
 TestApp::~TestApp( void )
@@ -49,30 +55,11 @@ TestApp::~TestApp( void )
 
     delete _pFont;
     delete _pFPSText;
-
-	while ( ! _texts.empty())
-		delete _texts.popBack();
 }
 
 void TestApp::update( const Event& event )
 {
     const FrameData* data = event.dataAs<FrameData>();
-
-	if (between(_toMove, -_turnSpeed, _turnSpeed))
-	{
-		for (unsigned int i = 0; i < _rots.size(); ++i)
-			_rots[i] += Angle(_toMove, ANGLE_TYPE_DEG);
-
-		_toMove = 0.0f;
-	}
-	else
-	{
-		for (unsigned int i = 0; i < _rots.size(); ++i)
-			_rots[i] += Angle(_turnSpeed * sign(_toMove), ANGLE_TYPE_DEG);
-
-		_toMove -= _turnSpeed * sign(_toMove);
-
-	}
 	
     stringstream ss;
     ss.str(string());
@@ -84,19 +71,6 @@ void TestApp::render( const Event& event )
 {
     const RenderData* data = event.dataAs<RenderData>();
 	const RenderTarget* renderTarget = data->getRenderTarget();
-
-	for (unsigned int i = 0; i < _texts.size(); ++i)
-	{
-		float dist = abs((_rots[i] + Angle(270.0f, ANGLE_TYPE_DEG)).getDeg() - 180.0f) / 180.0f;
-
-		Vector2 backScale(1.1f), frontScale(2.0f);
-		Color backColor(Color::STORM), frontColor(61, 204, 139);
-
-		Vector2 scale = Vector2::lerp(backScale, frontScale, dist);
-		Color color = Color::lerp(backColor, frontColor, dist);
-
-		renderTarget->drawText(Point(250.0f, 250.0f) + Point(250.0f * _rots[i].getCos(), 30.0f * _rots[i].getSin()), _texts[i], color, Angle::ZERO, scale);
-	}
 }
 
 void TestApp::renderEnd( const Event& event )
@@ -111,35 +85,30 @@ void TestApp::keyPressed( const Event& event )
 {
     const KeyData* data = event.dataAs<KeyData>();
 
-	float size = 360.0f / (float)_rots.size();
-
 	switch (data->Key)
 	{
 	case KeyboardKey::KEY_LEFT:
 
-		_toMove -= size;
-		_optionIndex++;
-		if (_optionIndex >= _texts.size())
-			_optionIndex = 0;
+		pResourceManager->getSound(0)->play();
+		_pCurrMenu->tickLeft();
 
 		break;
 	case KeyboardKey::KEY_RIGHT:
 
-		_toMove += size;
-		_optionIndex--;
-		if (_optionIndex < 0)
-			_optionIndex = _texts.size() - 1;
+		pResourceManager->getSound(0)->play();
+		_pCurrMenu->tickRight();
 
 		break;
 	case KeyboardKey::KEY_ENTER:
 
-		switch (_optionIndex)
+		pResourceManager->getSound(1)->play();
+		SpinMenu* menu = _pCurrMenu->select();
+
+		if (menu != nullptr)
 		{
-		case 4:
-
-			gpEventDispatcher->dispatchEvent(Event(EVENT_EXIT));
-
-			break;
+			_pCurrMenu->deactivate();
+			_pCurrMenu = menu;
+			_pCurrMenu->activate();
 		}
 
 		break;

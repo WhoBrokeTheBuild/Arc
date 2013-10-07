@@ -10,6 +10,8 @@
 
 namespace Arc
 {
+	/** A class to represent either a static function callback or a method function callback.
+	  */
     template <typename ReturnType, typename Param = void>
     class Delegate
         : public ManagedObject

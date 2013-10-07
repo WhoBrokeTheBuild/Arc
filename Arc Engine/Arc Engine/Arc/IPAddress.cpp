@@ -12,7 +12,7 @@ Arc::IPAddress::IPAddress( string addr )
 {
     ArrayList<string> strQuads = strSplit(addr, '.', 4);
 
-    if (strQuads.size() < 4)
+    if (strQuads.getSize() < 4)
         _quads[0] = _quads[1] = _quads[2] = _quads[3] = 0;
 
     for (unsigned int i = 0; i < 4; ++i)

@@ -5,10 +5,8 @@ Arc::InputSystem::InputSystem( void )
 {
     INFO(toString(), "Initializing");
 
-    _pKeyboardSource = New KeyboardSource();
-
-    _pMouseSource = New MouseSource();
-
+    _pKeyboardSource  = New KeyboardSource();
+    _pMouseSource     = New MouseSource();
     _pTextInputSource = New TextInputSource();
 
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
@@ -33,6 +31,7 @@ void Arc::InputSystem::update( const Event& event )
 {
     SDL_Event sdlEvent;
 
+	// SDL Event Loop, without this the window won't respond
     while (SDL_PollEvent(&sdlEvent))
     {
         handleSDLEvent(sdlEvent);
@@ -43,10 +42,12 @@ void Arc::InputSystem::handleSDLEvent( SDL_Event sdlEvent )
 {
     switch (sdlEvent.type)
     {
-    case SDL_QUIT:
+    case SDL_QUIT: // Handle the SDL event when the window is closed
 
         gpEventDispatcher->dispatchEvent(Event(Program::EVENT_EXIT));
 
         break;
-    }
+	}
+	_pMouseSource->handleSDLEvent(sdlEvent);
+	_pKeyboardSource->handleSDLEvent(sdlEvent);
 }

@@ -18,13 +18,13 @@ Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 
 Arc::Unit::~Unit( void )
 {
-	while ( ! _componentsToAdd.empty())
+	while ( ! _componentsToAdd.isEmpty())
 		delete _componentsToAdd.popBack();
 
-	while ( ! _componentsToRemove.empty())
+	while ( ! _componentsToRemove.isEmpty())
 		delete _componentsToRemove.popBack();
 
-	while ( ! _components.empty())
+	while ( ! _components.isEmpty())
 		delete _components.popBack();
 }
 
@@ -52,14 +52,14 @@ void Arc::Unit::render( const Event& event )
 
 void Arc::Unit::updateComponents( const FrameData* data )
 {
-    while ( ! _componentsToAdd.empty())
+    while ( ! _componentsToAdd.isEmpty())
     {
         Component* cmp = _componentsToAdd.popFront();
         cmp->setUnit(this);
         _components.add(cmp);
     }
 
-    while ( ! _componentsToRemove.empty())
+    while ( ! _componentsToRemove.isEmpty())
 	{
 		Component* cmp = _componentsToRemove.popFront();
         _components.remove(cmp);

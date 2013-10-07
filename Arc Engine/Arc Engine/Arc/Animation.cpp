@@ -32,10 +32,10 @@ Arc::Sprite* Arc::Animation::getFrameAt( int frame )
 
 bool Arc::Animation::hasFrame( int frame )
 {
-    if (_frames.empty())
+    if (_frames.isEmpty())
         return false;
 
-    return between(frame, 0, (int)_frames.size());
+    return between(frame, 0, (int)_frames.getSize());
 }
 
 void Arc::Animation::addFrame( Sprite* frame )

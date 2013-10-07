@@ -1,4 +1,5 @@
 #include "KeyboardSource.h"
+#include "InputSystem.h"
 #include "Program.h"
 
 const Arc::EventType Arc::KeyboardSource::EVENT_KEY_PRESSED  = "keyPressed";
@@ -24,23 +25,28 @@ Arc::KeyboardSource::~KeyboardSource( void )
 
 void Arc::KeyboardSource::update( const Event& event )
 {
+	// Get the current state of all keys
     _sdlKeys = SDL_GetKeyState(nullptr);
 
     bool down;
     KeyboardKey key;
     InputState *pState;
 
+	// Loop over all supported keys
     Map<KeyboardKey, InputState>::Iterator it;
     for (it = _keyStates.begin(); it != _keyStates.end(); ++it)
     {
         key    =  it->first;
         pState = &it->second;
 
+		// Get current state of the key
         down = (_sdlKeys[KeyToSDLKey(key)] == 1);
 
+		// Reset state values
         pState->Pressed  = false;
         pState->Released = false;
 
+		// Set other state values based on current and previous states
         if (down && !pState->Down)
         {
             pState->Pressed = true;
@@ -52,6 +58,7 @@ void Arc::KeyboardSource::update( const Event& event )
 
         pState->Down = down;
 
+		// Dispatch events based on state
         if (pState->Pressed)
         {
             gpEventDispatcher->dispatchEvent(Event(KeyboardSource::EVENT_KEY_PRESSED, KeyData(key)));
@@ -66,4 +73,9 @@ void Arc::KeyboardSource::update( const Event& event )
             gpEventDispatcher->dispatchEvent(Event(KeyboardSource::EVENT_KEY_HELD, KeyData(key)));
         }
     }
+}
+
+void Arc::KeyboardSource::handleSDLEvent( SDL_Event sdlEvent )
+{
+
 }

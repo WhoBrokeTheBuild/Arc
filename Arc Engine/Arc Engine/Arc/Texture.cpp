@@ -7,6 +7,8 @@
 Arc::Texture::Texture( string filename )
 {
     load(filename);
+
+	// Only attach the EVENT_GRAPHICS_RESET event if the texture was loaded from file
     gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
 }
 
@@ -18,6 +20,7 @@ Arc::Texture::Texture( SDL_Surface* pSurface )
 
 Arc::Texture::~Texture( void )
 {
+	// Only remove the EVENT_GRAPHICS_RESET event if the texture was loaded from file
 	if ( ! _generated)
 		gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
     deleteTexture();
@@ -34,6 +37,7 @@ void Arc::Texture::load( string filename )
 {
     _filename = filename;
 
+	// Load the texture from a file
     SDL_Surface *surface = IMG_Load(_filename.c_str());
 
     if ( ! surface)
@@ -46,9 +50,10 @@ void Arc::Texture::load( string filename )
 
 void Arc::Texture::load( SDL_Surface* pSurface )
 {
-    if (_texture != OPENGL_INVALID_TEXTURE)
-        glDeleteTextures(1, &_texture);
+	// Delete the previous texture if it exists
+    deleteTexture();
 
+	// Generate a new texture in OpenGL
     glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
     _texture = OPENGL_INVALID_TEXTURE;
     glGenTextures(1, &_texture);
@@ -65,8 +70,10 @@ void Arc::Texture::load( SDL_Surface* pSurface )
         mode = GL_RGBA;
     }
 
+	// Load the texture into OpenGL from the SDL_Surface
     glTexImage2D(GL_TEXTURE_2D, 0, 4, (int)_size.width(), (int)_size.height(), 0, mode, GL_UNSIGNED_BYTE, pSurface->pixels);
 
+	// Set OpenGL Filters to prevent blurring
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,      GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,      GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,  GL_LINEAR);
@@ -75,7 +82,7 @@ void Arc::Texture::load( SDL_Surface* pSurface )
 
 void Arc::Texture::graphicsReset( const Event& event )
 {
-    if (_filename != "" && _filename[0] != '<') // Prevent <generated>
+    if ( ! _generated)
     {
         deleteTexture();
         load(_filename);

@@ -1,32 +1,24 @@
 #include "Sound.h"
 
-Arc::Sound::Sound( void )
-{
-    _pChunk  = nullptr;
-    _channel = 0;
-}
-
 /*
     Supported Formats: .wav, .aiff, .mid, .ogg, .mp3, .flac
 */
-void Arc::Sound::init( string filename )
+Arc::Sound::Sound( string filename )
+	: _pChunk(nullptr),
+	  _channel(-1)
 {
-    _pChunk = Mix_LoadWAV(filename.c_str());
-    _channel = -1;
+	_pChunk = Mix_LoadWAV(filename.c_str());
 
-    if (_pChunk == nullptr)
-    {
-        stringstream ss;
-        ss << "Unable to load music (" << filename << ")";
-
-        ERROR(toString(), ss.str());
-        return;
-    }
+	if (_pChunk == nullptr)
+	{
+		ERRORF(toString(), "Unable to load sound (file: %s) error: %s", filename.c_str(), Mix_GetError());
+		return;
+	}
 }
 
-void Arc::Sound::term( void )
+Arc::Sound::~Sound( void )
 {
-    Mix_FreeChunk(_pChunk);
+	Mix_FreeChunk(_pChunk);
 }
 
 void Arc::Sound::update( const Event& event )
