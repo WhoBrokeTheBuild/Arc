@@ -16,7 +16,7 @@ bool Arc::CircleCollider::check( Point pos, Collider* pOther, Point otherPos )
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.containsCircle(newMask);
+        return newOtherMask.intersectsCircle(newMask);
     }
     else if (circleOther != nullptr)
     {
@@ -24,7 +24,7 @@ bool Arc::CircleCollider::check( Point pos, Collider* pOther, Point otherPos )
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.containsCircle(newMask);
+        return newOtherMask.intersectsCircle(newMask);
     }
 
     return false;
@@ -35,7 +35,7 @@ Arc::Point Arc::CircleCollider::getCollisionPoint( Point pos, Collider* pOther, 
     RectCollider*   rectOther   = dynamic_cast<RectCollider*>(pOther);
     CircleCollider* circleOther = dynamic_cast<CircleCollider*>(pOther);
 
-    Rect newMask = CircleMask.bounds();
+    Rect newMask = CircleMask.getBounds();
     newMask.X += pos.X;
     newMask.Y += pos.Y;
 
@@ -45,15 +45,15 @@ Arc::Point Arc::CircleCollider::getCollisionPoint( Point pos, Collider* pOther, 
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.intersect(newMask).center();
+        return newOtherMask.getIntersect(newMask).getCenter();
     }
     else if (circleOther != nullptr)
     {
-        Rect newOtherMask = circleOther->CircleMask.bounds();
+        Rect newOtherMask = circleOther->CircleMask.getBounds();
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.intersect(newMask).center();
+        return newOtherMask.getIntersect(newMask).getCenter();
     }
 
     return Point::ZERO;
@@ -61,6 +61,6 @@ Arc::Point Arc::CircleCollider::getCollisionPoint( Point pos, Collider* pOther, 
 
 void Arc::CircleCollider::render( const RenderTarget* renderTarget, Point pos, Vector2 origin /*= Vector2::ZERO*/ )
 {
-    renderTarget->drawCircle(Circle(CircleMask.pos() + pos, CircleMask.Radius), Color::GREEN, 0.0f, origin);
+    renderTarget->drawCircle(Circle(CircleMask.getPos() + pos, CircleMask.Radius), Color::GREEN, 0.0f, origin);
 }
 

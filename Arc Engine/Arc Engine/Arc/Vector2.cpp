@@ -131,28 +131,26 @@ bool Arc::Vector2::operator!=( const Vector2 &rhs ) const
     return !(*this == rhs);
 }
 
-Arc::Angle Arc::Vector2::angleTo( Vector2 other )
+float Arc::Vector2::getDistanceToSquared( const Vector2& other ) const
 {
-    return Angle(angleToRad(other), ANGLE_TYPE_RAD);
+	float 
+		dx = other.X - X,
+		dy = other.Y - Y;
+
+	return (dx * dx + dy * dy);
 }
 
-Arc::Vector2 Arc::Vector2::normLeft( const Vector2& other)
+Arc::Angle Arc::Vector2::getAngleTo( const Vector2& other ) const
 {
-	float dx = other.X - X;
-	float dy = other.Y - Y;
-
-	return Vector2(-dy, dx);
+	return Angle(getAngleToRad(other), ANGLE_TYPE_RAD);
 }
 
-Arc::Vector2 Arc::Vector2::normRright( const Vector2& other)
+void Arc::Vector2::normalize( void )
 {
-	float dx = other.X - X;
-	float dy = other.Y - Y;
-
-	return Vector2(dy, -dx);
-}
-
-float Arc::Vector2::dot( const Vector2& rhs )
-{
-	return (X * rhs.X) + (Y * rhs.Y);
+	float length = getLength();
+	if (length != 0)
+	{
+		X /= length;
+	    Y /= length;
+	}
 }

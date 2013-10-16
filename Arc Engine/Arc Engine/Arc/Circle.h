@@ -13,6 +13,8 @@ namespace Arc
 {
     class Rect;
 
+	/** A circle storing a Position and a Radius that is centered at its position
+	 */
     class Circle :
         public ManagedObject,
         public ISerializable
@@ -30,9 +32,27 @@ namespace Arc
             Y,
             Radius;
 
-        inline Circle( void ) { X = Y = Radius = 0.0f; }
-        Circle( float x, float y, float radius );
-        Circle( Point pos, float radius );
+		// Initialize an empty circle
+		inline Circle( void )
+			: X(0.0f),
+			  Y(0.0f), 
+			  Radius(0.0f)
+		{ }
+
+		// Initialize a circle with a x, y, and radius
+		inline Circle( float x, float y, float radius ) 
+			: X(x),
+			  Y(y),
+			  Radius(radius) 
+		{ }
+
+		// Initialize a circle with a position and a radius
+		inline Circle( Point pos, float radius ) 
+			: X(pos.X),
+			  Y(pos.Y), 
+			  Radius(radius) 
+		{ }
+
         virtual inline ~Circle( void ) { }
 
         virtual inline string toString( void ) const
@@ -45,23 +65,29 @@ namespace Arc
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 
-        inline Point pos ( void ) { return Point(X, Y); }
-        inline Point center( void ) { return Point(X + Radius, Y + Radius); }
+        inline Point getPos( void ) const { return Point(X, Y); }
 
-        inline float diameter( void ) { return Radius * 2.0f; }
+        inline float getDiameter( void ) const { return Radius * 2.0f; }
+		inline void  setDiameter( float diameter ) { Radius = diameter * 0.5f; }
 
-        inline float top   ( void ){ return Y; }
-        inline float bottom( void ){ return Y + diameter(); }
-        inline float left  ( void ){ return X; }
-        inline float right ( void ){ return X + diameter(); }
+		// Get the top Y location of the circle
+		inline float getTop   ( void ){ return Y - Radius; }
+		// Get the bottom Y location of the circle
+		inline float getBottom( void ){ return Y + Radius; }
+		// Get the left X location of the circle
+		inline float getLeft  ( void ){ return X - Radius; }
+		// Get the right X location of the circle
+        inline float getRight ( void ){ return X + Radius; }
 
-        Rect bounds( void );
+		// Get the bounding rectangle around the circle
+        virtual inline Rect getBounds( void ) { return Rect(getLeft(), getTop(), getDiameter(), getDiameter()); }
 
-        bool containsCircle(Circle other);
-        bool containsRect  (Rect   other);
-        bool containsPoint (Point  point);
+        virtual inline bool intersectsCircle(Circle other) { return (getPos().getDistanceTo(point) < Radius); }
+        virtual bool        intersectsRect  (Rect   other);
 
-    };
+        virtual bool containsPoint(Point  point);
+
+    }; // class Circle
 
     struct CompCircle
         : public std::binary_function<Circle, Circle, bool>
@@ -71,6 +97,7 @@ namespace Arc
             return lhs.X < rhs.X; // Simple Sorting
         }
     }; // struct CompRect
-}
 
-#endif
+} // namespace Arc
+
+#endif // __ARC_CIRCLE_H__

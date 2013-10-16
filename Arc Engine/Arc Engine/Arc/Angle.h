@@ -5,12 +5,15 @@
 
 #include "ManagedObject.h"
 #include "ISerializable.h"
+
 #include "Functions.h"
+#include "Vector2.h"
+#include <string>
+
+using std::string;
 
 namespace Arc
 {
-    class Vector2;
-
     enum AngleType
     {
         INVALID_ANGLE_TYPE = -1,
@@ -42,12 +45,13 @@ namespace Arc
         static const Angle
             ZERO,
             HALF_CIRCLE,
+			QUARTER_CIRCLE,
             UP,
             DOWN,
             LEFT,
             RIGHT;
 
-        Angle( void ) { _degrees = 0.0f; }
+        Angle( void ) : _degrees(0.0f) { }
 
         Angle( float value, AngleType type = ANGLE_TYPE_DEG )
         {
@@ -83,16 +87,16 @@ namespace Arc
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 
-        inline float getDeg( void ) const { return _degrees; }
-        inline float getRad( void ) const { return toRad(_degrees); }
+        virtual inline float getDeg( void ) const { return _degrees; }
+        virtual inline float getRad( void ) const { return toRad(_degrees); }
 
-        void setDeg( float value );
-        inline void setRad( float value ) { setDeg(toDeg(value)); }
+        virtual void setDeg( float value );
+        virtual inline void setRad( float value ) { setDeg(toDeg(value)); }
 
-        inline float getCos( void ) const { return cosf(getRad()); }
-        inline float getSin( void ) const { return sinf(getRad()); }
+        virtual inline float getCos( void ) const { return cosf(getRad()); }
+        virtual inline float getSin( void ) const { return sinf(getRad()); }
 
-        Vector2 getVector2( void ) const;
+		virtual Vector2 getVector2( void ) const { return Vector2(getCos(), getSin()); }
 
         inline void addAngle( float value, AngleType type ) { Angle other = Angle(value, type); *this += other; }
         inline void subAngle( float value, AngleType type ) { addAngle(-value, type); }

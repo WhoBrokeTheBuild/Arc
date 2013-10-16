@@ -90,3 +90,5 @@
 /Arc Testing/Debug/*.obj
 /Arc Testing/Debug/*.obj
 /Arc Testing/Debug/*.obj
+
+/Arc Engine/*.tss

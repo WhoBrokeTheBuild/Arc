@@ -52,19 +52,19 @@ namespace Arc
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 
-        inline float length( void ) { return A.distanceTo(B); }
+        inline float length( void ) { return A.getDistanceTo(B); }
 
-        inline float angleAtoBDeg( void ) { return A.angleToDeg(B); }
-        inline float angleBtoADeg( void ) { return B.angleToDeg(A); }
+        inline float angleAtoBDeg( void ) { return A.getAngleToDeg(B); }
+        inline float angleBtoADeg( void ) { return B.getAngleToDeg(A); }
 
-        inline float angleAtoBRad( void ) { return A.angleToRad(B); }
-        inline float angleBtoARad( void ) { return B.angleToRad(A); }
+        inline float angleAtoBRad( void ) { return A.getAngleToRad(B); }
+        inline float angleBtoARad( void ) { return B.getAngleToRad(A); }
 
         inline Angle angleAtoB( void );
         inline Angle angleBtoA( void );
 
-        inline Point lerp   ( float fraction ) { return A.lerp(B, fraction); }
-        inline Point lerpRev( float fraction ) { return B.lerp(A, fraction); }
+        inline Point lerp   ( float fraction ) { return Vector2::lerp(A, B, fraction); }
+        inline Point lerpRev( float fraction ) { return Vector2::lerp(B, A, fraction); }
 
         Line& operator= ( const Line& rhs );
 

@@ -14,7 +14,7 @@ Arc::Size Arc::Animation::getFrameSize( int frame )
 {
     if (hasFrame(frame))
     {
-		return getFrameAt(frame)->getSourceRect().size();
+		return getFrameAt(frame)->getSourceRect().getSize();
     }
 
     return Size::ZERO;

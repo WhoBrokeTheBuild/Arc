@@ -100,12 +100,12 @@ void Arc::RenderTarget::draw( const float x, const float y, const Texture* pText
     glBegin(GL_QUADS);
 
     Size texSize = pTexture->getSize();
-    Rect convSrcRect = Rect(sourceRect.left() / texSize.width(), sourceRect.top() / texSize.height(), sourceRect.Width / texSize.width(), sourceRect.Height / texSize.height());
+    Rect convSrcRect = Rect(sourceRect.getLeft() / texSize.getWidth(), sourceRect.getTop() / texSize.getHeight(), sourceRect.Width / texSize.getWidth(), sourceRect.Height / texSize.getHeight());
 
-	glTexCoord2d(convSrcRect.left(),    convSrcRect.top());     glVertex2f(0.0f,						0.0f);
-	glTexCoord2d(convSrcRect.right(),   convSrcRect.top());     glVertex2f(sourceRect.Width * scale.X,  0.0f);
-	glTexCoord2d(convSrcRect.right(),   convSrcRect.bottom());  glVertex2f(sourceRect.Width * scale.X,  sourceRect.Height * scale.Y);
-	glTexCoord2d(convSrcRect.left(),    convSrcRect.bottom());  glVertex2f(0.0f,						sourceRect.Height * scale.Y);
+	glTexCoord2d(convSrcRect.getLeft(),    convSrcRect.getTop());     glVertex2f(0.0f,						0.0f);
+	glTexCoord2d(convSrcRect.getRight(),   convSrcRect.getTop());     glVertex2f(sourceRect.Width * scale.X,  0.0f);
+	glTexCoord2d(convSrcRect.getRight(),   convSrcRect.getBottom());  glVertex2f(sourceRect.Width * scale.X,  sourceRect.Height * scale.Y);
+	glTexCoord2d(convSrcRect.getLeft(),    convSrcRect.getBottom());  glVertex2f(0.0f,						sourceRect.Height * scale.Y);
 
     glEnd();
 

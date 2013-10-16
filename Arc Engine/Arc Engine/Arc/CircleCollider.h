@@ -24,7 +24,7 @@ namespace Arc
 
         virtual bool check( Point pos, Collider* pOther, Point otherPos );
         virtual Point getCollisionPoint( Point pos, Collider* pOther, Point otherPos );
-        virtual Point center( void ) { return CircleMask.center(); }
+        virtual Point center( void ) { return CircleMask.getCenter(); }
 
         virtual inline string toString( void ) const { return "Circle Collider"; }
 

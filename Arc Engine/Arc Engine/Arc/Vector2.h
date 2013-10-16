@@ -12,17 +12,21 @@ namespace Arc
     class Vector2;
     class Angle;
 
+	// Aliases for different uses
     typedef Vector2 Point;
     typedef Vector2 Size;
 
+	/** A two-part vector.
+	  */
     class Vector2
         : public ManagedObject,
           public ISerializable
     {
     public:
 
+		// Predefined constants
         static Vector2
-            ZERO,
+            ZERO, 
             ONE,
             NEGATIVE_ONE;
 
@@ -30,9 +34,22 @@ namespace Arc
             X,
             Y;
 
-        inline Vector2( void ) { X = Y = 0.0f; }
-		inline Vector2( float both ) { X = Y = both; }
-        inline Vector2( float x, float y ) { X = x; Y = y; }
+		// Initialize a vector of zeros
+        inline Vector2( void ) 
+			: X(0.0f), 
+			  Y(0.0f) 
+		{ }
+
+		// Initialize both X and Y to the same value
+		inline Vector2( float both ) 
+			: X(both),
+			  Y(both)
+		{ }
+
+        inline Vector2( float x, float y )
+			: X(x),
+			  Y(y) 
+		{ }
 
         virtual inline ~Vector2( void ) { }
 
@@ -43,11 +60,13 @@ namespace Arc
             return ss.str();
         }
 
+		// Generate a random Vector2 based on the min and max values
 		inline static Vector2 rand( float minX, float minY, float maxX, float maxY )
 		{
 			return Vector2(randFloat(minX, maxX), randFloat(minY, maxY));
 		}
 
+		// Lerp between the start and end vectors by the fraction amount
 		inline static Vector2 lerp( const Vector2& start, const Vector2& end, float fraction )
 		{
 			return Vector2(lerpNumber(start.X, end.X, fraction), lerpNumber(start.Y, end.Y, fraction));
@@ -56,39 +75,37 @@ namespace Arc
         virtual int serialize( ostream &stream );
         virtual int deserialize( istream &stream );
 
-        inline float distanceToSquared( Vector2 other )
-        {
-            float dx = other.X - X,
-                  dy = other.Y - Y;
+		// Get the distance to another point
+		virtual inline float getDistanceTo( const Vector2& other ) const { return sqrt(getDistanceToSquared(other)); }
+		// Get the distance to another point squared
+        virtual float getDistanceToSquared( const Vector2& other ) const;
 
-            return (dx * dx + dy * dy);
-        }
+		// Get the length of the vector
+		virtual inline float getLength( void ) const { return sqrt(getLengthSquared()); }
+		// Get the length of the vector squared
+		virtual inline float getLengthSquared( void ) const { return (X * X) + (Y * Y); }
 
-        inline float angleToRad( Vector2 other )
-        {
-            float dx = other.X - X,
-                  dy = other.Y - Y;
+		// Get the angle of the direction to the other point
+		virtual Angle getAngleTo( const Vector2& other ) const;
+		// Get the angle of the direction to the other point in radians
+		virtual inline float getAngleToRad( const Vector2& other ) const { return atan2(other.Y - Y, other.X - X); }
+		// Get the angle of the direction to the other point in degrees
+		virtual inline float getAngleToDeg( const Vector2& other ) const  { return toDeg(getAngleToRad(other)); }
 
-            return atan2(dy, dx);
-        }
+		// Get the dot product of this and the other vector
+		inline float getDot( const Vector2& rhs ) const { return (X * rhs.X) + (Y * rhs.Y); }
+		// Normalizes the vector and stores the new values in X and Y
+		virtual void normalize( void );
 
-        inline float distanceTo( Vector2 other ) { return sqrt(distanceToSquared(other)); }
-        inline float angleToDeg( Vector2 other ) { return toDeg(angleToRad(other)); }
+        virtual inline float getHalfX( void ) const { return (X * 0.5f); }
+        virtual inline float getHalfY( void ) const { return (Y * 0.5f); }
 
-        Angle angleTo( Vector2 other );
+		// Functions to treat X and Y as Width and Height for Size
 
-        float halfX( void ) { return (X * 0.5f); }
-        float halfY( void ) { return (Y * 0.5f); }
-
-        inline float width ( void ) { return X; }
-        inline float height( void ) { return Y; }
-        inline float halfWidth ( void ) { return halfX(); }
-        inline float halfHeight( void ) { return halfY(); }
-
-        Vector2 lerp      ( const Vector2& other, float fraction );
-		Vector2 normLeft  ( const Vector2& other );
-		Vector2 normRright( const Vector2& other );
-		float   dot       ( const Vector2& rhs );
+        virtual inline float getWidth ( void ) const { return X; }
+        virtual inline float getHeight( void ) const { return Y; }
+        virtual inline float getHalfWidth ( void ) const { return getHalfX(); }
+        virtual inline float getHalfHeight( void ) const { return getHalfY(); }
 
         const Vector2 operator+( const Vector2& rhs ) const;
 		const Vector2 operator-( const Vector2& rhs ) const;

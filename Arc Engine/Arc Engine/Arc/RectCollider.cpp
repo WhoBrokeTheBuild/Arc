@@ -16,7 +16,7 @@ bool Arc::RectCollider::check( Point pos, Collider* pOther, Point otherPos )
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.containsRect(newMask);
+        return newOtherMask.intersectsRect(newMask);
     }
     else if (circleOther != nullptr)
     {
@@ -24,7 +24,7 @@ bool Arc::RectCollider::check( Point pos, Collider* pOther, Point otherPos )
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.containsRect(newMask);
+        return newOtherMask.intersectsRect(newMask);
     }
 
     return false;
@@ -45,15 +45,15 @@ Arc::Point Arc::RectCollider::getCollisionPoint( Point pos, Collider* pOther, Po
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.intersect(newMask).center();
+        return newOtherMask.getIntersect(newMask).getCenter();
     }
     else if (circleOther != nullptr)
     {
-        Rect newOtherMask = circleOther->CircleMask.bounds();
+        Rect newOtherMask = circleOther->CircleMask.getBounds();
         newOtherMask.X += otherPos.X;
         newOtherMask.Y += otherPos.Y;
 
-        return newOtherMask.intersect(newMask).center();
+        return newOtherMask.getIntersect(newMask).getCenter();
     }
 
     return Point::ZERO;
@@ -61,6 +61,6 @@ Arc::Point Arc::RectCollider::getCollisionPoint( Point pos, Collider* pOther, Po
 
 void Arc::RectCollider::render( const RenderTarget* renderTarget, Point pos, Vector2 origin /*= Vector2::ZERO*/ )
 {
-    renderTarget->drawRect(Rect(RectMask.pos() + pos, RectMask.size()), Color::GREEN, 0.0f, origin);
+    renderTarget->drawRect(Rect(RectMask.getPos() + pos, RectMask.getSize()), Color::GREEN, 0.0f, origin);
 }
 

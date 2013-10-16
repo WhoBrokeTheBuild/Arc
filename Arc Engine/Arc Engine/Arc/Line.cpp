@@ -43,10 +43,10 @@ bool Arc::Line::operator!=( const Line &rhs ) const
 
 Arc::Angle Arc::Line::angleAtoB( void )
 {
-    return A.angleTo(B);
+    return A.getAngleTo(B);
 }
 
 Arc::Angle Arc::Line::angleBtoA( void )
 {
-    return B.angleTo(A);
+    return B.getAngleTo(A);
 }

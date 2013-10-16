@@ -38,42 +38,42 @@ void Arc::DrawableComponent::calcOriginLocation( void )
 		break;
 	case ORIGIN_LOCATION_TOP_RIGHT:
 
-		_origin = Vector2(size.width(), 0);
+		_origin = Vector2(size.getWidth(), 0);
 
 		break;
 	case ORIGIN_LOCATION_BOTTOM_LEFT:
 
-		_origin = Vector2(0, size.height());
+		_origin = Vector2(0, size.getHeight());
 
 		break;
 	case ORIGIN_LOCATION_BOTTOM_RIGHT:
 
-		_origin = Vector2(size.width(), size.height());
+		_origin = Vector2(size.getWidth(), size.getHeight());
 
 		break;
 	case ORIGIN_LOCATION_CENTER:
 
-		_origin = Vector2(size.halfWidth(), size.halfHeight());
+		_origin = Vector2(size.getHalfWidth(), size.getHalfHeight());
 
 		break;
 	case ORIGIN_LOCATION_TOP_CENTER:
 
-		_origin = Vector2(size.halfWidth(), 0);
+		_origin = Vector2(size.getHalfWidth(), 0);
 
 		break;
 	case ORIGIN_LOCATION_BOTTOM_CENTER:
 
-		_origin = Vector2(size.halfWidth(), size.height());
+		_origin = Vector2(size.getHalfWidth(), size.getHeight());
 
 		break;
 	case ORIGIN_LOCATION_LEFT_CENTER:
 
-		_origin = Vector2(0, size.halfHeight());
+		_origin = Vector2(0, size.getHalfHeight());
 
 		break;
 	case ORIGIN_LOCATION_RIGHT_CENTER:
 
-		_origin = Vector2(size.width(), size.halfHeight());
+		_origin = Vector2(size.getWidth(), size.getHalfHeight());
 
 		break;
 	default:

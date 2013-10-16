@@ -71,7 +71,7 @@ void Arc::Texture::load( SDL_Surface* pSurface )
     }
 
 	// Load the texture into OpenGL from the SDL_Surface
-    glTexImage2D(GL_TEXTURE_2D, 0, 4, (int)_size.width(), (int)_size.height(), 0, mode, GL_UNSIGNED_BYTE, pSurface->pixels);
+    glTexImage2D(GL_TEXTURE_2D, 0, 4, (int)_size.getWidth(), (int)_size.getHeight(), 0, mode, GL_UNSIGNED_BYTE, pSurface->pixels);
 
 	// Set OpenGL Filters to prevent blurring
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,      GL_REPEAT);
