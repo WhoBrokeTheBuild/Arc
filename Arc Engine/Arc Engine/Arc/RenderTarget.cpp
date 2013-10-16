@@ -178,3 +178,69 @@ void Arc::RenderTarget::fillRect( const Rect rect, const Color color /*= Color::
 
     glPopMatrix();
 }
+
+void Arc::RenderTarget::drawTriangle( const Vector2 pointA, const Vector2 pointB, const Vector2 pointC, const Color color /*= Color::WHITE*/ ) const
+{
+	glPushMatrix();
+
+	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+
+	glBegin(GL_LINE_LOOP);
+
+	glVertex2f(pointA.X, pointA.Y);
+	glVertex2f(pointB.X, pointB.Y);
+	glVertex2f(pointC.X, pointC.Y);
+
+	glEnd();
+
+	glPopMatrix();
+}
+
+void Arc::RenderTarget::fillTriangle( const Vector2 pointA, const Vector2 pointB, const Vector2 pointC, const Color color /*= Color::WHITE*/ ) const
+{
+	glPushMatrix();
+
+	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+
+	glBegin(GL_POLYGON);
+
+	glVertex2f(pointA.X, pointA.Y);
+	glVertex2f(pointB.X, pointB.Y);
+	glVertex2f(pointC.X, pointC.Y);
+
+	glEnd();
+
+	glPopMatrix();
+}
+
+void Arc::RenderTarget::drawPolygon( const ArrayList<Point> points, const Color color /*= Color::WHITE */ ) const
+{
+	glPushMatrix();
+
+	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+
+	glBegin(GL_LINE_LOOP);
+
+	for (unsigned int i = 0; i < points.getSize(); ++i)
+		glVertex2f(points[i].X, points[i].Y);
+
+	glEnd();
+
+	glPopMatrix();
+}
+
+void Arc::RenderTarget::fillPolygon( const ArrayList<Point> points, const Color color /*= Color::WHITE */ ) const
+{
+	glPushMatrix();
+
+	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+
+	glBegin(GL_POLYGON);
+
+	for (unsigned int i = 0; i < points.getSize(); ++i)
+		glVertex2f(points[i].X, points[i].Y);
+
+	glEnd();
+
+	glPopMatrix();
+}

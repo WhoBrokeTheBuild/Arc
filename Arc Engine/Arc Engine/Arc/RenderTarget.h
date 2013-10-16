@@ -375,6 +375,20 @@ namespace Arc
 			fillShape(x, y, radius, 1.5, color, rotation, scale, origin);
 		}
 
+		virtual void drawTriangle(
+			const Vector2 pointA,
+			const Vector2 pointB,
+			const Vector2 pointC,
+			const Color color = Color::WHITE
+			) const;
+
+		virtual void fillTriangle(
+			const Vector2 pointA,
+			const Vector2 pointB,
+			const Vector2 pointC,
+			const Color color = Color::WHITE
+			) const;
+
         virtual inline void drawPentagon( 
 			const Vector2 pos,
 			const float radius,
@@ -474,6 +488,16 @@ namespace Arc
 		{
 			fillShape(x, y, radius, 3, color, rotation, scale, origin);
 		}
+
+		virtual void drawPolygon(
+			const ArrayList<Point> points,
+			const Color color = Color::WHITE
+			) const;
+
+		virtual void fillPolygon(
+			const ArrayList<Point> points,
+			const Color color = Color::WHITE
+			) const;
 
     }; // class RenderTarget
 
