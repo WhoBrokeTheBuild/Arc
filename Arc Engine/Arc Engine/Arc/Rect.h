@@ -119,9 +119,8 @@ namespace Arc
         inline Point getBottomLeftPoint ( void ) const { return Point(getBottom(), getLeft());  }
         inline Point getBottomRightPoint( void ) const { return Point(getBottom(), getRight()); }
 
-        virtual bool        intersectsRect  ( Rect other ) const;
-        virtual inline bool intersectsCircle( Circle other ) const { return other.intersectsRect(*this); }
-
+        virtual bool intersectsRect  ( Rect   other ) const;
+        virtual bool intersectsCircle( Circle other ) const;
         virtual bool containsPoint( Point point ) const;
 
 		// Return the rectangle with no negative values

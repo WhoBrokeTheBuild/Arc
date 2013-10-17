@@ -71,21 +71,20 @@ namespace Arc
 		inline void  setDiameter( float diameter ) { Radius = diameter * 0.5f; }
 
 		// Get the top Y location of the circle
-		inline float getTop   ( void ){ return Y - Radius; }
+		inline float getTop   ( void ) const { return Y - Radius; }
 		// Get the bottom Y location of the circle
-		inline float getBottom( void ){ return Y + Radius; }
+		inline float getBottom( void ) const { return Y + Radius; }
 		// Get the left X location of the circle
-		inline float getLeft  ( void ){ return X - Radius; }
+		inline float getLeft  ( void ) const { return X - Radius; }
 		// Get the right X location of the circle
-        inline float getRight ( void ){ return X + Radius; }
+        inline float getRight ( void ) const { return X + Radius; }
 
 		// Get the bounding rectangle around the circle
-        virtual inline Rect getBounds( void ) { return Rect(getLeft(), getTop(), getDiameter(), getDiameter()); }
+        virtual Rect getBounds( void ) const;
 
-        virtual inline bool intersectsCircle(Circle other) { return (getPos().getDistanceTo(point) < Radius); }
-        virtual bool        intersectsRect  (Rect   other);
-
-        virtual bool containsPoint(Point  point);
+        virtual bool intersectsCircle(Circle other) const;
+        virtual bool intersectsRect  (Rect   other) const;
+        virtual bool containsPoint(Point  point) const;
 
     }; // class Circle
 

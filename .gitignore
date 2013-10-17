@@ -92,3 +92,4 @@
 /Arc Testing/Debug/*.obj
 
 /Arc Engine/*.tss
+/Arc Engine/Arc Engine/Arc/Release/*.obj

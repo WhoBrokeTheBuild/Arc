@@ -55,6 +55,11 @@ bool Arc::Rect::intersectsRect( Rect other ) const
     return true;
 }
 
+bool Arc::Rect::intersectsCircle( Circle other ) const
+{
+	return other.intersectsRect(*this); 
+}
+
 bool Arc::Rect::containsPoint( Point point ) const
 {
 	Rect normal = getPositiveRect();

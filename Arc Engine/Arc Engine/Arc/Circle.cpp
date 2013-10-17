@@ -26,14 +26,14 @@ int Arc::Circle::deserialize( istream &stream )
     return bytes;
 }
 
-bool Arc::Circle::intersectsCircle( Circle other )
+bool Arc::Circle::intersectsCircle( Circle other ) const
 {
     float dist = getPos().getDistanceTo(other.getPos());
 
     return (dist < Radius + other.Radius);
 }
 
-bool Arc::Circle::intersectsRect( Rect rect ) //TODO: Test this later when primitives are implemented
+bool Arc::Circle::intersectsRect( Rect rect ) const //TODO: Test this later when primitives are implemented
 {
     if ( ! rect.intersectsRect(getBounds()))
         return false;
@@ -43,15 +43,15 @@ bool Arc::Circle::intersectsRect( Rect rect ) //TODO: Test this later when primi
     float
         halfWidth  = rect.getHalfWidth(),
         halfHeight = rect.getHalfHeight(),
-        dx = abs(getCenter().X - rectCenter.X),
-        dy = abs(getCenter().Y - rectCenter.Y);
+        dx = abs(X - rectCenter.X),
+        dy = abs(Y - rectCenter.Y);
 
     if (dx > (Radius + halfWidth) || dy > (Radius + halfHeight))
     {
         return false;
     }
 
-    Size circleDist = Size(abs(getCenter().X - rect.X - halfWidth), abs(getCenter().Y - rect.Y - halfHeight));
+    Size circleDist = Size(abs(X - rect.X - halfWidth), abs(Y - rect.Y - halfHeight));
 
     if (circleDist.X <= halfWidth)
     {
@@ -66,4 +66,14 @@ bool Arc::Circle::intersectsRect( Rect rect ) //TODO: Test this later when primi
     float cornerDistSquared = pow(circleDist.X - halfWidth, 2) + pow(circleDist.Y - halfHeight, 2);
 
     return (cornerDistSquared <= (pow(Radius, 2)));
+}
+
+bool Arc::Circle::containsPoint( Point point ) const
+{
+    return (getPos().getDistanceTo(point) < Radius);
+}
+
+Arc::Rect Arc::Circle::getBounds( void ) const
+{
+	return Rect(getLeft(), getTop(), getDiameter(), getDiameter());
 }
