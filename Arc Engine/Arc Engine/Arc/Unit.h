@@ -90,26 +90,26 @@ namespace Arc
 		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture,
 															Point offset = Point::ZERO,
 															Point origin = Point::ZERO, 
-															Vector2 scale = Vector2::ZERO,
+															Vector2 scale = Vector2::ONE,
 															Angle rotation = Angle::ZERO,
 															Color blendColor = Color::WHITE );
 
 		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture, 
 															Point offset = Point::ZERO,
 															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, 
-															Vector2 scale = Vector2::ZERO,
+															Vector2 scale = Vector2::ONE,
 															Angle rotation = Angle::ZERO,
 															Color blendColor = Color::WHITE );
 
 		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO,
 															Point origin = Point::ZERO,
-															Vector2 scale = Vector2::ZERO, 
+															Vector2 scale = Vector2::ONE, 
 															Angle rotation = Angle::ZERO,
 															Color blendColor = Color::WHITE );
 
 		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO,
 															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, 
-															Vector2 scale = Vector2::ZERO,
+															Vector2 scale = Vector2::ONE,
 															Angle rotation = Angle::ZERO, 
 															Color blendColor = Color::WHITE );
 
@@ -119,7 +119,7 @@ namespace Arc
 															string text, 
 															Point offset = Point::ZERO,
 															Point origin = Point::ZERO,
-															Vector2 scale = Vector2::ZERO, 
+															Vector2 scale = Vector2::ONE, 
 															Angle rotation = Angle::ZERO, 
 															Color blendColor = Color::WHITE );
 
@@ -127,7 +127,7 @@ namespace Arc
 															string text,
 															Point offset = Point::ZERO,
 															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
-															Vector2 scale = Vector2::ZERO, 
+															Vector2 scale = Vector2::ONE, 
 															Angle rotation = Angle::ZERO,
 															Color blendColor = Color::WHITE );
 

@@ -239,7 +239,7 @@ bool Arc::ArrayList<T>::contains( const T& item ) const
 template <class T>
 bool Arc::ArrayList<T>::hasIndex( const int& index ) const
 {
-    return (between(index, 0, (const int)getSize()));
+	return (between(index, 0, (const int)getSize() - 1));
 }
 
 template <class T>
