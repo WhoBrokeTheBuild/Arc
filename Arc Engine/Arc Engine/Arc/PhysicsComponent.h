@@ -15,12 +15,21 @@ namespace Arc
 
 	public:
 
+		static const ComponentType
+			CMP_TYPE_PHYSICS;
+
 		Vector2
 			Vel,
 			Acc;
 
-		PhysicsComponent( Unit* pUnit, Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO );
-		virtual inline ~PhysicsComponent( void );
+		PhysicsComponent( Unit* pUnit, Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO )
+			: Component(pUnit),
+			  Vel(vel),
+			  Acc(acc)
+		{
+		}
+
+		virtual inline ~PhysicsComponent( void ) { }
 
 		virtual inline string toString( void ) const { return "Physics Component"; }
 

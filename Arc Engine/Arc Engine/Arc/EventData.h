@@ -104,18 +104,18 @@ namespace Arc
         {
         }
 
-		FrameData( double totalMillis, double elapsedMillis, double deltaTime )
+		FrameData( double totalMillis, double elapsedMillis, double deltaTime, double currFPS = 0.0, double targetFPS = 0.0 )
 			: _totalMilliseconds(totalMillis),
 			_elapsedMilliseconds(elapsedMillis),
 			_deltaTime(deltaTime),
-			_currentFPS(),
-			_targetFPS()
+			_currentFPS(currFPS),
+			_targetFPS(targetFPS)
         {
         }
 
         virtual inline string toString( void ) const { return "Frame Data"; }
 
-        virtual EventData* clone( void ) const { return New FrameData(_totalMilliseconds, _elapsedMilliseconds, _deltaTime); }
+        virtual inline EventData* clone( void ) const { return New FrameData(_totalMilliseconds, _elapsedMilliseconds, _deltaTime, _currentFPS, _targetFPS); }
 
         inline void update(double elapsedMillis, double currFPS, double targetFPS)
         {
@@ -136,7 +136,7 @@ namespace Arc
         double getDeltaTime( void ) const { return _deltaTime; }
 
         double getCurrentFPS( void ) const { return _currentFPS; }
-        double getTargetFPS( void ) const { return _currentFPS; }
+        double getTargetFPS( void ) const { return _targetFPS; }
 
     }; // class FrameData
 

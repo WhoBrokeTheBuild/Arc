@@ -1,12 +1,6 @@
 #include "Unit.h"
 #include "Component.h"
 
-#include "PhysicsComponent.h"
-#include "ImageComponent.h"
-#include "ShapeComponent.h"
-#include "AnimatedComponent.h"
-#include "TextComponent.h"
-
 Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
 	  _pos(pos),
@@ -28,26 +22,22 @@ Arc::Unit::~Unit( void )
 		delete _components.popBack();
 }
 
-void Arc::Unit::update( const Event& event )
+void Arc::Unit::update( const FrameData* pData )
 {
-    if ( ! isEnabled())
-        return;
+	if ( ! isEnabled())
+		return;
 
-    const FrameData* data = event.dataAs<FrameData>();
-
-    updateComponents(data);
-    update(data);
+	updateComponents(pData);
+	update(pData);
 }
 
-void Arc::Unit::render( const Event& event )
+void Arc::Unit::render( const RenderData* pData )
 {
-    if ( ! isVisible())
-        return;
+	if ( ! isVisible())
+		return;
 
-    const RenderData* data = event.dataAs<RenderData>();
-
-    renderComponents(data);
-    render(data);
+	renderComponents(pData);
+	render(pData);
 }
 
 void Arc::Unit::updateComponents( const FrameData* data )
@@ -100,179 +90,86 @@ bool Arc::Unit::removeComponent( Component* component )
     return true;
 }
 
-Arc::PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, Vector2 acc /*= Vector2::ZERO*/ )
+Arc::PhysicsComponent* Arc::Unit::addNewPhysicsComponent( Vector2 vel /*= Vector2::ZERO*/, 
+														  Vector2 acc /*= Vector2::ZERO*/ )
 {
     PhysicsComponent* cmp = New PhysicsComponent(this, vel, acc);
     addComponent(cmp);
     return cmp;
 }
 
-Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
+Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, 
+												      Color blendColor /*= Color::WHITE*/, 
+												      Origin origin /*= Origin::ZERO*/, 
+												      Vector2 scale /*= Vector2::ONE*/,
+												      Angle rotation /*= Angle::ZERO*/, 
+												      Point offset /*= Point::ZERO */ )
 {
-    ImageComponent* cmp = New ImageComponent(this, pTexture, offset, origin, scale, rotation, blendColor);
-    addComponent(cmp);
-    return cmp;
-}
-
-Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture, Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
-{
-	ImageComponent* cmp = New ImageComponent(this, pTexture, offset, originLocation, scale, rotation, blendColor);
+	ImageComponent* cmp = New ImageComponent(this, pTexture, blendColor, origin, scale, rotation, offset);
 	addComponent(cmp);
 	return cmp;
 }
 
-Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
+Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Color blendColor /*= Color::WHITE*/,
+												      Origin origin /*= Origin::ZERO*/, 
+												      Vector2 scale /*= Vector2::ONE*/, 
+												      Angle rotation /*= Angle::ZERO*/, 
+												      Point offset /*= Point::ZERO */ )
 {
-    ShapeComponent* cmp = New ShapeComponent(this, offset, origin, scale, rotation, blendColor);
-    addComponent(cmp);
-    return cmp;
-}
-
-Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
-{
-	ShapeComponent* cmp = New ShapeComponent(this, offset, originLocation, scale, rotation, blendColor);
+	ShapeComponent* cmp = New ShapeComponent(this, blendColor, origin, scale, rotation, offset);
 	addComponent(cmp);
 	return cmp;
 }
 
-Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( void )
+Arc::AnimatedComponent* Arc::Unit::addNewAnimatedComponent( Animation* pAnimation, 
+															Color blendColor /*= Color::WHITE*/, 
+															Origin origin /*= Origin::ZERO*/, 
+															Vector2 scale /*= Vector2::ONE*/,
+															Angle rotation /*= Angle::ZERO*/,
+															Point offset /*= Point::ZERO */ )
 {
-    AnimatedComponent* cmp = New AnimatedComponent(this);
-    addComponent(cmp);
-    return cmp;
-}
-
-Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, string text, Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
-{
-    TextComponent* cmp = New TextComponent(this, pFont, text, offset, origin, scale, rotation, blendColor);
-    addComponent(cmp);
-    return cmp;
-}
-
-Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, string text, Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ZERO*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
-{
-	TextComponent* cmp = New TextComponent(this, pFont, text, offset, originLocation, scale, rotation, blendColor);
+	AnimatedComponent* cmp = New AnimatedComponent(this, pAnimation, blendColor, origin, scale, rotation, offset);
 	addComponent(cmp);
 	return cmp;
 }
 
-Arc::PhysicsComponent* Arc::Unit::getFirstPhysicsComponent( void )
+Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont, 
+													string text,
+													Color blendColor /*= Color::WHITE*/, 
+													Origin origin /*= Origin::ZERO*/,
+													Vector2 scale /*= Vector2::ONE*/, 
+													Angle rotation /*= Angle::ZERO*/,
+													Point offset /*= Point::ZERO*/ )
 {
-	PhysicsComponent* tmp;
-	{
-		auto end = _components.end();
-		for (auto it = _components.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<PhysicsComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	{
-		auto end = _componentsToAdd.end();
-		for (auto it = _componentsToAdd.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<PhysicsComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	return nullptr;
+	TextComponent* cmp = New TextComponent(this, pFont, text, blendColor, origin, scale, rotation, offset);
+	addComponent(cmp);
+	return cmp;
 }
 
-Arc::ImageComponent* Arc::Unit::getFirstImageComponent( void )
+bool Arc::Unit::hasComponentOfType( ComponentType type )
 {
-	ImageComponent* tmp;
+	Component* cmp;
+	auto end = _components.end();
+	for (auto it = _components.begin(); it != end; ++it)
 	{
-		auto end = _components.end();
-		for (auto it = _components.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<ImageComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
+		cmp = (*it);
+		if (cmp->getTypes().contains(type))
+			return true;
 	}
-	{
-		auto end = _componentsToAdd.end();
-		for (auto it = _componentsToAdd.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<ImageComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	return nullptr;
+
+	return false;
 }
 
-Arc::ShapeComponent* Arc::Unit::getFirstShapeComponent( void )
+Arc::Component* Arc::Unit::getFirstComponentOfType( ComponentType type )
 {
-	ShapeComponent* tmp;
+	Component* cmp;
+	auto end = _components.end();
+	for (auto it = _components.begin(); it != end; ++it)
 	{
-		auto end = _components.end();
-		for (auto it = _components.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<ShapeComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
+		cmp = (*it);
+		if (cmp->getTypes().contains(type))
+			return cmp;
 	}
-	{
-		auto end = _componentsToAdd.end();
-		for (auto it = _componentsToAdd.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<ShapeComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
+
 	return nullptr;
 }
-
-Arc::AnimatedComponent* Arc::Unit::getFirstAnimatedComponent( void )
-{
-	AnimatedComponent* tmp;
-	{
-		auto end = _components.end();
-		for (auto it = _components.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<AnimatedComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	{
-		auto end = _componentsToAdd.end();
-		for (auto it = _componentsToAdd.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<AnimatedComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	return nullptr;
-}
-
-Arc::TextComponent* Arc::Unit::getFirstTextComponent( void )
-{
-	TextComponent* tmp;
-	{
-		auto end = _components.end();
-		for (auto it = _components.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<TextComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	{
-		auto end = _componentsToAdd.end();
-		for (auto it = _componentsToAdd.begin(); it != end; ++it)
-		{
-			tmp = dynamic_cast<TextComponent*>(*it);
-			if (tmp != nullptr)
-				return tmp;
-		}
-	}
-	return nullptr;
-}
-

@@ -16,30 +16,30 @@ Arc::Layer::Layer( Scene* scene )
 
 Arc::Layer::~Layer( void )
 {
-    removeEventListener(EVENT_LAYER_CHANGED, this, &Layer::layerChanged);
-    removeAllUnits();
+	removeEventListener(EVENT_LAYER_CHANGED, this, &Layer::layerChanged);
+
+	while ( ! _units.isEmpty())
+		delete _units.popBack();
 }
 
-void Arc::Layer::update( const Event& event )
+void Arc::Layer::update( const FrameData* pData )
 {
     if ( ! Enabled )
 		return;
 
-    for (unsigned int i = 0; i < _units.getSize(); ++i)
-    {
-        _units[i]->update(event);
-    }
+	auto end = _units.end();
+	for (auto it = _units.begin(); it != end; ++it)
+		(*it)->update(pData);
 }
 
-void Arc::Layer::render( const Event& event )
+void Arc::Layer::render( const RenderData* pData )
 {
     if ( ! Visible)
 		return;
 
-    for (unsigned int i = 0; i < _units.getSize(); ++i)
-    {
-        _units[i]->render(event);
-    }
+	auto end = _units.end();
+    for (auto it = _units.begin(); it != end; ++it)
+        (*it)->render(pData);
 }
 
 void Arc::Layer::layerChanged( const Event& event )
@@ -106,11 +106,8 @@ unsigned int Arc::Layer::removeAllUnits( void )
 {
     unsigned int size = _units.getSize();
 
-    for (unsigned int i = 0; i < size; ++i)
-    {
-        delete _units[i];
-    }
-    _units.clear();
+	while ( ! _units.isEmpty())
+		delete _units.popBack();
 
     return size;
 }

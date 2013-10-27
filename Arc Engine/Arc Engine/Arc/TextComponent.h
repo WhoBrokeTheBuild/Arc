@@ -19,23 +19,25 @@ namespace Arc
 			*_pRenderedText;
 
 	public:
+
+		static const ComponentType
+			CMP_TYPE_TEXT;
 		
-		TextComponent( Unit *pUnit,
-			           Font *pFont, 
-			           string text = "",
-			           Point offset = Point::ZERO,
-			           Point origin = Point::ZERO,
-			           Vector2 scale = Vector2::ONE,
-			           Angle rotation = Angle::ZERO,
-			           Color blendColor = Color::WHITE );
-		TextComponent( Unit *pUnit,
-					   Font *pFont,
-					   string text = "", 
-					   Point offset = Point::ZERO,
-					   OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
-					   Vector2 scale = Vector2::ONE,
-					   Angle rotation = Angle::ZERO,
-					   Color blendColor = Color::WHITE );
+		inline TextComponent( Unit *pUnit,
+			                  Font *pFont, 
+					          string text = "",
+					          Color blendColor = Color::WHITE,
+					          Origin origin = Origin::ZERO,
+					          Vector2 scale = Vector2::ONE, 
+					          Angle rotation = Angle::ZERO,
+					          Point offset = Point::ZERO )
+			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
+			  _pRenderedText(nullptr)
+		{
+			_pRenderedText = New RenderedText(text, pFont);
+			setOriginSize(getSize());
+		}
+
 		virtual ~TextComponent( void );
 
 		virtual inline string toString( void ) const { return "Drawable Component"; }

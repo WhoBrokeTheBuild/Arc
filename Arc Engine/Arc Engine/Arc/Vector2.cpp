@@ -131,6 +131,26 @@ bool Arc::Vector2::operator!=( const Vector2 &rhs ) const
     return !(*this == rhs);
 }
 
+bool Arc::Vector2::operator<( const Vector2& rhs ) const
+{
+	return (X < rhs.X && Y < rhs.Y);
+}
+
+bool Arc::Vector2::operator>( const Vector2& rhs ) const
+{
+	return (X > rhs.X && Y > rhs.Y);
+}
+
+bool Arc::Vector2::operator<=( const Vector2& rhs ) const
+{
+	return (X <= rhs.X && Y <= rhs.Y);
+}
+
+bool Arc::Vector2::operator>=( const Vector2& rhs ) const
+{
+	return (X >= rhs.X && Y >= rhs.Y);
+}
+
 float Arc::Vector2::getDistanceToSquared( const Vector2& other ) const
 {
 	float 

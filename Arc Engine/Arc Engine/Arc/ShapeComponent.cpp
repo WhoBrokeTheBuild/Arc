@@ -1,20 +1,7 @@
 #include "ShapeComponent.h"
 #include "Unit.h"
 
-Arc::ShapeComponent::ShapeComponent( Unit* pUnit, Point offset /*= Point::ZERO*/, Point origin /*= Point::ZERO */, Vector2 scale /*= Vector2::ONE*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
-    : DrawableComponent(pUnit, offset, origin, scale, rotation, blendColor)
-{
-}
-
-Arc::ShapeComponent::ShapeComponent( Unit* pUnit, Point offset /*= Point::ZERO*/, OriginLocation originLocation /*= OriginLocation::ORIGIN_LOCATION_TOP_LEFT*/, Vector2 scale /*= Vector2::ONE*/, Angle rotation /*= Angle::ZERO*/, Color blendColor /*= Color::WHITE*/ )
-	: DrawableComponent(pUnit, offset, originLocation, scale, rotation, blendColor)
-{
-	calcOriginLocation();
-}
-
-Arc::ShapeComponent::~ShapeComponent( void )
-{
-}
+const ComponentType Arc::ShapeComponent::CMP_TYPE_SHAPE = "shape";
 
 void Arc::ShapeComponent::render( const RenderData* data )
 {

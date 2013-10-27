@@ -20,6 +20,7 @@
     <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="IPAddress.cpp" />
     <ClCompile Include="NetworkSystem.cpp" />
+    <ClCompile Include="Origin.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="RenderedText.cpp" />
     <ClCompile Include="Circle.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="IPAddress.h" />
     <ClInclude Include="ISerializable.h" />
     <ClInclude Include="NetworkSystem.h" />
+    <ClInclude Include="Origin.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="RenderedText.h" />
     <ClInclude Include="Callbacks.h" />
@@ -188,7 +190,6 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../../Libraries/SDL/include/;../../../Libraries/lua/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -206,7 +207,6 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../../../Libraries/SDL/include;../../../Libraries/lua/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

@@ -27,6 +27,32 @@ TestApp::TestApp( void )
 	gpResourceManager->addSound(New Sound("assets/menu-moved.wav"));
 	gpResourceManager->addSound(New Sound("assets/menu-selected.wav"));
 
+	Texture *texAnim = New Texture("assets/testanim.png");
+	gpResourceManager->addTexture(texAnim);
+	Animation *anim = New Animation(100);
+	gpResourceManager->addAnimation(anim);
+	Sprite *sprite;
+	
+	sprite = New Sprite(texAnim, Rect(0, 0, 128, 128));
+	anim->addFrame(sprite);
+	gpResourceManager->addSprite(sprite);
+
+	sprite = New Sprite(texAnim, Rect(128, 0, 128, 128));
+	anim->addFrame(sprite);
+	gpResourceManager->addSprite(sprite);
+
+	sprite = New Sprite(texAnim, Rect(256, 0, 128, 128));
+	anim->addFrame(sprite);
+	gpResourceManager->addSprite(sprite);
+
+	sprite = New Sprite(texAnim, Rect(382, 0, 128, 128));
+	anim->addFrame(sprite);
+	gpResourceManager->addSprite(sprite);
+
+	Unit *testUnit = New Unit(Point(20, 20));
+	testUnit->addNewAnimatedComponent(anim);
+	pScene->addUnit(testUnit, 0);
+
 	SpinMenu *menu = New SpinMenu(Point(250.0f), _pFont);
 	MenuLevel *mainLevel = New MenuLevel(menu, _pFont);
 	MenuLevel *optionsLevel = New MenuLevel(menu, _pFont);
@@ -75,6 +101,8 @@ TestApp::~TestApp( void )
 void TestApp::update( const Event& event )
 {
     const FrameData* data = event.dataAs<FrameData>();
+
+	pScene->update(event);
 	
     stringstream ss;
     ss.str(string());
@@ -86,6 +114,8 @@ void TestApp::render( const Event& event )
 {
     const RenderData* data = event.dataAs<RenderData>();
 	const RenderTarget* renderTarget = data->getRenderTarget();
+
+	pScene->render(event);
 }
 
 void TestApp::renderEnd( const Event& event )

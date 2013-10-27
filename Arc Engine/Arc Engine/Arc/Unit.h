@@ -9,15 +9,17 @@
 #include "OriginLocation.h"
 #include "Layer.h"
 #include "Scene.h"
+#include "Origin.h"
+
+#include "PhysicsComponent.h"
+#include "ImageComponent.h"
+#include "ShapeComponent.h"
+#include "AnimatedComponent.h"
+#include "TextComponent.h"
 
 namespace Arc
 {
 	class Component;
-	class PhysicsComponent;
-	class ImageComponent;
-	class ShapeComponent;
-	class AnimatedComponent;
-	class TextComponent;
 
     class Unit :
         public EventDispatcher
@@ -57,11 +59,8 @@ namespace Arc
         Unit( Vector2 pos, float depth = 0.0f );
         virtual ~Unit( void );
 
-        virtual void update( const Event& event );
-        virtual void render( const Event& event );
-
-        virtual void update( const FrameData* data )  { };
-        virtual void render( const RenderData* data ) { };
+        virtual void update( const FrameData* pData );;
+        virtual void render( const RenderData* pData );;
 		
 		virtual inline bool isEnabled( void ) const { return _enabled; }
 		virtual inline bool isVisible( void ) const { return _visible; }
@@ -83,89 +82,72 @@ namespace Arc
 
 		virtual bool addComponent   ( Component* component );
 		virtual bool removeComponent( Component* component );
+
 		virtual inline bool hasComponent( Component* component ) { return _components.contains(component); }
 
-		virtual PhysicsComponent*  addNewPhysicsComponent ( Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO );
+		virtual PhysicsComponent*  addNewPhysicsComponent ( Vector2 vel = Vector2::ZERO,  
+															Vector2 acc = Vector2::ZERO );
 
 		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture,
-															Point offset = Point::ZERO,
-															Point origin = Point::ZERO, 
-															Vector2 scale = Vector2::ONE,
-															Angle rotation = Angle::ZERO,
-															Color blendColor = Color::WHITE );
+															Color blendColor = Color::WHITE,
+			                                                Origin origin = Origin::ZERO,
+			                                                Vector2 scale = Vector2::ONE, 
+			                                                Angle rotation = Angle::ZERO,
+															Point offset = Point::ZERO );
 
-		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture, 
-															Point offset = Point::ZERO,
-															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, 
-															Vector2 scale = Vector2::ONE,
-															Angle rotation = Angle::ZERO,
-															Color blendColor = Color::WHITE );
+		virtual ShapeComponent*    addNewShapeComponent   ( Color blendColor = Color::WHITE,
+			                                                Origin origin = Origin::ZERO,
+			                                                Vector2 scale = Vector2::ONE, 
+			                                                Angle rotation = Angle::ZERO,
+															Point offset = Point::ZERO );
 
-		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO,
-															Point origin = Point::ZERO,
-															Vector2 scale = Vector2::ONE, 
-															Angle rotation = Angle::ZERO,
-															Color blendColor = Color::WHITE );
-
-		virtual ShapeComponent*    addNewShapeComponent   ( Point offset = Point::ZERO,
-															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT, 
-															Vector2 scale = Vector2::ONE,
-															Angle rotation = Angle::ZERO, 
-															Color blendColor = Color::WHITE );
-
-		virtual AnimatedComponent* addNewAnimatedComponent( void );
-
-		virtual TextComponent*     addNewTextComponent    ( Font *pFont,
-															string text, 
-															Point offset = Point::ZERO,
-															Point origin = Point::ZERO,
-															Vector2 scale = Vector2::ONE, 
-															Angle rotation = Angle::ZERO, 
-															Color blendColor = Color::WHITE );
+		virtual AnimatedComponent* addNewAnimatedComponent( Animation* pAnimation,
+														    Color blendColor = Color::WHITE,
+			                                                Origin origin = Origin::ZERO,
+			                                                Vector2 scale = Vector2::ONE, 
+			                                                Angle rotation = Angle::ZERO,
+															Point offset = Point::ZERO );
 
 		virtual TextComponent*     addNewTextComponent    ( Font *pFont,
 															string text,
-															Point offset = Point::ZERO,
-															OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
-															Vector2 scale = Vector2::ONE, 
+															Color blendColor = Color::WHITE,
+															Origin origin = Origin::ZERO,
+															Vector2 scale = Vector2::ONE,
 															Angle rotation = Angle::ZERO,
-															Color blendColor = Color::WHITE );
+															Point offset = Point::ZERO);
+
+		virtual bool hasComponentOfType( ComponentType type );
+		virtual Component* getFirstComponentOfType( ComponentType type );
+
+		template <typename T>
+		ArrayList<T*> getComponentsOfType( ComponentType type )
+		{
+			ArrayList<T*> cmpList = ArrayList<T*>();
+
+			auto end = _components.end();
+			for (auto it = _components.begin(); it != end; ++it)
+			{
+				Component* cmp = (*it);
+				if (cmp->getTypes().contains(type))
+					cmpList.add((T*)cmp);
+			}
+
+			return cmpList;
+		}
 
 		virtual Component*         getFirstComponent        ( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
-		virtual PhysicsComponent*  getFirstPhysicsComponent ( void );
-		virtual ImageComponent*    getFirstImageComponent   ( void );
-		virtual ShapeComponent*    getFirstShapeComponent   ( void );
-		virtual AnimatedComponent* getFirstAnimatedComponent( void );
-		virtual TextComponent*     getFirstTextComponent    ( void );
+		virtual PhysicsComponent*  getFirstPhysicsComponent ( void ) { return (PhysicsComponent*) getFirstComponentOfType(PhysicsComponent::CMP_TYPE_PHYSICS); }
+		virtual ImageComponent*    getFirstImageComponent   ( void ) { return (ImageComponent*)   getFirstComponentOfType(ImageComponent::CMP_TYPE_IMAGE); }
+		virtual ShapeComponent*    getFirstShapeComponent   ( void ) { return (ShapeComponent*)   getFirstComponentOfType(ShapeComponent::CMP_TYPE_SHAPE); }
+		virtual AnimatedComponent* getFirstAnimatedComponent( void ) { return (AnimatedComponent*)getFirstComponentOfType(AnimatedComponent::CMP_TYPE_ANIMATED); }
+		virtual TextComponent*     getFirstTextComponent    ( void ) { return (TextComponent*)    getFirstComponentOfType(TextComponent::CMP_TYPE_TEXT); }
 
-		template <class T>
-		ArrayList<T*> getComponentListAs( void )
-		{
-			ArrayList<T*> list = ArrayList<T*>();
-
-			for (auto it = _components.begin(); it != _components.end(); ++it)
-			{
-				Component* cmp = (*it);
-				T* newCmp = dynamic_cast<T*>(cmp);
-				if (newCmp != nullptr)
-					list.add(newCmp);
-			}
-
-			return list;
-		}
-
-		template <class T>
-		T* getFirstComponenAs( void )
-		{
-			for (auto it = _components.begin(); it != _components.end(); ++it)
-			{
-				Component* cmp = (*it);
-				T* newCmp = dynamic_cast<T*>(cmp);
-				if (newCmp != nullptr)
-					return newCmp;
-			}
-			return nullptr;
-		}
+		virtual ArrayList<Component*>         getComponents        ( void ) { return _components; }
+		virtual ArrayList<PhysicsComponent*>  getPhysicsComponents ( void ) { return getComponentsOfType<PhysicsComponent>(PhysicsComponent::CMP_TYPE_PHYSICS); }
+		virtual ArrayList<ImageComponent*>    getImageComponents   ( void ) { return getComponentsOfType<ImageComponent>(ImageComponent::CMP_TYPE_IMAGE); }
+		virtual ArrayList<ShapeComponent*>    getShapeComponents   ( void ) { return getComponentsOfType<ShapeComponent>(ShapeComponent::CMP_TYPE_SHAPE); }
+		virtual ArrayList<AnimatedComponent*> getAnimatedComponents( void ) { return getComponentsOfType<AnimatedComponent>(AnimatedComponent::CMP_TYPE_ANIMATED); }
+		virtual ArrayList<TextComponent*>     getTextComponents    ( void ) { return getComponentsOfType<TextComponent>(TextComponent::CMP_TYPE_TEXT); }
 
     }; // class Unit
 

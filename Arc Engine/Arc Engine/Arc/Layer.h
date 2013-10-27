@@ -44,8 +44,8 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Layer"; }
 
-        virtual void update( const Event& event );
-        virtual void render( const Event& event );
+        virtual void update( const FrameData* pData );
+        virtual void render( const RenderData* pData );
 
         virtual void layerChanged( const Event& event );
 

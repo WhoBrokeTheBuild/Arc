@@ -38,8 +38,10 @@ namespace Arc
 
     public:
 
-        typedef typename vector<T>::iterator       Iterator;
-        typedef typename vector<T>::const_iterator ConstIterator;
+        typedef typename vector<T>::iterator               Iterator;
+		typedef typename vector<T>::reverse_iterator       ReverseIterator;
+        typedef typename vector<T>::const_iterator         ConstIterator;
+		typedef typename vector<T>::const_reverse_iterator ConstReverseIterator;
 
         inline ArrayList ( void )
 			: _list(),
@@ -61,13 +63,13 @@ namespace Arc
 
         inline Iterator begin ( void ) { return _list.begin(); }
         inline Iterator end   ( void ) { return _list.end(); }
-        inline Iterator rbegin( void ) { return _list.rbegin(); }
-        inline Iterator rend  ( void ) { return _list.rend(); }
+        inline ReverseIterator rbegin( void ) { return _list.rbegin(); }
+        inline ReverseIterator rend  ( void ) { return _list.rend(); }
 
         inline ConstIterator cbegin ( void ) const { return _list.cbegin(); }
         inline ConstIterator cend   ( void ) const { return _list.cend(); }
-        inline ConstIterator crbegin( void ) const { return _list.crbegin(); }
-        inline ConstIterator crend  ( void ) const { return _list.crend(); }
+        inline ConstReverseIterator crbegin( void ) const { return _list.crbegin(); }
+        inline ConstReverseIterator crend  ( void ) const { return _list.crend(); }
 
         ArrayList<T>* add        ( const T& item );
         ArrayList<T>* insertAt   ( const T& item, const int& index );
@@ -224,6 +226,7 @@ template <class T>
 Arc::ArrayList<T>* Arc::ArrayList<T>::clear( void )
 {
     _list.clear();
+	updateSize();
     return this;
 }
 
@@ -245,9 +248,10 @@ bool Arc::ArrayList<T>::hasIndex( const int& index ) const
 template <class T>
 unsigned int Arc::ArrayList<T>::merge( ArrayList<T> list )
 {
-    for (unsigned int i = 0; i < list.size(); ++i)
+    for (unsigned int i = 0; i < list.getSize(); ++i)
         add(list[i]);
-    return list.size();
+	updateSize();
+    return getSize();
 }
 
 template <class T>
@@ -255,8 +259,9 @@ unsigned int Arc::ArrayList<T>::merge( LinkedList<T> list )
 {
     typename LinkedList<T>::ConstIterator it;
     for (it = list.cbegin(); it != list.cend(); ++it)
-        add(*it);
-    return list.getSize();
+		add(*it);
+	updateSize();
+    return getSize();
 }
 
 template <class T>
@@ -267,7 +272,8 @@ unsigned int Arc::ArrayList<T>::merge( Queue<T> list )
     {
         add(list.pop());
         count++;
-    }
+	}
+	updateSize();
     return count;
 }
 

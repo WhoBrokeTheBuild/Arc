@@ -28,8 +28,9 @@ namespace Arc
 
     public:
 
-        Animation( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), double speed = -1.0 );
-        virtual ~Animation( void );
+		Animation( ArrayList<Sprite*> frames = ArrayList<Sprite*>(), double speed = -1.0 );
+		Animation( double speed );
+        virtual inline ~Animation( void ) { }
 
         virtual inline string toString( void ) const { return "Animation"; }
 

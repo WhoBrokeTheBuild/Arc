@@ -6,8 +6,11 @@ Arc::Animation::Animation( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
 {
 }
 
-Arc::Animation::~Animation( void )
+Arc::Animation::Animation( double speed )
+	: _frames(),
+	  _speed(speed)
 {
+
 }
 
 Arc::Size Arc::Animation::getFrameSize( int frame )

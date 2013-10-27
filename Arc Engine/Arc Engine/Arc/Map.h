@@ -41,8 +41,10 @@ namespace Arc
 
     public:
 
-        typedef typename map<K, T, Sort>::iterator       Iterator;
-        typedef typename map<K, T, Sort>::const_iterator ConstIterator;
+		typedef typename map<K, T, Sort>::iterator               Iterator;
+		typedef typename map<K, T, Sort>::reverse_iterator       ReverseIterator;
+		typedef typename map<K, T, Sort>::const_iterator         ConstIterator;
+		typedef typename map<K, T, Sort>::const_reverse_iterator ConstReverseIterator;
 
         typedef pair<K, T> Pair;
 
@@ -68,13 +70,13 @@ namespace Arc
 
         inline Iterator begin ( void ) { return _map.begin(); }
         inline Iterator end   ( void ) { return _map.end(); }
-        inline Iterator rbegin( void ) { return _map.rbegin(); }
-        inline Iterator rend  ( void ) { return _map.rend(); }
+        inline ReverseIterator rbegin( void ) { return _map.rbegin(); }
+        inline ReverseIterator rend  ( void ) { return _map.rend(); }
 		
         inline ConstIterator cbegin ( void ) const { return _map.cbegin(); }
         inline ConstIterator cend   ( void ) const { return _map.cend(); }
-        inline ConstIterator crbegin( void ) const { return _map.crbegin(); }
-        inline ConstIterator crend  ( void ) const { return _map.crend(); }
+        inline ConstReverseIterator crbegin( void ) const { return _map.crbegin(); }
+        inline ConstReverseIterator crend  ( void ) const { return _map.crend(); }
 		
         inline Iterator      find( K& key )       { return _map.find(key); }
         inline ConstIterator find (K& key ) const { return _map.find(key); }

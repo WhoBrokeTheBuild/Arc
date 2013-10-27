@@ -12,8 +12,7 @@
 namespace Arc
 {
     class Scene :
-        public EventDispatcher,
-        public IFrameListener
+        public EventDispatcher
     {
     protected:
 
@@ -32,8 +31,10 @@ namespace Arc
         Scene( void );
         virtual ~Scene( void );
 
-        virtual void update( const Event& event );
-        virtual void render( const Event& event );
+		virtual inline string toString( void ) const { return "Scene"; }
+
+        virtual void update( const FrameData* pData );
+        virtual void render( const RenderData* pData );
 
         virtual bool   addLayer  ( int index );
         virtual Layer* getLayer  ( int index );

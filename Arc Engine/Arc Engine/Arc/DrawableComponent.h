@@ -7,6 +7,7 @@
 #include "Component.h"
 
 #include "OriginLocation.h"
+#include "Origin.h"
 
 namespace Arc
 {
@@ -19,7 +20,9 @@ namespace Arc
 			_originLocation;
 
 		Point
-			_offset,
+			_offset;
+
+		Origin 
 			_origin;
 
 		Vector2
@@ -31,23 +34,29 @@ namespace Arc
 		Color
 			_blendColor;
 
-		virtual void calcOriginLocation( void );
+		virtual inline void setOriginSize( Size size ) { _origin.setSize(size); }
 
 	public:
 
-		DrawableComponent( Unit* pUnit,
-			               Point offset = Point::ZERO, 
-			               Point origin = Point::ZERO, 
-			               Vector2 scale = Vector2::ONE,
-			               Angle rotation = Angle::ZERO, 
-			               Color blendColor = Color::WHITE );
-		DrawableComponent( Unit* pUnit,
-			               Point offset = Point::ZERO,
-			               OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
-			               Vector2 scale = Vector2::ONE,
+		static const ComponentType
+			CMP_TYPE_DRAWABLE;
+
+		inline DrawableComponent( Unit* pUnit,
+			               Color blendColor = Color::WHITE,
+			               Origin origin = Origin::ZERO,
+			               Vector2 scale = Vector2::ONE, 
 			               Angle rotation = Angle::ZERO,
-			               Color blendColor = Color::WHITE );
-		virtual ~DrawableComponent( void );
+			               Point offset = Point::ZERO )
+			: Component(pUnit),
+			  _blendColor(blendColor),
+			  _origin(origin),
+			  _scale(scale),
+			  _rotation(rotation),
+			  _offset(offset)
+		{
+		}
+
+		virtual inline ~DrawableComponent( void ) { }
 
 		virtual inline string toString( void ) const { return "Drawable Component"; }
 
@@ -63,11 +72,8 @@ namespace Arc
 
 		virtual Vector2 getSize( void ) const = 0;
 
-		virtual inline Point getOrigin( void ) const { return _origin; }
-		virtual void         setOrigin( Point origin );
-
-		virtual inline OriginLocation getOriginLocation( void ) const { return _originLocation; }
-		virtual void                  setOriginLocation( OriginLocation originLocation );
+		virtual inline Origin getOrigin( void ) const { return _origin; }
+		virtual inline void setOrigin( Origin origin ) { _origin = origin; setOriginSize(getSize()); }
 
 	}; // class DrawableComponent
 

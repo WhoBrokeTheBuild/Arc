@@ -10,6 +10,7 @@
 #include "Font.h"
 #include "RenderedText.h"
 #include "Texture.h"
+#include "Origin.h"
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>
@@ -34,7 +35,7 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO 
 			) const;
 
         virtual void fillShape( 
@@ -45,7 +46,7 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO 
+            const Origin origin = Origin::ZERO 
 			) const;
 
     public:
@@ -66,7 +67,7 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO 
 			) const
 		{
 			drawText(pos.X, pos.Y, text, pFont, color, rotation, scale, origin);
@@ -80,11 +81,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			RenderedText renderedText(text, pFont);
-			drawText(x, y, &renderedText, color, rotation, scale, origin);
+			drawText(x, y, &renderedText, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawText( 
@@ -93,10 +94,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO 
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			drawText(pos.X, pos.Y, pRenderedText, color, rotation, scale, origin);
+			drawText(pos.X, pos.Y, pRenderedText, color, rotation, scale, origin.getPoint());
 		}
 
         virtual void drawText(
@@ -106,7 +107,7 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const;
 
         virtual inline void draw(
@@ -115,10 +116,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			draw(pos.X, pos.Y, pTexture, color, rotation, scale, origin);
+			draw(pos.X, pos.Y, pTexture, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void draw( 
@@ -128,10 +129,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->getSize()), color, rotation, scale, origin);
+			draw(x, y, pTexture, Rect(Vector2::ZERO, pTexture->getSize()), color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void draw( 
@@ -141,7 +142,7 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			draw(pos.X, pos.Y, pTexture, sourceRect, color, rotation, scale, origin);
@@ -155,7 +156,7 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO
+            const Origin origin = Origin::ZERO
 			) const;
 
         virtual inline void drawLine(
@@ -185,11 +186,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Rect rect = Rect(x, y, width, height);
-			drawRect(rect, color, rotation, scale, origin);
+			drawRect(rect, color, rotation, scale, origin.getPoint());
 		}
 
 		virtual inline void drawRect( 
@@ -198,11 +199,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Rect rect = Rect(pos, size);
-			drawRect(rect, color, rotation, scale, origin);
+			drawRect(rect, color, rotation, scale, origin.getPoint());
 		}
 
         virtual void drawRect(
@@ -210,7 +211,7 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const;
 
         virtual inline void fillRect( 
@@ -221,11 +222,11 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Rect rect = Rect(x, y, width, height);
-			fillRect(rect, color, rotation, scale, origin);
+			fillRect(rect, color, rotation, scale, origin.getPoint());
 		}
 
 		virtual inline void fillRect(
@@ -234,11 +235,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Rect rect = Rect(pos, size);
-			fillRect(rect, color, rotation, scale, origin);
+			fillRect(rect, color, rotation, scale, origin.getPoint());
 		}
 
         virtual void fillRect(
@@ -246,7 +247,7 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO
+            const Origin origin = Origin::ZERO
 			) const;
 
         virtual inline void drawCircle(
@@ -256,11 +257,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Circle circle = Circle(x, y, radius);
-			drawCircle(circle, color, rotation, scale, origin);
+			drawCircle(circle, color, rotation, scale, origin.getPoint());
 		}
 
 		virtual inline void drawCircle(
@@ -269,11 +270,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Circle circle = Circle(pos, radius);
-			drawCircle(circle, color, rotation, scale, origin);
+			drawCircle(circle, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawCircle( 
@@ -281,10 +282,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			drawShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, scale, origin);
+			drawShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillCircle( 
@@ -294,11 +295,11 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Circle circle = Circle(x, y, radius);
-			fillCircle(circle, color, rotation, scale, origin);
+			fillCircle(circle, color, rotation, scale, origin.getPoint());
 		}
 
 		virtual inline void fillCircle( 
@@ -307,11 +308,11 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
 			Circle circle = Circle(pos, radius);
-			fillCircle(circle, color, rotation, scale, origin);
+			fillCircle(circle, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillCircle( 
@@ -319,10 +320,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			fillShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, scale, origin);
+			fillShape(circle.X, circle.Y, circle.Radius, 24, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawTriangle(
@@ -331,10 +332,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO 
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			drawTriangle(pos.X, pos.Y, radius, color, rotation, scale, origin);
+			drawTriangle(pos.X, pos.Y, radius, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillTriangle(
@@ -343,10 +344,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			fillTriangle(pos.X, pos.Y, radius, color, rotation, scale, origin);
+			fillTriangle(pos.X, pos.Y, radius, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawTriangle( 
@@ -356,10 +357,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			drawShape(x, y, radius, 1.5, color, rotation, scale, origin);
+			drawShape(x, y, radius, 1.5, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillTriangle( 
@@ -369,10 +370,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			fillShape(x, y, radius, 1.5, color, rotation, scale, origin);
+			fillShape(x, y, radius, 1.5, color, rotation, scale, origin.getPoint());
 		}
 
 		virtual void drawTriangle(
@@ -395,10 +396,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			drawPentagon(pos.X, pos.Y, radius, color, rotation, scale, origin);
+			drawPentagon(pos.X, pos.Y, radius, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillPentagon( 
@@ -407,10 +408,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			fillPentagon(pos.X, pos.Y, radius, color, rotation, scale, origin);
+			fillPentagon(pos.X, pos.Y, radius, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawPentagon( 
@@ -420,10 +421,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO 
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			drawShape(x, y, radius, 2.5, color, rotation, scale, origin);
+			drawShape(x, y, radius, 2.5, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillPentagon( 
@@ -433,10 +434,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO 
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			fillShape(x, y, radius, 2.5, color, rotation, scale, origin);
+			fillShape(x, y, radius, 2.5, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawHexagon(
@@ -445,10 +446,10 @@ namespace Arc
             const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-            const Vector2 origin = Vector2::ZERO 
+            const Origin origin = Origin::ZERO
 			) const
 		{
-			drawShape(pos.X, pos.Y, radius, 3, color, rotation, scale, origin);
+			drawShape(pos.X, pos.Y, radius, 3, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillHexagon( 
@@ -457,10 +458,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			fillShape(pos.X, pos.Y, radius, 3, color, rotation, scale, origin);
+			fillShape(pos.X, pos.Y, radius, 3, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void drawHexagon(
@@ -470,10 +471,10 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			drawShape(x, y, radius, 3, color, rotation, scale, origin);
+			drawShape(x, y, radius, 3, color, rotation, scale, origin.getPoint());
 		}
 
         virtual inline void fillHexagon( 
@@ -483,21 +484,14 @@ namespace Arc
 			const Color color = Color::WHITE,
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
-			const Vector2 origin = Vector2::ZERO 
+			const Origin origin = Origin::ZERO
 			) const
 		{
-			fillShape(x, y, radius, 3, color, rotation, scale, origin);
+			fillShape(x, y, radius, 3, color, rotation, scale, origin.getPoint());
 		}
 
-		virtual void drawPolygon(
-			const ArrayList<Point> points,
-			const Color color = Color::WHITE
-			) const;
-
-		virtual void fillPolygon(
-			const ArrayList<Point> points,
-			const Color color = Color::WHITE
-			) const;
+		virtual void drawPolygon( const ArrayList<Point> &points, const Color color = Color::WHITE ) const;
+		virtual void fillPolygon( const ArrayList<Point> &points, const Color color = Color::WHITE ) const;
 
     }; // class RenderTarget
 

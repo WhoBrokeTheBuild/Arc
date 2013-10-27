@@ -93,3 +93,5 @@
 
 /Arc Engine/*.tss
 /Arc Engine/Arc Engine/Arc/Release/*.obj
+
+/Arc Testing/*.sdf

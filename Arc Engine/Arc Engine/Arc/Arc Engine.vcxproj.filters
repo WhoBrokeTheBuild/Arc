@@ -219,6 +219,9 @@
     <ClCompile Include="TextComponent.cpp">
       <Filter>Project\Units\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Origin.cpp">
+      <Filter>Project\Units</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -457,6 +460,9 @@
     </ClInclude>
     <ClInclude Include="ISerializable.h">
       <Filter>Project\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Origin.h">
+      <Filter>Project\Units</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

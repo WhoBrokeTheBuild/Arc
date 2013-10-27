@@ -26,25 +26,29 @@ namespace Arc
 
 	public:
 
-		ShapeComponent( Unit* pUnit,
-						Point offset = Point::ZERO,
-						Point origin = Point::ZERO,
-						Vector2 scale = Vector2::ONE,
-						Angle rotation = Angle::ZERO, 
-						Color blendColor = Color::WHITE );
-		ShapeComponent( Unit* pUnit,
-						Point offset = Point::ZERO,
-						OriginLocation originLocation = OriginLocation::ORIGIN_LOCATION_TOP_LEFT,
-						Vector2 scale = Vector2::ONE, 
-						Angle rotation = Angle::ZERO,
-						Color blendColor = Color::WHITE );
-		virtual ~ShapeComponent( void );
+		static const ComponentType
+			CMP_TYPE_SHAPE;
 
-		virtual inline void setRectangle( Size size )    { _shape = SHAPE_RECTANGLE; _size = size;     calcOriginLocation(); }
-		virtual inline void setTriangle ( float radius ) { _shape = SHAPE_TRIANGLE;  _radius = radius; calcOriginLocation(); }
-		virtual inline void setPentagon ( float radius ) { _shape = SHAPE_PENTAGON;  _radius = radius; calcOriginLocation(); }
-		virtual inline void setHexagon  ( float radius ) { _shape = SHAPE_HEXAGON;   _radius = radius; calcOriginLocation(); }
-		virtual inline void setCircle   ( float radius ) { _shape = SHAPE_CIRCLE;    _radius = radius; calcOriginLocation(); }
+		ShapeComponent( Unit* pUnit,
+			            Color blendColor = Color::WHITE,
+			            Origin origin = Origin::ZERO,
+			            Vector2 scale = Vector2::ONE, 
+			            Angle rotation = Angle::ZERO,
+			            Point offset = Point::ZERO )
+			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
+			  _shape(INVALID_SHAPE),
+			  _size(),
+			  _radius()
+		{
+		}
+
+		virtual inline ~ShapeComponent( void ) { }
+
+		virtual inline void setRectangle( Size size )    { _shape = SHAPE_RECTANGLE; _size = size;     setOriginSize(getSize()); }
+		virtual inline void setTriangle ( float radius ) { _shape = SHAPE_TRIANGLE;  _radius = radius; setOriginSize(getSize()); }
+		virtual inline void setPentagon ( float radius ) { _shape = SHAPE_PENTAGON;  _radius = radius; setOriginSize(getSize()); }
+		virtual inline void setHexagon  ( float radius ) { _shape = SHAPE_HEXAGON;   _radius = radius; setOriginSize(getSize()); }
+		virtual inline void setCircle   ( float radius ) { _shape = SHAPE_CIRCLE;    _radius = radius; setOriginSize(getSize()); }
 
 		virtual inline string toString( void ) const { return "Shape Component"; }
 

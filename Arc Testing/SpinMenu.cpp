@@ -32,7 +32,7 @@ void SpinMenu::update( const FrameData* data )
 
 	if (_trans)
 	{
-		_transSpeed -= data->getElapsedMilliseconds();
+		_transSpeed -= (float)data->getElapsedMilliseconds();
 		_transAmount = clamp(_transSpeed / _transSpeedMax, 0.0f, 1.0f);
 
 		if (_transDir == Direction::DIR_SOUTH)

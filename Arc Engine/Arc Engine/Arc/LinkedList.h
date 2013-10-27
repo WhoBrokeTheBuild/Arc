@@ -38,8 +38,10 @@ namespace Arc
 
     public:
 
-        typedef typename list<T>::iterator       Iterator;
-        typedef typename list<T>::const_iterator ConstIterator;
+		typedef typename list<T>::iterator               Iterator;
+		typedef typename list<T>::reverse_iterator       ReverseIterator;
+		typedef typename list<T>::const_iterator         ConstIterator;
+		typedef typename list<T>::const_reverse_iterator ConstReverseIterator;
 
         inline LinkedList ( void )
 			: _list(),
@@ -61,13 +63,13 @@ namespace Arc
 
         inline Iterator begin ( void ) { return _list.begin(); }
         inline Iterator end   ( void ) { return _list.end(); }
-        inline Iterator rbegin( void ) { return _list.rbegin(); }
-        inline Iterator rend  ( void ) { return _list.rend(); }
+        inline ReverseIterator rbegin( void ) { return _list.rbegin(); }
+        inline ReverseIterator rend  ( void ) { return _list.rend(); }
 
         inline ConstIterator cbegin ( void ) const { return _list.cbegin(); }
         inline ConstIterator cend   ( void ) const { return _list.cend(); }
-        inline ConstIterator crbegin( void ) const { return _list.crbegin(); }
-        inline ConstIterator crend  ( void ) const { return _list.crend(); }
+        inline ConstReverseIterator crbegin( void ) const { return _list.crbegin(); }
+        inline ConstReverseIterator crend  ( void ) const { return _list.crend(); }
 
         LinkedList<T>* add        ( const T& item );
         LinkedList<T>* addFront   ( const T& item );

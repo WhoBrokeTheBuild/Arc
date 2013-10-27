@@ -22,14 +22,23 @@ void Arc::RenderTarget::beginDraw( void ) const
 // ShapeValue 5   - Draws Decagon
 // ShapeValue 6   - Draws Circle
 // ShapeValue 12  - Draws Better Circle
-void Arc::RenderTarget::drawShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 scale /*= Vector2::ONE*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawShape( const float x, 
+								   const float y, 
+								   const float radius,
+								   const float shapeValue,
+								   const Color color /*= Color::WHITE*/,
+								   const Angle rotation /*= Angle::ZERO*/,
+								   const Vector2 scale /*= Vector2::ONE*/, 
+								   const Origin origin /*= Origin::ZERO*/ ) const
 {
-    glPushMatrix();
-    glTranslatef(x - origin.X, y - origin.Y, 0.0f);
+	Point originPoint = origin.getPoint();
 
-    glTranslatef(origin.X, origin.Y, 0.0f);
+    glPushMatrix();
+    glTranslatef(x - originPoint.X, y - originPoint.Y, 0.0f);
+
+    glTranslatef(originPoint.X, originPoint.Y, 0.0f);
     glRotatef(rotation.getDeg() - 90.0f, 0.0f, 0, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0.0f);
+    glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
@@ -45,14 +54,23 @@ void Arc::RenderTarget::drawShape( const float x, const float y, const float rad
     glPopMatrix();
 }
 
-void Arc::RenderTarget::fillShape( const float x, const float y, const float radius, const float shapeValue, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 scale /*= Vector2::ONE*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillShape( const float x, 
+								   const float y,
+								   const float radius,
+								   const float shapeValue,
+								   const Color color /*= Color::WHITE*/,
+								   const Angle rotation /*= Angle::ZERO*/,
+								   const Vector2 scale /*= Vector2::ONE*/,
+								   const Origin origin /*= Origin::ZERO*/ ) const
 {
-    glPushMatrix();
-    glTranslatef(x - origin.X, y - origin.Y, 0.0f);
+	Point originPoint = origin.getPoint();
 
-    glTranslatef(origin.X, origin.Y, 0.0f);
+    glPushMatrix();
+    glTranslatef(x - originPoint.X, y - originPoint.Y, 0.0f);
+
+    glTranslatef(originPoint.X, originPoint.Y, 0.0f);
     glRotatef(rotation.getDeg() - 90.0f, 0.0f, 0.0f, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0.0f);
+    glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
@@ -68,8 +86,16 @@ void Arc::RenderTarget::fillShape( const float x, const float y, const float rad
     glPopMatrix();
 }
 
-void Arc::RenderTarget::drawText( const float x, const float y, const RenderedText* pRenderedText, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 scale /*= Vector2::ONE*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawText( const float x,
+								  const float y, 
+								  const RenderedText* pRenderedText,
+								  const Color color /*= Color::WHITE*/, 
+								  const Angle rotation /*= Angle::ZERO*/,
+								  const Vector2 scale /*= Vector2::ONE*/,
+								  const Origin origin /*= Origin::ZERO*/ ) const
 {
+	Point originPoint = origin.getPoint();
+
     if (pRenderedText->getText().length() == 0)
         return;
 
@@ -82,16 +108,25 @@ void Arc::RenderTarget::drawText( const float x, const float y, const RenderedTe
     draw(x, y, pRenderedText->getTexture(), color, rotation, scale, origin);
 }
 
-void Arc::RenderTarget::draw( const float x, const float y, const Texture* pTexture, const Rect sourceRect, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 scale /*= Vector2::ONE*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::draw( const float x,
+							  const float y, 
+							  const Texture* pTexture,
+							  const Rect sourceRect, 
+							  const Color color /*= Color::WHITE*/,
+							  const Angle rotation /*= Angle::ZERO*/,
+							  const Vector2 scale /*= Vector2::ONE*/,
+							  const Origin origin /*= Origin::ZERO*/ ) const
 {
+	Point originPoint = origin.getPoint();
+
     glEnable(GL_TEXTURE_2D);
 
     glPushMatrix();
-    glTranslatef(x - origin.X, y - origin.Y, 0);
+    glTranslatef(x - originPoint.X, y - originPoint.Y, 0);
 
-    glTranslatef(origin.X, origin.Y, 0);
+    glTranslatef(originPoint.X, originPoint.Y, 0);
     glRotatef(rotation.getDeg(), 0.0f, 0, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0);
+    glTranslatef(-originPoint.X, -originPoint.Y, 0);
 
     glBindTexture(GL_TEXTURE_2D, pTexture->getGLTexture());
 
@@ -114,7 +149,12 @@ void Arc::RenderTarget::draw( const float x, const float y, const Texture* pText
     glDisable(GL_TEXTURE_2D);
 }
 
-void Arc::RenderTarget::drawLine( const float x1, const float y1, const float x2, const float y2, const Color color /*= Color::WHITE*/, const float thickness /*= 1.0f*/ ) const
+void Arc::RenderTarget::drawLine( const float x1,
+								  const float y1, 
+								  const float x2, 
+								  const float y2, 
+								  const Color color /*= Color::WHITE*/,
+								  const float thickness /*= 1.0f*/ ) const
 {
     glPushMatrix();
     glTranslatef(0.0f, 0.0f, 0.0f);
@@ -133,14 +173,20 @@ void Arc::RenderTarget::drawLine( const float x1, const float y1, const float x2
     glPopMatrix();
 }
 
-void Arc::RenderTarget::drawRect( const Rect rect, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 scale /*= Vector2::ONE*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::drawRect( const Rect rect,
+								  const Color color /*= Color::WHITE*/,
+								  const Angle rotation /*= Angle::ZERO*/,
+								  const Vector2 scale /*= Vector2::ONE*/,
+								  const Origin origin /*= Origin::ZERO*/ ) const
 {
-    glPushMatrix();
-    glTranslatef(rect.X - origin.X, rect.Y - origin.Y, 0.0f);
+	Point originPoint = origin.getPoint();
 
-    glTranslatef(origin.X, origin.Y, 0.0f);
+    glPushMatrix();
+    glTranslatef(rect.X - originPoint.X, rect.Y - originPoint.Y, 0.0f);
+
+    glTranslatef(originPoint.X, originPoint.Y, 0.0f);
     glRotatef(rotation.getDeg(), 0.0f, 0.0f, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0.0f);
+    glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
@@ -156,14 +202,20 @@ void Arc::RenderTarget::drawRect( const Rect rect, const Color color /*= Color::
     glPopMatrix();
 }
 
-void Arc::RenderTarget::fillRect( const Rect rect, const Color color /*= Color::WHITE*/, const Angle rotation /*= Angle::ZERO*/, const Vector2 scale /*= Vector2::ONE*/, const Vector2 origin /*= Vector2::ZERO*/ ) const
+void Arc::RenderTarget::fillRect( const Rect rect, 
+								  const Color color /*= Color::WHITE*/,
+								  const Angle rotation /*= Angle::ZERO*/,
+								  const Vector2 scale /*= Vector2::ONE*/,
+								  const Origin origin /*= Origin::ZERO*/ ) const
 {
-    glPushMatrix();
-    glTranslatef(rect.X - origin.X, rect.Y - origin.Y, 0.0f);
+	Point originPoint = origin.getPoint();
 
-    glTranslatef(origin.X, origin.Y, 0.0f);
+    glPushMatrix();
+    glTranslatef(rect.X - originPoint.X, rect.Y - originPoint.Y, 0.0f);
+
+    glTranslatef(originPoint.X, originPoint.Y, 0.0f);
     glRotatef(rotation.getDeg(), 0.0f, 0.0f, 1.0f);
-    glTranslatef(-origin.X, -origin.Y, 0.0f);
+    glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
     glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
 
@@ -179,7 +231,10 @@ void Arc::RenderTarget::fillRect( const Rect rect, const Color color /*= Color::
     glPopMatrix();
 }
 
-void Arc::RenderTarget::drawTriangle( const Vector2 pointA, const Vector2 pointB, const Vector2 pointC, const Color color /*= Color::WHITE*/ ) const
+void Arc::RenderTarget::drawTriangle( const Vector2 pointA,
+									  const Vector2 pointB, 
+									  const Vector2 pointC, 
+									  const Color color /*= Color::WHITE*/ ) const
 {
 	glPushMatrix();
 
@@ -196,7 +251,10 @@ void Arc::RenderTarget::drawTriangle( const Vector2 pointA, const Vector2 pointB
 	glPopMatrix();
 }
 
-void Arc::RenderTarget::fillTriangle( const Vector2 pointA, const Vector2 pointB, const Vector2 pointC, const Color color /*= Color::WHITE*/ ) const
+void Arc::RenderTarget::fillTriangle( const Vector2 pointA,
+									  const Vector2 pointB, 
+									  const Vector2 pointC,
+									  const Color color /*= Color::WHITE*/ ) const
 {
 	glPushMatrix();
 
@@ -213,7 +271,7 @@ void Arc::RenderTarget::fillTriangle( const Vector2 pointA, const Vector2 pointB
 	glPopMatrix();
 }
 
-void Arc::RenderTarget::drawPolygon( const ArrayList<Point> points, const Color color /*= Color::WHITE */ ) const
+void Arc::RenderTarget::drawPolygon( const ArrayList<Point> &points, const Color color /*= Color::WHITE */ ) const
 {
 	glPushMatrix();
 
@@ -229,7 +287,7 @@ void Arc::RenderTarget::drawPolygon( const ArrayList<Point> points, const Color 
 	glPopMatrix();
 }
 
-void Arc::RenderTarget::fillPolygon( const ArrayList<Point> points, const Color color /*= Color::WHITE */ ) const
+void Arc::RenderTarget::fillPolygon( const ArrayList<Point> &points, const Color color /*= Color::WHITE */ ) const
 {
 	glPushMatrix();
 

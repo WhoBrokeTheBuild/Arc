@@ -14,38 +14,30 @@ Arc::Scene::~Scene( void )
 {
 	auto end = _layers.end();
     for (auto it = _layers.begin(); it != end; ++it)
-    {
-        removeEventListener(Program::EVENT_RENDER, it->second, &Layer::render);
-        removeEventListener(Program::EVENT_UPDATE, it->second, &Layer::update);
-
         delete it->second;
-    }
+
     _layers.clear();
     _tags.clear();
 }
 
-void Arc::Scene::update( const Event& event )
+void Arc::Scene::update( const FrameData* pData )
 {
     if ( ! Enabled)
 		return;
 
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
-    {
-        it->second->update(event);
-    }
+	auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
+        it->second->update(pData);
 }
 
-void Arc::Scene::render( const Event& event )
+void Arc::Scene::render( const RenderData* pData )
 {
     if ( ! Visible)
 		return;
 
-    Map<unsigned int, Layer*>::Iterator it;
-    for (it = _layers.begin(); it != _layers.end(); ++it)
-    {
-        it->second->render(event);
-    }
+	auto end = _layers.end();
+    for (auto it = _layers.begin(); it != end; ++it)
+        it->second->render(pData);
 }
 
 bool Arc::Scene::addLayer( int index )
@@ -53,9 +45,6 @@ bool Arc::Scene::addLayer( int index )
     if ( ! hasLayer(index))
     {
         _layers.add(index, New Layer(this));
-
-        addEventListener(Program::EVENT_UPDATE, _layers[index], &Layer::update);
-        addEventListener(Program::EVENT_RENDER, _layers[index], &Layer::render);
 
         return true;
     }

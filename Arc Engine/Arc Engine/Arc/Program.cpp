@@ -86,6 +86,7 @@ void Arc::Program::start( void )
 
     while (_running)
     {
+		// Update the frame data to calculate a new delta time
         frameData.update(frameDelay, _currentFPS, _targetFPS);
 
         updateFrame(frameData);
