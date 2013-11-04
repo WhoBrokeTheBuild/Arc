@@ -95,7 +95,8 @@ namespace Arc
 			                                                Angle rotation = Angle::ZERO,
 															Point offset = Point::ZERO );
 
-		virtual ShapeComponent*    addNewShapeComponent   ( Color blendColor = Color::WHITE,
+		virtual ShapeComponent*    addNewShapeComponent   ( bool filled = false,
+															Color blendColor = Color::WHITE,
 			                                                Origin origin = Origin::ZERO,
 			                                                Vector2 scale = Vector2::ONE, 
 			                                                Angle rotation = Angle::ZERO,

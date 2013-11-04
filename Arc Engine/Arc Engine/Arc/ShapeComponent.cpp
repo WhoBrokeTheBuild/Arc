@@ -14,27 +14,62 @@ void Arc::ShapeComponent::render( const RenderData* data )
 	{
 	case SHAPE_TRIANGLE:
 
-		data->getRenderTarget()->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		if (isFilled())
+		{
+			data->getRenderTarget()->fillTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
+		else
+		{
+			data->getRenderTarget()->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
 
 		break;
 	case SHAPE_RECTANGLE:
 
-		data->getRenderTarget()->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		if (isFilled())
+		{
+			data->getRenderTarget()->fillRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
+		else
+		{
+			data->getRenderTarget()->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
 
 		break;
 	case SHAPE_PENTAGON:
 
-		data->getRenderTarget()->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		if (isFilled())
+		{
+			data->getRenderTarget()->fillPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
+		else
+		{
+			data->getRenderTarget()->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
 
 		break;
 	case SHAPE_HEXAGON:
 
-		data->getRenderTarget()->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		if (isFilled())
+		{
+			data->getRenderTarget()->fillHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
+		else
+		{
+			data->getRenderTarget()->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
 
 		break;
 	case SHAPE_CIRCLE:
 
-		data->getRenderTarget()->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		if (isFilled())
+		{
+			data->getRenderTarget()->fillCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
+		else
+		{
+			data->getRenderTarget()->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+		}
 
 		break;
     default:

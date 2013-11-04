@@ -100,9 +100,9 @@ TestApp::~TestApp( void )
 
 void TestApp::update( const Event& event )
 {
-    const FrameData* data = event.dataAs<FrameData>();
+    const FrameData* pData = event.dataAs<FrameData>();
 
-	pScene->update(event);
+	pScene->update(pData);
 	
     stringstream ss;
     ss.str(string());
@@ -112,10 +112,10 @@ void TestApp::update( const Event& event )
 
 void TestApp::render( const Event& event )
 {
-    const RenderData* data = event.dataAs<RenderData>();
-	const RenderTarget* renderTarget = data->getRenderTarget();
+    const RenderData* pData = event.dataAs<RenderData>();
+	const RenderTarget* renderTarget = pData->getRenderTarget();
 
-	pScene->render(event);
+	pScene->render(pData);
 }
 
 void TestApp::renderEnd( const Event& event )

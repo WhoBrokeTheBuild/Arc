@@ -29,7 +29,8 @@ void Arc::Layer::update( const FrameData* pData )
 
 	auto end = _units.end();
 	for (auto it = _units.begin(); it != end; ++it)
-		(*it)->update(pData);
+		if ((*it)->isEnabled())
+			(*it)->update(pData);
 }
 
 void Arc::Layer::render( const RenderData* pData )
@@ -39,7 +40,8 @@ void Arc::Layer::render( const RenderData* pData )
 
 	auto end = _units.end();
     for (auto it = _units.begin(); it != end; ++it)
-        (*it)->render(pData);
+		if ((*it)->isVisible())
+			(*it)->render(pData);
 }
 
 void Arc::Layer::layerChanged( const Event& event )

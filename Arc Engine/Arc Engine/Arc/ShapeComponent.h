@@ -24,12 +24,16 @@ namespace Arc
 		float
 			_radius;
 
+		bool
+			_filled;
+
 	public:
 
 		static const ComponentType
 			CMP_TYPE_SHAPE;
 
 		ShapeComponent( Unit* pUnit,
+						bool filled = false,
 			            Color blendColor = Color::WHITE,
 			            Origin origin = Origin::ZERO,
 			            Vector2 scale = Vector2::ONE, 
@@ -37,6 +41,7 @@ namespace Arc
 			            Point offset = Point::ZERO )
 			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
 			  _shape(INVALID_SHAPE),
+			  _filled(filled),
 			  _size(),
 			  _radius()
 		{
@@ -55,6 +60,9 @@ namespace Arc
 		virtual void render( const RenderData* data );
 
 		virtual Vector2 getSize( void ) const;
+
+		inline bool isFilled ( void ) const { return _filled; }
+		inline void setFilled( bool filled ) { _filled = filled; }
 
 	}; // class ShapeComponent
 

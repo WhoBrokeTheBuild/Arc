@@ -16,9 +16,6 @@ namespace Arc
 	{
 	protected:
 
-		OriginLocation
-			_originLocation;
-
 		Point
 			_offset;
 

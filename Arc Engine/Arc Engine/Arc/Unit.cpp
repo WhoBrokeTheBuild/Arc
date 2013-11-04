@@ -24,20 +24,12 @@ Arc::Unit::~Unit( void )
 
 void Arc::Unit::update( const FrameData* pData )
 {
-	if ( ! isEnabled())
-		return;
-
 	updateComponents(pData);
-	update(pData);
 }
 
 void Arc::Unit::render( const RenderData* pData )
 {
-	if ( ! isVisible())
-		return;
-
 	renderComponents(pData);
-	render(pData);
 }
 
 void Arc::Unit::updateComponents( const FrameData* data )
@@ -56,13 +48,15 @@ void Arc::Unit::updateComponents( const FrameData* data )
 		delete cmp;
 	}
 
-    for (auto it = _components.begin(); it != _components.end(); ++it)
+	auto end = _components.end();
+    for (auto it = _components.begin(); it != end; ++it)
         (*it)->update(data);
 }
 
 void Arc::Unit::renderComponents( const RenderData* data )
 {
-    for (auto it = _components.begin(); it != _components.end(); ++it)
+	auto end = _components.end();
+    for (auto it = _components.begin(); it != end; ++it)
         (*it)->render(data);
 }
 
@@ -110,13 +104,14 @@ Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture,
 	return cmp;
 }
 
-Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( Color blendColor /*= Color::WHITE*/,
+Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( bool filled /*= false*/,
+													  Color blendColor /*= Color::WHITE*/,
 												      Origin origin /*= Origin::ZERO*/, 
 												      Vector2 scale /*= Vector2::ONE*/, 
 												      Angle rotation /*= Angle::ZERO*/, 
 												      Point offset /*= Point::ZERO */ )
 {
-	ShapeComponent* cmp = New ShapeComponent(this, blendColor, origin, scale, rotation, offset);
+	ShapeComponent* cmp = New ShapeComponent(this, filled, blendColor, origin, scale, rotation, offset);
 	addComponent(cmp);
 	return cmp;
 }
