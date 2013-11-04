@@ -7,21 +7,6 @@
     <ClCompile Include="TestApp.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Project</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuLevel.cpp">
-      <Filter>Project\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="SpinMenu.cpp">
-      <Filter>Project\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuItem.cpp">
-      <Filter>Project\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuAction.cpp">
-      <Filter>Project\Menu</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -30,28 +15,10 @@
     <ClInclude Include="TestApp.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuLevel.h">
-      <Filter>Project\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="SpinMenu.h">
-      <Filter>Project\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuItem.h">
-      <Filter>Project\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuAction.h">
-      <Filter>Project\Menu</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Project">
       <UniqueIdentifier>{915194f0-9074-4e1f-9375-35a976d54413}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Project\Menu">
-      <UniqueIdentifier>{8c575c48-4a7a-4bd6-99ea-8fd3db9fd53e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

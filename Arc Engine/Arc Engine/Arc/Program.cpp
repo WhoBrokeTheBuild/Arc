@@ -71,13 +71,16 @@ void Arc::Program::start( void )
     _running = true;
 
     double
-        fpsDelay = 1000.0 / _targetFPS, // The milliseconds to sleep each frame
+        fpsDelay = 0,
         frameDelay = 1;
 
     _currentFPS = 1; // Prevent divide-by-zero errors in deltaTime
 
     FrameData frameData = FrameData();
-    RenderData renderData = RenderData(_pGraphicsSystem->getRenderTarget());
+	RenderData renderData = RenderData(nullptr);
+	
+	if (_pGraphicsSystem != nullptr)
+		renderData = RenderData(_pGraphicsSystem->getRenderTarget());
 
     Timer fpsTimer = Timer();
     fpsTimer.start();
@@ -86,23 +89,35 @@ void Arc::Program::start( void )
 
     while (_running)
     {
+		// The milliseconds to sleep each frame
+		if (_targetFPS == -1)
+			fpsDelay = -1;
+		else
+			fpsDelay = 1000.0 / _targetFPS;
+
 		// Update the frame data to calculate a new delta time
         frameData.update(frameDelay, _currentFPS, _targetFPS);
 
         updateFrame(frameData);
-        renderFrame(renderData);
+		
+		if (_pGraphicsSystem != nullptr)
+			renderFrame(renderData);
 
 		// Calculate current FPS based on the time last frame took
         _currentFPS = (float)(1000.0 / frameDelay);
 
-		// Delay the program for the time needed to stay at the target FPS
-        fpsTimer.sleepUntilElapsed(fpsDelay);
+		// If FPS is capped
+		if (fpsDelay != -1)
+		{
+			// Delay the program for the time needed to stay at the target FPS
+			fpsTimer.sleepUntilElapsed(fpsDelay);
 
-		// Get how long the timer had to sleep
-        frameDelay = fpsTimer.getElapsedMilli();
+			// Get how long the timer had to sleep
+			frameDelay = fpsTimer.getElapsedMilli();
 
-		// Reset the timer 
-        fpsTimer.start();
+			// Reset the timer 
+			fpsTimer.start();
+		}
     }
 }
 
