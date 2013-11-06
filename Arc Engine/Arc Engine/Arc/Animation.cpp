@@ -6,11 +6,10 @@ Arc::Animation::Animation( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
 {
 }
 
-Arc::Animation::Animation( double speed )
+Arc::Animation::Animation( double speed /*= -1.0*/ )
 	: _frames(),
 	  _speed(speed)
 {
-
 }
 
 Arc::Size Arc::Animation::getFrameSize( int frame )
@@ -33,14 +32,13 @@ Arc::Sprite* Arc::Animation::getFrameAt( int frame )
     return nullptr;
 }
 
-bool Arc::Animation::hasFrame( int frame )
+bool Arc::Animation::hasFrame( unsigned int frame )
 {
     if (_frames.isEmpty())
         return false;
 
-    return between(frame, 0, (int)_frames.getSize());
+    return between(frame, unsigned(0), (unsigned int)_frames.getSize());
 }
-
 void Arc::Animation::addFrame( Sprite* frame )
 {
     _frames.add(frame);

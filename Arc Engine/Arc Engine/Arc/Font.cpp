@@ -33,6 +33,9 @@ std::string Arc::Font::toString( void ) const
 
 Arc::Size Arc::Font::measureString( string text )
 {
+	if ( ! isLoaded())
+		return Size::ZERO;
+
     int w, h;
 
     TTF_SizeText(_pFont, text.c_str(), &w, &h);

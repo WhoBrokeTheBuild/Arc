@@ -27,7 +27,7 @@ void Arc::RenderedText::graphicsReset( const Event& event )
 
 void Arc::RenderedText::renderText( void )
 {
-    if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
+    if (_pFont == nullptr || _pFont->getSDLFont() == nullptr)
     {
         ERROR(toString(), "Invalid Font");
         return;
@@ -38,7 +38,7 @@ void Arc::RenderedText::renderText( void )
     if (text.length() == 0)
         text = " ";
 
-    SDL_Surface* surface = TTF_RenderUTF8_Blended(_pFont->SDLFont(), text.c_str(), Color::WHITE.getSDLColor());
+    SDL_Surface* surface = TTF_RenderUTF8_Blended(_pFont->getSDLFont(), text.c_str(), Color::WHITE.getSDLColor());
 
     if ( ! surface)
     {
@@ -74,7 +74,7 @@ const Arc::Size Arc::RenderedText::getSize( void ) const
 
 Arc::Size Arc::RenderedText::measureString( string text )
 {
-    if (_pFont == nullptr || _pFont->SDLFont() == nullptr)
+    if (_pFont == nullptr || _pFont->getSDLFont() == nullptr)
         return Size::ZERO;
 
     return _pFont->measureString(text);

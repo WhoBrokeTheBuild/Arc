@@ -18,7 +18,7 @@ namespace Arc
         int
             _rate,
             _channels,
-            _chunkSize;
+            _chunkSize; 
 
         uint16_t
             _format;

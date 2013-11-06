@@ -22,75 +22,227 @@ namespace Arc
 
     private:
 
-		// A function to get the Color as an SDL_Color struct
+		/* Get the Color as an SDL_Color struct
+		 * 
+		 * @returns: The color as an SDL_Color struct
+		 */
         virtual SDL_Color getSDLColor( void );
+
+	protected:
+
+		// The Red component of the color in 0-255 format
+		uint8_t _r;
+
+		// The Green component of the color in 0-255 format
+		uint8_t _g;
+
+		// The Blue component of the color in 0-255 format
+		uint8_t _b;
+
+		// The Alpha component of the color in 0-255 format
+		uint8_t _a;
 
     public:
 
-		// The four values of the color in 0-255 format
-        uint8_t
-            R,
-            G,
-            B,
-            A;
+		// Predefined colors
+		static Color BLACK;
+		static Color WHITE;
+		static Color RED;
+		static Color GREEN;
+		static Color BLUE;
+		static Color CORNFLOWER_BLUE;
+		static Color STORM;
+		static Color PEACH;
 
-		// A handy predefined list of colors
-        static Color
-            BLACK,
-            WHITE,
-            RED,
-            GREEN,
-            BLUE,
-            CORNFLOWER_BLUE,
-            STORM,
-            PEACH;
+		/* Creates a color with R, G, B, and A values of 0
+		 */
+        Color( void ) { _r = _g = _b = _a = 0; }
 
-        Color( void ) { setByte(0, 0, 0, 0); }
-
-		// Constructors for 0.0-1.0 format
+		/* Creates a color with the specified Red, Green, and Blue values, and an alpha value of 255
+		 * 
+		 * @param r: The Red component in 0.0-1.0 format
+		 * @param g: The Green component in 0.0-1.0 format
+		 * @param b: The Blue component in 0.0-1.0 format
+		 */
         Color( float r, float g, float b );
+		
+		/* Creates a color with the specified Red, Green, Blue, and Alpha values
+		 * 
+		 * @param r: The Red component in 0.0-1.0 format
+		 * @param g: The Green component in 0.0-1.0 format
+		 * @param b: The Blue component in 0.0-1.0 format
+		 * @param a: The Alpha component in 0.0-1.0 format
+		 */
         Color( float r, float g, float b, float a );
-
-		// Constructors for 0-255 format
+		
+		/* Creates a color with the specified Red, Green, and Blue values, and an alpha value of 255
+		 * 
+		 * @param r: The Red component in 0-255 format
+		 * @param g: The Green component in 0-255 format
+		 * @param b: The Blue component in 0-255 format
+		 */
         Color( int r, int g, int b );
+		
+		/* Creates a color with the specified Red, Green, Blue, and Alpha values
+		 * 
+		 * @param r: The Red component in 0-255 format
+		 * @param g: The Green component in 0-255 format
+		 * @param b: The Blue component in 0-255 format
+		 * @param a: The Alpha component in 0-255 format
+		 */
         Color( int r, int g, int b, int a );
 
         virtual inline string toString( void ) const;
 
-		// Generate a random color between the specified RGBA values
+		/* Generates a random color between the specified RGBA values
+		 * 
+		 * @param minR: The minimum Red value in 0-255 format
+		 *		default: 0
+		 * @param maxR: The maximum Red value in 0-255 format
+		 *		default: 255
+		 * @param minG: The minimum Green value in 0-255 format
+		 *		default: 0
+		 * @param maxG: The maximum Green value in 0-255 format
+		 *		default: 255
+		 * @param minB: The minimum Blue value in 0-255 format
+		 *		default: 0
+		 * @param maxB: The maximum Blue value in 0-255 format
+		 *		default: 255
+		 * @param minA: The minimum Alpha value in 0-255 format
+		 *		default: 0
+		 * @param maxA: The maximum Alpha value in 0-255 format
+		 *		default: 255
+		 * @returns: The randomly generated color
+		 */
 		inline static Color rand( int minR = 0, int maxR = 255, int minG = 0, int maxG = 255, int minB = 0, int maxB = 255, int minA = 0, int maxA = 255 )
 		{
 			return Color(randInt(minR, maxR), randInt(minG, maxG), randInt(minB, maxB), randInt(minA, maxA));
 		}
 
-		// Linearly interpolate between two colors
+		/* Linearly interpolate between two colors
+		 *
+		 * @param start: The color values to start at
+		 * @param end: The color values to move to
+		 * @param fraction: The amount to interpolate, should be a value from 0.0-1.0
+		 * @returns: The interpolated color
+		 */
 		inline static Color lerp( const Color& start, const Color& end, float fraction )
 		{
-			return Color(lerpNumber(start.byteR(), end.byteR(), fraction), 
-				         lerpNumber(start.byteG(), end.byteG(), fraction), 
-						 lerpNumber(start.byteB(), end.byteB(), fraction),
-						 lerpNumber(start.byteA(), end.byteA(), fraction));
+			return Color(lerpNumber(start.getByteR(), end.getByteR(), fraction), 
+				         lerpNumber(start.getByteG(), end.getByteG(), fraction), 
+						 lerpNumber(start.getByteB(), end.getByteB(), fraction),
+						 lerpNumber(start.getByteA(), end.getByteA(), fraction));
 		}
 
-		// Get the RGBA values in 0.0-1.0 format
-        float fracR( void ) const { return (float)((1.0f / 255.0f) * R); }
-        float fracG( void ) const { return (float)((1.0f / 255.0f) * G); }
-        float fracB( void ) const { return (float)((1.0f / 255.0f) * B); }
-        float fracA( void ) const { return (float)((1.0f / 255.0f) * A); }
+		/*
+		 * @returns: The Red component in 0.0-1.0 format
+		 */
+        inline float getFracR( void ) const { return (float)((1.0f / 255.0f) * _r); }
 
-		// Get the RGBA values in 0-255 format
-        int byteR( void ) const { return R; }
-        int byteG( void ) const { return G; }
-        int byteB( void ) const { return B; }
-        int byteA( void ) const { return A; }
+		/*
+		 * @returns: The Green component in 0.0-1.0 format
+		 */
+        inline float getFracG( void ) const { return (float)((1.0f / 255.0f) * _g); }
 
-		// Set the RGBA values in 0.0-1.0 format
-        void setFrac( float r, float g, float b );
-        void setFrac( float r, float g, float b, float a );
+		/*
+		 * @returns: The Blue component in 0.0-1.0 format
+		 */
+        inline float getFracB( void ) const { return (float)((1.0f / 255.0f) * _b); }
 
-		// Set the RGBA values in 0-255 format
-        void setByte( int r, int g, int b );
-        void setByte( int r, int g, int b, int a );
+		/*
+		 * @returns: The Alpha component in 0.0-1.0 format
+		 */
+        inline float getFracA( void ) const { return (float)((1.0f / 255.0f) * _a); }
+		
+		/* 
+		 * @param r: The Red component in 0.0-1.0 format
+		 */
+		inline void setFracR( float r ) { _r = (uint8_t)(clamp(r, 0.0f, 1.0f) * 255.0f); }
+
+		/* 
+		 * @param g: The Green component in 0.0-1.0 format
+		 */
+		inline void setFracG( float g ) { _g = (uint8_t)(clamp(g, 0.0f, 1.0f) * 255.0f); }
+
+		/* 
+		 * @param b: The Blue component in 0.0-1.0 format
+		 */
+		inline void setFracB( float b ) { _b = (uint8_t)(clamp(b, 0.0f, 1.0f) * 255.0f); }
+
+		/* 
+		 * @param a: The Alpha component in 0.0-1.0 format
+		 */
+		inline void setFracA( float a ) { _a = (uint8_t)(clamp(a, 0.0f, 1.0f) * 255.0f); }
+
+		/*
+		 * @returns: The Red component in 0-255 format
+		 */
+        inline int getByteR( void ) const { return _r; }
+		
+		/*
+		 * @returns: The Green component in 0-255 format
+		 */
+        inline int getByteG( void ) const { return _g; }
+		
+		/*
+		 * @returns: The Blue component in 0-255 format
+		 */
+        inline int getByteB( void ) const { return _b; }
+		
+		/*
+		 * @returns: The Alpha component in 0-255 format
+		 */
+		inline int getByteA( void ) const { return _a; }
+
+		/* 
+		 * @param r: The Red component in 0-255 format
+		 */
+		inline void setByteR( int r ) { _r = clamp(r, 0, 255); }
+
+		/* 
+		 * @param g: The Green component in 0-255 format
+		 */
+		inline void setByteG( int g ) { _g = clamp(g, 0, 255); }
+
+		/* 
+		 * @param b: The Blue component in 0-255 format
+		 */
+		inline void setByteB( int b ) { _b = clamp(b, 0, 255); }
+
+		/* 
+		 * @param a: The Alpha component in 0-255 format
+		 */
+		inline void setByteA( int a ) { _a = clamp(a, 0, 255); }
+
+		/*
+		 * @param r: The Red component in 0.0-1.0 format
+		 * @param g: The Green component in 0.0-1.0 format
+		 * @param b: The Blue component in 0.0-1.0 format
+		 */
+        inline void setFracValues( float r, float g, float b );
+
+		/*
+		 * @param r: The Red component in 0.0-1.0 format
+		 * @param g: The Green component in 0.0-1.0 format
+		 * @param b: The Blue component in 0.0-1.0 format
+		 * @param a: The Alpha component in 0.0-1.0 format
+		 */
+        void setFracValues( float r, float g, float b, float a );
+		
+		/*
+		 * @param r: The Red component in 0-255 format
+		 * @param g: The Green component in 0-255 format
+		 * @param b: The Blue component in 0-255 format
+		 */
+        void setByteValues( int r, int g, int b );
+		
+		/*
+		 * @param r: The Red component in 0-255 format
+		 * @param g: The Green component in 0-255 format
+		 * @param b: The Blue component in 0-255 format
+		 * @param a: The Alpha component in 0-255 format
+		 */
+        void setByteValues( int r, int g, int b, int a );
 
     }; // class Color
 

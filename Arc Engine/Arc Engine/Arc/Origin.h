@@ -17,6 +17,7 @@ namespace Arc
 
 		Point 
 			_origin;
+
 		Size
 			_size;
 
