@@ -52,7 +52,7 @@ float Arc::Sound::getVolume( void )
 
 void Arc::Sound::setVolume( float vol )
 {
-    vol = clamp(vol, 0.0f, 1.0f);
+    vol = MathHelper::clamp(vol, 0.0f, 1.0f);
     Mix_VolumeChunk(_pChunk, (int)(vol * (float)MIX_MAX_VOLUME));
 }
 

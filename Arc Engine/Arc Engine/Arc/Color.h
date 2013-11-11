@@ -128,10 +128,10 @@ namespace Arc
 		 */
 		inline static Color lerp( const Color& start, const Color& end, float fraction )
 		{
-			return Color(lerpNumber(start.getByteR(), end.getByteR(), fraction), 
-				         lerpNumber(start.getByteG(), end.getByteG(), fraction), 
-						 lerpNumber(start.getByteB(), end.getByteB(), fraction),
-						 lerpNumber(start.getByteA(), end.getByteA(), fraction));
+			return Color(MathHelper::lerp(start.getByteR(), end.getByteR(), fraction), 
+				         MathHelper::lerp(start.getByteG(), end.getByteG(), fraction), 
+						 MathHelper::lerp(start.getByteB(), end.getByteB(), fraction),
+						 MathHelper::lerp(start.getByteA(), end.getByteA(), fraction));
 		}
 
 		/*
@@ -157,22 +157,22 @@ namespace Arc
 		/* 
 		 * @param r: The Red component in 0.0-1.0 format
 		 */
-		inline void setFracR( float r ) { _r = (uint8_t)(clamp(r, 0.0f, 1.0f) * 255.0f); }
+		inline void setFracR( float r ) { _r = (uint8_t)(MathHelper::clamp(r, 0.0f, 1.0f) * 255.0f); }
 
 		/* 
 		 * @param g: The Green component in 0.0-1.0 format
 		 */
-		inline void setFracG( float g ) { _g = (uint8_t)(clamp(g, 0.0f, 1.0f) * 255.0f); }
+		inline void setFracG( float g ) { _g = (uint8_t)(MathHelper::clamp(g, 0.0f, 1.0f) * 255.0f); }
 
 		/* 
 		 * @param b: The Blue component in 0.0-1.0 format
 		 */
-		inline void setFracB( float b ) { _b = (uint8_t)(clamp(b, 0.0f, 1.0f) * 255.0f); }
+		inline void setFracB( float b ) { _b = (uint8_t)(MathHelper::clamp(b, 0.0f, 1.0f) * 255.0f); }
 
 		/* 
 		 * @param a: The Alpha component in 0.0-1.0 format
 		 */
-		inline void setFracA( float a ) { _a = (uint8_t)(clamp(a, 0.0f, 1.0f) * 255.0f); }
+		inline void setFracA( float a ) { _a = (uint8_t)(MathHelper::clamp(a, 0.0f, 1.0f) * 255.0f); }
 
 		/*
 		 * @returns: The Red component in 0-255 format
@@ -197,22 +197,22 @@ namespace Arc
 		/* 
 		 * @param r: The Red component in 0-255 format
 		 */
-		inline void setByteR( int r ) { _r = clamp(r, 0, 255); }
+		inline void setByteR( int r ) { _r = MathHelper::clamp(r, 0, 255); }
 
 		/* 
 		 * @param g: The Green component in 0-255 format
 		 */
-		inline void setByteG( int g ) { _g = clamp(g, 0, 255); }
+		inline void setByteG( int g ) { _g = MathHelper::clamp(g, 0, 255); }
 
 		/* 
 		 * @param b: The Blue component in 0-255 format
 		 */
-		inline void setByteB( int b ) { _b = clamp(b, 0, 255); }
+		inline void setByteB( int b ) { _b = MathHelper::clamp(b, 0, 255); }
 
 		/* 
 		 * @param a: The Alpha component in 0-255 format
 		 */
-		inline void setByteA( int a ) { _a = clamp(a, 0, 255); }
+		inline void setByteA( int a ) { _a = MathHelper::clamp(a, 0, 255); }
 
 		/*
 		 * @param r: The Red component in 0.0-1.0 format

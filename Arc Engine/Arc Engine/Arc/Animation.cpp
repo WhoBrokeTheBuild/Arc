@@ -37,7 +37,7 @@ bool Arc::Animation::hasFrame( unsigned int frame )
     if (_frames.isEmpty())
         return false;
 
-    return between(frame, unsigned(0), (unsigned int)_frames.getSize());
+    return MathHelper::between(frame, unsigned(0), (unsigned int)_frames.getSize());
 }
 void Arc::Animation::addFrame( Sprite* frame )
 {

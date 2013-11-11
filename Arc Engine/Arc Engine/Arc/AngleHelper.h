@@ -13,8 +13,7 @@
 
 namespace Arc
 {
-
-	static class AngleHelper
+	class AngleHelper
 	{
 	public:
 

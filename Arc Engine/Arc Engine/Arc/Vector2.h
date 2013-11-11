@@ -6,6 +6,8 @@
 #include "ManagedObject.h"
 #include "ISerializable.h"
 #include "Functions.h"
+#include "MathHelper.h"
+#include "AngleHelper.h"
 
 namespace Arc
 {
@@ -87,7 +89,7 @@ namespace Arc
 		 */
 		inline static Vector2 lerp( const Vector2& start, const Vector2& end, float fraction )
 		{
-			return Vector2(lerpNumber(start.X, end.X, fraction), lerpNumber(start.Y, end.Y, fraction));
+			return Vector2(MathHelper::lerp(start.X, end.X, fraction), MathHelper::lerp(start.Y, end.Y, fraction));
 		}
 
         virtual int serialize( ostream &stream );
@@ -136,7 +138,7 @@ namespace Arc
 		 * @param other: The other point to get the direction to
 		 * @returns: The angle to the other point in degrees
 		 */
-		virtual inline float getAngleToPointDeg( const Vector2& other ) const  { return toDeg(getAngleToPointRad(other)); }
+		virtual inline float getAngleToPointDeg( const Vector2& other ) const  { return AngleHelper::toDeg(getAngleToPointRad(other)); }
 
 		/* Get the dot product of this and the other vector
 		 * 

@@ -30,8 +30,8 @@ Arc::Triangle::Triangle( Point a, Point b, Point c )
 Arc::Triangle::Triangle( Point center, float radius )
 {
     A = center - Point(0.0f, radius);
-    B = center + Point(cos(toRad(120)) * radius, sin(toRad(120)) * radius);
-    C = center + Point(cos(toRad(-120)) * radius, sin(toRad(-120)) * radius);
+    B = center + Point(cos(AngleHelper::toRad(120)) * radius, sin(AngleHelper::toRad(120)) * radius);
+    C = center + Point(cos(AngleHelper::toRad(-120)) * radius, sin(AngleHelper::toRad(-120)) * radius);
 }
 
 Arc::Triangle::Triangle( float aX, float aY, float bX, float bY, float cX, float cY )

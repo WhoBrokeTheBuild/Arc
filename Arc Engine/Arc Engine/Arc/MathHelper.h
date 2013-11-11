@@ -7,8 +7,7 @@
 
 namespace Arc
 {
-
-	static class MathHelper
+	class MathHelper
 	{
 	public:
 

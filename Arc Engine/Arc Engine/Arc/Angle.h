@@ -88,10 +88,10 @@ namespace Arc
         virtual int deserialize( istream &stream );
 
         virtual inline float getDeg( void ) const { return _degrees; }
-        virtual inline float getRad( void ) const { return toRad(_degrees); }
+        virtual inline float getRad( void ) const { return AngleHelper::toRad(_degrees); }
 
         virtual void setDeg( float value );
-        virtual inline void setRad( float value ) { setDeg(toDeg(value)); }
+        virtual inline void setRad( float value ) { setDeg(AngleHelper::toDeg(value)); }
 
         virtual inline float getCos( void ) const { return cosf(getRad()); }
         virtual inline float getSin( void ) const { return sinf(getRad()); }

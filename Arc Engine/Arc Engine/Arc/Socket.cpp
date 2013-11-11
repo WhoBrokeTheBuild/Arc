@@ -95,95 +95,44 @@ void Arc::Socket::term( void )
 #endif // WINDOWS
 }
 
-int Arc::Socket::sendString( string data, bool buffer /*= false */ )
+int Arc::Socket::sendString( string data )
 {
-	if (buffer)
-	{
-		_buffer << data;
-		return data.length() + 1;
-	}
-	else
-	{
-		return send(_socket, data.c_str(), data.length(), 0);
-	}
+	return send(_socket, data.c_str(), data.length(), 0);
 }
 
-int Arc::Socket::sendBool( bool data, bool buffer /*= false */ )
+int Arc::Socket::sendBuffer( char* buffer, int length )
 {
-	if (buffer)
-	{
-		_buffer << (char*)&data;
-		return sizeof data;
-	}
-	else
-	{
-		return send(_socket, (char*)&data, sizeof data, 0);
-	}
+	return send(_socket, buffer, length, 0);
 }
 
-int Arc::Socket::sendShort( short data, bool buffer /*= false */ )
+int Arc::Socket::sendBool( bool data )
 {
-	if (buffer)
-	{
-		_buffer << (char*)&data;
-		return sizeof data;
-	}
-	else
-	{
-		return send(_socket, (char*)&data, sizeof data, 0);
-	}
+	return send(_socket, (char*)&data, sizeof data, 0);
 }
 
-int Arc::Socket::sendInt( int data, bool buffer /*= false */ )
+int Arc::Socket::sendShort( short data )
 {
-	if (buffer)
-	{
-		_buffer << (char*)&data;
-		return sizeof data;
-	}
-	else
-	{
-		return send(_socket, (char*)&data, sizeof data, 0);
-	}
+	return send(_socket, (char*)&data, sizeof data, 0);
 }
 
-int Arc::Socket::sendLong( long data, bool buffer /*= false */ )
+int Arc::Socket::sendInt( int data )
 {
-	if (buffer)
-	{
-		_buffer << (char*)&data;
-		return sizeof data;
-	}
-	else
-	{
-		return send(_socket, (char*)&data, sizeof data, 0);
-	}
+	return send(_socket, (char*)&data, sizeof data, 0);
 }
 
-int Arc::Socket::sendFloat( float data, bool buffer /*= false */ )
+int Arc::Socket::sendLong( long data )
 {
-	if (buffer)
-	{
-		_buffer << (char*)&data;
-		return sizeof data;
-	}
-	else
-	{
-		return send(_socket, (char*)&data, sizeof data, 0);
-	}
+	return send(_socket, (char*)&data, sizeof data, 0);
 }
 
-int Arc::Socket::sendDouble( double data, bool buffer /*= false */ )
+int Arc::Socket::sendFloat( float data )
 {
-	if (buffer)
-	{
-		_buffer << (char*)&data;
-		return sizeof data;
-	}
-	else
-	{
-		return send(_socket, (char*)&data, sizeof data, 0);
-	}
+	return send(_socket, (char*)&data, sizeof data, 0);
+}
+
+int Arc::Socket::sendDouble( double data )
+{
+	return send(_socket, (char*)&data, sizeof data, 0);
 }
 
 string Arc::Socket::readString( unsigned int bufferLength /*= 2000 */ )
@@ -291,4 +240,46 @@ double Arc::Socket::readDouble( void )
 	memcpy(&num, buffer, sizeof(double));
 
 	return num;
+}
+
+int Arc::Socket::bufferString( string data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, data.c_str(), data.length());
+	return (int)data.length();
+}
+
+int Arc::Socket::bufferBool( bool data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, (char*)&data, sizeof(bool));
+	return sizeof(bool);
+}
+
+int Arc::Socket::bufferShort( short data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, (char*)&data, sizeof(short));
+	return sizeof(short);
+}
+
+int Arc::Socket::bufferInt( int data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, (char*)&data, sizeof(int));
+	return sizeof(int);
+}
+
+int Arc::Socket::bufferLong( long data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, (char*)&data, sizeof(long));
+	return sizeof(long);
+}
+
+int Arc::Socket::bufferFloat( float data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, (char*)&data, sizeof(float));
+	return sizeof(float);
+}
+
+int Arc::Socket::bufferDouble( double data, char* buffer, int offset )
+{
+	memcpy(buffer + offset, (char*)&data, sizeof(double));
+	return sizeof(double);
 }

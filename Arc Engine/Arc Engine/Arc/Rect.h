@@ -84,10 +84,10 @@ namespace Arc
 		// Lerp between the start and end rectangles by the fraction amount
 		inline static Rect lerp( const Rect& start, const Rect& end, float fraction )
 		{
-			return Rect(lerpNumber(start.X, end.X, fraction),
-				        lerpNumber(start.Y, end.Y, fraction), 
-				        lerpNumber(start.Width,  end.Width,  fraction),
-						lerpNumber(start.Height, end.Height, fraction));
+			return Rect(MathHelper::lerp(start.X, end.X, fraction),
+				        MathHelper::lerp(start.Y, end.Y, fraction), 
+				        MathHelper::lerp(start.Width,  end.Width,  fraction),
+						MathHelper::lerp(start.Height, end.Height, fraction));
 		}
 
         virtual int serialize( ostream &stream );
