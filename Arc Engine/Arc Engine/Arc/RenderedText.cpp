@@ -72,10 +72,10 @@ const Arc::Size Arc::RenderedText::getSize( void ) const
     return _pTexture->getSize();
 }
 
-Arc::Size Arc::RenderedText::measureString( string text )
+Arc::Size Arc::RenderedText::getStringRenderedSize( string text )
 {
     if (_pFont == nullptr || _pFont->getSDLFont() == nullptr)
         return Size::ZERO;
 
-    return _pFont->measureString(text);
+    return _pFont->getStringRenderedSize(text);
 }

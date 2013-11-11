@@ -160,9 +160,9 @@ float Arc::Vector2::getDistanceToSquared( const Vector2& other ) const
 	return (dx * dx + dy * dy);
 }
 
-Arc::Angle Arc::Vector2::getAngleTo( const Vector2& other ) const
+Arc::Angle Arc::Vector2::getAngleToPoint( const Vector2& other ) const
 {
-	return Angle(getAngleToRad(other), ANGLE_TYPE_RAD);
+	return Angle(getAngleToPointRad(other), ANGLE_TYPE_RAD);
 }
 
 void Arc::Vector2::normalize( void )
@@ -173,4 +173,11 @@ void Arc::Vector2::normalize( void )
 		X /= length;
 	    Y /= length;
 	}
+}
+
+Arc::Vector2 Arc::Vector2::getNormalized( void )
+{
+	Vector2 copy(X, Y);
+	copy.normalize();
+	return copy;
 }

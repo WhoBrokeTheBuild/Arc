@@ -12,7 +12,7 @@
 
 namespace Arc
 {
-	/** Event Data for 
+	/** Event Data for a text input event
 	  */
     class TextInputData
         : public EventData

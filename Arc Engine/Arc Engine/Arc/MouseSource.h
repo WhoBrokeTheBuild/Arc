@@ -25,41 +25,49 @@ namespace Arc
     private:
 
 		// SDL managed array of the mouse button states
-        uint8_t
-            _sdlButtonStates;
+        uint8_t _sdlButtonStates;
 
     protected:
 
 		// Map of mouse buttons to their states (up, down, pressed, released)
-        Map<MouseButton, InputState>
-            _buttonStates;
+        Map<MouseButton, InputState> _buttonStates;
 
 		// Current mouse position
-        Point
-            _mousePos;
+        Point _mousePos;
 
 		// Change in the mouse position between the current frame and the last
-        Vector2
-			_mouseDelta;
-
-		// Function for reading input only available through SDL Events
+        Vector2 _mouseDelta;
+		
+		/* Handles a single SDL_Event for reading input only available through SDL Events
+		 * 
+		 * @param sdlEvent: The SDL Event to handle
+		 */
 		virtual void handleSDLEvent( SDL_Event sdlEvent );
 
     public:
 
-        static const EventType
-            EVENT_MOUSE_MOVED,
-            EVENT_MOUSE_PRESSED,
-            EVENT_MOUSE_RELEASED,
-			EVENT_MOUSE_HELD,
-			EVENT_MOUSE_WHEEL_UP,
-			EVENT_MOUSE_WHEEL_DOWN;
-
+        static const EventType EVENT_MOUSE_MOVED;
+        static const EventType EVENT_MOUSE_PRESSED;
+        static const EventType EVENT_MOUSE_RELEASED;
+		static const EventType EVENT_MOUSE_HELD;
+		static const EventType EVENT_MOUSE_WHEEL_UP;
+		static const EventType EVENT_MOUSE_WHEEL_DOWN;
+		
+		/* Creates a mouse source
+		 */
         MouseSource( void );
+
         virtual ~MouseSource( void );
 
         virtual inline string toString( void ) const { return "Mouse Source"; }
-
+		
+		/* Handler for the update event. Polls SDL for the current mouse state, then iterates 
+		 * over the _buttonStates map comparing the current states to the previous states 
+		 * and updating them. After each button is processed the events are fired. Events are 
+		 * fired for the current mouse position if the mouse has moved
+		 *
+		 * @param event: The event holding the frame data
+		 */
         virtual void update( const Event& event );
 
     }; // class MouseSource

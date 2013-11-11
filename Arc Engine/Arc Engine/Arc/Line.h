@@ -54,11 +54,11 @@ namespace Arc
 
         inline float length( void ) { return A.getDistanceTo(B); }
 
-        inline float angleAtoBDeg( void ) { return A.getAngleToDeg(B); }
-        inline float angleBtoADeg( void ) { return B.getAngleToDeg(A); }
+        inline float angleAtoBDeg( void ) { return A.getAngleToPointDeg(B); }
+        inline float angleBtoADeg( void ) { return B.getAngleToPointDeg(A); }
 
-        inline float angleAtoBRad( void ) { return A.getAngleToRad(B); }
-        inline float angleBtoARad( void ) { return B.getAngleToRad(A); }
+        inline float angleAtoBRad( void ) { return A.getAngleToPointRad(B); }
+        inline float angleBtoARad( void ) { return B.getAngleToPointRad(A); }
 
         inline Angle angleAtoB( void );
         inline Angle angleBtoA( void );

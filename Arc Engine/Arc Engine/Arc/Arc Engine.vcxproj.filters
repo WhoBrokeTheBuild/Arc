@@ -67,6 +67,9 @@
     <Filter Include="Project\Networking">
       <UniqueIdentifier>{52390d8e-c153-40c6-b41d-54cefbc4e9cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Util\Helpers">
+      <UniqueIdentifier>{83f661c7-9a8d-4d2d-ace2-f2bf1e5790de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp">
@@ -225,6 +228,10 @@
     <ClCompile Include="ServerSocket.cpp">
       <Filter>Project\Networking</Filter>
     </ClCompile>
+    <ClCompile Include="MathHelper.cpp">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="AngleHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -470,5 +477,9 @@
     <ClInclude Include="ServerSocket.h">
       <Filter>Project\Networking</Filter>
     </ClInclude>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="AngleHelper.h" />
   </ItemGroup>
 </Project>

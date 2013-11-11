@@ -31,7 +31,7 @@ std::string Arc::Font::toString( void ) const
     return ss.str();
 }
 
-Arc::Size Arc::Font::measureString( string text )
+Arc::Size Arc::Font::getStringRenderedSize( string text )
 {
 	if ( ! isLoaded())
 		return Size::ZERO;

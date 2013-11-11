@@ -65,7 +65,7 @@ namespace Arc
 		 *
 		 * @returns: The size of the texture if the font is loaded or a size with a width and height of 0
 		 */ 
-        virtual Size measureString( string text );
+        virtual Size getStringRenderedSize( string text );
 
     }; // class Font
 

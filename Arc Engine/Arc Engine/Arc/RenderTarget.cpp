@@ -15,23 +15,18 @@ void Arc::RenderTarget::beginDraw( void ) const
     glLoadIdentity();
 }
 
-// ShapeValue 1.5 - Draws Triangle
-// ShapeValue 2   - Draws Square
-// ShapeValue 3   - Draws Hexagon
-// ShapeValue 4   - Draws Octagon
-// ShapeValue 5   - Draws Decagon
-// ShapeValue 6   - Draws Circle
-// ShapeValue 12  - Draws Better Circle
+
 void Arc::RenderTarget::drawShape( const float x, 
 								   const float y, 
 								   const float radius,
-								   const float shapeValue,
+								   const float sides,
 								   const Color color /*= Color::WHITE*/,
 								   const Angle rotation /*= Angle::ZERO*/,
 								   const Vector2 scale /*= Vector2::ONE*/, 
 								   const Origin origin /*= Origin::ZERO*/ ) const
 {
 	Point originPoint = origin.getPoint();
+	float shapeValue = sides * 0.5f;
 
     glPushMatrix();
     glTranslatef(x - originPoint.X, y - originPoint.Y, 0.0f);
@@ -57,13 +52,14 @@ void Arc::RenderTarget::drawShape( const float x,
 void Arc::RenderTarget::fillShape( const float x, 
 								   const float y,
 								   const float radius,
-								   const float shapeValue,
+								   const float sides,
 								   const Color color /*= Color::WHITE*/,
 								   const Angle rotation /*= Angle::ZERO*/,
 								   const Vector2 scale /*= Vector2::ONE*/,
 								   const Origin origin /*= Origin::ZERO*/ ) const
 {
 	Point originPoint = origin.getPoint();
+	float shapeValue = sides * 0.5f;
 
     glPushMatrix();
     glTranslatef(x - originPoint.X, y - originPoint.Y, 0.0f);
