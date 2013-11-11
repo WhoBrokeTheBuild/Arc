@@ -10,7 +10,7 @@ TestApp::TestApp( void )
 
 	_targetFPS = -1;
 
-    _pScriptingSystem->executeFile("assets/test.lua");
+    //_pScriptingSystem->executeFile("assets/test.lua");
 
 }
 
@@ -21,6 +21,4 @@ TestApp::~TestApp( void )
 void TestApp::update( const Event& event )
 {
     const FrameData* data = event.dataAs<FrameData>();
-
-	cout << data->getCurrentFPS() << endl;
 }

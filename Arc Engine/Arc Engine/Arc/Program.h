@@ -83,6 +83,9 @@ namespace Arc
 		// The event called to end the program
 		static const EventType EVENT_EXIT;
 
+		Program( void );
+		virtual ~Program( void );
+
         virtual inline string toString( void ) const { return "Program"; }
 
 		/* Gets the static instance the program singleton

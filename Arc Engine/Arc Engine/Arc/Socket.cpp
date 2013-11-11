@@ -1,12 +1,50 @@
 #include "Socket.h"
+#include "ServerSocket.h"
+
+#ifdef WINDOWS
+
+Arc::Socket::Socket( SOCKET socket )
+
+#else // LINUX
+
+Arc::Socket::Socket( unsigned int socket )
+
+#endif // WINDOWS
+
+	: _address(),
+	  _port(), 
+	  _type(INVALID_SOCKET_TYPE),
+	  _socket(socket),
+	  _error(false)
+{
+	char buf[INET_ADDRSTRLEN] = "";
+	struct sockaddr_in name;
+	socklen_t len = sizeof(name);
+	int res;
+
+	res = getpeername(socket, (struct sockaddr *)&name, &len);
+
+	if (res == 0)
+	{
+		inet_ntop(AF_INET, &name.sin_addr, buf, sizeof buf);
+	}
+	else
+	{
+		ERRORF(toString(), "getpeername() failed, error %i", res);
+	}
+
+	_address = IPAddress(inet_ntoa(name.sin_addr));
+	_port = name.sin_port;
+	_type = SOCKET_TYPE_TCP; // TODO: Get actual socket type when UDP is implemented
+}
 
 Arc::Socket::Socket( void )
+	: _address(),
+	  _port(), 
+	  _type(INVALID_SOCKET_TYPE),
+	  _socket(INVALID_SOCKET),
+	  _error(false)
 {
-    _address = IPAddress();
-	_port    = 0;
-    _type    = INVALID_SOCKET_TYPE;
-	_socket  = INVALID_SOCKET;
-	_error   = false;
 }
 
 void Arc::Socket::init( IPAddress addr, unsigned int port, SocketType type )
@@ -29,10 +67,12 @@ void Arc::Socket::init( IPAddress addr, unsigned int port, SocketType type )
 	saddr.sin_family = AF_INET;
 	saddr.sin_port   = htons(_port);
 
-	saddr.sin_addr.S_un.S_un_b.s_b1 = _address.getRawData()[0];
-	saddr.sin_addr.S_un.S_un_b.s_b2 = _address.getRawData()[1];
-	saddr.sin_addr.S_un.S_un_b.s_b3 = _address.getRawData()[2];
-	saddr.sin_addr.S_un.S_un_b.s_b4 = _address.getRawData()[3];
+	uint8_t* rawAddr = _address.getRawData();
+
+	saddr.sin_addr.S_un.S_un_b.s_b1 = rawAddr[0];
+	saddr.sin_addr.S_un.S_un_b.s_b2 = rawAddr[1];
+	saddr.sin_addr.S_un.S_un_b.s_b3 = rawAddr[2];
+	saddr.sin_addr.S_un.S_un_b.s_b4 = rawAddr[3];
 
 	int result = connect(_socket, (sockaddr*)&saddr, sizeof saddr);
 	if (result == SOCKET_ERROR)
@@ -44,7 +84,6 @@ void Arc::Socket::init( IPAddress addr, unsigned int port, SocketType type )
 
 void Arc::Socket::term( void )
 {
-
 #ifdef WINDOWS
 
 	closesocket(_socket);
@@ -54,7 +93,6 @@ void Arc::Socket::term( void )
 	close(_socket);
 
 #endif // WINDOWS
-
 }
 
 int Arc::Socket::sendString( string data, bool buffer /*= false */ )
@@ -83,7 +121,33 @@ int Arc::Socket::sendBool( bool data, bool buffer /*= false */ )
 	}
 }
 
+int Arc::Socket::sendShort( short data, bool buffer /*= false */ )
+{
+	if (buffer)
+	{
+		_buffer << (char*)&data;
+		return sizeof data;
+	}
+	else
+	{
+		return send(_socket, (char*)&data, sizeof data, 0);
+	}
+}
+
 int Arc::Socket::sendInt( int data, bool buffer /*= false */ )
+{
+	if (buffer)
+	{
+		_buffer << (char*)&data;
+		return sizeof data;
+	}
+	else
+	{
+		return send(_socket, (char*)&data, sizeof data, 0);
+	}
+}
+
+int Arc::Socket::sendLong( long data, bool buffer /*= false */ )
 {
 	if (buffer)
 	{
@@ -141,20 +205,90 @@ string Arc::Socket::readString( unsigned int bufferLength /*= 2000 */ )
 
 bool Arc::Socket::readBool( void )
 {
-	return false;
+	char buffer;
+
+	int bytes = recv(_socket, &buffer, 1, 0);
+
+	if (bytes == -1)
+		return false;
+
+	bool val;
+	memcpy(&val, &buffer, sizeof(int));
+
+	return val;
+}
+
+short Arc::Socket::readShort( void )
+{
+	char buffer[sizeof(short)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return false;
+
+	short num;
+	memcpy(&num, buffer, sizeof(int));
+
+	return num;
 }
 
 int Arc::Socket::readInt( void )
 {
-	return 0;
+	char buffer[sizeof(int)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return false;
+
+	int num;
+	memcpy(&num, buffer, sizeof(int));
+
+	return num;
+}
+
+long Arc::Socket::readLong( void )
+{
+	char buffer[sizeof(long)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return false;
+
+	long num;
+	memcpy(&num, buffer, sizeof(long));
+
+	return num;
 }
 
 float Arc::Socket::readFloat( void )
 {
-	return 0.0f;
+	char buffer[sizeof(float)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return false;
+
+	float num;
+	memcpy(&num, buffer, sizeof(float));
+
+	return num;
 }
 
 double Arc::Socket::readDouble( void )
 {
-	return 0.0;
+	char buffer[sizeof(double)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return false;
+
+	double num;
+	memcpy(&num, buffer, sizeof(double));
+
+	return num;
 }

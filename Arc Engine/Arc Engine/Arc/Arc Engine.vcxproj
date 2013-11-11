@@ -49,6 +49,7 @@
     <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScriptingSystem.cpp" />
+    <ClCompile Include="ServerSocket.cpp" />
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -128,6 +129,7 @@
     <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="ScriptingSystem.h" />
+    <ClInclude Include="ServerSocket.h" />
     <ClInclude Include="ShapeComponent.h" />
     <ClInclude Include="Shapes.h" />
     <ClInclude Include="Socket.h" />

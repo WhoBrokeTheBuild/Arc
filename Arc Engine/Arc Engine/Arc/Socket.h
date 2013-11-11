@@ -29,9 +29,14 @@
 
 namespace Arc
 {
+	class ServerSocket;
+
     class Socket :
         public ManagedObject
     {
+
+		friend class ServerSocket;
+
     protected:
 
 #ifdef WINDOWS
@@ -66,6 +71,16 @@ namespace Arc
 		stringstream
 			_buffer;
 
+#ifdef WINDOWS
+
+		Socket( SOCKET socket );
+
+#else // LINUX
+
+		Socket( unsigned int socket );
+
+#endif // WINDOWS
+
     public:
 
         Socket( void );
@@ -83,13 +98,17 @@ namespace Arc
 
 		virtual string readString( unsigned int bufferLength = 2000 );
 		virtual bool   readBool  ( void );
+		virtual short  readShort ( void );
 		virtual int    readInt   ( void );
+		virtual long   readLong  ( void );
 		virtual float  readFloat ( void );
 		virtual double readDouble( void );
 
 		virtual int sendString( string data, bool buffer = false );
 		virtual int sendBool  ( bool data,   bool buffer = false );
+		virtual int sendShort ( short data,  bool buffer = false );
 		virtual int sendInt   ( int data,    bool buffer = false );
+		virtual int sendLong  ( long data,   bool buffer = false );
 		virtual int sendFloat ( float data,  bool buffer = false );
 		virtual int sendDouble( double data, bool buffer = false );
 

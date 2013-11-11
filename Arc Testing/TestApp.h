@@ -6,6 +6,8 @@
 #include "Common.h"
 #include <Arc/Program.h>
 
+#include <Arc\ServerSocket.h>
+
 class TestApp :
     public Program
 {

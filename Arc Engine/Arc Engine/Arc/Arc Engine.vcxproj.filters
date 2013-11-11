@@ -222,6 +222,9 @@
     <ClCompile Include="Origin.cpp">
       <Filter>Project\Units</Filter>
     </ClCompile>
+    <ClCompile Include="ServerSocket.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -463,6 +466,9 @@
     </ClInclude>
     <ClInclude Include="Origin.h">
       <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerSocket.h">
+      <Filter>Project\Networking</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

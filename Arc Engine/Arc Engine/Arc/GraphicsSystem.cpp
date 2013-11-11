@@ -106,7 +106,7 @@ void Arc::GraphicsSystem::resetGL( void )
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// Clear the background to the clear color
-    glClearColor(_clearColor.fracR(), _clearColor.fracG(), _clearColor.fracB(), _clearColor.fracA());
+    glClearColor(_clearColor.getFracR(), _clearColor.getFracG(), _clearColor.getFracB(), _clearColor.getFracA());
     glClear(GL_COLOR_BUFFER_BIT);
     SDL_GL_SwapBuffers();
 

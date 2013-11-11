@@ -10,7 +10,7 @@ void Arc::RenderTarget::beginDraw( void ) const
 {
     Color clearColor = _pGraphicsSystem->getClearColor();
 
-    glClearColor(clearColor.fracR(), clearColor.fracG(), clearColor.fracB(), clearColor.fracA());
+    glClearColor(clearColor.getFracA(), clearColor.getFracG(), clearColor.getFracB(), clearColor.getFracA());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 }
@@ -40,7 +40,7 @@ void Arc::RenderTarget::drawShape( const float x,
     glRotatef(rotation.getDeg() - 90.0f, 0.0f, 0, 1.0f);
     glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
-    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+    glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
     glBegin(GL_LINE_LOOP);
 
@@ -72,7 +72,7 @@ void Arc::RenderTarget::fillShape( const float x,
     glRotatef(rotation.getDeg() - 90.0f, 0.0f, 0.0f, 1.0f);
     glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
-    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+    glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
     glBegin(GL_POLYGON);
 
@@ -130,7 +130,7 @@ void Arc::RenderTarget::draw( const float x,
 
     glBindTexture(GL_TEXTURE_2D, pTexture->getGLTexture());
 
-    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+    glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
     glBegin(GL_QUADS);
 
@@ -159,7 +159,7 @@ void Arc::RenderTarget::drawLine( const float x1,
     glPushMatrix();
     glTranslatef(0.0f, 0.0f, 0.0f);
 
-    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+    glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
     glLineWidth(thickness);
 
@@ -188,7 +188,7 @@ void Arc::RenderTarget::drawRect( const Rect rect,
     glRotatef(rotation.getDeg(), 0.0f, 0.0f, 1.0f);
     glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
-    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+    glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
     glBegin(GL_LINE_LOOP);
 
@@ -217,7 +217,7 @@ void Arc::RenderTarget::fillRect( const Rect rect,
     glRotatef(rotation.getDeg(), 0.0f, 0.0f, 1.0f);
     glTranslatef(-originPoint.X, -originPoint.Y, 0.0f);
 
-    glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+    glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
     glBegin(GL_QUADS);
 
@@ -238,7 +238,7 @@ void Arc::RenderTarget::drawTriangle( const Vector2 pointA,
 {
 	glPushMatrix();
 
-	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
 	glBegin(GL_LINE_LOOP);
 
@@ -258,7 +258,7 @@ void Arc::RenderTarget::fillTriangle( const Vector2 pointA,
 {
 	glPushMatrix();
 
-	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
 	glBegin(GL_POLYGON);
 
@@ -275,7 +275,7 @@ void Arc::RenderTarget::drawPolygon( const ArrayList<Point> &points, const Color
 {
 	glPushMatrix();
 
-	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
 	glBegin(GL_LINE_LOOP);
 
@@ -291,7 +291,7 @@ void Arc::RenderTarget::fillPolygon( const ArrayList<Point> &points, const Color
 {
 	glPushMatrix();
 
-	glColor4f(color.fracR(), color.fracG(), color.fracB(), color.fracA());
+	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
 	glBegin(GL_POLYGON);
 
