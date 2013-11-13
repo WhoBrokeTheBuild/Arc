@@ -8,6 +8,8 @@
 using std::ostream;
 using std::istream;
 
+#include "Buffer.h"
+
 namespace Arc
 {
 	/** An interface for serializing and deserializing objects
@@ -18,6 +20,9 @@ namespace Arc
 
             virtual int serialize( ostream &stream ) = 0;
             virtual int deserialize( istream &stream ) = 0;
+
+			virtual int serialize( Buffer &buffer ) = 0;
+			virtual int deserialize( Buffer &buffer ) = 0;
 
     }; // class ISerializable
 

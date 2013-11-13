@@ -8,6 +8,7 @@
 
 #include "IPAddress.h"
 #include "SocketType.h"
+#include "Buffer.h"
 
 #ifdef WINDOWS
 
@@ -102,6 +103,7 @@ namespace Arc
 
 		virtual int sendString( string data );
 		virtual int sendBuffer( char* buffer, int length );
+		virtual int sendBuffer( const Buffer& buffer );
 		virtual int sendBool  ( bool data );
 		virtual int sendShort ( short data );
 		virtual int sendInt   ( int data );
