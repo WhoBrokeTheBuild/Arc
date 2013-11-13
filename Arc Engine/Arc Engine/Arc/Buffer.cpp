@@ -113,15 +113,3 @@ bool Arc::Buffer::appendData( istream& stream )
 
 	return true;
 }
-
-ostream& operator<<( ostream& stream, const Arc::Buffer& buffer )
-{
-	buffer.writeToStream(stream);
-	return stream;
-}
-
-istream& operator>>( istream& stream, Arc::Buffer& buffer )
-{
-	buffer.appendData(stream);
-	return stream;
-}

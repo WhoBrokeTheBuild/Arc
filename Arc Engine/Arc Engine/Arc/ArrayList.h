@@ -94,12 +94,12 @@ namespace Arc
 
         bool removeBack( void );
 
-		inline void resize( unsigned int size, const T& value = T()) { _list.resize(size, value); }
+		inline void resize( unsigned int size, const T& value = T()) { _list.resize(size, value); updateSize(); }
 
 		template <class InputIterator>
-		inline void assign( InputIterator first, InputIterator last ) { _list.assign(first, last); }
+		inline void assign( InputIterator first, InputIterator last ) { _list.assign(first, last); updateSize(); }
 
-		inline void fill( T value, unsigned int amount ) { _list.assign(amount, value); }
+		inline void fill( T value, unsigned int amount ) { _list.assign(amount, value); updateSize(); }
 
         inline T& at( int index ) { return _list[index]; }
         inline const T& at( int index ) const { return _list[index]; }

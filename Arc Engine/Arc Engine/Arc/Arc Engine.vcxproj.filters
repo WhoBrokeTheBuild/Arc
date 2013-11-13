@@ -228,7 +228,9 @@
     <ClCompile Include="StringHelper.cpp">
       <Filter>Project\Util\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="Buffer.cpp">
+      <Filter>Project\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -468,6 +470,8 @@
     <ClInclude Include="StringHelper.h">
       <Filter>Project\Util\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Buffer.h" />
+    <ClInclude Include="Buffer.h">
+      <Filter>Project\Util</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

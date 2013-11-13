@@ -65,8 +65,17 @@ namespace Arc
 		void resize( long size );
 		long getSize( void ) const;
 
-		friend ostream& operator<<( ostream& stream, const Buffer& buffer);
-		friend istream& operator>>( istream& stream, Buffer& buffer);
+		friend inline ostream& operator<<( ostream& stream, const Buffer& buffer)
+		{
+			buffer.writeToStream(stream);
+			return stream;
+		}
+
+		friend inline istream& operator>>( istream& stream, Buffer& buffer)
+		{
+			buffer.appendData(stream);
+			return stream;
+		}
 
 
 	}; // class Buffer

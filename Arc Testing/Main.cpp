@@ -15,15 +15,6 @@ int main(int argc, char *argv[])
 
 #endif
 
-	Buffer buffer;
-
-	buffer.setData("Hello, World!");
-
-	cout << buffer << endl;
-
-	pause();
-	return 0;
-
     INFO("Main", "Starting Up");
 
     gpMemoryTracker = new MemoryTracker();
