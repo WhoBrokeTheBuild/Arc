@@ -3,6 +3,8 @@
 #include <Arc/Console.h>
 #include <Arc/MemoryTracker.h>
 
+#include <Arc/Buffer.h>
+
 #include "TestApp.h"
 
 int main(int argc, char *argv[])
@@ -12,6 +14,15 @@ int main(int argc, char *argv[])
     initConsole();
 
 #endif
+
+	Buffer buffer;
+
+	buffer.setData("Hello, World!");
+
+	cout << buffer << endl;
+
+	pause();
+	return 0;
 
     INFO("Main", "Starting Up");
 

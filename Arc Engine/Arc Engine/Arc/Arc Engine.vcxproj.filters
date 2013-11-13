@@ -120,9 +120,6 @@
     <ClCompile Include="MouseSource.cpp">
       <Filter>Project\Input\Sources</Filter>
     </ClCompile>
-    <ClCompile Include="TextInputSource.cpp">
-      <Filter>Project\Input\Sources</Filter>
-    </ClCompile>
     <ClCompile Include="ParseFunc.cpp">
       <Filter>Project\Util\Functions</Filter>
     </ClCompile>
@@ -162,14 +159,8 @@
     <ClCompile Include="AudioSystem.cpp">
       <Filter>Project\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Project\Util\Geom</Filter>
-    </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>Project\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>Project\Util\Geom</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Project\Units</Filter>
@@ -231,7 +222,13 @@
     <ClCompile Include="MathHelper.cpp">
       <Filter>Project\Util\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="AngleHelper.cpp" />
+    <ClCompile Include="AngleHelper.cpp">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Buffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">
@@ -288,9 +285,6 @@
     <ClInclude Include="Geom.h">
       <Filter>Project\Util\Geom</Filter>
     </ClInclude>
-    <ClInclude Include="Direction.h">
-      <Filter>Project\Util\Geom</Filter>
-    </ClInclude>
     <ClInclude Include="InputState.h">
       <Filter>Project\Input</Filter>
     </ClInclude>
@@ -322,12 +316,6 @@
       <Filter>Project\Input\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="IMouseListener.h">
-      <Filter>Project\Input\Interfaces</Filter>
-    </ClInclude>
-    <ClInclude Include="TextInputSource.h">
-      <Filter>Project\Input\Sources</Filter>
-    </ClInclude>
-    <ClInclude Include="ITextInputListener.h">
       <Filter>Project\Input\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="ArrayList.h">
@@ -402,14 +390,8 @@
     <ClInclude Include="Defines.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Project\Util\Geom</Filter>
-    </ClInclude>
     <ClInclude Include="Program.h">
       <Filter>Project\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>Project\Util\Geom</Filter>
     </ClInclude>
     <ClInclude Include="Angle.h">
       <Filter>Project\Util\Geom</Filter>
@@ -480,6 +462,12 @@
     <ClInclude Include="MathHelper.h">
       <Filter>Project\Util\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="AngleHelper.h" />
+    <ClInclude Include="AngleHelper.h">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Buffer.h" />
   </ItemGroup>
 </Project>

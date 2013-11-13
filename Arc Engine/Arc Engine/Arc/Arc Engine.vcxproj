@@ -16,6 +16,7 @@
     <ClCompile Include="AnimatedComponent.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
+    <ClCompile Include="Buffer.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DrawableComponent.cpp" />
     <ClCompile Include="ImageComponent.cpp" />
@@ -39,7 +40,6 @@
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="KeyboardSource.cpp" />
     <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="Line.cpp" />
     <ClCompile Include="MathFunc.cpp" />
     <ClCompile Include="MemoryTracker.cpp" />
     <ClCompile Include="MouseSource.cpp" />
@@ -57,12 +57,11 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StreamFunc.cpp" />
     <ClCompile Include="StringFunc.cpp" />
+    <ClCompile Include="StringHelper.cpp" />
     <ClCompile Include="TextComponent.cpp" />
-    <ClCompile Include="TextInputSource.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeFunc.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
@@ -74,6 +73,7 @@
     <ClInclude Include="ArrayFunc.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="AudioSystem.h" />
+    <ClInclude Include="Buffer.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DrawableComponent.h" />
     <ClInclude Include="ImageComponent.h" />
@@ -93,7 +93,6 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="Delegate.h" />
-    <ClInclude Include="Direction.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventData.h" />
     <ClInclude Include="EventDispatcher.h" />
@@ -111,11 +110,9 @@
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="InputSourceType.h" />
     <ClInclude Include="InputType.h" />
-    <ClInclude Include="ITextInputListener.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="KeyboardSource.h" />
     <ClInclude Include="Layer.h" />
-    <ClInclude Include="Line.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
@@ -142,12 +139,11 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StreamFunc.h" />
     <ClInclude Include="StringFunc.h" />
+    <ClInclude Include="StringHelper.h" />
     <ClInclude Include="TextComponent.h" />
-    <ClInclude Include="TextInputSource.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeFunc.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="Triangle.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>

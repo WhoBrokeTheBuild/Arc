@@ -95,3 +95,5 @@
 /Arc Engine/Arc Engine/Arc/Release/*.obj
 
 /Arc Testing/*.sdf
+
+/Arc Testing/Debug/*.unsuccessfulbuild

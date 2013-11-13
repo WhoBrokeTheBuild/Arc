@@ -15,7 +15,6 @@
 
 #include "KeyboardSource.h"
 #include "MouseSource.h"
-#include "TextInputSource.h"
 
 namespace Arc
 {
@@ -29,9 +28,6 @@ namespace Arc
 
 		// Manager for mouse input
         MouseSource* _pMouseSource;
-
-		// Manager for text input
-        TextInputSource* _pTextInputSource;
 
 		// Function for handling the SDL Event loop
         virtual void handleSDLEvent( SDL_Event sdlEvent );

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef __MATH_HELPER_H__
-#define __MATH_HELPER_H__
+#ifndef __ARC_MATH_HELPER_H__
+#define __ARC_MATH_HELPER_H__
 
 #include <cmath>
 
@@ -65,8 +65,8 @@ namespace Arc
 		template <class Number>
 		static Number hermite( Number x0, Number x1, Number x2, Number x3, Number mu, double tension, double bias);
 
-	}; // static class MathHelper
+	}; // class MathHelper
 
 } // namespace Arc
 
-#endif // __MATH_HELPER_H__
+#endif // __ARC_MATH_HELPER_H__

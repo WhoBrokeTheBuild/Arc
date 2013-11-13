@@ -1,5 +1,6 @@
 #include "IPAddress.h"
 #include "Socket.h"
+#include "StringHelper.h"
 
 const Arc::IPAddress Arc::IPAddress::ZERO = IPAddress(0, 0, 0, 0);
 
@@ -10,7 +11,7 @@ Arc::IPAddress::IPAddress( void )
 
 Arc::IPAddress::IPAddress( string addr )
 {
-    ArrayList<string> strQuads = strSplit(addr, '.', 4);
+    ArrayList<string> strQuads = StringHelper::split(addr, '.', 4);
 
     if (strQuads.getSize() < 4)
         _quads[0] = _quads[1] = _quads[2] = _quads[3] = 0;

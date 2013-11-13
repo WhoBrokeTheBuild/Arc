@@ -11,6 +11,7 @@
 #include "RenderedText.h"
 #include "Texture.h"
 #include "Origin.h"
+#include "ArrayList.h"
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_opengl.h>

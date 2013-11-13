@@ -21,13 +21,6 @@ namespace Arc
 		// Universal function to turn an object into a string, used to identify objects when debugging
         virtual string toString( void ) const = 0;
 
-		// Helper function to allow outputting objects through file streams using the toString() function
-        inline friend ostream& operator<<( ostream& os, const ManagedObject& go )
-        {
-            os << go.toString();
-            return os;
-        }
-
 		// Normal new operator
         void* operator new  ( size_t size );
         void* operator new[]( size_t size );
@@ -57,6 +50,20 @@ namespace Arc
 #endif
 
     }; // class ManagedObject
+
+	class AdvManagedObject
+		: ManagedObject
+	{
+	public:
+
+		// Helper function to allow outputting objects through file streams using the toString() function
+		inline friend ostream& operator<<( ostream& os, const ManagedObject& go )
+		{
+			os << go.toString();
+			return os;
+		}
+
+	};
 
 } // namespace Arc
 

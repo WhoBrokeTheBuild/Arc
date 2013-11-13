@@ -5,6 +5,7 @@
 #include "Rect.h"
 #include "Color.h"
 #include "ArrayList.h"
+#include "StringHelper.h"
 
 int Arc::parseInt( const string& value )
 {
@@ -34,7 +35,7 @@ bool Arc::parseBool( const string& value )
 
 Arc::Vector2 Arc::parseVector2( const string& value )
 {
-    ArrayList<string> parts = strSplit(value, ',', 2);
+    ArrayList<string> parts = StringHelper::split(value, ',', 2);
 
     if (parts.getSize() < 2)
         return Vector2::ZERO;
@@ -44,7 +45,7 @@ Arc::Vector2 Arc::parseVector2( const string& value )
 
 Arc::Circle Arc::parseCircle( const string& value )
 {
-    ArrayList<string> parts = strSplit(value, ',', 3);
+    ArrayList<string> parts = StringHelper::split(value, ',', 3);
 
     if (parts.getSize() < 3)
         return Circle::ZERO;
@@ -54,7 +55,7 @@ Arc::Circle Arc::parseCircle( const string& value )
 
 Arc::Rect Arc::parseRect( const string& value )
 {
-    ArrayList<string> parts = strSplit(value, ',', 4);
+    ArrayList<string> parts = StringHelper::split(value, ',', 4);
 
     if (parts.getSize() < 4)
         return Rect::ZERO;
@@ -64,7 +65,7 @@ Arc::Rect Arc::parseRect( const string& value )
 
 Arc::Color Arc::parseColor( const string& value )
 {
-    ArrayList<string> parts = strSplit(value, ',', 4);
+    ArrayList<string> parts = StringHelper::split(value, ',', 4);
 
     if (parts.getSize() < 4)
         return Color::WHITE;

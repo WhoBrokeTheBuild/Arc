@@ -21,7 +21,7 @@ namespace Arc
 	/** A two-part vector.
 	  */
     class Vector2
-        : public ManagedObject,
+        : public AdvManagedObject,
           public ISerializable
     {
     public:

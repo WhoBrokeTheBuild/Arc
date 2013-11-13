@@ -11,14 +11,6 @@ using std::stringstream;
 
 namespace Arc
 {
-    template <class T>
-    class ArrayList;
-
-    ArrayList<string> strSplit     ( string str, char sep, int limit = -1 );
-    string            strReplace   ( string str, const string& sub, const string& newStr );
-    string            strReplaceAll( string str, const string& sub, const string& newStr );
-    string            strSubstring ( string str, unsigned int begin, int maxLength = -1 );
-    bool              strContains  ( string str, string sub );
 
     string basename( string fullPath );
 
@@ -30,12 +22,12 @@ namespace Arc
         return ss.str();
     }
 
-    string shortToStr ( const short&  value );
-    string intToStr   ( const int&    value );
-    string longToStr  ( const long&   value );
-    string floatToStr ( const float&  value );
-    string doubleToStr( const double& value );
-    string boolToStr  ( const bool&   value );
+    string shortToString ( const short&  value );
+    string intToString   ( const int&    value );
+    string longToString  ( const long&   value );
+    string floatToString ( const float&  value );
+    string doubleToString( const double& value );
+    string boolToString  ( const bool&   value );
 
 } // namespace Arc
 

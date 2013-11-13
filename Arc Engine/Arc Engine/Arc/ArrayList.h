@@ -57,7 +57,7 @@ namespace Arc
 
         inline ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; updateSize(); return *this; }
         inline T&         operator[]( const int index)       { return at(index); }
-        inline const T    operator[]( const int index) const { return at(index); }
+        inline const T&   operator[]( const int index) const { return at(index); }
 
         virtual inline string toString( void ) const { return "Array List"; }
 
@@ -71,19 +71,38 @@ namespace Arc
         inline ConstReverseIterator crbegin( void ) const { return _list.crbegin(); }
         inline ConstReverseIterator crend  ( void ) const { return _list.crend(); }
 
-        ArrayList<T>* add        ( const T& item );
-        ArrayList<T>* insertAt   ( const T& item, const int& index );
-		ArrayList<T>* clear      ( void );
-		T             popFront   ( void );
-		T             popBack    ( void );
-        bool          remove     ( const T& item );
-        bool          removeAll  ( const T& item );
-        bool          removeAt   ( const unsigned int& index );
-        bool          removeFront( void );
-        bool          removeBack ( void );
+        ArrayList<T>* add( const T& item );
+
+        ArrayList<T>* insertAt( const T& item, const int& index );
+
+		template <class InputIterator>
+		inline ArrayList<T>* insert( Iterator pos, InputIterator first, InputIterator last ) { _list.insert(pos, first, last); return this; }
+
+		ArrayList<T>* clear( void );
+
+		T popFront( void );
+
+		T popBack( void );
+
+        bool remove( const T& item );
+
+        bool removeAll( const T& item );
+
+        bool removeAt( const unsigned int& index );
+
+        bool removeFront( void );
+
+        bool removeBack( void );
+
+		inline void resize( unsigned int size, const T& value = T()) { _list.resize(size, value); }
+
+		template <class InputIterator>
+		inline void assign( InputIterator first, InputIterator last ) { _list.assign(first, last); }
+
+		inline void fill( T value, unsigned int amount ) { _list.assign(amount, value); }
 
         inline T& at( int index ) { return _list[index]; }
-        inline const T at( int index ) const { return _list[index]; }
+        inline const T& at( int index ) const { return _list[index]; }
 
         inline T& front( void ) { return _list.front(); }
         inline T& back ( void ) { return _list.back(); }

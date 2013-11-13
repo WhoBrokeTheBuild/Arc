@@ -7,7 +7,6 @@ Arc::InputSystem::InputSystem( void )
 
     _pKeyboardSource  = New KeyboardSource();
     _pMouseSource     = New MouseSource();
-    _pTextInputSource = New TextInputSource();
 
     gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 
@@ -20,7 +19,6 @@ Arc::InputSystem::~InputSystem( void )
 
     gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &InputSystem::update);
 
-    delete _pTextInputSource;
     delete _pMouseSource;
     delete _pKeyboardSource;
 
