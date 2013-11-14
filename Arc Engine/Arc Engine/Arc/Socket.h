@@ -93,13 +93,14 @@ namespace Arc
 
 		virtual inline bool hasError( void ) const { return _error; }
 
-		virtual string readString( unsigned int bufferLength = 2000 );
-		virtual bool   readBool  ( void );
-		virtual short  readShort ( void );
-		virtual int    readInt   ( void );
-		virtual long   readLong  ( void );
-		virtual float  readFloat ( void );
-		virtual double readDouble( void );
+		virtual string recvString( unsigned int maxLength = 2000 );
+		virtual Buffer recvBuffer( unsigned int bufferLength = 2000 );
+		virtual bool   recvBool  ( void );
+		virtual short  recvShort ( void );
+		virtual int    recvInt   ( void );
+		virtual long   recvLong  ( void );
+		virtual float  recvFloat ( void );
+		virtual double recvDouble( void );
 
 		virtual int sendString( string data );
 		virtual int sendBuffer( char* buffer, int length );
@@ -110,14 +111,6 @@ namespace Arc
 		virtual int sendLong  ( long data );
 		virtual int sendFloat ( float data );
 		virtual int sendDouble( double data );
-
-		virtual inline int bufferString( string data, char* buffer, int offset );
-		virtual inline int bufferBool  ( bool data, char* buffer, int offset );
-		virtual inline int bufferShort ( short data, char* buffer, int offset );
-		virtual inline int bufferInt   ( int data, char* buffer, int offset );
-		virtual inline int bufferLong  ( long data, char* buffer, int offset );
-		virtual inline int bufferFloat ( float data, char* buffer, int offset );
-		virtual inline int bufferDouble( double data, char* buffer, int offset );
 
     }; // class Socket
 

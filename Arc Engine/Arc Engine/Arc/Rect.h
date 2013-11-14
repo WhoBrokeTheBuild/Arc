@@ -90,8 +90,11 @@ namespace Arc
 						MathHelper::lerp(start.Height, end.Height, fraction));
 		}
 
-        virtual int serialize( ostream &stream );
-        virtual int deserialize( istream &stream );
+		virtual int serialize( ostream& stream );
+		virtual int deserialize( istream& stream );
+
+		virtual int serialize( Buffer& buffer );
+		virtual int deserialize( Buffer& buffer );
 
         virtual void setPos( Point pos );
 		virtual void setSize( Size size );

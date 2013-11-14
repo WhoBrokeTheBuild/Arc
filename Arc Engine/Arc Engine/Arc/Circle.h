@@ -60,10 +60,13 @@ namespace Arc
             stringstream ss;
             ss << "Circle [X: " << X << ", Y: " << Y << ", R:" << Radius << "]";
             return ss.str();
-        }
+		}
 
-        virtual int serialize( ostream &stream );
-        virtual int deserialize( istream &stream );
+		virtual int serialize( ostream& stream );
+		virtual int deserialize( istream& stream );
+
+		virtual int serialize( Buffer& buffer );
+		virtual int deserialize( Buffer& buffer );
 
         inline Point getPos( void ) const { return Point(X, Y); }
 

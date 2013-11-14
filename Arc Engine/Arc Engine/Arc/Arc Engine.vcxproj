@@ -21,6 +21,7 @@
     <ClCompile Include="DrawableComponent.cpp" />
     <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="IPAddress.cpp" />
+    <ClCompile Include="ISerializable.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="NetworkSystem.cpp" />
     <ClCompile Include="Origin.cpp" />

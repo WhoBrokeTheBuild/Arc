@@ -84,8 +84,11 @@ namespace Arc
 			return Angle(randFloat(min, max), type);
 		}
 
-        virtual int serialize( ostream &stream );
-        virtual int deserialize( istream &stream );
+        virtual int serialize( ostream& stream );
+		virtual int deserialize( istream& stream );
+
+		virtual int serialize( Buffer& buffer);
+		virtual int deserialize( Buffer& buffer );
 
         virtual inline float getDeg( void ) const { return _degrees; }
         virtual inline float getRad( void ) const { return AngleHelper::toRad(_degrees); }

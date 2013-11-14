@@ -1,5 +1,6 @@
 #include "Rect.h"
 #include "Circle.h"
+#include "Buffer.h"
 
 Arc::Rect Arc::Rect::ZERO = Rect(0.0f, 0.0f, 0.0f, 0.0f);
 Arc::Rect Arc::Rect::ONE  = Rect(0.0f, 0.0f, 1.0f, 1.0f);
@@ -16,6 +17,25 @@ int Arc::Rect::serialize( ostream &stream )
     return bytes;
 }
 
+int Arc::Rect::serialize( Buffer& buffer )
+{
+	int bytes = 0;
+
+	buffer.appendFloat(X);
+	bytes += sizeof(X);
+
+	buffer.appendFloat(Y);
+	bytes += sizeof(Y);
+
+	buffer.appendFloat(Width);
+	bytes += sizeof(Width);
+
+	buffer.appendFloat(Height);
+	bytes += sizeof(Height);
+
+	return bytes;
+}
+
 int Arc::Rect::deserialize( istream &stream )
 {
     int bytes = 0;
@@ -26,6 +46,25 @@ int Arc::Rect::deserialize( istream &stream )
     bytes += streamReadFloat(Height, stream);
 
     return bytes;
+}
+
+int Arc::Rect::deserialize( Buffer& buffer )
+{
+	int bytes = 0;
+
+	X = buffer.readNextFloat();
+	bytes += sizeof(X);
+
+	Y = buffer.readNextFloat();
+	bytes += sizeof(Y);
+
+	Width = buffer.readNextFloat();
+	bytes += sizeof(Width);
+
+	Height = buffer.readNextFloat();
+	bytes += sizeof(Height);
+
+	return bytes;
 }
 
 void Arc::Rect::setPos( Point pos )

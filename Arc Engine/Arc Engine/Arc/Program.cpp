@@ -38,7 +38,9 @@ Arc::Program::Program( void )
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER_START, this, &Program::renderStart);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER,       this, &Program::render);
     gpEventDispatcher->addEventListener(Program::EVENT_RENDER_END,   this, &Program::renderEnd);
-    gpEventDispatcher->addEventListener(Program::EVENT_EXIT,         this, &Program::stop);
+	gpEventDispatcher->addEventListener(Program::EVENT_EXIT,         this, &Program::stop);
+
+	addEventListener(Program::EVENT_EXIT, this, &Program::stop);
 
     INFO(toString(), "Complete");
 }
@@ -47,7 +49,9 @@ Arc::Program::~Program( void )
 {
     INFO(toString(), "Terminating");
 
-    gpEventDispatcher->removeEventListener(Program::EVENT_EXIT,   this, &Program::stop);
+	removeEventListener(Program::EVENT_EXIT, this, &Program::stop);
+
+    gpEventDispatcher->removeEventListener(Program::EVENT_EXIT,         this, &Program::stop);
     gpEventDispatcher->removeEventListener(Program::EVENT_RENDER_END,   this, &Program::renderEnd);
     gpEventDispatcher->removeEventListener(Program::EVENT_RENDER,       this, &Program::render);
     gpEventDispatcher->removeEventListener(Program::EVENT_RENDER_START, this, &Program::renderStart);

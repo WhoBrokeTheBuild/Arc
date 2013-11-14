@@ -105,6 +105,11 @@ int Arc::Socket::sendBuffer( char* buffer, int length )
 	return send(_socket, buffer, length, 0);
 }
 
+int Arc::Socket::sendBuffer( const Buffer& buffer )
+{
+	return send(_socket, buffer.getRawBuffer(), buffer.getFullSize(), 0);
+}
+
 int Arc::Socket::sendBool( bool data )
 {
 	return send(_socket, (char*)&data, sizeof data, 0);
@@ -135,7 +140,7 @@ int Arc::Socket::sendDouble( double data )
 	return send(_socket, (char*)&data, sizeof data, 0);
 }
 
-string Arc::Socket::readString( unsigned int bufferLength /*= 2000 */ )
+string Arc::Socket::recvString( unsigned int bufferLength /*= 2000 */ )
 {
 	char* buffer = new char[bufferLength + 1];
 
@@ -152,7 +157,20 @@ string Arc::Socket::readString( unsigned int bufferLength /*= 2000 */ )
 	return data;
 }
 
-bool Arc::Socket::readBool( void )
+Arc::Buffer Arc::Socket::recvBuffer( unsigned int bufferLength /*= 2000 */ )
+{
+	Buffer buf;
+	buf.resize(bufferLength);
+	
+	int bytes = recv(_socket, buf.getRawBuffer(), bufferLength, 0);
+
+	if (bytes == -1)
+		return Buffer();
+
+	return buf;
+}
+
+bool Arc::Socket::recvBool( void )
 {
 	char buffer;
 
@@ -162,12 +180,12 @@ bool Arc::Socket::readBool( void )
 		return false;
 
 	bool val;
-	memcpy(&val, &buffer, sizeof(int));
+	memcpy(&val, &buffer, sizeof(bool));
 
 	return val;
 }
 
-short Arc::Socket::readShort( void )
+short Arc::Socket::recvShort( void )
 {
 	char buffer[sizeof(short)];
 
@@ -177,12 +195,12 @@ short Arc::Socket::readShort( void )
 		return false;
 
 	short num;
-	memcpy(&num, buffer, sizeof(int));
+	memcpy(&num, buffer, sizeof(short));
 
 	return num;
 }
 
-int Arc::Socket::readInt( void )
+int Arc::Socket::recvInt( void )
 {
 	char buffer[sizeof(int)];
 
@@ -197,7 +215,7 @@ int Arc::Socket::readInt( void )
 	return num;
 }
 
-long Arc::Socket::readLong( void )
+long Arc::Socket::recvLong( void )
 {
 	char buffer[sizeof(long)];
 
@@ -212,7 +230,7 @@ long Arc::Socket::readLong( void )
 	return num;
 }
 
-float Arc::Socket::readFloat( void )
+float Arc::Socket::recvFloat( void )
 {
 	char buffer[sizeof(float)];
 
@@ -227,7 +245,7 @@ float Arc::Socket::readFloat( void )
 	return num;
 }
 
-double Arc::Socket::readDouble( void )
+double Arc::Socket::recvDouble( void )
 {
 	char buffer[sizeof(double)];
 
@@ -240,46 +258,4 @@ double Arc::Socket::readDouble( void )
 	memcpy(&num, buffer, sizeof(double));
 
 	return num;
-}
-
-int Arc::Socket::bufferString( string data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, data.c_str(), data.length());
-	return (int)data.length();
-}
-
-int Arc::Socket::bufferBool( bool data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, (char*)&data, sizeof(bool));
-	return sizeof(bool);
-}
-
-int Arc::Socket::bufferShort( short data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, (char*)&data, sizeof(short));
-	return sizeof(short);
-}
-
-int Arc::Socket::bufferInt( int data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, (char*)&data, sizeof(int));
-	return sizeof(int);
-}
-
-int Arc::Socket::bufferLong( long data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, (char*)&data, sizeof(long));
-	return sizeof(long);
-}
-
-int Arc::Socket::bufferFloat( float data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, (char*)&data, sizeof(float));
-	return sizeof(float);
-}
-
-int Arc::Socket::bufferDouble( double data, char* buffer, int offset )
-{
-	memcpy(buffer + offset, (char*)&data, sizeof(double));
-	return sizeof(double);
 }

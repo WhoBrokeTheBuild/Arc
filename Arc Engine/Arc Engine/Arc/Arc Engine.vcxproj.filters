@@ -231,6 +231,9 @@
     <ClCompile Include="Buffer.cpp">
       <Filter>Project\Util</Filter>
     </ClCompile>
+    <ClCompile Include="ISerializable.cpp">
+      <Filter>Project\Core\Interfaces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Callbacks.h">

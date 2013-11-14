@@ -1,5 +1,6 @@
 #include "Angle.h"
 #include "Vector2.h"
+#include "Buffer.h"
 
 const Arc::Angle Arc::Angle::ZERO           = Arc::Angle(0.0f);
 const Arc::Angle Arc::Angle::HALF_CIRCLE    = Arc::Angle(180.0f);
@@ -18,6 +19,16 @@ int Arc::Angle::serialize( ostream &stream )
     return bytes;
 }
 
+int Arc::Angle::serialize( Buffer &buffer )
+{
+	int bytes = 0;
+
+	buffer.appendFloat(_degrees);
+	bytes += sizeof(float);
+
+	return bytes;
+}
+
 int Arc::Angle::deserialize( istream &stream )
 {
     int bytes = 0;
@@ -25,6 +36,16 @@ int Arc::Angle::deserialize( istream &stream )
     bytes += streamReadFloat(_degrees, stream);
 
     return bytes;
+}
+
+int Arc::Angle::deserialize( Buffer &buffer )
+{
+	int bytes = 0;
+
+	_degrees = buffer.readNextFloat();
+	bytes += sizeof(float);
+
+	return bytes;
 }
 
 const Arc::Angle Arc::Angle::operator+( const Angle& rhs ) const

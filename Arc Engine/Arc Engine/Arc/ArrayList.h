@@ -76,7 +76,7 @@ namespace Arc
         ArrayList<T>* insertAt( const T& item, const int& index );
 
 		template <class InputIterator>
-		inline ArrayList<T>* insert( Iterator pos, InputIterator first, InputIterator last ) { _list.insert(pos, first, last); return this; }
+		inline ArrayList<T>* insert( Iterator pos, InputIterator first, InputIterator last ) { _list.insert(pos, first, last); updateSize(); return this; }
 
 		ArrayList<T>* clear( void );
 

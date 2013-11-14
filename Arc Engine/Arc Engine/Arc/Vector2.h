@@ -21,7 +21,7 @@ namespace Arc
 	/** A two-part vector.
 	  */
     class Vector2
-        : public AdvManagedObject,
+        : public ManagedObject,
           public ISerializable
     {
     public:
@@ -92,8 +92,11 @@ namespace Arc
 			return Vector2(MathHelper::lerp(start.X, end.X, fraction), MathHelper::lerp(start.Y, end.Y, fraction));
 		}
 
-        virtual int serialize( ostream &stream );
-        virtual int deserialize( istream &stream );
+        virtual int serialize( ostream& stream );
+		virtual int deserialize( istream& stream );
+
+		virtual int serialize( Buffer& buffer );
+		virtual int deserialize( Buffer& buffer );
 
 		/* Get the distance to another point
 		 *

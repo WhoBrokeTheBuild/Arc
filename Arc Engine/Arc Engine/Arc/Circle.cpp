@@ -1,5 +1,6 @@
 #include "Circle.h"
 #include "Rect.h"
+#include "Buffer.h"
 
 Arc::Circle Arc::Circle::ZERO = Circle(0, 0, 0);
 Arc::Circle Arc::Circle::ONE  = Circle(1, 1, 1);
@@ -15,6 +16,22 @@ int Arc::Circle::serialize( ostream &stream )
     return bytes;
 }
 
+int Arc::Circle::serialize( Buffer& buffer )
+{
+	int bytes = 0;
+
+	buffer.appendFloat(X);
+	bytes += sizeof(X);
+
+	buffer.appendFloat(Y);
+	bytes += sizeof(Y);
+
+	buffer.appendFloat(Radius);
+	bytes += sizeof(Radius);
+
+	return bytes;
+}
+
 int Arc::Circle::deserialize( istream &stream )
 {
     int bytes = 0;
@@ -24,6 +41,22 @@ int Arc::Circle::deserialize( istream &stream )
     bytes += streamReadFloat(Radius, stream);
 
     return bytes;
+}
+
+int Arc::Circle::deserialize( Buffer& buffer )
+{
+	int bytes = 0;
+
+	X = buffer.readNextFloat();
+	bytes += sizeof(X);
+
+	Y = buffer.readNextFloat();
+	bytes += sizeof(Y);
+
+	Radius = buffer.readNextFloat();
+	bytes += sizeof(Radius);
+
+	return bytes;
 }
 
 bool Arc::Circle::intersectsCircle( Circle other ) const

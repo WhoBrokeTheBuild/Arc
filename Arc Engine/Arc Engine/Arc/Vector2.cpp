@@ -2,6 +2,7 @@
 #include "Angle.h"
 #include "MathFunc.h"
 #include "StreamFunc.h"
+#include "Buffer.h"
 
 Arc::Vector2 Arc::Vector2::ZERO         = Vector2(0);
 Arc::Vector2 Arc::Vector2::ONE          = Vector2(1);
@@ -17,6 +18,19 @@ int Arc::Vector2::serialize( ostream &stream )
     return bytes;
 }
 
+int Arc::Vector2::serialize( Buffer& buffer )
+{
+	int bytes = 0;
+
+	buffer.appendFloat(X);
+	bytes += sizeof(X);
+
+	buffer.appendFloat(Y);
+	bytes += sizeof(Y);
+
+	return bytes;
+}
+
 int Arc::Vector2::deserialize( istream &stream )
 {
     int bytes = 0;
@@ -25,6 +39,19 @@ int Arc::Vector2::deserialize( istream &stream )
     bytes += streamReadFloat(Y, stream);
 
     return bytes;
+}
+
+int Arc::Vector2::deserialize( Buffer& buffer )
+{
+	int bytes = 0;
+
+	X = buffer.readNextFloat();
+	bytes += sizeof(X);
+
+	Y = buffer.readNextFloat();
+	bytes += sizeof(Y);
+
+	return bytes;
 }
 
 const Arc::Vector2 Arc::Vector2::operator+( const Vector2 &rhs ) const
