@@ -18,7 +18,7 @@ namespace Arc
     template <class T>
     class LinkedList;
 
-	/** A templated Queue 
+	/** A template Queue implementation 
 	  */
     template <class T>
     class Queue :
@@ -27,39 +27,60 @@ namespace Arc
     protected:
 
 		// A STL queue to handle the storage
-        queue<T>
-			_queue;
+        queue<T> _queue;
 
 		// A cached length of the collection
-		size_t
-			_size;
-
+		size_t _size;
+		
+		/* Updates the cached size of the collection
+		 */
 		virtual inline void updateSize( void ) { _size = _queue.size(); }
 
     public:
 
+		/* Creates an empty queue
+		 */
 		inline Queue ( void )
 			: _queue(),
 			  _size()
-		{
-		}
-
+		{ }
+		
+		/* Creates an queue from a different queue
+		 */
 		inline Queue ( const Queue& rhs) 
 			: _queue(rhs._queue),
 			  _size(rhs._queue.size())
-		{
-		}
+		{ }
 
+		/* Clears all elements from the queue
+		 */
 		virtual inline ~Queue( void ) { clear(); }
 
 		inline Queue& operator=( const Queue& rhs ) { _queue = rhs._queue; updateSize(); return *this; }
 
         virtual inline string toString( void ) const { return "Queue"; }
 
-        Queue<T>* push ( const T& item );
-        T         peek ( void );
-        T         pop  ( void );
-        Queue<T>* clear( void );
+		/* Pushes an element on to the queue
+		 * 
+		 * @param item: The item to add
+		 */
+        void push( const T& item );
+
+		/* Gets the next element in the queue
+		 *
+		 * @returns: The next element in the queue
+		 */
+		T& peek( void );
+
+		/* Takes the next element out of the queue and returns it
+		 * 
+		 * @returns: The next element that was in the queue
+		 */
+		T pop( void );
+
+		/* Removes all elements from the queue
+		 */
+        void clear( void );
 
         inline T& getFront( void ) { return _queue.front(); }
         inline T& getBack ( void ) { return _queue.back(); }
@@ -72,13 +93,13 @@ namespace Arc
 		inline size_t getSize( void ) const { return _size; }
 
 		// Convert the queue into a different storage type
-
-		T*            toArray     ( unsigned int& length );
-		ArrayList<T>  toArrayList ( unsigned int& length );
+		
+		T* toArray( unsigned int& length );
+		ArrayList<T> toArrayList( unsigned int& length );
 		LinkedList<T> toLinkedList( unsigned int& length );
-
-        inline T*            toArray     ( void ) { unsigned int i; return toArray(i); }
-        inline ArrayList<T>  toArrayList ( void ) { unsigned int i; return toArrayList(i); }
+		
+        inline T* toArray( void ) { unsigned int i; return toArray(i); }
+        inline ArrayList<T> toArrayList ( void ) { unsigned int i; return toArrayList(i); }
         inline LinkedList<T> toLinkedList( void ) { unsigned int i; return toLinkedList(i); }
 
     }; // class Queue<T>

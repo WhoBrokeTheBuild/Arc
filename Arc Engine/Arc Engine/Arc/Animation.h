@@ -29,7 +29,6 @@ namespace Arc
 	/* Creates a new animation with the specified list of frames and speed
 	 * 
 	 * @param frames: The list of frames to animate through
-	 *		default: An empty list
 	 * @param speed: The animating speed in MS
 	 *		default: -1.0
 	 */

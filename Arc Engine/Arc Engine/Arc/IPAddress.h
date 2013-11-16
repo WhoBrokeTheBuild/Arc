@@ -12,6 +12,8 @@ namespace Arc
 {
 	class Socket;
 
+	/* A class representing an IPv4 32-bit address
+	 */
     class IPAddress :
         public ManagedObject
     {
@@ -20,22 +22,46 @@ namespace Arc
 
     protected:
 
-        uint8_t
-            _quads[4];
+		// Four unsigned bytes representing the IPv4 address
+        uint8_t _quads[4];
 
+		// Returns the quads as an array
 		inline uint8_t* getRawData( void ) { return _quads; }
 
     public:
 
-		const static IPAddress
-			ZERO;
+		// Constant value of 0.0.0.0
+		const static IPAddress ZERO;
 
+		/* Creates an address of zeros
+		 */
 		IPAddress( void );
-		IPAddress( string addr );
+
+		/* Creates an address from a string in decimal dotted notation, eg. "1.2.3.4"
+		 *
+		 * @param address: The string of the address to parse
+		 */
+		IPAddress( string address );
+
+		/* Creates an address from four separate bytes
+		 *
+		 * @param a: The first quad
+		 * @param b: The second quad
+		 * @param c: The third quad
+		 * @param d: The fourth quad
+		 */
         IPAddress( uint8_t a, uint8_t b, uint8_t c, uint8_t d );
-        virtual inline  ~IPAddress( void ) { }
+
+        virtual inline ~IPAddress( void ) { }
 
 		virtual string toString( void ) const;
+		
+		/* Preforms a DNS lookup on the given hostname
+		 *
+		 * @param hostname: The hostname to check
+		 * @returns: The first IP address of the host, or 0.0.0.0 on failure
+		 */
+		static IPAddress lookup( string hostname );
 
 		bool operator==( const IPAddress& rhs ) const;
 		bool operator!=( const IPAddress& rhs ) const;

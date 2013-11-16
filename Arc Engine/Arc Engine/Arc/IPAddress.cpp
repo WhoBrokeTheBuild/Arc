@@ -52,3 +52,16 @@ bool Arc::IPAddress::operator!=( const IPAddress& rhs ) const
 {
 	return !(*this == rhs);
 }
+
+Arc::IPAddress Arc::IPAddress::lookup( string hostname )
+{
+	hostent* host = gethostbyname(hostname.c_str());
+
+	if ( ! host)
+		return IPAddress::ZERO;
+
+	return IPAddress(host->h_addr_list[0][0],
+		host->h_addr_list[0][1],
+		host->h_addr_list[0][2], 
+		host->h_addr_list[0][3]);
+}
