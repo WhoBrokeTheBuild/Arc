@@ -22,6 +22,8 @@ public:
 
     virtual void update( const Event& event );
 
+	virtual void render( const Event& event );
+
 }; // class TestApp
 
 #endif // __TEST_APP_H__

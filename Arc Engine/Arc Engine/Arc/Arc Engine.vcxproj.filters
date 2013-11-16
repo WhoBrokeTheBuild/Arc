@@ -476,5 +476,8 @@
     <ClInclude Include="Buffer.h">
       <Filter>Project\Util</Filter>
     </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

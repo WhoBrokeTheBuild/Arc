@@ -138,6 +138,7 @@
     <ClInclude Include="SocketType.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="StreamFunc.h" />
     <ClInclude Include="StringFunc.h" />
     <ClInclude Include="StringHelper.h" />
