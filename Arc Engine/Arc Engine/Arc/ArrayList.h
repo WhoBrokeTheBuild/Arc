@@ -18,7 +18,7 @@ namespace Arc
     template <class T>
     class Queue;
 	
-	/** A templated Array List 
+	/** A template Array List 
 	  */
     template <class T>
     class ArrayList :
@@ -34,25 +34,40 @@ namespace Arc
 		size_t
 			_size;
 
+		/* Updates the cached size of the collection
+		 */
 		virtual inline void updateSize( void ) { _size = _list.size(); }
 
     public:
 
-        typedef typename vector<T>::iterator               Iterator;
-		typedef typename vector<T>::reverse_iterator       ReverseIterator;
-        typedef typename vector<T>::const_iterator         ConstIterator;
+		// Normal Iterator Type
+        typedef typename vector<T>::iterator Iterator;
+
+		// Reverse Iterator Type
+		typedef typename vector<T>::reverse_iterator ReverseIterator;
+
+		// Constant Iterator Type
+        typedef typename vector<T>::const_iterator ConstIterator;
+
+		// Constant Reverse Iterator Type
 		typedef typename vector<T>::const_reverse_iterator ConstReverseIterator;
 
+		/* Creates an empty ArrayList
+		 */
         inline ArrayList ( void )
 			: _list(),
 			  _size()
 		{ }
 
+		/* Creates an ArrayList from a different ArrayList
+		 */
         inline ArrayList ( const ArrayList& rhs)
 			: _list(rhs._list),
 		      _size(rhs._list.size())
 		{ }
 
+		/* Removes all elements from the collection
+		 */
         virtual inline ~ArrayList( void ) { clear(); }
 
         inline ArrayList& operator= ( const ArrayList& rhs ) { _list = rhs._list; updateSize(); return *this; }
@@ -61,24 +76,63 @@ namespace Arc
 
         virtual inline string toString( void ) const { return "Array List"; }
 
+		/*
+		 * @returns: An iterator pointing to the beginning of the list
+		 */
         inline Iterator begin ( void ) { return _list.begin(); }
+		
+		/*
+		 * @returns: An iterator pointing to the end of the list
+		 */
         inline Iterator end   ( void ) { return _list.end(); }
+		
+		/*
+		 * @returns: A reverse iterator pointing to the reverse beginning of the list
+		 */
         inline ReverseIterator rbegin( void ) { return _list.rbegin(); }
+		
+		/*
+		 * @returns: A reverse iterator pointing to the reverse end of the list
+		 */
         inline ReverseIterator rend  ( void ) { return _list.rend(); }
-
+		
+		/*
+		 * @returns: A constant iterator pointing to the beginning of the list
+		 */
         inline ConstIterator cbegin ( void ) const { return _list.cbegin(); }
+		
+		/*
+		 * @returns: A constant iterator pointing to the end of the list
+		 */
         inline ConstIterator cend   ( void ) const { return _list.cend(); }
+		
+		/*
+		 * @returns: A constant iterator pointing to the reverse beginning of the list
+		 */
         inline ConstReverseIterator crbegin( void ) const { return _list.crbegin(); }
+		
+		/*
+		 * @returns: A constant iterator pointing to the reverse end of the list
+		 */
         inline ConstReverseIterator crend  ( void ) const { return _list.crend(); }
 
-        ArrayList<T>* add( const T& item );
-
-        ArrayList<T>* insertAt( const T& item, const int& index );
+		/* Add an element to the end of the list
+		 * 
+		 * @param item: The element to add to the list
+		 */
+        void add( const T& item );
+		
+		/* Insert an element at the specified index
+		 * 
+		 * @param item: The element to add to the list
+		 * @param index: The index to add the element at, should be between 0 and the length of the list
+		 */
+        void insertAt( const T& item, const int& index );
 
 		template <class InputIterator>
 		inline ArrayList<T>* insert( Iterator pos, InputIterator first, InputIterator last ) { _list.insert(pos, first, last); updateSize(); return this; }
 
-		ArrayList<T>* clear( void );
+		void clear( void );
 
 		T popFront( void );
 

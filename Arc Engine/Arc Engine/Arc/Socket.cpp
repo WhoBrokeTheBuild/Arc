@@ -38,22 +38,22 @@ Arc::Socket::Socket( unsigned int socket )
 	_type = SOCKET_TYPE_TCP; // TODO: Get actual socket type when UDP is implemented
 }
 
-Arc::Socket::Socket( void )
-	: _address(),
-	  _port(), 
-	  _type(INVALID_SOCKET_TYPE),
-	  _socket(INVALID_SOCKET),
+Arc::Socket::Socket( IPAddress address, unsigned int port, SocketType type )
+	: _socket(INVALID_SOCKET),
 	  _error(false)
 {
+	connectTo(address, port, type);
 }
 
-void Arc::Socket::init( IPAddress addr, unsigned int port, SocketType type )
+Arc::Socket::Socket( string hostname, unsigned int port, SocketType type )
+	: _socket(INVALID_SOCKET),
+	_error(false)
 {
-    _address = addr;
-	_port    = port;
-	_type    = type;
-	_error   = false;
+	connectTo(hostname, port, type);
+}
 
+bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
+{
 	if (type == SOCKET_TYPE_TCP)
 	{
 		_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -78,11 +78,11 @@ void Arc::Socket::init( IPAddress addr, unsigned int port, SocketType type )
 	if (result == SOCKET_ERROR)
 	{
 		_error = true;
-		return;
+		return false;
 	}
 }
 
-void Arc::Socket::term( void )
+Arc::Socket::~Socket( void )
 {
 #ifdef WINDOWS
 
@@ -95,9 +95,129 @@ void Arc::Socket::term( void )
 #endif // WINDOWS
 }
 
+string Arc::Socket::recvString( unsigned int bufferLength /*= 2000 */ )
+{
+	char* buffer = new char[bufferLength + 1];
+
+	int bytes = recv(_socket, buffer, bufferLength, 0);
+
+	if (bytes == -1)
+		return "";
+
+	buffer[bytes] = '\0';
+	string data = string(buffer);
+
+	delete[] buffer;
+
+	return data;
+}
+
+Arc::Buffer Arc::Socket::recvBuffer( unsigned int bufferLength /*= 2000 */ )
+{
+	Buffer buf;
+	buf.resize(bufferLength);
+
+	int bytes = recv(_socket, buf.getRawBuffer(), bufferLength, 0);
+
+	if (bytes == -1)
+		return Buffer();
+
+	return buf;
+}
+
+bool Arc::Socket::recvBool( void )
+{
+	char buffer;
+
+	int bytes = recv(_socket, &buffer, 1, 0);
+
+	if (bytes == -1)
+		return false;
+
+	bool val;
+	memcpy(&val, &buffer, sizeof(bool));
+
+	return val;
+}
+
+short Arc::Socket::recvShort( void )
+{
+	char buffer[sizeof(short)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return -1;
+
+	short num;
+	memcpy(&num, buffer, sizeof(short));
+
+	return num;
+}
+
+int Arc::Socket::recvInt( void )
+{
+	char buffer[sizeof(int)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return -1;
+
+	int num;
+	memcpy(&num, buffer, sizeof(int));
+
+	return num;
+}
+
+long Arc::Socket::recvLong( void )
+{
+	char buffer[sizeof(long)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return -1;
+
+	long num;
+	memcpy(&num, buffer, sizeof(long));
+
+	return num;
+}
+
+float Arc::Socket::recvFloat( void )
+{
+	char buffer[sizeof(float)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return -1.0;
+
+	float num;
+	memcpy(&num, buffer, sizeof(float));
+
+	return num;
+}
+
+double Arc::Socket::recvDouble( void )
+{
+	char buffer[sizeof(double)];
+
+	int bytes = recv(_socket, buffer, 4, 0);
+
+	if (bytes == -1)
+		return -1.0;
+
+	double num;
+	memcpy(&num, buffer, sizeof(double));
+
+	return num;
+}
+
 int Arc::Socket::sendString( string data )
 {
-	return send(_socket, data.c_str(), data.length(), 0);
+	return send(_socket, data.c_str(), data.length() + 1, 0);
 }
 
 int Arc::Socket::sendBuffer( char* buffer, int length )
@@ -138,124 +258,4 @@ int Arc::Socket::sendFloat( float data )
 int Arc::Socket::sendDouble( double data )
 {
 	return send(_socket, (char*)&data, sizeof data, 0);
-}
-
-string Arc::Socket::recvString( unsigned int bufferLength /*= 2000 */ )
-{
-	char* buffer = new char[bufferLength + 1];
-
-	int bytes = recv(_socket, buffer, bufferLength, 0);
-
-	if (bytes == -1)
-		return "";
-
-	buffer[bytes] = '\0';
-	string data = string(buffer);
-
-	delete[] buffer;
-
-	return data;
-}
-
-Arc::Buffer Arc::Socket::recvBuffer( unsigned int bufferLength /*= 2000 */ )
-{
-	Buffer buf;
-	buf.resize(bufferLength);
-	
-	int bytes = recv(_socket, buf.getRawBuffer(), bufferLength, 0);
-
-	if (bytes == -1)
-		return Buffer();
-
-	return buf;
-}
-
-bool Arc::Socket::recvBool( void )
-{
-	char buffer;
-
-	int bytes = recv(_socket, &buffer, 1, 0);
-
-	if (bytes == -1)
-		return false;
-
-	bool val;
-	memcpy(&val, &buffer, sizeof(bool));
-
-	return val;
-}
-
-short Arc::Socket::recvShort( void )
-{
-	char buffer[sizeof(short)];
-
-	int bytes = recv(_socket, buffer, 4, 0);
-
-	if (bytes == -1)
-		return false;
-
-	short num;
-	memcpy(&num, buffer, sizeof(short));
-
-	return num;
-}
-
-int Arc::Socket::recvInt( void )
-{
-	char buffer[sizeof(int)];
-
-	int bytes = recv(_socket, buffer, 4, 0);
-
-	if (bytes == -1)
-		return false;
-
-	int num;
-	memcpy(&num, buffer, sizeof(int));
-
-	return num;
-}
-
-long Arc::Socket::recvLong( void )
-{
-	char buffer[sizeof(long)];
-
-	int bytes = recv(_socket, buffer, 4, 0);
-
-	if (bytes == -1)
-		return false;
-
-	long num;
-	memcpy(&num, buffer, sizeof(long));
-
-	return num;
-}
-
-float Arc::Socket::recvFloat( void )
-{
-	char buffer[sizeof(float)];
-
-	int bytes = recv(_socket, buffer, 4, 0);
-
-	if (bytes == -1)
-		return false;
-
-	float num;
-	memcpy(&num, buffer, sizeof(float));
-
-	return num;
-}
-
-double Arc::Socket::recvDouble( void )
-{
-	char buffer[sizeof(double)];
-
-	int bytes = recv(_socket, buffer, 4, 0);
-
-	if (bytes == -1)
-		return false;
-
-	double num;
-	memcpy(&num, buffer, sizeof(double));
-
-	return num;
 }

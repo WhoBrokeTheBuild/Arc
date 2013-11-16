@@ -36,15 +36,24 @@ namespace Arc
 		// A cached length of the collection
 		size_t
 			_size;
-
+		
+		/* Updates the cached size of the collection
+		 */
 		virtual inline void updateSize( void ) { _size = _map.size(); }
 
-    public:
+	public:
 
-		typedef typename map<K, T, Sort>::iterator               Iterator;
-		typedef typename map<K, T, Sort>::reverse_iterator       ReverseIterator;
-		typedef typename map<K, T, Sort>::const_iterator         ConstIterator;
-		typedef typename map<K, T, Sort>::const_reverse_iterator ConstReverseIterator;
+		// Normal Iterator Type
+		typedef typename map<K, T>::iterator Iterator;
+
+		// Reverse Iterator Type
+		typedef typename map<K, T>::reverse_iterator ReverseIterator;
+
+		// Constant Iterator Type
+		typedef typename map<K, T>::const_iterator ConstIterator;
+
+		// Constant Reverse Iterator Type
+		typedef typename map<K, T>::const_reverse_iterator ConstReverseIterator;
 
         typedef pair<K, T> Pair;
 
@@ -59,7 +68,9 @@ namespace Arc
 			  _size(rhs._map.size())
 		{
 		}
-
+		
+		/* Removes all elements from the collection
+		 */
         virtual inline ~Map( void ) { clear(); }
 
         inline Map& operator= ( const Map& rhs )     { _map = rhs._map; updateSize(); return *this; }

@@ -18,7 +18,7 @@ namespace Arc
     template <class T>
     class Queue;
 	
-	/** A templated Linked List 
+	/** A template Linked List 
 	  */
     template <class T>
     class LinkedList :
@@ -33,14 +33,23 @@ namespace Arc
 		// A cached length of the collection
 		size_t
 			_size;
-
+		
+		/* Updates the cached size of the collection
+		 */
 		virtual inline void updateSize( void ) { _size = _list.size(); }
 
     public:
 
-		typedef typename list<T>::iterator               Iterator;
-		typedef typename list<T>::reverse_iterator       ReverseIterator;
-		typedef typename list<T>::const_iterator         ConstIterator;
+		// Normal Iterator Type
+        typedef typename list<T>::iterator Iterator;
+
+		// Reverse Iterator Type
+		typedef typename list<T>::reverse_iterator ReverseIterator;
+
+		// Constant Iterator Type
+        typedef typename list<T>::const_iterator ConstIterator;
+
+		// Constant Reverse Iterator Type
 		typedef typename list<T>::const_reverse_iterator ConstReverseIterator;
 
         inline LinkedList ( void )
@@ -54,7 +63,9 @@ namespace Arc
 			  _size(rhs._list.size())
 		{
 		}
-
+		
+		/* Removes all elements from the collection
+		 */
 		virtual inline ~LinkedList( void ) { clear(); }
 
         inline LinkedList& operator=( const LinkedList& rhs ) { _list = rhs._list; updateSize(); return *this; }

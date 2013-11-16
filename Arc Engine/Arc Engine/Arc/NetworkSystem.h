@@ -31,32 +31,32 @@
 
 namespace Arc
 {
+	/* A system for managing the underlying networking system and performing
+	 * lookups on hostnames.
+	 */
     class NetworkSystem :
         public ManagedObject
     {
     protected:
 
-        LinkedList<Socket*>
-            _socketList;
-
 #ifdef WINDOWS
 
-        WSADATA
-            _wsa;
+		// The windows reference to the WSA context
+        WSADATA _wsa;
 
 #endif // WINDOWS
 
     public:
 
+		/* Creates a network system and if running on windows, creates a new WSA context
+		 */
         NetworkSystem( void );
+
+		/* Cleans up the networking system and if running on windows, closes the WSA context
+		 */
         virtual ~NetworkSystem( void );
 
         virtual inline string toString( void ) const { return "Network System"; }
-
-		virtual IPAddress lookup( string hostname );
-
-        virtual Socket* connect( string hostname, int port, SocketType type );
-        virtual Socket* connect( IPAddress addr, int port, SocketType type );
 
     }; // class NetworkSystem
 
