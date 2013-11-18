@@ -62,9 +62,6 @@ Arc::ServerSocket::ServerSocket( unsigned int port )
 Arc::ServerSocket::~ServerSocket( void )
 {
 	closesocket(_socket);
-
-	while ( ! _clients.isEmpty())
-		delete _clients.popBack();
 }
 
 void Arc::ServerSocket::cleanup( void )
@@ -96,6 +93,7 @@ void Arc::ServerSocket::printError( string msg )
 
 bool Arc::ServerSocket::isClientAvailable( void )
 {
+	// TODO: Implement
 	return true;
 }
 
@@ -111,15 +109,5 @@ Arc::Socket* Arc::ServerSocket::waitForClient( void )
 	}
 
 	Socket* pSocket = New Socket(client);
-	_clients.add(pSocket);
 	return pSocket;
-}
-
-bool Arc::ServerSocket::closeClient( Socket* pSocket )
-{
-	if ( ! _clients.contains(pSocket))
-		return false;
-
-	delete pSocket;
-	return true;
 }

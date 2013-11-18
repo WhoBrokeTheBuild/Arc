@@ -15,7 +15,6 @@ void Arc::RenderTarget::beginDraw( void ) const
     glLoadIdentity();
 }
 
-
 void Arc::RenderTarget::drawShape( const float x, 
 								   const float y, 
 								   const float radius,

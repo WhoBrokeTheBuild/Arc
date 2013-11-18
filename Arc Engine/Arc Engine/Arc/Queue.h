@@ -110,15 +110,14 @@ namespace Arc
 #include "LinkedList.h"
 
 template <class T>
-Arc::Queue<T>* Arc::Queue<T>::push( const T& item )
+void Arc::Queue<T>::push( const T& item )
 {
 	_queue.push(item);
 	updateSize();
-    return this;
 }
 
 template <class T>
-T Arc::Queue<T>::peek( void )
+T& Arc::Queue<T>::peek( void )
 {
     return _queue.front();
 }
@@ -133,12 +132,11 @@ T Arc::Queue<T>::pop ( void )
 }
 
 template <class T>
-Arc::Queue<T>* Arc::Queue<T>::clear( void )
+void Arc::Queue<T>::clear( void )
 {
     while ( ! isEmpty())
 		_queue.pop();
 	updateSize();
-    return this;
 }
 
 template <class T>

@@ -197,19 +197,17 @@ namespace Arc
 #include "Queue.h"
 
 template <class T>
-Arc::ArrayList<T>* Arc::ArrayList<T>::add( const T& item )
+void Arc::ArrayList<T>::add( const T& item )
 {
     _list.push_back(item);
 	updateSize();
-    return this;
 }
 
 template <class T>
-Arc::ArrayList<T>* Arc::ArrayList<T>::insertAt( const T& item, const int& index )
+void Arc::ArrayList<T>::insertAt( const T& item, const int& index )
 {
 	_list.insert(_list.begin() + index, item);
 	updateSize();
-    return this;
 }
 
 template <class T>
@@ -296,11 +294,10 @@ bool Arc::ArrayList<T>::removeBack( void )
 }
 
 template <class T>
-Arc::ArrayList<T>* Arc::ArrayList<T>::clear( void )
+void Arc::ArrayList<T>::clear( void )
 {
     _list.clear();
 	updateSize();
-    return this;
 }
 
 template <class T>

@@ -80,6 +80,8 @@ bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
 		_error = true;
 		return false;
 	}
+
+	return true;
 }
 
 Arc::Socket::~Socket( void )

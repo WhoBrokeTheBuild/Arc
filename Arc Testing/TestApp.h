@@ -6,12 +6,20 @@
 #include "Common.h"
 #include <Arc/Program.h>
 
-#include <Arc\ServerSocket.h>
+#include <Arc/ServerSocket.h>
+#include <Arc/Font.h>
+#include <Arc/RenderedText.h>
 
 class TestApp :
     public Program
 {
 protected:
+
+	Font
+		*_pFont;
+
+	RenderedText
+		*_pFPSText;
 
 public:
 

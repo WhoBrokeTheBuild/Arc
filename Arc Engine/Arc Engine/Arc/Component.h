@@ -40,7 +40,7 @@ namespace Arc
 
 		virtual inline string toString( void ) const { return "Component"; }
 
-        virtual void update( const FrameData* data )  { };
+        virtual void update( const FrameData* data ) { };
 		virtual void render( const RenderData* data ) { };
 
 		bool removeSelf( void );

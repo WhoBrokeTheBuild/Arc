@@ -107,14 +107,6 @@ namespace Arc
 		 * @param type: The type of socket to open
 		 */
         Socket( IPAddress address, unsigned int port, SocketType type );
-
-		/* Creates and connects a new socket with the given address, port, and type
-		 *
-		 * @param address: The address to connect to
-		 * @param port: The port to connect to
-		 * @param type: The type of socket to open
-		 */
-        Socket( IPAddress address, unsigned int port, SocketType type );
 		
 		/* Creates and connects a new socket with the given address, port, and type
 		 *
@@ -142,7 +134,7 @@ namespace Arc
 		 * @allocates
 		 * @returns: The newly created socket or null on failure
 		 */
-		inline bool connectTo( string hostname, int port, SocketType type ) { connectTo(IPAddress::lookup(hostname), port, type); }
+		inline bool connectTo( string hostname, int port, SocketType type ) { return connectTo(IPAddress::lookup(hostname), port, type); }
 
 		/* Closes the connection and the socket
 		 */
