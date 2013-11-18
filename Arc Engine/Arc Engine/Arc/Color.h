@@ -26,7 +26,7 @@ namespace Arc
 		 * 
 		 * @returns: The color as an SDL_Color struct
 		 */
-        virtual SDL_Color getSDLColor( void );
+        virtual SDL_Color getSDLColor( void ) const;
 
 	protected:
 
@@ -45,14 +45,14 @@ namespace Arc
     public:
 
 		// Predefined colors
-		static Color BLACK;
-		static Color WHITE;
-		static Color RED;
-		static Color GREEN;
-		static Color BLUE;
-		static Color CORNFLOWER_BLUE;
-		static Color STORM;
-		static Color PEACH;
+		static const Color BLACK;
+		static const Color WHITE;
+		static const Color RED;
+		static const Color GREEN;
+		static const Color BLUE;
+		static const Color CORNFLOWER_BLUE;
+		static const Color STORM;
+		static const Color PEACH;
 
 		/* Creates a color with R, G, B, and A values of 0
 		 */

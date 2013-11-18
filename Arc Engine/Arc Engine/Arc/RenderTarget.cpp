@@ -10,7 +10,7 @@ void Arc::RenderTarget::beginDraw( void ) const
 {
     Color clearColor = _pGraphicsSystem->getClearColor();
 
-    glClearColor(clearColor.getFracA(), clearColor.getFracG(), clearColor.getFracB(), clearColor.getFracA());
+    glClearColor(clearColor.getFracR(), clearColor.getFracG(), clearColor.getFracB(), clearColor.getFracA());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 }
