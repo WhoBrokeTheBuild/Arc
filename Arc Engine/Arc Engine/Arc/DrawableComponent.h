@@ -35,8 +35,7 @@ namespace Arc
 
 	public:
 
-		static const ComponentType
-			CMP_TYPE_DRAWABLE;
+		static const ComponentType CMP_TYPE_DRAWABLE;
 
 		inline DrawableComponent( Unit* pUnit,
 			               Color blendColor = Color::WHITE,
@@ -51,6 +50,7 @@ namespace Arc
 			  _rotation(rotation),
 			  _offset(offset)
 		{
+			addType(CMP_TYPE_DRAWABLE);
 		}
 
 		virtual inline ~DrawableComponent( void ) { }

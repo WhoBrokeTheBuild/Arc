@@ -1,6 +1,6 @@
 #include "GraphicsSystem.h"
 
-const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsReset";
+const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsSystem.graphicsReset";
 
 Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color clearColor )
 	: _clearColor(clearColor),

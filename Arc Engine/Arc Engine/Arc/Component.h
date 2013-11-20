@@ -6,37 +6,36 @@
 #include "Common.h"
 #include "EventDispatcher.h"
 
-typedef string ComponentType;
-
 namespace Arc
 {
 	class Unit;
+
+	typedef string ComponentType;
 
 	class Component :
         public EventDispatcher
 	{
 	protected:
 
-		ArrayList<ComponentType>
-			_types;
+		ArrayList<ComponentType> _types;
 
-		Unit*
-			_pUnit;
+		Unit* _pUnit;
 
 	public:
 
-		bool
-			Enabled,
-			Visible;
+		bool Enabled;
+		bool Visible;
 
-		static const EventType
-			EVENT_UNIT_CHANGED;
+		static const ComponentType CMP_TYPE_BASE;
 
-		static const ComponentType
-			CMP_TYPE_BASE;
+		inline Component( Unit* pUnit )
+			: _pUnit(pUnit)
+		{
+			addType(CMP_TYPE_BASE);
+		}
 
-		Component( Unit* pUnit );
-		virtual ~Component();
+		virtual inline ~Component() 
+		{ }
 
 		virtual inline string toString( void ) const { return "Component"; }
 
@@ -49,6 +48,7 @@ namespace Arc
 		inline void setUnit( Unit* unit ) { _pUnit = unit; }
 
 		virtual inline ArrayList<ComponentType> getTypes( void ) { return _types; }
+		virtual inline void addType( ComponentType type ) { if ( ! _types.contains(type)) _types.add(type); }
 
 	}; // class Component
 

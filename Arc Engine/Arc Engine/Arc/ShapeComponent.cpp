@@ -1,7 +1,7 @@
 #include "ShapeComponent.h"
 #include "Unit.h"
 
-const ComponentType Arc::ShapeComponent::CMP_TYPE_SHAPE = "shape";
+const Arc::ComponentType Arc::ShapeComponent::CMP_TYPE_SHAPE = "shape";
 
 void Arc::ShapeComponent::render( const RenderData* data )
 {

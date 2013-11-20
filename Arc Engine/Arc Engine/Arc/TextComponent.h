@@ -20,8 +20,7 @@ namespace Arc
 
 	public:
 
-		static const ComponentType
-			CMP_TYPE_TEXT;
+		static const ComponentType CMP_TYPE_TEXT;
 		
 		inline TextComponent( Unit *pUnit,
 			                  Font *pFont, 
@@ -34,6 +33,8 @@ namespace Arc
 			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
 			  _pRenderedText(nullptr)
 		{
+			addType(CMP_TYPE_TEXT);
+
 			_pRenderedText = New RenderedText(text, pFont);
 			setOriginSize(getSize());
 		}

@@ -158,8 +158,18 @@ bool Arc::Unit::hasComponentOfType( ComponentType type )
 Arc::Component* Arc::Unit::getFirstComponentOfType( ComponentType type )
 {
 	Component* cmp;
-	auto end = _components.end();
-	for (auto it = _components.begin(); it != end; ++it)
+
+
+	auto cmpEnd = _components.end();
+	for (auto it = _components.begin(); it != cmpEnd; ++it)
+	{
+		cmp = (*it);
+		if (cmp->getTypes().contains(type))
+			return cmp;
+	}
+
+	auto cmpToAddEnd = _componentsToAdd.end();
+	for (auto it = _componentsToAdd.begin(); it != cmpToAddEnd; ++it)
 	{
 		cmp = (*it);
 		if (cmp->getTypes().contains(type))

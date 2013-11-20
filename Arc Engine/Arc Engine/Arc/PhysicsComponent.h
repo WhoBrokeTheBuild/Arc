@@ -15,8 +15,7 @@ namespace Arc
 
 	public:
 
-		static const ComponentType
-			CMP_TYPE_PHYSICS;
+		static const ComponentType CMP_TYPE_PHYSICS;
 
 		Vector2
 			Vel,
@@ -27,6 +26,7 @@ namespace Arc
 			  Vel(vel),
 			  Acc(acc)
 		{
+			addType(CMP_TYPE_PHYSICS);
 		}
 
 		virtual inline ~PhysicsComponent( void ) { }

@@ -9,9 +9,11 @@
 #include <Arc/ServerSocket.h>
 #include <Arc/Font.h>
 #include <Arc/RenderedText.h>
+#include <Arc/IKeyboardListener.h>
 
 class TestApp :
-    public Program
+    public Program,
+	public IKeyboardListener
 {
 protected:
 
@@ -21,6 +23,16 @@ protected:
 	RenderedText
 		*_pFPSText;
 
+	Vector2
+		_leftEyePos,
+		_rightEyePos,
+		_leftPupilPos,
+		_rightPupilPos,
+		_nosePos,
+		_mouthLeftPos,
+		_mouthCenterPos,
+		_mouthRightPos;
+
 public:
 
     TestApp( void );
@@ -29,8 +41,9 @@ public:
     virtual inline string toString( void ) const { return "Test App"; }
 
     virtual void update( const Event& event );
-
 	virtual void render( const Event& event );
+
+	virtual void keyPressed( const Event& event );
 
 }; // class TestApp
 

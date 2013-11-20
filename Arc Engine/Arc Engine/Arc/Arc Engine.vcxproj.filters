@@ -479,5 +479,8 @@
     <ClInclude Include="Stack.h">
       <Filter>Project\Util\Collections</Filter>
     </ClInclude>
+    <ClInclude Include="ArrayListBuilder.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

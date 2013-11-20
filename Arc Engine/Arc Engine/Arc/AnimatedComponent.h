@@ -26,8 +26,9 @@ namespace Arc
 
 	public:
 
-		static const ComponentType
-			CMP_TYPE_ANIMATED;
+		static const ComponentType CMP_TYPE_ANIMATED;
+
+		static const EventType EVENT_ANIMATION_COMPLETE;
 
 		AnimatedComponent( Unit* pUnit, 
 						   Animation *pAnimation,
@@ -41,6 +42,8 @@ namespace Arc
 			  _frame(),
 			  _timeout()
 		{
+			addType(CMP_TYPE_ANIMATED);
+
 			if (_pAnimation != nullptr)
 				_timeout = _pAnimation->getSpeed();
 		}

@@ -1,7 +1,7 @@
 #include "PhysicsComponent.h"
 #include "Unit.h"
 
-const ComponentType Arc::PhysicsComponent::CMP_TYPE_PHYSICS = "physics";
+const Arc::ComponentType Arc::PhysicsComponent::CMP_TYPE_PHYSICS = "physics";
 
 void Arc::PhysicsComponent::update( const FrameData* data )
 {

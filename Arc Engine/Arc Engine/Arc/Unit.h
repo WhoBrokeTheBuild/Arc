@@ -136,19 +136,60 @@ namespace Arc
 			return cmpList;
 		}
 
-		virtual Component*         getFirstComponent        ( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
-		virtual PhysicsComponent*  getFirstPhysicsComponent ( void ) { return (PhysicsComponent*) getFirstComponentOfType(PhysicsComponent::CMP_TYPE_PHYSICS); }
-		virtual ImageComponent*    getFirstImageComponent   ( void ) { return (ImageComponent*)   getFirstComponentOfType(ImageComponent::CMP_TYPE_IMAGE); }
-		virtual ShapeComponent*    getFirstShapeComponent   ( void ) { return (ShapeComponent*)   getFirstComponentOfType(ShapeComponent::CMP_TYPE_SHAPE); }
-		virtual AnimatedComponent* getFirstAnimatedComponent( void ) { return (AnimatedComponent*)getFirstComponentOfType(AnimatedComponent::CMP_TYPE_ANIMATED); }
-		virtual TextComponent*     getFirstTextComponent    ( void ) { return (TextComponent*)    getFirstComponentOfType(TextComponent::CMP_TYPE_TEXT); }
+		virtual inline Component* getFirstComponent( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
 
-		virtual ArrayList<Component*>         getComponents        ( void ) { return _components; }
-		virtual ArrayList<PhysicsComponent*>  getPhysicsComponents ( void ) { return getComponentsOfType<PhysicsComponent>(PhysicsComponent::CMP_TYPE_PHYSICS); }
-		virtual ArrayList<ImageComponent*>    getImageComponents   ( void ) { return getComponentsOfType<ImageComponent>(ImageComponent::CMP_TYPE_IMAGE); }
-		virtual ArrayList<ShapeComponent*>    getShapeComponents   ( void ) { return getComponentsOfType<ShapeComponent>(ShapeComponent::CMP_TYPE_SHAPE); }
-		virtual ArrayList<AnimatedComponent*> getAnimatedComponents( void ) { return getComponentsOfType<AnimatedComponent>(AnimatedComponent::CMP_TYPE_ANIMATED); }
-		virtual ArrayList<TextComponent*>     getTextComponents    ( void ) { return getComponentsOfType<TextComponent>(TextComponent::CMP_TYPE_TEXT); }
+		virtual inline PhysicsComponent* getFirstPhysicsComponent( void )
+		{
+			return (PhysicsComponent*)getFirstComponentOfType(PhysicsComponent::CMP_TYPE_PHYSICS); 
+		}
+
+		virtual inline ImageComponent* getFirstImageComponent( void ) 
+		{ 
+			return (ImageComponent*)getFirstComponentOfType(ImageComponent::CMP_TYPE_IMAGE);
+		}
+
+		virtual inline ShapeComponent* getFirstShapeComponent( void ) 
+		{
+			return (ShapeComponent*)getFirstComponentOfType(ShapeComponent::CMP_TYPE_SHAPE);
+		}
+
+		virtual inline AnimatedComponent* getFirstAnimatedComponent( void )
+		{ 
+			return (AnimatedComponent*)getFirstComponentOfType(AnimatedComponent::CMP_TYPE_ANIMATED); 
+		}
+
+		virtual inline TextComponent* getFirstTextComponent( void )
+		{
+			return (TextComponent*)getFirstComponentOfType(TextComponent::CMP_TYPE_TEXT);
+		}
+
+		virtual inline ArrayList<Component*> getComponents( void ) { return _components; }
+
+		virtual inline ArrayList<PhysicsComponent*> getPhysicsComponents ( void )
+		{ 
+			return getComponentsOfType<PhysicsComponent>(PhysicsComponent::CMP_TYPE_PHYSICS);
+		}
+
+		virtual inline ArrayList<ImageComponent*> getImageComponents( void ) 
+		{ 
+			return getComponentsOfType<ImageComponent>(ImageComponent::CMP_TYPE_IMAGE);
+		}
+
+		virtual inline ArrayList<ShapeComponent*> getShapeComponents( void )
+		{ 
+			return getComponentsOfType<ShapeComponent>(ShapeComponent::CMP_TYPE_SHAPE);
+		}
+
+		virtual inline ArrayList<AnimatedComponent*> getAnimatedComponents( void )
+		{
+			return getComponentsOfType<AnimatedComponent>(AnimatedComponent::CMP_TYPE_ANIMATED);
+		}
+
+		virtual inline ArrayList<TextComponent*> getTextComponents( void )
+		{ 
+			return getComponentsOfType<TextComponent>(TextComponent::CMP_TYPE_TEXT);
+		}
+
 
     }; // class Unit
 

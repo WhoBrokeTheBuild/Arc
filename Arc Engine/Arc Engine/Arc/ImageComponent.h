@@ -20,8 +20,7 @@ namespace Arc
 
 	public:
 
-		static const ComponentType
-			CMP_TYPE_IMAGE;
+		static const ComponentType CMP_TYPE_IMAGE;
 
 		ImageComponent( Unit* pUnit,
 						Texture* pTexture,
@@ -33,6 +32,7 @@ namespace Arc
 			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
 			_pTexture(pTexture)
 		{
+			addType(CMP_TYPE_IMAGE);
 		}
 
 		virtual inline ~ImageComponent( void ) { }

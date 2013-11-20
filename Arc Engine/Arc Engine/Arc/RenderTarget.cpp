@@ -232,6 +232,7 @@ void Arc::RenderTarget::drawTriangle( const Vector2 pointA,
 									  const Color color /*= Color::WHITE*/ ) const
 {
 	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, 0.0f);
 
 	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
@@ -252,6 +253,7 @@ void Arc::RenderTarget::fillTriangle( const Vector2 pointA,
 									  const Color color /*= Color::WHITE*/ ) const
 {
 	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, 0.0f);
 
 	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
@@ -269,6 +271,7 @@ void Arc::RenderTarget::fillTriangle( const Vector2 pointA,
 void Arc::RenderTarget::drawPolygon( const ArrayList<Point> &points, const Color color /*= Color::WHITE */ ) const
 {
 	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, 0.0f);
 
 	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 
@@ -285,6 +288,7 @@ void Arc::RenderTarget::drawPolygon( const ArrayList<Point> &points, const Color
 void Arc::RenderTarget::fillPolygon( const ArrayList<Point> &points, const Color color /*= Color::WHITE */ ) const
 {
 	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, 0.0f);
 
 	glColor4f(color.getFracR(), color.getFracG(), color.getFracB(), color.getFracA());
 

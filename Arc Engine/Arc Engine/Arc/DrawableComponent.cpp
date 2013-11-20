@@ -1,3 +1,3 @@
 #include "DrawableComponent.h"
 
-const ComponentType Arc::DrawableComponent::CMP_TYPE_DRAWABLE = "drawable";
+const Arc::ComponentType Arc::DrawableComponent::CMP_TYPE_DRAWABLE = "drawable";

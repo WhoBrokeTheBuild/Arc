@@ -2,13 +2,13 @@
 
 Arc::Program* Arc::Program::_pInstance = nullptr;
 
-const Arc::EventType Arc::Program::EVENT_UPDATE_START = "updateStart";
-const Arc::EventType Arc::Program::EVENT_UPDATE       = "update";
-const Arc::EventType Arc::Program::EVENT_UPDATE_END   = "updateEnd";
-const Arc::EventType Arc::Program::EVENT_RENDER_START = "renderStart";
-const Arc::EventType Arc::Program::EVENT_RENDER       = "render";
-const Arc::EventType Arc::Program::EVENT_RENDER_END   = "renderEnd";
-const Arc::EventType Arc::Program::EVENT_EXIT         = "exit";
+const Arc::EventType Arc::Program::EVENT_UPDATE_START = "program.updateStart";
+const Arc::EventType Arc::Program::EVENT_UPDATE       = "program.update";
+const Arc::EventType Arc::Program::EVENT_UPDATE_END   = "program.updateEnd";
+const Arc::EventType Arc::Program::EVENT_RENDER_START = "program.renderStart";
+const Arc::EventType Arc::Program::EVENT_RENDER       = "program.render";
+const Arc::EventType Arc::Program::EVENT_RENDER_END   = "program.renderEnd";
+const Arc::EventType Arc::Program::EVENT_EXIT         = "program.exit";
 
 Arc::Program::Program( void )
 	: _pGraphicsSystem(nullptr),
