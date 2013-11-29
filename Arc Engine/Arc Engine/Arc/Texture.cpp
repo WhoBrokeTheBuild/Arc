@@ -42,7 +42,10 @@ void Arc::Texture::load( string filename )
     SDL_Surface *surface = IMG_Load(_filename.c_str());
 
     if ( ! surface)
+	{
         ERRORF(toString(), "Error Loading Image (%s)", IMG_GetError());
+		return;
+	}
 
     load(surface);
 

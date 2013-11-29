@@ -100,6 +100,14 @@ Arc::ImageComponent* Arc::Unit::addNewImageComponent( Texture *pTexture,
 	return cmp;
 }
 
+Arc::ImageComponent* Arc::Unit::addNewImageComponent( Sprite *pSprite, Color blendColor /*= Color::WHITE*/, Origin origin /*= Origin::ZERO*/, Vector2 scale /*= Vector2::ONE*/, Angle rotation /*= Angle::ZERO*/, Point offset /*= Point::ZERO */ )
+{
+	ImageComponent* cmp = New ImageComponent(this, pSprite, blendColor, origin, scale, rotation, offset);
+	addComponent(cmp);
+	return cmp;
+}
+
+
 Arc::ShapeComponent* Arc::Unit::addNewShapeComponent( bool filled /*= false*/,
 													  Color blendColor /*= Color::WHITE*/,
 												      Origin origin /*= Origin::ZERO*/, 

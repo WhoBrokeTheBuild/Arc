@@ -7,6 +7,7 @@
 #include "DrawableComponent.h"
 
 #include "Texture.h"
+#include "Sprite.h"
 
 namespace Arc
 {
@@ -16,6 +17,8 @@ namespace Arc
 	protected:
 
 		Texture* _pTexture;
+
+		Rect _sourceRect;
 
 	public:
 
@@ -27,16 +30,34 @@ namespace Arc
 
 #pragma endregion
 
-		ImageComponent( Unit* pUnit,
-						Texture* pTexture,
-			            Color blendColor = Color::WHITE,
-			            Origin origin = Origin::ZERO,
-			            Vector2 scale = Vector2::ONE, 
-			            Angle rotation = Angle::ZERO,
-			            Point offset = Point::ZERO )
+		inline ImageComponent( Unit* pUnit,
+						       Texture* pTexture,
+			                   Color blendColor = Color::WHITE,
+			                   Origin origin = Origin::ZERO,
+			                   Vector2 scale = Vector2::ONE, 
+			                   Angle rotation = Angle::ZERO,
+			                   Point offset = Point::ZERO )
 			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
-			_pTexture(pTexture)
+			  _pTexture(pTexture),
+			  _sourceRect()
 		{
+			_sourceRect = Rect(Point::ZERO, _pTexture->getSize());
+			addType(UNIT_CMP_TYPE_IMAGE);
+		}
+		
+		inline ImageComponent( Unit* pUnit,
+						       Sprite* pSprite,
+			                   Color blendColor = Color::WHITE,
+			                   Origin origin = Origin::ZERO,
+			                   Vector2 scale = Vector2::ONE, 
+			                   Angle rotation = Angle::ZERO,
+			                   Point offset = Point::ZERO )
+			: DrawableComponent(pUnit, blendColor, origin, scale, rotation, offset),
+			_pTexture(nullptr),
+			_sourceRect()
+		{
+			_pTexture = pSprite->getTexture();
+			_sourceRect = pSprite->getSourceRect();
 			addType(UNIT_CMP_TYPE_IMAGE);
 		}
 

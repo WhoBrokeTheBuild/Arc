@@ -5,7 +5,7 @@ const Arc::SystemComponentType Arc::GraphicsSystem::SYS_CMP_TYPE_GRAPHICS = "gra
 const Arc::EventType Arc::GraphicsSystem::EVENT_CLEAR_COLOR_CHANGED  = "graphicsSystem.clearColorChanged";
 const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_SIZE_CHANGED	 = "graphicsSystem.windowSizeChanged";
 const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_TITLE_CHANGED = "graphicsSystem.windowTitleChanged";
-const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_ICON_CHANGED = "graphicsSystem.windowIconChanged";
+const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_ICON_CHANGED  = "graphicsSystem.windowIconChanged";
 const Arc::EventType Arc::GraphicsSystem::EVENT_FULLSCREEN_CHANGED	 = "graphicsSystem.fullscreenChanged";
 const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET       = "graphicsSystem.graphicsReset";
 
