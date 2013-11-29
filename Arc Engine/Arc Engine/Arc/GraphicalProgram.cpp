@@ -20,6 +20,7 @@ Arc::GraphicalProgram::GraphicalProgram( Size windowSize /*= Size(640.0f, 480.0f
 {
 	initSDL();
 	initGraphicsSystem(windowSize, windowTitle, clearColor, fullscreen);
+	initInputSystem();
 	initEventHandlers();
 
 	_targetFPS  = 60.0f;

@@ -53,7 +53,7 @@ void Arc::MouseSource::update( const Event& event )
 	// Dispatch the EVENT_MOUSE_MOVED event if the mouse has moved
     if (_mouseDelta != Vector2::ZERO)
     {
-        dispatchEvent(Event(MouseSource::EVENT_MOUSE_MOVED, MouseData(_mousePos, _mouseDelta)));
+        _pInputSystem->dispatchEvent(Event(MouseSource::EVENT_MOUSE_MOVED, MouseData(_mousePos, _mouseDelta)));
     }
 
     bool down;
