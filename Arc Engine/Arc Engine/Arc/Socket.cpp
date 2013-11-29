@@ -127,6 +127,18 @@ Arc::Buffer Arc::Socket::recvBuffer( unsigned int bufferLength /*= 2000 */ )
 	return buf;
 }
 
+char Arc::Socket::recvChar( void )
+{
+	char buffer;
+
+	int bytes = recv(_socket, &buffer, 1, 0);
+
+	if (bytes == -1)
+		return false;
+
+	return buffer;
+}
+
 bool Arc::Socket::recvBool( void )
 {
 	char buffer;

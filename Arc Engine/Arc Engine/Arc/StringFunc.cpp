@@ -26,14 +26,14 @@ string Arc::longToString( const long& value )
     return numToStr(value);
 }
 
-string Arc::floatToString( const float& value )
+string Arc::floatToString( const float& value, int precision /*= 0*/ )
 {
-    return numToStr(value);
+    return numToStr(value, precision);
 }
 
-string Arc::doubleToString( const double& value )
+string Arc::doubleToString( const double& value, int precision /*= 0*/ )
 {
-    return numToStr(value);
+    return numToStr(value, precision);
 }
 
 string Arc::boolToString( const bool& value )

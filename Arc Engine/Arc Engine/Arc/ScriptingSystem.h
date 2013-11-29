@@ -4,7 +4,7 @@
 #define __ARC_SCRIPTING_SYSTEM_H__
 
 #include "Common.h"
-#include "ManagedObject.h"
+#include "SystemComponent.h"
 
 #include "Timer.h"
 
@@ -23,7 +23,7 @@ namespace Arc
 	/** A system for managing and interfacing with Lua
 	  */
     class ScriptingSystem :
-        public ManagedObject
+        public SystemComponent
     {
     protected:
 
@@ -33,7 +33,9 @@ namespace Arc
 
     public:
 
-        ScriptingSystem( void );
+		static const SystemComponentType SYS_CMP_TYPE_SCRIPTING;
+
+        ScriptingSystem( Program* pProgram );
         virtual ~ScriptingSystem( void );
 
         virtual inline string toString( void ) const { return "Scripting System"; }

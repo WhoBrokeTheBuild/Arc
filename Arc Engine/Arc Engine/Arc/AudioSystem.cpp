@@ -1,8 +1,13 @@
 #include "AudioSystem.h"
 
-Arc::AudioSystem::AudioSystem( void )
+const Arc::SystemComponentType Arc::AudioSystem::SYS_CMP_TYPE_AUDIO = "audio";
+
+Arc::AudioSystem::AudioSystem( Program* pProgram )
+	: SystemComponent(pProgram)
 {
 	INFO(toString(), "Initializing");
+
+	addType(SYS_CMP_TYPE_AUDIO);
 
 	_rate      = 44100;
 	_chunkSize = 1024;

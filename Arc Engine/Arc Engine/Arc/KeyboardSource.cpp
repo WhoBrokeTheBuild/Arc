@@ -1,10 +1,10 @@
 #include "KeyboardSource.h"
 #include "InputSystem.h"
-#include "Program.h"
+#include "GraphicalProgram.h"
 
-const Arc::EventType Arc::KeyboardSource::EVENT_KEY_PRESSED  = "keyPressed";
-const Arc::EventType Arc::KeyboardSource::EVENT_KEY_RELEASED = "keyReleased";
-const Arc::EventType Arc::KeyboardSource::EVENT_KEY_HELD     = "keyHeld";
+const Arc::EventType Arc::KeyboardSource::EVENT_KEY_PRESSED  = "keyboardSource.keyPressed";
+const Arc::EventType Arc::KeyboardSource::EVENT_KEY_RELEASED = "keyboardSource.keyReleased";
+const Arc::EventType Arc::KeyboardSource::EVENT_KEY_HELD     = "keyboardSource.keyHeld";
 
 Arc::KeyboardSource::KeyboardSource( void )
     : _sdlKeys(nullptr),
@@ -15,12 +15,12 @@ Arc::KeyboardSource::KeyboardSource( void )
         _keyStates.add((KeyboardKey)key, InputState());
     }
 
-    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &KeyboardSource::update);
+    GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
 Arc::KeyboardSource::~KeyboardSource( void )
 {
-    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &KeyboardSource::update);
+    GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &KeyboardSource::update);
 }
 
 void Arc::KeyboardSource::update( const Event& event )
@@ -61,16 +61,16 @@ void Arc::KeyboardSource::update( const Event& event )
 		// Dispatch events based on state
         if (pState->Pressed)
         {
-            gpEventDispatcher->dispatchEvent(Event(KeyboardSource::EVENT_KEY_PRESSED, KeyData(key)));
+            dispatchEvent(Event(KeyboardSource::EVENT_KEY_PRESSED, KeyData(key)));
         }
         else if (pState->Released)
         {
-            gpEventDispatcher->dispatchEvent(Event(KeyboardSource::EVENT_KEY_RELEASED, KeyData(key)));
+            dispatchEvent(Event(KeyboardSource::EVENT_KEY_RELEASED, KeyData(key)));
         }
 
         if (pState->Down)
         {
-            gpEventDispatcher->dispatchEvent(Event(KeyboardSource::EVENT_KEY_HELD, KeyData(key)));
+            dispatchEvent(Event(KeyboardSource::EVENT_KEY_HELD, KeyData(key)));
         }
     }
 }

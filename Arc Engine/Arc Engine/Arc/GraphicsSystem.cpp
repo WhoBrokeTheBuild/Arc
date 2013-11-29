@@ -1,16 +1,21 @@
 #include "GraphicsSystem.h"
 
+const Arc::SystemComponentType Arc::GraphicsSystem::SYS_CMP_TYPE_GRAPHICS = "graphics";
+
 const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsSystem.graphicsReset";
 
-Arc::GraphicsSystem::GraphicsSystem( Size windowSize, string windowTitle, Color clearColor )
-	: _clearColor(clearColor),
+Arc::GraphicsSystem::GraphicsSystem( Program* pProgram, Size windowSize, string windowTitle, Color clearColor, bool fullscreen )
+	: SystemComponent(pProgram),
+	  _clearColor(clearColor),
       _pRenderTarget(nullptr),
 	  _screenBPP(),
 	  _windowSize(windowSize),
 	  _windowTitle(windowTitle),
-	  _fullscreen(false)
+	  _fullscreen(fullscreen)
 {
     INFO(toString(), "Initializing");
+
+	addType(SYS_CMP_TYPE_GRAPHICS);
 
 	// Set SDL/OpenGL constants
     SDL_GL_SetAttribute(SDL_GL_RED_SIZE,           8);
@@ -120,7 +125,7 @@ void Arc::GraphicsSystem::resetGL( void )
     }
 
 	// Tell any textures or fonts to reload their data
-    gpEventDispatcher->dispatchEvent(Event(EVENT_GRAPHICS_RESET));
+    dispatchEvent(Event(EVENT_GRAPHICS_RESET));
 }
 
 void Arc::GraphicsSystem::resetVideoMode( void )

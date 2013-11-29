@@ -117,6 +117,4 @@ namespace Arc
 
 } // namespace Arc
 
-extern Arc::EventDispatcher* gpEventDispatcher;
-
 #endif // __ARC_EVENT_DISPATCHER_H__

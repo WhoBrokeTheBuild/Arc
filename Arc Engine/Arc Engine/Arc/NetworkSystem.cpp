@@ -1,7 +1,14 @@
 #include "NetworkSystem.h"
 
-Arc::NetworkSystem::NetworkSystem( void )
+const Arc::SystemComponentType Arc::NetworkSystem::SYS_CMP_TYPE_NETWORK = "network";
+
+Arc::NetworkSystem::NetworkSystem( Program* pProgram )
+	: SystemComponent(pProgram)
 {
+	INFO(toString(), "Initializing");
+
+	addType(SYS_CMP_TYPE_NETWORK);
+
 #ifdef WINDOWS
 
 	int res = 0;
@@ -11,13 +18,19 @@ Arc::NetworkSystem::NetworkSystem( void )
 		ERRORF(toString(), "WSAStartup failed: %d", res);
 
 #endif // WINDOWS
+
+	INFO(toString(), "Complete");
 }
 
 Arc::NetworkSystem::~NetworkSystem( void )
 {
+	INFO(toString(), "Terminating");
+
 #ifdef WINDOWS
 
     WSACleanup();
 
 #endif // WINDOWS
+
+	INFO(toString(), "Complete");
 }

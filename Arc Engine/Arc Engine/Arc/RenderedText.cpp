@@ -1,20 +1,21 @@
 #include "RenderedText.h"
 #include "GraphicsSystem.h"
 #include "RenderTarget.h"
+#include "GraphicalProgram.h"
 
 Arc::RenderedText::RenderedText( const string text, Font* pFont )
 	: _pTexture(nullptr),
 	  _text(text),
       _pFont(pFont)
 {
-    gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
+    GraphicalProgram::getGraphicsSystem()->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
 
     renderText();
 }
 
 Arc::RenderedText::~RenderedText( void )
 {
-    gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
+    GraphicalProgram::getGraphicsSystem()->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &RenderedText::graphicsReset);
 
     delete _pTexture;
     _pTexture = nullptr;

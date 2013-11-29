@@ -1,7 +1,7 @@
 #include "Unit.h"
-#include "Component.h"
+#include "UnitComponent.h"
 
-Arc::Unit::Unit( Vector2 pos, float depth /*= 0.0f */ )
+Arc::Unit::Unit( Point pos, float depth /*= 0.0f */ )
 	: _pParent(nullptr),
 	  _pos(pos),
 	  _depth(depth),
@@ -36,14 +36,14 @@ void Arc::Unit::updateComponents( const FrameData* data )
 {
     while ( ! _componentsToAdd.isEmpty())
     {
-        Component* cmp = _componentsToAdd.popFront();
+        UnitComponent* cmp = _componentsToAdd.popFront();
         cmp->setUnit(this);
         _components.add(cmp);
     }
 
     while ( ! _componentsToRemove.isEmpty())
 	{
-		Component* cmp = _componentsToRemove.popFront();
+		UnitComponent* cmp = _componentsToRemove.popFront();
         _components.remove(cmp);
 		delete cmp;
 	}
@@ -60,7 +60,7 @@ void Arc::Unit::renderComponents( const RenderData* data )
         (*it)->render(data);
 }
 
-bool Arc::Unit::addComponent( Component* component )
+bool Arc::Unit::addComponent( UnitComponent* component )
 {
     if (_components.contains(component))
         return false;
@@ -72,7 +72,7 @@ bool Arc::Unit::addComponent( Component* component )
     return true;
 }
 
-bool Arc::Unit::removeComponent( Component* component )
+bool Arc::Unit::removeComponent( UnitComponent* component )
 {
     if ( ! _components.contains(component))
         return false;
@@ -141,9 +141,9 @@ Arc::TextComponent* Arc::Unit::addNewTextComponent( Font *pFont,
 	return cmp;
 }
 
-bool Arc::Unit::hasComponentOfType( ComponentType type )
+bool Arc::Unit::hasComponentOfType( const UnitComponentType& type )
 {
-	Component* cmp;
+	UnitComponent* cmp;
 	auto end = _components.end();
 	for (auto it = _components.begin(); it != end; ++it)
 	{
@@ -153,28 +153,4 @@ bool Arc::Unit::hasComponentOfType( ComponentType type )
 	}
 
 	return false;
-}
-
-Arc::Component* Arc::Unit::getFirstComponentOfType( ComponentType type )
-{
-	Component* cmp;
-
-
-	auto cmpEnd = _components.end();
-	for (auto it = _components.begin(); it != cmpEnd; ++it)
-	{
-		cmp = (*it);
-		if (cmp->getTypes().contains(type))
-			return cmp;
-	}
-
-	auto cmpToAddEnd = _componentsToAdd.end();
-	for (auto it = _componentsToAdd.begin(); it != cmpToAddEnd; ++it)
-	{
-		cmp = (*it);
-		if (cmp->getTypes().contains(type))
-			return cmp;
-	}
-
-	return nullptr;
 }

@@ -4,7 +4,7 @@
 #define __ARC_GRAPHICS_SYSTEM_H__
 
 #include "Common.h"
-#include "EventDispatcher.h"
+#include "SystemComponent.h"
 
 #include "RenderTarget.h"
 #include "Color.h"
@@ -18,7 +18,7 @@ namespace Arc
 	/** A system for managing the window and drawing.
 	  */
     class GraphicsSystem :
-        public EventDispatcher
+        public SystemComponent
     {
     private:
 
@@ -50,6 +50,8 @@ namespace Arc
 
     public:
 
+		static const SystemComponentType SYS_CMP_TYPE_GRAPHICS;
+
 		// The event called when the graphics context is changed
         static const EventType EVENT_GRAPHICS_RESET;
 
@@ -60,7 +62,7 @@ namespace Arc
 		 * @param clearColor: The color to clear the window to at the start of every frame
 		 *		default: Color::BLACK
 		 */
-        GraphicsSystem( Size windowSize, string windowTitle, Color clearColor );
+        GraphicsSystem( Program* pProgram, Size windowSize, string windowTitle, Color clearColor, bool fullscreen );
 
 		/* Cleans up the underlying systems and closes the graphics system
 		 */

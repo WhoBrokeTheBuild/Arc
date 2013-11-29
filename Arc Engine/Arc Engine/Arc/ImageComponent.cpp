@@ -1,7 +1,7 @@
 #include "ImageComponent.h"
 #include "Unit.h"
 
-const Arc::ComponentType Arc::ImageComponent::CMP_TYPE_IMAGE = "image";
+const Arc::UnitComponentType Arc::ImageComponent::UNIT_CMP_TYPE_IMAGE = "image";
 
 void Arc::ImageComponent::render( const RenderData* data )
 {

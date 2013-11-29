@@ -17,8 +17,11 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="Buffer.cpp" />
-    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="SystemComponent.cpp" />
+    <ClCompile Include="UnitComponent.cpp" />
+    <ClCompile Include="ConsoleProgram.cpp" />
     <ClCompile Include="DrawableComponent.cpp" />
+    <ClCompile Include="GraphicalProgram.cpp" />
     <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="IPAddress.cpp" />
     <ClCompile Include="ISerializable.cpp" />
@@ -76,8 +79,10 @@
     <ClInclude Include="ArrayListBuilder.h" />
     <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="Buffer.h" />
-    <ClInclude Include="Component.h" />
+    <ClInclude Include="UnitComponent.h" />
+    <ClInclude Include="ConsoleProgram.h" />
     <ClInclude Include="DrawableComponent.h" />
+    <ClInclude Include="GraphicalProgram.h" />
     <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="IPAddress.h" />
     <ClInclude Include="ISerializable.h" />
@@ -143,6 +148,7 @@
     <ClInclude Include="StreamFunc.h" />
     <ClInclude Include="StringFunc.h" />
     <ClInclude Include="StringHelper.h" />
+    <ClInclude Include="SystemComponent.h" />
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeFunc.h" />

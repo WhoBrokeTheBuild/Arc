@@ -4,7 +4,7 @@
 #define __ARC_NETWORK_SYSTEM_H__
 
 #include "Common.h"
-#include "ManagedObject.h"
+#include "SystemComponent.h"
 
 #include "LinkedList.h"
 #include "SocketType.h"
@@ -35,7 +35,7 @@ namespace Arc
 	 * lookups on hostnames.
 	 */
     class NetworkSystem :
-        public ManagedObject
+        public SystemComponent
     {
     protected:
 
@@ -48,9 +48,11 @@ namespace Arc
 
     public:
 
+		static const SystemComponentType SYS_CMP_TYPE_NETWORK;
+
 		/* Creates a network system and if running on windows, creates a new WSA context
 		 */
-        NetworkSystem( void );
+        NetworkSystem( Program* pProgram );
 
 		/* Cleans up the networking system and if running on windows, closes the WSA context
 		 */

@@ -19,7 +19,7 @@
 
 namespace Arc
 {
-	class Component;
+	class UnitComponent;
 
     class Unit :
         public EventDispatcher
@@ -29,78 +29,132 @@ namespace Arc
 
     protected:
 
-        Layer
-            *_pParent;
+        Layer* _pParent;
 
-        Point
-            _pos;
+        Point _pos;
 
-        float
-            _depth;
+        float _depth;
 
-        bool
-            _enabled,
-            _visible;
+        bool _enabled;
+        bool _visible;
 
-		ArrayList<Component*>
-			_components;
+		ArrayList<UnitComponent*> _components;
 
-        LinkedList<Component*>
-			_componentsToAdd,
-			_componentsToRemove;
+        LinkedList<UnitComponent*> _componentsToAdd;
+		LinkedList<UnitComponent*> _componentsToRemove;
 
-        virtual void setParentLayer( Layer* layer ) { _pParent = layer; }
+        void setParentLayer( Layer* layer ) { _pParent = layer; }
 
 		virtual void updateComponents( const FrameData* data );
 		virtual void renderComponents( const RenderData* data );
 
+		bool hasComponentOfType( const UnitComponentType& type );
+
+		template <class T>
+		inline T* getFirstComponentOfType( const UnitComponentType& type )
+		{
+			UnitComponent* cmp;
+
+			auto cmpEnd = _components.end();
+			for (auto it = _components.begin(); it != cmpEnd; ++it)
+			{
+				cmp = (*it);
+				if (cmp->hasType(type))
+					return (T*)cmp;
+			}
+
+			auto cmpToAddEnd = _componentsToAdd.end();
+			for (auto it = _componentsToAdd.begin(); it != cmpToAddEnd; ++it)
+			{
+				cmp = (*it);
+				if (cmp->hasType(type))
+					return (T*)cmp;
+			}
+
+			return nullptr;
+		}
+
+		template <class T>
+		ArrayList<T*> inline getComponentsOfType( const UnitComponentType& type )
+		{
+			ArrayList<T*> cmpList = ArrayList<T*>();
+			UnitComponent* pCmp;
+
+			auto end = _components.end();
+			for (auto it = _components.begin(); it != end; ++it)
+			{
+				pCmp = (*it);
+				if (pCmp->hasType(type))
+					cmpList.add((T*)pCmp);
+			}
+
+			return cmpList;
+		}
+
     public:
 
-        Unit( Vector2 pos, float depth = 0.0f );
+        Unit( Point pos, float depth = 0.0f );
+
         virtual ~Unit( void );
 
         virtual void update( const FrameData* pData );;
+
         virtual void render( const RenderData* pData );;
 		
+
 		virtual inline bool isEnabled( void ) const { return _enabled; }
+
 		virtual inline bool isVisible( void ) const { return _visible; }
+
+
 		virtual inline void setEnabled( bool enabled ) { _enabled = enabled; }
+
 		virtual inline void setVisible( bool visible ) { _visible = visible; }
+
+
 		virtual inline void toggleEnabled( void ) { _enabled = !_enabled; }
+
 		virtual inline void toggleVisible( void ) { _visible = !_visible; }
 
-		virtual inline Point getPos    ( void ) const { return _pos; }
-		virtual inline void  setPos    ( Point pos )   { _pos = pos; }
-		virtual inline void  addToPos  ( Point val ) { setPos(_pos + val); }
-		virtual inline void  subFromPos( Point val ) { setPos(_pos - val); }
+
+		virtual inline Point getPos( void ) const { return _pos; }
+
+		virtual inline void setPos( Point pos ) { _pos = pos; }
+
 
 		virtual inline float getDepth( void ) const { return _depth; };
-		virtual inline void  setDepth( float depth ) { _depth = depth; };
+
+		virtual inline void setDepth( float depth ) { _depth = depth; };
+
 
         inline Layer* getParentLayer( void ) { return _pParent; }
+
 		inline Scene* getParentScene( void ) { return _pParent->getParentScene(); }
 
-		virtual bool addComponent   ( Component* component );
-		virtual bool removeComponent( Component* component );
 
-		virtual inline bool hasComponent( Component* component ) { return _components.contains(component); }
+		virtual bool addComponent( UnitComponent* component );
 
-		virtual PhysicsComponent*  addNewPhysicsComponent ( Vector2 vel = Vector2::ZERO,  
-															Vector2 acc = Vector2::ZERO );
+		virtual bool removeComponent( UnitComponent* component );
 
-		virtual ImageComponent*    addNewImageComponent   ( Texture *pTexture,
-															Color blendColor = Color::WHITE,
-			                                                Origin origin = Origin::ZERO,
-			                                                Vector2 scale = Vector2::ONE, 
-			                                                Angle rotation = Angle::ZERO,
-															Point offset = Point::ZERO );
+		virtual inline bool hasComponent( UnitComponent* component ) { return _components.contains(component); }
 
-		virtual ShapeComponent*    addNewShapeComponent   ( bool filled = false,
-															Color blendColor = Color::WHITE,
-			                                                Origin origin = Origin::ZERO,
-			                                                Vector2 scale = Vector2::ONE, 
-			                                                Angle rotation = Angle::ZERO,
-															Point offset = Point::ZERO );
+
+		virtual PhysicsComponent* addNewPhysicsComponent( Vector2 vel = Vector2::ZERO,  
+														   Vector2 acc = Vector2::ZERO );
+
+		virtual ImageComponent* addNewImageComponent( Texture *pTexture,
+														 Color blendColor = Color::WHITE,
+			                                             Origin origin = Origin::ZERO,
+			                                             Vector2 scale = Vector2::ONE, 
+			                                             Angle rotation = Angle::ZERO,
+														 Point offset = Point::ZERO );
+
+		virtual ShapeComponent* addNewShapeComponent( bool filled = false,
+														 Color blendColor = Color::WHITE,
+			                                             Origin origin = Origin::ZERO,
+			                                             Vector2 scale = Vector2::ONE, 
+			                                             Angle rotation = Angle::ZERO,
+														 Point offset = Point::ZERO );
 
 		virtual AnimatedComponent* addNewAnimatedComponent( Animation* pAnimation,
 														    Color blendColor = Color::WHITE,
@@ -109,85 +163,68 @@ namespace Arc
 			                                                Angle rotation = Angle::ZERO,
 															Point offset = Point::ZERO );
 
-		virtual TextComponent*     addNewTextComponent    ( Font *pFont,
-															string text,
-															Color blendColor = Color::WHITE,
-															Origin origin = Origin::ZERO,
-															Vector2 scale = Vector2::ONE,
-															Angle rotation = Angle::ZERO,
-															Point offset = Point::ZERO);
+		virtual TextComponent* addNewTextComponent( Font *pFont,
+													    string text,
+													    Color blendColor = Color::WHITE,
+													    Origin origin = Origin::ZERO,
+													    Vector2 scale = Vector2::ONE,
+													    Angle rotation = Angle::ZERO,
+													    Point offset = Point::ZERO);
 
-		virtual bool hasComponentOfType( ComponentType type );
-		virtual Component* getFirstComponentOfType( ComponentType type );
 
-		template <typename T>
-		ArrayList<T*> getComponentsOfType( ComponentType type )
-		{
-			ArrayList<T*> cmpList = ArrayList<T*>();
-
-			auto end = _components.end();
-			for (auto it = _components.begin(); it != end; ++it)
-			{
-				Component* cmp = (*it);
-				if (cmp->getTypes().contains(type))
-					cmpList.add((T*)cmp);
-			}
-
-			return cmpList;
-		}
-
-		virtual inline Component* getFirstComponent( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
+		virtual inline UnitComponent* getFirstComponent( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
 
 		virtual inline PhysicsComponent* getFirstPhysicsComponent( void )
 		{
-			return (PhysicsComponent*)getFirstComponentOfType(PhysicsComponent::CMP_TYPE_PHYSICS); 
+			return getFirstComponentOfType<PhysicsComponent>(PhysicsComponent::UNIT_CMP_TYPE_PHYSICS); 
 		}
 
 		virtual inline ImageComponent* getFirstImageComponent( void ) 
 		{ 
-			return (ImageComponent*)getFirstComponentOfType(ImageComponent::CMP_TYPE_IMAGE);
+			return getFirstComponentOfType<ImageComponent>(ImageComponent::UNIT_CMP_TYPE_IMAGE);
 		}
 
 		virtual inline ShapeComponent* getFirstShapeComponent( void ) 
 		{
-			return (ShapeComponent*)getFirstComponentOfType(ShapeComponent::CMP_TYPE_SHAPE);
+			return getFirstComponentOfType<ShapeComponent>(ShapeComponent::UNIT_CMP_TYPE_SHAPE);
 		}
 
 		virtual inline AnimatedComponent* getFirstAnimatedComponent( void )
 		{ 
-			return (AnimatedComponent*)getFirstComponentOfType(AnimatedComponent::CMP_TYPE_ANIMATED); 
+			return getFirstComponentOfType<AnimatedComponent>(AnimatedComponent::UNIT_CMP_TYPE_ANIMATED); 
 		}
 
 		virtual inline TextComponent* getFirstTextComponent( void )
 		{
-			return (TextComponent*)getFirstComponentOfType(TextComponent::CMP_TYPE_TEXT);
+			return getFirstComponentOfType<TextComponent>(TextComponent::UNIT_CMP_TYPE_TEXT);
 		}
 
-		virtual inline ArrayList<Component*> getComponents( void ) { return _components; }
+
+		virtual inline ArrayList<UnitComponent*> getComponents( void ) { return _components; }
 
 		virtual inline ArrayList<PhysicsComponent*> getPhysicsComponents ( void )
 		{ 
-			return getComponentsOfType<PhysicsComponent>(PhysicsComponent::CMP_TYPE_PHYSICS);
+			return getComponentsOfType<PhysicsComponent>(PhysicsComponent::UNIT_CMP_TYPE_PHYSICS);
 		}
 
 		virtual inline ArrayList<ImageComponent*> getImageComponents( void ) 
 		{ 
-			return getComponentsOfType<ImageComponent>(ImageComponent::CMP_TYPE_IMAGE);
+			return getComponentsOfType<ImageComponent>(ImageComponent::UNIT_CMP_TYPE_IMAGE);
 		}
 
 		virtual inline ArrayList<ShapeComponent*> getShapeComponents( void )
 		{ 
-			return getComponentsOfType<ShapeComponent>(ShapeComponent::CMP_TYPE_SHAPE);
+			return getComponentsOfType<ShapeComponent>(ShapeComponent::UNIT_CMP_TYPE_SHAPE);
 		}
 
 		virtual inline ArrayList<AnimatedComponent*> getAnimatedComponents( void )
 		{
-			return getComponentsOfType<AnimatedComponent>(AnimatedComponent::CMP_TYPE_ANIMATED);
+			return getComponentsOfType<AnimatedComponent>(AnimatedComponent::UNIT_CMP_TYPE_ANIMATED);
 		}
 
 		virtual inline ArrayList<TextComponent*> getTextComponents( void )
 		{ 
-			return getComponentsOfType<TextComponent>(TextComponent::CMP_TYPE_TEXT);
+			return getComponentsOfType<TextComponent>(TextComponent::UNIT_CMP_TYPE_TEXT);
 		}
 
 

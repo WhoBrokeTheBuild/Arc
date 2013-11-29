@@ -1,13 +1,13 @@
 #include "MouseSource.h"
 #include "InputSystem.h"
-#include "Program.h"
+#include "GraphicalProgram.h"
 
-const Arc::EventType Arc::MouseSource::EVENT_MOUSE_MOVED      = "mouseMoved";
-const Arc::EventType Arc::MouseSource::EVENT_MOUSE_PRESSED    = "mousePressed";
-const Arc::EventType Arc::MouseSource::EVENT_MOUSE_RELEASED   = "mouseReleased";
-const Arc::EventType Arc::MouseSource::EVENT_MOUSE_HELD       = "mouseHeld";
-const Arc::EventType Arc::MouseSource::EVENT_MOUSE_WHEEL_UP   = "mouseWheelUp";
-const Arc::EventType Arc::MouseSource::EVENT_MOUSE_WHEEL_DOWN = "mouseWheelDown";
+const Arc::EventType Arc::MouseSource::EVENT_MOUSE_MOVED      = "mouseSource.mouseMoved";
+const Arc::EventType Arc::MouseSource::EVENT_MOUSE_PRESSED    = "mouseSource.mousePressed";
+const Arc::EventType Arc::MouseSource::EVENT_MOUSE_RELEASED   = "mouseSource.mouseReleased";
+const Arc::EventType Arc::MouseSource::EVENT_MOUSE_HELD       = "mouseSource.mouseHeld";
+const Arc::EventType Arc::MouseSource::EVENT_MOUSE_WHEEL_UP   = "mouseSource.mouseWheelUp";
+const Arc::EventType Arc::MouseSource::EVENT_MOUSE_WHEEL_DOWN = "mouseSource.mouseWheelDown";
 
 Arc::MouseSource::MouseSource( void )
     : _sdlButtonStates(0),
@@ -21,12 +21,12 @@ Arc::MouseSource::MouseSource( void )
         _buttonStates.add((MouseButton)button, InputState());
     }
 
-    gpEventDispatcher->addEventListener(Program::EVENT_UPDATE, this, &MouseSource::update);
+    GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &MouseSource::update);
 }
 
 Arc::MouseSource::~MouseSource( void )
 {
-    gpEventDispatcher->removeEventListener(Program::EVENT_UPDATE, this, &MouseSource::update);
+    GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &MouseSource::update);
 }
 
 void Arc::MouseSource::update( const Event& event )
@@ -52,7 +52,7 @@ void Arc::MouseSource::update( const Event& event )
 	// Dispatch the EVENT_MOUSE_MOVED event if the mouse has moved
     if (_mouseDelta != Vector2::ZERO)
     {
-        gpEventDispatcher->dispatchEvent(Event(MouseSource::EVENT_MOUSE_MOVED, MouseData(_mousePos, _mouseDelta)));
+        dispatchEvent(Event(MouseSource::EVENT_MOUSE_MOVED, MouseData(_mousePos, _mouseDelta)));
     }
 
     bool down;
@@ -87,16 +87,16 @@ void Arc::MouseSource::update( const Event& event )
 		// Dispatch events based on state
         if (pState->Pressed)
         {
-            gpEventDispatcher->dispatchEvent(Event(MouseSource::EVENT_MOUSE_PRESSED, MouseData(_mousePos, _mouseDelta, button)));
+            dispatchEvent(Event(MouseSource::EVENT_MOUSE_PRESSED, MouseData(_mousePos, _mouseDelta, button)));
         }
         else if (pState->Released)
         {
-            gpEventDispatcher->dispatchEvent(Event(MouseSource::EVENT_MOUSE_RELEASED, MouseData(_mousePos, _mouseDelta, button)));
+            dispatchEvent(Event(MouseSource::EVENT_MOUSE_RELEASED, MouseData(_mousePos, _mouseDelta, button)));
         }
 
         if (pState->Down)
         {
-            gpEventDispatcher->dispatchEvent(Event(MouseSource::EVENT_MOUSE_HELD, MouseData(_mousePos, _mouseDelta, button)));
+            dispatchEvent(Event(MouseSource::EVENT_MOUSE_HELD, MouseData(_mousePos, _mouseDelta, button)));
         }
     }
 }
@@ -110,11 +110,11 @@ void Arc::MouseSource::handleSDLEvent( SDL_Event sdlEvent )
 		// Handle the SDL_BUTTON_WHEELUP and SDL_BUTTON_WHEELDOWN 'buttons' only available through the SDL event loop
 		if (sdlEvent.button.button == SDL_BUTTON_WHEELUP)
 		{
-			gpEventDispatcher->dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_UP, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_UP)));
+			dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_UP, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_UP)));
 		}
 		else if (sdlEvent.button.button == SDL_BUTTON_WHEELDOWN)
 		{
-			gpEventDispatcher->dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_DOWN, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_DOWN)));
+			dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_DOWN, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_DOWN)));
 		}
 
 		break;

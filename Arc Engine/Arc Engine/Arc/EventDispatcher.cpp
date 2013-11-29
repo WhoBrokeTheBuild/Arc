@@ -1,8 +1,6 @@
 #include "EventDispatcher.h"
 #include "Event.h"
 
-Arc::EventDispatcher* gpEventDispatcher = nullptr;
-
 Arc::ArrayList<Arc::EventDispatcher*> Arc::EventDispatcher::_sDispatchers = Arc::ArrayList<Arc::EventDispatcher*>();
 
 Arc::EventDispatcher::EventDispatcher( void )

@@ -4,29 +4,29 @@
 #define __ARC_PHYSICS_COMPONENT_H__
 
 #include "Common.h"
-#include "Component.h"
+#include "UnitComponent.h"
 
 namespace Arc
 {
 	class PhysicsComponent :
-		public Component
+		public UnitComponent
 	{
 	protected:
 
 	public:
 
-		static const ComponentType CMP_TYPE_PHYSICS;
+		static const UnitComponentType UNIT_CMP_TYPE_PHYSICS;
 
 		Vector2
 			Vel,
 			Acc;
 
 		PhysicsComponent( Unit* pUnit, Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO )
-			: Component(pUnit),
+			: UnitComponent(pUnit),
 			  Vel(vel),
 			  Acc(acc)
 		{
-			addType(CMP_TYPE_PHYSICS);
+			addType(UNIT_CMP_TYPE_PHYSICS);
 		}
 
 		virtual inline ~PhysicsComponent( void ) { }

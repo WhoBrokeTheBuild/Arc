@@ -29,7 +29,7 @@ namespace Arc
 
 	public:
 
-		static const ComponentType CMP_TYPE_SHAPE;
+		static const UnitComponentType UNIT_CMP_TYPE_SHAPE;
 
 		ShapeComponent( Unit* pUnit,
 						bool filled = false,
@@ -44,7 +44,7 @@ namespace Arc
 			  _size(),
 			  _radius()
 		{
-			addType(CMP_TYPE_SHAPE);
+			addType(UNIT_CMP_TYPE_SHAPE);
 		}
 
 		virtual inline ~ShapeComponent( void ) { }

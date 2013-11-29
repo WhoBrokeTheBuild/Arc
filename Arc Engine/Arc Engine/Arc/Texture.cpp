@@ -3,13 +3,14 @@
 #include "RenderedText.h"
 #include "GraphicsSystem.h"
 #include "Event.h"
+#include "GraphicalProgram.h"
 
 Arc::Texture::Texture( string filename )
 {
     load(filename);
 
 	// Only attach the EVENT_GRAPHICS_RESET event if the texture was loaded from file
-    gpEventDispatcher->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+    GraphicalProgram::getGraphicsSystem()->addEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
 }
 
 Arc::Texture::Texture( SDL_Surface* pSurface )
@@ -22,7 +23,7 @@ Arc::Texture::~Texture( void )
 {
 	// Only remove the EVENT_GRAPHICS_RESET event if the texture was loaded from file
 	if ( ! _generated)
-		gpEventDispatcher->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
+		GraphicalProgram::getGraphicsSystem()->removeEventListener(GraphicsSystem::EVENT_GRAPHICS_RESET, this, &Texture::graphicsReset);
     deleteTexture();
 }
 

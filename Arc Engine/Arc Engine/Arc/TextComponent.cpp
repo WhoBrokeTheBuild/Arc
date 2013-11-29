@@ -1,7 +1,7 @@
 #include "TextComponent.h"
 #include "Unit.h"
 
-const Arc::ComponentType Arc::TextComponent::CMP_TYPE_TEXT = "text";
+const Arc::UnitComponentType Arc::TextComponent::UNIT_CMP_TYPE_TEXT = "text";
 
 Arc::TextComponent::~TextComponent(void)
 {

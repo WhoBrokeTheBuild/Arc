@@ -1,7 +1,7 @@
 #include "AnimatedComponent.h"
 #include "Unit.h"
 
-const Arc::ComponentType Arc::AnimatedComponent::CMP_TYPE_ANIMATED = "animated";
+const Arc::UnitComponentType Arc::AnimatedComponent::UNIT_CMP_TYPE_ANIMATED = "animated";
 
 const Arc::EventType Arc::AnimatedComponent::EVENT_ANIMATION_COMPLETE = "animation.animationComplete";
 

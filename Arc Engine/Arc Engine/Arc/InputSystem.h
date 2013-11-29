@@ -4,7 +4,7 @@
 #define __ARC_INPUT_SYSTEM_H__
 
 #include "Common.h"
-#include "EventDispatcher.h"
+#include "SystemComponent.h"
 
 #include <SDL/SDL.h>
 
@@ -18,9 +18,14 @@
 
 namespace Arc
 {
+	class GraphicalProgram;
+
     class InputSystem :
-        public EventDispatcher
+        public SystemComponent
     {
+		
+		friend class GraphicalProgram;
+
     protected:
 
 		// Manager for keyboard input
@@ -34,12 +39,14 @@ namespace Arc
 
     public:
 
-        InputSystem( void );
+		static const SystemComponentType SYS_CMP_TYPE_INPUT;
+
+        InputSystem( Program* pProgram );
         virtual ~InputSystem( void );
 
         virtual inline string toString( void ) const { return "Input System"; }
 
-        virtual void update( const Event& event );
+        virtual void eventUpdate( const Event& event );
 
     }; // class InputSystem
 

@@ -3,7 +3,7 @@
 #include "Scene.h"
 #include "Unit.h"
 
-const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layerChanged";
+const Arc::EventType Arc::Layer::EVENT_LAYER_CHANGED = "layer.layerChanged";
 
 Arc::Layer::Layer( Scene* scene )
     : _units(),

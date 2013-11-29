@@ -1,9 +1,16 @@
 #include "ScriptingSystem.h"
-#include "Program.h"
+#include "GraphicalProgram.h"
 #include "GraphicsSystem.h"
 
-Arc::ScriptingSystem::ScriptingSystem( void )
+const Arc::SystemComponentType Arc::ScriptingSystem::SYS_CMP_TYPE_SCRIPTING = "scripting";
+
+Arc::ScriptingSystem::ScriptingSystem( Program* pProgram )
+	: SystemComponent(pProgram)
 {
+	INFO(toString(), "Initializing");
+
+	addType(SYS_CMP_TYPE_SCRIPTING);
+
 	// Create the lua state 
     _pLuaState = luaL_newstate();
 
@@ -15,7 +22,11 @@ Arc::ScriptingSystem::ScriptingSystem( void )
 
 Arc::ScriptingSystem::~ScriptingSystem( void )
 {
-    lua_close(_pLuaState);
+	INFO(toString(), "Terminating");
+
+	lua_close(_pLuaState);
+
+	INFO(toString(), "Complete");
 }
 
 void Arc::ScriptingSystem::executeFile( string filename )
@@ -102,11 +113,11 @@ int Arc::lua_sleep( lua_State *state )
 int Arc::lua_set_window_title( lua_State* state )
 {
     int argc = lua_gettop(state);
-    GraphicsSystem* gs = Program::getInstance()->getGraphicsSystem();
+    GraphicsSystem* pGS = GraphicalProgram::getGraphicsSystem();
 
     if (argc > 0)
     {
-        gs->setWindowTitle(lua_tostring(state, 1));
+        pGS->setWindowTitle(lua_tostring(state, 1));
     }
 
     return 0;
@@ -114,12 +125,12 @@ int Arc::lua_set_window_title( lua_State* state )
 
 int Arc::lua_set_window_size( lua_State* state )
 {
-    int argc = lua_gettop(state);
-    GraphicsSystem* gs = Program::getInstance()->getGraphicsSystem();
+	int argc = lua_gettop(state);
+	GraphicsSystem* pGS = GraphicalProgram::getGraphicsSystem();
 
     if (argc >= 2)
     {
-        gs->setWindowSize(Size((float)lua_tointeger(state, 1), (float)lua_tointeger(state, 2)));
+        pGS->setWindowSize(Size((float)lua_tointeger(state, 1), (float)lua_tointeger(state, 2)));
     }
 
     return 0;

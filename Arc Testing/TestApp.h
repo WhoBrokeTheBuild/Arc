@@ -4,7 +4,7 @@
 #define __TEST_APP_H__
 
 #include "Common.h"
-#include <Arc/Program.h>
+#include <Arc/GraphicalProgram.h>
 
 #include <Arc/ServerSocket.h>
 #include <Arc/Font.h>
@@ -12,7 +12,7 @@
 #include <Arc/IKeyboardListener.h>
 
 class TestApp :
-    public Program,
+    public GraphicalProgram,
 	public IKeyboardListener
 {
 protected:

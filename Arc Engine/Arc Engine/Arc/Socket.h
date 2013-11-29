@@ -171,6 +171,12 @@ namespace Arc
 		 */
 		virtual Buffer recvBuffer( unsigned int bufferLength = 2000 );
 		
+		/* Reads a single char worth of data on the network socket
+		 *
+		 * @returns: The char read from the network stream, false on error
+		 */
+		virtual char recvChar( void );
+		
 		/* Reads a single boolean worth of data on the network socket
 		 *
 		 * @returns: The boolean read from the network stream, false on error

@@ -4,14 +4,14 @@
 #define __ARC_AUDIO_SYSTEM_H__
 
 #include "Common.h"
-#include "ManagedObject.h"
+#include "SystemComponent.h"
 
 #include <SDL/SDL_mixer.h>
 
 namespace Arc
 {
     class AudioSystem :
-        public ManagedObject
+        public SystemComponent
     {
     protected:
 
@@ -25,7 +25,9 @@ namespace Arc
 
     public:
 
-        AudioSystem( void );
+		static const SystemComponentType SYS_CMP_TYPE_AUDIO;
+
+        AudioSystem( Program* pProgram );
         virtual ~AudioSystem( void );
 
         virtual inline string toString( void ) const { return "Audio System"; }

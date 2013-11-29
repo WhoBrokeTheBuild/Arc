@@ -48,6 +48,9 @@ void Arc::Buffer::appendBuffer( const Buffer& other )
 
 void Arc::Buffer::appendBuffer( const char* buffer, unsigned int size )
 {
+	if (_endOfUsed + size <= _buffer.getSize())
+		_buffer.resize(_endOfUsed + size + 1);
+
 	_buffer.insert(_buffer.begin() + _endOfUsed, buffer, buffer + size);
 	_endOfUsed += size;
 	_buffer[_endOfUsed + 1] = 0;

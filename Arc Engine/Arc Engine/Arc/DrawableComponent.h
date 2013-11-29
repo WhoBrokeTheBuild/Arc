@@ -4,7 +4,7 @@
 #define __ARC_DRAWABLE_COMPONENT_H__
 
 #include "Common.h"
-#include "Component.h"
+#include "UnitComponent.h"
 
 #include "OriginLocation.h"
 #include "Origin.h"
@@ -12,7 +12,7 @@
 namespace Arc
 {
 	class DrawableComponent :
-		public Component
+		public UnitComponent
 	{
 	protected:
 
@@ -35,7 +35,7 @@ namespace Arc
 
 	public:
 
-		static const ComponentType CMP_TYPE_DRAWABLE;
+		static const UnitComponentType UNIT_CMP_TYPE_DRAWABLE;
 
 		inline DrawableComponent( Unit* pUnit,
 			               Color blendColor = Color::WHITE,
@@ -43,14 +43,14 @@ namespace Arc
 			               Vector2 scale = Vector2::ONE, 
 			               Angle rotation = Angle::ZERO,
 			               Point offset = Point::ZERO )
-			: Component(pUnit),
+			: UnitComponent(pUnit),
 			  _blendColor(blendColor),
 			  _origin(origin),
 			  _scale(scale),
 			  _rotation(rotation),
 			  _offset(offset)
 		{
-			addType(CMP_TYPE_DRAWABLE);
+			addType(UNIT_CMP_TYPE_DRAWABLE);
 		}
 
 		virtual inline ~DrawableComponent( void ) { }
