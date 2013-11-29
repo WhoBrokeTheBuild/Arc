@@ -1,5 +1,12 @@
 #include "GraphicalProgram.h"
 
+const Arc::EventType Arc::GraphicalProgram::EVENT_INPUT_SYSTEM_INITIALIZED    = "graphicalProgram.inputSystemInitialized";
+const Arc::EventType Arc::GraphicalProgram::EVENT_INPUT_SYSTEM_TERMINATED     = "graphicalProgram.inputSystemTerminated";
+const Arc::EventType Arc::GraphicalProgram::EVENT_AUDIO_SYSTEM_INITIALIZED    = "graphicalProgram.audioSystemInitialized";
+const Arc::EventType Arc::GraphicalProgram::EVENT_AUDIO_SYSTEM_TERMINATED     = "graphicalProgram.audioSystemTerminated";
+const Arc::EventType Arc::GraphicalProgram::EVENT_GRAPHICS_SYSTEM_INITIALIZED = "graphicalProgram.graphicsSystemInitialized";
+const Arc::EventType Arc::GraphicalProgram::EVENT_GRAPHICS_SYSTEM_TERMINATED  = "graphicalProgram.graphicsSystemTerminated";
+
 const Arc::EventType Arc::GraphicalProgram::EVENT_UPDATE_START = "graphicalProgram.updateStart";
 const Arc::EventType Arc::GraphicalProgram::EVENT_UPDATE       = "graphicalProgram.update";
 const Arc::EventType Arc::GraphicalProgram::EVENT_UPDATE_END   = "graphicalProgram.updateEnd";
@@ -70,39 +77,57 @@ void Arc::GraphicalProgram::initGraphicsSystem( Size windowSize /*= Size(640.0f,
 {
 	delete getSystemOfType<GraphicsSystem>(GraphicsSystem::SYS_CMP_TYPE_GRAPHICS);
 	_systems.add(New GraphicsSystem(this, windowSize, windowTitle, clearColor, fullscreen));
+	dispatchEvent(Event(EVENT_GRAPHICS_SYSTEM_INITIALIZED));
 }
 
 void Arc::GraphicalProgram::initAudioSystem( void )
 {
 	delete getSystemOfType<AudioSystem>(AudioSystem::SYS_CMP_TYPE_AUDIO);
 	_systems.add(New AudioSystem(this));
+	dispatchEvent(Event(EVENT_AUDIO_SYSTEM_INITIALIZED));
 }
 
 void Arc::GraphicalProgram::initInputSystem( void )
 {
 	delete getSystemOfType<InputSystem>(InputSystem::SYS_CMP_TYPE_INPUT);
 	_systems.add(New InputSystem(this));
+	dispatchEvent(Event(EVENT_INPUT_SYSTEM_INITIALIZED));
 }
 
 void Arc::GraphicalProgram::termGraphicsSystem( void )
 {
 	GraphicsSystem* pSys = getSystemOfType<GraphicsSystem>(GraphicsSystem::SYS_CMP_TYPE_GRAPHICS);
-	delete pSys;
-	_systems.remove(pSys);
+
+	if (pSys != nullptr)
+	{
+		delete pSys;
+		_systems.remove(pSys);
+		dispatchEvent(Event(EVENT_GRAPHICS_SYSTEM_TERMINATED));
+	}
 }
 
 void Arc::GraphicalProgram::termAudioSystem( void )
 {
 	AudioSystem* pSys = getSystemOfType<AudioSystem>(AudioSystem::SYS_CMP_TYPE_AUDIO);
-	delete pSys;
-	_systems.remove(pSys);
+
+	if (pSys != nullptr)
+	{
+		delete pSys;
+		_systems.remove(pSys);
+		dispatchEvent(Event(EVENT_AUDIO_SYSTEM_TERMINATED));
+	}
 }
 
 void Arc::GraphicalProgram::termInputSystem( void )
 {
 	InputSystem* pSys = getSystemOfType<InputSystem>(InputSystem::SYS_CMP_TYPE_INPUT);
-	delete pSys;
-	_systems.remove(pSys);
+
+	if (pSys != nullptr)
+	{
+		delete pSys;
+		_systems.remove(pSys);
+		dispatchEvent(Event(EVENT_INPUT_SYSTEM_TERMINATED));
+	}
 }
 
 void Arc::GraphicalProgram::start( void )

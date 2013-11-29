@@ -24,6 +24,8 @@ namespace Arc
 
     private:
 
+		InputSystem* _pInputSystem;
+
 		// SDL managed array of the mouse button states
         uint8_t _sdlButtonStates;
 
@@ -55,7 +57,7 @@ namespace Arc
 		
 		/* Creates a mouse source
 		 */
-        MouseSource( void );
+        MouseSource( InputSystem* pInputSystem );
 
         virtual ~MouseSource( void );
 

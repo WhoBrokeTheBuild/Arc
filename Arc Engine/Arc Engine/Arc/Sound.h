@@ -16,11 +16,9 @@ namespace Arc
     {
     protected:
 
-        Mix_Chunk
-            *_pChunk;
+        Mix_Chunk* _pChunk;
 
-        int
-            _channel;
+        int _channel;
 
     public:
 

@@ -20,18 +20,18 @@ namespace Arc
 
         inline IFrameListener( void ) 
 		{
-            GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &IFrameListener::update);
-            GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_RENDER, this, &IFrameListener::render);
+            GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &IFrameListener::eventUpdate);
+            GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_RENDER, this, &IFrameListener::eventRender);
 		}
 
         virtual inline ~IFrameListener( void ) 
 		{
-            GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_RENDER, this, &IFrameListener::render);
-            GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &IFrameListener::update);
+            GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_RENDER, this, &IFrameListener::eventRender);
+            GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &IFrameListener::eventUpdate);
 		};
 
-        virtual inline void update( const Event& event ) { };
-        virtual inline void render( const Event& event ) { };
+        virtual inline void eventUpdate( const Event& event ) { };
+        virtual inline void eventRender( const Event& event ) { };
 
     }; // class IFrameListener
     

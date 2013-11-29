@@ -15,21 +15,17 @@ namespace Arc
 	{
 	protected:
 
-		Point 
-			_origin;
+		Point _origin;
 
-		Size
-			_size;
+		Size _size;
 
-		OriginLocation
-			_originLocation;
+		OriginLocation _originLocation;
 
 		virtual void updateOrigin( void );
 
 	public:
 
-		static const Origin
-			ZERO;
+		static const Origin ZERO;
 
 		inline Origin( Point origin, Size size = Size::ZERO )
 			: _origin(origin),

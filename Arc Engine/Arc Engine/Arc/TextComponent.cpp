@@ -3,6 +3,9 @@
 
 const Arc::UnitComponentType Arc::TextComponent::UNIT_CMP_TYPE_TEXT = "text";
 
+const Arc::EventType Arc::TextComponent::EVENT_TEXT_CHANGED = "textComponent.textChanged";
+const Arc::EventType Arc::TextComponent::EVENT_FONT_CHANGED = "textComponent.fontChanged";
+
 Arc::TextComponent::~TextComponent(void)
 {
 	delete _pRenderedText;

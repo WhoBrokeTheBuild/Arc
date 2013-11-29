@@ -2,7 +2,12 @@
 
 const Arc::SystemComponentType Arc::GraphicsSystem::SYS_CMP_TYPE_GRAPHICS = "graphics";
 
-const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET = "graphicsSystem.graphicsReset";
+const Arc::EventType Arc::GraphicsSystem::EVENT_CLEAR_COLOR_CHANGED  = "graphicsSystem.clearColorChanged";
+const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_SIZE_CHANGED	 = "graphicsSystem.windowSizeChanged";
+const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_TITLE_CHANGED = "graphicsSystem.windowTitleChanged";
+const Arc::EventType Arc::GraphicsSystem::EVENT_WINDOW_ICON_CHANGED = "graphicsSystem.windowIconChanged";
+const Arc::EventType Arc::GraphicsSystem::EVENT_FULLSCREEN_CHANGED	 = "graphicsSystem.fullscreenChanged";
+const Arc::EventType Arc::GraphicsSystem::EVENT_GRAPHICS_RESET       = "graphicsSystem.graphicsReset";
 
 Arc::GraphicsSystem::GraphicsSystem( Program* pProgram, Size windowSize, string windowTitle, Color clearColor, bool fullscreen )
 	: SystemComponent(pProgram),
@@ -65,22 +70,28 @@ void Arc::GraphicsSystem::setFullscreen( bool fullscreen )
     _fullscreen = fullscreen;
 
     resetVideoMode();
-    resetGL();
+	resetGL();
+
+	dispatchEvent(Event(EVENT_FULLSCREEN_CHANGED));
 }
 
 void Arc::GraphicsSystem::setWindowSize( Size size )
 {
-    _windowSize = size;
+	_windowSize = size;
 
     resetVideoMode();
-    resetGL();
+	resetGL();
+
+	dispatchEvent(Event(EVENT_WINDOW_SIZE_CHANGED));
 }
 
 void Arc::GraphicsSystem::setWindowTitle( string title )
 {
     _windowTitle = title;
 
-    SDL_WM_SetCaption(_windowTitle.c_str(), nullptr);
+	SDL_WM_SetCaption(_windowTitle.c_str(), nullptr);
+
+	dispatchEvent(Event(EVENT_WINDOW_TITLE_CHANGED));
 }
 
 void Arc::GraphicsSystem::setWindowIcon( string filename )
@@ -93,6 +104,8 @@ void Arc::GraphicsSystem::setWindowIcon( string filename )
     SDL_WM_SetIcon(pSurface, nullptr);
 
     SDL_FreeSurface(pSurface);
+
+	dispatchEvent(Event(EVENT_WINDOW_ICON_CHANGED));
 }
 
 void Arc::GraphicsSystem::resetGL( void )

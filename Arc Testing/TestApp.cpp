@@ -4,33 +4,9 @@
 #include <Arc/StringHelper.h>
 
 TestApp::TestApp( void )
-    : Program()
+    : GraphicalProgram()
 {
-	initRandom();
-	initNetworking();
-	
-	ServerSocket ss(80);
-	Socket *pS = nullptr;
 
-	while (true)
-	{
-		Socket *pS = ss.waitForClient();
-
-		Buffer buff;
-
-		while (true)
-		{
-			buff.appendChar(pS->recvChar());
-			
-			if (StringHelper::isStringInString(buff.getText(), "\r\n\r\n"))
-			{
-				pS->sendString("<html><head><title>Hello, World!</title></head><body><marquee>Hi Tybo!</marquee></body></html>");
-				cout << "Done" << endl;
-				delete pS;
-				continue;
-			}
-		}
-	}
 }
 
 TestApp::~TestApp( void )

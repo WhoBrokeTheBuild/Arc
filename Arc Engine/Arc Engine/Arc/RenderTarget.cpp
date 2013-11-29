@@ -1,5 +1,6 @@
 #include "RenderTarget.h"
 #include "GraphicsSystem.h"
+#include "RenderedText.h"
 
 Arc::RenderTarget::RenderTarget( GraphicsSystem* pGraphicsSystem )
 	: _pGraphicsSystem(pGraphicsSystem)
@@ -101,6 +102,19 @@ void Arc::RenderTarget::drawText( const float x,
     }
 
     draw(x, y, pRenderedText->getTexture(), color, rotation, scale, origin);
+}
+
+void Arc::RenderTarget::drawText( const float x,
+								  const float y, 
+								  const string text, 
+								  Font* pFont, 
+								  const Color color /*= Color::WHITE*/, 
+								  const Angle rotation /*= Angle::ZERO*/, 
+								  const Vector2 scale /*= Vector2::ONE*/, 
+								  const Origin origin /*= Origin::ZERO */ ) const
+{
+	RenderedText renderedText(text, pFont);
+	drawText(x, y, &renderedText, color, rotation, scale, origin.getPoint());
 }
 
 void Arc::RenderTarget::draw( const float x,

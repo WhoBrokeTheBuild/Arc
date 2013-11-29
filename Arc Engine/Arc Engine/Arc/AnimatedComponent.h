@@ -18,17 +18,20 @@ namespace Arc
 		Animation
 			*_pAnimation;
 
-		int 
-			_frame;
+		int _frame;
 
-		double
-			_timeout;
+		double _timeout;
 
 	public:
 
 		static const UnitComponentType UNIT_CMP_TYPE_ANIMATED;
 
+#pragma region Event Types
+
 		static const EventType EVENT_ANIMATION_COMPLETE;
+		static const EventType EVENT_FRAME_CHANGED;
+
+#pragma endregion
 
 		AnimatedComponent( Unit* pUnit, 
 						   Animation *pAnimation,

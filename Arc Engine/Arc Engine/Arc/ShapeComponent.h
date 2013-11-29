@@ -15,21 +15,24 @@ namespace Arc
 	{
 	protected:
 
-		Shapes
-			_shape;
+		Shapes _shape;
 
-		Size
-			_size;
+		Size _size;
 
-		float
-			_radius;
+		float _radius;
 
-		bool
-			_filled;
+		bool _filled;
 
 	public:
 
 		static const UnitComponentType UNIT_CMP_TYPE_SHAPE;
+
+#pragma region Event Types
+
+		static const EventType EVENT_SHAPE_CHANGED;
+		static const EventType EVENT_FILLED_CHANGED;
+
+#pragma endregion
 
 		ShapeComponent( Unit* pUnit,
 						bool filled = false,
@@ -49,11 +52,11 @@ namespace Arc
 
 		virtual inline ~ShapeComponent( void ) { }
 
-		virtual inline void setRectangle( Size size )    { _shape = SHAPE_RECTANGLE; _size = size;     setOriginSize(getSize()); }
-		virtual inline void setTriangle ( float radius ) { _shape = SHAPE_TRIANGLE;  _radius = radius; setOriginSize(getSize()); }
-		virtual inline void setPentagon ( float radius ) { _shape = SHAPE_PENTAGON;  _radius = radius; setOriginSize(getSize()); }
-		virtual inline void setHexagon  ( float radius ) { _shape = SHAPE_HEXAGON;   _radius = radius; setOriginSize(getSize()); }
-		virtual inline void setCircle   ( float radius ) { _shape = SHAPE_CIRCLE;    _radius = radius; setOriginSize(getSize()); }
+		virtual inline void setRectangle( Size size )    { _shape = SHAPE_RECTANGLE; _size = size;     setOriginSize(getSize()); dispatchEvent(Event(EVENT_SHAPE_CHANGED)); }
+		virtual inline void setTriangle ( float radius ) { _shape = SHAPE_TRIANGLE;  _radius = radius; setOriginSize(getSize()); dispatchEvent(Event(EVENT_SHAPE_CHANGED)); }
+		virtual inline void setPentagon ( float radius ) { _shape = SHAPE_PENTAGON;  _radius = radius; setOriginSize(getSize()); dispatchEvent(Event(EVENT_SHAPE_CHANGED)); }
+		virtual inline void setHexagon  ( float radius ) { _shape = SHAPE_HEXAGON;   _radius = radius; setOriginSize(getSize()); dispatchEvent(Event(EVENT_SHAPE_CHANGED)); }
+		virtual inline void setCircle   ( float radius ) { _shape = SHAPE_CIRCLE;    _radius = radius; setOriginSize(getSize()); dispatchEvent(Event(EVENT_SHAPE_CHANGED)); }
 
 		virtual inline string toString( void ) const { return "Shape Component"; }
 
@@ -62,7 +65,8 @@ namespace Arc
 		virtual Vector2 getSize( void ) const;
 
 		inline bool isFilled ( void ) const { return _filled; }
-		inline void setFilled( bool filled ) { _filled = filled; }
+		inline void setFilled( bool filled ) { _filled = filled; dispatchEvent(Event(EVENT_FILLED_CHANGED)); }
+		inline void toggleFilled( void ) { _filled = ! _filled; dispatchEvent(Event(EVENT_FILLED_CHANGED)); }
 
 	}; // class ShapeComponent
 

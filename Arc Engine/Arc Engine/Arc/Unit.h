@@ -91,9 +91,27 @@ namespace Arc
 			return cmpList;
 		}
 
-    public:
+	public:
 
-        Unit( Point pos, float depth = 0.0f );
+#pragma region Event Types
+
+		static const EventType EVENT_ENABLED_CHANGED;
+
+		static const EventType EVENT_VISIBLE_CHANGED;
+
+		static const EventType EVENT_DEPTH_CHANGED;
+
+		static const EventType EVENT_POSITION_CHANGED;
+
+#pragma endregion
+
+        Unit( Point pos, float depth = 0.0f )
+			: _pParent(nullptr),
+			  _pos(pos),
+			  _depth(depth),
+			  _enabled(true),
+			  _visible(true)
+		{ }
 
         virtual ~Unit( void );
 
@@ -104,27 +122,26 @@ namespace Arc
 
 		virtual inline bool isEnabled( void ) const { return _enabled; }
 
+		virtual inline void setEnabled( bool enabled ) { _enabled = enabled; dispatchEvent(Event(EVENT_ENABLED_CHANGED)); }
+
+		virtual inline void toggleEnabled( void ) { _enabled = !_enabled; dispatchEvent(Event(EVENT_ENABLED_CHANGED)); }
+
+
 		virtual inline bool isVisible( void ) const { return _visible; }
 
+		virtual inline void setVisible( bool visible ) { _visible = visible; dispatchEvent(Event(EVENT_VISIBLE_CHANGED)); }
 
-		virtual inline void setEnabled( bool enabled ) { _enabled = enabled; }
-
-		virtual inline void setVisible( bool visible ) { _visible = visible; }
-
-
-		virtual inline void toggleEnabled( void ) { _enabled = !_enabled; }
-
-		virtual inline void toggleVisible( void ) { _visible = !_visible; }
+		virtual inline void toggleVisible( void ) { _visible = !_visible; dispatchEvent(Event(EVENT_VISIBLE_CHANGED)); }
 
 
 		virtual inline Point getPos( void ) const { return _pos; }
 
-		virtual inline void setPos( Point pos ) { _pos = pos; }
+		virtual inline void setPos( Point pos ) { _pos = pos; dispatchEvent(Event(EVENT_POSITION_CHANGED)); }
 
 
 		virtual inline float getDepth( void ) const { return _depth; };
 
-		virtual inline void setDepth( float depth ) { _depth = depth; };
+		virtual inline void setDepth( float depth ) { _depth = depth; dispatchEvent(Event(EVENT_DEPTH_CHANGED)); };
 
 
         inline Layer* getParentLayer( void ) { return _pParent; }

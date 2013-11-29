@@ -22,14 +22,11 @@ namespace Arc
 
     protected:
 
-        EventDispatcher
-            *_pEventTarget;
+        EventDispatcher* _pEventTarget;
 
-        EventType
-            _type;
+        EventType _type;
 
-        EventData
-            *_pData;
+        EventData* _pData;
 
     public:
 

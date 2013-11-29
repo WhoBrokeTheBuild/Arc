@@ -1,14 +1,10 @@
 #include "Unit.h"
 #include "UnitComponent.h"
 
-Arc::Unit::Unit( Point pos, float depth /*= 0.0f */ )
-	: _pParent(nullptr),
-	  _pos(pos),
-	  _depth(depth),
-	  _enabled(true),
-	  _visible(true)
-{
-}
+const Arc::EventType Arc::Unit::EVENT_ENABLED_CHANGED  = "unit.enabledChanged";
+const Arc::EventType Arc::Unit::EVENT_VISIBLE_CHANGED  = "unit.visibleChanged";
+const Arc::EventType Arc::Unit::EVENT_DEPTH_CHANGED	   = "unit.depthChanged";
+const Arc::EventType Arc::Unit::EVENT_POSITION_CHANGED = "unit.positionChanged";
 
 Arc::Unit::~Unit( void )
 {

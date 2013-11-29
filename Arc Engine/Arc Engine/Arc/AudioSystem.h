@@ -15,13 +15,11 @@ namespace Arc
     {
     protected:
 
-        int
-            _rate,
-            _channels,
-            _chunkSize; 
+        int _rate;
+		int _channels;
+		int _chunkSize; 
 
-        uint16_t
-            _format;
+        uint16_t _format;
 
     public:
 

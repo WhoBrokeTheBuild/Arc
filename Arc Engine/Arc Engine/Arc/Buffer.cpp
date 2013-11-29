@@ -184,6 +184,9 @@ Arc::Buffer& Arc::Buffer::operator=( const string& text )
 
 string Arc::Buffer::readNextString( unsigned int size )
 {
+	if (endOfBuffer())
+		return string();
+
 	string val = readStringAt(_readIndex, size);
 	_readIndex += size;
 	return val;
@@ -191,6 +194,9 @@ string Arc::Buffer::readNextString( unsigned int size )
 
 string Arc::Buffer::readNextStringWithLength( void )
 {
+	if (endOfBuffer())
+		return string();
+
 	string val = readStringWithLengthAt(_readIndex);
 	_readIndex += sizeof(short); // For the string length stored in the buffer
 	_readIndex += val.length();
@@ -199,6 +205,9 @@ string Arc::Buffer::readNextStringWithLength( void )
 
 bool Arc::Buffer::readNextBool( void )
 {
+	if (endOfBuffer())
+		return false;
+
 	bool val = readBoolAt(_readIndex);
 	_readIndex += sizeof(bool);
 	return val;
@@ -206,6 +215,9 @@ bool Arc::Buffer::readNextBool( void )
 
 short Arc::Buffer::readNextShort( void )
 {
+	if (endOfBuffer())
+		return 0;
+
 	short val = readShortAt(_readIndex);
 	_readIndex += sizeof(short);
 	return val;
@@ -213,6 +225,9 @@ short Arc::Buffer::readNextShort( void )
 
 int Arc::Buffer::readNextInt( void )
 {
+	if (endOfBuffer())
+		return 0;
+
 	int val = readIntAt(_readIndex);
 	_readIndex += sizeof(int);
 	return val;
@@ -220,6 +235,9 @@ int Arc::Buffer::readNextInt( void )
 
 long Arc::Buffer::readNextLong( void )
 {
+	if (endOfBuffer())
+		return 0;
+
 	long val = readLongAt(_readIndex);
 	_readIndex += sizeof(long);
 	return val;
@@ -227,6 +245,9 @@ long Arc::Buffer::readNextLong( void )
 
 char Arc::Buffer::readNextChar( void )
 {
+	if (endOfBuffer())
+		return '\0';
+
 	char val = readCharAt(_readIndex);
 	_readIndex += sizeof(char);
 	return val;
@@ -234,6 +255,9 @@ char Arc::Buffer::readNextChar( void )
 
 float Arc::Buffer::readNextFloat( void )
 {
+	if (endOfBuffer())
+		return 0.0f;
+
 	float val = readFloatAt(_readIndex);
 	_readIndex += sizeof(float);
 	return val;
@@ -241,6 +265,9 @@ float Arc::Buffer::readNextFloat( void )
 
 double Arc::Buffer::readNextDouble( void )
 {
+	if (endOfBuffer())
+		return 0.0;
+
 	double val = readDoubleAt(_readIndex);
 	_readIndex += sizeof(double);
 	return val;

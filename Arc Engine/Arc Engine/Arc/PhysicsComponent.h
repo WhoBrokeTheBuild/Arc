@@ -17,9 +17,8 @@ namespace Arc
 
 		static const UnitComponentType UNIT_CMP_TYPE_PHYSICS;
 
-		Vector2
-			Vel,
-			Acc;
+		Vector2 Vel;
+		Vector2 Acc;
 
 		PhysicsComponent( Unit* pUnit, Vector2 vel = Vector2::ZERO, Vector2 acc = Vector2::ZERO )
 			: UnitComponent(pUnit),

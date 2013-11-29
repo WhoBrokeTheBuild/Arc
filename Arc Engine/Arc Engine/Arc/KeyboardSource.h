@@ -29,6 +29,8 @@ namespace Arc
 
     protected:
 
+		InputSystem* _pInputSystem;
+
 		// Map of keys to their states (up, down, pressed, released)
         Map<KeyboardKey, InputState> _keyStates;
 
@@ -46,7 +48,7 @@ namespace Arc
 
 		/* Creates a keyboard source
 		 */
-        KeyboardSource( void );
+        KeyboardSource( InputSystem* pInputSystem );
 
         virtual ~KeyboardSource( void );
 

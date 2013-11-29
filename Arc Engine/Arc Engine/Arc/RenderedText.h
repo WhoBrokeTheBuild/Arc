@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef __ARC_TEXT_H__
-#define __ARC_TEXT_H__
+#ifndef __ARC_RENDERED_TEXT_H__
+#define __ARC_RENDERED_TEXT_H__
 
 #include "Common.h"
-#include "ManagedObject.h"
+#include "EventDispatcher.h"
 
 #include "Texture.h"
 #include "Font.h"
@@ -15,7 +15,7 @@ namespace Arc
 	/** A pre-rendered texture generated from a font and text
 	  */
     class RenderedText :
-        public ManagedObject
+        public EventDispatcher
     {
     private:
 
@@ -33,7 +33,15 @@ namespace Arc
 		 */
         virtual void renderText( void );
 
-    public:
+	public:
+
+#pragma region Event Types
+
+		static const EventType EVENT_TEXT_CHANGED;
+
+		static const EventType EVENT_FONT_CHANGED;
+
+#pragma endregion
 
 		/* Creates a rendered text with the specified text and font and then calls 
 		 * renderText()
@@ -96,4 +104,4 @@ namespace Arc
 
 } // namespace Arc
 
-#endif // __ARC_CACHED_TEXT_H__
+#endif // __ARC_RENDERED_TEXT_H__

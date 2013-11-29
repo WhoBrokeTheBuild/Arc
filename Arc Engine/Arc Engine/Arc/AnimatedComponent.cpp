@@ -3,7 +3,9 @@
 
 const Arc::UnitComponentType Arc::AnimatedComponent::UNIT_CMP_TYPE_ANIMATED = "animated";
 
-const Arc::EventType Arc::AnimatedComponent::EVENT_ANIMATION_COMPLETE = "animation.animationComplete";
+const Arc::EventType Arc::AnimatedComponent::EVENT_ANIMATION_COMPLETE = "animatedComponent.animationComplete";
+const Arc::EventType Arc::AnimatedComponent::EVENT_FRAME_CHANGED      = "animatedComponent.frameChanged";
+
 
 void Arc::AnimatedComponent::update( const FrameData* data )
 {
@@ -15,6 +17,7 @@ void Arc::AnimatedComponent::update( const FrameData* data )
 	{
 		_timeout = _pAnimation->getSpeed();
 		_frame = (_frame + 1) % _pAnimation->getLength();
+		dispatchEvent(Event(EVENT_FRAME_CHANGED));
 	}
 }
 

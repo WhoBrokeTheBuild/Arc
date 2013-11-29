@@ -48,12 +48,26 @@ namespace Arc
 		 */
         void resetVideoMode( void );
 
-    public:
+	public:
 
-		static const SystemComponentType SYS_CMP_TYPE_GRAPHICS;
+#pragma region Event Types
+
+		static const EventType EVENT_CLEAR_COLOR_CHANGED;
+
+		static const EventType EVENT_WINDOW_SIZE_CHANGED;
+
+		static const EventType EVENT_WINDOW_TITLE_CHANGED;
+
+		static const EventType EVENT_WINDOW_ICON_CHANGED;
+
+		static const EventType EVENT_FULLSCREEN_CHANGED;
 
 		// The event called when the graphics context is changed
-        static const EventType EVENT_GRAPHICS_RESET;
+		static const EventType EVENT_GRAPHICS_RESET;
+
+#pragma endregion
+
+		static const SystemComponentType SYS_CMP_TYPE_GRAPHICS;
 
 		/* Creates a graphics system and window with the specified parameters
 		 * 
@@ -69,16 +83,25 @@ namespace Arc
         virtual ~GraphicsSystem( void );
 
         virtual inline string toString( void ) const { return "Graphics System"; }
+		
+		/* 
+		 * @returns: Whether or not the window is fullscreen
+		 */
+        virtual inline bool isFullscreen( void ) { return _fullscreen;  }
 
 		/* 
 		 * @param fullscreen: Whether the window should be fullscreen or not
 		 */
-        virtual void setFullscreen ( bool fullscreen );
+        virtual void setFullscreen( bool fullscreen );
+		
+		/* Toggles whether the window is fullscreen
+		 */
+        virtual void toggleFullscreen( void ) { setFullscreen( ! isFullscreen()); }
 
 		/* 
 		 * @param size: The size the window should be, should have a positive width and height
 		 */
-        virtual void setWindowSize ( Size size );
+        virtual void setWindowSize( Size size );
 
 		/* 
 		 * @param title: The title that the window should have
@@ -88,17 +111,12 @@ namespace Arc
 		/* 
 		 * @param clearColor: The color to clear the window to every frame
 		 */
-		virtual inline void setClearColor ( Color clearColor ) { _clearColor = clearColor; }
-
-		/* 
-		 * @returns: Whether or not the window is fullscreen
-		 */
-        virtual inline bool   isFullscreen  ( void ) { return _fullscreen;  }
+		virtual inline void setClearColor( Color clearColor ) { _clearColor = clearColor; dispatchEvent(Event(EVENT_CLEAR_COLOR_CHANGED)); }
 
 		/* 
 		 * @returns: The current size of the window
 		 */
-        virtual inline Size   getWindowSize ( void ) { return _windowSize;  }
+        virtual inline Size getWindowSize( void ) { return _windowSize;  }
 
 		/* 
 		 * @returns: The current title of the window
@@ -108,7 +126,7 @@ namespace Arc
 		/* 
 		 * @returns: The current clear color
 		 */
-        virtual inline Color  getClearColor ( void ) { return _clearColor;  }
+        virtual inline Color getClearColor ( void ) { return _clearColor;  }
 
 		/* Loads an image and sets it as the window icon
 		 * 

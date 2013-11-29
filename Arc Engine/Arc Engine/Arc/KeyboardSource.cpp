@@ -6,8 +6,9 @@ const Arc::EventType Arc::KeyboardSource::EVENT_KEY_PRESSED  = "keyboardSource.k
 const Arc::EventType Arc::KeyboardSource::EVENT_KEY_RELEASED = "keyboardSource.keyReleased";
 const Arc::EventType Arc::KeyboardSource::EVENT_KEY_HELD     = "keyboardSource.keyHeld";
 
-Arc::KeyboardSource::KeyboardSource( void )
-    : _sdlKeys(nullptr),
+Arc::KeyboardSource::KeyboardSource( InputSystem* pInputSystem )
+    : _pInputSystem(pInputSystem),
+	  _sdlKeys(nullptr),
       _keyStates()
 {
     for (unsigned int key = 0; key < NUM_KEYS; ++key)
@@ -61,21 +62,20 @@ void Arc::KeyboardSource::update( const Event& event )
 		// Dispatch events based on state
         if (pState->Pressed)
         {
-            dispatchEvent(Event(KeyboardSource::EVENT_KEY_PRESSED, KeyData(key)));
+            _pInputSystem->dispatchEvent(Event(KeyboardSource::EVENT_KEY_PRESSED, KeyData(key)));
         }
         else if (pState->Released)
         {
-            dispatchEvent(Event(KeyboardSource::EVENT_KEY_RELEASED, KeyData(key)));
+            _pInputSystem->dispatchEvent(Event(KeyboardSource::EVENT_KEY_RELEASED, KeyData(key)));
         }
 
         if (pState->Down)
         {
-            dispatchEvent(Event(KeyboardSource::EVENT_KEY_HELD, KeyData(key)));
+            _pInputSystem->dispatchEvent(Event(KeyboardSource::EVENT_KEY_HELD, KeyData(key)));
         }
     }
 }
 
 void Arc::KeyboardSource::handleSDLEvent( SDL_Event sdlEvent )
 {
-
 }

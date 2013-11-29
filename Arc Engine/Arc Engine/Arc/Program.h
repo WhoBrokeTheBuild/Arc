@@ -27,6 +27,18 @@ namespace Arc
 
     public:
 
+#pragma region Event Types
+
+		static const EventType EVENT_SCRIPTING_SYSTEM_INITIALIZED;
+
+		static const EventType EVENT_SCRIPTING_SYSTEM_TERMINATED;
+
+		static const EventType EVENT_NETWORK_SYSTEM_INITIALIZED;
+
+		static const EventType EVENT_NETWORK_SYSTEM_TERMINATED;
+
+#pragma endregion
+
 		Program( void );
 		virtual ~Program( void );
 

@@ -3,6 +3,9 @@
 
 const Arc::UnitComponentType Arc::ShapeComponent::UNIT_CMP_TYPE_SHAPE = "shape";
 
+const Arc::EventType Arc::ShapeComponent::EVENT_SHAPE_CHANGED  = "shapeComponent.shapeChanged";
+const Arc::EventType Arc::ShapeComponent::EVENT_FILLED_CHANGED = "shapeComponent.filledChanged";
+
 void Arc::ShapeComponent::render( const RenderData* data )
 {
 	const Unit* parent = getUnit();

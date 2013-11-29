@@ -4,10 +4,9 @@
 Arc::ArrayList<Arc::EventDispatcher*> Arc::EventDispatcher::_sDispatchers = Arc::ArrayList<Arc::EventDispatcher*>();
 
 Arc::EventDispatcher::EventDispatcher( void )
+	: _eventMap(),
+	  _changed(false)
 {
-    _eventMap = EventMap();
-    _changed  = false;
-
     _sDispatchers.add(this);
 }
 

@@ -121,7 +121,6 @@
     <ClInclude Include="KeyboardSource.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MathFunc.h" />
     <ClInclude Include="MemoryTracker.h" />

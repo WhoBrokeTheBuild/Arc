@@ -5,6 +5,7 @@
 
 #include "Common.h"
 #include "KeyboardSource.h"
+#include "GraphicalProgram.h"
 
 namespace Arc
 {
@@ -15,17 +16,27 @@ namespace Arc
     public:
 
         inline IKeyboardListener( void )
-        {
-            gpEventDispatcher->addEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
-            gpEventDispatcher->addEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
-            gpEventDispatcher->addEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
+		{
+			InputSystem* pSys = GraphicalProgram::getInputSystem();
+
+			if (pSys != nullptr)
+			{
+				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
+				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
+				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
+			}
         }
 
         virtual inline ~IKeyboardListener( void )
-        {
-            gpEventDispatcher->removeEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
-            gpEventDispatcher->removeEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
-            gpEventDispatcher->removeEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
+		{
+			InputSystem* pSys = GraphicalProgram::getInputSystem();
+
+			if (pSys != nullptr)
+			{
+				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
+				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
+				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
+			}
         }
 
         virtual inline void keyPressed ( const Event& event ) { };

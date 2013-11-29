@@ -87,6 +87,8 @@ namespace Arc
 		float readNextFloat( void );
 		double readNextDouble( void );
 
+		inline bool endOfBuffer( void ) { return (_readIndex >= _endOfUsed); }
+
 		string readStringAt( unsigned long offset, unsigned int size );
 		string readStringWithLengthAt( unsigned long offset );
 		bool readBoolAt( unsigned long offset );

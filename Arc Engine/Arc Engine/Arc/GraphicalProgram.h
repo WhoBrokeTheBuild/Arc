@@ -63,10 +63,30 @@ namespace Arc
 		/* Terminate the graphics system and close the window
 		 */
         void termGraphicsSystem( void );
+		
+		/* Initialize the audio system
+		 */
+        void initAudioSystem( void );
+
+		/* Terminate the input system
+		 */
+        void termInputSystem( void );
 
 	public:
 
 #pragma region Event Types
+
+		static const EventType EVENT_GRAPHICS_SYSTEM_INITIALIZED;
+
+		static const EventType EVENT_GRAPHICS_SYSTEM_TERMINATED;
+
+		static const EventType EVENT_AUDIO_SYSTEM_INITIALIZED;
+
+		static const EventType EVENT_AUDIO_SYSTEM_TERMINATED;
+
+		static const EventType EVENT_INPUT_SYSTEM_INITIALIZED;
+
+		static const EventType EVENT_INPUT_SYSTEM_TERMINATED;
 
 		// The pre-update event type
 		static const EventType EVENT_UPDATE_START;
@@ -115,10 +135,6 @@ namespace Arc
 		 */
         virtual void renderFrame( const RenderData& renderData );
 		
-		/* Initialize the audio system
-		 */
-        void initAudioSystem( void );
-
 		/* Initialize the input system
 		 */
         void initInputSystem( void );
@@ -126,10 +142,6 @@ namespace Arc
 		/* Terminate the audio system
 		 */
         void termAudioSystem( void );
-
-		/* Terminate the input system
-		 */
-        void termInputSystem( void );
 
 		virtual bool isGraphicsSystemActive( void ) const { return (GraphicalProgram::getGraphicsSystem() != nullptr); }
 		virtual bool isAudioSystemActive( void ) const { return (GraphicalProgram::getAudioSystem() != nullptr); }

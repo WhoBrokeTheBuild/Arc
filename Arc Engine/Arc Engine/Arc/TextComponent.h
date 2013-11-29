@@ -15,12 +15,18 @@ namespace Arc
 	{
 	protected:
 
-		RenderedText
-			*_pRenderedText;
+		RenderedText* _pRenderedText;
 
 	public:
 
 		static const UnitComponentType UNIT_CMP_TYPE_TEXT;
+
+#pragma region Event Types
+
+		static const EventType EVENT_TEXT_CHANGED;
+		static const EventType EVENT_FONT_CHANGED;
+
+#pragma endregion
 		
 		inline TextComponent( Unit *pUnit,
 			                  Font *pFont, 
@@ -44,10 +50,12 @@ namespace Arc
 		virtual inline string toString( void ) const { return "Drawable Component"; }
 
 		virtual inline string getText( void ) const { return _pRenderedText->getText(); }
-		virtual inline void   setText( string text ) { _pRenderedText->setText(text); }
+
+		virtual inline void setText( string text ) { _pRenderedText->setText(text); dispatchEvent(Event(EVENT_TEXT_CHANGED)); }
 		
 		virtual inline Font* getFont( void ) const { return _pRenderedText->getFont(); }
-		virtual inline void  setFont( Font* pFont ) { _pRenderedText->setFont(pFont); }
+
+		virtual inline void setFont( Font* pFont ) { _pRenderedText->setFont(pFont); dispatchEvent(Event(EVENT_FONT_CHANGED)); }
 
 		virtual void render( const RenderData* data );
 

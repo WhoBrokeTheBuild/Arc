@@ -15,12 +15,17 @@ namespace Arc
 	{
 	protected:
 
-		Texture
-			*_pTexture;
+		Texture* _pTexture;
 
 	public:
 
 		static const UnitComponentType UNIT_CMP_TYPE_IMAGE;
+
+#pragma region Event Types
+
+		static const EventType EVENT_TEXTURE_CHANGED;
+
+#pragma endregion
 
 		ImageComponent( Unit* pUnit,
 						Texture* pTexture,
@@ -42,7 +47,13 @@ namespace Arc
 		virtual void render( const RenderData* data );
 
 		virtual inline Texture* getTexture( void ) const { return _pTexture; }
-		virtual inline void setTexture( Texture* pTexture ) { _pTexture = pTexture; setOriginSize(getSize()); }
+
+		virtual inline void setTexture( Texture* pTexture )
+		{ 
+			_pTexture = pTexture;
+			setOriginSize(getSize());
+			dispatchEvent(Event(EVENT_TEXTURE_CHANGED));
+		}
 
 		virtual inline Vector2 getSize( void ) const { return (_pTexture == nullptr ? Size::ZERO : _pTexture->getSize()); }
 

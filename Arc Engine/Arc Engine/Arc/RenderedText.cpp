@@ -3,6 +3,9 @@
 #include "RenderTarget.h"
 #include "GraphicalProgram.h"
 
+const Arc::EventType Arc::RenderedText::EVENT_TEXT_CHANGED = "renderedText.textChanged";
+const Arc::EventType Arc::RenderedText::EVENT_FONT_CHANGED = "renderedText.fontChanged";
+
 Arc::RenderedText::RenderedText( const string text, Font* pFont )
 	: _pTexture(nullptr),
 	  _text(text),
@@ -56,13 +59,15 @@ void Arc::RenderedText::renderText( void )
 void Arc::RenderedText::setText( string text )
 {
     _text = text;
-    renderText();
+	renderText();
+	dispatchEvent(Event(EVENT_TEXT_CHANGED));
 }
 
 void Arc::RenderedText::setFont( Font *pFont )
 {
     _pFont = pFont;
-    renderText();
+	renderText();
+	dispatchEvent(Event(EVENT_FONT_CHANGED));
 }
 
 const Arc::Size Arc::RenderedText::getSize( void ) const

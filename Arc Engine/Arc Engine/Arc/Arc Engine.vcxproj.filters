@@ -70,6 +70,9 @@
     <Filter Include="Project\Util\Helpers">
       <UniqueIdentifier>{83f661c7-9a8d-4d2d-ace2-f2bf1e5790de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Core\Program">
+      <UniqueIdentifier>{e9fb0222-2771-4db9-9675-2e8b92fd5290}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Event.cpp">
@@ -159,9 +162,6 @@
     <ClCompile Include="AudioSystem.cpp">
       <Filter>Project\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Program.cpp">
-      <Filter>Project\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Project\Units</Filter>
     </ClCompile>
@@ -231,14 +231,17 @@
     <ClCompile Include="ISerializable.cpp">
       <Filter>Project\Core\Interfaces</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicalProgram.cpp">
-      <Filter>Project\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ConsoleProgram.cpp">
-      <Filter>Project\Core</Filter>
-    </ClCompile>
     <ClCompile Include="UnitComponent.cpp">
       <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleProgram.cpp">
+      <Filter>Project\Core\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicalProgram.cpp">
+      <Filter>Project\Core\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Project\Core\Program</Filter>
     </ClCompile>
     <ClCompile Include="SystemComponent.cpp">
       <Filter>Project\Core</Filter>
@@ -371,9 +374,6 @@
     <ClInclude Include="IFrameListener.h">
       <Filter>Project\Core\Interfaces</Filter>
     </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Project\Util</Filter>
-    </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Project\Units\Colliders</Filter>
     </ClInclude>
@@ -403,9 +403,6 @@
     </ClInclude>
     <ClInclude Include="Defines.h">
       <Filter>Project</Filter>
-    </ClInclude>
-    <ClInclude Include="Program.h">
-      <Filter>Project\Core</Filter>
     </ClInclude>
     <ClInclude Include="Angle.h">
       <Filter>Project\Util\Geom</Filter>
@@ -488,17 +485,20 @@
     <ClInclude Include="ArrayListBuilder.h">
       <Filter>Project\Util\Collections</Filter>
     </ClInclude>
+    <ClInclude Include="UnitComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
     <ClInclude Include="ConsoleProgram.h">
-      <Filter>Project\Core</Filter>
+      <Filter>Project\Core\Program</Filter>
     </ClInclude>
     <ClInclude Include="GraphicalProgram.h">
-      <Filter>Project\Core</Filter>
+      <Filter>Project\Core\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Project\Core\Program</Filter>
     </ClInclude>
     <ClInclude Include="SystemComponent.h">
       <Filter>Project\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitComponent.h">
-      <Filter>Project\Units\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

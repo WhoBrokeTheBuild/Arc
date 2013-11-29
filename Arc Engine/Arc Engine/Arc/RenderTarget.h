@@ -8,7 +8,6 @@
 
 #include "Color.h"
 #include "Font.h"
-#include "RenderedText.h"
 #include "Texture.h"
 #include "Origin.h"
 #include "ArrayList.h"
@@ -19,6 +18,7 @@
 namespace Arc
 {
     class GraphicsSystem;
+	class RenderedText;
 
     class RenderTarget :
         public ManagedObject
@@ -148,7 +148,7 @@ namespace Arc
 		 * @param origin: The origin, relative to the x and y to draw at
 		 *		default: Origin::ZERO
 		 */
-        virtual inline void drawText(
+        virtual void drawText(
 			const float x, 
 			const float y,
 			const string text,
@@ -157,11 +157,7 @@ namespace Arc
 			const Angle rotation = Angle::ZERO,
 			const Vector2 scale = Vector2::ONE,
 			const Origin origin = Origin::ZERO
-			) const
-		{
-			RenderedText renderedText(text, pFont);
-			drawText(x, y, &renderedText, color, rotation, scale, origin.getPoint());
-		}
+			) const;
 
 		/* Draws text at the given position with a pre-rendered text
 		 *

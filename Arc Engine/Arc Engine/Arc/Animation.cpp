@@ -1,16 +1,8 @@
 #include "Animation.h"
 
-Arc::Animation::Animation( ArrayList<Sprite*> frames, double speed /*= -1.0*/ )
-	: _frames(frames),
-	  _speed(speed)
-{
-}
-
-Arc::Animation::Animation( double speed /*= -1.0*/ )
-	: _frames(),
-	  _speed(speed)
-{
-}
+const Arc::EventType Arc::Animation::EVENT_FRAME_ADDED   = "animation.frameAdded";
+const Arc::EventType Arc::Animation::EVENT_FRAME_REMOVED = "animation.frameRemoved";
+const Arc::EventType Arc::Animation::EVENT_SPEED_CHANGED = "animation.speedChanged";
 
 Arc::Size Arc::Animation::getFrameSize( int frame )
 {
@@ -41,15 +33,20 @@ bool Arc::Animation::hasFrame( unsigned int frame )
 }
 void Arc::Animation::addFrame( Sprite* frame )
 {
-    _frames.add(frame);
+	_frames.add(frame);
+	dispatchEvent(Event(EVENT_FRAME_ADDED));
 }
 
 bool Arc::Animation::removeFrame( Sprite* frame )
 {
-    return _frames.remove(frame);
+	bool success = _frames.remove(frame);
+	dispatchEvent(Event(EVENT_FRAME_REMOVED));
+	return success;
 }
 
 bool Arc::Animation::removeFrame( int frame )
 {
-    return _frames.removeAt(frame);
+	bool success = _frames.removeAt(frame);
+	dispatchEvent(Event(EVENT_FRAME_REMOVED));
+	return success;
 }

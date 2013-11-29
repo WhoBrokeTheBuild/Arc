@@ -16,26 +16,31 @@ namespace Arc
 	{
 	protected:
 
-		Point
-			_offset;
+		Point _offset;
 
-		Origin 
-			_origin;
+		Origin _origin;
 
-		Vector2
-			_scale;
+		Vector2 _scale;
 
-		Angle
-			_rotation;
+		Angle _rotation;
 
-		Color
-			_blendColor;
+		Color _blendColor;
 
 		virtual inline void setOriginSize( Size size ) { _origin.setSize(size); }
 
 	public:
 
 		static const UnitComponentType UNIT_CMP_TYPE_DRAWABLE;
+
+#pragma region Event Types
+
+		static const EventType EVENT_OFFSET_CHANGED;
+		static const EventType EVENT_SCALE_CHANGED;
+		static const EventType EVENT_ROTATION_CHANGED;
+		static const EventType EVENT_BLEND_COLOR_CHANGED;
+		static const EventType EVENT_ORIGIN_CHANGED;
+
+#pragma endregion
 
 		inline DrawableComponent( Unit* pUnit,
 			               Color blendColor = Color::WHITE,
@@ -57,20 +62,33 @@ namespace Arc
 
 		virtual inline string toString( void ) const { return "Drawable Component"; }
 
-		virtual inline Point   getOffset    ( void ) const { return _offset; }
-		virtual inline Vector2 getScale     ( void ) const { return _scale; }
-		virtual inline Angle   getRotation  ( void ) const { return _rotation; }
-		virtual inline Color   getBlendColor( void ) const { return _blendColor; }
+		virtual inline Point getOffset( void ) const { return _offset; }
+
+		virtual inline Vector2 getScale( void ) const { return _scale; }
+
+		virtual inline Angle getRotation( void ) const { return _rotation; }
+
+		virtual inline Color getBlendColor( void ) const { return _blendColor; }
+
+		virtual inline Origin getOrigin( void ) const { return _origin; }
 		
-		virtual inline void setOffset    ( Point offset )     { _offset = offset; }
-		virtual inline void setScale     ( Vector2 scale )    { _scale = scale; }
-		virtual inline void setRotation  ( Angle rotation )   { _rotation = rotation; }
-		virtual inline void setBlendColor( Color blendColor ) { _blendColor = blendColor; }
+		virtual inline void setOffset( Point offset ) { _offset = offset; dispatchEvent(Event(EVENT_OFFSET_CHANGED)); }
+
+		virtual inline void setScale( Vector2 scale ) { _scale = scale; dispatchEvent(Event(EVENT_SCALE_CHANGED)); }
+
+		virtual inline void setRotation( Angle rotation ) { _rotation = rotation; dispatchEvent(Event(EVENT_ROTATION_CHANGED)); }
+
+		virtual inline void setBlendColor( Color blendColor ) { _blendColor = blendColor; dispatchEvent(Event(EVENT_BLEND_COLOR_CHANGED)); }
+
+		virtual inline void setOrigin( Origin origin ) 
+		{
+			_origin = origin;
+			setOriginSize(getSize()); 
+			dispatchEvent(Event(EVENT_ORIGIN_CHANGED));
+		}
 
 		virtual Vector2 getSize( void ) const = 0;
 
-		virtual inline Origin getOrigin( void ) const { return _origin; }
-		virtual inline void setOrigin( Origin origin ) { _origin = origin; setOriginSize(getSize()); }
 
 	}; // class DrawableComponent
 

@@ -10,8 +10,8 @@ Arc::InputSystem::InputSystem( Program* pProgram )
 
 	addType(SYS_CMP_TYPE_INPUT);
 
-    _pKeyboardSource  = New KeyboardSource();
-    _pMouseSource     = New MouseSource();
+    _pKeyboardSource = New KeyboardSource(this);
+    _pMouseSource = New MouseSource(this);
 
     GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &InputSystem::eventUpdate);
 

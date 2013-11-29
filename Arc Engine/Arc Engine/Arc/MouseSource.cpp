@@ -9,8 +9,9 @@ const Arc::EventType Arc::MouseSource::EVENT_MOUSE_HELD       = "mouseSource.mou
 const Arc::EventType Arc::MouseSource::EVENT_MOUSE_WHEEL_UP   = "mouseSource.mouseWheelUp";
 const Arc::EventType Arc::MouseSource::EVENT_MOUSE_WHEEL_DOWN = "mouseSource.mouseWheelDown";
 
-Arc::MouseSource::MouseSource( void )
-    : _sdlButtonStates(0),
+Arc::MouseSource::MouseSource( InputSystem* pInputSystem )
+    : _pInputSystem(pInputSystem),
+	  _sdlButtonStates(0),
       _buttonStates(),
       _mousePos(),
       _mouseDelta()
@@ -87,16 +88,16 @@ void Arc::MouseSource::update( const Event& event )
 		// Dispatch events based on state
         if (pState->Pressed)
         {
-            dispatchEvent(Event(MouseSource::EVENT_MOUSE_PRESSED, MouseData(_mousePos, _mouseDelta, button)));
+            _pInputSystem->dispatchEvent(Event(MouseSource::EVENT_MOUSE_PRESSED, MouseData(_mousePos, _mouseDelta, button)));
         }
         else if (pState->Released)
         {
-            dispatchEvent(Event(MouseSource::EVENT_MOUSE_RELEASED, MouseData(_mousePos, _mouseDelta, button)));
+            _pInputSystem->dispatchEvent(Event(MouseSource::EVENT_MOUSE_RELEASED, MouseData(_mousePos, _mouseDelta, button)));
         }
 
         if (pState->Down)
         {
-            dispatchEvent(Event(MouseSource::EVENT_MOUSE_HELD, MouseData(_mousePos, _mouseDelta, button)));
+            _pInputSystem->dispatchEvent(Event(MouseSource::EVENT_MOUSE_HELD, MouseData(_mousePos, _mouseDelta, button)));
         }
     }
 }
@@ -110,11 +111,11 @@ void Arc::MouseSource::handleSDLEvent( SDL_Event sdlEvent )
 		// Handle the SDL_BUTTON_WHEELUP and SDL_BUTTON_WHEELDOWN 'buttons' only available through the SDL event loop
 		if (sdlEvent.button.button == SDL_BUTTON_WHEELUP)
 		{
-			dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_UP, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_UP)));
+			_pInputSystem->dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_UP, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_UP)));
 		}
 		else if (sdlEvent.button.button == SDL_BUTTON_WHEELDOWN)
 		{
-			dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_DOWN, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_DOWN)));
+			_pInputSystem->dispatchEvent(Event(MouseSource::EVENT_MOUSE_WHEEL_DOWN, MouseData(_mousePos, _mouseDelta, MOUSE_BUTTON_WHEEL_DOWN)));
 		}
 
 		break;
