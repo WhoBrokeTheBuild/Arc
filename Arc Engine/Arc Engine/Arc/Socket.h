@@ -116,6 +116,12 @@ namespace Arc
 		 */
         Socket( string hostname, unsigned int port, SocketType type );
 		
+		/* Closes the connection and the socket
+		 */
+        virtual ~Socket( void );
+
+        virtual inline string toString( void ) const { return "Socket"; }
+
 		/* Creates a new socket of the given type with the given address and port
 		 *
 		 * @param address: The address to connect to
@@ -136,11 +142,7 @@ namespace Arc
 		 */
 		inline bool connectTo( string hostname, int port, SocketType type ) { return connectTo(IPAddress::lookup(hostname), port, type); }
 
-		/* Closes the connection and the socket
-		 */
-        virtual ~Socket( void );
-
-        virtual inline string toString( void ) const { return "Socket"; }
+		virtual bool hasData( int timeout = 0 );
 
 		/* 
 		 * @returns: The type of socket (TCP, UDP)

@@ -8,6 +8,7 @@
 
 #include "ArrayList.h"
 #include <iostream>
+#include "MathHelper.h"
 
 using std::istream;
 using std::ostream;
@@ -44,8 +45,8 @@ namespace Arc
 
 		inline Buffer( const Buffer& other )
 			: _buffer(other._buffer),
-			  _endOfUsed(),
-			  _readIndex()
+			  _endOfUsed(other._endOfUsed),
+			  _readIndex(other._readIndex)
 		{ }
 
 		Buffer( const char* buffer, unsigned int size );
@@ -100,6 +101,8 @@ namespace Arc
 		double readDoubleAt( unsigned long offset );
 
 		bool writeToStream( ostream& stream ) const;
+
+		void setEndOfUsed( unsigned int index ) { _endOfUsed = MathHelper::clamp(index, unsigned(0), _buffer.getSize() - 1);}
 
 		void clear( void );
 

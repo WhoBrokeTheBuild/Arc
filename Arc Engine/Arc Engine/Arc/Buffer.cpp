@@ -27,6 +27,7 @@ void Arc::Buffer::setDataFromBuffer( const char* buffer, unsigned int size )
 	clear();
 	_buffer.resize(_buffer.getSize() + size + 1, 0);
 	_buffer.assign(buffer, buffer + size);
+	_endOfUsed = size;
 }
 
 void Arc::Buffer::setDataFromString( const string& text )
@@ -48,7 +49,7 @@ void Arc::Buffer::appendBuffer( const Buffer& other )
 
 void Arc::Buffer::appendBuffer( const char* buffer, unsigned int size )
 {
-	if (_endOfUsed + size <= _buffer.getSize())
+	if (_endOfUsed + size >= _buffer.getSize())
 		_buffer.resize(_endOfUsed + size + 1);
 
 	_buffer.insert(_buffer.begin() + _endOfUsed, buffer, buffer + size);
@@ -152,6 +153,7 @@ bool Arc::Buffer::writeToStream( ostream& stream ) const
 void Arc::Buffer::clear( void )
 {
 	_endOfUsed = 0;
+	_readIndex = 0;
 	_buffer.resize(1);
 	_buffer[0] = 0;
 }

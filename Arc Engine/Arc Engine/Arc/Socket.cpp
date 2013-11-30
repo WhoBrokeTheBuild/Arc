@@ -52,8 +52,25 @@ Arc::Socket::Socket( string hostname, unsigned int port, SocketType type )
 	connectTo(hostname, port, type);
 }
 
+Arc::Socket::~Socket( void )
+{
+#ifdef WINDOWS
+
+	closesocket(_socket);
+
+#else // LINUX
+
+	close(_socket);
+
+#endif // WINDOWS
+}
+
 bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
 {
+	_address = address;
+	_port = port;
+	_type = type;
+
 	if (type == SOCKET_TYPE_TCP)
 	{
 		_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -84,18 +101,19 @@ bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
 	return true;
 }
 
-Arc::Socket::~Socket( void )
+bool Arc::Socket::hasData( int timeout /*= 0 */ )
 {
-#ifdef WINDOWS
+	fd_set fds;
+	FD_ZERO(&fds);
+	FD_SET(_socket, &fds);
 
-	closesocket(_socket);
+	timeval tv;
+	tv.tv_sec = timeout;
+	tv.tv_usec = 0;
 
-#else // LINUX
-
-	close(_socket);
-
-#endif // WINDOWS
+	return (select(_socket + 1, &fds, 0, 0, &tv) == 1);
 }
+
 
 string Arc::Socket::recvString( unsigned int bufferLength /*= 2000 */ )
 {
@@ -120,6 +138,7 @@ Arc::Buffer Arc::Socket::recvBuffer( unsigned int bufferLength /*= 2000 */ )
 	buf.resize(bufferLength);
 
 	int bytes = recv(_socket, buf.getRawBuffer(), bufferLength, 0);
+	buf.setEndOfUsed(bufferLength);
 
 	if (bytes == -1)
 		return Buffer();

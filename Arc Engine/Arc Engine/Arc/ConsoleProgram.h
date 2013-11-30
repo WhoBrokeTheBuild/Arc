@@ -11,6 +11,13 @@ namespace Arc
 	class ConsoleProgram :
 		public Program
 	{
+	public:
+
+		inline ConsoleProgram( void ) { }
+
+		virtual inline ~ConsoleProgram( void ) { }
+
+		virtual inline void run( void ) { }
 
 	}; // class ConsoleProgram
 

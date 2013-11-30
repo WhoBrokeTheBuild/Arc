@@ -61,7 +61,7 @@ namespace Arc
 		 *
 		 * @returns: Whether or not there is a client currently trying to connect
 		 */
-		virtual bool isClientAvailable( void );
+		virtual bool isClientAvailable( int timeout = 0 );
 
 		/* Blocks execution until a client connects, once it does it returns a pointer
 		 * to it

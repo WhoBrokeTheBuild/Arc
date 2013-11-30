@@ -64,7 +64,7 @@ namespace Arc
 		}
 
         inline Map( const Map& rhs) 
-			: _map(rhs._map)
+			: _map(rhs._map),
 			  _size(rhs._map.size())
 		{
 		}
@@ -165,11 +165,11 @@ bool Arc::Map<K, T, Sort>::removeFirstValue( const T& value )
     {
         if (it->second == value)
         {
-            _map.erase(it);
+			_map.erase(it);
+			updateSize();
             return true;
         }
 	}
-	updateSize();
     return false;
 }
 
@@ -188,7 +188,7 @@ bool Arc::Map<K, T, Sort>::removeAllValues( const T& value )
         }
 	}
 	updateSize();
-    return true;
+    return found;
 }
 
 template <class K, class T, typename Sort>

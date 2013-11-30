@@ -235,11 +235,11 @@ bool Arc::ArrayList<T>::remove( const T& item )
     {
         if (*it == item)
         {
-            _list.erase(it);
+			_list.erase(it);
+			updateSize();
             return true;
         }
 	}
-	updateSize();
     return false;
 }
 

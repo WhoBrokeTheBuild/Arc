@@ -91,10 +91,17 @@ void Arc::ServerSocket::printError( string msg )
 #endif
 }
 
-bool Arc::ServerSocket::isClientAvailable( void )
+bool Arc::ServerSocket::isClientAvailable( int timeout /*= 0 */ )
 {
-	// TODO: Implement
-	return true;
+	fd_set fds;
+	FD_ZERO(&fds);
+	FD_SET(_socket, &fds);
+
+	timeval tv;
+	tv.tv_sec = timeout;
+	tv.tv_usec = 0;
+
+	return (select(_socket + 1, &fds, 0, 0, &tv) == 1);
 }
 
 Arc::Socket* Arc::ServerSocket::waitForClient( void )
