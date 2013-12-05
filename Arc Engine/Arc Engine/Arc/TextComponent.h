@@ -57,7 +57,7 @@ namespace Arc
 
 		virtual inline void setFont( Font* pFont ) { _pRenderedText->setFont(pFont); dispatchEvent(Event(EVENT_FONT_CHANGED)); }
 
-		virtual void render( const RenderData* data );
+		virtual void render( const RenderTarget* pTarget );
 
 		virtual inline Vector2 getSize( void ) const { return (_pRenderedText == nullptr ? Vector2::ZERO : _pRenderedText->getSize()); }
 

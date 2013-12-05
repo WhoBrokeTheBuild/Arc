@@ -7,12 +7,12 @@ const Arc::EventType Arc::AnimatedComponent::EVENT_ANIMATION_COMPLETE = "animate
 const Arc::EventType Arc::AnimatedComponent::EVENT_FRAME_CHANGED      = "animatedComponent.frameChanged";
 
 
-void Arc::AnimatedComponent::update( const FrameData* data )
+void Arc::AnimatedComponent::update( const FrameData* pData )
 {
 	if (_pAnimation == nullptr)
 		return;
 
-	_timeout -= data->getElapsedMilliseconds();
+	_timeout -= pData->getElapsedMilliseconds();
 	if (_timeout <= 0)
 	{
 		_timeout = _pAnimation->getSpeed();
@@ -21,7 +21,7 @@ void Arc::AnimatedComponent::update( const FrameData* data )
 	}
 }
 
-void Arc::AnimatedComponent::render( const RenderData* data )
+void Arc::AnimatedComponent::render( const RenderTarget* pTarget )
 {
 	if (_pAnimation == nullptr)
 		return;
@@ -29,5 +29,5 @@ void Arc::AnimatedComponent::render( const RenderData* data )
 	if ( ! _pAnimation->hasFrame(_frame))
 		return;
 
-	data->getRenderTarget()->draw(getUnit()->getPos(), _pAnimation->getFrameAt(_frame)->getTexture(), _pAnimation->getFrameAt(_frame)->getSourceRect(), getBlendColor(), getRotation(), getScale(), getOrigin());
+	pTarget->draw(getUnit()->getPos(), _pAnimation->getFrameAt(_frame)->getTexture(), _pAnimation->getFrameAt(_frame)->getSourceRect(), getBlendColor(), getRotation(), getScale(), getOrigin());
 }

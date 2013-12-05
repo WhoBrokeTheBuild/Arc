@@ -30,14 +30,14 @@ void Arc::Scene::update( const FrameData* pData )
         it->second->update(pData);
 }
 
-void Arc::Scene::render( const RenderData* pData )
+void Arc::Scene::render( const RenderTarget* pTarget )
 {
     if ( ! Visible)
 		return;
 
 	auto end = _layers.end();
     for (auto it = _layers.begin(); it != end; ++it)
-        it->second->render(pData);
+        it->second->render(pTarget);
 }
 
 bool Arc::Scene::addLayer( int index )

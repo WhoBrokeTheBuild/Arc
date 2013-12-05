@@ -45,8 +45,8 @@ namespace Arc
 
         void setParentLayer( Layer* layer ) { _pParent = layer; }
 
-		virtual void updateComponents( const FrameData* data );
-		virtual void renderComponents( const RenderData* data );
+		virtual void updateComponents( const FrameData* pData );
+		virtual void renderComponents( const RenderTarget* pTarget );
 
 		bool hasComponentOfType( const UnitComponentType& type );
 
@@ -117,7 +117,7 @@ namespace Arc
 
         virtual void update( const FrameData* pData );;
 
-        virtual void render( const RenderData* pData );;
+		virtual void render( const RenderTarget* pTarget );;
 		
 
 		virtual inline bool isEnabled( void ) const { return _enabled; }

@@ -60,7 +60,7 @@ namespace Arc
 
 		virtual inline string toString( void ) const { return "Shape Component"; }
 
-		virtual void render( const RenderData* data );
+		virtual void render( const RenderTarget* pTarget );
 
 		virtual Vector2 getSize( void ) const;
 

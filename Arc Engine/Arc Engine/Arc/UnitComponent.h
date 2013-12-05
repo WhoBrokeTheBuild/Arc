@@ -48,8 +48,8 @@ namespace Arc
 		inline Unit* getUnit( void ) const { return _pUnit; }
 		inline void setUnit( Unit* unit ) { _pUnit = unit; }
 
-		virtual void update( const FrameData* data ) { };
-		virtual void render( const RenderData* data ) { };
+		virtual void update( const FrameData* pData ) { };
+		virtual void render( const RenderTarget* pTarget ) { };
 
 	}; // class Component
 

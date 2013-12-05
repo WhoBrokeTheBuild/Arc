@@ -33,7 +33,7 @@ void Arc::Layer::update( const FrameData* pData )
 			(*it)->update(pData);
 }
 
-void Arc::Layer::render( const RenderData* pData )
+void Arc::Layer::render( const RenderTarget* pTarget )
 {
     if ( ! Visible)
 		return;
@@ -41,7 +41,7 @@ void Arc::Layer::render( const RenderData* pData )
 	auto end = _units.end();
     for (auto it = _units.begin(); it != end; ++it)
 		if ((*it)->isVisible())
-			(*it)->render(pData);
+			(*it)->render(pTarget);
 }
 
 void Arc::Layer::layerChanged( const Event& event )

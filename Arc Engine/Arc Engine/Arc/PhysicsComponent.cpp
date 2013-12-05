@@ -3,7 +3,7 @@
 
 const Arc::UnitComponentType Arc::PhysicsComponent::UNIT_CMP_TYPE_PHYSICS = "physics";
 
-void Arc::PhysicsComponent::update( const FrameData* data )
+void Arc::PhysicsComponent::update( const FrameData* pData )
 {
 	_pUnit->setPos(_pUnit->getPos() + Vel);
 	Vel += Acc;

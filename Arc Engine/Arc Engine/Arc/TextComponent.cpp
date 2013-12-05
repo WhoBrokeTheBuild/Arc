@@ -11,12 +11,12 @@ Arc::TextComponent::~TextComponent(void)
 	delete _pRenderedText;
 }
 
-void Arc::TextComponent::render( const RenderData* data )
+void Arc::TextComponent::render( const RenderTarget* pTarget )
 {
 	const Unit* parent = getUnit();
 
 	if (parent == nullptr)
         return;
 
-	data->getRenderTarget()->drawText(parent->getPos() + getOffset(), _pRenderedText, getBlendColor(), getRotation(), getScale(), getOrigin());
+	pTarget->drawText(parent->getPos() + getOffset(), _pRenderedText, getBlendColor(), getRotation(), getScale(), getOrigin());
 }

@@ -57,8 +57,8 @@ namespace Arc
 
 		virtual inline Size getSize( void ) const { return (_pAnimation == nullptr || ! _pAnimation->hasFrame(_frame) ? Size::ZERO : _pAnimation->getFrameSize(_frame)); }
 
-		virtual void update( const FrameData* data );
-		virtual void render( const RenderData* data );
+		virtual void update( const FrameData* pData );
+		virtual void render( const RenderTarget* pTarget );
 
 	}; // class AnimatedComponent
 

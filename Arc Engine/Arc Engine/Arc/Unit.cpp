@@ -23,12 +23,12 @@ void Arc::Unit::update( const FrameData* pData )
 	updateComponents(pData);
 }
 
-void Arc::Unit::render( const RenderData* pData )
+void Arc::Unit::render( const RenderTarget* pTarget )
 {
-	renderComponents(pData);
+	renderComponents(pTarget);
 }
 
-void Arc::Unit::updateComponents( const FrameData* data )
+void Arc::Unit::updateComponents( const FrameData* pData )
 {
     while ( ! _componentsToAdd.isEmpty())
     {
@@ -46,14 +46,14 @@ void Arc::Unit::updateComponents( const FrameData* data )
 
 	auto end = _components.end();
     for (auto it = _components.begin(); it != end; ++it)
-        (*it)->update(data);
+        (*it)->update(pData);
 }
 
-void Arc::Unit::renderComponents( const RenderData* data )
+void Arc::Unit::renderComponents( const RenderTarget* pTarget )
 {
 	auto end = _components.end();
     for (auto it = _components.begin(); it != end; ++it)
-        (*it)->render(data);
+        (*it)->render(pTarget);
 }
 
 bool Arc::Unit::addComponent( UnitComponent* component )

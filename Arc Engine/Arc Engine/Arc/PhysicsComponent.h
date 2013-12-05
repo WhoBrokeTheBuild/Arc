@@ -32,7 +32,7 @@ namespace Arc
 
 		virtual inline string toString( void ) const { return "Physics Component"; }
 
-		virtual void update( const FrameData* data );
+		virtual void update( const FrameData* pData );
 
 	}; // class PhysicsComponent
 

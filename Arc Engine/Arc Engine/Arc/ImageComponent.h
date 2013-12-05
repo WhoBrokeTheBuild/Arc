@@ -65,7 +65,7 @@ namespace Arc
 
 		virtual inline string toString( void ) const { return "Image Component"; }
 
-		virtual void render( const RenderData* data );
+		virtual void render( const RenderTarget* pTarget );
 
 		virtual inline Texture* getTexture( void ) const { return _pTexture; }
 

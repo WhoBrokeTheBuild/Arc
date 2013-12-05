@@ -34,7 +34,7 @@ namespace Arc
 		virtual inline string toString( void ) const { return "Scene"; }
 
         virtual void update( const FrameData* pData );
-        virtual void render( const RenderData* pData );
+		virtual void render( const RenderTarget* pTarget );
 
         virtual bool   addLayer  ( int index );
         virtual Layer* getLayer  ( int index );

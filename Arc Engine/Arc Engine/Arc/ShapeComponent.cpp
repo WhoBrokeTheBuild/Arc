@@ -6,7 +6,7 @@ const Arc::UnitComponentType Arc::ShapeComponent::UNIT_CMP_TYPE_SHAPE = "shape";
 const Arc::EventType Arc::ShapeComponent::EVENT_SHAPE_CHANGED  = "shapeComponent.shapeChanged";
 const Arc::EventType Arc::ShapeComponent::EVENT_FILLED_CHANGED = "shapeComponent.filledChanged";
 
-void Arc::ShapeComponent::render( const RenderData* data )
+void Arc::ShapeComponent::render( const RenderTarget* pTarget )
 {
 	const Unit* parent = getUnit();
 
@@ -19,11 +19,11 @@ void Arc::ShapeComponent::render( const RenderData* data )
 
 		if (isFilled())
 		{
-			data->getRenderTarget()->fillTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->fillTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 		else
 		{
-			data->getRenderTarget()->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->drawTriangle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 
 		break;
@@ -31,11 +31,11 @@ void Arc::ShapeComponent::render( const RenderData* data )
 
 		if (isFilled())
 		{
-			data->getRenderTarget()->fillRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->fillRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 		else
 		{
-			data->getRenderTarget()->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->drawRect(parent->getPos() + getOffset(), _size, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 
 		break;
@@ -43,11 +43,11 @@ void Arc::ShapeComponent::render( const RenderData* data )
 
 		if (isFilled())
 		{
-			data->getRenderTarget()->fillPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->fillPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 		else
 		{
-			data->getRenderTarget()->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->drawPentagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 
 		break;
@@ -55,11 +55,11 @@ void Arc::ShapeComponent::render( const RenderData* data )
 
 		if (isFilled())
 		{
-			data->getRenderTarget()->fillHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->fillHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 		else
 		{
-			data->getRenderTarget()->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->drawHexagon(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 
 		break;
@@ -67,11 +67,11 @@ void Arc::ShapeComponent::render( const RenderData* data )
 
 		if (isFilled())
 		{
-			data->getRenderTarget()->fillCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->fillCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 		else
 		{
-			data->getRenderTarget()->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
+			pTarget->drawCircle(parent->getPos() + getOffset(), _radius, getBlendColor(), getRotation(), getScale(), getOrigin() );
 		}
 
 		break;
