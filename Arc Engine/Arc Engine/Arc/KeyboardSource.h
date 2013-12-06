@@ -61,7 +61,7 @@ namespace Arc
 		 *
 		 * @param event: The event holding the frame data
 		 */
-        virtual void update( const Event& event );
+        virtual void eventUpdate( const Event& event );
 
     }; // class KeyboardSource
 

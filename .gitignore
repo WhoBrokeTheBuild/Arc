@@ -97,3 +97,5 @@
 /Arc Testing/*.sdf
 
 /Arc Testing/Debug/*.unsuccessfulbuild
+
+/Arc Engine/Arc Engine/Arc/Debug/*.unsuccessfulbuild

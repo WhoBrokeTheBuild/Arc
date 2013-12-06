@@ -45,7 +45,7 @@ namespace Arc
 
         void setParentLayer( Layer* layer ) { _pParent = layer; }
 
-		virtual void updateComponents( const FrameData* pData );
+		virtual void updateComponents( const FrameTime* pFrameTime );
 		virtual void renderComponents( const RenderTarget* pTarget );
 
 		bool hasComponentOfType( const UnitComponentType& type );
@@ -115,10 +115,11 @@ namespace Arc
 
         virtual ~Unit( void );
 
-        virtual void update( const FrameData* pData );;
+        virtual void update( const FrameTime* pFrameTime );;
 
 		virtual void render( const RenderTarget* pTarget );;
 		
+#pragma region Enabled
 
 		virtual inline bool isEnabled( void ) const { return _enabled; }
 
@@ -126,23 +127,33 @@ namespace Arc
 
 		virtual inline void toggleEnabled( void ) { _enabled = !_enabled; dispatchEvent(Event(EVENT_ENABLED_CHANGED)); }
 
+#pragma endregion
+
+#pragma region Visible
 
 		virtual inline bool isVisible( void ) const { return _visible; }
 
 		virtual inline void setVisible( bool visible ) { _visible = visible; dispatchEvent(Event(EVENT_VISIBLE_CHANGED)); }
 
 		virtual inline void toggleVisible( void ) { _visible = !_visible; dispatchEvent(Event(EVENT_VISIBLE_CHANGED)); }
+		
+#pragma endregion
 
+#pragma region Position 
 
 		virtual inline Point getPos( void ) const { return _pos; }
 
 		virtual inline void setPos( Point pos ) { _pos = pos; dispatchEvent(Event(EVENT_POSITION_CHANGED)); }
 
+#pragma endregion
+
+#pragma region Depth
 
 		virtual inline float getDepth( void ) const { return _depth; };
 
 		virtual inline void setDepth( float depth ) { _depth = depth; dispatchEvent(Event(EVENT_DEPTH_CHANGED)); };
 
+#pragma endregion
 
         inline Layer* getParentLayer( void ) { return _pParent; }
 
@@ -155,6 +166,7 @@ namespace Arc
 
 		virtual inline bool hasComponent( UnitComponent* component ) { return _components.contains(component); }
 
+#pragma region Add New Components
 
 		virtual PhysicsComponent* addNewPhysicsComponent( Vector2 vel = Vector2::ZERO,  
 														   Vector2 acc = Vector2::ZERO );
@@ -195,6 +207,9 @@ namespace Arc
 													    Angle rotation = Angle::ZERO,
 													    Point offset = Point::ZERO);
 
+#pragma endregion
+
+#pragma region Get First Component Functions
 
 		virtual inline UnitComponent* getFirstComponent( void ) { return ( _components.isEmpty() ? nullptr : _components[0] ); }
 
@@ -223,6 +238,9 @@ namespace Arc
 			return getFirstComponentOfType<TextComponent>(TextComponent::UNIT_CMP_TYPE_TEXT);
 		}
 
+#pragma endregion
+
+#pragma region Get All Component Functions
 
 		virtual inline ArrayList<UnitComponent*> getComponents( void ) { return _components; }
 
@@ -251,6 +269,7 @@ namespace Arc
 			return getComponentsOfType<TextComponent>(TextComponent::UNIT_CMP_TYPE_TEXT);
 		}
 
+#pragma endregion
 
     }; // class Unit
 

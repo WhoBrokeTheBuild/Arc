@@ -7,12 +7,12 @@ const Arc::EventType Arc::AnimatedComponent::EVENT_ANIMATION_COMPLETE = "animate
 const Arc::EventType Arc::AnimatedComponent::EVENT_FRAME_CHANGED      = "animatedComponent.frameChanged";
 
 
-void Arc::AnimatedComponent::update( const FrameData* pData )
+void Arc::AnimatedComponent::update( const FrameTime* pFrameTime )
 {
 	if (_pAnimation == nullptr)
 		return;
 
-	_timeout -= pData->getElapsedMilliseconds();
+	_timeout -= pFrameTime->getElapsedMilliseconds();
 	if (_timeout <= 0)
 	{
 		_timeout = _pAnimation->getSpeed();

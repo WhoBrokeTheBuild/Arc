@@ -18,9 +18,9 @@ Arc::Unit::~Unit( void )
 		delete _components.popBack();
 }
 
-void Arc::Unit::update( const FrameData* pData )
+void Arc::Unit::update( const FrameTime* pFrameTime )
 {
-	updateComponents(pData);
+	updateComponents(pFrameTime);
 }
 
 void Arc::Unit::render( const RenderTarget* pTarget )
@@ -28,8 +28,9 @@ void Arc::Unit::render( const RenderTarget* pTarget )
 	renderComponents(pTarget);
 }
 
-void Arc::Unit::updateComponents( const FrameData* pData )
+void Arc::Unit::updateComponents( const FrameTime* pFrameTime )
 {
+
     while ( ! _componentsToAdd.isEmpty())
     {
         UnitComponent* cmp = _componentsToAdd.popFront();
@@ -46,7 +47,7 @@ void Arc::Unit::updateComponents( const FrameData* pData )
 
 	auto end = _components.end();
     for (auto it = _components.begin(); it != end; ++it)
-        (*it)->update(pData);
+        (*it)->update(pFrameTime);
 }
 
 void Arc::Unit::renderComponents( const RenderTarget* pTarget )

@@ -22,15 +22,15 @@ Arc::MouseSource::MouseSource( InputSystem* pInputSystem )
         _buttonStates.add((MouseButton)button, InputState());
     }
 
-    GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &MouseSource::update);
+    GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &MouseSource::eventUpdate);
 }
 
 Arc::MouseSource::~MouseSource( void )
 {
-    GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &MouseSource::update);
+    GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &MouseSource::eventUpdate);
 }
 
-void Arc::MouseSource::update( const Event& event )
+void Arc::MouseSource::eventUpdate( const Event& event )
 {
     int
         x, y,

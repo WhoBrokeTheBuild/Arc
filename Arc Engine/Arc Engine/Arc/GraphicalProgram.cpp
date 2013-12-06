@@ -141,7 +141,9 @@ void Arc::GraphicalProgram::start( void )
 
 	_currentFPS = 1; // Prevent divide-by-zero errors in deltaTime
 
-	FrameData frameData = FrameData();
+	FrameTime* pFrameTime = New FrameTime();
+
+	FrameData frameData = FrameData(pFrameTime);
 	RenderData renderData = RenderData(getGraphicsSystem()->getRenderTarget());
 
 	Timer fpsTimer = Timer();
@@ -158,7 +160,7 @@ void Arc::GraphicalProgram::start( void )
 			fpsDelay = 1000.0 / _targetFPS;
 
 		// Update the frame data to calculate a new delta time
-		frameData.update(frameDelay, _currentFPS, _targetFPS);
+		pFrameTime->update(frameDelay, _currentFPS, _targetFPS);
 
 		updateFrame(frameData);
 

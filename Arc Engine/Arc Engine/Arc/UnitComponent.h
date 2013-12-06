@@ -6,6 +6,8 @@
 #include "Common.h"
 #include "EventDispatcher.h"
 
+#include "FrameTime.h"
+
 namespace Arc
 {
 	class Unit;
@@ -48,7 +50,7 @@ namespace Arc
 		inline Unit* getUnit( void ) const { return _pUnit; }
 		inline void setUnit( Unit* unit ) { _pUnit = unit; }
 
-		virtual void update( const FrameData* pData ) { };
+		virtual void update( const FrameTime* pTime ) { };
 		virtual void render( const RenderTarget* pTarget ) { };
 
 	}; // class Component

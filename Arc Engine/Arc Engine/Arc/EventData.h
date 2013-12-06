@@ -7,6 +7,7 @@
 #include "ManagedObject.h"
 
 #include "RenderTarget.h"
+#include "FrameTime.h"
 #include "Keyboard.h"
 #include "Mouse.h"
 
@@ -64,7 +65,7 @@ namespace Arc
         int
             Count;
 
-        CountData( int count ) { Count = count; };
+        inline CountData( int count ) { Count = count; };
 
         virtual inline string toString( void ) const
         {
@@ -77,68 +78,24 @@ namespace Arc
 
     }; // class CountData
 
-	/** Event data containing timing and frame rate information for each update
-	  */
-    class FrameData :
-        public EventData
-    {
-    private:
+	class FrameData
+		: public EventData
+	{
+	private:
 
-        double
-            _totalMilliseconds,   // Total milliseconds since the program started
-            _elapsedMilliseconds, // Elapsed milliseconds since the last frame
-            _deltaTime,           // Modifier based on ratio between the current and target FPS
-			                      // the value is 1.0 if current FPS = target FPS and higher than
-								  // 1.0 if current FPS < target FPS
-            _currentFPS,          // Current FPS that the program is running at
-            _targetFPS;           // Target FPS that the program is trying to run at
+		FrameTime* _pFrameTime;
 
-    public:
+	public:
 
-        FrameData( void )
-			: _totalMilliseconds(),
-			  _elapsedMilliseconds(),
-			  _deltaTime(),
-			  _currentFPS(),
-			  _targetFPS()
-        {
-        }
+		FrameData( FrameTime* pFrameTime ) : _pFrameTime(pFrameTime) { }
 
-		FrameData( double totalMillis, double elapsedMillis, double deltaTime, double currFPS = 0.0, double targetFPS = 0.0 )
-			: _totalMilliseconds(totalMillis),
-			_elapsedMilliseconds(elapsedMillis),
-			_deltaTime(deltaTime),
-			_currentFPS(currFPS),
-			_targetFPS(targetFPS)
-        {
-        }
+		virtual inline string toString( void ) const { return "Frame Data"; }
 
-        virtual inline string toString( void ) const { return "Frame Data"; }
+		virtual inline EventData* clone( void ) const { return New FrameData(_pFrameTime); }
 
-        virtual inline EventData* clone( void ) const { return New FrameData(_totalMilliseconds, _elapsedMilliseconds, _deltaTime, _currentFPS, _targetFPS); }
+		virtual FrameTime* getFrameTime( void ) const { return _pFrameTime; }
 
-        inline void update(double elapsedMillis, double currFPS, double targetFPS)
-        {
-            _currentFPS = currFPS;
-            _targetFPS  = targetFPS;
-
-            _elapsedMilliseconds = elapsedMillis;
-            _totalMilliseconds += _elapsedMilliseconds;
-            _deltaTime = _targetFPS / _currentFPS;
-        }
-
-        double getTotalSeconds  ( void ) const { return _totalMilliseconds   / 1000.0; }
-        double getElapsedSeconds( void ) const { return _elapsedMilliseconds / 1000.0; }
-
-        double getTotalMilliseconds  ( void ) const { return _totalMilliseconds; }
-        double getElapsedMilliseconds( void ) const { return _elapsedMilliseconds; }
-
-        double getDeltaTime( void ) const { return _deltaTime; }
-
-        double getCurrentFPS( void ) const { return _currentFPS; }
-        double getTargetFPS( void ) const { return _targetFPS; }
-
-    }; // class FrameData
+	};
 
 	/** Event data containing the render target for drawing to during render events
 	  */
@@ -147,8 +104,7 @@ namespace Arc
     {
     private:
 
-        RenderTarget
-            *_pRenderTarget; // The render target for the program
+        RenderTarget* _pRenderTarget; // The render target for the program
 
     public:
 

@@ -500,5 +500,8 @@
     <ClInclude Include="SystemComponent.h">
       <Filter>Project\Core</Filter>
     </ClInclude>
+    <ClInclude Include="FrameTime.h">
+      <Filter>Project\Core\Program</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

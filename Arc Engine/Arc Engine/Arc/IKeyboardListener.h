@@ -21,9 +21,9 @@ namespace Arc
 
 			if (pSys != nullptr)
 			{
-				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
-				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
-				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
+				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::eventKeyPressed);
+				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::eventKeyReleased);
+				GraphicalProgram::getInputSystem()->addEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::eventKeyHeld);
 			}
         }
 
@@ -33,15 +33,17 @@ namespace Arc
 
 			if (pSys != nullptr)
 			{
-				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::keyHeld);
-				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::keyReleased);
-				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::keyPressed);
+				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_HELD,     this, &IKeyboardListener::eventKeyHeld);
+				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_RELEASED, this, &IKeyboardListener::eventKeyReleased);
+				GraphicalProgram::getInputSystem()->removeEventListener(KeyboardSource::EVENT_KEY_PRESSED,  this, &IKeyboardListener::eventKeyPressed);
 			}
         }
 
-        virtual inline void keyPressed ( const Event& event ) { };
-        virtual inline void keyReleased( const Event& event ) { };
-        virtual inline void keyHeld    ( const Event& event ) { };
+        virtual inline void eventKeyPressed( const Event& event ) { };
+
+        virtual inline void eventKeyReleased( const Event& event ) { };
+
+        virtual inline void eventKeyHeld( const Event& event ) { };
 
     }; // class IKeyboardListener
 

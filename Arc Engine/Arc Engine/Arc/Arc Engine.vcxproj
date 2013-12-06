@@ -79,6 +79,7 @@
     <ClInclude Include="ArrayListBuilder.h" />
     <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="Buffer.h" />
+    <ClInclude Include="FrameTime.h" />
     <ClInclude Include="UnitComponent.h" />
     <ClInclude Include="ConsoleProgram.h" />
     <ClInclude Include="DrawableComponent.h" />

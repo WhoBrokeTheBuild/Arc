@@ -16,15 +16,15 @@ Arc::KeyboardSource::KeyboardSource( InputSystem* pInputSystem )
         _keyStates.add((KeyboardKey)key, InputState());
     }
 
-    GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &KeyboardSource::update);
+    GraphicalProgram::getInstance()->addEventListener(GraphicalProgram::EVENT_UPDATE, this, &KeyboardSource::eventUpdate);
 }
 
 Arc::KeyboardSource::~KeyboardSource( void )
 {
-    GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &KeyboardSource::update);
+    GraphicalProgram::getInstance()->removeEventListener(GraphicalProgram::EVENT_UPDATE, this, &KeyboardSource::eventUpdate);
 }
 
-void Arc::KeyboardSource::update( const Event& event )
+void Arc::KeyboardSource::eventUpdate( const Event& event )
 {
 	// Get the current state of all keys
     _sdlKeys = SDL_GetKeyState(nullptr);
