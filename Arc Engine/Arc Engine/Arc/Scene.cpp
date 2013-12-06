@@ -20,14 +20,14 @@ Arc::Scene::~Scene( void )
     _tags.clear();
 }
 
-void Arc::Scene::update( const FrameData* pData )
+void Arc::Scene::update( const FrameTime* pTime )
 {
     if ( ! Enabled)
 		return;
 
 	auto end = _layers.end();
     for (auto it = _layers.begin(); it != end; ++it)
-        it->second->update(pData);
+        it->second->update(pTime);
 }
 
 void Arc::Scene::render( const RenderTarget* pTarget )

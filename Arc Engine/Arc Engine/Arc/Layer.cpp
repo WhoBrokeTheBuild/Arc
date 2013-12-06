@@ -22,7 +22,7 @@ Arc::Layer::~Layer( void )
 		delete _units.popBack();
 }
 
-void Arc::Layer::update( const FrameData* pData )
+void Arc::Layer::update( const FrameTime* pTime )
 {
     if ( ! Enabled )
 		return;
@@ -30,7 +30,7 @@ void Arc::Layer::update( const FrameData* pData )
 	auto end = _units.end();
 	for (auto it = _units.begin(); it != end; ++it)
 		if ((*it)->isEnabled())
-			(*it)->update(pData);
+			(*it)->update(pTime);
 }
 
 void Arc::Layer::render( const RenderTarget* pTarget )

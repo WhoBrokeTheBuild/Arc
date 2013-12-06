@@ -183,6 +183,8 @@ void Arc::GraphicalProgram::start( void )
 			fpsTimer.start();
 		}
 	}
+
+	delete pFrameTime;
 }
 
 void Arc::GraphicalProgram::stop( void )
