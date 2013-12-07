@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="Arc Testing\Main.cpp">
       <Filter>Project</Filter>
     </ClCompile>
-    <ClCompile Include="TestApp.cpp">
+    <ClCompile Include="Arc Testing\TestApp.cpp">
       <Filter>Project</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Common.h">
+    <ClInclude Include="Arc Testing\Common.h">
       <Filter>Project</Filter>
     </ClInclude>
-    <ClInclude Include="TestApp.h">
+    <ClInclude Include="Arc Testing\TestApp.h">
       <Filter>Project</Filter>
     </ClInclude>
   </ItemGroup>

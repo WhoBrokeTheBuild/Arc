@@ -112,3 +112,18 @@
 /Debug/*.pdb
 
 /Debug/*.exe
+
+/Arc/Debug/*.obj
+
+/Arc/Arc/Debug/*.obj
+
+*.suo
+*.idb
+
+*.tlog
+
+*.pdb
+
+*.lastbuildstate
+
+*.log
