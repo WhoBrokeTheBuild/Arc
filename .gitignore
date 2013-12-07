@@ -99,3 +99,16 @@
 /Arc Testing/Debug/*.unsuccessfulbuild
 
 /Arc Engine/Arc Engine/Arc/Debug/*.unsuccessfulbuild
+/Arc Engine/Debug
+/*.sdf
+
+/*.suo
+
+/Debug/*.ilk
+
+/Debug/stderr.txt
+/Debug/stdout.txt
+
+/Debug/*.pdb
+
+/Debug/*.exe
