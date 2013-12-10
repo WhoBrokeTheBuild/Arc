@@ -73,7 +73,7 @@ namespace Arc
 		 * @param pFrame: A pointer to the sprite to check
 		 * @returns: Whether the sprite is in the animation
 		 */
-		virtual bool hasFrame( Sprite* pFrame );
+		virtual inline bool hasFrame( Sprite* pFrame ) { return (_frames.contains(pFrame)); }
 
 		/* Add a frame to the end of the animation
 		 * 

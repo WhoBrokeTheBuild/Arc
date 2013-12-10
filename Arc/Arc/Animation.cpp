@@ -31,6 +31,7 @@ bool Arc::Animation::hasFrame( unsigned int frame )
 
     return MathHelper::between(frame, unsigned(0), (unsigned int)_frames.getSize());
 }
+
 void Arc::Animation::addFrame( Sprite* frame )
 {
 	_frames.add(frame);
