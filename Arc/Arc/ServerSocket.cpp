@@ -28,7 +28,7 @@ Arc::ServerSocket::ServerSocket( unsigned int port )
 
 	res = getaddrinfo(NULL, strPort.str().c_str(), &hints, &result);
 
-	if (res != 0) 
+	if (res != 0)
 	{
 		printError("getaddrinfo() failed");
 		cleanup();
@@ -61,7 +61,7 @@ Arc::ServerSocket::ServerSocket( unsigned int port )
 
 Arc::ServerSocket::~ServerSocket( void )
 {
-	closesocket(_socket);
+	cleanup();
 }
 
 void Arc::ServerSocket::cleanup( void )
@@ -115,7 +115,7 @@ Arc::Socket* Arc::ServerSocket::waitForClient( void )
 	int client;
 
 #endif // WINDOWS
-	
+
 	client = accept(_socket, NULL, NULL);
 
 	if (client == INVALID_SOCKET)

@@ -102,7 +102,7 @@ namespace Arc
 
 		bool writeToStream( ostream& stream ) const;
 
-		void setEndOfUsed( unsigned int index ) { _endOfUsed = MathHelper::clamp(index, unsigned(0), _buffer.getSize() - 1);}
+		void setEndOfUsed( unsigned int index ) { _endOfUsed = MathHelper::clamp((int)index, 0, (int)_buffer.getSize() - 1);}
 
 		void clear( void );
 

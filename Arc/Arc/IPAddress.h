@@ -8,6 +8,12 @@
 
 #include "ArrayList.h"
 
+#ifdef LINUX
+
+#include <netdb.h>
+
+#endif // LINUX
+
 namespace Arc
 {
 	class Socket;
@@ -55,7 +61,7 @@ namespace Arc
         virtual inline ~IPAddress( void ) { }
 
 		virtual string toString( void ) const;
-		
+
 		/* Preforms a DNS lookup on the given hostname
 		 *
 		 * @param hostname: The hostname to check

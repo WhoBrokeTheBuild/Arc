@@ -27,11 +27,167 @@
 	"InputFunc.h"
 	"StreamFunc.h"
 
-<<<<<<< Updated upstream
-1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Defines.h
-=======
+1379378835 ated upstream
+
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Defines.h
->>>>>>> Stashed changes
+
+1380051376 shed changes
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+	<cmath>
+	"Common.h"
+	"ManagedObject.h"
+	"Map.h"
+	"Common.h"
+	<list>
+	<algorithm>
+	"ArrayList.h"
+	"Queue.h"
+	"Common.h"
+	"ManagedObject.h"
+	<vector>
+	"LinkedList.h"
+	"Queue.h"
+	"Common.h"
+	<Arc/Program.h>
+	<Arc/IKeyboardListener.h>
+	<Arc/IMouseListener.h>
+	<Arc/Scene.h>
+	<Arc/Font.h>
+	<Arc/RenderedText.h>
+	"ResourceManager.h"
+	"Common.h"
+	"EventDispatcher.h"
+	<SDL/SDL.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_opengl.h>
+	"GraphicsSystem.h"
+	"InputSystem.h"
+	"AudioSystem.h"
+	"ScriptingSystem.h"
+	"NetworkSystem.h"
+	"RenderTarget.h"
+	"Animation.h"
+	"Sprite.h"
+	"Texture.h"
+	"RenderedText.h"
+	"Timer.h"
+	"Common.h"
+	"ManagedObject.h"
+	"RenderTarget.h"
+	"Keyboard.h"
+	"Mouse.h"
+	"Common.h"
+	"ManagedObject.h"
+	"Color.h"
+	"Font.h"
+	"RenderedText.h"
+	"Texture.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL.h>
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL_ttf.h>
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL.h>
+	"Common.h"
+	"ManagedObject.h"
+	"Callbacks.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"RenderTarget.h"
+	"Color.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_ttf.h>
+	"Common.h"
+	"EventDispatcher.h"
+	<SDL/SDL.h>
+	"Mouse.h"
+	"Keyboard.h"
+	"GamePad.h"
+	"InputState.h"
+	"KeyboardSource.h"
+	"MouseSource.h"
+	"TextInputSource.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"Keyboard.h"
+	"InputState.h"
+	"Map.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"Mouse.h"
+	"InputState.h"
+	"Map.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"IKeyboardListener.h"
+	"ArrayList.h"
+	"Queue.h"
+	"Common.h"
+	"KeyboardSource.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"ArrayList.h"
+	"Sprite.h"
+	"Common.h"
+	"ManagedObject.h"
+	"Texture.h"
+	"Common.h"
+	"ManagedObject.h"
+	<ctime>
+	<cmath>
+	<Windows.h>
+	<sys/time.h>
+	<unistd.h>
+	"Common.h"
+	"EventDispatcher.h"
+	"IFrameListener.h"
+	"Layer.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"Program.h"
+	"Common.h"
+	"EventDispatcher.h"
+	"OriginLocation.h"
+	"Layer.h"
+	"Scene.h"
+	"TestApp.h"
+	<Arc/Unit.h>
+	<Arc/Texture.h>
+	<Arc/ImageComponent.h>
+	"Arc/ShapeComponent.h"
+	"Arc/PhysicsComponent.h"
+	<string>
+	<sstream>
+	<iostream>
+	"Common.h"
+	"ManagedObject.h"
+	"Texture.h"
+	"Font.h"
+	"Color.h"
+	"Common.h"
+	"MouseSource.h"
+	"Common.h"
+	"ManagedObject.h"
+	"Timer.h"
+	<lua.h>
+	<lualib.h>
+	<lauxlib.h>
+	"Common.h"
+	<Arc/ManagedObject.h>
+	<Arc/Texture.h>
+	<Arc/Sprite.h>
+	<Arc/Animation.h>
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TimeFunc.h
 	<ctime>
@@ -86,16 +242,7 @@
 	<sstream>
 	<iostream>
 
-<<<<<<< Updated upstream
-1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Rect.h
->>>>>>> Stashed changes
-	"ManagedObject.h"
-	"ISerializable.h"
-	"Functions.h"
-	"Vector2.h"
-	<cmath>
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Circle.h
 	"ManagedObject.h"
@@ -117,14 +264,7 @@
 	<iostream>
 	<fstream>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MemoryTracker.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"Map.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Common.h
 	<cstdlib>
@@ -141,27 +281,9 @@
 	"LinkedList.h"
 	"ArrayList.h"
 
-<<<<<<< Updated upstream
-1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/LinkedList.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/LinkedList.h
->>>>>>> Stashed changes
-	"Common.h"
-	<list>
-	<algorithm>
-	"ArrayList.h"
-	"Queue.h"
 
-<<<<<<< Updated upstream
-1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ArrayList.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ArrayList.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	<vector>
-	"LinkedList.h"
-	"Queue.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Queue.h
 	"Common.h"
@@ -170,41 +292,9 @@
 	"ArrayList.h"
 	"LinkedList.h"
 
-<<<<<<< Updated upstream
-1380055676 /home/stephen/workspace/Arc/Arc Testing/TestApp.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Testing/TestApp.h
->>>>>>> Stashed changes
-	"Common.h"
-	<Arc/Program.h>
-	<Arc/IKeyboardListener.h>
-	<Arc/IMouseListener.h>
-	<Arc/Scene.h>
-	<Arc/Font.h>
-	<Arc/RenderedText.h>
-	"ResourceManager.h"
 
-<<<<<<< Updated upstream
-1380054943 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Program.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	<SDL/SDL.h>
-	<SDL/SDL_ttf.h>
-	<SDL/SDL_opengl.h>
-	"GraphicsSystem.h"
-	"InputSystem.h"
-	"AudioSystem.h"
-	"ScriptingSystem.h"
-	"NetworkSystem.h"
-	"RenderTarget.h"
-	"Animation.h"
-	"Sprite.h"
-	"Texture.h"
-	"RenderedText.h"
-	"Timer.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventDispatcher.h
 	"Common.h"
@@ -219,48 +309,13 @@
 	"ManagedObject.h"
 	"EventData.h"
 
-<<<<<<< Updated upstream
-1380052205 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventData.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/EventData.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"RenderTarget.h"
-	"Keyboard.h"
-	"Mouse.h"
 
-<<<<<<< Updated upstream
-1380054782 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderTarget.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"Color.h"
-	"Font.h"
-	"RenderedText.h"
-	"Texture.h"
-	<SDL/SDL.h>
-	<SDL/SDL_opengl.h>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Color.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	<SDL/SDL.h>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Font.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	<SDL/SDL_ttf.h>
 
 1374768863 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/CachedText.h
 	"Common.h"
@@ -269,189 +324,59 @@
 	"Font.h"
 	"Color.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Texture.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	<SDL/SDL_opengl.h>
-	<SDL/SDL_image.h>
-	<SDL/SDL.h>
 
-<<<<<<< Updated upstream
-1380052859 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Delegate.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Delegate.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"Callbacks.h"
 
-<<<<<<< Updated upstream
-1380052344 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Callbacks.h
-	"Common.h"
-	"ManagedObject.h"
-
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Callbacks.h
+	"Common.h"
+	"ManagedObject.h"
 	"Common.h"
 	"ManagedObject.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GraphicsSystem.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"RenderTarget.h"
-	"Color.h"
-	<SDL/SDL.h>
-	<SDL/SDL_opengl.h>
-	<SDL/SDL_ttf.h>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputSystem.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	<SDL/SDL.h>
-	"Mouse.h"
-	"Keyboard.h"
-	"GamePad.h"
-	"InputState.h"
-	"KeyboardSource.h"
-	"MouseSource.h"
-	"TextInputSource.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/GamePad.h
 	<string>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
 	"Common.h"
 	"ManagedObject.h"
-
-1380054374 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.h
-=======
-1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/InputState.h
 	"Common.h"
 	"ManagedObject.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/KeyboardSource.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"Keyboard.h"
-	"InputState.h"
-	"Map.h"
 
-<<<<<<< Updated upstream
-1380054586 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/MouseSource.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"Mouse.h"
-	"InputState.h"
-	"Map.h"
 
-<<<<<<< Updated upstream
-1380054007 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/TextInputSource.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"IKeyboardListener.h"
-	"ArrayList.h"
-	"Queue.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IKeyboardListener.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IKeyboardListener.h
->>>>>>> Stashed changes
-	"Common.h"
-	"KeyboardSource.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/AudioSystem.h
 	"Common.h"
 	"ManagedObject.h"
 	<SDL/SDL_mixer.h>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Animation.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"ArrayList.h"
-	"Sprite.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Sprite.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"Texture.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Timer.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	<ctime>
-	<cmath>
-	<Windows.h>
-	<sys/time.h>
-	<unistd.h>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Scene.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"IFrameListener.h"
-	"Layer.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IFrameListener.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IFrameListener.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"Program.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.h
-	"Common.h"
-	"EventDispatcher.h"
-
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Layer.h
+	"Common.h"
+	"EventDispatcher.h"
 	"Common.h"
 	"EventDispatcher.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Unit.h
->>>>>>> Stashed changes
-	"Common.h"
-	"EventDispatcher.h"
-	"OriginLocation.h"
-	"Layer.h"
-	"Scene.h"
 
 1374768864 /home/stephen/workspace/Arc/Arc Testing/TestUnit.h
 	"Common.h"
@@ -492,17 +417,7 @@
 	"Common.h"
 	"Collider.h"
 
-<<<<<<< Updated upstream
-1380051377 source:/home/stephen/workspace/Arc/Arc Testing/TestApp.cpp
-=======
 1379378835 source:/home/stephen/workspace/Arc/Arc Testing/TestApp.cpp
->>>>>>> Stashed changes
-	"TestApp.h"
-	<Arc/Unit.h>
-	<Arc/Texture.h>
-	<Arc/ImageComponent.h>
-	"Arc/ShapeComponent.h"
-	"Arc/PhysicsComponent.h"
 
 1374774403 source:/home/stephen/workspace/Arc/Arc Testing/TestUnit.cpp
 	"TestUnit.h"
@@ -512,33 +427,11 @@
 	"ISerializable.h"
 	"Functions.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ManagedObject.h
->>>>>>> Stashed changes
-	<string>
-	<sstream>
-	<iostream>
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/RenderedText.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"Texture.h"
-	"Font.h"
-	"Color.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IMouseListener.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/IMouseListener.h
->>>>>>> Stashed changes
-	"Common.h"
-	"MouseSource.h"
 
 1377537597 /home/stephen/workspace/Arc/Arc Testing/Wall.h
 	"Common.h"
@@ -565,17 +458,7 @@
 1377537597 source:/home/stephen/workspace/Arc/Arc Testing/Wall.cpp
 	"Wall.h"
 
-<<<<<<< Updated upstream
-1380052073 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.h
-=======
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ScriptingSystem.h
->>>>>>> Stashed changes
-	"Common.h"
-	"ManagedObject.h"
-	"Timer.h"
-	<lua.h>
-	<lualib.h>
-	<lauxlib.h>
 
 1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ISerializable.h
 	<iostream>
@@ -1046,26 +929,14 @@
 	"Component.h"
 	"Texture.h"
 
-<<<<<<< Updated upstream
-1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Component.h
+1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Component.h
 	"Common.h"
 	"EventDispatcher.h"
-
-1380051377 /home/stephen/workspace/Arc/Arc Testing/ResourceManager.h
-=======
-1379378835 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/Component.h
 	"Common.h"
 	"EventDispatcher.h"
 
 1379378835 /home/stephen/workspace/Arc/Arc Testing/ResourceManager.h
->>>>>>> Stashed changes
-	"Common.h"
-	<Arc/ManagedObject.h>
-	<Arc/Texture.h>
-	<Arc/Sprite.h>
-	<Arc/Animation.h>
 
-<<<<<<< Updated upstream
 1380051376 /home/stephen/workspace/Arc/Arc Engine/Arc Engine/Arc/ShapeComponent.h
 	"Common.h"
 	"Component.h"
@@ -1078,5 +949,418 @@
 	"Common.h"
 	"Component.h"
 
-=======
->>>>>>> Stashed changes
+1380051376 .h"
+
+1386667301 source:/home/stephen/workspace/Arc/Arc Testing/Arc Testing/Main.cpp
+	"Common.h"
+	<Arc/Console.h>
+	<Arc/MemoryTracker.h>
+	<Arc/Buffer.h>
+	"TestApp.h"
+
+1386667301 /home/stephen/workspace/Arc/Arc Testing/Arc Testing/Common.h
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<string>
+	<sstream>
+	<Arc/Functions.h>
+	<Arc/Geom.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Functions.h
+	"Defines.h"
+	<iostream>
+	<iomanip>
+	<sstream>
+	"TimeFunc.h"
+	"MathFunc.h"
+	"RandFunc.h"
+	"ParseFunc.h"
+	"StringFunc.h"
+	"InputFunc.h"
+	"StreamFunc.h"
+
+1386668318 /home/stephen/workspace/Arc/Arc/Arc/Defines.h
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/TimeFunc.h
+	<ctime>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/MathFunc.h
+	<cmath>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/RandFunc.h
+	<cstdlib>
+	<ctime>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/ParseFunc.h
+	<string>
+	<sstream>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/StringFunc.h
+	<string>
+	<sstream>
+	<iomanip>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/InputFunc.h
+	<SDL/SDL.h>
+	"Keyboard.h"
+	"Mouse.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Keyboard.h
+	<string>
+	<SDL/SDL.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Mouse.h
+	<string>
+	<SDL/SDL.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/StreamFunc.h
+	<iostream>
+	<string>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Geom.h
+	"Angle.h"
+	"Vector2.h"
+	"Rect.h"
+	"Circle.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Angle.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+	<string>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/ManagedObject.h
+	<string>
+	<sstream>
+	<iostream>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/ISerializable.h
+	<iostream>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Vector2.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"MathHelper.h"
+	"AngleHelper.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/MathHelper.h
+	<cmath>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/AngleHelper.h
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Rect.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+	<cmath>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Circle.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Console.h
+	"Defines.h"
+	<windows.h>
+	<stdio.h>
+	<fcntl.h>
+	<io.h>
+	<iostream>
+	<fstream>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/MemoryTracker.h
+	"Common.h"
+	"ManagedObject.h"
+	"Map.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Common.h
+	<cstdlib>
+	<iostream>
+	<string>
+	<sstream>
+	"Functions.h"
+	"Geom.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Map.h
+	"Common.h"
+	"ManagedObject.h"
+	<map>
+	"LinkedList.h"
+	"ArrayList.h"
+
+1386667978 /home/stephen/workspace/Arc/Arc/Arc/LinkedList.h
+	"Common.h"
+	<list>
+	<algorithm>
+	"MathHelper.h"
+	"ArrayList.h"
+	"Queue.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/ArrayList.h
+	"Common.h"
+	"ManagedObject.h"
+	<vector>
+	"LinkedList.h"
+	"Queue.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Queue.h
+	"Common.h"
+	"ManagedObject.h"
+	<queue>
+	"ArrayList.h"
+	"LinkedList.h"
+
+1386667952 /home/stephen/workspace/Arc/Arc/Arc/Buffer.h
+	"Common.h"
+	"ManagedObject.h"
+	"ArrayList.h"
+	<iostream>
+	"MathHelper.h"
+
+1386667301 /home/stephen/workspace/Arc/Arc Testing/Arc Testing/TestApp.h
+	"Common.h"
+	<Arc/GraphicalProgram.h>
+	<Arc/ServerSocket.h>
+	<Arc/Font.h>
+	<Arc/RenderedText.h>
+	<Arc/IKeyboardListener.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/GraphicalProgram.h
+	"Common.h"
+	"Program.h"
+	<SDL/SDL.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_opengl.h>
+	"GraphicsSystem.h"
+	"InputSystem.h"
+	"AudioSystem.h"
+	"RenderTarget.h"
+	"Animation.h"
+	"Sprite.h"
+	"Texture.h"
+	"RenderedText.h"
+	"Timer.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Program.h
+	"Common.h"
+	"EventDispatcher.h"
+	"ScriptingSystem.h"
+	"NetworkSystem.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/EventDispatcher.h
+	"Common.h"
+	"ManagedObject.h"
+	"Event.h"
+	"Delegate.h"
+	"Map.h"
+	"ArrayList.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Event.h
+	"Common.h"
+	"ManagedObject.h"
+	"EventData.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/EventData.h
+	"Common.h"
+	"ManagedObject.h"
+	"RenderTarget.h"
+	"FrameTime.h"
+	"Keyboard.h"
+	"Mouse.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/RenderTarget.h
+	"Common.h"
+	"ManagedObject.h"
+	"Color.h"
+	"Font.h"
+	"Texture.h"
+	"Origin.h"
+	"ArrayList.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Color.h
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Font.h
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL_ttf.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Texture.h
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Origin.h
+	"Common.h"
+	"ManagedObject.h"
+	"OriginLocation.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/OriginLocation.h
+	<string>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/FrameTime.h
+	"Common.h"
+	"ManagedObject.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Delegate.h
+	"Common.h"
+	"ManagedObject.h"
+	"Callbacks.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Callbacks.h
+	"Common.h"
+	"ManagedObject.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/ScriptingSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	"Timer.h"
+	<lua.h>
+	<lualib.h>
+	<lauxlib.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/SystemComponent.h
+	"Common.h"
+	"EventDispatcher.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Timer.h
+	"Common.h"
+	"ManagedObject.h"
+	<ctime>
+	<cmath>
+	<Windows.h>
+	<sys/time.h>
+	<unistd.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/NetworkSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	"LinkedList.h"
+	"SocketType.h"
+	"Socket.h"
+	"IPAddress.h"
+	<winsock2.h>
+	<Windows.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/SocketType.h
+	<string>
+
+1386667872 /home/stephen/workspace/Arc/Arc/Arc/Socket.h
+	"Common.h"
+	"ManagedObject.h"
+	"IPAddress.h"
+	"SocketType.h"
+	"Buffer.h"
+	<winsock2.h>
+	<Windows.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+
+1386668180 /home/stephen/workspace/Arc/Arc/Arc/IPAddress.h
+	"Common.h"
+	"ManagedObject.h"
+	"ArrayList.h"
+	<netdb.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/GraphicsSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	"RenderTarget.h"
+	"Color.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_ttf.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/InputSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	<SDL/SDL.h>
+	"Mouse.h"
+	"Keyboard.h"
+	"GamePad.h"
+	"InputState.h"
+	"KeyboardSource.h"
+	"MouseSource.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/GamePad.h
+	<string>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/InputState.h
+	"Common.h"
+	"ManagedObject.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/KeyboardSource.h
+	"Common.h"
+	"EventDispatcher.h"
+	"Keyboard.h"
+	"InputState.h"
+	"Map.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/MouseSource.h
+	"Common.h"
+	"EventDispatcher.h"
+	"Mouse.h"
+	"InputState.h"
+	"Map.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/AudioSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	<SDL/SDL_mixer.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Animation.h
+	"Common.h"
+	"EventDispatcher.h"
+	"ArrayList.h"
+	"Sprite.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/Sprite.h
+	"Common.h"
+	"ManagedObject.h"
+	"Texture.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/RenderedText.h
+	"Common.h"
+	"EventDispatcher.h"
+	"Texture.h"
+	"Font.h"
+	"Color.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/ServerSocket.h
+	"Common.h"
+	"ManagedObject.h"
+	"Socket.h"
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/IKeyboardListener.h
+	"Common.h"
+	"KeyboardSource.h"
+	"GraphicalProgram.h"
+
+1386667301 source:/home/stephen/workspace/Arc/Arc Testing/Arc Testing/TestApp.cpp
+	"TestApp.h"
+	<Arc/Socket.h>
+	<Arc/ServerSocket.h>
+	<Arc/StringHelper.h>
+
+1386667140 /home/stephen/workspace/Arc/Arc/Arc/StringHelper.h
+	<string>
+	"ArrayList.h"
+

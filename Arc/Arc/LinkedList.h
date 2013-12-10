@@ -8,6 +8,8 @@
 #include <list>
 #include <algorithm>
 
+#include "MathHelper.h"
+
 using std::list;
 
 namespace Arc
@@ -17,8 +19,8 @@ namespace Arc
 
     template <class T>
     class Queue;
-	
-	/** A template Linked List 
+
+	/** A template Linked List
 	  */
     template <class T>
     class LinkedList :
@@ -33,7 +35,7 @@ namespace Arc
 		// A cached length of the collection
 		size_t
 			_size;
-		
+
 		/* Updates the cached size of the collection
 		 */
 		virtual inline void updateSize( void ) { _size = _list.size(); }
@@ -58,12 +60,12 @@ namespace Arc
 		{
 		}
 
-        inline LinkedList ( const LinkedList& rhs) 
+        inline LinkedList ( const LinkedList& rhs)
 			: _list(rhs._list),
 			  _size(rhs._list._size)
 		{
 		}
-		
+
 		/* Removes all elements from the collection
 		 */
 		virtual inline ~LinkedList( void ) { clear(); }
@@ -258,7 +260,7 @@ bool Arc::LinkedList<T>::contains( const T& item ) const
 template <class T>
 bool Arc::LinkedList<T>::hasIndex( const int& index ) const
 {
-	return (between(index, 0, (const int)getSize() - 1));
+	return (MathHelper::between(index, 0, (const int)getSize() - 1));
 }
 
 template <class T>
