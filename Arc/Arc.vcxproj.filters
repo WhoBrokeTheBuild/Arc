@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Project">
+      <UniqueIdentifier>{4285ddd2-0dbe-41b6-86ff-9a6e3041460d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Timing">
+      <UniqueIdentifier>{0ea70898-6225-400e-8e37-e11cb15fcca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Tracking">
+      <UniqueIdentifier>{a2678482-2e9e-4251-a4df-062ef209c816}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units">
+      <UniqueIdentifier>{41191c89-07bf-449c-943a-6e8a1e41cbf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Util">
+      <UniqueIdentifier>{ad7ea3b0-a4ae-45bf-b943-9e216a83d29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Util\Geom">
+      <UniqueIdentifier>{b375a54a-1a6d-4d11-b181-ed90ec4fedab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Graphics">
+      <UniqueIdentifier>{d2214987-b11d-4777-a5a1-9dd1cf0749a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input">
+      <UniqueIdentifier>{bb63cfb7-3001-4c17-8125-01e2fde06dd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Events">
+      <UniqueIdentifier>{1c0c668f-19aa-499c-9f8f-b695f20d549a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Core">
+      <UniqueIdentifier>{55748742-abca-499d-8bf2-1487eab318bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Audio">
+      <UniqueIdentifier>{522fe23d-e66a-40c2-800a-e1cf539a938b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input\Inputs">
+      <UniqueIdentifier>{047f728b-1ff4-49f8-a7f2-f1f382c0da1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input\Sources">
+      <UniqueIdentifier>{ef690fe0-3c9d-4b9e-8a3e-afd91a62a719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Input\Interfaces">
+      <UniqueIdentifier>{e6ac76da-ecdd-4afe-871a-7306e694babb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Util\Collections">
+      <UniqueIdentifier>{00d66802-3b7a-41dc-bf2f-4a3e29fb334e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Util\Functions">
+      <UniqueIdentifier>{46a06fd9-2e72-4d21-b9fd-9704ef57bbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Core\Interfaces">
+      <UniqueIdentifier>{f26db4c4-d104-4a70-a074-5ca4e05f6025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units\Colliders">
+      <UniqueIdentifier>{04f85e26-e270-4acf-92a0-3d4e47bf0e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units\Organization">
+      <UniqueIdentifier>{075920b5-37a8-4bc7-bb66-a89f0230b901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Scripting">
+      <UniqueIdentifier>{f922a664-be1d-49b4-8c18-21e9f6708245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Units\Components">
+      <UniqueIdentifier>{659464c9-4032-43c6-bb50-42611551ce82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Networking">
+      <UniqueIdentifier>{52390d8e-c153-40c6-b41d-54cefbc4e9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Util\Helpers">
+      <UniqueIdentifier>{83f661c7-9a8d-4d2d-ace2-f2bf1e5790de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Core\Program">
+      <UniqueIdentifier>{e9fb0222-2771-4db9-9675-2e8b92fd5290}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arc/Event.cpp">
+      <Filter>Project\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/EventDispatcher.cpp">
+      <Filter>Project\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Animation.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Color.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/GraphicsSystem.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/RenderTarget.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Texture.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Console.cpp">
+      <Filter>Project\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Vector2.cpp">
+      <Filter>Project\Util\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Circle.cpp">
+      <Filter>Project\Util\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Rect.cpp">
+      <Filter>Project\Util\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/MemoryTracker.cpp">
+      <Filter>Project\Tracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Timer.cpp">
+      <Filter>Project\Timing</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/InputSystem.cpp">
+      <Filter>Project\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/KeyboardSource.cpp">
+      <Filter>Project\Input\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/MouseSource.cpp">
+      <Filter>Project\Input\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ParseFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Functions.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/StringFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/RandFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/MathFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/TimeFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/InputFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/RectCollider.cpp">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/CircleCollider.cpp">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Layer.cpp">
+      <Filter>Project\Units\Organization</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Scene.cpp">
+      <Filter>Project\Units\Organization</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Sound.cpp">
+      <Filter>Project\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/AudioSystem.cpp">
+      <Filter>Project\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Unit.cpp">
+      <Filter>Project\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Angle.cpp">
+      <Filter>Project\Util\Geom</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ManagedObject.cpp">
+      <Filter>Project\Tracking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/RenderedText.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Font.cpp">
+      <Filter>Project\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ScriptingSystem.cpp">
+      <Filter>Project\Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/StreamFunc.cpp">
+      <Filter>Project\Util\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ImageComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/PhysicsComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ShapeComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/AnimatedComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/IPAddress.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/NetworkSystem.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Socket.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/DrawableComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/TextComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Origin.cpp">
+      <Filter>Project\Units</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ServerSocket.cpp">
+      <Filter>Project\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/MathHelper.cpp">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/AngleHelper.cpp">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/StringHelper.cpp">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Buffer.cpp">
+      <Filter>Project\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ISerializable.cpp">
+      <Filter>Project\Core\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/UnitComponent.cpp">
+      <Filter>Project\Units\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/ConsoleProgram.cpp">
+      <Filter>Project\Core\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/GraphicalProgram.cpp">
+      <Filter>Project\Core\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/Program.cpp">
+      <Filter>Project\Core\Program</Filter>
+    </ClCompile>
+    <ClCompile Include="Arc/SystemComponent.cpp">
+      <Filter>Project\Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arc/Callbacks.h">
+      <Filter>Project\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Delegate.h">
+      <Filter>Project\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Event.h">
+      <Filter>Project\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/EventData.h">
+      <Filter>Project\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/EventDispatcher.h">
+      <Filter>Project\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Animation.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Color.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/GraphicsSystem.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/RenderTarget.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Sprite.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Texture.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Console.h">
+      <Filter>Project\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Vector2.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Circle.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Rect.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/MemoryTracker.h">
+      <Filter>Project\Tracking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Timer.h">
+      <Filter>Project\Timing</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Geom.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/InputState.h">
+      <Filter>Project\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/GamePad.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/InputSystem.h">
+      <Filter>Project\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Keyboard.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Mouse.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/KeyboardSource.h">
+      <Filter>Project\Input\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/MouseSource.h">
+      <Filter>Project\Input\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/InputSourceType.h">
+      <Filter>Project\Input\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/InputType.h">
+      <Filter>Project\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/IKeyboardListener.h">
+      <Filter>Project\Input\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/IMouseListener.h">
+      <Filter>Project\Input\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ArrayList.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/LinkedList.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Map.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Queue.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Functions.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ParseFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/StringFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/MathFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/RandFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/TimeFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/InputFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Unit.h">
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/IFrameListener.h">
+      <Filter>Project\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Collider.h">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/RectCollider.h">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/CircleCollider.h">
+      <Filter>Project\Units\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/OriginLocation.h">
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Layer.h">
+      <Filter>Project\Units\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Scene.h">
+      <Filter>Project\Units\Organization</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Sound.h">
+      <Filter>Project\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/AudioSystem.h">
+      <Filter>Project\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Common.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Defines.h">
+      <Filter>Project</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Angle.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ManagedObject.h">
+      <Filter>Project\Tracking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/RenderedText.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Font.h">
+      <Filter>Project\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ScriptingSystem.h">
+      <Filter>Project\Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/StreamFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ArrayFunc.h">
+      <Filter>Project\Util\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ImageComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/PhysicsComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ShapeComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/AnimatedComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/IPAddress.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/NetworkSystem.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Socket.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/SocketType.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Shapes.h">
+      <Filter>Project\Util\Geom</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/DrawableComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/TextComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ISerializable.h">
+      <Filter>Project\Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Origin.h">
+      <Filter>Project\Units</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ServerSocket.h">
+      <Filter>Project\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/MathHelper.h">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/AngleHelper.h">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/StringHelper.h">
+      <Filter>Project\Util\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Buffer.h">
+      <Filter>Project\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Stack.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ArrayListBuilder.h">
+      <Filter>Project\Util\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/UnitComponent.h">
+      <Filter>Project\Units\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/ConsoleProgram.h">
+      <Filter>Project\Core\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/GraphicalProgram.h">
+      <Filter>Project\Core\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/Program.h">
+      <Filter>Project\Core\Program</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/SystemComponent.h">
+      <Filter>Project\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc/FrameTime.h">
+      <Filter>Project\Core\Program</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

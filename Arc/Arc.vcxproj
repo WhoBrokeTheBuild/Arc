@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Arc/Angle.cpp" />
+    <ClCompile Include="Arc/AngleHelper.cpp" />
+    <ClCompile Include="Arc/AnimatedComponent.cpp" />
+    <ClCompile Include="Arc/Animation.cpp" />
+    <ClCompile Include="Arc/AudioSystem.cpp" />
+    <ClCompile Include="Arc/Buffer.cpp" />
+    <ClCompile Include="Arc/SystemComponent.cpp" />
+    <ClCompile Include="Arc/UnitComponent.cpp" />
+    <ClCompile Include="Arc/ConsoleProgram.cpp" />
+    <ClCompile Include="Arc/DrawableComponent.cpp" />
+    <ClCompile Include="Arc/GraphicalProgram.cpp" />
+    <ClCompile Include="Arc/ImageComponent.cpp" />
+    <ClCompile Include="Arc/IPAddress.cpp" />
+    <ClCompile Include="Arc/ISerializable.cpp" />
+    <ClCompile Include="Arc/MathHelper.cpp" />
+    <ClCompile Include="Arc/NetworkSystem.cpp" />
+    <ClCompile Include="Arc/Origin.cpp" />
+    <ClCompile Include="Arc/PhysicsComponent.cpp" />
+    <ClCompile Include="Arc/RenderedText.cpp" />
+    <ClCompile Include="Arc/Circle.cpp" />
+    <ClCompile Include="Arc/CircleCollider.cpp" />
+    <ClCompile Include="Arc/Color.cpp" />
+    <ClCompile Include="Arc/Console.cpp" />
+    <ClCompile Include="Arc/Event.cpp" />
+    <ClCompile Include="Arc/EventDispatcher.cpp" />
+    <ClCompile Include="Arc/Font.cpp" />
+    <ClCompile Include="Arc/Functions.cpp" />
+    <ClCompile Include="Arc/ManagedObject.cpp" />
+    <ClCompile Include="Arc/GraphicsSystem.cpp" />
+    <ClCompile Include="Arc/InputFunc.cpp" />
+    <ClCompile Include="Arc/InputSystem.cpp" />
+    <ClCompile Include="Arc/KeyboardSource.cpp" />
+    <ClCompile Include="Arc/Layer.cpp" />
+    <ClCompile Include="Arc/MathFunc.cpp" />
+    <ClCompile Include="Arc/MemoryTracker.cpp" />
+    <ClCompile Include="Arc/MouseSource.cpp" />
+    <ClCompile Include="Arc/ParseFunc.cpp" />
+    <ClCompile Include="Arc/Program.cpp" />
+    <ClCompile Include="Arc/RandFunc.cpp" />
+    <ClCompile Include="Arc/Rect.cpp" />
+    <ClCompile Include="Arc/RectCollider.cpp" />
+    <ClCompile Include="Arc/RenderTarget.cpp" />
+    <ClCompile Include="Arc/Scene.cpp" />
+    <ClCompile Include="Arc/ScriptingSystem.cpp" />
+    <ClCompile Include="Arc/ServerSocket.cpp" />
+    <ClCompile Include="Arc/ShapeComponent.cpp" />
+    <ClCompile Include="Arc/Socket.cpp" />
+    <ClCompile Include="Arc/Sound.cpp" />
+    <ClCompile Include="Arc/StreamFunc.cpp" />
+    <ClCompile Include="Arc/StringFunc.cpp" />
+    <ClCompile Include="Arc/StringHelper.cpp" />
+    <ClCompile Include="Arc/TextComponent.cpp" />
+    <ClCompile Include="Arc/Texture.cpp" />
+    <ClCompile Include="Arc/TimeFunc.cpp" />
+    <ClCompile Include="Arc/Timer.cpp" />
+    <ClCompile Include="Arc/Unit.cpp" />
+    <ClCompile Include="Arc/Vector2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arc/Angle.h" />
+    <ClInclude Include="Arc/AngleHelper.h" />
+    <ClInclude Include="Arc/AnimatedComponent.h" />
+    <ClInclude Include="Arc/Animation.h" />
+    <ClInclude Include="Arc/ArrayFunc.h" />
+    <ClInclude Include="Arc/ArrayList.h" />
+    <ClInclude Include="Arc/ArrayListBuilder.h" />
+    <ClInclude Include="Arc/AudioSystem.h" />
+    <ClInclude Include="Arc/Buffer.h" />
+    <ClInclude Include="Arc/FrameTime.h" />
+    <ClInclude Include="Arc/UnitComponent.h" />
+    <ClInclude Include="Arc/ConsoleProgram.h" />
+    <ClInclude Include="Arc/DrawableComponent.h" />
+    <ClInclude Include="Arc/GraphicalProgram.h" />
+    <ClInclude Include="Arc/ImageComponent.h" />
+    <ClInclude Include="Arc/IPAddress.h" />
+    <ClInclude Include="Arc/ISerializable.h" />
+    <ClInclude Include="Arc/MathHelper.h" />
+    <ClInclude Include="Arc/NetworkSystem.h" />
+    <ClInclude Include="Arc/Origin.h" />
+    <ClInclude Include="Arc/PhysicsComponent.h" />
+    <ClInclude Include="Arc/RenderedText.h" />
+    <ClInclude Include="Arc/Callbacks.h" />
+    <ClInclude Include="Arc/Circle.h" />
+    <ClInclude Include="Arc/CircleCollider.h" />
+    <ClInclude Include="Arc/Collider.h" />
+    <ClInclude Include="Arc/Color.h" />
+    <ClInclude Include="Arc/Common.h" />
+    <ClInclude Include="Arc/Console.h" />
+    <ClInclude Include="Arc/Defines.h" />
+    <ClInclude Include="Arc/Delegate.h" />
+    <ClInclude Include="Arc/Event.h" />
+    <ClInclude Include="Arc/EventData.h" />
+    <ClInclude Include="Arc/EventDispatcher.h" />
+    <ClInclude Include="Arc/Font.h" />
+    <ClInclude Include="Arc/Functions.h" />
+    <ClInclude Include="Arc/ManagedObject.h" />
+    <ClInclude Include="Arc/GamePad.h" />
+    <ClInclude Include="Arc/Geom.h" />
+    <ClInclude Include="Arc/GraphicsSystem.h" />
+    <ClInclude Include="Arc/IFrameListener.h" />
+    <ClInclude Include="Arc/IKeyboardListener.h" />
+    <ClInclude Include="Arc/IMouseListener.h" />
+    <ClInclude Include="Arc/InputFunc.h" />
+    <ClInclude Include="Arc/InputState.h" />
+    <ClInclude Include="Arc/InputSystem.h" />
+    <ClInclude Include="Arc/InputSourceType.h" />
+    <ClInclude Include="Arc/InputType.h" />
+    <ClInclude Include="Arc/Keyboard.h" />
+    <ClInclude Include="Arc/KeyboardSource.h" />
+    <ClInclude Include="Arc/Layer.h" />
+    <ClInclude Include="Arc/LinkedList.h" />
+    <ClInclude Include="Arc/Map.h" />
+    <ClInclude Include="Arc/MathFunc.h" />
+    <ClInclude Include="Arc/MemoryTracker.h" />
+    <ClInclude Include="Arc/Mouse.h" />
+    <ClInclude Include="Arc/MouseSource.h" />
+    <ClInclude Include="Arc/OriginLocation.h" />
+    <ClInclude Include="Arc/ParseFunc.h" />
+    <ClInclude Include="Arc/Program.h" />
+    <ClInclude Include="Arc/Queue.h" />
+    <ClInclude Include="Arc/RandFunc.h" />
+    <ClInclude Include="Arc/Rect.h" />
+    <ClInclude Include="Arc/RectCollider.h" />
+    <ClInclude Include="Arc/RenderTarget.h" />
+    <ClInclude Include="Arc/Scene.h" />
+    <ClInclude Include="Arc/ScriptingSystem.h" />
+    <ClInclude Include="Arc/ServerSocket.h" />
+    <ClInclude Include="Arc/ShapeComponent.h" />
+    <ClInclude Include="Arc/Shapes.h" />
+    <ClInclude Include="Arc/Socket.h" />
+    <ClInclude Include="Arc/SocketType.h" />
+    <ClInclude Include="Arc/Sound.h" />
+    <ClInclude Include="Arc/Sprite.h" />
+    <ClInclude Include="Arc/Stack.h" />
+    <ClInclude Include="Arc/StreamFunc.h" />
+    <ClInclude Include="Arc/StringFunc.h" />
+    <ClInclude Include="Arc/StringHelper.h" />
+    <ClInclude Include="Arc/SystemComponent.h" />
+    <ClInclude Include="Arc/TextComponent.h" />
+    <ClInclude Include="Arc/Texture.h" />
+    <ClInclude Include="Arc/TimeFunc.h" />
+    <ClInclude Include="Arc/Timer.h" />
+    <ClInclude Include="Arc/Unit.h" />
+    <ClInclude Include="Arc/Vector2.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DF840E53-320E-4217-928A-681EF077FDB3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Arc</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>Arc</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>Arc</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Libraries/SDL/include/;../Libraries/lua/include/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\Libraries\SDL\lib\x86\;..\Libraries\SDL_image\lib\;..\Libraries\SDL_mixer\lib\;..\Libraries\SDL_ttf\lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ARCENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../Libraries/SDL/include;../Libraries/lua/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

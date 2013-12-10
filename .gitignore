@@ -112,3 +112,11 @@
 /Debug/*.pdb
 
 /Debug/*.exe
+/Debug
+
+*.tlog
+*.idb
+
+*.obj
+
+*.lastbuildstate
