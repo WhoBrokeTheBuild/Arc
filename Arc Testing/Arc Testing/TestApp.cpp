@@ -8,7 +8,7 @@ TestApp::TestApp( void )
 {
 	initRandom();
 	initNetworkSystem();
-	
+
 }
 
 TestApp::~TestApp( void )
@@ -25,6 +25,7 @@ void TestApp::render( const Event& event )
 	const RenderData* pData = event.dataAs<RenderData>();
 	const RenderTarget* pTarget = pData->getRenderTarget();
 
+    pTarget->drawLine(0, 0, 100, 100, Color::WHITE);
 }
 
 void TestApp::keyPressed( const Event& event )
