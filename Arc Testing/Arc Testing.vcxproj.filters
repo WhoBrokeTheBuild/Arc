@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Project">
+      <UniqueIdentifier>{915194f0-9074-4e1f-9375-35a976d54413}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\test.lua">
+      <Filter>Project</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="Arc Testing\Main.cpp">
       <Filter>Project</Filter>
     </ClCompile>
@@ -15,15 +25,5 @@
     <ClInclude Include="Arc Testing\TestApp.h">
       <Filter>Project</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Project">
-      <UniqueIdentifier>{915194f0-9074-4e1f-9375-35a976d54413}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\test.lua">
-      <Filter>Project</Filter>
-    </None>
   </ItemGroup>
 </Project>

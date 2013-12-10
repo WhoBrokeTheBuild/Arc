@@ -120,3 +120,7 @@
 *.obj
 
 *.lastbuildstate
+
+*.opensdf
+
+*.pdb
