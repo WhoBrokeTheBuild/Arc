@@ -106,7 +106,17 @@ bool Arc::ServerSocket::isClientAvailable( int timeout /*= 0 */ )
 
 Arc::Socket* Arc::ServerSocket::waitForClient( void )
 {
-	SOCKET client = accept(_socket, NULL, NULL);
+#ifdef WINDOWS
+
+	SOCKET client;
+
+#else // LINUX
+
+	int client;
+
+#endif // WINDOWS
+	
+	client = accept(_socket, NULL, NULL);
 
 	if (client == INVALID_SOCKET)
 	{

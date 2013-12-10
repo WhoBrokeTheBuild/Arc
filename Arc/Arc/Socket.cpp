@@ -86,10 +86,22 @@ bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
 
 	uint8_t* rawAddr = _address.getRawData();
 
+#ifdef WINDOWS
+
 	saddr.sin_addr.S_un.S_un_b.s_b1 = rawAddr[0];
 	saddr.sin_addr.S_un.S_un_b.s_b2 = rawAddr[1];
 	saddr.sin_addr.S_un.S_un_b.s_b3 = rawAddr[2];
 	saddr.sin_addr.S_un.S_un_b.s_b4 = rawAddr[3];
+
+#else // LINUX
+
+	uint8_t* addr = (uint8_t*)saddr.sin_addr.s_addr;
+	addr[0] = rawAddr[0];
+	addr[1] = rawAddr[1];
+	addr[2] = rawAddr[2];
+	addr[3] = rawAddr[3];
+
+#endif // WINDOWS
 
 	int result = connect(_socket, (sockaddr*)&saddr, sizeof saddr);
 	if (result == SOCKET_ERROR)

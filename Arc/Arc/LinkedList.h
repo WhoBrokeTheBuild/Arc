@@ -59,8 +59,8 @@ namespace Arc
 		}
 
         inline LinkedList ( const LinkedList& rhs) 
-			: _list(rhs._list)
-			  _size(rhs._list.size())
+			: _list(rhs._list),
+			  _size(rhs._list._size)
 		{
 		}
 		
