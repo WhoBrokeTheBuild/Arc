@@ -1,0 +1,675 @@
+# depslib dependency file v1.0
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Angle.cpp
+	"Angle.h"
+	"Vector2.h"
+	"Buffer.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Angle.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+	<string>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ManagedObject.h
+	<string>
+	<sstream>
+	<iostream>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ISerializable.h
+	<iostream>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Functions.h
+	"Defines.h"
+	<iostream>
+	<iomanip>
+	<sstream>
+	"TimeFunc.h"
+	"MathFunc.h"
+	"RandFunc.h"
+	"ParseFunc.h"
+	"StringFunc.h"
+	"InputFunc.h"
+	"StreamFunc.h"
+
+1386665816 /home/stephen/workspace/Arc/Arc/Arc/Defines.h
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/TimeFunc.h
+	<ctime>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/MathFunc.h
+	<cmath>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/RandFunc.h
+	<cstdlib>
+	<ctime>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ParseFunc.h
+	<string>
+	<sstream>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/StringFunc.h
+	<string>
+	<sstream>
+	<iomanip>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/InputFunc.h
+	<SDL/SDL.h>
+	"Keyboard.h"
+	"Mouse.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Keyboard.h
+	<string>
+	<SDL/SDL.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Mouse.h
+	<string>
+	<SDL/SDL.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/StreamFunc.h
+	<iostream>
+	<string>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Vector2.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"MathHelper.h"
+	"AngleHelper.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/MathHelper.h
+	<cmath>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/AngleHelper.h
+
+1386665250 /home/stephen/workspace/Arc/Arc/Arc/Buffer.h
+	"Common.h"
+	"ManagedObject.h"
+	"ArrayList.h"
+	<iostream>
+	"MathHelper.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Common.h
+	<cstdlib>
+	<iostream>
+	<string>
+	<sstream>
+	"Functions.h"
+	"Geom.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Geom.h
+	"Angle.h"
+	"Vector2.h"
+	"Rect.h"
+	"Circle.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Rect.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+	<cmath>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Circle.h
+	"ManagedObject.h"
+	"ISerializable.h"
+	"Functions.h"
+	"Vector2.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ArrayList.h
+	"Common.h"
+	"ManagedObject.h"
+	<vector>
+	"LinkedList.h"
+	"Queue.h"
+
+1386665194 /home/stephen/workspace/Arc/Arc/Arc/LinkedList.h
+	"Common.h"
+	"MathHelper.h"
+	<list>
+	<algorithm>
+	"ArrayList.h"
+	"Queue.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Queue.h
+	"Common.h"
+	"ManagedObject.h"
+	<queue>
+	"ArrayList.h"
+	"LinkedList.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/AngleHelper.cpp
+	"AngleHelper.h"
+	"MathHelper.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/AnimatedComponent.cpp
+	"AnimatedComponent.h"
+	"Unit.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/AnimatedComponent.h
+	"Common.h"
+	"DrawableComponent.h"
+	"Animation.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/DrawableComponent.h
+	"Common.h"
+	"UnitComponent.h"
+	"OriginLocation.h"
+	"Origin.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/UnitComponent.h
+	"Common.h"
+	"EventDispatcher.h"
+	"FrameTime.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/EventDispatcher.h
+	"Common.h"
+	"ManagedObject.h"
+	"Event.h"
+	"Delegate.h"
+	"Map.h"
+	"ArrayList.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Event.h
+	"Common.h"
+	"ManagedObject.h"
+	"EventData.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/EventData.h
+	"Common.h"
+	"ManagedObject.h"
+	"RenderTarget.h"
+	"FrameTime.h"
+	"Keyboard.h"
+	"Mouse.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/RenderTarget.h
+	"Common.h"
+	"ManagedObject.h"
+	"Color.h"
+	"Font.h"
+	"Texture.h"
+	"Origin.h"
+	"ArrayList.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Color.h
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Font.h
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL_ttf.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Texture.h
+	"Common.h"
+	"ManagedObject.h"
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Origin.h
+	"Common.h"
+	"ManagedObject.h"
+	"OriginLocation.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/OriginLocation.h
+	<string>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/FrameTime.h
+	"Common.h"
+	"ManagedObject.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Delegate.h
+	"Common.h"
+	"ManagedObject.h"
+	"Callbacks.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Callbacks.h
+	"Common.h"
+	"ManagedObject.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Map.h
+	"Common.h"
+	"ManagedObject.h"
+	<map>
+	"LinkedList.h"
+	"ArrayList.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Animation.h
+	"Common.h"
+	"EventDispatcher.h"
+	"ArrayList.h"
+	"Sprite.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Sprite.h
+	"Common.h"
+	"ManagedObject.h"
+	"Texture.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Unit.h
+	"Common.h"
+	"EventDispatcher.h"
+	"OriginLocation.h"
+	"Layer.h"
+	"Scene.h"
+	"Origin.h"
+	"PhysicsComponent.h"
+	"ImageComponent.h"
+	"ShapeComponent.h"
+	"AnimatedComponent.h"
+	"TextComponent.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Layer.h
+	"Common.h"
+	"EventDispatcher.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Scene.h
+	"Common.h"
+	"EventDispatcher.h"
+	"IFrameListener.h"
+	"Layer.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/IFrameListener.h
+	"Common.h"
+	"EventDispatcher.h"
+	"GraphicalProgram.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/GraphicalProgram.h
+	"Common.h"
+	"Program.h"
+	<SDL/SDL.h>
+	<SDL/SDL_ttf.h>
+	<SDL/SDL_opengl.h>
+	"GraphicsSystem.h"
+	"InputSystem.h"
+	"AudioSystem.h"
+	"RenderTarget.h"
+	"Animation.h"
+	"Sprite.h"
+	"Texture.h"
+	"RenderedText.h"
+	"Timer.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Program.h
+	"Common.h"
+	"EventDispatcher.h"
+	"ScriptingSystem.h"
+	"NetworkSystem.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ScriptingSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	"Timer.h"
+	<lua.h>
+	<lualib.h>
+	<lauxlib.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/SystemComponent.h
+	"Common.h"
+	"EventDispatcher.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Timer.h
+	"Common.h"
+	"ManagedObject.h"
+	<ctime>
+	<cmath>
+	<Windows.h>
+	<sys/time.h>
+	<unistd.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/NetworkSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	"LinkedList.h"
+	"SocketType.h"
+	"Socket.h"
+	"IPAddress.h"
+	<winsock2.h>
+	<Windows.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/SocketType.h
+	<string>
+
+1386666400 /home/stephen/workspace/Arc/Arc/Arc/Socket.h
+	"Common.h"
+	"ManagedObject.h"
+	"IPAddress.h"
+	"SocketType.h"
+	"Buffer.h"
+	<winsock2.h>
+	<Windows.h>
+	<ws2tcpip.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<unistd.h>
+
+1386665387 /home/stephen/workspace/Arc/Arc/Arc/IPAddress.h
+	"Common.h"
+	"ManagedObject.h"
+	"ArrayList.h"
+	<netdb.h>
+	<sys/types.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/GraphicsSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	"RenderTarget.h"
+	"Color.h"
+	<SDL/SDL.h>
+	<SDL/SDL_opengl.h>
+	<SDL/SDL_ttf.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/InputSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	<SDL/SDL.h>
+	"Mouse.h"
+	"Keyboard.h"
+	"GamePad.h"
+	"InputState.h"
+	"KeyboardSource.h"
+	"MouseSource.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/GamePad.h
+	<string>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/InputState.h
+	"Common.h"
+	"ManagedObject.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/KeyboardSource.h
+	"Common.h"
+	"EventDispatcher.h"
+	"Keyboard.h"
+	"InputState.h"
+	"Map.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/MouseSource.h
+	"Common.h"
+	"EventDispatcher.h"
+	"Mouse.h"
+	"InputState.h"
+	"Map.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/AudioSystem.h
+	"Common.h"
+	"SystemComponent.h"
+	<SDL/SDL_mixer.h>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/RenderedText.h
+	"Common.h"
+	"EventDispatcher.h"
+	"Texture.h"
+	"Font.h"
+	"Color.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/PhysicsComponent.h
+	"Common.h"
+	"UnitComponent.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ImageComponent.h
+	"Common.h"
+	"DrawableComponent.h"
+	"Texture.h"
+	"Sprite.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ShapeComponent.h
+	"Common.h"
+	"DrawableComponent.h"
+	"Shapes.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Shapes.h
+	<string>
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/TextComponent.h
+	"Common.h"
+	"DrawableComponent.h"
+	"RenderedText.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Animation.cpp
+	"Animation.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/AudioSystem.cpp
+	"AudioSystem.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Buffer.cpp
+	"Buffer.h"
+	"ISerializable.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Circle.cpp
+	"Circle.h"
+	"Rect.h"
+	"Buffer.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/CircleCollider.cpp
+	"CircleCollider.h"
+	"RectCollider.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/CircleCollider.h
+	"Common.h"
+	"Collider.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Collider.h
+	"Common.h"
+	"ManagedObject.h"
+	"RenderTarget.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/RectCollider.h
+	"Common.h"
+	"Collider.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Color.cpp
+	"Color.h"
+	"RenderTarget.h"
+	"RenderedText.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Console.cpp
+	"Console.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Console.h
+	"Defines.h"
+	<windows.h>
+	<stdio.h>
+	<fcntl.h>
+	<io.h>
+	<iostream>
+	<fstream>
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ConsoleProgram.cpp
+	"ConsoleProgram.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/ConsoleProgram.h
+	"Common.h"
+	"Program.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/DrawableComponent.cpp
+	"DrawableComponent.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Event.cpp
+	"Event.h"
+	"EventDispatcher.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/EventDispatcher.cpp
+	"EventDispatcher.h"
+	"Event.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Font.cpp
+	"Font.h"
+	"RenderTarget.h"
+	"RenderedText.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Functions.cpp
+	"Functions.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/GraphicalProgram.cpp
+	"GraphicalProgram.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/GraphicsSystem.cpp
+	"GraphicsSystem.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/IPAddress.cpp
+	"IPAddress.h"
+	"Socket.h"
+	"StringHelper.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/StringHelper.h
+	<string>
+	"ArrayList.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ISerializable.cpp
+	"ISerializable.h"
+	"Buffer.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ImageComponent.cpp
+	"ImageComponent.h"
+	"Unit.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/InputFunc.cpp
+	"InputFunc.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/InputSystem.cpp
+	"InputSystem.h"
+	"GraphicalProgram.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/KeyboardSource.cpp
+	"KeyboardSource.h"
+	"InputSystem.h"
+	"GraphicalProgram.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Layer.cpp
+	"Layer.h"
+	"Program.h"
+	"Scene.h"
+	"Unit.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ManagedObject.cpp
+	"ManagedObject.h"
+	"MemoryTracker.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/MemoryTracker.h
+	"Common.h"
+	"ManagedObject.h"
+	"Map.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/MathFunc.cpp
+	"MathFunc.h"
+	"Vector2.h"
+	"MathHelper.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/MathHelper.cpp
+	"MathHelper.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/MemoryTracker.cpp
+	"MemoryTracker.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/MouseSource.cpp
+	"MouseSource.h"
+	"InputSystem.h"
+	"GraphicalProgram.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/NetworkSystem.cpp
+	"NetworkSystem.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Origin.cpp
+	"Origin.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ParseFunc.cpp
+	"ParseFunc.h"
+	"StringFunc.h"
+	"Vector2.h"
+	"Circle.h"
+	"Rect.h"
+	"Color.h"
+	"ArrayList.h"
+	"StringHelper.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/PhysicsComponent.cpp
+	"PhysicsComponent.h"
+	"Unit.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Program.cpp
+	"Program.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/RandFunc.cpp
+	"RandFunc.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Rect.cpp
+	"Rect.h"
+	"Circle.h"
+	"Buffer.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/RectCollider.cpp
+	"RectCollider.h"
+	"CircleCollider.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/RenderTarget.cpp
+	"RenderTarget.h"
+	"GraphicsSystem.h"
+	"RenderedText.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/RenderedText.cpp
+	"RenderedText.h"
+	"GraphicsSystem.h"
+	"RenderTarget.h"
+	"GraphicalProgram.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Scene.cpp
+	"Scene.h"
+	"Unit.h"
+	"Program.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ScriptingSystem.cpp
+	"ScriptingSystem.h"
+	"GraphicalProgram.h"
+	"GraphicsSystem.h"
+
+1386666195 source:/home/stephen/workspace/Arc/Arc/Arc/ServerSocket.cpp
+	"ServerSocket.h"
+
+1386666227 /home/stephen/workspace/Arc/Arc/Arc/ServerSocket.h
+	"Common.h"
+	"ManagedObject.h"
+	"Socket.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/ShapeComponent.cpp
+	"ShapeComponent.h"
+	"Unit.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/Sound.cpp
+	"Sound.h"
+
+1386665065 /home/stephen/workspace/Arc/Arc/Arc/Sound.h
+	"Common.h"
+	"ManagedObject.h"
+	"IFrameListener.h"
+	<SDL/SDL_mixer.h>
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/StreamFunc.cpp
+	"StreamFunc.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/StringFunc.cpp
+	"StringFunc.h"
+	"StringHelper.h"
+	"ArrayList.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/StringHelper.cpp
+	"StringHelper.h"
+	"ArrayList.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/SystemComponent.cpp
+	"SystemComponent.h"
+	"Program.h"
+
+1386665065 source:/home/stephen/workspace/Arc/Arc/Arc/TextComponent.cpp
+	"TextComponent.h"
+	"Unit.h"
+
