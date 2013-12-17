@@ -37,21 +37,27 @@ namespace Arc
     {
     protected:
 
-        float
-            _degrees;
+        float _degrees;
 
     public:
 
-        static const Angle
-            ZERO,
-            HALF_CIRCLE,
-			QUARTER_CIRCLE,
-            UP,
-            DOWN,
-            LEFT,
-            RIGHT;
+        static const Angle ZERO;
 
-        Angle( void ) : _degrees(0.0f) { }
+        static const Angle HALF_CIRCLE;
+
+		static const Angle QUARTER_CIRCLE;
+
+        static const Angle UP;
+
+        static const Angle DOWN;
+
+        static const Angle LEFT;
+
+        static const Angle RIGHT;
+
+        Angle( void ) 
+			: _degrees(0.0f)
+		{ }
 
         Angle( float value, AngleType type = ANGLE_TYPE_DEG )
         {

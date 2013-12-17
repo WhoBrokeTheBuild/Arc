@@ -74,8 +74,23 @@ namespace Arc
 		// The type of socket (TCP, UDP)
         SocketType _type;
 
-		// Whether the socket is in an error state or not
+		// Indicates whether or not the socket is in an error state
 		bool _error;
+
+		// A string describing the current error, if available
+		string _errorMsg;
+		
+		/* Sets the error flag to true, and sets the error message to the given msg
+		 * and appends more information if available
+		 *
+		 * @param msg: The error message that describes the current error state, or "" if
+		 * the socket is not in an error state
+		 */
+		void setError( string msg );
+		
+		/* Safely closes the server socket
+		 */
+		void cleanup( void );
 
 #ifdef WINDOWS
 
@@ -122,6 +137,25 @@ namespace Arc
         virtual ~Socket( void );
 
         virtual inline string toString( void ) const { return "Socket"; }
+		
+		/* 
+		 * @returns: Whether or not the socket is in an error state
+		 */
+		virtual inline bool hasError( void ) const { return _error; }
+
+		/* Gives a string describing the error if available, or an empty string if the socket
+		 * is not in an error state.
+		 * 
+		 * @returns: The string describing the current error, if available, or an empty string
+		 */
+		virtual inline string getErrorString( void ) { return _errorMsg; }
+		
+		/* Checks to see if there is data available on the socket. If timeout is more than 0, 
+		 * the function will block for that many milliseconds
+		 *
+		 * @param timeoutMS: The number of milliseconds to wait, or 0 to wait indefinitely 
+		 */
+		virtual bool hasData( int timeoutMS = 0 );
 
 		/* Creates a new socket of the given type with the given address and port
 		 *
@@ -143,8 +177,6 @@ namespace Arc
 		 */
 		inline bool connectTo( string hostname, int port, SocketType type ) { return connectTo(IPAddress::lookup(hostname), port, type); }
 
-		virtual bool hasData( int timeout = 0 );
-
 		/* 
 		 * @returns: The type of socket (TCP, UDP)
 		 */
@@ -154,11 +186,6 @@ namespace Arc
 		 * @returns: The address the socket is connected to
 		 */
 		virtual inline IPAddress getAddress( void ) const { return _address; }
-
-		/* 
-		 * @returns: Whether or not the socket is in an error state
-		 */
-		virtual inline bool hasError( void ) const { return _error; }
 
 		/* Waits for the entire buffer to fill up with packet(s) and returns it as a string
 		 *

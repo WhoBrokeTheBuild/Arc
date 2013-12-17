@@ -1,13 +1,15 @@
 #include "ServerSocket.h"
 
 Arc::ServerSocket::ServerSocket( unsigned int port )
-	: _port(port)
+	: _port(port),
+	  _error(false),
+	  _errorMsg()
 {
 	_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 
 	if (_socket == INVALID_SOCKET)
 	{
-		printError("Creating server socket failed");
+		setError("socket() failed");
 		cleanup();
 		return;
 	}
@@ -30,7 +32,7 @@ Arc::ServerSocket::ServerSocket( unsigned int port )
 
 	if (res != 0)
 	{
-		printError("getaddrinfo() failed");
+		setError("getaddrinfo() failed");
 		cleanup();
 		freeaddrinfo(result);
 		return;
@@ -40,7 +42,7 @@ Arc::ServerSocket::ServerSocket( unsigned int port )
 
 	if (res == SOCKET_ERROR)
 	{
-		printError("bind() failed");
+		setError("bind() failed");
 		cleanup();
 		freeaddrinfo(result);
 		return;
@@ -50,7 +52,7 @@ Arc::ServerSocket::ServerSocket( unsigned int port )
 
 	if (res == SOCKET_ERROR)
 	{
-		printError("listen() failed");
+		setError("listen() failed");
 		cleanup();
 		freeaddrinfo(result);
 		return;
@@ -69,7 +71,6 @@ void Arc::ServerSocket::cleanup( void )
 #ifdef WINDOWS
 
 	closesocket(_socket);
-	WSACleanup();
 
 #else // LINUX
 
@@ -78,33 +79,57 @@ void Arc::ServerSocket::cleanup( void )
 #endif // WINDOWS
 }
 
-void Arc::ServerSocket::printError( string msg )
+void Arc::ServerSocket::setError( string msg )
 {
 #ifdef WINDOWS
 
-	ERRORF(toString(), msg + ", error %i", WSAGetLastError());
+	stringstream ss;
+	ss << msg << ", error " << WSAGetLastError();
 
-#else
-
-	ERROR(toString(), msg);
+	msg = ss.str();
 
 #endif
+
+	_errorMsg = msg;
+	_error = true;
 }
 
-bool Arc::ServerSocket::isClientAvailable( int timeout /*= 0 */ )
+bool Arc::ServerSocket::isClientAvailable( int timeoutMS /*= 0 */ )
 {
 	fd_set fds;
 	FD_ZERO(&fds);
 	FD_SET(_socket, &fds);
 
-	timeval tv;
-	tv.tv_sec = timeout;
-	tv.tv_usec = 0;
+	int timeoutSec = timeoutMS / 1000;
+	int timeoutUS = (timeoutMS % 1000) * 1000;
 
-	return (select(_socket + 1, &fds, 0, 0, &tv) == 1);
+	timeval tv;
+	tv.tv_sec = timeoutSec;
+	tv.tv_usec = timeoutUS;
+
+	int result = select(_socket + 1, &fds, 0, 0, &tv);
+
+	if (result < 0)
+	{
+		setError("select() failed");
+		cleanup();
+		return false;
+	}
+
+	return (result == 1);
 }
 
-Arc::Socket* Arc::ServerSocket::waitForClient( void )
+void Arc::ServerSocket::waitUntilClientAvailable( void )
+{
+	while ( ! isClientAvailable())
+	{
+		if (hasError())
+			return;
+	}
+}
+
+
+Arc::Socket* Arc::ServerSocket::acceptClient( void )
 {
 #ifdef WINDOWS
 
@@ -120,7 +145,7 @@ Arc::Socket* Arc::ServerSocket::waitForClient( void )
 
 	if (client == INVALID_SOCKET)
 	{
-		printError("accept() failed");
+		setError("accept() failed");
 		cleanup();
 		return nullptr;
 	}

@@ -8,6 +8,8 @@
 
 namespace Arc
 {
+	/* A bare-minimum console program
+	 */
 	class ConsoleProgram :
 		public Program
 	{

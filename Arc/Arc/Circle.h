@@ -19,18 +19,14 @@ namespace Arc
         public ManagedObject,
         public ISerializable
     {
-    private:
-
     public:
 
-        static Circle
-            ZERO,
-            ONE;
+        static Circle ZERO;
+		static Circle ONE;
 
-        float
-            X,
-            Y,
-            Radius;
+        float X;
+        float Y;
+        float Radius;
 
 		// Initialize an empty circle
 		inline Circle( void )

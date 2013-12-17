@@ -25,16 +25,14 @@ namespace Arc
 
     public:
 
-		// Predefined constants
-        static Rect
-            ZERO,
-            ONE;
+        static Rect ZERO;
 
-        float
-            X,
-            Y,
-            Width,
-            Height;
+		static Rect ONE;
+
+        float X;
+        float Y;
+        float Width;
+        float Height;
 
 		// Initialize an empty rectangle
         inline Rect( void ) 

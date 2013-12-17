@@ -23,6 +23,8 @@
 
 namespace Arc
 {
+	/* A program with an attached window that fires update/render events.
+	 */
 	class GraphicalProgram :
 		public Program
 	{

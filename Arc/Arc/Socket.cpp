@@ -15,7 +15,8 @@ Arc::Socket::Socket( unsigned int socket )
 	  _port(), 
 	  _type(INVALID_SOCKET_TYPE),
 	  _socket(socket),
-	  _error(false)
+	  _error(false),
+	  _errorMsg()
 {
 	char buf[INET_ADDRSTRLEN] = "";
 	struct sockaddr_in name;
@@ -30,7 +31,8 @@ Arc::Socket::Socket( unsigned int socket )
 	}
 	else
 	{
-		ERRORF(toString(), "getpeername() failed, error %i", res);
+		setError("getpeername() failed");
+		cleanup();
 	}
 
 	_address = IPAddress(inet_ntoa(name.sin_addr));
@@ -40,19 +42,26 @@ Arc::Socket::Socket( unsigned int socket )
 
 Arc::Socket::Socket( IPAddress address, unsigned int port, SocketType type )
 	: _socket(INVALID_SOCKET),
-	  _error(false)
+	  _error(false),
+	  _errorMsg()
 {
 	connectTo(address, port, type);
 }
 
 Arc::Socket::Socket( string hostname, unsigned int port, SocketType type )
 	: _socket(INVALID_SOCKET),
-	_error(false)
+	  _error(false),
+	  _errorMsg()
 {
 	connectTo(hostname, port, type);
 }
 
 Arc::Socket::~Socket( void )
+{
+	cleanup();
+}
+
+void Arc::Socket::cleanup( void )
 {
 #ifdef WINDOWS
 
@@ -63,6 +72,20 @@ Arc::Socket::~Socket( void )
 	close(_socket);
 
 #endif // WINDOWS
+}
+
+void Arc::Socket::setError( string msg )
+{
+#ifdef WINDOWS
+
+	stringstream ss;
+	ss << msg << ", error " << WSAGetLastError();
+
+	msg = ss.str();
+
+#endif
+
+	_errorMsg = msg;
 }
 
 bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
@@ -106,24 +129,37 @@ bool Arc::Socket::connectTo( IPAddress address, int port, SocketType type )
 	int result = connect(_socket, (sockaddr*)&saddr, sizeof saddr);
 	if (result == SOCKET_ERROR)
 	{
-		_error = true;
+		setError("connect() failed");
+		cleanup();
 		return false;
 	}
 
 	return true;
 }
 
-bool Arc::Socket::hasData( int timeout /*= 0 */ )
+bool Arc::Socket::hasData( int timeoutMS /*= 0 */ )
 {
 	fd_set fds;
 	FD_ZERO(&fds);
 	FD_SET(_socket, &fds);
 
-	timeval tv;
-	tv.tv_sec = timeout;
-	tv.tv_usec = 0;
+	int timeoutSec = timeoutMS / 1000;
+	int timeoutUS = (timeoutMS % 1000) * 1000;
 
-	return (select(_socket + 1, &fds, 0, 0, &tv) == 1);
+	timeval tv;
+	tv.tv_sec = timeoutSec;
+	tv.tv_usec = timeoutUS;
+
+	int result = select(_socket + 1, &fds, 0, 0, &tv);
+
+	if (result < 0)
+	{
+		setError("select() failed");
+		cleanup();
+		return false;
+	}
+
+	return (result == 1);
 }
 
 
@@ -133,8 +169,12 @@ string Arc::Socket::recvString( unsigned int bufferLength /*= 2000 */ )
 
 	int bytes = recv(_socket, buffer, bufferLength, 0);
 
-	if (bytes == -1)
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
 		return "";
+	}
 
 	buffer[bytes] = '\0';
 	string data = string(buffer);
@@ -152,8 +192,12 @@ Arc::Buffer Arc::Socket::recvBuffer( unsigned int bufferLength /*= 2000 */ )
 	int bytes = recv(_socket, buf.getRawBuffer(), bufferLength, 0);
 	buf.setEndOfUsed(bufferLength);
 
-	if (bytes == -1)
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
 		return Buffer();
+	}
 
 	return buf;
 }
@@ -164,8 +208,12 @@ char Arc::Socket::recvChar( void )
 
 	int bytes = recv(_socket, &buffer, 1, 0);
 
-	if (bytes == -1)
-		return false;
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
+		return '\0';
+	}
 
 	return buffer;
 }
@@ -176,8 +224,12 @@ bool Arc::Socket::recvBool( void )
 
 	int bytes = recv(_socket, &buffer, 1, 0);
 
-	if (bytes == -1)
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
 		return false;
+	}
 
 	bool val;
 	memcpy(&val, &buffer, sizeof(bool));
@@ -191,8 +243,12 @@ short Arc::Socket::recvShort( void )
 
 	int bytes = recv(_socket, buffer, 4, 0);
 
-	if (bytes == -1)
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
 		return -1;
+	}
 
 	short num;
 	memcpy(&num, buffer, sizeof(short));
@@ -206,8 +262,12 @@ int Arc::Socket::recvInt( void )
 
 	int bytes = recv(_socket, buffer, 4, 0);
 
-	if (bytes == -1)
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
 		return -1;
+	}
 
 	int num;
 	memcpy(&num, buffer, sizeof(int));
@@ -221,8 +281,12 @@ long Arc::Socket::recvLong( void )
 
 	int bytes = recv(_socket, buffer, 4, 0);
 
-	if (bytes == -1)
-		return -1;
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
+		return -1L;
+	}
 
 	long num;
 	memcpy(&num, buffer, sizeof(long));
@@ -236,8 +300,12 @@ float Arc::Socket::recvFloat( void )
 
 	int bytes = recv(_socket, buffer, 4, 0);
 
-	if (bytes == -1)
-		return -1.0;
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
+		return -1.0f;
+	}
 
 	float num;
 	memcpy(&num, buffer, sizeof(float));
@@ -251,8 +319,12 @@ double Arc::Socket::recvDouble( void )
 
 	int bytes = recv(_socket, buffer, 4, 0);
 
-	if (bytes == -1)
+	if (bytes == 0)
+	{
+		setError("recv() failed");
+		cleanup();
 		return -1.0;
+	}
 
 	double num;
 	memcpy(&num, buffer, sizeof(double));
@@ -262,45 +334,123 @@ double Arc::Socket::recvDouble( void )
 
 int Arc::Socket::sendString( string data )
 {
-	return send(_socket, data.c_str(), data.length() + 1, 0);
+	int bytes = send(_socket, data.c_str(), data.length() + 1, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendBuffer( char* buffer, int length )
 {
-	return send(_socket, buffer, length, 0);
+	if (length == 0)
+		return 0;
+
+	int bytes = send(_socket, buffer, length, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendBuffer( const Buffer& buffer )
 {
-	return send(_socket, buffer.getRawBuffer(), buffer.getFullSize(), 0);
+	if (buffer.getFullSize() == 0)
+		return 0;
+
+	int bytes = send(_socket, buffer.getRawBuffer(), buffer.getFullSize(), 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendBool( bool data )
 {
-	return send(_socket, (char*)&data, sizeof data, 0);
+	int bytes = send(_socket, (char*)&data, sizeof data, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendShort( short data )
 {
-	return send(_socket, (char*)&data, sizeof data, 0);
+	int bytes = send(_socket, (char*)&data, sizeof data, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendInt( int data )
 {
-	return send(_socket, (char*)&data, sizeof data, 0);
+	int bytes = send(_socket, (char*)&data, sizeof data, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendLong( long data )
 {
-	return send(_socket, (char*)&data, sizeof data, 0);
+	int bytes = send(_socket, (char*)&data, sizeof data, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendFloat( float data )
 {
-	return send(_socket, (char*)&data, sizeof data, 0);
+	int bytes = send(_socket, (char*)&data, sizeof data, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
 
 int Arc::Socket::sendDouble( double data )
 {
-	return send(_socket, (char*)&data, sizeof data, 0);
+	int bytes = send(_socket, (char*)&data, sizeof data, 0);
+
+	if (bytes == 0)
+	{
+		setError("send() failed");
+		cleanup();
+	}
+
+	return bytes;
 }
