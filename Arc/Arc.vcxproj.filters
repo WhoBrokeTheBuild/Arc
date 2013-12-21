@@ -503,5 +503,17 @@
     <ClInclude Include="Arc/FrameTime.h">
       <Filter>Project\Core\Program</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\Time.h">
+      <Filter>Project\Timing</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\Date.h">
+      <Filter>Project\Timing</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\WeekDay.h">
+      <Filter>Project\Timing</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\Month.h">
+      <Filter>Project\Timing</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

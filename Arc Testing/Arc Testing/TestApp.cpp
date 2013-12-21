@@ -2,13 +2,14 @@
 #include <Arc/Socket.h>
 #include <Arc/ServerSocket.h>
 #include <Arc/StringHelper.h>
+#include <Arc/Date.h>
+#include <Arc/Time.h>
 
 TestApp::TestApp( void )
-    : GraphicalProgram()
+    : GraphicalProgram(Size(800.0f, 600.0f), "Arc Test", Color::WHITE)
 {
 	initRandom();
 	initNetworkSystem();
-
 }
 
 TestApp::~TestApp( void )
