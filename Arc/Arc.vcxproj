@@ -156,6 +156,7 @@
     <ClInclude Include="Arc/Unit.h" />
     <ClInclude Include="Arc/Vector2.h" />
     <ClInclude Include="Arc\Date.h" />
+    <ClInclude Include="Arc\DateTime.h" />
     <ClInclude Include="Arc\Month.h" />
     <ClInclude Include="Arc\Time.h" />
     <ClInclude Include="Arc\WeekDay.h" />

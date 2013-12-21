@@ -39,7 +39,7 @@ namespace Arc
 
 		inline virtual string toString( void ) const { return "Date"; }
 
-		static inline Date today( void )
+		static inline Date now( void )
 		{
 			time_t rawtime;
 			struct tm * timeinfo;
@@ -63,7 +63,7 @@ namespace Arc
 		inline unsigned int getYears( void ) const { return _year; }
 		inline void setYears( unsigned int val ) { _year = val; }
 
-	}; // class Time
+	}; // class Date
 
 } // namespace Arc
 

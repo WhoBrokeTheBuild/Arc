@@ -515,5 +515,8 @@
     <ClInclude Include="Arc\Month.h">
       <Filter>Project\Timing</Filter>
     </ClInclude>
+    <ClInclude Include="Arc\DateTime.h">
+      <Filter>Project\Timing</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
