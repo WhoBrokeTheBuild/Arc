@@ -246,6 +246,9 @@
     <ClCompile Include="Arc/SystemComponent.cpp">
       <Filter>Project\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Arc\String.cpp">
+      <Filter>Project\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc/Callbacks.h">
@@ -517,6 +520,9 @@
     </ClInclude>
     <ClInclude Include="Arc\DateTime.h">
       <Filter>Project\Timing</Filter>
+    </ClInclude>
+    <ClInclude Include="Arc\String.h">
+      <Filter>Project\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

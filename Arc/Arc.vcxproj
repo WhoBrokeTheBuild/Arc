@@ -68,6 +68,7 @@
     <ClCompile Include="Arc/Timer.cpp" />
     <ClCompile Include="Arc/Unit.cpp" />
     <ClCompile Include="Arc/Vector2.cpp" />
+    <ClCompile Include="Arc\String.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arc/Angle.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Arc\Date.h" />
     <ClInclude Include="Arc\DateTime.h" />
     <ClInclude Include="Arc\Month.h" />
+    <ClInclude Include="Arc\String.h" />
     <ClInclude Include="Arc\Time.h" />
     <ClInclude Include="Arc\WeekDay.h" />
   </ItemGroup>
