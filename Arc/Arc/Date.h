@@ -27,13 +27,15 @@ namespace Arc
 			: _weekDay(days),
 			_day(weeks),
 			_month(months),
-			_year(years) { }
+			_year(years)
+		{ }
 
 		inline Date( const Date& rhs )
 			: _weekDay(rhs._weekDay),
 			_day(rhs._day),
 			_month(rhs._month),
-			_year(rhs._year) { }
+			_year(rhs._year)
+		{ }
 
 		inline virtual ~Date( void ) { }
 

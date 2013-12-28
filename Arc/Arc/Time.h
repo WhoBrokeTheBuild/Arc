@@ -29,14 +29,16 @@ namespace Arc
 			_minutes(minutes),
 			_seconds(seconds),
 			_milliseconds(milliseconds),
-			_dst(dst) { }
+			_dst(dst) 
+		{ }
 
 		inline Time( const Time& rhs )
 			: _hours(rhs._hours),
 			_minutes(rhs._minutes),
 			_seconds(rhs._seconds),
 			_milliseconds(rhs._milliseconds),
-			_dst(rhs._dst) { }
+			_dst(rhs._dst)
+		{ }
 
 		inline virtual ~Time( void ) { }
 

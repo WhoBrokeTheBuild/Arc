@@ -21,11 +21,13 @@ namespace Arc
 
 		inline DateTime( Date date, Time time )
 			: _date(date),
-			  _time(time) { }
+			  _time(time) 
+		{ }
 
 		inline DateTime( const DateTime& rhs )
 			: _date(rhs._date),
-			  _time(rhs._time) { }
+			  _time(rhs._time)
+		{ }
 
 		inline virtual ~DateTime( void ) { }
 
